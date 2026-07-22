@@ -1,0 +1,508 @@
+{
+  "generated_at": "2026-07-18T21:59:17.605358+00:00",
+  "literature_csv": "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\data\\literature_benchmarks.csv",
+  "n_literature_rows": 17,
+  "counts": {
+    "total": 17,
+    "not_applicable": 7,
+    "reference_only": 7,
+    "comparable_neutron": 3,
+    "v2_pass_vs_literature": 1,
+    "v3_pass_vs_literature": 1,
+    "v2_fail_vs_literature": 1,
+    "v3_fail_vs_literature": 1
+  },
+  "v2_model": {
+    "status": "production_frozen",
+    "frozen_date": "2026-06-30",
+    "weights": "weights/pinn_best_weights.pth",
+    "heldout_synthetic_validation": {
+      "overall_6_of_6": true,
+      "quality_gate_status": "pass",
+      "ac225_median_rel_error": 0.0451,
+      "ac225_median_rel_error_from_gate": 0.045116851430587,
+      "n_heldout_scenarios": 22,
+      "canary_status": "pass"
+    },
+    "literature_comparable_points": 3,
+    "literature_pass": 1,
+    "literature_fail": 1
+  },
+  "v3_pilstm_model": {
+    "status": "trained",
+    "weights": "v3_pilstm/weights/pi_lstm_best.pth",
+    "train_summary": {
+      "epochs": 6000,
+      "quick_mode": false,
+      "training_quality": "production",
+      "test_ac225_median_rel_vs_ode": 0.054751910269260406
+    },
+    "vs_v2_heldout": {
+      "n_scenarios": 22,
+      "ac225_median_rel_error_vs_ode": {
+        "v2": 0.08177737827503652,
+        "pilstm": 0.051236311109569235
+      },
+      "ra227_high_flux_overshoot": {
+        "v2": 0.0,
+        "pilstm": 0.0
+      },
+      "v2_ready_for_poster": true,
+      "v3_ready_for_poster": true,
+      "v3_needs_colab_train": false
+    },
+    "literature_pass": 1,
+    "literature_fail": 1
+  },
+  "recommendations": {
+    "v2_poster_claims": [
+      "6/6 held-out synthetic validation (median Ac-225 error ~4.5% vs Radau5 ODE)",
+      "Joyo simulation endpoints: order-of-magnitude context only (ODE also ~10\u201318\u00d7 off neutronics)",
+      "Do not claim (n,2n) validation from thermal (n,\u03b3), photonuclear, or cyclotron rows"
+    ],
+    "v3_results_6_current": [
+      "6000-epoch Results-6 run matches ODE on held-out scenarios (Ac-225 endpoint median ~5.1% vs ODE)",
+      "Beats v2 on held-out Ac-225 endpoint (5.12% vs 8.18% under the compare_v2_pilstm protocol)",
+      "Literature simulation agreement still requires ODE-level cross-section physics fix first"
+    ],
+    "structurally_limited_benchmarks": [
+      "cross_route rows (\u03b3,n, p,2n, spallation) \u2014 different production physics",
+      "decay_leg rows \u2014 no neutron irradiation",
+      "Hogle/Kuznetsov 227Ac and 225Ra rows \u2014 wrong channel or isotope",
+      "O'Connor 1960 \u2014 cross-section only, no activity",
+      "rate-only rows (Snow, Maslov, patent) \u2014 no absolute EOB activity"
+    ]
+  },
+  "benchmarks": [
+    {
+      "source_id": "lit_00_o_connor___perkin_1960",
+      "source_citation": "O'Connor & Perkin 1960, DOI 10.1016/0022-1902(60)80227-8",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "\u03c3(n,2n) cross-section (no activity)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "\u03c3(n,2n)=1.60\u00b10.20 barn on 226Ra at 14.5 MeV; EXFOR anchor \u2014 no Ac-225 activity reported (cross-section sanity check only)",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": "1.45e7",
+        "time_h": null,
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "\u03c3(n,2n)=1.60\u00b10.20 barn on 226Ra at 14.5 MeV; EXFOR anchor \u2014 no Ac-225 activity reported (cross-section sanity check only)",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_01_sasaki_et_al__2023_joyo_sim",
+      "source_citation": "Sasaki et al. 2023 Joyo sim, DOI 10.1080/00223131.2023.2243941",
+      "source_type": "simulation",
+      "tier": 2,
+      "tier_label": "Tier 2 \u2014 peer-reviewed simulation",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "simulation_endpoint",
+      "apples_to_oranges": false,
+      "apples_to_oranges_note": "Joyo/ORIGEN simulation endpoint \u2014 order-of-magnitude check only; ODE cross-sections may differ from evaluated neutronics in paper",
+      "literature_A_Ac225_Bq": 15399999999.999998,
+      "conditions": {
+        "phi_n_cm2_s": "5.7e15",
+        "energy_ev": "1.45e7",
+        "time_h": "1080",
+        "N_Ra226_0": "2.664e21"
+      },
+      "ode": {
+        "A_Ac225_Bq": 291759618708.5067,
+        "rel_error": 17.94542978626667
+      },
+      "v2": {
+        "A_Ac225_Bq": 164362581940.61676,
+        "rel_error": 9.672894931208882,
+        "pass_vs_literature": "fail",
+        "verdict_label": "10.7\u00d7 over \u2014 outside 5\u00d7 band"
+      },
+      "v3_pilstm": {
+        "A_Ac225_Bq": 604470746.3061756,
+        "rel_error": 0.9607486528372613,
+        "pass_vs_literature": "fail",
+        "verdict_label": "25.5\u00d7 under \u2014 outside 5\u00d7 band"
+      },
+      "notes": "15.4\u00b16.2 GBq 225Ac from 1 g 226Ra after 45 d irradiation at Joyo core center; neutronics + evaluated \u03c3 (simulation endpoint)",
+      "status": "compared"
+    },
+    {
+      "source_id": "lit_02_iwahashi_et_al__2022_joyo_origen",
+      "source_citation": "Iwahashi et al. 2022 Joyo ORIGEN, MDPI Processes 10(7)1239",
+      "source_type": "simulation",
+      "tier": 2,
+      "tier_label": "Tier 2 \u2014 peer-reviewed simulation",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "simulation_endpoint",
+      "apples_to_oranges": false,
+      "apples_to_oranges_note": "Joyo/ORIGEN simulation endpoint \u2014 order-of-magnitude check only; ODE cross-sections may differ from evaluated neutronics in paper",
+      "literature_A_Ac225_Bq": 29999999999.999996,
+      "conditions": {
+        "phi_n_cm2_s": "5.7e15",
+        "energy_ev": "1.0e7",
+        "time_h": "1488",
+        "N_Ra226_0": "2.664e21"
+      },
+      "ode": {
+        "A_Ac225_Bq": 348821126240.4086,
+        "rel_error": 10.627370874680288
+      },
+      "v2": {
+        "A_Ac225_Bq": 139481949995.6513,
+        "rel_error": 3.649398333188377,
+        "pass_vs_literature": "pass",
+        "verdict_label": "4.6\u00d7 over \u2014 within 5\u00d7 band"
+      },
+      "v3_pilstm": {
+        "A_Ac225_Bq": 59531755274.369255,
+        "rel_error": 0.9843918424789753,
+        "pass_vs_literature": "pass",
+        "verdict_label": "2.0\u00d7 over \u2014 within 5\u00d7 band"
+      },
+      "notes": "~30 GBq Ac-225 after 60 d irradiation + 8 d cooling (1 g 226Ra); total Joyo flux ~5.7e15 n/cm\u00b2/s; fast >0.1 MeV ~4.0e15",
+      "status": "compared"
+    },
+    {
+      "source_id": "lit_03_hogle_et_al__2016_ornl_hfir_ra_226_irrad",
+      "source_citation": "Hogle et al. 2016 ORNL HFIR Ra-226 irradiation, OSTI 1253240",
+      "source_type": "empirical",
+      "tier": 1,
+      "tier_label": "Tier 1 \u2014 experimental measurement",
+      "quantity": "227Ac activity (wrong channel for Ac-225 ODE)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "HFIR reactor Ra-226 irradiation; 45.1 kBq 227Ac per \u00b5g Ra-226 at 7 d EOB; thermal capture (n,\u03b3) 227Ac channel \u2014 validates impurity leg, N_Ra226_0 = 1 \u00b5g basis",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": "2.0e15",
+        "energy_ev": "0.025",
+        "time_h": "168",
+        "N_Ra226_0": "2.664e15"
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "HFIR reactor Ra-226 irradiation; 45.1 kBq 227Ac per \u00b5g Ra-226 at 7 d EOB; thermal capture (n,\u03b3) 227Ac channel \u2014 validates impurity leg, N_Ra226_0 = 1 \u00b5g basis",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_04_higashi_et_al__2022_cyclotron_ac_225_pro",
+      "source_citation": "Higashi et al. 2022 cyclotron Ac-225 production",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "cross_route_reference",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Cross-route production (\u03b3,n, p,2n, etc.) \u2014 neutron ODE not applicable",
+      "literature_A_Ac225_Bq": 2230000.0,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "5",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "Run 2: 35.4 MBq Ra-226 deposited, 5 h irradiation, 2.23 MBq Ac-225 at EOB; cyclotron (p,2n) cross-route",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_05_morgenstern___apostolidis_2005_cyclotron",
+      "source_citation": "Morgenstern & Apostolidis 2005 cyclotron Ac-225",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "cross_route_reference",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Cross-route production (\u03b3,n, p,2n, etc.) \u2014 neutron ODE not applicable",
+      "literature_A_Ac225_Bq": 484700000.00000006,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "45.3",
+        "N_Ra226_0": "8.019e19"
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "30.1 mg Ra-226 target, 45.3 h irradiation, 484.7 MBq Ac-225 at EOB; cyclotron cross-route",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_06_snow_et_al__2025_inl_photonuclear",
+      "source_citation": "Snow et al. 2025 INL photonuclear, OSTI 3028837",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Production rate (no absolute EOB activity)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "39 MeV bremsstrahlung on Ra-226; peak production rate 335.4 kBq Ac-225 per g Ra per mA per h at 17 d post-EOB; (\u03b3,n) cross-route \u2014 rate only, no absolute EOB activity tabulated",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": "3.9e7",
+        "time_h": "408",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "39 MeV bremsstrahlung on Ra-226; peak production rate 335.4 kBq Ac-225 per g Ra per mA per h at 17 d post-EOB; (\u03b3,n) cross-route \u2014 rate only, no absolute EOB activity tabulated",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_07_tadokoro___maeda_2023_linac",
+      "source_citation": "Tadokoro & Maeda 2023 linac, JNM P24",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "cross_route_reference",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Cross-route production (\u03b3,n, p,2n, etc.) \u2014 neutron ODE not applicable",
+      "literature_A_Ac225_Bq": 4120000.0,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "74",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "74 h linac irradiation, 36 MBq Ra-226 target; two milkings: 3.12e6 + 1.0e6 Bq Ac-225 (4.12 MBq total); (\u03b3,n) cross-route",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_08_maslov_et_al__2006_mt_25_microtron",
+      "source_citation": "Maslov et al. 2006 MT-25 microtron",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Production rate (no absolute EOB activity)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Production rate 550 Bq/(\u00b5A\u00b7h\u00b7mg Ra); ~20 h irradiation; electron-bremsstrahlung (\u03b3,n) cross-route \u2014 rate only",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "20",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "Production rate 550 Bq/(\u00b5A\u00b7h\u00b7mg Ra); ~20 h irradiation; electron-bremsstrahlung (\u03b3,n) cross-route \u2014 rate only",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_09_anl_fnal_spallation_ac_225_measurement",
+      "source_citation": "ANL FNAL spallation Ac-225 measurement, Tri-Lab 2016",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "cross_route_reference",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Cross-route production (\u03b3,n, p,2n, etc.) \u2014 neutron ODE not applicable",
+      "literature_A_Ac225_Bq": 76960000.0,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": null,
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "Measured 2.08\u00b10.20 mCi Ac-225 at EOB; **232Th target** (not Ra-226) \u2014 real measured Ac-225 yield from spallation route",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_10_us6299666b1_patent_table_1",
+      "source_citation": "US6299666B1 patent Table 1",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Fractional yield ratio (no absolute activity)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "15% Ac-225/Ra activity ratio at 15.2 MeV proton irradiation; cyclotron cross-route \u2014 fractional yield only",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": "1.52e7",
+        "time_h": null,
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "15% Ac-225/Ra activity ratio at 15.2 MeV proton irradiation; cyclotron cross-route \u2014 fractional yield only",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_11_kuznetsov_et_al__2014_sm_reactor_table_2",
+      "source_citation": "Kuznetsov et al. 2014 SM reactor Table 2 target 1, Izvestia SSC RAS 16(6)129",
+      "source_type": "empirical",
+      "tier": 1,
+      "tier_label": "Tier 1 \u2014 experimental measurement",
+      "quantity": "See notes",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "3.16 mg RaCO\u2083; 25 d irradiation (600 h); **225Ra 6.0e9 Bq** measured after 17 d cooldown \u2014 parent of Ac-225, not Ac-225 activity; thermal reactor (n,\u03b3) chain",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": "1.5e15",
+        "energy_ev": "0.025",
+        "time_h": "600",
+        "N_Ra226_0": "8.42e18"
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "3.16 mg RaCO\u2083; 25 d irradiation (600 h); **225Ra 6.0e9 Bq** measured after 17 d cooldown \u2014 parent of Ac-225, not Ac-225 activity; thermal reactor (n,\u03b3) chain",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_12_matyskin_et_al__2024_penn_state_bnr",
+      "source_citation": "Matyskin et al. 2024 Penn State BNR, Nucl Med Biol 136-137:108940",
+      "source_type": "empirical",
+      "tier": 1,
+      "tier_label": "Tier 1 \u2014 experimental measurement",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "wrong_route_photonuclear",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Reactor photonuclear (\u03b3,n) \u2014 compared for completeness but not (n,2n) validation",
+      "literature_A_Ac225_Bq": 800.0,
+      "conditions": {
+        "phi_n_cm2_s": "1.7e13",
+        "energy_ev": "0.025",
+        "time_h": "48",
+        "N_Ra226_0": "3.73e18"
+      },
+      "ode": {
+        "A_Ac225_Bq": 0.027235266757812026,
+        "rel_error": 0.9999659559165527
+      },
+      "v2": {
+        "A_Ac225_Bq": 0.025590825294506233,
+        "rel_error": 0.9999680114683819,
+        "pass_vs_literature": "context_only",
+        "verdict_label": "31261.2\u00d7 under"
+      },
+      "v3_pilstm": {
+        "A_Ac225_Bq": 78.4966034814799,
+        "rel_error": 0.9018792456481501,
+        "pass_vs_literature": "context_only",
+        "verdict_label": "10.2\u00d7 under"
+      },
+      "notes": "1.4 mg Ra(NO\u2083)\u2082 + Gd-157 converter; 48 h irradiation; **225Ac 800(100) Bq** at equilibrium after separation; 225Ra 6(1) kBq at EOB; reactor photonuclear (\u03b3,n) route",
+      "status": "compared"
+    },
+    {
+      "source_id": "lit_13_kuznetsov_et_al__2014_sm_reactor_table_2",
+      "source_citation": "Kuznetsov et al. 2014 SM reactor Table 2 target 1 (227Ac), Izvestia SSC RAS 16(6)129",
+      "source_type": "empirical",
+      "tier": 1,
+      "tier_label": "Tier 1 \u2014 experimental measurement",
+      "quantity": "227Ac activity (wrong channel for Ac-225 ODE)",
+      "comparison_class": "not_applicable",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "3.16 mg RaCO\u2083 (8.42e18 Ra-226 atoms); 25 effective d + 17 d cool; **227Ac 7.8e10 Bq/g \u2192 2.465e8 Bq for this target** measured \u2014 thermal (n,\u03b3) 227Ac impurity channel (complements Hogle HFIR)",
+      "literature_A_Ac225_Bq": null,
+      "conditions": {
+        "phi_n_cm2_s": "1.51e15",
+        "energy_ev": "0.025",
+        "time_h": "1008",
+        "N_Ra226_0": "8.42e18"
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "3.16 mg RaCO\u2083 (8.42e18 Ra-226 atoms); 25 effective d + 17 d cool; **227Ac 7.8e10 Bq/g \u2192 2.465e8 Bq for this target** measured \u2014 thermal (n,\u03b3) 227Ac impurity channel (complements Hogle HFIR)",
+      "status": "skipped"
+    },
+    {
+      "source_id": "lit_14_mcdevitt_et_al__2017_itu_karlsruhe",
+      "source_citation": "McDevitt et al. 2017 ITU Karlsruhe, Curr Radiopharm PMC5565267",
+      "source_type": "decay_leg",
+      "tier": 4,
+      "tier_label": "Tier 4 \u2014 decay-leg generator milking",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "decay_leg_only",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "229Th generator decay chain \u2014 validates Bateman leg, not neutron transmutation",
+      "literature_A_Ac225_Bq": 1443000000.0,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "1512",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "229Th generator milking; **39 mCi (1.44 GBq) 225Ac** per 9-week cycle at max buildup (+ 43 mCi 225Ra co-product); validates 225Ra\u2192225Ac Bateman leg, not neutron transmutation (supply N_Ra225_0 to enable phi=0 check)",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_15_ornl_229th_generator_campaign",
+      "source_citation": "ORNL 229Th generator campaign, Mirzadeh/McDevitt reviews",
+      "source_type": "decay_leg",
+      "tier": 4,
+      "tier_label": "Tier 4 \u2014 decay-leg generator milking",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "decay_leg_only",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "229Th generator decay chain \u2014 validates Bateman leg, not neutron transmutation",
+      "literature_A_Ac225_Bq": 3699999999.9999995,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "1344",
+        "N_Ra226_0": null
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "229Th generator milking; **~100 mCi (3.7 GBq) 225Ac** total per 8-week campaign (5\u20136 shipments; initial 50\u201360 mCi + bi-weekly top-ups); decay-chain supply route",
+      "status": "reference_only"
+    },
+    {
+      "source_id": "lit_16_melville_et_al__2007_linac_ra_225_ac_225",
+      "source_citation": "Melville et al. 2007 linac Ra-225/Ac-225, Appl Radiat Isot 65(12)",
+      "source_type": "cross_route",
+      "tier": 3,
+      "tier_label": "Tier 3 \u2014 cross-route / cross-section anchor",
+      "quantity": "Ac-225 activity (Bq)",
+      "comparison_class": "cross_route_reference",
+      "apples_to_oranges": true,
+      "apples_to_oranges_note": "Cross-route production (\u03b3,n, p,2n, etc.) \u2014 neutron ODE not applicable",
+      "literature_A_Ac225_Bq": 1070000.0,
+      "conditions": {
+        "phi_n_cm2_s": null,
+        "energy_ev": null,
+        "time_h": "3",
+        "N_Ra226_0": "1.066e20"
+      },
+      "ode": {},
+      "v2": {},
+      "v3_pilstm": {},
+      "notes": "40 mg Ra needles; 64 \u00b5Ci Ra-225, ~29 \u00b5Ci Ac-225 at secular equilibrium after 3 h linac irradiation; (\u03b3,n) cross-route \u2014 Ra-225 parent stock, not direct Ac-225 production endpoint",
+      "status": "reference_only"
+    }
+  ]
+}

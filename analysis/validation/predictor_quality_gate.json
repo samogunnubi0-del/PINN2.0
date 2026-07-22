@@ -1,0 +1,78 @@
+{
+  "overall_status": "pass",
+  "thresholds": {
+    "Ac-225": {
+      "median_rel_error": 0.1,
+      "p95_rel_error": 1.0
+    },
+    "Ac-227": {
+      "median_rel_error": 0.2,
+      "p95_rel_error": 1.0
+    },
+    "Ra-225": {
+      "median_rel_error": 0.2,
+      "p95_rel_error": 2.0
+    },
+    "Ra-227": {
+      "median_rel_error": 0.3,
+      "p95_rel_error": 2.0
+    }
+  },
+  "impurity_decision_thresholds": {
+    "decision_accuracy": 0.9,
+    "false_usable_rate": 0.05,
+    "p95_abs_impurity_error": 0.0015
+  },
+  "results": [
+    {
+      "species": "Ac-225",
+      "median_rel_error": 0.045116851430587,
+      "p95_rel_error": 0.099237692710595,
+      "median_rel_error_limit": 0.1,
+      "median_rel_error_pass": true,
+      "p95_rel_error_limit": 1.0,
+      "p95_rel_error_pass": true,
+      "status": "pass"
+    },
+    {
+      "species": "Ac-227",
+      "median_rel_error": 0.0103809860749163,
+      "p95_rel_error": 0.0364680398812822,
+      "median_rel_error_limit": 0.2,
+      "median_rel_error_pass": true,
+      "p95_rel_error_limit": 1.0,
+      "p95_rel_error_pass": true,
+      "status": "pass"
+    },
+    {
+      "species": "Ra-225",
+      "median_rel_error": 0.0409105157033732,
+      "p95_rel_error": 0.1252681356102844,
+      "median_rel_error_limit": 0.2,
+      "median_rel_error_pass": true,
+      "p95_rel_error_limit": 2.0,
+      "p95_rel_error_pass": true,
+      "status": "pass"
+    },
+    {
+      "species": "Ra-227",
+      "median_rel_error": 0.0133665235541682,
+      "p95_rel_error": 0.0347096886236667,
+      "median_rel_error_limit": 0.3,
+      "median_rel_error_pass": true,
+      "p95_rel_error_limit": 2.0,
+      "p95_rel_error_pass": true,
+      "status": "pass"
+    },
+    {
+      "species": "Ac-227 activity impurity",
+      "decision_accuracy": 1.0,
+      "decision_accuracy_limit": 0.9,
+      "false_usable_rate": 0.0,
+      "false_usable_rate_limit": 0.05,
+      "p95_abs_impurity_error": 0.0004363993506438,
+      "p95_abs_impurity_error_limit": 0.0015,
+      "status": "pass"
+    }
+  ]
+}

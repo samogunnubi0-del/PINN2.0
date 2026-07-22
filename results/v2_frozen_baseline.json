@@ -1,0 +1,15 @@
+{
+  "frozen_date": "2026-06-30",
+  "model": "IsotopePINN v2.0 (MLP-PINN)",
+  "weights": "weights/pinn_best_weights.pth",
+  "validation": {
+    "trio_a": "PASS",
+    "trio_b": "PASS",
+    "trio_c": "PASS",
+    "correlation": "PASS",
+    "quality_gate": "PASS",
+    "held_out_ac225_median_rel_error": 0.0451,
+    "overall_6_of_6": true
+  },
+  "notes": "v2 core files frozen per docs/V2_FROZEN.md. PI-LSTM v3 developed in v3_pilstm/ only."
+}

@@ -1,0 +1,80 @@
+{
+  "teacher_weights": "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v3_pilstm\\weights\\pi_lstm_best.pth",
+  "teacher_sha256_hint": "22B052AAC23BE92B0E0D6CE63CA067766D7F836AD75FD2B61834BC9BF5BC2481",
+  "train_summary_endpoint_ac225": 0.05123526676255993,
+  "checks": [
+    {
+      "feature": "hard_ic",
+      "status": "PASS",
+      "detail": "ckpt=True train_summary=True"
+    },
+    {
+      "feature": "energy_fourier",
+      "status": "PASS",
+      "detail": "ckpt=8 summary=8"
+    },
+    {
+      "feature": "time_fourier",
+      "status": "PASS",
+      "detail": "ckpt=16 summary=16; train_pi_lstm default PILSTM_TIME_FOURIER=0 (env default 0 MISMATCH vs R6 16)"
+    },
+    {
+      "feature": "physics_loss",
+      "status": "PASS",
+      "detail": "wired in train; phys_w=20.0"
+    },
+    {
+      "feature": "distill_ramp",
+      "status": "PASS",
+      "detail": "distill=True distill_w=5.0; schedule sample e1=5.00 e3600=5.00 e6000=0.00"
+    },
+    {
+      "feature": "causal_weights",
+      "status": "PASS",
+      "detail": "causal_time_weights called in train_one_epoch"
+    },
+    {
+      "feature": "overshoot",
+      "status": "PASS",
+      "detail": "overshoot_w=20.0; high_flux overshoot={'v2': 0.0, 'pilstm': 0.0}"
+    },
+    {
+      "feature": "endpoint_ckpt",
+      "status": "PASS",
+      "detail": "metric=endpoint_ac225 best=0.034787236691051646"
+    },
+    {
+      "feature": "pretrain_frac",
+      "status": "PASS",
+      "detail": "0.2"
+    },
+    {
+      "feature": "grad_balance",
+      "status": "PASS",
+      "detail": "R6 grad_balance=False (true quality path lost to R6)"
+    },
+    {
+      "feature": "eval_every",
+      "status": "PASS",
+      "detail": "R6 eval_every=25"
+    },
+    {
+      "feature": "lbfgs",
+      "status": "PASS",
+      "detail": "lbfgs_iter=60; reject-if-worse + data_w applied in code"
+    },
+    {
+      "feature": "ac225_vs_v2",
+      "status": "PASS",
+      "detail": "pilstm=0.0512 v2=0.0818"
+    }
+  ],
+  "dead_weight_do_not_use": [
+    "Do not use R7 QUALITY weights as pi_lstm_best (archived)",
+    "Do not treat PILSTM_FLOAT64=1 as required (R6 won with float32)",
+    "Do not treat PILSTM_EVAL_EVERY=1 as quality gospel (R6 used 25)",
+    "Do not treat PILSTM_GRAD_BALANCE=1 as required (R6 used false)",
+    "Do not train on raw Joyo/Matyskin/cross-route as hard fitness",
+    "PILSTM_TIME_FOURIER default in train_pi_lstm.py is 0 but R6/checkpoint use 16 \u2014 set env when retraining"
+  ]
+}

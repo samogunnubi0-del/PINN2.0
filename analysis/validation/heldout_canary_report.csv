@@ -1,0 +1,5 @@
+canary,n,median_rel_error,max_rel_error,zero_prediction_rate,mean_truth,mean_prediction,status,decision_accuracy,false_usable_rate,median_abs_impurity_error
+fast14_virgin_ac225_zero_collapse,1,0.03872136252410063,0.03872136252410063,0.0,3.1346963035589524e+16,3.256076015532017e+16,pass,,,
+threshold_virgin_ac225_zero_collapse,5,0.08516445558384958,0.09075026898234773,0.0,747359570501629.4,717173086002276.2,pass,,,
+empty_phantom_atoms,12,0.0,0.0,1.0,0.0,0.0,pass,,,
+recycled_impurity_decision,9,,,,,,pass,1.0,0.0,3.2227962009353968e-06

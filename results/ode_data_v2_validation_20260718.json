@@ -1,0 +1,132 @@
+{
+  "generated": "2026-07-18",
+  "script": "analysis/validate_ode_v2.py",
+  "description": "ODE predictions vs literature anchors under ODE_DATA_VERSION=v1 (legacy synthetic sigmoid) and v2 (evaluated JENDL-5/EXFOR/NuDat). No tuning applied; ratios are prediction/measurement. Activities use each version's own decay constants. The Joyo anchors treat the full quoted core flux as monoenergetic at the CSV representative energy \u2014 a deliberate apples-to-apples scenario comparison, NOT a spectrum-folded reactor calculation (see docs/DATA_PROVENANCE.md).",
+  "data_files": [
+    "data/evaluated/jendl5_ra226_n2n_sigmaE.csv",
+    "data/evaluated/endfb8_ra226_n2n_sigmaE.csv",
+    "data/evaluated/jendl5_ra226_ngamma_sigmaE.csv",
+    "data/evaluated/endfb8_ra226_ngamma_sigmaE.csv",
+    "data/evaluated/exfor_ra226_n2n.csv",
+    "data/evaluated/exfor_ra226_ngamma_thermal.csv",
+    "data/evaluated/halflives_nndc.csv",
+    "data/literature_benchmarks.csv (merged 2026-07-18)"
+  ],
+  "sigma_and_halflife_checks": {
+    "jendl5_vs_endfb8_n2n_max_dev_b": 0.0,
+    "jendl5_vs_endfb8_ng_max_dev_b": 0.0,
+    "n2n_threshold_ev": 6421800.0,
+    "eval_n2n_b_at_14MeV": 0.75571,
+    "eval_n2n_b_at_14p5MeV_interp": 0.53234,
+    "exfor21405_n2n_b_at_14p5MeV": 1.6,
+    "exfor21405_n2n_err_b": 0.2,
+    "eval_over_exfor_at_14p5MeV": 0.3327125,
+    "v1_sigmoid_n2n_b_at_14MeV": 0.02699999296183725,
+    "v2_over_v1_n2n_at_14MeV": 27.989266555296787,
+    "v1_ngamma_b_thermal": 12.8,
+    "v2_ngamma_b_at_0p0253eV": 13.8,
+    "exfor31760_ngamma_b_thermal": 13.8,
+    "half_lives_v2_hours": {
+      "Ra-226": 14043888.888888888,
+      "Ra-225": 357.6111111111111,
+      "Ac-225": 240.0,
+      "Ra-227": 0.7033333333333334,
+      "Ac-227": 190855.55555555556
+    },
+    "half_lives_v1_note": "v1: Ra-226 1600 y, Ra-225 14.8 d, Ac-225 9.92 d, Ra-227 42.2 min, Ac-227 21.772 y (hard-coded)"
+  },
+  "anchors": [
+    {
+      "id": "sano_2024_joyo_45d",
+      "kind": "ac225_activity",
+      "source": "Sano et al. 2024 Joyo uncertainty analysis, JNST 61:509, DOI 10.1080/00223131.2023.2243941",
+      "measured_bq": 15400000000.0,
+      "measured_err_bq": 6200000000.0,
+      "v1_bq": 291759618708.50665,
+      "v1_ratio_pred_over_meas": 18.945429786266665,
+      "v1_rel_error": 17.945429786266665,
+      "v2_bq": 5692048270159.382,
+      "v2_ratio_pred_over_meas": 369.6135240363235,
+      "v2_rel_error": 368.6135240363235
+    },
+    {
+      "id": "iwahashi_2022_joyo_60d",
+      "kind": "ac225_activity",
+      "source": "Iwahashi et al. 2022 Joyo ORIGEN, MDPI Processes 10(7)1239",
+      "measured_bq": 30000000000.0,
+      "measured_err_bq": null,
+      "v1_bq": 348821126240.4086,
+      "v1_ratio_pred_over_meas": 11.627370874680288,
+      "v1_rel_error": 10.627370874680288,
+      "v2_bq": 31279115910349.25,
+      "v2_ratio_pred_over_meas": 1042.6371970116418,
+      "v2_rel_error": 1041.6371970116418
+    },
+    {
+      "id": "iwahashi_2022_milking_17p5d",
+      "kind": "ac225_milking",
+      "source": "Iwahashi et al. 2022 per data/evaluated/README_retrieval.md (15.7 GBq/cycle, 3x milking at 17.5 d optimum)",
+      "measured_bq": 15700000000.0,
+      "measured_err_bq": null,
+      "assumptions": "Milking modelled as post-EOB harvests every 17.5 d (x3) after a 60-d irradiation of 1 g Ra-226 at phi=5.7e15, E=10 MeV; each harvest removes all Ac-225. The paper's exact in-cycle milking schedule is not public in the retrieved material \u2014 ASSUMPTION-LADEN.",
+      "v1_bq": 377346796413.86884,
+      "v1_ratio_pred_over_meas": 24.03482779706171,
+      "v1_rel_error": 23.03482779706171,
+      "v2_bq": 33796085546927.215,
+      "v2_ratio_pred_over_meas": 2152.61691381702,
+      "v2_rel_error": 2151.61691381702
+    },
+    {
+      "id": "hogle_2016_ac227_3p01d",
+      "kind": "ac227_activity",
+      "source": "Hogle et al. 2016 HFIR 226Ra->227Ac series, OSTI 1253240 full text",
+      "measured_bq": 22900.0,
+      "measured_err_bq": 1100.0,
+      "v1_bq": 17397.24000011092,
+      "v1_ratio_pred_over_meas": 0.7597048034982935,
+      "v1_rel_error": 0.24029519650170655,
+      "v2_bq": 18863.20724486141,
+      "v2_ratio_pred_over_meas": 0.8237208403869611,
+      "v2_rel_error": 0.17627915961303892
+    },
+    {
+      "id": "hogle_2016_ac227_7d",
+      "kind": "ac227_activity",
+      "source": "Hogle et al. 2016 ORNL HFIR Ra-226 irradiation, OSTI 1253240",
+      "measured_bq": 45100.0,
+      "measured_err_bq": 2200.0,
+      "v1_bq": 40625.33200276547,
+      "v1_ratio_pred_over_meas": 0.900783414695465,
+      "v1_rel_error": 0.09921658530453503,
+      "v2_bq": 44032.38131133949,
+      "v2_ratio_pred_over_meas": 0.9763277452625165,
+      "v2_rel_error": 0.023672254737483512
+    },
+    {
+      "id": "hogle_2016_ac227_26p09d",
+      "kind": "ac227_activity",
+      "source": "Hogle et al. 2016 HFIR 226Ra->227Ac saturation, OSTI 1253240 full text",
+      "measured_bq": 51800.0,
+      "measured_err_bq": 7400.0,
+      "v1_bq": 148844.6848669921,
+      "v1_ratio_pred_over_meas": 2.873449514806797,
+      "v1_rel_error": 1.8734495148067971,
+      "v2_bq": 161046.04946281252,
+      "v2_ratio_pred_over_meas": 3.1089970938766895,
+      "v2_rel_error": 2.1089970938766895
+    },
+    {
+      "id": "snow_2025_phi0_ingrowth_17d",
+      "kind": "ac225_ingrowth",
+      "source": "Snow et al. 2025 INL photonuclear, OSTI 3028837 full text",
+      "measured_bq": 126.8,
+      "measured_err_bq": 12.6,
+      "v1_bq": 127.28621038034095,
+      "v1_ratio_pred_over_meas": 1.0038344667219319,
+      "v1_rel_error": 0.00383446672193178,
+      "v2_bq": 126.3356745944103,
+      "v2_ratio_pred_over_meas": 0.9963381277161696,
+      "v2_rel_error": 0.003661872283830366
+    }
+  ]
+}

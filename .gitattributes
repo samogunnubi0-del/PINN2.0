@@ -1,0 +1,12 @@
+# Treat non-code docs so GitHub language stats reflect Python
+*.html linguist-documentation
+*.md linguist-documentation
+*.ipynb linguist-documentation
+*.csv linguist-documentation
+docs/papers/** linguist-vendored
+
+# Generated / binary weights are not source
+*.pth binary
+*.pt binary
+*.png binary
+*.pdf binary

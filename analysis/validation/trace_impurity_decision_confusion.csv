@@ -1,0 +1,10 @@
+regime,case_type,n,true_usable_pred_usable,true_usable_pred_unusable,true_unusable_pred_usable,true_unusable_pred_unusable,decision_accuracy,false_usable_rate
+epithermal,recycled_trace_inventory,6,6,0,0,0,1.0,0.0
+epithermal,virgin,2,0,0,0,2,1.0,0.0
+fast14,empty,1,1,0,0,0,1.0,0.0
+fast14,virgin,1,1,0,0,0,1.0,0.0
+thermal,recycled_trace_inventory,2,1,0,0,1,1.0,0.0
+thermal,virgin,3,0,0,0,3,1.0,0.0
+threshold,empty,1,1,0,0,0,1.0,0.0
+threshold,recycled_trace_inventory,1,1,0,0,0,1.0,0.0
+threshold,virgin,5,4,0,0,1,1.0,0.0

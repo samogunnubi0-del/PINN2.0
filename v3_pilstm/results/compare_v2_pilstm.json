@@ -1,0 +1,46 @@
+{
+  "pilstm_weights_loaded": true,
+  "pilstm_checkpoint_has_config": true,
+  "pilstm_checkpoint_config": {
+    "hidden_dim": 256,
+    "num_layers": 2,
+    "n_energy_fourier": 8,
+    "n_time_fourier": 16,
+    "dropout": 0.0,
+    "hard_ic": true,
+    "ic_time_scale": 0.02,
+    "t_ref_h": 500.0
+  },
+  "n_scenarios": 22,
+  "pilstm_ac225_full_traj_median_rel": 0.07534720003604889,
+  "species_median_rel_error": {
+    "Ra-226": {
+      "v2": 0.1632372293371727,
+      "pilstm": 0.15589794849626087
+    },
+    "Ra-225": {
+      "v2": 0.07425850599948773,
+      "pilstm": 0.07856995924221771
+    },
+    "Ac-225": {
+      "v2": 0.08177737827503652,
+      "pilstm": 0.051236311109569235
+    },
+    "Ra-227": {
+      "v2": 0.14546382886274808,
+      "pilstm": 0.06621531625519006
+    },
+    "Ac-227": {
+      "v2": 0.06741869089332185,
+      "pilstm": 0.10832168146594331
+    }
+  },
+  "high_flux_ra227_overshoot_fraction": {
+    "v2": 0.0,
+    "pilstm": 0.0
+  },
+  "mean_inference_ms": {
+    "v2": 11.969959109344266,
+    "pilstm": 113.61270908012308
+  }
+}

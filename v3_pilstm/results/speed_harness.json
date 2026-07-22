@@ -1,0 +1,50 @@
+{
+  "weights": "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v3_pilstm\\weights\\pi_lstm_best.pth",
+  "device": "cpu",
+  "dtype": "float32",
+  "n_scenarios": 22,
+  "n_steps": 64,
+  "warmup": 3,
+  "repeats": 5,
+  "eager": {
+    "ms_22": 3004.436200018972,
+    "ms_per_scenario": 136.5652818190442,
+    "ac225_median_rel": 0.051236311109569235,
+    "species_median_rel": {
+      "Ra-226": 0.15589794849626087,
+      "Ra-225": 0.07856995924221771,
+      "Ac-225": 0.051236311109569235,
+      "Ra-227": 0.06621531625519006,
+      "Ac-227": 0.10832168146594331
+    }
+  },
+  "batched": {
+    "ms_22": 36.32279997691512,
+    "ms_per_scenario": 1.651036362587051,
+    "ac225_median_rel": 0.051236311109569235,
+    "gate_vs_eager_ac225": true,
+    "max_abs_endpoint_delta_vs_eager": 1.7946958537057894e+17,
+    "max_rel_endpoint_delta_vs_eager": 3.735933361900774e-06,
+    "speedup_vs_eager": 82.71488436817744,
+    "species_median_rel": {
+      "Ra-226": 0.1558981571159585,
+      "Ra-225": 0.07856995924221771,
+      "Ac-225": 0.051236311109569235,
+      "Ra-227": 0.06621531625519006,
+      "Ac-227": 0.10832339264778926
+    }
+  },
+  "compile": {
+    "attempted": false,
+    "ok": false,
+    "ms_22": null,
+    "ac225": null,
+    "gate": null,
+    "error": null
+  },
+  "kd_student": {
+    "status": "not_trained",
+    "note": "Teacher frozen per plan; optional KD student deferred (no teacher retrain)."
+  },
+  "gate_threshold_ac225_abs": 0.001
+}

@@ -1,0 +1,126 @@
+{
+  "model": "pilstm",
+  "alpha": 0.1,
+  "nominal_coverage": 0.9,
+  "n_calibration": 11,
+  "n_test": 11,
+  "calibration_scenario_ids": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010
+  ],
+  "test_scenario_ids": [
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021
+  ],
+  "Ac-225": {
+    "absolute": {
+      "q": 1.9891920102927036e+16,
+      "test_coverage": 1.0,
+      "calibration_median_score": 16849998153757.0
+    },
+    "relative": {
+      "q": 2.946443838311208,
+      "test_coverage": 0.9090909090909091,
+      "calibration_median_score": 0.04806721735235712
+    }
+  },
+  "all_species_absolute_coverage": {
+    "Ra-226": 0.7272727272727273,
+    "Ra-225": 0.9090909090909091,
+    "Ac-225": 1.0,
+    "Ra-227": 0.9090909090909091,
+    "Ac-227": 0.9090909090909091
+  },
+  "all_species_relative_coverage": {
+    "Ra-226": 1.0,
+    "Ra-225": 1.0,
+    "Ac-225": 0.9090909090909091,
+    "Ra-227": 1.0,
+    "Ac-227": 1.0
+  },
+  "conformal_models": {
+    "absolute": {
+      "alpha": 0.1,
+      "nominal_coverage": 0.9,
+      "score_mode": "absolute",
+      "species": {
+        "Ra-226": {
+          "q": 8.200955085578116e+22,
+          "n_calibration": 11,
+          "median_calibration_score": 1.2502218934226103e+22
+        },
+        "Ra-225": {
+          "q": 1.3456032592802811e+17,
+          "n_calibration": 11,
+          "median_calibration_score": 1010438938575072.0
+        },
+        "Ac-225": {
+          "q": 1.9891920102927036e+16,
+          "n_calibration": 11,
+          "median_calibration_score": 16849998153757.0
+        },
+        "Ra-227": {
+          "q": 1.3504038087884012e+16,
+          "n_calibration": 11,
+          "median_calibration_score": 2048065731750.9922
+        },
+        "Ac-227": {
+          "q": 1.8876534379546632e+18,
+          "n_calibration": 11,
+          "median_calibration_score": 353904073636676.0
+        }
+      }
+    },
+    "relative": {
+      "alpha": 0.1,
+      "nominal_coverage": 0.9,
+      "score_mode": "relative",
+      "species": {
+        "Ra-226": {
+          "q": 2.7113934535084256,
+          "n_calibration": 11,
+          "median_calibration_score": 0.38470086454146507
+        },
+        "Ra-225": {
+          "q": 3.264143355141421,
+          "n_calibration": 11,
+          "median_calibration_score": 0.07971619874337578
+        },
+        "Ac-225": {
+          "q": 2.946443838311208,
+          "n_calibration": 11,
+          "median_calibration_score": 0.04806721735235712
+        },
+        "Ra-227": {
+          "q": 6.4165597208843295,
+          "n_calibration": 11,
+          "median_calibration_score": 0.10704753048562671
+        },
+        "Ac-227": {
+          "q": 2.1981809331335858,
+          "n_calibration": 11,
+          "median_calibration_score": 0.10847990143665721
+        }
+      }
+    }
+  },
+  "test_ac225_median_rel_error": 0.05440540486678136
+}

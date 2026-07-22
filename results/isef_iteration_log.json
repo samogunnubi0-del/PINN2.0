@@ -1,0 +1,426 @@
+{
+  "project": "IsotopePINN",
+  "canonical_log_md": "docs/ISEF_ITERATION_LOG.md",
+  "last_updated_utc": "2026-05-30T18:30:00Z",
+  "baseline_weights": {
+    "path": "weights/pinn_best_weights.pth",
+    "version": "v63",
+    "sha256": "7c21debe209be2112a4b5c16bf168fe3be2465cb9d1145f2b1221a702259d597",
+    "sha256_prefix": "7c21debe",
+    "heldout_ac225_median_rel": 0.0451,
+    "criteria_pass": "6/6",
+    "validation_report": "results/v63_validation_20260530.json"
+  },
+  "research_refs": [
+    {
+      "rank": 1,
+      "citation": "Raissi, Perdikaris & Karniadakis (2019) J. Comput. Phys. 378, 686-707",
+      "role": "Core PINN framework",
+      "code": "compute_physics_loss, train.py"
+    },
+    {
+      "rank": 2,
+      "citation": "Project Iterations 5-6 (PINN_ARCHITECTURE_FIX.md)",
+      "role": "Semi-analytic Bateman backbone + bounded correction",
+      "code": "pinn_model.py forward_raw"
+    },
+    {
+      "rank": 3,
+      "citation": "Bento et al. (2026) arXiv:2602.21988",
+      "role": "Jacobian normalization of Bateman residuals",
+      "code": "compute_physics_loss fn/jn"
+    },
+    {
+      "rank": 4,
+      "citation": "Wang, Teng & Perdikaris (2021) SIAM J. Sci. Comput.",
+      "role": "Gradient balancing supervised vs physics",
+      "code": "PINN_GRAD_BALANCE=1"
+    },
+    {
+      "rank": 5,
+      "citation": "Krishnapriyan et al. (2021) NeurIPS arXiv:2109.01050",
+      "role": "Time-bin curriculum",
+      "code": "PINN_CURRIC_BINS"
+    },
+    {
+      "rank": 6,
+      "citation": "Wang et al. (2022) arXiv:2203.07404",
+      "role": "Causal / early-time physics emphasis",
+      "code": "PINN_CAUSAL_PHYS"
+    },
+    {
+      "rank": 7,
+      "citation": "McClenny & Braga-Neto (2023) J. Comput. Phys. 474",
+      "role": "Self-adaptive physics focal weights",
+      "code": "PINN_SA_PHYSICS"
+    },
+    {
+      "rank": 8,
+      "citation": "Tancik et al. (2020) NeurIPS",
+      "role": "Fourier features on log-energy",
+      "code": "PINN_ENERGY_FOURIER"
+    },
+    {
+      "rank": 9,
+      "citation": "Jagtap & Karniadakis (2020) Commun. Comput. Phys. 28(5)",
+      "role": "XPINN-style expert agreement",
+      "code": "regime_gated dual heads"
+    },
+    {
+      "rank": 10,
+      "citation": "Lagaris et al. (1998) IEEE Trans. Neural Networks",
+      "role": "Exponential ansatz for Ra-226",
+      "code": "exp(-integral k dt)"
+    },
+    {
+      "rank": 11,
+      "citation": "He et al. (2016) CVPR",
+      "role": "Residual MLP blocks",
+      "code": "res_blocks"
+    },
+    {
+      "rank": 12,
+      "citation": "Jagtap, Kawaguchi & Karniadakis (2020) J. Comput. Phys. 404",
+      "role": "Adaptive activation slopes",
+      "code": "tanh(a*x)"
+    },
+    {
+      "rank": 13,
+      "citation": "Loshchilov & Hutter (2017) ICLR",
+      "role": "Cosine LR warm restarts",
+      "code": "CosineAnnealingWarmRestarts"
+    },
+    {
+      "rank": 14,
+      "citation": "Kendall, Gal & Cipolla (2018) CVPR",
+      "role": "Optional uncertainty loss weighting",
+      "code": "UncertaintyWeighter"
+    },
+    {
+      "rank": 15,
+      "citation": "Gal & Ghahramani (2016) ICML",
+      "role": "MC dropout uncertainty",
+      "code": "predict_mcd"
+    },
+    {
+      "rank": 16,
+      "citation": "Jordan et al. (2024) Muon optimizer",
+      "role": "Optional Adam alternative",
+      "code": "MuonOptimizer"
+    }
+  ],
+  "related_prior_art": [
+    {
+      "citation": "Pompe/Pacifico PINN-Nuclear-decay-equation (GitHub)",
+      "overlap": "PINN + math-informed architecture for dN/dt = AN",
+      "difference": "Time-only decay matrices; not Ra-Ac clinical parametric surrogate"
+    },
+    {
+      "citation": "Boiger et al. PINN-PAD Padova 2024",
+      "overlap": "Bateman PINN vs CRAM",
+      "difference": "241Pu decay benchmark; not Ac-225 planning dashboard"
+    }
+  ],
+  "novelty_summary": "Application + architecture synthesis for Ra-226 to Ac-225 five-species surrogate; not first PINN for nuclear decay globally.",
+  "graph_audit": {
+    "poster_approved": [
+      "graphs/isef_parity_restyled.png",
+      "graphs/isef_isotope_evolution.png",
+      "graphs/isef_loss_trajectory_12k.png",
+      "graphs/isef_mass_conservation.png",
+      "graphs/loss_components.png",
+      "graphs/isef_sensitivity.png",
+      "graphs/isef_residual_histogram.png"
+    ],
+    "poster_remove": [
+      "error_histogram.png",
+      "flux_sensitivity.png",
+      "ac225_growth.png",
+      "ac225_yield_heatmap.png"
+    ],
+    "remove_reason": {
+      "error_histogram.png": "Legacy RandomForest model_trainer, not PINN",
+      "flux_sensitivity.png": "Legacy RandomForest pipeline",
+      "ac225_growth.png": "ODE-only, not PINN prediction",
+      "ac225_yield_heatmap.png": "ODE-only grid"
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "epoch_budget": "12000 design / v59 pushed without MEDIUM flag",
+      "timestamp_utc": "2026-05-23T00:00:00Z",
+      "diagnosis": "Ra-225/Ac-225 near-zero: species_drift_loss; daughter scale suppression",
+      "changes": [
+        "Mask species_drift_loss to nonzero-IC channels only",
+        "Clamp daughter_rate_log_scales minimum to 0 (multiplier >= 1)",
+        "Raise Ra-225 dyn_scale floor from 1e-4 to 1e-2"
+      ],
+      "metrics": {
+        "trio_a": "PASS",
+        "trio_b_ac225_rel": "~100%",
+        "quality_gate": "FAIL"
+      },
+      "graphs_bad": ["parity flat at zero for daughters"],
+      "kaggle_run": "v59 COMPLETE",
+      "verdict": "synced"
+    },
+    {
+      "iteration": 2,
+      "epoch_budget": "4000 (600+3400) PINN_MEDIUM_TRAIN=1",
+      "timestamp_utc": "2026-05-24T00:36:00Z",
+      "changes": [
+        "PINN_MEDIUM_TRAIN profile with scaled warmups",
+        "Boosted daughter loss weights",
+        "40% trace-positive batches",
+        "Virgin fast14 oversampling"
+      ],
+      "kaggle_run": "included in v60 push",
+      "verdict": "implemented"
+    },
+    {
+      "iteration": 3,
+      "epoch_budget": "4000 PINN_MEDIUM_TRAIN on v60",
+      "timestamp_utc": "2026-05-24T01:00:00Z",
+      "diagnosis": "Signed tanh integral -> zero daughters for virgin IC",
+      "changes": [
+        "Virgin ingrowth: softplus(tanh(raw)) when feedstock+flux+zero daughters",
+        "scripts/empirical_sync.py + data/empirical/",
+        "scripts/isef_figures.py",
+        "kaggle_sync pull encoding fix + empirical PUSH_FILES"
+      ],
+      "metrics": {
+        "trio_a": "PASS",
+        "trio_b_ac225": "nonzero but ~8600% vs ODE (v59 weights + new forward)",
+        "quality_gate": "FAIL",
+        "kaggle_pull_files": 9,
+        "promoted_files": 19
+      },
+      "kaggle_run": "v60 RUNNING",
+      "verdict": "awaiting_v60"
+    },
+    {
+      "iteration": 4,
+      "epoch_budget": "4000 PINN_MEDIUM_TRAIN; halted ~1524 joint on v60",
+      "timestamp_utc": "2026-05-24T01:20:00Z",
+      "diagnosis": "SAFETY HALT at joint 1524; full softplus over-predicts Trio B; Trio C decay path zero Ac-225",
+      "changes": [
+        "Blended per-channel ingrowth (35% softplus + 65% signed tanh)",
+        "Ac-225 positive mask when Ra-225 parent IC > 0 and Ac IC ~ 0",
+        "PINN_SAFETY_RATIO=250 and PINN_DATA_WEIGHT=15 in notebook",
+        "Regenerated all ISEF graphs from v60 weights locally"
+      ],
+      "metrics": {
+        "trio_a": "PASS",
+        "trio_b_ac225_rel": "~8179%",
+        "trio_c_ac225": "0",
+        "ac225_median_rel": "0.37",
+        "quality_gate": "FAIL",
+        "correlation_r2": "FAIL",
+        "kaggle_run_id": "e572f3fe-9263-4e67-9116-0996d56dd5d3",
+        "joint_epochs_completed": 1524,
+        "kaggle_pull_synced": 10,
+        "promoted_files": 19
+      },
+      "graphs_bad": ["isef_* regenerated but still wrong metrics from integral forward"],
+      "kaggle_run": "v61 pushed",
+      "verdict": "complete_full_4k"
+    },
+    {
+      "iteration": 5,
+      "epoch_budget": "4000 full; v62 retrain with Bateman backbone",
+      "timestamp_utc": "2026-05-24T02:00:00Z",
+      "diagnosis": "Integral tanh cannot encode Bateman chain; quality gate stuck at 37%",
+      "changes": [
+        "Semi-analytic Bateman Ra-225/Ac-225 backbone + bounded NN correction",
+        "Log loss rebalance: DATA Ac-225 500, LOG 5, SAFETY_RATIO=0, GRAD_BALANCE=1",
+        "isef_figures.py: CSV dedupe, parity scatter, projection guard"
+      ],
+      "metrics": {
+        "v61_baseline_trio_b": "~2169%",
+        "forward_only_trio_b": "PASS ~25%",
+        "forward_only_trio_c": "PASS",
+        "ac225_r2_forward_only": "0.995",
+        "quality_gate": "FAIL 37%",
+        "criteria_pass": "3/6 forward-only"
+      },
+      "kaggle_run": "v62 COMPLETE (joint 4000)",
+      "verdict": "awaiting_iter6_forward"
+    },
+    {
+      "iteration": 6,
+      "epoch_budget": "0 (forward architecture on v62 weights)",
+      "timestamp_utc": "2026-05-24T02:45:00Z",
+      "diagnosis": "Independent NN corrections caused Trio C alchemy; Ra-227 Euler stiff blow-up; ngamma used thermal sigma at fast E",
+      "changes": [
+        "Shared log-correction for Ra-225/Ac-225 pair + zero-flux budget clamp",
+        "Stiff substepped analytic Ra-227/Ac-227 Bateman with 1/v ngamma scaling",
+        "correlation_check: near-constant Ra-226 uses max rel err",
+        "isef_parity_restyled: energy column alias fix"
+      ],
+      "metrics": {
+        "trio_a": "PASS",
+        "trio_b": "PASS <10%",
+        "trio_c": "PASS",
+        "quality_gate": "PASS",
+        "correlation": "PASS",
+        "heldout_ac225_median": "0.037",
+        "criteria_pass": "6/6"
+      },
+      "kaggle_run": "optional v63 polish",
+      "verdict": "isef_ready_6_of_6_forward_only"
+    },
+    {
+      "iteration": "v63",
+      "epoch_budget": "4000 full (600+3400) Kaggle kernel v63",
+      "timestamp_utc": "2026-05-24T12:00:00Z",
+      "diagnosis": "Full retrain with Iteration 5+6 architecture (Bateman + 227 substep + ngamma 1/v)",
+      "changes": [
+        "Fresh PINN_RESUME=0 train on v63 pushed code",
+        "weights/pinn_best_weights.pth sha256=7c21debe209b..."
+      ],
+      "metrics": {
+        "joint_epochs": 4000,
+        "trio_a": "PASS",
+        "trio_b": "PASS <10%",
+        "trio_c": "PASS",
+        "quality_gate": "PASS",
+        "correlation": "PASS",
+        "heldout_ac225_median": "0.045",
+        "criteria_pass": "6/6"
+      },
+      "kaggle_run": "v63 COMPLETE",
+      "verdict": "isef_ready_6_of_6_retrained"
+    },
+    {
+      "iteration": 7,
+      "timestamp_utc": "2026-05-29T00:00:00Z",
+      "diagnosis": "isef_parity_restyled.png ~184% median contradicted 6/6 validation (~4.5% held-out)",
+      "root_cause": "plot_parity_restyled used N_* target columns as initial conditions instead of init_N*",
+      "changes": [
+        "_ensure_parity_init_columns() with TRAIN_INIT_* defaults",
+        "parity uses prepare_training_tensors() same as train/validate"
+      ],
+      "metrics": {
+        "parity_ac225_median_before": "~1.84",
+        "parity_ac225_median_after": "~0.055",
+        "validation_unchanged": "6/6 PASS"
+      },
+      "graphs_fixed": ["graphs/isef_parity_restyled.png"],
+      "verdict": "graph_pipeline_aligned_with_validation"
+    },
+    {
+      "iteration": 8,
+      "timestamp_utc": "2026-05-29T12:00:00Z",
+      "diagnosis": "Poster graph audit: stale RF and ODE-only figures mixed with PINN claims",
+      "changes": [
+        "isef_figures.py mass conservation 5-species",
+        "extra_plots.py N227 scale fix; remove model_trainer dependency",
+        "plot_predictions.py conditional log-scale"
+      ],
+      "graphs_removed_from_poster": [
+        "error_histogram.png",
+        "flux_sensitivity.png",
+        "ac225_growth.png",
+        "ac225_yield_heatmap.png"
+      ],
+      "graphs_fixed": [
+        "isef_mass_conservation.png",
+        "isef_parity_restyled.png",
+        "pred_vs_true_*.png"
+      ],
+      "verdict": "poster_figure_list_curated"
+    },
+    {
+      "iteration": 9,
+      "timestamp_utc": "2026-05-29T18:00:00Z",
+      "diagnosis": "Local untuned 12k failed; corrupt PINN_RESUME overwrote good weights",
+      "mistakes": [
+        "Default env without PINN_MEDIUM_TRAIN tuned recipe",
+        "PINN_RESUME=1 with truncated pinn_training_resume.pt",
+        "float32 CPU vs float64 GPU",
+        "Rogue 207KB 3-species pinn_best_weights.pth at repo root"
+      ],
+      "changes": [
+        "train.py resume guardrails and best_epoch tracking",
+        "IsotopePINN_Colab_Run.ipynb tuned 12k + validation cells",
+        "build_colab_zip.py excludes corrupt resume and stale weights"
+      ],
+      "acceptance_rule_12k": "Keep only if 6/6 AND held-out Ac-225 beats ~4.5%; else v63",
+      "verdict": "colab_pipeline_hardened"
+    },
+    {
+      "iteration": 10,
+      "timestamp_utc": "2026-05-30T00:00:00Z",
+      "diagnosis": "Literature review: confirm novelty framing and complete bibliography",
+      "findings": [
+        "PINN for Bateman exists (Pompe, Padova 2024) - not first globally",
+        "No published match for Ra-226 Ac-225 parametric PINN clinical surrogate",
+        "Bento 2026 arXiv:2602.21988 was in code comments; added to formal refs"
+      ],
+      "changes": [
+        "Expanded docs/ISEF_ITERATION_LOG.md with research_refs and graph audit",
+        "Added Bento et al. 2026 to pinn_model.py METHOD REFERENCES header",
+        "Restructured results/isef_iteration_log.json with research_refs block"
+      ],
+      "verdict": "documentation_complete"
+    },
+    {
+      "iteration": 11,
+      "timestamp_utc": "2026-05-30T15:00:00Z",
+      "source": "IsotopePINN_Results (2).zip Colab A100 12k",
+      "training": {
+        "last_epoch": 12000,
+        "best_epoch": 11380,
+        "duration_minutes": 74
+      },
+      "sync": {
+        "files": 24,
+        "backup": "archive/sync_backup_20260530_105656",
+        "report": "results/colab_sync_20260530.json"
+      },
+      "metrics_12k": {
+        "quality_gate": "PASS",
+        "heldout_ac225_median": 0.0727,
+        "trio_a": "PASS",
+        "trio_b": "CHECK ~25%",
+        "trio_c": "PASS",
+        "correlation": "PASS"
+      },
+      "decision": "active weights = v63 (held-out 4.5% beats 12k 7.27%); 12k saved as pinn_best_weights_12k_colab_20260530.pth",
+      "verdict": "synced_graphs_and_loss; poster_weights_v63"
+    },
+    {
+      "iteration": 12,
+      "timestamp_utc": "2026-05-30T18:30:00Z",
+      "diagnosis": "ISEF delivery: restore true Kaggle v63 (7c21debe), re-validate 6/6, poster docs, Streamlit, fair zip",
+      "changes": [
+        "Restored weights from kaggle_results/weights/pinn_best_weights.pth (77e01981 copy was invalid for 6/6)",
+        "Extracted test_single.py, analysis validation scripts, app.py from IsotopePINN_Project.zip",
+        "Regenerated poster graphs via scripts/isef_figures.py and scripts/extra_plots.py",
+        "Added docs/ISEF_POSTER_OUTLINE.md, docs/ISEF_JUDGE_QA.md",
+        "Added results/v63_validation_20260530.json",
+        "Rebuilt IsotopePINN_Project.zip with v63 evidence"
+      ],
+      "metrics_v63_local": {
+        "weights_sha256_prefix": "7c21debe",
+        "trio_a": "PASS",
+        "trio_b": "PASS <10%",
+        "trio_b_ac225_rel": 0.0994,
+        "trio_c": "PASS",
+        "quality_gate": "PASS",
+        "correlation": "PASS",
+        "heldout_ac225_median": 0.0451,
+        "criteria_pass": "6/6"
+      },
+      "deliverables": [
+        "docs/ISEF_POSTER_OUTLINE.md",
+        "docs/ISEF_JUDGE_QA.md",
+        "app.py",
+        "results/v63_validation_20260530.json",
+        "IsotopePINN_Project.zip"
+      ],
+      "verdict": "isef_ship_ready_v63"
+    }
+  ]
+}

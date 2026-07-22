@@ -1,0 +1,45 @@
+{
+  "source_zip": "c:\\Users\\ogunn\\Downloads\\IsotopePINN_Results (2).zip",
+  "synced_at_utc": "2026-05-30T15:00:00Z",
+  "backup_dir": "archive/sync_backup_20260530_105656",
+  "training": {
+    "last_epoch": 12000,
+    "best_epoch": 11380,
+    "best_joint_epoch": 9380,
+    "started_at_utc": "2026-05-30T13:40:59Z",
+    "ended_at_utc": "2026-05-30T14:54:46Z",
+    "run_id": "359abe20-86a8-49a7-8f10-efe15a252e1a"
+  },
+  "weights": {
+    "12k_colab": {
+      "path": "weights/pinn_best_weights_12k_colab_20260530.pth",
+      "sha256": "352c4a56186ee8d9662799e1f7ee363a6716e3afa1ee70155830e60b6699feb8",
+      "size_bytes": 476907
+    },
+    "v63_prev_active": {
+      "path": "weights/pinn_best_weights_v63.pth",
+      "sha256": "77e0198136a8e134e8f3709606b59235576b1dfe5968e06ccd2233ab5cebcf0f",
+      "size_bytes": 476907
+    },
+    "active_for_inference": "weights/pinn_best_weights.pth",
+    "active_choice": "v63",
+    "active_reason": "12k held-out Ac-225 median 7.27% vs v63-era ~4.5%; acceptance rule keep better held-out"
+  },
+  "validation_12k_weights": {
+    "quality_gate": "PASS",
+    "ac225_heldout_median_rel": 0.07265516717657569,
+    "trio_a": "PASS",
+    "trio_b": "CHECK (~25% Ac-225 vs ODE; strict ISEF wants <10%)",
+    "trio_c": "PASS",
+    "correlation": "PASS"
+  },
+  "files_synced": 24,
+  "folders": ["weights", "graphs", "results", "data", "analysis/validation", "analysis/figs"],
+  "poster_weights_recommendation": "weights/pinn_best_weights_v63.pth (or restore v63 held-out CSV from backup if needed)",
+  "poster_graphs_from_12k": [
+    "graphs/isef_loss_trajectory_12k.png",
+    "graphs/loss_components.png",
+    "graphs/pinn_loss_history.png",
+    "graphs/isef_parity_restyled.png"
+  ]
+}

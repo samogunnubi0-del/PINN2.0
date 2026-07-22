@@ -1,0 +1,22 @@
+{
+  "best_epoch": 11380,
+  "best_joint_epoch": 9380,
+  "best_loss": 7750.317284360506,
+  "data_mtime_ns": 1780148448000000000,
+  "data_path": "/content/drive/MyDrive/IsotopePINN/data/pinn_training_data.csv",
+  "data_size": 238654,
+  "ended_at_utc": "2026-05-30T14:54:46.844372+00:00",
+  "host": "local",
+  "last_epoch": 12000,
+  "last_joint_epoch": 10000,
+  "loss_components_sha256": "6c49998f58319e5b6332ff73b6dc6f864b800507238a0763dd74cdd9e6b03efc",
+  "loss_plot_path": "/content/drive/MyDrive/IsotopePINN/graphs/pinn_loss_history.png",
+  "parity_plot_path": "/content/drive/MyDrive/IsotopePINN/graphs/pinn_ac225_pred_vs_true.png",
+  "pinn_ac225_pred_vs_true_sha256": "ca39e7cd6e740c74753995a68dd78dc1ea91445043e41c1269cb5553dbd10597",
+  "pinn_ac225_pred_vs_true_virgin_ic_sha256": "77fdaad2e3f9c351045ac23cafd65d25e0eca1ffb6201d97bb54bca7b3e493cc",
+  "pinn_loss_history_sha256": "66d72c21be3846e5864d71678ad845e6781c612ba8e551822362b3c721e12290",
+  "run_id": "359abe20-86a8-49a7-8f10-efe15a252e1a",
+  "started_at_utc": "2026-05-30T13:40:59.419804+00:00",
+  "status": "graphs_saved",
+  "train_script_rev": "2026-05-03h-float64-option"
+}

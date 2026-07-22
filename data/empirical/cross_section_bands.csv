@@ -1,0 +1,6 @@
+# sigma_name,value_cm2,uncertainty_frac,source
+sigma_n2n_fast,2.7e-26,0.10,JENDL-5 spectrum avg (legacy synthetic v1 reference; superseded by evaluated sigma(E) in data/evaluated under ODE_DATA_VERSION=v2)
+sigma_ngamma_thermal,1.28e-23,0.05,Mughabghab Atlas of Neutron Resonances (RELABELLED 2026-07-18: NOT ENDF/B-VIII — ENDF/JENDL give ZERO thermal capture below 1 keV)
+sigma_ngamma_thermal_bagheri2015,1.38e-23,0.022,EXFOR 31760 Bagheri et al. 2015 J.Radioanal.Nucl.Chem. 304:1185 (13.8+-0.3 b @0.0253 eV; recommended modern value)
+sigma_n2n_14p5MeV_exfor21405,1.6e-24,0.125,EXFOR 21405 O'Connor & Perkin 1960 JIN 13:5 (1.60+-0.20 b @14.5 MeV; only experimental (n,2n) point)
+sigma_n2n_14MeV_jendl5_eval,7.5571e-25,,JENDL-5/ENDF/B-VIII.0 MAT8834 MF3 MT16 evaluated (755.7 mb @14 MeV; identical table in both libraries)

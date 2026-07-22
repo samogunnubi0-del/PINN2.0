@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "description": "Empirical anchors for PINN physics/data loop (EXFOR-style bands, flux logs, impurity limits)",
+  "files": [
+    {
+      "file": "data/empirical/cross_section_bands.csv",
+      "size_bytes": 154,
+      "rows": 2
+    },
+    {
+      "file": "data/empirical/flux_log.csv",
+      "size_bytes": 144,
+      "rows": 3
+    },
+    {
+      "file": "data/empirical/impurity_anchors.csv",
+      "size_bytes": 144,
+      "rows": 2
+    }
+  ],
+  "train_env": {
+    "PINN_EMPIRICAL_CSV": "data/empirical/flux_log.csv",
+    "PINN_SIGMA_UNCERTAINTY": "0.10",
+    "PINN_FLUX_JITTER_SIGMA": "0.15"
+  }
+}

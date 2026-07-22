@@ -1,0 +1,77 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
+.mypy_cache/
+
+# Envs / secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+*.code-workspace
+
+# Scratch / archives
+archive/
+*.zip
+*.log
+node_modules/
+.vercel/
+_pinn20_release/
+smoke_tmp/
+**/smoke_tmp/
+
+# Extra checkpoints (keep only canonical best weights)
+weights/pinn_best_weights_*.pth
+weights/pinn_trained_weights.pth
+weights/pinn_training_resume.pt
+v3_pilstm/weights/*ARCHIVE*
+v3_pilstm/weights/*BEFORE*
+v3_pilstm/weights/*QUALITY*
+v3_pilstm/weights/*RUN_C*
+v3_pilstm/results/smoke_tmp/
+v3_pilstm/results/*train_log*
+
+# Local workspace clutter (not part of the public showcase)
+New folder/
+PINN2.0/
+_pinn20_release/
+external_repos/
+archive/
+tools/
+dashboard_dist/
+kaggle_*/
+_runc_results_inspect/
+node_modules/
+.vercel/
+api/
+index.html
+scholarships.html
+summer_dashboard.html
+isotope_pinn_master_twin_planner.html
+ncsu_pitch_deck*.html
+isef_poster_draft.html
+package.json
+package-lock.json
+vercel.json
+.vercelignore
+run_*.ps1
+build_colab_zip.py
+inspect_zip.py
+prep_smoke.py
+setup_kaggle.py
+colab_script.txt
+debug-*.log
+IsotopePINN_Project.zip

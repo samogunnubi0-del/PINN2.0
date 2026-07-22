@@ -1,0 +1,13 @@
+{
+  "role": "ISEF science teacher",
+  "source": "PI_LSTM_Results (6).zip",
+  "path": "v3_pilstm/weights/pi_lstm_best.pth",
+  "sha256": "22B052AAC23BE92B0E0D6CE63CA067766D7F836AD75FD2B61834BC9BF5BC2481",
+  "test_endpoint_ac225_median_rel": 0.05123526676255993,
+  "archived_r7": [
+    "v3_pilstm/weights/pi_lstm_best_ARCHIVE_R7_QUALITY.pth",
+    "v3_pilstm/weights/pi_lstm_best_QUALITY_E3096.pth"
+  ],
+  "archived_r7_sha256": "733E3C2737DDB94B192FDCEB7A1B204495AC33C3791EF23DCBD9F1085381005F",
+  "note": "No new training in this freeze cycle."
+}

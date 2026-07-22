@@ -1,0 +1,4 @@
+time_h,phi_n_cm2_s,energy_ev,notes
+0.0,1.0e14,1.4e7,fast reactor nominal
+100.0,9.5e13,1.4e7,beam dip -5%
+250.0,1.05e14,1.4e7,beam boost +5%

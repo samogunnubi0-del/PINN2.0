@@ -1,0 +1,37 @@
+{
+  "ac227_long_chain_n_extra": 350,
+  "augment_per_row": 2,
+  "cache_version": "trace-predictor-v7-adaptive-residual-decay",
+  "data_mtime_ns": 1778936934478547010,
+  "data_path": "/kaggle/input/datasets/samogunnubi/isotope-pinn-v3-files/pinn_training_data.csv",
+  "data_size": 238654,
+  "diverse_ic_n_extra": 500,
+  "empty_rows": 300,
+  "epithermal_energy_range_ev": [
+    0.1,
+    10000.0
+  ],
+  "fast_energy_range_ev": [
+    6500000.0,
+    20000000.0
+  ],
+  "high_energy_virgin_n_extra": 700,
+  "inverted_ic_n_extra": 400,
+  "model_architecture": "regime-gated-pinn-v3-adaptive-residual-decay-kendall",
+  "raw_rows": 1500,
+  "seed": 42,
+  "single_supply_mode": false,
+  "spectrum_sweep_n_extra": 400,
+  "thermal_energy_range_ev": [
+    0.015,
+    0.08
+  ],
+  "threshold_edge_virgin_n_extra": 300,
+  "threshold_energy_range_ev": [
+    5800000.0,
+    7500000.0
+  ],
+  "trace_recycled_n_extra": 500,
+  "trace_tiny_n_extra": 300,
+  "use_time_shift": true
+}

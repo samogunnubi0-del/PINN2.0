@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ac-225 AI Project — Sam Ogunnubi | Looking for Collaborators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #142033;
+    --ink-soft: #3d4f66;
+    --mute: #6b7c90;
+    --paper: #fbfaf7;
+    --panel: #ffffff;
+    --line: #d7dee8;
+    --navy: #16324f;
+    --steel: #2a5f7a;
+    --signal: #b42318;
+    --signal-soft: #f8ebe8;
+    --help: #0b5f4b;
+    --help-soft: #e8f5f0;
+    --help-line: #9bc9b8;
+    --stat: #eef3f8;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Source Sans 3", "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background:
+      radial-gradient(1200px 500px at 10% -10%, #dce8f2 0%, transparent 55%),
+      radial-gradient(900px 420px at 100% 0%, #e8f0e9 0%, transparent 50%),
+      #e8eef4;
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    width: min(920px, calc(100% - 2rem));
+    margin: 1.5rem auto 2.5rem;
+  }
+
+  .page {
+    background: var(--paper);
+    border: 1px solid #c9d4e1;
+    box-shadow: 0 18px 50px rgba(20, 32, 51, 0.12);
+    padding: 1.35rem 1.45rem 1.2rem;
+  }
+
+  /* Masthead */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-end;
+    padding-bottom: 0.85rem;
+    border-bottom: 2px solid var(--navy);
+  }
+  .kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .name {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-top: 0.15rem;
+  }
+  .meta {
+    text-align: right;
+    font-size: 0.82rem;
+    color: var(--mute);
+  }
+  .meta .affil {
+    color: var(--signal);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+  .meta a { color: var(--steel); font-weight: 600; text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  /* Hero */
+  .hero { margin: 0.95rem 0 0.85rem; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    line-height: 1.18;
+    color: var(--navy);
+    max-width: 34ch;
+  }
+  .hero .plain {
+    margin-top: 0.55rem;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  /* Plain-language strip */
+  .eli5 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin: 0.85rem 0 1rem;
+  }
+  .eli5 .step {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--steel);
+    padding: 0.7rem 0.75rem 0.75rem;
+  }
+  .eli5 .n {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .eli5 h3 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    margin: 0.2rem 0 0.3rem;
+    color: var(--navy);
+  }
+  .eli5 p { font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+  }
+  .stat {
+    background: var(--stat);
+    border: 1px solid var(--line);
+    padding: 0.65rem 0.55rem;
+    text-align: center;
+  }
+  .stat .num {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat .lbl {
+    margin-top: 0.28rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  /* Sections */
+  .section { margin: 0.85rem 0; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .section-label::before {
+    content: "";
+    width: 0.7rem;
+    height: 2px;
+    background: var(--navy);
+  }
+  p { color: var(--ink-soft); margin-bottom: 0.45rem; font-size: 0.92rem; }
+  p strong { color: var(--ink); }
+  ul { margin: 0.2rem 0 0.5rem 1.15rem; }
+  li { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 0.28rem; }
+  li strong { color: var(--ink); }
+  code {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 0.84em;
+    background: #eef2f6;
+    padding: 0.05em 0.28em;
+    border-radius: 3px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 0.75rem;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 0.7rem 0.8rem;
+  }
+  .panel h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    margin: 0.35rem 0 0.5rem;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 0.4rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--stat);
+    color: var(--navy);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.35rem;
+    border-radius: 2px;
+  }
+  .ok { background: #ddf5e8; color: #146c43; }
+  .note { background: #fff1d6; color: #8a5a00; }
+
+  /* Mentor */
+  .mentor {
+    background: var(--signal-soft);
+    border: 1px solid #e8b8b2;
+    border-left: 4px solid var(--signal);
+    padding: 0.7rem 0.85rem;
+    margin: 0.75rem 0;
+  }
+  .mentor h4 {
+    color: var(--signal);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .mentor p { color: #6a2a24; margin: 0; font-size: 0.88rem; }
+
+  /* HELP CTA — visual focus */
+  .help {
+    margin-top: 1rem;
+    background:
+      linear-gradient(135deg, #0b5f4b 0%, #147a62 48%, #1b6b7a 100%);
+    color: #f4fffb;
+    padding: 1.05rem 1.1rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .help::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: -50px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    pointer-events: none;
+  }
+  .help .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.16);
+    padding: 0.22rem 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+  .help h2 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    max-width: 28ch;
+  }
+  .help .lead {
+    color: #ddf5ee;
+    font-size: 0.95rem;
+    max-width: 60ch;
+    margin-bottom: 0.75rem;
+  }
+  .help-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  .need-list {
+    list-style: none;
+    margin: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .need-list li {
+    color: #eefaf6;
+    font-size: 0.88rem;
+    margin: 0;
+    padding: 0.45rem 0.55rem;
+    background: rgba(0,0,0,0.14);
+    border-left: 3px solid #8fe0c6;
+  }
+  .need-list strong { color: #fff; }
+  .actions {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.7rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    justify-content: center;
+  }
+  .actions p {
+    color: #ddf5ee;
+    font-size: 0.82rem;
+    margin: 0;
+  }
+  .btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.55rem 0.75rem;
+    background: #ffffff;
+    color: var(--help);
+    border: none;
+  }
+  .btn:hover { filter: brightness(0.97); }
+  .btn.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+  .btn.ghost:hover { background: rgba(255,255,255,0.08); }
+
+  .footnote {
+    margin-top: 0.85rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--mute);
+  }
+  .footnote a { color: var(--steel); }
+
+  @media (max-width: 760px) {
+    .eli5, .stats, .two-col, .help-grid, .masthead { grid-template-columns: 1fr; display: grid; }
+    .meta { text-align: left; }
+    .hero h1 { max-width: none; }
+  }
+
+  @media print {
+    body { background: white; }
+    .wrap { width: 100%; margin: 0; }
+    .page { box-shadow: none; border: none; padding: 0.35in; }
+    .btn, .btn.ghost { border: 1px solid #333 !important; color: #000 !important; background: #fff !important; }
+    .help { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <article class="page">
+
+    <header class="masthead">
+      <div>
+        <div class="kicker">Student research brief · Seeking collaborators</div>
+        <div class="name">Sam Ogunnubi</div>
+      </div>
+      <div class="meta">
+        <div class="affil">NCSU ARTISANS Lab mentorship</div>
+        <div>Computational physics + machine learning</div>
+        <div><a href="https://github.com/samogunnubi0-del/PINN2.0">github.com/samogunnubi0-del/PINN2.0</a></div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Can AI help make a scarce cancer-therapy isotope faster to plan?</h1>
+      <p class="plain">
+        I’m building a physics-constrained neural network that predicts how
+        <strong>Actinium-225 (Ac-225)</strong> — a rare isotope used in targeted cancer therapy —
+        builds up when radium is irradiated. The goal: keep the physics honest, run thousands of
+        “what-if” plans in milliseconds, and share the work so others can help improve it.
+      </p>
+    </section>
+
+    <section class="eli5" aria-label="Plain-language overview">
+      <div class="step">
+        <div class="n">In plain English</div>
+        <h3>The need</h3>
+        <p>Ac-225 can destroy cancer cells with alpha particles, but the world makes very little of it. Planning production means lots of slow math.</p>
+      </div>
+      <div class="step">
+        <div class="n">What I built</div>
+        <h3>An AI “shortcut”</h3>
+        <p>A model that learns from a trusted physics simulator, then answers similar questions much faster — without inventing impossible mass.</p>
+      </div>
+      <div class="step">
+        <div class="n">Why it matters</div>
+        <h3>Faster design sweeps</h3>
+        <p>Engineers could scan many flux / time options quickly, then verify favorites with full solvers — not replace the lab.</p>
+      </div>
+    </section>
+
+    <div class="stats" aria-label="Key results">
+      <div class="stat">
+        <div class="num">5.12%</div>
+        <div class="lbl">Ac-225 error vs physics solver</div>
+      </div>
+      <div class="stat">
+        <div class="num">~1.65 ms</div>
+        <div class="lbl">Per scenario (batched CPU)</div>
+      </div>
+      <div class="stat">
+        <div class="num">~83×</div>
+        <div class="lbl">Faster than eager loop</div>
+      </div>
+      <div class="stat">
+        <div class="num">90.9%</div>
+        <div class="lbl">Uncertainty coverage target hit</div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-label">The problem (a little more detail)</div>
+      <p>
+        Making Ac-225 in a reactor from <strong>Ra-226</strong> requires solving the
+        <strong>Bateman equations</strong> — a stiff chain of five isotopes.
+        Some species change in minutes; others over centuries (stiffness &gt; 20,000,000:1).
+        Classic solvers are accurate but slow for large design searches.
+        Plain neural nets are fast but can break conservation laws (negative atoms, wrong mass).
+      </p>
+    </section>
+
+    <div class="mentor">
+      <h4>Mentorship — Jaden Palmer, NCSU ARTISANS Lab</h4>
+      <p>
+        Technical review from <strong>Jaden Palmer</strong> (PhD researcher, NC State Nuclear Engineering)
+        pushed the project toward integrated / exact physics losses, conformal uncertainty
+        (instead of MC Dropout), and a fair PI-LSTM vs baseline comparison.
+      </p>
+    </div>
+
+    <section class="section two-col">
+      <div class="panel">
+        <h4>Technical approach — PI-LSTM (Results-6)</h4>
+        <ul>
+          <li><strong>Physics-Informed LSTM</strong> with hard initial conditions + Fourier features for sharp energy thresholds.</li>
+          <li><strong><code>expmix</code> physics loss</strong> — exact / integrated constraints so the network respects stiff Bateman dynamics and mass.</li>
+          <li><strong>Distillation</strong> from a stiff Radau ODE teacher on trajectory data.</li>
+          <li><strong>Spectrum-aware σ</strong> options (JENDL-5 / EXFOR folding); Joyo σ scaling treated as sensitivity, not primary proof.</li>
+          <li><strong>Split conformal prediction</strong> for ~90% relative coverage on Ac-225.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>What this is / isn’t</h4>
+        <p><strong>Is:</strong> a 0D (lumped) surrogate vs a stiff ODE teacher — useful for fast screening.</p>
+        <p><strong>Isn’t yet:</strong> validated against reactor assay data, a full 3D transport model, or a clinical dosing tool.</p>
+        <p style="margin-bottom:0"><strong>Still weak:</strong> Ac-227 / thermal impurity channel vs the older v2 model on some anchors.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Headline benchmark (22 held-out scenarios)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Idea in one line</th>
+            <th>Ac-225 endpoint error</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Frozen v2 MLP-PINN</strong></td>
+            <td>Earlier physics-informed network</td>
+            <td>8.18%</td>
+            <td><span class="badge note">Same test protocol</span></td>
+          </tr>
+          <tr>
+            <td><strong>PI-LSTM Results-6</strong></td>
+            <td>Current flagship (exact physics loss)</td>
+            <td><strong>5.12%</strong></td>
+            <td><span class="badge ok">Primary teacher</span></td>
+          </tr>
+          <tr>
+            <td><strong>Ablations</strong></td>
+            <td>No physics / weaker integration</td>
+            <td>Much worse</td>
+            <td><span class="badge note">Controls only</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem;color:var(--mute);margin:0">
+        Note: a separate v2-only pipeline reports ~4.5% — different scoring, not directly comparable to the paired 8.18% figure.
+        Full write-up: <code>v3_pilstm/results/ISEF_BOARD_PACK.md</code> on GitHub.
+      </p>
+    </section>
+
+    <!-- HELP CTA -->
+    <section class="help" id="help">
+      <div class="tag">Open invitation</div>
+      <h2>I need people who can help push this further</h2>
+      <p class="lead">
+        You don’t have to be a nuclear engineer to help — but if you are, even better.
+        I’m looking for mentors, students, and researchers who can review, critique, or contribute.
+      </p>
+      <div class="help-grid">
+        <ul class="need-list">
+          <li><strong>Nuclear data / spectrum:</strong> sanity-check cross sections and flux folding assumptions.</li>
+          <li><strong>Real-world anchors:</strong> point me to measured or published Ac-225 yields beyond current Joyo notes.</li>
+          <li><strong>Impurity modeling:</strong> strengthen Ac-227 / thermal (n,γ) behavior.</li>
+          <li><strong>Communication:</strong> ISEF / faculty packaging, clearer figures, reproducibility review.</li>
+          <li><strong>Just curious?</strong> Read the README, open an issue with questions — that already helps.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn" href="https://github.com/samogunnubi0-del/PINN2.0">Open the GitHub repo</a>
+          <a class="btn ghost" href="mailto:sam.ogunnubi0@gmail.com?subject=Ac-225%20PINN%20collaboration">Email Sam — sam.ogunnubi0@gmail.com</a>
+          <p>Public commits are under <strong>Sam Ogunnubi</strong>. Mentorship credit: Jaden Palmer (NCSU).</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footnote">
+      <div>Investigator: <strong>Sam Ogunnubi</strong> · Mentor: <strong>Jaden Palmer</strong> (NCSU ARTISANS)</div>
+      <div><a href="https://github.com/samogunnubi0-del/PINN2.0">github.com/samogunnubi0-del/PINN2.0</a></div>
+    </footer>
+
+  </article>
+</div>
+</body>
+</html>

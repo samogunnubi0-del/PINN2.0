@@ -1,0 +1,123 @@
+{
+  "generated": "2026-07-18",
+  "script": "analysis/validate_ode_spectrum.py",
+  "description": "Spectrum-aware (SPECTRUM_MODE) re-validation against the Joyo anchors. v1 = legacy synthetic sigmoid; v2_mono = evaluated pointwise at the CSV representative energy; v2_watt = evaluated sigma folded over a bare U-235 Watt fission spectrum (no free parameters); v2_twogroup_fstar = two-group model with the fast fraction inferred from Sano 2024. Spectra are PARAMETRIC ASSUMPTIONS (Joyo MK-III spectrum paywalled).",
+  "inversion": {
+    "target": "Sano 2024, 15.4 +/- 6.2 GBq, 1 g Ra-226, 45 d, phi=5.7e15",
+    "method": "brentq on log10(f), exact ODE evaluation per step",
+    "inferred_fast_fraction_fstar": 0.0012387353952827815,
+    "inferred_fast_fraction_band": [
+      0.0007400713949613814,
+      0.0017373351880679495
+    ],
+    "inferred_sigma_avg_mb": 1.6568011414379928,
+    "band_definition": "f values reproducing Sano 15.4 +/- 6.2 GBq exactly (ODE inversion)",
+    "bare_watt_fraction_above_threshold": 0.01995108808317105,
+    "bare_watt_sigma_avg_mb": 26.68446491667924,
+    "softening_factor_vs_bare_fission": 16.106012760389856,
+    "assessment": "The inferred above-threshold fraction f* = 1.239e-03 [7.401e-04, 1.737e-03] is ~16x SMALLER than a bare U-235 fission (Watt) spectrum's >6.4218 MeV tail (2.00%). Order-of-magnitude plausible for a sodium-cooled MOX fast breeder: elastic/inelastic scattering on Na-23, Fe, O and U-238 strongly degrades the multi-MeV tail, and Joyo spectral softness is known to vary strongly with irradiation position (Aoyama et al. 2005, J. Nucl. Radiochem. Sci. 6(3): MK-III reflector spectrum markedly softer, spectral index ~0.6-0.7; Iwahashi et al. 2022, MDPI Processes 10(7):1239 Fig. 5: MK-III core spectra). NOT verifiable against the measured MK-III spectrum table (paywalled, ref [13] in Iwahashi). Also note Sano (+/-40%) and Iwahashi (30 GBq vs Sano 15.4 GBq for a longer irradiation) disagree with each other by ~2x, so no single f can satisfy both exactly.",
+    "spectrum_citations": [
+      "Watt B.E. 1952, Phys. Rev. 87, 1037 (Watt fission spectrum form; a=0.988 MeV, b=2.249/MeV as tabulated for U-235 thermal fission in the ENDF-6 formats manual)",
+      "Iwahashi D. et al. 2022, Processes 10(7):1239 (open access; Joyo MK-III/MK-IV core, 6.4 MeV threshold, spectrum in Fig. 5)",
+      "Aoyama T. et al. 2005, J. Nucl. Radiochem. Sci. 6(3) (Joyo MK-III irradiation environments; softer reflector spectrum, index 0.6-0.7)"
+    ]
+  },
+  "legacy_27mb_explanation": "Bare-Watt fold of the evaluated table gives <sigma_n2n> = 26.68 mb, strikingly close to the legacy synthetic '27 mb spectrum average' \u2014 the v1 constant was effectively a FISSION-spectrum average, while a real reactor spectrum at the irradiation position is far softer (inferred <sigma> = 1.66 mb).",
+  "anchors": [
+    {
+      "id": "sano_2024_joyo_45d",
+      "source": "Sano et al. 2024 Joyo uncertainty analysis, JNST 61:509",
+      "measured_bq": 15400000000.0,
+      "measured_err_bq": 6200000000.0,
+      "v1_bq": 291759618708.50665,
+      "v1_ratio_pred_over_meas": 18.945429786266665,
+      "v2_mono_bq": 5692048270159.382,
+      "v2_mono_ratio_pred_over_meas": 369.6135240363235,
+      "v2_watt_bq": 286540882068.05225,
+      "v2_watt_ratio_pred_over_meas": 18.606550783639758,
+      "v2_twogroup_fstar_bq": 15400000000.033749,
+      "v2_twogroup_fstar_ratio_pred_over_meas": 1.0000000000021916
+    },
+    {
+      "id": "iwahashi_2022_joyo_60d",
+      "source": "Iwahashi et al. 2022 Joyo ORIGEN, MDPI Processes 10(7)1239",
+      "measured_bq": 30000000000.0,
+      "measured_err_bq": null,
+      "v1_bq": 348821126240.4086,
+      "v1_ratio_pred_over_meas": 11.627370874680288,
+      "v2_mono_bq": 31279115910349.25,
+      "v2_mono_ratio_pred_over_meas": 1042.6371970116418,
+      "v2_watt_bq": 343310216241.6078,
+      "v2_watt_ratio_pred_over_meas": 11.44367387472026,
+      "v2_twogroup_fstar_bq": 17069575797.122381,
+      "v2_twogroup_fstar_ratio_pred_over_meas": 0.5689858599040793,
+      "note": "Consistency check: f* was inferred from Sano, NOT refit here."
+    },
+    {
+      "id": "iwahashi_2022_milking_17p5d",
+      "source": "Iwahashi et al. 2022 per data/evaluated/README_retrieval.md (3x milking @17.5 d)",
+      "measured_bq": 15700000000.0,
+      "measured_err_bq": null,
+      "v1_bq": 377346796413.86884,
+      "v1_ratio_pred_over_meas": 24.03482779706171,
+      "v2_mono_bq": 33796085546927.215,
+      "v2_mono_ratio_pred_over_meas": 2152.61691381702,
+      "v2_watt_bq": 373370642411.8624,
+      "v2_watt_ratio_pred_over_meas": 23.781569580373404,
+      "v2_twogroup_fstar_bq": 17884466510.277557,
+      "v2_twogroup_fstar_ratio_pred_over_meas": 1.1391379942851947,
+      "note": "Milking = post-EOB harvests (assumption-laden); f* from Sano, not refit."
+    }
+  ],
+  "f_sensitivity_sweep_sano": [
+    {
+      "f": 0.0001,
+      "sigma_avg_mb": 0.1337493986001566,
+      "pred_bq": 1243020568.9264798,
+      "ratio_vs_sano": 0.08071562135886233
+    },
+    {
+      "f": 0.0003,
+      "sigma_avg_mb": 0.4012481958004697,
+      "pred_bq": 3729158009.550398,
+      "ratio_vs_sano": 0.2421531175032726
+    },
+    {
+      "f": 0.001,
+      "sigma_avg_mb": 1.337493986001566,
+      "pred_bq": 12431650315.061825,
+      "ratio_vs_sano": 0.8072500204585601
+    },
+    {
+      "f": 0.003,
+      "sigma_avg_mb": 4.012481958004698,
+      "pred_bq": 37304584110.647705,
+      "ratio_vs_sano": 2.4223755916005003
+    },
+    {
+      "f": 0.01,
+      "sigma_avg_mb": 13.37493986001566,
+      "pred_bq": 124461084931.26195,
+      "ratio_vs_sano": 8.081888631900126
+    },
+    {
+      "f": 0.03,
+      "sigma_avg_mb": 40.12481958004698,
+      "pred_bq": 374349465501.5509,
+      "ratio_vs_sano": 24.30840685075006
+    },
+    {
+      "f": 0.1,
+      "sigma_avg_mb": 133.7493986001566,
+      "pred_bq": 1259188973519.6995,
+      "ratio_vs_sano": 81.76551776101944
+    },
+    {
+      "f": 0.2,
+      "sigma_avg_mb": 267.4987972003132,
+      "pred_bq": 2551291728151.2134,
+      "ratio_vs_sano": 165.66829403579308
+    }
+  ],
+  "out_of_scope_note": "Hogle (thermal) and Snow (phi=0 decay leg) anchors are spectrum-independent; they stay at v2-mono values from results/ode_data_v2_validation_20260718.json."
+}

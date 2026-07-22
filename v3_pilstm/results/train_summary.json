@@ -1,0 +1,48 @@
+{
+  "epochs": 6000,
+  "best_epoch": 3425,
+  "checkpoint_metric": "endpoint_ac225",
+  "best_checkpoint_score": 0.034787236691051646,
+  "best_val_ac225_median_rel": null,
+  "test_ac225_median_rel": 0.054751910269260406,
+  "test_endpoint_ac225_median_rel": 0.05123526676255993,
+  "test_endpoint_species_median_rel": {
+    "Ra-226": 0.1558979186935472,
+    "Ra-225": 0.07857000844084285,
+    "Ac-225": 0.05123526676255993,
+    "Ra-227": 0.06621528615736354,
+    "Ac-227": 0.10832231210868729
+  },
+  "test_species_median_rel": {
+    "Ra-226_median_rel": 0.037630585953593254,
+    "Ra-225_median_rel": 0.03285945579409599,
+    "Ac-225_median_rel": 0.054751910269260406,
+    "Ra-227_median_rel": 0.06356487050652504,
+    "Ac-227_median_rel": 0.27178673446178436,
+    "ac225_median_rel": 0.054751910269260406
+  },
+  "config": {
+    "n_train": 1400,
+    "n_steps": 64,
+    "hidden_dim": 256,
+    "n_fourier": 8,
+    "n_time_fourier": 16,
+    "hard_ic": true,
+    "distill": true,
+    "data_w": 35.0,
+    "phys_w": 20.0,
+    "mass_w": 10.0,
+    "distill_w": 5.0,
+    "overshoot_w": 20.0,
+    "pretrain_frac": 0.2,
+    "grad_balance": false,
+    "lbfgs_iter": 60,
+    "ckpt_metric": "endpoint_ac225",
+    "dense_steps": null,
+    "eval_every": 25,
+    "early_stop": 0.01
+  },
+  "weights": "/kaggle/working/IsotopePINN/v3_pilstm/weights/pi_lstm_best.pth",
+  "elapsed_s": 10682.087847471237,
+  "quick_mode": false
+}

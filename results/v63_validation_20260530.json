@@ -1,0 +1,31 @@
+{
+  "validated_at_utc": "2026-05-30T18:00:00Z",
+  "weights": {
+    "path": "weights/pinn_best_weights.pth",
+    "sha256": "7c21debe209be2112a4b5c16bf168fe3be2465cb9d1145f2b1221a702259d597",
+    "source": "kaggle_results/weights/pinn_best_weights.pth",
+    "version": "v63",
+    "epoch_budget": "600 pretrain + 3400 joint (PINN_MEDIUM_TRAIN=1)"
+  },
+  "criteria": {
+    "trio_a": "PASS",
+    "trio_b": "PASS (<10% Ac-225 vs ODE at 14 MeV, 250 h, phi=1e14, N_Ra226=1e22)",
+    "trio_b_ac225_rel_error": 0.0994,
+    "trio_c": "PASS",
+    "quality_gate": "PASS",
+    "correlation": "PASS",
+    "heldout_ac225_median_rel": 0.0451,
+    "overall": "6/6 PASS"
+  },
+  "heldout_buckets_ac225_median_rel": {
+    "all": 0.0451,
+    "thermal_virgin": 0.0473,
+    "thermal_recycled": 0.0321,
+    "epithermal_virgin": 0.0955,
+    "epithermal_recycled": 0.0365,
+    "threshold_virgin": 0.0852,
+    "threshold_recycled": 0.0618,
+    "fast14_virgin": 0.0387
+  },
+  "notes": "Validated against stiff ODE reference (NNDC/JENDL). Canonical weights sha256 prefix 7c21debe."
+}

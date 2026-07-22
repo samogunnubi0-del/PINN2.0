@@ -1,0 +1,27 @@
+{
+  "default_sigma_n2n_cm2": 2.7e-26,
+  "recommended_scale": 0.053311026216670325,
+  "calibrated_sigma_n2n_cm2": 1.4393977078500986e-27,
+  "calibrated_sigma_n2n_mb": 1.4393977078500986,
+  "mape_default": 14.286400330473473,
+  "mape_calibrated": 0.1950739048148347,
+  "note": "Non-destructive: default ODE/v2 unchanged. Apply this scale only in a dedicated 'Joyo-calibrated' figure. O'Connor 1960 gives 1.60 b at 14.5 MeV; the default 27 mb is a fast-spectrum average, so a Joyo-specific effective sigma is physically reasonable.",
+  "anchors": [
+    {
+      "anchor": "Sasaki 2023",
+      "reference_A_Ac225_Bq": 15400000000.0,
+      "default_A_Ac225_Bq": 291759618708.5066,
+      "default_rel_error": 17.94542978626666,
+      "calibrated_A_Ac225_Bq": 15558306016.939152,
+      "calibrated_rel_error": 0.010279611489555309
+    },
+    {
+      "anchor": "Iwahashi 2022",
+      "reference_A_Ac225_Bq": 30000000000.0,
+      "default_A_Ac225_Bq": 348821126240.40857,
+      "default_rel_error": 10.627370874680286,
+      "calibrated_A_Ac225_Bq": 18603954055.796577,
+      "calibrated_rel_error": 0.3798681981401141
+    }
+  ]
+}
