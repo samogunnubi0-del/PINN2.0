@@ -274,6 +274,67 @@
     </ul>
   </div>
 
+  <h2>🖼️ Visual Results & Benchmark Graph Gallery</h2>
+  <p style="color: var(--ink-soft); margin-bottom: 1rem;">Complete empirical validation plots comparing physics loss convergence, isotope trajectory fitting, parity accuracy, and literature benchmarks.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+    
+    <!-- Graph 1: Parity Comparison -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">1. Ac-225 Parity: v2 vs PI-LSTM</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/v3_v2_vs_pilstm_ac225.png" alt="Ac-225 Parity Comparison" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>Parity Scatter Plot:</strong> Compares predicted Ac-225 yields against true ODE values for v2 (blue) and Flagship PI-LSTM (green). The PI-LSTM points cluster significantly closer to the 1:1 diagonal line.
+      </p>
+    </div>
+
+    <!-- Graph 2: 5-Species Error Breakdown -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">2. 5-Isotope Error Breakdown</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/v3_species_median_errors.png" alt="5-Species Median Error Breakdown" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>Species Error Comparison:</strong> Side-by-side relative error bar chart across all 5 isotopes in the decay chain, highlighting the 54% drop in toxic Ra-227 impurity error.
+      </p>
+    </div>
+
+    <!-- Graph 3: Trajectory Fitting -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">3. Isotope Build-up Trajectory</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/v3_trajectory_example.png" alt="Isotope Build-up Trajectory" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>Time-Series Trajectory:</strong> Full 500-hour irradiation time-series showing PI-LSTM predictions tracking exact ODE ground-truth curves across all 5 isotopes simultaneously.
+      </p>
+    </div>
+
+    <!-- Graph 4: Literature Anchors -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">4. Literature Benchmark Anchors</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/v3_literature_anchors.png" alt="Published Literature Anchors" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>Experimental Validation:</strong> Model predictions benchmarked against published reactor irradiation data from JAEA Joyo fast reactor studies (Sasaki 2023 & Iwahashi 2022).
+      </p>
+    </div>
+
+    <!-- Graph 5: Core PINN Parity Plot -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">5. Core PINN 12k Parity</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/pinn_ac225_pred_vs_true.png" alt="Core PINN Parity Plot" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>12k Core PINN Parity:</strong> Full dataset scatter plot across 17,443 augmented rows for the 12,000-epoch A100 GPU core model (`pinn_best_weights.pth`).
+      </p>
+    </div>
+
+    <!-- Graph 6: Loss Convergence -->
+    <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.75rem; border-radius: 4px;">
+      <h4 style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 0.35rem;">6. 12,000-Epoch GPU Loss Trajectory</h4>
+      <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/pinn_loss_history.png" alt="12,000-Epoch Loss Convergence" style="width: 100%; border: 1px solid var(--line); border-radius: 3px;" />
+      <p style="font-size: 0.8rem; color: var(--mute); margin-top: 0.4rem;">
+        <strong>Loss Trajectory:</strong> Smooth 12,000-epoch convergence curve showing pretrain physics stabilization and joint optimization settling at Epoch 11,810.
+      </p>
+    </div>
+
+  </div>
+
   <footer>
     Investigator: <strong>Sam Ogunnubi</strong> · Mentorship: <strong>Jaden Palmer (NCSU ARTISANS Lab)</strong><br>
     Code repository: <a href="https://github.com/samogunnubi0-del/PINN2.0" style="color: var(--steel);">github.com/samogunnubi0-del/PINN2.0</a>
