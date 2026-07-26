@@ -807,6 +807,7 @@ with tab_start:
         <div class="model-rung you"><b>0D Bateman ODE (reference)</b> — well-mixed target, scalar flux and energy; NNDC/JENDL constants.</div>
         <div class="model-rung you"><b>v2 MLP-PINN (this interactive demo)</b> — differential physics loss; 6/6 ODE gates; ~4.5% held-out (solo protocol).</div>
         <div class="model-rung you"><b>v3 PI-LSTM Results-6 (flagship)</b> — LSTM + exact/<code>expmix</code> loss; 5.12% Ac-225 endpoint on paired protocol; conformal UQ.</div>
+        <div class="model-rung you" style="border-left: 4px solid #f59e0b; background: rgba(245, 158, 11, 0.08);"><b>Sprint 4/5 SOTA Architecture (July 2026)</b> — Evaluated EXFOR/JENDL data spine, <code>expmix</code> exact matrix-exponential physics loss, 60-scenario locked-test protocol (seed 20260725), 22/22 smoke suite passing, SOAP optimizer (arXiv:2409.11321), JAWS+ACI conformal error bars.</div>
         <div class="model-rung"><b>Separations / QC</b> — recovery yield and impurity limits are post-processed in the Clinical Context tab, not in the network loss.</div>
         """,
         unsafe_allow_html=True,
