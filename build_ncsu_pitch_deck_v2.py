@@ -423,7 +423,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         .notes-panel {
             position: fixed;
             bottom: 56px; left: 0; right: 0;
-            max-height: 240px;
+            max-height: 260px;
             background: rgba(219, 205, 186, 0.98);
             backdrop-filter: blur(10px);
             border-top: 2px solid var(--accent-purple);
@@ -868,23 +868,23 @@ PI_LSTM_CONSERVE   = <span class="hl-string">"1"</span>      <span class="hl-com
     totalSpan.innerText = slides.length;
 
     const SPEAKER_NOTES = [
-        `<strong>What to say:</strong> "Hi Jaden, thanks again for taking the time! Today I want to walk you through our Sprint 4 and Sprint 5 technical progress on IsotopePINN—including evaluated nuclear cross-sections, exact matrix-exponential physics, the SOAP optimizer, and how we can collaborate on compute and reactor spectrum validation."<br><br><strong>Tip:</strong> Keep this short. Introduce yourself as a high school junior dual-enrolled at AACC.`,
+        `<strong>What to say:</strong> "Hi Jaden, thanks again for taking the time! I put together this updated walkthrough of our Sprint 4 and Sprint 5 technical progress so we can jump straight into the physics, exact matrix-exponential loss, SOAP optimization, and how we can collaborate on compute and spectrum validation."<br><br><strong>Tip:</strong> Keep this short. Introduce yourself as a high school junior dual-enrolled at AACC. Set a collaborative tone.`,
 
-        `<strong>What to say:</strong> "Since our last meeting, I upgraded the core physics: we replaced synthetic cross-sections with evaluated EXFOR/JENDL data, implemented expmix exact matrix-exponential loss to solve time-discretization errors on fast decayers, added f* spectrum folding, and locked down a 60-scenario evaluation protocol."<br><br><strong>Tip:</strong> Emphasize that the TC-ACC-001 <3% gate is currently PENDING on the poster until full GPU runs finish—zero fake numbers.`,
+        `<strong>What to say:</strong> "Since our last meeting, I made 4 major upgrades to the core physics spine: 1) Replaced synthetic cross-sections with evaluated EXFOR/JENDL-4.0 data for Ra-226(n,2n) and (n,γ); 2) Implemented expmix exact matrix-exponential physics loss to solve time-discretization errors on fast decayers like Ra-227; 3) Formulated f* spectrum folding; and 4) Established a 60-scenario locked evaluation protocol."<br><br><strong>Tip:</strong> Emphasize that the TC-ACC-001 <3% gate is marked PENDING on the poster until full GPU runs finish—zero fake numbers.`,
 
-        `<strong>What to say:</strong> "We also did a 2025–26 literature sweep and added 6 techniques to fix specific neural training issues: SOAP optimizer for stiff loss landscapes, JAWS+ACI conformal prediction for honest UQ under distribution shift, a multi-fidelity residual head, and temporal causality loss."<br><br><strong>Tip:</strong> Don't just list buzzwords—explain the physical reason behind each technique.`,
+        `<strong>What to say:</strong> "We also did a 2025–26 literature sweep and added 6 techniques to fix specific neural training issues: SOAP optimizer (arXiv:2409.11321) for stiff loss landscapes, JAWS+ACI conformal prediction (arXiv:2207.10716) for honest UQ under distribution shift, a multi-fidelity residual head, and temporal causality loss."<br><br><strong>Tip:</strong> Explain the physical reason behind each technique rather than just dropping acronyms.`,
 
-        `<strong>What to say:</strong> "To manage GPU compute budget, I designed a focused Colab matrix: RUN_B0 (our control baseline) and RUN_S1 (the SOAP optimizer swap) are our two MUST-RUN notebooks. Each runs for 6000 epochs on a T4 GPU and evaluates on the locked test set."<br><br><strong>Tip:</strong> Point out that the repo zip is only 3.4 MB and uploads to Drive once.`,
+        `<strong>What to say:</strong> "To manage GPU compute budget, I designed a focused Colab matrix: RUN_B0 (our control baseline) and RUN_S1 (the SOAP optimizer swap) are our two MUST-RUN notebooks. Each runs for 6000 epochs on a T4 GPU and evaluates on the locked test set."<br><br><strong>Tip:</strong> Point out that the repo zip is only 32.67 MB and uploads to Drive once.`,
 
-        `<strong>What to say:</strong> "Here are the exact lines in my code. Line 300 is the Fourier Time Encoder. Line 319 is the Energy Encoder centered on 6.42 MeV. Line 359 is adaptive activation. Line 595 is the main forward pass with Bateman integration."<br><br><strong>Tip:</strong> Offer to share your screen and open VS Code to pinn_model.py.`,
+        `<strong>What to say:</strong> "Here are the exact lines in my code. Line 300 is the Fourier Time Encoder. Line 319 is the Energy Encoder centered on 6.42 MeV. Line 359 is adaptive activation. Line 595 is the main forward pass with Bateman integration."<br><br><strong>Tip:</strong> Offer to share your screen and open VS Code to pinn_model.py line 300.`,
 
         `<strong>What to say:</strong> "Training is two phases: first 600 epochs are physics-only with zero data, then joint training adds solver data and mass constraints. Our automated test suite checks 22 checks—all 22 pass with bit-identical backward compatibility."<br><br><strong>Tip:</strong> Point to the green 22/22 PASS badge.`,
 
-        `<strong>What to say:</strong> "I want to be fully transparent about limitations: we validate against a numerical Radau solver, not experimental reactor assay data; we assume 0D point-burnup; and final poster accuracy metrics await full 6000-epoch GPU runs."<br><br><strong>Tip:</strong> Being upfront about limitations builds massive credibility with judges.`,
+        `<strong>What to say:</strong> "I want to be fully transparent about limitations: we validate against a numerical Radau solver, not experimental reactor assay data; we assume 0D point-burnup; and final poster accuracy metrics await full 6000-epoch GPU runs."<br><br><strong>🚨 TOUGH QUESTIONS CHEAT SHEET:</strong><br>• <em>"Why 0D instead of 1D/3D?"</em> &rarr; "To isolate the hardest mathematical challenge: Bateman ODE stiffness (10^7 ratio). Spatial PDEs would require supercomputers and dilute the proof-of-concept."<br>• <em>"Why Radau5?"</em> &rarr; "Stiffness ratio >10^7 favors implicit Runge-Kutta. Open to better benchmarks if you suggest one."<br>• <em>"Why use a PINN at all?"</em> &rarr; "PINN inference takes 1.65 ms—needed for real-time optimization over millions of flux/time configurations."<br>• <em>"What is actually novel here?"</em> &rarr; "First application of a PINN to the stiff Bateman ODE system for Ra-226 &rarr; Ac-225 using expmix matrix-exponential loss and SOAP preconditioning."`,
 
-        `<strong>What to say:</strong> Go through these one at a time. Read the scripts word-for-word.<br><br><strong>Ask 1 (Compute):</strong> "Can your lab run my 2 MUST-RUN notebooks on a spare GPU overnight, or sponsor Henry2 HPC access?"<br><strong>Ask 2 (PULSTAR):</strong> "Could you introduce me to an NE faculty member to review my f* derivation?"<br><strong>Ask 3 (Protocol):</strong> "Can we spend 30 mins trying to break my locked test protocol?"<br><strong>Ask 4 (Form 2A):</strong> "Would someone in your lab be open to signing as Qualified Scientist on ISEF Form 2A?"<br><strong>Ask 5 (Mock Judging):</strong> "Would you be open to doing a 15-min mock poster Q&A in December?"`,
+        `<strong>What to say:</strong> Go through these one at a time. Read the scripts word-for-word.<br><br><strong>Ask 1 (Compute):</strong> "Can your lab run my 2 MUST-RUN notebooks on a spare GPU overnight, or sponsor Henry2 HPC access?"<br><strong>Ask 2 (PULSTAR):</strong> "Could you introduce me to an NE faculty member to review my f* derivation?"<br><strong>Ask 3 (Protocol):</strong> "Can we spend 30 mins trying to break my locked test protocol?"<br><strong>Ask 4 (Form 2A):</strong> "Would someone in your lab be open to signing as Qualified Scientist on ISEF Form 2A?"<br><strong>Ask 5 (Mock Judging):</strong> "Would you be open to doing a 15-min mock poster Q&A in December?"<br><br><strong>YOUR 3 GOALS BEFORE HANGING UP:</strong><br>1) Did he confirm your validation method?<br>2) Did he identify a specific flaw to fix?<br>3) Did he agree to review your ISEF Form 2A?`,
 
-        `<strong>What to say:</strong> "Here is my ISEF 2027 strategic roadmap leading up to regionals in January. All code and documentation are committed in the GitHub repository. Thank you so much for your guidance!"<br><br><strong>Tip:</strong> Confirm next steps before hanging up.`
+        `<strong>What to say:</strong> "Here is my ISEF 2027 strategic roadmap leading up to regionals in January. All code and documentation are committed in the GitHub repository. Thank you so much for your guidance!"<br><br><strong>Final Ask:</strong> "Would it be okay if I emailed you in a month with an update?"`
     ];
 
     function updateSlider() {
@@ -927,7 +927,6 @@ PI_LSTM_CONSERVE   = <span class="hl-string">"1"</span>      <span class="hl-com
 def main():
     path_v2 = "ncsu_pitch_deck_v2.html"
     path_main = "ncsu_pitch_deck.html"
-    path_script = "build_ncsu_pitch_deck_v2.py"
     
     with open(path_v2, "w", encoding="utf-8", newline="\n") as f:
         f.write(HTML_CONTENT)
