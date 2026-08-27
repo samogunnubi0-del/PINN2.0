@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="One-page technical evidence request for Samuel Ogunnubi's frozen Ac-225 surrogate research project.">
+  <title>Ac-225 Expert Evidence Request | Samuel Ogunnubi</title>
+  <style>
+    :root {
+      --ink: #17232d;
+      --text: #354653;
+      --muted: #687783;
+      --paper: #ffffff;
+      --canvas: #e8eef1;
+      --line: #ccd7dd;
+      --red: #a92532;
+      --red-soft: #f8e9eb;
+      --teal: #006c70;
+      --teal-soft: #e2f1f0;
+      --blue: #285f8e;
+      --blue-soft: #e7eff7;
+      --gold: #9b660d;
+      --gold-soft: #fbf1dc;
+      --green: #26734d;
+      --green-soft: #e5f2eb;
+      --gray-soft: #f4f7f8;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--canvas); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    a { color: var(--blue); text-underline-offset: 2px; }
+    button, a.action { font: inherit; }
+    .actions {
+      width: 8.5in;
+      margin: 14px auto 8px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+    .action {
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid #aebdc6;
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--paper);
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .action.primary { border-color: var(--red); color: #fff; background: var(--red); }
+    .sheet {
+      position: relative;
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto 20px;
+      padding: 0.38in 0.43in 0.3in;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 8px 28px rgba(24, 42, 55, 0.14);
+    }
+    .color-rule {
+      position: absolute;
+      inset: 0 0 auto;
+      display: grid;
+      grid-template-columns: 4fr 2fr 1fr 1fr;
+      height: 7px;
+    }
+    .color-rule span:nth-child(1) { background: var(--red); }
+    .color-rule span:nth-child(2) { background: var(--teal); }
+    .color-rule span:nth-child(3) { background: var(--gold); }
+    .color-rule span:nth-child(4) { background: var(--blue); }
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 2.2in;
+      gap: 0.22in;
+      align-items: end;
+      padding: 0.05in 0 0.13in;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--red);
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 5px; font-size: 22px; line-height: 1.06; letter-spacing: 0; }
+    .subtitle { margin: 0; color: var(--text); font-size: 10px; }
+    .identity {
+      padding-left: 0.14in;
+      border-left: 3px solid var(--teal);
+      color: var(--text);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+    .identity strong { display: block; color: var(--ink); font-size: 12px; }
+    .purpose {
+      display: grid;
+      grid-template-columns: 0.85in minmax(0, 1fr);
+      gap: 0.12in;
+      margin: 0.13in 0 0.12in;
+      padding: 0.09in 0.12in;
+      border-left: 4px solid var(--red);
+      background: var(--red-soft);
+    }
+    .purpose strong { color: var(--red); font-size: 10px; text-transform: uppercase; }
+    .purpose p { margin: 0; color: var(--text); font-size: 9px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 7px;
+      margin-bottom: 0.12in;
+    }
+    .metric {
+      min-width: 0;
+      min-height: 0.68in;
+      padding: 7px 8px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      background: var(--gray-soft);
+    }
+    .metric:nth-child(2) { border-top-color: var(--gold); }
+    .metric:nth-child(3) { border-top-color: var(--green); }
+    .metric:nth-child(4) { border-top-color: var(--teal); }
+    .metric b { display: block; margin-bottom: 2px; color: var(--ink); font-size: 13px; }
+    .metric span { display: block; color: var(--text); font-size: 8px; line-height: 1.25; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0.11in 0 0.06in;
+    }
+    .section-title h2 { margin: 0; font-size: 12px; }
+    .section-title::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .fact {
+      min-width: 0;
+      padding: 8px 9px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .fact h3 { margin-bottom: 4px; color: var(--blue); font-size: 10px; }
+    .fact ul { margin: 0; padding-left: 15px; color: var(--text); font-size: 8px; }
+    .fact li { margin: 2px 0; }
+    .warning {
+      margin-top: 7px;
+      padding: 7px 9px;
+      border: 1px solid #ddc489;
+      background: var(--gold-soft);
+      color: var(--text);
+      font-size: 8px;
+    }
+    .warning b { color: var(--gold); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 7.5px;
+      line-height: 1.24;
+    }
+    col.route { width: 18%; }
+    col.request { width: 52%; }
+    col.use { width: 30%; }
+    th, td {
+      padding: 5px 6px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+    th { color: #fff; background: var(--ink); font-size: 7.5px; text-align: left; }
+    tbody tr:nth-child(even) td { background: var(--gray-soft); }
+    td strong { color: var(--ink); }
+    .boundary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 0.1in;
+    }
+    .boundary div { padding: 7px 8px; border: 1px solid var(--line); font-size: 8px; }
+    .boundary strong { display: block; margin-bottom: 2px; color: var(--teal); }
+    footer {
+      margin-top: 0.1in;
+      padding-top: 6px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 7px;
+      line-height: 1.3;
+    }
+    footer b { color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .actions, .sheet { width: calc(100% - 20px); }
+      .sheet { min-height: auto; padding: 30px 24px; }
+      header { grid-template-columns: 1fr; align-items: start; }
+      .identity { padding-left: 0; border-left: 0; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .facts, .boundary { grid-template-columns: 1fr; }
+      table { font-size: 9px; }
+    }
+
+    @page { size: Letter; margin: 0; }
+    @media print {
+      html, body { width: 8.5in; min-height: 11in; background: #fff; }
+      .actions { display: none; }
+      .sheet {
+        width: 8.5in;
+        height: 11in;
+        min-height: 11in;
+        margin: 0;
+        padding: 0.38in 0.43in 0.3in;
+        box-shadow: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      header { grid-template-columns: minmax(0, 1fr) 2.2in; }
+      .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .facts, .boundary { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="actions" aria-label="Document actions">
+    <a class="action primary" href="Ac225_Personalized_Expert_Briefs_2026/index.html">Use personalized briefs</a>
+    <a class="action" href="Ac225_Expert_Email_Templates_2026.html">Email templates</a>
+    <a class="action" href="Ac225_Project_Goals_2026.html">Project roadmap</a>
+    <button class="action primary" type="button" onclick="window.print()">Print / PDF</button>
+  </nav>
+
+  <main class="sheet">
+    <div class="color-rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <p style="margin: 0 0 12px; padding: 8px 10px; border: 1px solid #b78420; background: #fff4d8; color: #694500; font-size: 10px; font-weight: 900;">INTERNAL MASTER MAP - DO NOT ATTACH. Use the named personalized brief made for the recipient.</p>
+    <header>
+      <div>
+        <p class="eyebrow">Technical evidence request | August 23, 2026</p>
+        <h1>Ra-226 to Ac-225 Surrogate Study</h1>
+        <p class="subtitle">What is already complete, what the frozen model can and cannot support, and the specific outside evidence now needed.</p>
+      </div>
+      <div class="identity">
+        <strong>Samuel Ogunnubi</strong>
+        Grade 12, Glen Burnie High School<br>
+        Biomedical and Allied Health Program<br>
+        Maryland, United States
+      </div>
+    </header>
+
+    <section class="purpose">
+      <strong>Purpose</strong>
+      <p>I am seeking public data, references, or a brief technical review to determine whether a frozen surrogate can support fast, solver-verified screening of Ac-225 production scenarios. I am not requesting private facility data, a radioactive experiment, clinical advice, or an endorsement.</p>
+    </section>
+
+    <section class="metrics" aria-label="Current measured results">
+      <div class="metric"><b>0.97%</b><span>Matched synthetic worst-mesh median Ac-225 endpoint error, seed 42</span></div>
+      <div class="metric"><b>3.94% / 183.84%</b><span>Median / p95 error across 9,000 productive cases in a 10,000-case grid</span></div>
+      <div class="metric"><b>Rank 2</b><span>V3-selected schedule after Radau verification; 0.047% objective regret</span></div>
+      <div class="metric"><b>84.9x / 56.7x</b><span>Faster than Radau, but slower than the exact analytic batch baseline at 10,000 cases</span></div>
+    </section>
+
+    <div class="section-title"><h2>Current Technical Contract</h2></div>
+    <section class="facts">
+      <article class="fact">
+        <h3>Frozen model and pathway</h3>
+        <ul>
+          <li>Ra-226(n,2n)Ra-225 to Ac-225, with Ra-226(n,gamma)Ra-227 to Ac-227 represented as a competing branch.</li>
+          <li>Physics-informed LSTM, reduced five-nuclide system, 1,400 Radau-generated training scenarios, 6,000 epochs, seed 42.</li>
+          <li>Constant irradiation schedule followed by exact decay-only cooling; activity reported per 1 g initial Ra-226.</li>
+          <li>Frozen checkpoint and source hashes are preserved. No tuning is allowed after outside results are seen.</li>
+        </ul>
+      </article>
+      <article class="fact">
+        <h3>Post-lock reality checks</h3>
+        <ul>
+          <li>The LSTM beat a parameter-matched MLP on pointwise error, but the MLP ranked the full grid more accurately and ran faster.</li>
+          <li>Berkeley 33 and 40 MeV cases were outside the training domain; raw V3 activity predictions were about 600 times too high.</li>
+          <li>The reduced constant-rate equations have an exact analytic solution that is faster and more accurate than V3.</li>
+          <li>Current value is limited to screening candidates that are then checked with a trusted solver.</li>
+        </ul>
+      </article>
+    </section>
+    <div class="warning"><b>Claim boundary:</b> The project does not yet demonstrate reactor accuracy, experimental validation, a universal error below 3%, clinical readiness, production cost savings, or a decisive LSTM advantage.</div>
+
+    <div class="section-title"><h2>One Deliverable Requested From Each Expert Route</h2></div>
+    <table aria-label="Expert evidence requests">
+      <colgroup><col class="route"><col class="request"><col class="use"></colgroup>
+      <thead><tr><th>Expert route</th><th>Requested technical deliverable</th><th>How it will strengthen the study</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Berkeley / LBNL</strong></td><td>A reproducible specification for the 33 and 40 MeV cases: target-plane spectrum and normalization, target inventory/position/geometry, beam or fluence history, irradiation/cooling/separation times, produced versus recovered Ac-225 activity with uncertainty, and any numerical Ac-227 detection limit.</td><td>Correct the published-case reconstruction and define a future model domain without tuning V3 to the answer.</td></tr>
+        <tr><td><strong>NC State ARTISANS</strong></td><td>A short written or Zoom critique of the frozen validation protocol, error metrics, uncertainty treatment, applicability-domain warning, and minimum evidence for a useful solver-verified surrogate.</td><td>Make the ML claim statistically and scientifically defensible.</td></tr>
+        <tr><td><strong>MURR</strong></td><td>A public example or realistic ranges for irradiation, cooling, separation, recovery, quality control, and target recycling time, plus the operational constraints that dominate turnaround.</td><td>Replace an irradiation-only objective with an end-to-end production workflow.</td></tr>
+        <tr><td><strong>Johns Hopkins</strong></td><td>A published reference or expert recommendation for the activity reference time, radionuclidic impurity quantity, uncertainty, and other outputs a production-screening tool should report to be medically meaningful.</td><td>Define a relevant objective without making a clinical claim.</td></tr>
+        <tr><td><strong>UW-Madison</strong></td><td>A public targetry or radiochemistry benchmark and guidance on the beam, thermal, geometry, recovery, and turnaround variables that should bound a realistic accelerator-production search.</td><td>Add physical feasibility limits and a stronger comparison problem.</td></tr>
+        <tr><td><strong>MSU / FRIB</strong></td><td>A public process example for separation, recovery fraction, purification time, quality checks, and material losses between produced and usable isotope.</td><td>Add the missing chemistry and recovery layer to total-process time.</td></tr>
+        <tr><td><strong>NIST</strong></td><td>The recommended activity-to-atoms calculation and reporting treatment for progeny equilibrium, assay time, separation time, reference time, decay data, and measurement uncertainty.</td><td>Make experimental activity comparisons dimensionally and metrologically correct.</td></tr>
+      </tbody>
+    </table>
+
+    <section class="boundary">
+      <div><strong>What I can provide</strong>Frozen checkpoint hash, model inputs and ranges, reduced reaction chain, full result tables, failure map, Berkeley reconstruction, source code, and a written assumption log.</div>
+      <div><strong>What I will do with help</strong>Cite public sources, preserve the frozen negative results, document every assumption, verify finalists with a trusted solver, and acknowledge technical guidance only with permission.</div>
+    </section>
+
+    <footer><b>Supporting public sources:</b> Morrell, <i>Next-Generation Isotope Production via Deuteron Breakup</i> (UC Berkeley, 2021); Berkeley Nuclear Data Program; NIST Ac-225 activity-standard work. All percentages above describe this project's preserved computational artifacts, not facility or clinical performance.</footer>
+  </main>
+</body>
+</html>

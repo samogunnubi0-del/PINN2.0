@@ -1,0 +1,5579 @@
+{
+  "meta": {
+    "count": 7,
+    "db_response_time_ms": 276,
+    "page": 1,
+    "per_page": 60,
+    "groups_count": null,
+    "x_query": {
+      "oql": "works where full text has (physics constrained CNN LSTM radionuclide activity nuclear)",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "physics constrained CNN LSTM radionuclide activity nuclear",
+            "operator": "has"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:physics constrained CNN LSTM radionuclide activity nuclear&per_page=60"
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7139971211",
+      "doi": "https://doi.org/10.1016/j.nucengdes.2026.114892",
+      "display_name": "A hybrid physics-constraint CNN-LSTM prediction framework for the radionuclide activity in primary loop of nuclear power plant",
+      "publication_year": 2026,
+      "publication_date": "2026-03-21",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/j.nucengdes.2026.114892",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1016/j.nucengdes.2026.114892",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S102681701",
+          "display_name": "Nuclear Engineering and Design",
+          "issn_l": "0029-5493",
+          "issn": [
+            "0029-5493",
+            "1872-759X"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Nuclear Engineering and Design",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": null,
+            "display_name": "Yuxuan Cui",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I76569877",
+              "display_name": "Southeast University",
+              "ror": "https://ror.org/04ct4d772",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Yuxuan Cui",
+          "raw_affiliation_strings": [
+            "School of Energy and Environment, Southeast University, Nanjing 210018, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Energy and Environment, Southeast University, Nanjing 210018, China",
+              "institution_ids": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5130269516",
+            "display_name": "Tianxu Han",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I76569877",
+              "display_name": "Southeast University",
+              "ror": "https://ror.org/04ct4d772",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Tianxu Han",
+          "raw_affiliation_strings": [
+            "School of Energy and Environment, Southeast University, Nanjing 210018, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Energy and Environment, Southeast University, Nanjing 210018, China",
+              "institution_ids": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5130286201",
+            "display_name": "Youyuan Fu",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I76569877",
+              "display_name": "Southeast University",
+              "ror": "https://ror.org/04ct4d772",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Youyuan Fu",
+          "raw_affiliation_strings": [
+            "School of Energy and Environment, Southeast University, Nanjing 210018, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Energy and Environment, Southeast University, Nanjing 210018, China",
+              "institution_ids": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5101016774",
+            "display_name": "Cheng Xue",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I76569877",
+              "display_name": "Southeast University",
+              "ror": "https://ror.org/04ct4d772",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Cheng Xue",
+          "raw_affiliation_strings": [
+            "School of Computer Science and Engineering, Southeast University, Nanjing 210018, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Computer Science and Engineering, Southeast University, Nanjing 210018, China",
+              "institution_ids": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5101489188",
+            "display_name": "Tao Hou",
+            "orcid": "https://orcid.org/0000-0002-2707-0573"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I27781120",
+              "display_name": "Wenzhou Medical University",
+              "ror": "https://ror.org/00rd5t069",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I27781120"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I4210097777",
+              "display_name": "China General Nuclear Power Corporation (China)",
+              "ror": "https://ror.org/00fpj7t66",
+              "country_code": "CN",
+              "type": "company",
+              "lineage": [
+                "https://openalex.org/I4210097777"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I4210158774",
+              "display_name": "Zhejiang Taizhou Hospital",
+              "ror": "https://ror.org/05m0wv206",
+              "country_code": "CN",
+              "type": "healthcare",
+              "lineage": [
+                "https://openalex.org/I4210158774",
+                "https://openalex.org/I76130692"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Tao Hou",
+          "raw_affiliation_strings": [
+            "CNNC Sanmen Nuclear Power Co., LTD., Sanmen, Zhejiang 317112, China",
+            "Provincial Key Laboratory of Advanced Pressurized Water Reactor Chemistry Technology and Materials Research, Zhejiang, Taizhou 317100, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "CNNC Sanmen Nuclear Power Co., LTD., Sanmen, Zhejiang 317112, China",
+              "institution_ids": [
+                "https://openalex.org/I4210097777"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Provincial Key Laboratory of Advanced Pressurized Water Reactor Chemistry Technology and Materials Research, Zhejiang, Taizhou 317100, China",
+              "institution_ids": [
+                "https://openalex.org/I27781120",
+                "https://openalex.org/I4210158774"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5053960829",
+            "display_name": "Guma Yeli",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I99065089",
+              "display_name": "Tsinghua University",
+              "ror": "https://ror.org/03cve4549",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I99065089"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Guma Yeli",
+          "raw_affiliation_strings": [
+            "Institute of Nuclear and New Energy Technology, Tsinghua University, Beijing, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Institute of Nuclear and New Energy Technology, Tsinghua University, Beijing, China",
+              "institution_ids": [
+                "https://openalex.org/I99065089"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5130284762",
+            "display_name": "Da Chen",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I76569877",
+              "display_name": "Southeast University",
+              "ror": "https://ror.org/04ct4d772",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Da Chen",
+          "raw_affiliation_strings": [
+            "School of Energy and Environment, Southeast University, Nanjing 210018, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Energy and Environment, Southeast University, Nanjing 210018, China",
+              "institution_ids": [
+                "https://openalex.org/I76569877"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": false,
+        "oa_status": "closed",
+        "oa_url": null,
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": null,
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4406962367",
+      "doi": "https://doi.org/10.1186/s40658-025-00724-9",
+      "display_name": "A review of state-of-the-art resolution improvement techniques in SPECT imaging",
+      "publication_year": 2025,
+      "publication_date": "2025-01-30",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1186/s40658-025-00724-9",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1186/s40658-025-00724-9",
+        "pdf_url": "https://ejnmmiphys.springeropen.com/counter/pdf/10.1186/s40658-025-00724-9",
+        "source": {
+          "id": "https://openalex.org/S2737569433",
+          "display_name": "EJNMMI Physics",
+          "issn_l": "2197-7364",
+          "issn": [
+            "2197-7364"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310319900",
+          "host_organization_name": "Springer Science+Business Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319900",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Springer Science+Business Media",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "EJNMMI Physics",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5009022596",
+            "display_name": "Zhibiao Cheng",
+            "orcid": "https://orcid.org/0000-0001-7636-5311"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I135714990",
+              "display_name": "North University of China",
+              "ror": "https://ror.org/047bp1713",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I181877577",
+              "display_name": "Shanxi University",
+              "ror": "https://ror.org/03y3e3s17",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I181877577"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Zhibiao Cheng",
+          "raw_affiliation_strings": [
+            "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China. zhibiao.cheng@foxmail.com",
+            "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China. zhibiao.cheng@foxmail.com",
+            "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China",
+            "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0001-7636-5311",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China. zhibiao.cheng@foxmail.com",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China. zhibiao.cheng@foxmail.com",
+              "institution_ids": [
+                "https://openalex.org/I181877577"
+              ]
+            },
+            {
+              "raw_affiliation_string": "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5061915249",
+            "display_name": "Ping Chen",
+            "orcid": "https://orcid.org/0000-0002-0625-0639"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I135714990",
+              "display_name": "North University of China",
+              "ror": "https://ror.org/047bp1713",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I181877577",
+              "display_name": "Shanxi University",
+              "ror": "https://ror.org/03y3e3s17",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I181877577"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Ping Chen",
+          "raw_affiliation_strings": [
+            "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China. chenping@nuc.edu.cn",
+            "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China. chenping@nuc.edu.cn",
+            "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China",
+            "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China. chenping@nuc.edu.cn",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China. chenping@nuc.edu.cn",
+              "institution_ids": [
+                "https://openalex.org/I135714990",
+                "https://openalex.org/I181877577"
+              ]
+            },
+            {
+              "raw_affiliation_string": "School of Information and Communication Engineering, North University of China, Taiyuan, 030051, China",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Shanxi Key Laboratory of Intelligent Detection Technology and Equipment, North University of China, Taiyuan, 030051, China",
+              "institution_ids": [
+                "https://openalex.org/I135714990"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5101454501",
+            "display_name": "Jianhua Yan",
+            "orcid": "https://orcid.org/0000-0001-7826-5509"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I126520041",
+              "display_name": "University of Science and Technology of China",
+              "ror": "https://ror.org/04c4dkn09",
+              "country_code": "CN",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I126520041",
+                "https://openalex.org/I19820366"
+              ]
+            }
+          ],
+          "countries": [
+            "CN"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Jianhua Yan",
+          "raw_affiliation_strings": [
+            "Department of Nuclear Medicine, Division of Life Sciences and Medicine, The First Affiliated Hospital of USTC, University of Science and Technology of China, Hefei, 230001, Anhui, China. Jianhua.yan@gmail.com",
+            "Department of Nuclear Medicine, Division of Life Sciences and Medicine, The First Affiliated Hospital of USTC, University of Science and Technology of China, Hefei, 230001, Anhui, China"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Nuclear Medicine, Division of Life Sciences and Medicine, The First Affiliated Hospital of USTC, University of Science and Technology of China, Hefei, 230001, Anhui, China. Jianhua.yan@gmail.com",
+              "institution_ids": [
+                "https://openalex.org/I126520041"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Nuclear Medicine, Division of Life Sciences and Medicine, The First Affiliated Hospital of USTC, University of Science and Technology of China, Hefei, 230001, Anhui, China",
+              "institution_ids": [
+                "https://openalex.org/I126520041"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 23,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://ejnmmiphys.springeropen.com/counter/pdf/10.1186/s40658-025-00724-9",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Single": [
+          0
+        ],
+        "photon": [
+          1
+        ],
+        "emission": [
+          2
+        ],
+        "computed": [
+          3
+        ],
+        "tomography": [
+          4
+        ],
+        "(SPECT),": [
+          5
+        ],
+        "a": [
+          6,
+          41,
+          155
+        ],
+        "technique": [
+          7
+        ],
+        "capable": [
+          8
+        ],
+        "of": [
+          9,
+          33,
+          47,
+          58,
+          86,
+          121,
+          149,
+          158,
+          169,
+          174,
+          189,
+          195,
+          202
+        ],
+        "capturing": [
+          10
+        ],
+        "functional": [
+          11
+        ],
+        "and": [
+          12,
+          28,
+          65,
+          69,
+          95,
+          106,
+          115,
+          117,
+          135,
+          187,
+          209,
+          214,
+          221
+        ],
+        "molecular": [
+          13
+        ],
+        "information,": [
+          14
+        ],
+        "has": [
+          15
+        ],
+        "been": [
+          16
+        ],
+        "widely": [
+          17
+        ],
+        "adopted": [
+          18
+        ],
+        "in": [
+          19,
+          93,
+          103,
+          128,
+          162,
+          198
+        ],
+        "theranostics": [
+          20
+        ],
+        "applications": [
+          21
+        ],
+        "across": [
+          22
+        ],
+        "various": [
+          23
+        ],
+        "fields,": [
+          24
+        ],
+        "including": [
+          25
+        ],
+        "cardiology,": [
+          26
+        ],
+        "neurology,": [
+          27
+        ],
+        "oncology.": [
+          29
+        ],
+        "The": [
+          30,
+          50,
+          80
+        ],
+        "spatial": [
+          31,
+          56,
+          91,
+          141
+        ],
+        "resolution": [
+          32,
+          57,
+          92,
+          163
+        ],
+        "SPECT": [
+          34,
+          59,
+          77,
+          97,
+          129
+        ],
+        "imaging": [
+          35,
+          78,
+          213
+        ],
+        "is": [
+          36,
+          181
+        ],
+        "relatively": [
+          37
+        ],
+        "poor,": [
+          38
+        ],
+        "which": [
+          39
+        ],
+        "poses": [
+          40
+        ],
+        "significant": [
+          42
+        ],
+        "limitation,": [
+          43
+        ],
+        "especially": [
+          44
+        ],
+        "the": [
+          45,
+          54,
+          118,
+          147,
+          159,
+          167,
+          172,
+          176,
+          193,
+          199
+        ],
+        "visualization": [
+          46,
+          194
+        ],
+        "small": [
+          48,
+          196
+        ],
+        "lesions.": [
+          49
+        ],
+        "main": [
+          51
+        ],
+        "factors": [
+          52
+        ],
+        "affecting": [
+          53
+        ],
+        "limited": [
+          55
+        ],
+        "include": [
+          60
+        ],
+        "projection": [
+          61,
+          108
+        ],
+        "sampling": [
+          62,
+          109
+        ],
+        "techniques,": [
+          63,
+          110
+        ],
+        "hardware": [
+          64,
+          68,
+          150
+        ],
+        "software.": [
+          66
+        ],
+        "Both": [
+          67
+        ],
+        "software": [
+          70
+        ],
+        "innovations": [
+          71,
+          144
+        ],
+        "have": [
+          72
+        ],
+        "contributed": [
+          73
+        ],
+        "substantially": [
+          74
+        ],
+        "to": [
+          75,
+          183
+        ],
+        "improved": [
+          76
+        ],
+        "quality.": [
+          79
+        ],
+        "present": [
+          81
+        ],
+        "review": [
+          82
+        ],
+        "provides": [
+          83
+        ],
+        "an": [
+          84
+        ],
+        "overview": [
+          85,
+          157
+        ],
+        "state-of-the-art": [
+          87
+        ],
+        "methods": [
+          88
+        ],
+        "for": [
+          89
+        ],
+        "improving": [
+          90,
+          140
+        ],
+        "clinical": [
+          94,
+          190
+        ],
+        "pre-clinical": [
+          96
+        ],
+        "systems.": [
+          98
+        ],
+        "It": [
+          99
+        ],
+        "delves": [
+          100
+        ],
+        "into": [
+          101
+        ],
+        "advancements": [
+          102,
+          161
+        ],
+        "detector": [
+          104
+        ],
+        "design": [
+          105
+        ],
+        "modifications,": [
+          107
+        ],
+        "traditional": [
+          111
+        ],
+        "reconstruction": [
+          112
+        ],
+        "algorithm": [
+          113
+        ],
+        "development": [
+          114
+        ],
+        "optimization,": [
+          116
+        ],
+        "emerging": [
+          119
+        ],
+        "role": [
+          120
+        ],
+        "deep": [
+          122
+        ],
+        "learning.": [
+          123
+        ],
+        "Hardware": [
+          124
+        ],
+        "enhancements": [
+          125
+        ],
+        "can": [
+          126,
+          145
+        ],
+        "result": [
+          127
+        ],
+        "systems": [
+          130
+        ],
+        "that": [
+          131
+        ],
+        "are": [
+          132
+        ],
+        "both": [
+          133,
+          211,
+          219
+        ],
+        "lighter": [
+          134
+        ],
+        "more": [
+          136
+        ],
+        "compact,": [
+          137
+        ],
+        "while": [
+          138
+        ],
+        "also": [
+          139
+        ],
+        "resolution.": [
+          142
+        ],
+        "Software": [
+          143
+        ],
+        "mitigate": [
+          146
+        ],
+        "costs": [
+          148
+        ],
+        "modifications.": [
+          151
+        ],
+        "This": [
+          152,
+          180
+        ],
+        "survey": [
+          153
+        ],
+        "offers": [
+          154
+        ],
+        "thorough": [
+          156
+        ],
+        "rapid": [
+          160
+        ],
+        "enhancement": [
+          164
+        ],
+        "techniques": [
+          165
+        ],
+        "within": [
+          166
+        ],
+        "field": [
+          168
+        ],
+        "SPECT,": [
+          170
+        ],
+        "with": [
+          171
+        ],
+        "objective": [
+          173
+        ],
+        "identifying": [
+          175
+        ],
+        "most": [
+          177
+        ],
+        "recent": [
+          178
+        ],
+        "trends.": [
+          179
+        ],
+        "anticipated": [
+          182
+        ],
+        "facilitate": [
+          184
+        ],
+        "further": [
+          185
+        ],
+        "optimization": [
+          186
+        ],
+        "improvement": [
+          188
+        ],
+        "systems,": [
+          191
+        ],
+        "enabling": [
+          192
+        ],
+        "lesions": [
+          197
+        ],
+        "early": [
+          200
+        ],
+        "stages": [
+          201
+        ],
+        "tumor": [
+          203
+        ],
+        "detection,": [
+          204
+        ],
+        "thereby": [
+          205
+        ],
+        "enhancing": [
+          206
+        ],
+        "accurate": [
+          207
+        ],
+        "localization": [
+          208
+        ],
+        "facilitating": [
+          210
+        ],
+        "diagnostic": [
+          212
+        ],
+        "radionuclide": [
+          215
+        ],
+        "therapy,": [
+          216
+        ],
+        "ultimately": [
+          217
+        ],
+        "benefiting": [
+          218
+        ],
+        "clinicians": [
+          220
+        ],
+        "patients.": [
+          222
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W3151723487",
+      "doi": "https://doi.org/10.1146/annurev-bioeng-082420-020343",
+      "display_name": "Quantitative Molecular Positron Emission Tomography Imaging Using Advanced Deep Learning Techniques",
+      "publication_year": 2021,
+      "publication_date": "2021-04-02",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1146/annurev-bioeng-082420-020343",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1146/annurev-bioeng-082420-020343",
+        "pdf_url": "https://www.annualreviews.org/doi/pdf/10.1146/annurev-bioeng-082420-020343",
+        "source": {
+          "id": "https://openalex.org/S171268996",
+          "display_name": "Annual Review of Biomedical Engineering",
+          "issn_l": "1523-9829",
+          "issn": [
+            "1523-9829",
+            "1545-4274"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320373",
+          "host_organization_name": "Annual Reviews",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320373"
+          ],
+          "host_organization_lineage_names": [
+            "Annual Reviews"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Annual Review of Biomedical Engineering",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5007891293",
+            "display_name": "Habib Zaidi",
+            "orcid": "https://orcid.org/0000-0001-7559-5297"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I114457229",
+              "display_name": "University of Geneva",
+              "ror": "https://ror.org/01swzsf04",
+              "country_code": "CH",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I114457229"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I169381384",
+              "display_name": "University of Groningen",
+              "ror": "https://ror.org/012p63287",
+              "country_code": "NL",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I169381384"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I177969490",
+              "display_name": "University of Southern Denmark",
+              "ror": "https://ror.org/03yrrjy16",
+              "country_code": "DK",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I177969490"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I4210106256",
+              "display_name": "University Hospital of Geneva",
+              "ror": "https://ror.org/01m1pv723",
+              "country_code": "CH",
+              "type": "healthcare",
+              "lineage": [
+                "https://openalex.org/I4210106256"
+              ]
+            }
+          ],
+          "countries": [
+            "CH",
+            "DK",
+            "NL"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Habib Zaidi",
+          "raw_affiliation_strings": [
+            "Department of Nuclear Medicine and Molecular Imaging, University of Groningen, 9700 RB Groningen, Netherlands",
+            "Department of Nuclear Medicine, University of Southern Denmark, DK-5000 Odense, Denmark",
+            "Division of Nuclear Medicine and Molecular Imaging, Geneva University Hospital, 1211 Geneva, Switzerland;",
+            "Geneva Neuroscience Centre, University of Geneva, 1205 Geneva, Switzerland"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Nuclear Medicine and Molecular Imaging, University of Groningen, 9700 RB Groningen, Netherlands",
+              "institution_ids": [
+                "https://openalex.org/I169381384"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Nuclear Medicine, University of Southern Denmark, DK-5000 Odense, Denmark",
+              "institution_ids": [
+                "https://openalex.org/I177969490"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Division of Nuclear Medicine and Molecular Imaging, Geneva University Hospital, 1211 Geneva, Switzerland;",
+              "institution_ids": [
+                "https://openalex.org/I4210106256"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Geneva Neuroscience Centre, University of Geneva, 1205 Geneva, Switzerland",
+              "institution_ids": [
+                "https://openalex.org/I114457229"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5010597773",
+            "display_name": "Issam El Naqa",
+            "orcid": "https://orcid.org/0000-0001-6023-1132"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I27837315",
+              "display_name": "University of Michigan",
+              "ror": "https://ror.org/00jmfr291",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I27837315"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I3019308854",
+              "display_name": "Moffitt Cancer Center",
+              "ror": "https://ror.org/01xf75524",
+              "country_code": "US",
+              "type": "healthcare",
+              "lineage": [
+                "https://openalex.org/I3019308854"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I5023651",
+              "display_name": "McGill University",
+              "ror": "https://ror.org/01pxwe438",
+              "country_code": "CA",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I5023651"
+              ]
+            }
+          ],
+          "countries": [
+            "CA",
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Issam El Naqa",
+          "raw_affiliation_strings": [
+            "Department of Machine Learning, Moffitt Cancer Center, Tampa, Florida 33612, USA",
+            "Department of Oncology, McGill University, Montreal, Quebec H3A 1G5, Canada",
+            "Department of Radiation Oncology, University of Michigan, Ann Arbor, Michigan 48109, USA"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Machine Learning, Moffitt Cancer Center, Tampa, Florida 33612, USA",
+              "institution_ids": [
+                "https://openalex.org/I3019308854"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Oncology, McGill University, Montreal, Quebec H3A 1G5, Canada",
+              "institution_ids": [
+                "https://openalex.org/I5023651"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Radiation Oncology, University of Michigan, Ann Arbor, Michigan 48109, USA",
+              "institution_ids": [
+                "https://openalex.org/I27837315"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 62,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "hybrid",
+        "oa_url": "https://www.annualreviews.org/doi/pdf/10.1146/annurev-bioeng-082420-020343",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "The": [
+          0
+        ],
+        "widespread": [
+          1
+        ],
+        "availability": [
+          2
+        ],
+        "of": [
+          3,
+          9,
+          28,
+          34,
+          75,
+          99,
+          157
+        ],
+        "high-performance": [
+          4
+        ],
+        "computing": [
+          5
+        ],
+        "and": [
+          6,
+          16,
+          62,
+          67,
+          73,
+          131,
+          143,
+          151,
+          160
+        ],
+        "the": [
+          7,
+          22,
+          26,
+          32,
+          44,
+          80,
+          91,
+          96,
+          103,
+          155
+        ],
+        "popularity": [
+          8
+        ],
+        "artificial": [
+          10
+        ],
+        "intelligence": [
+          11
+        ],
+        "(AI)": [
+          12
+        ],
+        "with": [
+          13
+        ],
+        "machine": [
+          14
+        ],
+        "learning": [
+          15,
+          18
+        ],
+        "deep": [
+          17
+        ],
+        "(ML/DL)": [
+          19
+        ],
+        "algorithms": [
+          20,
+          114
+        ],
+        "at": [
+          21
+        ],
+        "helm": [
+          23
+        ],
+        "have": [
+          24
+        ],
+        "stimulated": [
+          25
+        ],
+        "development": [
+          27
+        ],
+        "many": [
+          29
+        ],
+        "applications": [
+          30
+        ],
+        "involving": [
+          31
+        ],
+        "use": [
+          33
+        ],
+        "AI-based": [
+          35
+        ],
+        "techniques": [
+          36,
+          89,
+          101
+        ],
+        "in": [
+          37,
+          43,
+          53,
+          83,
+          163
+        ],
+        "molecular": [
+          38,
+          85
+        ],
+        "imaging": [
+          39,
+          86
+        ],
+        "research.": [
+          40
+        ],
+        "Applications": [
+          41
+        ],
+        "reported": [
+          42
+        ],
+        "literature": [
+          45
+        ],
+        "encompass": [
+          46
+        ],
+        "various": [
+          47,
+          104
+        ],
+        "areas,": [
+          48
+        ],
+        "including": [
+          49,
+          113
+        ],
+        "innovative": [
+          50
+        ],
+        "design": [
+          51
+        ],
+        "concepts": [
+          52
+        ],
+        "positron": [
+          54
+        ],
+        "emission": [
+          55
+        ],
+        "tomography": [
+          56
+        ],
+        "(PET)": [
+          57
+        ],
+        "instrumentation,": [
+          58
+        ],
+        "quantitative": [
+          59,
+          84
+        ],
+        "image": [
+          60
+        ],
+        "reconstruction": [
+          61
+        ],
+        "analysis": [
+          63
+        ],
+        "techniques,": [
+          64
+        ],
+        "computer-aided": [
+          65
+        ],
+        "detection": [
+          66
+        ],
+        "diagnosis,": [
+          68
+        ],
+        "as": [
+          69,
+          71,
+          124,
+          126
+        ],
+        "well": [
+          70,
+          125
+        ],
+        "modeling": [
+          72
+        ],
+        "prediction": [
+          74
+        ],
+        "outcomes.": [
+          76
+        ],
+        "This": [
+          77
+        ],
+        "review": [
+          78,
+          146
+        ],
+        "reflects": [
+          79
+        ],
+        "tremendous": [
+          81
+        ],
+        "interest": [
+          82
+        ],
+        "using": [
+          87
+        ],
+        "ML/DL": [
+          88,
+          100,
+          158
+        ],
+        "during": [
+          90
+        ],
+        "past": [
+          92
+        ],
+        "decade,": [
+          93
+        ],
+        "ranging": [
+          94
+        ],
+        "from": [
+          95
+        ],
+        "basic": [
+          97
+        ],
+        "principles": [
+          98
+        ],
+        "to": [
+          102,
+          116,
+          127
+        ],
+        "steps": [
+          105
+        ],
+        "required": [
+          106
+        ],
+        "for": [
+          107,
+          120,
+          135
+        ],
+        "obtaining": [
+          108
+        ],
+        "quantitatively": [
+          109
+        ],
+        "accurate": [
+          110
+        ],
+        "PET": [
+          111
+        ],
+        "data,": [
+          112
+        ],
+        "used": [
+          115
+        ],
+        "denoise": [
+          117
+        ],
+        "or": [
+          118,
+          138
+        ],
+        "correct": [
+          119
+        ],
+        "physical": [
+          121
+        ],
+        "degrading": [
+          122
+        ],
+        "factors": [
+          123
+        ],
+        "quantify": [
+          128
+        ],
+        "tracer": [
+          129
+        ],
+        "uptake": [
+          130
+        ],
+        "metabolic": [
+          132
+        ],
+        "tumor": [
+          133
+        ],
+        "volume": [
+          134
+        ],
+        "treatment": [
+          136,
+          141
+        ],
+        "monitoring": [
+          137
+        ],
+        "radiation": [
+          139
+        ],
+        "therapy": [
+          140
+        ],
+        "planning": [
+          142
+        ],
+        "response": [
+          144
+        ],
+        "prediction.This": [
+          145
+        ],
+        "also": [
+          147
+        ],
+        "addresses": [
+          148
+        ],
+        "future": [
+          149
+        ],
+        "opportunities": [
+          150
+        ],
+        "current": [
+          152
+        ],
+        "challenges": [
+          153
+        ],
+        "facing": [
+          154
+        ],
+        "adoption": [
+          156
+        ],
+        "approaches": [
+          159
+        ],
+        "their": [
+          161
+        ],
+        "role": [
+          162
+        ],
+        "multimodality": [
+          164
+        ],
+        "imaging.": [
+          165
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4303986143",
+      "doi": "https://doi.org/10.20944/preprints202210.0096.v1",
+      "display_name": "The Role of Artificial Intelligence in Advancing Breast Cancer Detection Using Different Imaging Modalities: A Systematic Review",
+      "publication_year": 2022,
+      "publication_date": "2022-10-08",
+      "type": "preprint",
+      "primary_location": {
+        "id": "doi:10.20944/preprints202210.0096.v1",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.20944/preprints202210.0096.v1",
+        "pdf_url": "https://www.preprints.org/manuscript/202210.0096/v1/download",
+        "source": {
+          "id": "https://openalex.org/S6309402219",
+          "display_name": "Preprints.org",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "acceptedVersion",
+        "is_accepted": true,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "posted-content"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5051382392",
+            "display_name": "Mohammad Madani",
+            "orcid": "https://orcid.org/0000-0002-8269-8929"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I140172145",
+              "display_name": "University of Connecticut",
+              "ror": "https://ror.org/02der9h97",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Mohammad Madani",
+          "raw_affiliation_strings": [
+            "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States",
+            "Department of Mechanical Engineering, University of Connecticut, Storrs, CT, United States"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States",
+              "institution_ids": [
+                "https://openalex.org/I140172145"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Mechanical Engineering, University of Connecticut, Storrs, CT, United States",
+              "institution_ids": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5014807369",
+            "display_name": "Mohammad Mahdi Behzadi",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I140172145",
+              "display_name": "University of Connecticut",
+              "ror": "https://ror.org/02der9h97",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Mohammad Mahdi Behzadi",
+          "raw_affiliation_strings": [
+            "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States",
+            "Department of Mechanical Engineering, University of Connecticut, Storrs, CT, United States"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States",
+              "institution_ids": [
+                "https://openalex.org/I140172145"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Mechanical Engineering, University of Connecticut, Storrs, CT, United States",
+              "institution_ids": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5010254642",
+            "display_name": "Sheida Nabavi",
+            "orcid": "https://orcid.org/0000-0002-5996-1020"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I140172145",
+              "display_name": "University of Connecticut",
+              "ror": "https://ror.org/02der9h97",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Sheida Nabavi",
+          "raw_affiliation_strings": [
+            "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Computer Science and Engineering, University of Connecticut, Storrs, CT, United States",
+              "institution_ids": [
+                "https://openalex.org/I140172145"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 21,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://www.preprints.org/manuscript/202210.0096/v1/download",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Breast": [
+          0
+        ],
+        "cancer": [
+          1,
+          31,
+          50,
+          72,
+          75,
+          92,
+          102,
+          163,
+          245,
+          255,
+          277,
+          293,
+          325
+        ],
+        "is": [
+          2,
+          22,
+          66,
+          80,
+          185
+        ],
+        "among": [
+          3
+        ],
+        "the": [
+          4,
+          35,
+          67,
+          111,
+          157,
+          198,
+          213,
+          268,
+          291
+        ],
+        "most": [
+          5,
+          68,
+          269
+        ],
+        "common": [
+          6
+        ],
+        "and": [
+          7,
+          12,
+          28,
+          83,
+          109,
+          116,
+          201,
+          226,
+          258,
+          261,
+          266,
+          303
+        ],
+        "fatal": [
+          8
+        ],
+        "diseases": [
+          9
+        ],
+        "for": [
+          10,
+          71,
+          162
+        ],
+        "women,": [
+          11
+        ],
+        "no": [
+          13
+        ],
+        "permanent": [
+          14
+        ],
+        "treatment": [
+          15,
+          117,
+          202
+        ],
+        "has": [
+          16,
+          191
+        ],
+        "been": [
+          17,
+          192
+        ],
+        "discovered.": [
+          18
+        ],
+        "Thus,": [
+          19,
+          165
+        ],
+        "early": [
+          20,
+          64,
+          199
+        ],
+        "detection": [
+          21,
+          65,
+          98,
+          200,
+          278
+        ],
+        "a": [
+          23,
+          316
+        ],
+        "crucial": [
+          24
+        ],
+        "step": [
+          25
+        ],
+        "to": [
+          26,
+          107,
+          155,
+          171,
+          179,
+          182,
+          195,
+          239,
+          314,
+          319
+        ],
+        "control": [
+          27
+        ],
+        "cure": [
+          29
+        ],
+        "breast": [
+          30,
+          49,
+          74,
+          91,
+          101,
+          119,
+          176,
+          209,
+          244,
+          254,
+          276,
+          281,
+          292,
+          324
+        ],
+        "that": [
+          32,
+          153,
+          272
+        ],
+        "can": [
+          33,
+          124
+        ],
+        "save": [
+          34
+        ],
+        "lives": [
+          36
+        ],
+        "of": [
+          37,
+          39,
+          48,
+          56,
+          89,
+          118,
+          141,
+          159,
+          167,
+          175,
+          203,
+          206,
+          216,
+          228,
+          242
+        ],
+        "millions": [
+          38
+        ],
+        "women.": [
+          40
+        ],
+        "For": [
+          41
+        ],
+        "example,": [
+          42
+        ],
+        "in": [
+          43,
+          54,
+          219,
+          275,
+          299,
+          323
+        ],
+        "2020,": [
+          44
+        ],
+        "more": [
+          45
+        ],
+        "than": [
+          46
+        ],
+        "65%": [
+          47
+        ],
+        "patients": [
+          51
+        ],
+        "were": [
+          52
+        ],
+        "diagnosed": [
+          53
+        ],
+        "early-stage": [
+          55
+        ],
+        "cancer,": [
+          57,
+          207,
+          210
+        ],
+        "from": [
+          58,
+          95,
+          231
+        ],
+        "whom": [
+          59
+        ],
+        "all": [
+          60,
+          173
+        ],
+        "survived": [
+          61
+        ],
+        "cancer.": [
+          62,
+          120
+        ],
+        "Although": [
+          63
+        ],
+        "effective": [
+          69
+        ],
+        "approach": [
+          70
+        ],
+        "treatment,": [
+          73
+        ],
+        "screening": [
+          76,
+          177
+        ],
+        "conducted": [
+          77
+        ],
+        "by": [
+          78,
+          149
+        ],
+        "radiologists": [
+          79,
+          181
+        ],
+        "very": [
+          81
+        ],
+        "expensive": [
+          82
+        ],
+        "time-consuming.": [
+          84
+        ],
+        "More": [
+          85
+        ],
+        "importantly,": [
+          86
+        ],
+        "conventional": [
+          87
+        ],
+        "methods": [
+          88,
+          151,
+          170
+        ],
+        "analyzing": [
+          90
+        ],
+        "images": [
+          93,
+          147,
+          178,
+          184
+        ],
+        "suffer": [
+          94
+        ],
+        "high": [
+          96
+        ],
+        "false": [
+          97
+        ],
+        "rates.": [
+          99
+        ],
+        "Different": [
+          100
+        ],
+        "imaging": [
+          103,
+          122,
+          233,
+          256,
+          282,
+          294,
+          326
+        ],
+        "modalities": [
+          104,
+          123,
+          234,
+          295
+        ],
+        "are": [
+          105,
+          297
+        ],
+        "used": [
+          106
+        ],
+        "extract": [
+          108
+        ],
+        "analyze": [
+          110,
+          146,
+          172
+        ],
+        "key": [
+          112
+        ],
+        "features": [
+          113
+        ],
+        "affecting": [
+          114
+        ],
+        "diagnosis": [
+          115
+        ],
+        "These": [
+          121
+        ],
+        "be": [
+          125
+        ],
+        "divided": [
+          126
+        ],
+        "into": [
+          127
+        ],
+        "subgroups": [
+          128
+        ],
+        "such": [
+          129,
+          222
+        ],
+        "as": [
+          130,
+          223
+        ],
+        "mammograms,": [
+          131
+        ],
+        "ultrasound,": [
+          132
+        ],
+        "magnetic": [
+          133
+        ],
+        "resonance": [
+          134
+        ],
+        "imaging,": [
+          135
+        ],
+        "histopathological": [
+          136
+        ],
+        "images,": [
+          137
+        ],
+        "or": [
+          138,
+          144
+        ],
+        "any": [
+          139
+        ],
+        "combination": [
+          140
+        ],
+        "them.": [
+          142
+        ],
+        "Radiologists": [
+          143
+        ],
+        "pathologists": [
+          145
+        ],
+        "produced": [
+          148
+        ],
+        "these": [
+          150
+        ],
+        "manually": [
+          152
+        ],
+        "leads": [
+          154
+        ],
+        "increase": [
+          156
+        ],
+        "risk": [
+          158
+        ],
+        "wrong": [
+          160
+        ],
+        "decisions": [
+          161
+        ],
+        "detection.": [
+          164
+        ],
+        "utilization": [
+          166
+        ],
+        "new": [
+          168
+        ],
+        "automatic": [
+          169
+        ],
+        "kinds": [
+          174
+        ],
+        "assist": [
+          180
+        ],
+        "interpret": [
+          183
+        ],
+        "required.": [
+          186
+        ],
+        "Recently,": [
+          187
+        ],
+        "artificial": [
+          188
+        ],
+        "intelligence": [
+          189
+        ],
+        "(AI)": [
+          190
+        ],
+        "widely": [
+          193
+        ],
+        "utilized": [
+          194
+        ],
+        "automatically": [
+          196
+        ],
+        "improve": [
+          197
+        ],
+        "different": [
+          204
+        ],
+        "types": [
+          205
+        ],
+        "specifically": [
+          208
+        ],
+        "thereby": [
+          211
+        ],
+        "enhancing": [
+          212
+        ],
+        "survival": [
+          214
+        ],
+        "chance": [
+          215
+        ],
+        "patients.": [
+          217
+        ],
+        "Advances": [
+          218
+        ],
+        "AI": [
+          220,
+          274
+        ],
+        "algorithms,": [
+          221
+        ],
+        "deep": [
+          224,
+          305
+        ],
+        "learning,": [
+          225
+        ],
+        "availability": [
+          227
+        ],
+        "datasets": [
+          229,
+          289
+        ],
+        "obtained": [
+          230
+        ],
+        "various": [
+          232,
+          280
+        ],
+        "have": [
+          235
+        ],
+        "opened": [
+          236
+        ],
+        "an": [
+          237
+        ],
+        "opportunity": [
+          238
+        ],
+        "surpass": [
+          240
+        ],
+        "limitations": [
+          241
+        ],
+        "current": [
+          243
+        ],
+        "analysis": [
+          246
+        ],
+        "methods.": [
+          247
+        ],
+        "In": [
+          248,
+          284,
+          308
+        ],
+        "this": [
+          249,
+          310
+        ],
+        "article,": [
+          250
+        ],
+        "we": [
+          251,
+          264,
+          286
+        ],
+        "first": [
+          252
+        ],
+        "review": [
+          253,
+          311
+        ],
+        "modalities,": [
+          257
+        ],
+        "their": [
+          259
+        ],
+        "strengths": [
+          260
+        ],
+        "limitations.": [
+          262
+        ],
+        "Then,": [
+          263
+        ],
+        "explore": [
+          265
+        ],
+        "summarize": [
+          267
+        ],
+        "recent": [
+          270
+        ],
+        "studies": [
+          271
+        ],
+        "employed": [
+          273
+        ],
+        "using": [
+          279
+        ],
+        "modalities.": [
+          283
+        ],
+        "addition,": [
+          285
+        ],
+        "report": [
+          287
+        ],
+        "available": [
+          288
+        ],
+        "on": [
+          290
+        ],
+        "which": [
+          296
+        ],
+        "important": [
+          298
+        ],
+        "developing": [
+          300
+        ],
+        "AI-based": [
+          301
+        ],
+        "algorithms": [
+          302
+        ],
+        "training": [
+          304
+        ],
+        "learning": [
+          306
+        ],
+        "models.": [
+          307
+        ],
+        "conclusion,": [
+          309
+        ],
+        "paper": [
+          312
+        ],
+        "tries": [
+          313
+        ],
+        "provide": [
+          315
+        ],
+        "comprehensive": [
+          317
+        ],
+        "resource": [
+          318
+        ],
+        "help": [
+          320
+        ],
+        "researchers": [
+          321
+        ],
+        "working": [
+          322
+        ],
+        "analysis.": [
+          327
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4411571567",
+      "doi": "https://doi.org/10.1007/s11869-025-01771-y",
+      "display_name": "Air pollution observation\u2014bridging spaceborne to unmanned airborne remote sensing: a systematic review and meta-analysis",
+      "publication_year": 2025,
+      "publication_date": "2025-06-23",
+      "type": "review",
+      "primary_location": {
+        "id": "doi:10.1007/s11869-025-01771-y",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1007/s11869-025-01771-y",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1007/s11869-025-01771-y.pdf",
+        "source": {
+          "id": "https://openalex.org/S207573527",
+          "display_name": "Air Quality Atmosphere & Health",
+          "issn_l": "1873-9318",
+          "issn": [
+            "1873-9318",
+            "1873-9326"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310319900",
+          "host_organization_name": "Springer Science+Business Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319900",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Springer Science+Business Media",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Air Quality, Atmosphere &amp; Health",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5084332392",
+            "display_name": "Farzaneh Dadrass Javan",
+            "orcid": "https://orcid.org/0000-0002-0910-8160"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I94624287",
+              "display_name": "University of Twente",
+              "ror": "https://ror.org/006hf6230",
+              "country_code": "NL",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I94624287"
+              ]
+            }
+          ],
+          "countries": [
+            "NL"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Farzaneh Dadrass Javan",
+          "raw_affiliation_strings": [
+            "Faculty of Geo-Information Science and Earth Observation (ITC), University of Twente, 7522 NB, Enschede, The Netherlands"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-0910-8160",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Faculty of Geo-Information Science and Earth Observation (ITC), University of Twente, 7522 NB, Enschede, The Netherlands",
+              "institution_ids": [
+                "https://openalex.org/I94624287"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5062957503",
+            "display_name": "Farhad Samadzadegan",
+            "orcid": "https://orcid.org/0000-0003-3439-5648"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I23946033",
+              "display_name": "University of Tehran",
+              "ror": "https://ror.org/05vf56z40",
+              "country_code": "IR",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I23946033"
+              ]
+            }
+          ],
+          "countries": [
+            "IR"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Farhad Samadzadegan",
+          "raw_affiliation_strings": [
+            "School of Surveying and Geospatial Engineering, College of Engineering, University of Tehran, Tehran, 1439957131, Iran"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Surveying and Geospatial Engineering, College of Engineering, University of Tehran, Tehran, 1439957131, Iran",
+              "institution_ids": [
+                "https://openalex.org/I23946033"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5041224491",
+            "display_name": "Ahmad Toosi",
+            "orcid": "https://orcid.org/0000-0002-8446-8123"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I23946033",
+              "display_name": "University of Tehran",
+              "ror": "https://ror.org/05vf56z40",
+              "country_code": "IR",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I23946033"
+              ]
+            }
+          ],
+          "countries": [
+            "IR"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Ahmad Toosi",
+          "raw_affiliation_strings": [
+            "School of Surveying and Geospatial Engineering, College of Engineering, University of Tehran, Tehran, 1439957131, Iran"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "School of Surveying and Geospatial Engineering, College of Engineering, University of Tehran, Tehran, 1439957131, Iran",
+              "institution_ids": [
+                "https://openalex.org/I23946033"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 11,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "hybrid",
+        "oa_url": "https://link.springer.com/content/pdf/10.1007/s11869-025-01771-y.pdf",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Abstract": [
+          0
+        ],
+        "Air": [
+          1
+        ],
+        "pollution": [
+          2,
+          33,
+          194
+        ],
+        "is": [
+          3
+        ],
+        "one": [
+          4
+        ],
+        "of": [
+          5,
+          26,
+          142,
+          152,
+          179,
+          188,
+          201
+        ],
+        "the": [
+          6,
+          21,
+          41,
+          45,
+          133,
+          175,
+          236
+        ],
+        "most": [
+          7
+        ],
+        "critical": [
+          8
+        ],
+        "environmental": [
+          9,
+          263
+        ],
+        "concerns": [
+          10
+        ],
+        "affecting": [
+          11
+        ],
+        "human": [
+          12
+        ],
+        "health": [
+          13
+        ],
+        "and": [
+          14,
+          23,
+          52,
+          68,
+          83,
+          98,
+          132,
+          177,
+          232,
+          241,
+          248,
+          260,
+          265
+        ],
+        "ecosystem": [
+          15
+        ],
+        "sustainability.": [
+          16
+        ],
+        "This": [
+          17,
+          251
+        ],
+        "comprehensive": [
+          18,
+          252
+        ],
+        "review": [
+          19,
+          228
+        ],
+        "analyzes": [
+          20
+        ],
+        "evolution": [
+          22
+        ],
+        "current": [
+          24,
+          230
+        ],
+        "state": [
+          25
+        ],
+        "Remote": [
+          27
+        ],
+        "Sensing": [
+          28
+        ],
+        "(RS)": [
+          29
+        ],
+        "methods": [
+          30
+        ],
+        "for": [
+          31,
+          49,
+          121,
+          183,
+          238,
+          257
+        ],
+        "air": [
+          32,
+          184
+        ],
+        "monitoring,": [
+          34,
+          123
+        ],
+        "examining": [
+          35
+        ],
+        "over": [
+          36
+        ],
+        "241": [
+          37
+        ],
+        "relevant": [
+          38
+        ],
+        "papers": [
+          39
+        ],
+        "from": [
+          40
+        ],
+        "Scopus": [
+          42
+        ],
+        "database": [
+          43
+        ],
+        "using": [
+          44
+        ],
+        "Preferred": [
+          46
+        ],
+        "Reporting": [
+          47
+        ],
+        "Items": [
+          48
+        ],
+        "Systematic": [
+          50
+        ],
+        "Reviews": [
+          51
+        ],
+        "Meta-Analyses": [
+          53
+        ],
+        "(PRISMA)": [
+          54
+        ],
+        "guidelines.": [
+          55
+        ],
+        "The": [
+          56,
+          140,
+          186,
+          227
+        ],
+        "study": [
+          57
+        ],
+        "systematically": [
+          58
+        ],
+        "evaluates": [
+          59
+        ],
+        "three": [
+          60
+        ],
+        "main": [
+          61
+        ],
+        "approaches:": [
+          62
+        ],
+        "spaceborne,": [
+          63
+        ],
+        "Manned": [
+          64
+        ],
+        "Aerial": [
+          65,
+          70
+        ],
+        "Vehicle": [
+          66,
+          71
+        ],
+        "(MAV)-borne,": [
+          67
+        ],
+        "Unmanned": [
+          69
+        ],
+        "(UAV)-borne": [
+          72
+        ],
+        "RS.": [
+          73
+        ],
+        "Our": [
+          74
+        ],
+        "analysis": [
+          75,
+          182,
+          253
+        ],
+        "reveals": [
+          76
+        ],
+        "significant": [
+          77,
+          193
+        ],
+        "technological": [
+          78
+        ],
+        "advancements": [
+          79
+        ],
+        "in": [
+          80,
+          125,
+          262
+        ],
+        "sensors,": [
+          81
+        ],
+        "platforms,": [
+          82,
+          166
+        ],
+        "data": [
+          84,
+          147,
+          161,
+          181,
+          244
+        ],
+        "processing": [
+          85,
+          162
+        ],
+        "methods.": [
+          86
+        ],
+        "Spaceborne": [
+          87
+        ],
+        "monitoring": [
+          88,
+          264
+        ],
+        "demonstrates": [
+          89
+        ],
+        "enhanced": [
+          90,
+          146
+        ],
+        "spatial": [
+          91,
+          138
+        ],
+        "resolution": [
+          92
+        ],
+        "(from": [
+          93,
+          101
+        ],
+        "10": [
+          94
+        ],
+        "km": [
+          95
+        ],
+        "to": [
+          96,
+          103,
+          135,
+          223
+        ],
+        "sub-kilometer)": [
+          97
+        ],
+        "temporal": [
+          99
+        ],
+        "frequency": [
+          100
+        ],
+        "monthly": [
+          102
+        ],
+        "near-real-time).": [
+          104
+        ],
+        "MAV-based": [
+          105
+        ],
+        "systems": [
+          106
+        ],
+        "show": [
+          107
+        ],
+        "superior": [
+          108
+        ],
+        "regional": [
+          109
+        ],
+        "mapping": [
+          110
+        ],
+        "capabilities": [
+          111
+        ],
+        "but": [
+          112
+        ],
+        "face": [
+          113
+        ],
+        "operational": [
+          114,
+          129
+        ],
+        "constraints.": [
+          115
+        ],
+        "UAVs": [
+          116
+        ],
+        "emerge": [
+          117
+        ],
+        "as": [
+          118
+        ],
+        "promising": [
+          119
+        ],
+        "solutions": [
+          120
+        ],
+        "local-scale": [
+          122
+        ],
+        "particularly": [
+          124,
+          167
+        ],
+        "hazardous": [
+          126
+        ],
+        "environments,": [
+          127
+        ],
+        "offering": [
+          128
+        ],
+        "flexibility,": [
+          130
+        ],
+        "cost-effectiveness,": [
+          131
+        ],
+        "ability": [
+          134
+        ],
+        "capture": [
+          136
+        ],
+        "high-resolution": [
+          137
+        ],
+        "data.": [
+          139
+        ],
+        "Internet": [
+          141
+        ],
+        "Things": [
+          143
+        ],
+        "(IoT)": [
+          144
+        ],
+        "has": [
+          145,
+          159
+        ],
+        "collection": [
+          148
+        ],
+        "networks,": [
+          149
+        ],
+        "while": [
+          150
+        ],
+        "integration": [
+          151
+        ],
+        "Artificial": [
+          153
+        ],
+        "Intelligence": [
+          154
+        ],
+        "(AI),": [
+          155
+        ],
+        "specifically": [
+          156
+        ],
+        "deep": [
+          157
+        ],
+        "learning,": [
+          158
+        ],
+        "revolutionized": [
+          160
+        ],
+        "capabilities.": [
+          163
+        ],
+        "Cloud": [
+          164
+        ],
+        "computing": [
+          165
+        ],
+        "Google": [
+          168
+        ],
+        "Earth": [
+          169
+        ],
+        "Engine": [
+          170
+        ],
+        "(GEE),": [
+          171
+        ],
+        "have": [
+          172
+        ],
+        "further": [
+          173
+        ],
+        "transformed": [
+          174
+        ],
+        "scale": [
+          176
+        ],
+        "efficiency": [
+          178
+        ],
+        "big": [
+          180
+        ],
+        "quality.": [
+          185
+        ],
+        "meta-analysis": [
+          187
+        ],
+        "COVID-19": [
+          189
+        ],
+        "lockdown": [
+          190
+        ],
+        "impacts": [
+          191
+        ],
+        "shows": [
+          192
+        ],
+        "reductions,": [
+          195
+        ],
+        "with": [
+          196,
+          217
+        ],
+        "an": [
+          197
+        ],
+        "overall": [
+          198
+        ],
+        "average": [
+          199
+        ],
+        "decrease": [
+          200
+        ],
+        "28%": [
+          202
+        ],
+        "across": [
+          203
+        ],
+        "major": [
+          204
+        ],
+        "pollutants": [
+          205,
+          213
+        ],
+        "(NO2,": [
+          206
+        ],
+        "PM2.5,": [
+          207
+        ],
+        "PM10,": [
+          208
+        ],
+        "SO2,": [
+          209
+        ],
+        "CO),": [
+          210
+        ],
+        "though": [
+          211
+        ],
+        "individual": [
+          212
+        ],
+        "showed": [
+          214
+        ],
+        "varying": [
+          215
+        ],
+        "responses,": [
+          216
+        ],
+        "O3": [
+          218
+        ],
+        "notably": [
+          219
+        ],
+        "demonstrating": [
+          220
+        ],
+        "increases": [
+          221
+        ],
+        "due": [
+          222
+        ],
+        "atmospheric": [
+          224
+        ],
+        "chemistry": [
+          225
+        ],
+        "dynamics.": [
+          226
+        ],
+        "identifies": [
+          229
+        ],
+        "limitations": [
+          231
+        ],
+        "future": [
+          233
+        ],
+        "directions,": [
+          234
+        ],
+        "emphasizing": [
+          235
+        ],
+        "need": [
+          237
+        ],
+        "improved": [
+          239
+        ],
+        "multi-platform": [
+          240
+        ],
+        "multi-sensor": [
+          242
+        ],
+        "RS": [
+          243
+        ],
+        "integration,": [
+          245
+        ],
+        "sensor": [
+          246
+        ],
+        "miniaturization,": [
+          247
+        ],
+        "regulatory": [
+          249
+        ],
+        "frameworks.": [
+          250
+        ],
+        "provides": [
+          254
+        ],
+        "valuable": [
+          255
+        ],
+        "insights": [
+          256
+        ],
+        "researchers,": [
+          258
+        ],
+        "policymakers,": [
+          259
+        ],
+        "practitioners": [
+          261
+        ],
+        "public": [
+          266
+        ],
+        "health.": [
+          267
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W7167873550",
+      "doi": null,
+      "display_name": "Deep Learning-Based Respiratory Motion Correction for Positron Emission Tomography",
+      "publication_year": 2025,
+      "publication_date": "2025-12-01",
+      "type": "dissertation",
+      "primary_location": {
+        "id": "pmh:oai:qucosa:de:qucosa:105111",
+        "is_oa": true,
+        "landing_page_url": "https://tud.qucosa.de/id/qucosa%3A105111",
+        "pdf_url": "https://tud.qucosa.de/api/qucosa%3A105111/attachment/ATT-0/",
+        "source": {
+          "id": "https://openalex.org/S4377196435",
+          "display_name": "Qucosa (Saxon State and University Library Dresden)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I3132420320",
+          "host_organization_name": "SLUB Dresden",
+          "host_organization_lineage": [
+            "https://openalex.org/I3132420320"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "info:eu-repo/semantics/doctoralThesis"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5140364383",
+            "display_name": "Bia Rosin",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": true,
+          "raw_author_name": "Rosin, Bia",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://tud.qucosa.de/api/qucosa%3A105111/attachment/ATT-0/",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Positron": [
+          0
+        ],
+        "emission": [
+          1
+        ],
+        "tomography": [
+          2
+        ],
+        "(PET)": [
+          3
+        ],
+        "plays": [
+          4
+        ],
+        "a": [
+          5,
+          116,
+          168,
+          276,
+          308,
+          378,
+          407,
+          524
+        ],
+        "central": [
+          6
+        ],
+        "role": [
+          7
+        ],
+        "in": [
+          8,
+          30,
+          188,
+          296,
+          340,
+          414,
+          459,
+          590,
+          621,
+          646,
+          683,
+          687,
+          716,
+          746
+        ],
+        "oncological": [
+          9,
+          199
+        ],
+        "imaging": [
+          10,
+          123
+        ],
+        "due": [
+          11
+        ],
+        "to": [
+          12,
+          15,
+          72,
+          102,
+          128,
+          139,
+          148,
+          181,
+          190,
+          222,
+          257,
+          272,
+          287,
+          346,
+          397,
+          444,
+          449,
+          539,
+          593,
+          607,
+          631,
+          670,
+          678
+        ],
+        "its": [
+          13,
+          183
+        ],
+        "ability": [
+          14
+        ],
+        "visualize": [
+          16
+        ],
+        "metabolic": [
+          17
+        ],
+        "processes,": [
+          18
+        ],
+        "making": [
+          19
+        ],
+        "it": [
+          20,
+          659,
+          674
+        ],
+        "valuable": [
+          21
+        ],
+        "for": [
+          22,
+          74,
+          119,
+          152,
+          172,
+          176,
+          237,
+          711,
+          739
+        ],
+        "tumor": [
+          23
+        ],
+        "detection,": [
+          24
+        ],
+        "staging,": [
+          25
+        ],
+        "and": [
+          26,
+          32,
+          59,
+          86,
+          143,
+          165,
+          180,
+          185,
+          207,
+          263,
+          334,
+          357,
+          402,
+          412,
+          424,
+          442,
+          492,
+          513,
+          529,
+          546,
+          586,
+          743,
+          767,
+          783
+        ],
+        "treatment": [
+          27
+        ],
+        "monitoring.": [
+          28
+        ],
+        "However,": [
+          29
+        ],
+        "thoracic": [
+          31
+        ],
+        "abdominal": [
+          33
+        ],
+        "regions,": [
+          34
+        ],
+        "image": [
+          35,
+          82,
+          129,
+          140,
+          214,
+          241,
+          318,
+          703,
+          730
+        ],
+        "quality": [
+          36,
+          383,
+          731
+        ],
+        "is": [
+          37,
+          94,
+          668
+        ],
+        "often": [
+          38
+        ],
+        "compromised": [
+          39
+        ],
+        "by": [
+          40,
+          43,
+          217,
+          306,
+          473,
+          654
+        ],
+        "artifacts": [
+          41,
+          52,
+          362,
+          469,
+          725
+        ],
+        "caused": [
+          42,
+          216
+        ],
+        "respiratory": [
+          44,
+          75,
+          153,
+          173,
+          250,
+          463,
+          576,
+          625,
+          713
+        ],
+        "motion": [
+          45,
+          79,
+          154,
+          174,
+          209,
+          361,
+          456,
+          464,
+          468,
+          542,
+          577,
+          714,
+          724
+        ],
+        "during": [
+          46
+        ],
+        "ongoing": [
+          47
+        ],
+        "data": [
+          48,
+          93,
+          179
+        ],
+        "acquisition.": [
+          49
+        ],
+        "These": [
+          50
+        ],
+        "motion-related": [
+          51
+        ],
+        "reduce": [
+          53
+        ],
+        "spatial": [
+          54
+        ],
+        "resolution,": [
+          55
+        ],
+        "impair": [
+          56
+        ],
+        "quantification": [
+          57
+        ],
+        "accuracy,": [
+          58,
+          502
+        ],
+        "can": [
+          60,
+          706
+        ],
+        "compromise": [
+          61,
+          369
+        ],
+        "diagnostic": [
+          62
+        ],
+        "accuracy.": [
+          63
+        ],
+        "In": [
+          64,
+          193,
+          597,
+          664
+        ],
+        "the": [
+          65,
+          91,
+          106,
+          146,
+          157,
+          163,
+          195,
+          202,
+          223,
+          269,
+          282,
+          289,
+          317,
+          335,
+          360,
+          382,
+          385,
+          389,
+          392,
+          399,
+          416,
+          428,
+          437,
+          445,
+          474,
+          479,
+          486,
+          508,
+          514,
+          534,
+          540,
+          556,
+          563,
+          594,
+          598,
+          647,
+          655,
+          698,
+          729,
+          733,
+          753,
+          758,
+          764,
+          768
+        ],
+        "past,": [
+          66
+        ],
+        "different": [
+          67,
+          103
+        ],
+        "strategies": [
+          68,
+          782
+        ],
+        "have": [
+          69,
+          134,
+          145
+        ],
+        "been": [
+          70,
+          136
+        ],
+        "developed": [
+          71,
+          236
+        ],
+        "compensate": [
+          73
+        ],
+        "motion,": [
+          76,
+          626,
+          642
+        ],
+        "including": [
+          77
+        ],
+        "incorporating": [
+          78
+        ],
+        "models": [
+          80
+        ],
+        "into": [
+          81,
+          96,
+          248,
+          785
+        ],
+        "reconstruction,": [
+          83
+        ],
+        "motion-deblurring": [
+          84
+        ],
+        "techniques,": [
+          85,
+          89
+        ],
+        "gate-based": [
+          87,
+          498
+        ],
+        "registration": [
+          88,
+          141,
+          242,
+          253,
+          501,
+          662,
+          704
+        ],
+        "where": [
+          90,
+          627
+        ],
+        "acquisition": [
+          92
+        ],
+        "partitioned": [
+          95
+        ],
+        "bins,": [
+          97
+        ],
+        "known": [
+          98
+        ],
+        "as": [
+          99,
+          115,
+          316,
+          503,
+          505,
+          658
+        ],
+        "\u201cgates\u201d,": [
+          100
+        ],
+        "corresponding": [
+          101
+        ],
+        "phases": [
+          104
+        ],
+        "of": [
+          105,
+          159,
+          167,
+          204,
+          243,
+          260,
+          374,
+          384,
+          427,
+          436,
+          481,
+          485,
+          500,
+          507,
+          526,
+          555,
+          569,
+          732,
+          760,
+          763
+        ],
+        "breathing": [
+          107
+        ],
+        "cycle.": [
+          108
+        ],
+        "More": [
+          109
+        ],
+        "recently,": [
+          110
+        ],
+        "deep": [
+          111,
+          169,
+          701
+        ],
+        "learning": [
+          112,
+          132
+        ],
+        "has": [
+          113,
+          377
+        ],
+        "emerged": [
+          114
+        ],
+        "promising": [
+          117,
+          637
+        ],
+        "approach": [
+          118,
+          454,
+          617,
+          721
+        ],
+        "addressing": [
+          120
+        ],
+        "various": [
+          121
+        ],
+        "medical": [
+          122
+        ],
+        "tasks,": [
+          124
+        ],
+        "ranging": [
+          125
+        ],
+        "from": [
+          126
+        ],
+        "segmentation": [
+          127
+        ],
+        "reconstruction.": [
+          130
+        ],
+        "Deep": [
+          131
+        ],
+        "techniques": [
+          133
+        ],
+        "also": [
+          135
+        ],
+        "successfully": [
+          137
+        ],
+        "applied": [
+          138,
+          419,
+          443
+        ],
+        "tasks": [
+          142
+        ],
+        "might": [
+          144
+        ],
+        "potential": [
+          147,
+          186
+        ],
+        "offer": [
+          149
+        ],
+        "superior": [
+          150
+        ],
+        "solutions": [
+          151
+        ],
+        "correction.": [
+          155
+        ],
+        "Correspondingly,": [
+          156
+        ],
+        "aim": [
+          158
+        ],
+        "this": [
+          160,
+          229,
+          694
+        ],
+        "work": [
+          161,
+          695,
+          777
+        ],
+        "was": [
+          162,
+          235,
+          255,
+          294,
+          324,
+          395,
+          410,
+          418,
+          521,
+          537,
+          618,
+          629
+        ],
+        "development": [
+          164
+        ],
+        "evaluation": [
+          166,
+          496
+        ],
+        "learning-based": [
+          170,
+          702
+        ],
+        "procedure": [
+          171
+        ],
+        "correction": [
+          175,
+          210,
+          519,
+          543,
+          715
+        ],
+        "clinical": [
+          177,
+          244,
+          370,
+          717,
+          786
+        ],
+        "PET": [
+          178,
+          245,
+          718
+        ],
+        "assess": [
+          182
+        ],
+        "strengths": [
+          184
+        ],
+        "weaknesses": [
+          187
+        ],
+        "comparison": [
+          189
+        ],
+        "established": [
+          191
+        ],
+        "approaches.": [
+          192
+        ],
+        "particular,": [
+          194
+        ],
+        "investigation": [
+          196
+        ],
+        "focused": [
+          197
+        ],
+        "on": [
+          198,
+          312,
+          381,
+          548
+        ],
+        "PET,": [
+          200
+        ],
+        "with": [
+          201,
+          275,
+          326,
+          421,
+          461,
+          623,
+          748
+        ],
+        "objective": [
+          203
+        ],
+        "providing": [
+          205
+        ],
+        "flexible": [
+          206
+        ],
+        "accurate": [
+          208,
+          567
+        ],
+        "while": [
+          211,
+          363,
+          666,
+          726
+        ],
+        "avoiding": [
+          212,
+          364
+        ],
+        "local": [
+          213,
+          219
+        ],
+        "corruption": [
+          215
+        ],
+        "spurious": [
+          218,
+          365
+        ],
+        "deformations": [
+          220,
+          333,
+          350,
+          742
+        ],
+        "unrelated": [
+          221
+        ],
+        "actual": [
+          224
+        ],
+        "patient": [
+          225,
+          549
+        ],
+        "motion.": [
+          226,
+          750
+        ],
+        "To": [
+          227
+        ],
+        "address": [
+          228
+        ],
+        "task,": [
+          230
+        ],
+        "an": [
+          231,
+          297,
+          708
+        ],
+        "unsupervised": [
+          232,
+          298,
+          700
+        ],
+        "CNN-based": [
+          233
+        ],
+        "framework": [
+          234,
+          536,
+          565,
+          705
+        ],
+        "fully": [
+          238,
+          652
+        ],
+        "automated": [
+          239
+        ],
+        "gate-to-gate": [
+          240
+        ],
+        "investigations": [
+          246
+        ],
+        "divided": [
+          247
+        ],
+        "multiple": [
+          249
+        ],
+        "gates.": [
+          251
+        ],
+        "The": [
+          252,
+          292,
+          321,
+          372,
+          432,
+          559,
+          579,
+          720
+        ],
+        "network": [
+          254,
+          293,
+          417,
+          476,
+          557
+        ],
+        "designed": [
+          256
+        ],
+        "take": [
+          258
+        ],
+        "pairs": [
+          259
+        ],
+        "gated": [
+          261
+        ],
+        "images": [
+          262,
+          448,
+          581
+        ],
+        "predict": [
+          264,
+          347
+        ],
+        "deformation": [
+          265,
+          434,
+          510
+        ],
+        "fields": [
+          266,
+          435,
+          512
+        ],
+        "that": [
+          267,
+          351,
+          367,
+          551,
+          562,
+          697
+        ],
+        "warp": [
+          268
+        ],
+        "individual": [
+          270
+        ],
+        "gates": [
+          271,
+          284,
+          356
+        ],
+        "align": [
+          273,
+          354
+        ],
+        "them": [
+          274
+        ],
+        "mutual": [
+          277
+        ],
+        "reference": [
+          278,
+          375,
+          404,
+          648,
+          769
+        ],
+        "gate.": [
+          279,
+          405
+        ],
+        "After": [
+          280
+        ],
+        "registration,": [
+          281
+        ],
+        "aligned": [
+          283
+        ],
+        "were": [
+          285,
+          440,
+          552
+        ],
+        "averaged": [
+          286
+        ],
+        "yield": [
+          288
+        ],
+        "motion-corrected": [
+          290
+        ],
+        "image.": [
+          291
+        ],
+        "trained": [
+          295
+        ],
+        "manner,": [
+          299
+        ],
+        "i.e.,": [
+          300
+        ],
+        "without": [
+          301,
+          478
+        ],
+        "requiring": [
+          302
+        ],
+        "ground": [
+          303
+        ],
+        "truth": [
+          304
+        ],
+        "data,": [
+          305,
+          600
+        ],
+        "optimizing": [
+          307
+        ],
+        "loss": [
+          309,
+          322
+        ],
+        "function": [
+          310,
+          323
+        ],
+        "based": [
+          311
+        ],
+        "linear": [
+          313
+        ],
+        "voxel-wise": [
+          314
+        ],
+        "correlation": [
+          315
+        ],
+        "similarity": [
+          319
+        ],
+        "metric.": [
+          320
+        ],
+        "combined": [
+          325,
+          441
+        ],
+        "two": [
+          327
+        ],
+        "regularization": [
+          328,
+          667,
+          765
+        ],
+        "terms:": [
+          329
+        ],
+        "one": [
+          330
+        ],
+        "ensuring": [
+          331
+        ],
+        "smooth": [
+          332
+        ],
+        "other": [
+          336
+        ],
+        "encouraging": [
+          337
+        ],
+        "volume": [
+          338
+        ],
+        "preservation": [
+          339
+        ],
+        "high-intensity": [
+          341
+        ],
+        "regions.": [
+          342,
+          692
+        ],
+        "This": [
+          343,
+          453
+        ],
+        "design": [
+          344,
+          737
+        ],
+        "aimed": [
+          345
+        ],
+        "anatomically": [
+          348,
+          740
+        ],
+        "plausible": [
+          349,
+          741
+        ],
+        "would": [
+          352
+        ],
+        "effectively": [
+          353,
+          574
+        ],
+        "all": [
+          355
+        ],
+        "thereby": [
+          358
+        ],
+        "correct": [
+          359
+        ],
+        "distortions": [
+          366,
+          682
+        ],
+        "could": [
+          368,
+          470,
+          778
+        ],
+        "interpretation.": [
+          371
+        ],
+        "choice": [
+          373
+        ],
+        "gate": [
+          376,
+          394
+        ],
+        "crucial": [
+          379
+        ],
+        "influence": [
+          380
+        ],
+        "obtained": [
+          386,
+          487
+        ],
+        "results.": [
+          387
+        ],
+        "Among": [
+          388
+        ],
+        "considered": [
+          390
+        ],
+        "options,": [
+          391
+        ],
+        "mid-inspiration": [
+          393
+        ],
+        "found": [
+          396
+        ],
+        "be": [
+          398,
+          471,
+          651,
+          707
+        ],
+        "most": [
+          400
+        ],
+        "stable": [
+          401
+        ],
+        "suitable": [
+          403
+        ],
+        "Additionally,": [
+          406,
+          775
+        ],
+        "cascading": [
+          408,
+          438
+        ],
+        "scheme": [
+          409
+        ],
+        "implemented": [
+          411
+        ],
+        "evaluated,": [
+          413
+        ],
+        "which": [
+          415
+        ],
+        "repeatedly": [
+          420
+        ],
+        "varying": [
+          422
+        ],
+        "matrix": [
+          423
+        ],
+        "voxel": [
+          425
+        ],
+        "sizes": [
+          426
+        ],
+        "respective": [
+          429,
+          515
+        ],
+        "input": [
+          430,
+          447
+        ],
+        "images.": [
+          431
+        ],
+        "predicted": [
+          433,
+          509
+        ],
+        "stages": [
+          439
+        ],
+        "original": [
+          446,
+          734
+        ],
+        "minimize": [
+          450
+        ],
+        "interpolation": [
+          451
+        ],
+        "artifacts.": [
+          452,
+          578,
+          634
+        ],
+        "improved": [
+          455
+        ],
+        "correction,": [
+          457
+        ],
+        "particularly": [
+          458,
+          686
+        ],
+        "cases": [
+          460,
+          622,
+          747
+        ],
+        "large": [
+          462
+        ],
+        "amplitudes,": [
+          465
+        ],
+        "since": [
+          466
+        ],
+        "residual": [
+          467
+        ],
+        "resolved": [
+          472
+        ],
+        "repeated": [
+          475
+        ],
+        "applications": [
+          477
+        ],
+        "risk": [
+          480
+        ],
+        "unrealistic": [
+          482
+        ],
+        "deformations.": [
+          483
+        ],
+        "Evaluation": [
+          484
+        ],
+        "results": [
+          488,
+          560
+        ],
+        "encompassed": [
+          489
+        ],
+        "both": [
+          490
+        ],
+        "quantitative": [
+          491
+        ],
+        "qualitative": [
+          493,
+          530
+        ],
+        "criteria.": [
+          494
+        ],
+        "Quantitative": [
+          495
+        ],
+        "included": [
+          497
+        ],
+        "assessment": [
+          499
+        ],
+        "well": [
+          504
+        ],
+        "analysis": [
+          506
+        ],
+        "vector": [
+          511
+        ],
+        "Jacobian": [
+          516
+        ],
+        "determinants.": [
+          517
+        ],
+        "Motion": [
+          518
+        ],
+        "performance": [
+          520
+        ],
+        "assessed": [
+          522
+        ],
+        "using": [
+          523
+        ],
+        "combination": [
+          525
+        ],
+        "image-based": [
+          527
+        ],
+        "metrics": [
+          528
+        ],
+        "visual": [
+          531
+        ],
+        "inspection.": [
+          532
+        ],
+        "Furthermore,": [
+          533
+        ],
+        "final": [
+          535
+        ],
+        "compared": [
+          538,
+          592,
+          606
+        ],
+        "commercial": [
+          541
+        ],
+        "software": [
+          544
+        ],
+        "OncoFreeze": [
+          545,
+          610,
+          628,
+          745
+        ],
+        "tested": [
+          547
+        ],
+        "scans": [
+          550
+        ],
+        "not": [
+          553
+        ],
+        "part": [
+          554
+        ],
+        "development.": [
+          558
+        ],
+        "demonstrate": [
+          561
+        ],
+        "proposed": [
+          564,
+          656,
+          699
+        ],
+        "achieves": [
+          566
+        ],
+        "alignment": [
+          568
+        ],
+        "anatomical": [
+          570,
+          614
+        ],
+        "structures": [
+          571
+        ],
+        "across": [
+          572
+        ],
+        "gates,": [
+          573
+        ],
+        "minimizing": [
+          575
+        ],
+        "corrected": [
+          580,
+          653
+        ],
+        "display": [
+          582
+        ],
+        "substantially": [
+          583
+        ],
+        "reduced": [
+          584
+        ],
+        "motion-blurring": [
+          585
+        ],
+        "increased": [
+          587
+        ],
+        "contrast": [
+          588
+        ],
+        "recovery": [
+          589
+        ],
+        "lesions": [
+          591
+        ],
+        "uncorrected": [
+          595
+        ],
+        "scans.": [
+          596
+        ],
+        "available": [
+          599
+        ],
+        "our": [
+          601,
+          616
+        ],
+        "method": [
+          602
+        ],
+        "performed": [
+          603
+        ],
+        "overall": [
+          604
+        ],
+        "competitively": [
+          605
+        ],
+        "OncoFreeze.": [
+          608
+        ],
+        "While": [
+          609
+        ],
+        "better": [
+          611
+        ],
+        "preserved": [
+          612
+        ],
+        "fine": [
+          613
+        ],
+        "details,": [
+          615
+        ],
+        "more": [
+          619
+        ],
+        "robust": [
+          620
+        ],
+        "strong": [
+          624,
+          749
+        ],
+        "prone": [
+          630
+        ],
+        "introducing": [
+          632
+        ],
+        "shadow-like": [
+          633
+        ],
+        "Despite": [
+          635
+        ],
+        "these": [
+          636
+        ],
+        "results,": [
+          638
+        ],
+        "limitations": [
+          639
+        ],
+        "remain.": [
+          640
+        ],
+        "Intra-gate": [
+          641
+        ],
+        "especially": [
+          643
+        ],
+        "when": [
+          644
+        ],
+        "present": [
+          645
+        ],
+        "gate,": [
+          649,
+          770
+        ],
+        "cannot": [
+          650
+        ],
+        "method,": [
+          657
+        ],
+        "addresses": [
+          660
+        ],
+        "inter-gate": [
+          661
+        ],
+        "only.": [
+          663
+        ],
+        "addition,": [
+          665
+        ],
+        "necessary": [
+          669
+        ],
+        "avoid": [
+          671
+        ],
+        "implausible": [
+          672
+        ],
+        "deformations,": [
+          673
+        ],
+        "does": [
+          675
+        ],
+        "sometimes": [
+          676
+        ],
+        "lead": [
+          677
+        ],
+        "oversmoothing": [
+          679
+        ],
+        "effects": [
+          680
+        ],
+        "or": [
+          681,
+          689
+        ],
+        "non-moving": [
+          684
+        ],
+        "structures,": [
+          685
+        ],
+        "low-contrast": [
+          688
+        ],
+        "highly": [
+          690
+        ],
+        "motion-affected": [
+          691
+        ],
+        "Overall,": [
+          693
+        ],
+        "demonstrated": [
+          696
+        ],
+        "effective": [
+          709
+        ],
+        "tool": [
+          710
+        ],
+        "retrospective": [
+          712
+        ],
+        "imaging.": [
+          719
+        ],
+        "notably": [
+          722
+        ],
+        "reduces": [
+          723
+        ],
+        "otherwise": [
+          727
+        ],
+        "preserving": [
+          728
+        ],
+        "scan.": [
+          735
+        ],
+        "Its": [
+          736
+        ],
+        "allows": [
+          738
+        ],
+        "outperforms": [
+          744
+        ],
+        "Looking": [
+          751
+        ],
+        "ahead,": [
+          752
+        ],
+        "framework\u2019s": [
+          754
+        ],
+        "flexibility": [
+          755
+        ],
+        "will": [
+          756
+        ],
+        "allow": [
+          757
+        ],
+        "exploration": [
+          759
+        ],
+        "automatic": [
+          761
+        ],
+        "selection": [
+          762
+        ],
+        "strength": [
+          766
+        ],
+        "potentially": [
+          771
+        ],
+        "reducing": [
+          772
+        ],
+        "current": [
+          773
+        ],
+        "limitations.": [
+          774
+        ],
+        "future": [
+          776
+        ],
+        "investigate": [
+          779
+        ],
+        "data-driven": [
+          780
+        ],
+        "gating": [
+          781
+        ],
+        "integration": [
+          784
+        ],
+        "workflows.": [
+          787
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W7137732249",
+      "doi": null,
+      "display_name": "Recent Advances in Infrared Spectroscopy and Its Applications in Biotechnology",
+      "publication_year": 2025,
+      "publication_date": "2025-01-01",
+      "type": "other",
+      "primary_location": {
+        "id": "pmh:oai:directory.doabooks.org:20.500.12854/161459",
+        "is_oa": true,
+        "landing_page_url": "https://www.intechopen.com/books/1003454",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306400539",
+          "display_name": "Directory of Open access Books (OAPEN Foundation)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": null
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5129644648",
+            "display_name": "Nirmal Mazumder",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Nirmal Mazumder",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5129695660",
+            "display_name": "Guan-Yu Zhuo",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Guan-Yu Zhuo",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://www.intechopen.com/books/1003454",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Infrared": [
+          0,
+          22,
+          58
+        ],
+        "(IR)": [
+          1
+        ],
+        "spectroscopy": [
+          2,
+          113
+        ],
+        "has": [
+          3
+        ],
+        "become": [
+          4
+        ],
+        "a": [
+          5,
+          82,
+          96
+        ],
+        "powerful": [
+          6
+        ],
+        "tool": [
+          7
+        ],
+        "in": [
+          8,
+          21,
+          27,
+          33,
+          40
+        ],
+        "biotechnology,": [
+          9
+        ],
+        "enabling": [
+          10
+        ],
+        "precise": [
+          11
+        ],
+        "molecular": [
+          12
+        ],
+        "characterization,": [
+          13
+        ],
+        "disease": [
+          14
+        ],
+        "detection,": [
+          15
+        ],
+        "and": [
+          16,
+          24,
+          46,
+          65,
+          90,
+          114
+        ],
+        "biomolecular": [
+          17
+        ],
+        "analysis.": [
+          18,
+          74
+        ],
+        "Recent": [
+          19
+        ],
+        "Advances": [
+          20
+        ],
+        "Spectroscopy": [
+          23,
+          63
+        ],
+        "Its": [
+          25
+        ],
+        "Applications": [
+          26
+        ],
+        "Biotechnology": [
+          28
+        ],
+        "explores": [
+          29
+        ],
+        "the": [
+          30,
+          66,
+          108
+        ],
+        "latest": [
+          31
+        ],
+        "developments": [
+          32
+        ],
+        "this": [
+          34,
+          102
+        ],
+        "field,": [
+          35
+        ],
+        "highlighting": [
+          36
+        ],
+        "its": [
+          37,
+          115
+        ],
+        "expanding": [
+          38
+        ],
+        "role": [
+          39
+        ],
+        "medical": [
+          41
+        ],
+        "diagnostics,": [
+          42
+        ],
+        "neuroscience,": [
+          43
+        ],
+        "food": [
+          44
+        ],
+        "science,": [
+          45
+        ],
+        "pharmaceutical": [
+          47
+        ],
+        "research.": [
+          48
+        ],
+        "This": [
+          49
+        ],
+        "book": [
+          50,
+          103
+        ],
+        "covers": [
+          51
+        ],
+        "key": [
+          52
+        ],
+        "topics": [
+          53
+        ],
+        "such": [
+          54
+        ],
+        "as": [
+          55
+        ],
+        "Fourier": [
+          56
+        ],
+        "Transform": [
+          57
+        ],
+        "(FTIR)": [
+          59
+        ],
+        "spectroscopy,": [
+          60
+        ],
+        "functional": [
+          61
+        ],
+        "Near-Infrared": [
+          62
+        ],
+        "(fNIRS),": [
+          64
+        ],
+        "integration": [
+          67
+        ],
+        "of": [
+          68,
+          85,
+          111
+        ],
+        "machine": [
+          69
+        ],
+        "learning": [
+          70
+        ],
+        "for": [
+          71
+        ],
+        "enhanced": [
+          72
+        ],
+        "spectral": [
+          73
+        ],
+        "With": [
+          75
+        ],
+        "contributions": [
+          76
+        ],
+        "from": [
+          77
+        ],
+        "leading": [
+          78
+        ],
+        "experts,": [
+          79
+        ],
+        "it": [
+          80
+        ],
+        "provides": [
+          81
+        ],
+        "comprehensive": [
+          83
+        ],
+        "overview": [
+          84
+        ],
+        "fundamental": [
+          86
+        ],
+        "principles,": [
+          87
+        ],
+        "advanced": [
+          88
+        ],
+        "methodologies,": [
+          89
+        ],
+        "real-world": [
+          91
+        ],
+        "applications.": [
+          92
+        ],
+        "Whether": [
+          93
+        ],
+        "you": [
+          94
+        ],
+        "are": [
+          95
+        ],
+        "researcher,": [
+          97
+        ],
+        "student,": [
+          98
+        ],
+        "or": [
+          99
+        ],
+        "industry": [
+          100
+        ],
+        "professional,": [
+          101
+        ],
+        "offers": [
+          104
+        ],
+        "valuable": [
+          105
+        ],
+        "insights": [
+          106
+        ],
+        "into": [
+          107
+        ],
+        "evolving": [
+          109
+        ],
+        "landscape": [
+          110
+        ],
+        "IR": [
+          112
+        ],
+        "growing": [
+          116
+        ],
+        "impact": [
+          117
+        ],
+        "on": [
+          118
+        ],
+        "biotechnology.": [
+          119
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    }
+  ],
+  "group_by": []
+}

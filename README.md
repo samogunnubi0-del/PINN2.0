@@ -26,6 +26,8 @@ Physics-informed neural network surrogate for **Actinium-225** production planni
 
 This repo is **Python / PyTorch / Streamlit**. The single `.html` file is a printable outreach brief, not the model code.
 
+**Workspace status:** read [Current Project Status](docs/CURRENT_STATUS.md) before using a saved metric or preparing a presentation. It records the checkpoint-to-validation integrity check and the active entry points. [Project Guide](docs/PROJECT_GUIDE.md) maps the two model tracks and their artifacts.
+
 ---
 
 ## Two model tracks
@@ -146,10 +148,13 @@ First load after idle sleep may take ~45–90 seconds (PyTorch + model load).
 | `baseline_lstm.py` | Ablation baseline (not the flagship) |
 | `analysis/` | Held-out validation, quality gate, correlation |
 | `results/` | Validation JSON (including v63 report) |
+| `results/artifact_inventory.json` | Current checkpoint-to-evidence inventory |
 | `weights/` | Canonical v2 checkpoint |
 | `v3_pilstm/` | PI-LSTM models, physics losses, Results-6 weights, board pack |
 | `graphs/` | Key comparison / calibration figures |
 | `docs/DATA_ASSUMPTIONS.md` | Nuclear data sources and modeling scope |
+| `docs/CURRENT_STATUS.md` | Active artifacts and checkpoint-to-validation integrity status |
+| `docs/PROJECT_GUIDE.md` | Workspace map and file placement rules |
 | `Ac225_PINN_Executive_OnePager.html` | Outreach / collaborator one-pager (browser) |
 | `ISEF_Planning/project_history.md` | Research and mentorship history |
 

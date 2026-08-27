@@ -1,0 +1,738 @@
+{
+  "meta": {
+    "count": 1,
+    "db_response_time_ms": 198,
+    "page": 1,
+    "per_page": 40,
+    "groups_count": null,
+    "x_query": {
+      "oql": "works where full text has (ANICCA irradiation module multi-task learning CRAM SERPENT2)",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "ANICCA irradiation module multi-task learning CRAM SERPENT2",
+            "operator": "has"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:ANICCA irradiation module multi-task learning CRAM SERPENT2&per_page=40"
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W4400424331",
+      "doi": "https://doi.org/10.1016/j.net.2024.07.024",
+      "display_name": "A novel irradiation module for ANICCA fuel cycle code based on multi-task learning",
+      "publication_year": 2024,
+      "publication_date": "2024-07-09",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/j.net.2024.07.024",
+        "is_oa": true,
+        "landing_page_url": "http://dx.doi.org/10.1016/j.net.2024.07.024",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S82136278",
+          "display_name": "Nuclear Engineering and Technology",
+          "issn_l": "1738-5733",
+          "issn": [
+            "1738-5733",
+            "2234-358X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Nuclear Engineering and Technology",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5045666830",
+            "display_name": "Victor J. Casas-Molina",
+            "orcid": "https://orcid.org/0000-0003-1904-6247"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I32597200",
+              "display_name": "Ghent University",
+              "ror": "https://ror.org/00cv9y106",
+              "country_code": "BE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I32597200"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I4210114391",
+              "display_name": "Belgian Nuclear Research Centre",
+              "ror": "https://ror.org/020xs5r81",
+              "country_code": "BE",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210114391"
+              ]
+            }
+          ],
+          "countries": [
+            "BE"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Victor J. Casas-Molina",
+          "raw_affiliation_strings": [
+            "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+            "Ghent University\u2013imec, Technologiepark-Zwijnaarde 126, 9052, Ghent, Belgium"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0003-1904-6247",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+              "institution_ids": [
+                "https://openalex.org/I4210114391"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Ghent University\u2013imec, Technologiepark-Zwijnaarde 126, 9052, Ghent, Belgium",
+              "institution_ids": [
+                "https://openalex.org/I32597200"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5092210904",
+            "display_name": "Nerea Aguilera-G\u00f3mez",
+            "orcid": "https://orcid.org/0009-0000-7594-1225"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210114391",
+              "display_name": "Belgian Nuclear Research Centre",
+              "ror": "https://ror.org/020xs5r81",
+              "country_code": "BE",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210114391"
+              ]
+            },
+            {
+              "id": "https://openalex.org/I88060688",
+              "display_name": "Universidad Polit\u00e9cnica de Madrid",
+              "ror": "https://ror.org/03n6nwv02",
+              "country_code": "ES",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I88060688"
+              ]
+            }
+          ],
+          "countries": [
+            "BE",
+            "ES"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Nerea Aguilera-G\u00f3mez",
+          "raw_affiliation_strings": [
+            "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+            "Universidad Polit\u00e9cnica de Madrid, Jos\u00e9 Guti\u00e9rrez Abascal 2, 28006, Madrid, Spain"
+          ],
+          "raw_orcid": "https://orcid.org/0009-0000-7594-1225",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+              "institution_ids": [
+                "https://openalex.org/I4210114391"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Universidad Polit\u00e9cnica de Madrid, Jos\u00e9 Guti\u00e9rrez Abascal 2, 28006, Madrid, Spain",
+              "institution_ids": [
+                "https://openalex.org/I88060688"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5083757438",
+            "display_name": "Pablo Romojaro",
+            "orcid": "https://orcid.org/0000-0002-6343-1487"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210114391",
+              "display_name": "Belgian Nuclear Research Centre",
+              "ror": "https://ror.org/020xs5r81",
+              "country_code": "BE",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210114391"
+              ]
+            }
+          ],
+          "countries": [
+            "BE"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Pablo Romojaro",
+          "raw_affiliation_strings": [
+            "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-6343-1487",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+              "institution_ids": [
+                "https://openalex.org/I4210114391"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5084685103",
+            "display_name": "Ivan Merino",
+            "orcid": "https://orcid.org/0009-0008-7168-3423"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2799535320",
+              "display_name": "Catholic University of the Maule",
+              "ror": "https://ror.org/04vdpck27",
+              "country_code": "CL",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I2799535320"
+              ]
+            }
+          ],
+          "countries": [
+            "CL"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Iv\u00e1n Merino-Rodr\u00edguez",
+          "raw_affiliation_strings": [
+            "Catholic University of the Maule, Av. San Miguel 3605, Talca, Chile"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Catholic University of the Maule, Av. San Miguel 3605, Talca, Chile",
+              "institution_ids": [
+                "https://openalex.org/I2799535320"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5028243643",
+            "display_name": "Augusto Hern\u00e1ndez-Sol\u00eds",
+            "orcid": "https://orcid.org/0000-0002-7439-1994"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210114391",
+              "display_name": "Belgian Nuclear Research Centre",
+              "ror": "https://ror.org/020xs5r81",
+              "country_code": "BE",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210114391"
+              ]
+            }
+          ],
+          "countries": [
+            "BE"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Augusto Hern\u00e1ndez-Solis",
+          "raw_affiliation_strings": [
+            "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Belgian Nuclear Research Centre (SCK CEN), Boeretang 200, 2400, Mol, Belgium",
+              "institution_ids": [
+                "https://openalex.org/I4210114391"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "diamond",
+        "oa_url": "http://dx.doi.org/10.1016/j.net.2024.07.024",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "This": [
+          0
+        ],
+        "paper": [
+          1
+        ],
+        "introduces": [
+          2
+        ],
+        "an": [
+          3
+        ],
+        "alternative": [
+          4
+        ],
+        "approach": [
+          5,
+          52
+        ],
+        "to": [
+          6,
+          72,
+          116,
+          141
+        ],
+        "irradiation": [
+          7,
+          38,
+          74
+        ],
+        "modelling": [
+          8
+        ],
+        "within": [
+          9
+        ],
+        "the": [
+          10,
+          19,
+          25,
+          37,
+          42,
+          91,
+          94,
+          123,
+          128,
+          142,
+          157,
+          162,
+          166,
+          171
+        ],
+        "context": [
+          11
+        ],
+        "of": [
+          12,
+          76,
+          90,
+          93,
+          127,
+          161,
+          173
+        ],
+        "nuclear": [
+          13
+        ],
+        "fuel": [
+          14,
+          20
+        ],
+        "cycle": [
+          15,
+          21
+        ],
+        "codes": [
+          16
+        ],
+        "like": [
+          17
+        ],
+        "ANICCA,": [
+          18
+        ],
+        "code": [
+          22,
+          153
+        ],
+        "developed": [
+          23,
+          71
+        ],
+        "by": [
+          24,
+          40
+        ],
+        "Belgian": [
+          26
+        ],
+        "Nuclear": [
+          27
+        ],
+        "Research": [
+          28
+        ],
+        "Centre": [
+          29
+        ],
+        "(SCK": [
+          30
+        ],
+        "CEN).": [
+          31
+        ],
+        "The": [
+          32
+        ],
+        "focus": [
+          33
+        ],
+        "lies": [
+          34
+        ],
+        "on": [
+          35,
+          54
+        ],
+        "upgrading": [
+          36
+        ],
+        "module": [
+          39
+        ],
+        "substituting": [
+          41
+        ],
+        "CRAM-based": [
+          43,
+          144
+        ],
+        "depletion": [
+          44
+        ],
+        "calculations": [
+          45
+        ],
+        "for": [
+          46,
+          96,
+          154,
+          170
+        ],
+        "a": [
+          47,
+          151
+        ],
+        "more": [
+          48
+        ],
+        "flexible": [
+          49
+        ],
+        "and": [
+          50,
+          80,
+          107,
+          159
+        ],
+        "innovative": [
+          51
+        ],
+        "based": [
+          53
+        ],
+        "Multi-Task": [
+          55
+        ],
+        "Learning": [
+          56
+        ],
+        "(MTL).": [
+          57
+        ],
+        "Utilizing": [
+          58
+        ],
+        "data": [
+          59
+        ],
+        "generated": [
+          60
+        ],
+        "with": [
+          61
+        ],
+        "SERPENT2": [
+          62
+        ],
+        "Monte": [
+          63
+        ],
+        "Carlo": [
+          64
+        ],
+        "simulations,": [
+          65
+        ],
+        "two": [
+          66
+        ],
+        "MTL": [
+          67,
+          86
+        ],
+        "neural": [
+          68,
+          118
+        ],
+        "networks": [
+          69
+        ],
+        "are": [
+          70
+        ],
+        "surrogate": [
+          73
+        ],
+        "processes": [
+          75
+        ],
+        "Uranium": [
+          77
+        ],
+        "Oxide": [
+          78,
+          82
+        ],
+        "(UOX)": [
+          79
+        ],
+        "Mixed": [
+          81
+        ],
+        "(MOX)": [
+          83
+        ],
+        "fuels,": [
+          84
+        ],
+        "respectively.": [
+          85
+        ],
+        "enables": [
+          87
+        ],
+        "simultaneous": [
+          88
+        ],
+        "learning": [
+          89
+        ],
+        "evolution": [
+          92
+        ],
+        "inventories": [
+          95
+        ],
+        "different": [
+          97
+        ],
+        "observables": [
+          98
+        ],
+        "\u2013": [
+          99,
+          110
+        ],
+        "i.e.,": [
+          100
+        ],
+        "transuranium": [
+          101
+        ],
+        "elements,": [
+          102
+        ],
+        "fission": [
+          103
+        ],
+        "products,": [
+          104
+        ],
+        "minor": [
+          105
+        ],
+        "actinides": [
+          106
+        ],
+        "fertile": [
+          108
+        ],
+        "materials": [
+          109
+        ],
+        "offering": [
+          111
+        ],
+        "improved": [
+          112
+        ],
+        "predictive": [
+          113
+        ],
+        "capabilities": [
+          114
+        ],
+        "compared": [
+          115,
+          140
+        ],
+        "non-MTL": [
+          117
+        ],
+        "networks,": [
+          119
+        ],
+        "as": [
+          120,
+          150
+        ],
+        "demonstrated": [
+          121
+        ],
+        "in": [
+          122,
+          136
+        ],
+        "cross-validation": [
+          124
+        ],
+        "tests.": [
+          125
+        ],
+        "Hyperparameters": [
+          126
+        ],
+        "models": [
+          129
+        ],
+        "were": [
+          130
+        ],
+        "found": [
+          131
+        ],
+        "using": [
+          132
+        ],
+        "Bayesian": [
+          133
+        ],
+        "optimization,": [
+          134
+        ],
+        "resulting": [
+          135
+        ],
+        "superior": [
+          137
+        ],
+        "model": [
+          138
+        ],
+        "performance": [
+          139
+        ],
+        "old": [
+          143
+        ],
+        "model.": [
+          145
+        ],
+        "Verification": [
+          146
+        ],
+        "against": [
+          147
+        ],
+        "SERPENT2,": [
+          148
+        ],
+        "used": [
+          149
+        ],
+        "reference": [
+          152
+        ],
+        "comparison,": [
+          155
+        ],
+        "demonstrates": [
+          156
+        ],
+        "stability": [
+          158
+        ],
+        "accuracy": [
+          160
+        ],
+        "MTL-based": [
+          163
+        ],
+        "models,": [
+          164
+        ],
+        "outperforming": [
+          165
+        ],
+        "original": [
+          167
+        ],
+        "CRAM": [
+          168
+        ],
+        "method": [
+          169
+        ],
+        "majority": [
+          172
+        ],
+        "predicted": [
+          174
+        ],
+        "isotopes.": [
+          175
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    }
+  ],
+  "group_by": []
+}

@@ -1,17 +1,22 @@
 """
-IsotopePINN — interactive demo for Ac-225 production planning (physics-informed surrogate).
+IsotopePINN — interactive scientific narrative for Ac-225 production planning.
+
+Two-model physics-informed surrogate system (v2 PINN + v3 PI-LSTM) for the
+Ra-226 -> Ac-225 transmutation chain, validated against a stiff Bateman ODE
+reference, evaluated nuclear data (JENDL-5 / ENDF/B-VIII.0 / EXFOR / NuDat),
+and national-lab production anchors (Joyo).
 
 Run: streamlit run app.py
+Deploy: Streamlit Community Cloud, CPU-only (requirements-streamlit-cloud.txt).
 """
 import importlib.util
-import base64
 import io
 import json
+import math
 import os
 import pathlib
-import socket
 import time
-import math
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -19,21 +24,6 @@ import torch
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).parent
-
-
-def _load_app_evidence():
-    path = ROOT / "scripts" / "app_evidence.py"
-    if not path.is_file():
-        return None
-    spec = importlib.util.spec_from_file_location("app_evidence", path)
-    if spec is None or spec.loader is None:
-        return None
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
-
-
-_EVIDENCE = _load_app_evidence()
 
 # ── PHYSICAL & CLINICAL CONSTANTS ─────────────────────────────────────────────
 AC225_HALF_LIFE_DAYS = 9.920
@@ -48,37 +38,39 @@ TRAINING_DOMAIN = {
 }
 VALIDATION_SUMMARY_PATH = ROOT / "analysis" / "validation" / "heldout_validation_summary.csv"
 
+# Joyo anchor (Sano et al. 2024, JNST 61:509) — used by the interactive lab.
+SANO_MEASURED_GBQ = 15.4
+SANO_ERR_GBQ = 6.2
+SANO_FLUX = 5.7e15
+SANO_ENERGY_EV = 14.5e6
+SANO_DAYS = 45.0
+FSTAR_INFERRED = 1.2387353952827815e-3  # results/ode_data_v2_spectrum_20260718.json
+
+
 # ── HUMAN TRANSLATION HELPERS ─────────────────────────────────────────────────
 def format_atoms_human(atoms: float, mass_number: int) -> str:
-    """Converts raw atom counts into intuitive human-readable weights and simple descriptions."""
+    """Converts raw atom counts into intuitive human-readable weights."""
     if atoms <= 0:
         return "0.0 atoms (pure vacuum)"
-    
-    # Calculate mass in grams
     grams = (atoms / AVOGADRO) * mass_number
-    
     if grams >= 1.0:
         return f"{atoms:.2e} atoms ({grams:.3f} g)"
     elif grams >= 1e-3:
-        mg = grams * 1e3
-        return f"{atoms:.2e} atoms ({mg:.3f} mg / thousandths of a gram)"
+        return f"{atoms:.2e} atoms ({grams * 1e3:.3f} mg)"
     elif grams >= 1e-6:
-        ug = grams * 1e6
-        return f"{atoms:.2e} atoms ({ug:.3f} µg / millionths of a gram)"
+        return f"{atoms:.2e} atoms ({grams * 1e6:.3f} µg)"
     elif grams >= 1e-9:
-        ng = grams * 1e9
-        return f"{atoms:.2e} atoms ({ng:.3f} ng / billionths of a gram)"
-    else:
-        pg = grams * 1e12
-        return f"{atoms:.2e} atoms ({pg:.3f} pg / trillionths of a gram)"
+        return f"{atoms:.2e} atoms ({grams * 1e9:.3f} ng)"
+    return f"{atoms:.2e} atoms ({grams * 1e12:.3f} pg)"
+
 
 def laymans_explanation(topic: str) -> str:
-    """Generates simple analogical explanations for complex nuclear terms."""
+    """Plain-language analogies for nuclear terms."""
     explanations = {
         "flux": (
             "**Neutron flux** works like the heat setting on a stove. "
             "Higher flux means more neutrons hitting the radium each second. "
-            "Turn it up too far, though, and you start producing toxic byproducts like Ac-227."
+            "Turn it up too far, though, and you start producing problematic byproducts like Ac-227."
         ),
         "transmutation": (
             "**Transmutation** turns one element into another. "
@@ -100,28 +92,38 @@ def laymans_explanation(topic: str) -> str:
             "**Half-life** is how long it takes for half of the atoms to decay. "
             "Actinium-225 has a short half-life of 9.9 days, so it does its job and clears quickly. "
             "Actinium-227 lasts 21.8 years, which is why even a trace of it is a safety concern."
-        )
+        ),
+        "tail": (
+            "Only neutrons above **6.42 MeV** can knock two neutrons out of Ra-226 to start the "
+            "Ac-225 chain. In a reactor, almost all neutrons are slower than that — the Ac-225 yield "
+            "**lives in the small high-energy tail** of the neutron spectrum. That is why knowing the "
+            "spectrum shape matters more than knowing the total flux."
+        ),
     }
     return explanations.get(topic, "")
 
-# ── PHYSICAL DECAY HELPERS ───────────────────────────────────────────────────
+
+# ── PHYSICAL DECAY HELPERS ────────────────────────────────────────────────────
 def _decay_factor(days: float, half_life_days: float) -> float:
     if half_life_days <= 0:
         return 0.0
     return float(np.exp(-np.log(2.0) * max(float(days), 0.0) / float(half_life_days)))
 
-def _activity_bq(atoms: np.ndarray | float, half_life_days: float) -> np.ndarray:
+
+def _activity_bq(atoms, half_life_days: float):
     arr = np.asarray(atoms, dtype=np.float64)
     if half_life_days <= 0:
         return np.zeros_like(arr, dtype=np.float64)
     decay_constant_s = np.log(2.0) / (float(half_life_days) * SECONDS_PER_DAY)
     return arr * decay_constant_s
 
-def _ac227_impurity_activity_pct(ac225_atoms: np.ndarray, ac227_atoms: np.ndarray) -> np.ndarray:
+
+def _ac227_impurity_activity_pct(ac225_atoms, ac227_atoms):
     ac225_bq = _activity_bq(ac225_atoms, AC225_HALF_LIFE_DAYS)
     ac227_bq = _activity_bq(ac227_atoms, AC227_HALF_LIFE_DAYS)
     total_bq = ac225_bq + ac227_bq
     return np.divide(ac227_bq, total_bq, out=np.zeros_like(ac227_bq), where=total_bq > 0.0) * 100.0
+
 
 def _domain_warnings(*, flux: float, energy_ev: float, time_h: float) -> list[str]:
     warnings = []
@@ -136,6 +138,19 @@ def _domain_warnings(*, flux: float, energy_ev: float, time_h: float) -> list[st
         warnings.append(f"Time {time_h:.1f} h is outside the trained range {lo:.2f}-{hi:.1f} h.")
     return warnings
 
+
+# ── COMMITTED-EVIDENCE LOADERS (every metric on screen traces to a repo file) ─
+@st.cache_data(show_spinner=False)
+def _load_json(rel_path: str) -> dict:
+    p = ROOT / rel_path
+    if not p.is_file():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 @st.cache_data(show_spinner=False)
 def _load_validation_summary() -> pd.DataFrame:
     if VALIDATION_SUMMARY_PATH.exists():
@@ -144,64 +159,6 @@ def _load_validation_summary() -> pd.DataFrame:
         except Exception:
             return pd.DataFrame()
     return pd.DataFrame()
-
-
-@st.cache_data(show_spinner=False)
-def _load_v63_validation() -> dict:
-    path = ROOT / "results" / "v63_validation_20260530.json"
-    if not path.is_file():
-        return {}
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-@st.cache_data(show_spinner=False)
-def _load_iteration_log() -> dict:
-    path = ROOT / "results" / "isef_iteration_log.json"
-    if not path.is_file():
-        return {}
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-@st.cache_data(show_spinner=False)
-def _load_json_file(rel: str) -> dict:
-    path = ROOT / rel
-    if not path.is_file():
-        return {}
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-def _pilstm_headline_metrics() -> dict:
-    """Canonical Results-6 numbers for the UI (paired comparison protocol)."""
-    compare = _load_json_file("v3_pilstm/results/compare_v2_pilstm.json")
-    speed = _load_json_file("v3_pilstm/results/speed_harness.json")
-    conformal = _load_json_file("v3_pilstm/results/conformal_validation.json")
-    species = compare.get("species_median_rel_error", {})
-    ac = species.get("Ac-225", {})
-    cov = conformal.get("ac225_relative_coverage")
-    if cov is None:
-        cov = conformal.get("coverage_ac225_rel")
-    if cov is None and isinstance(conformal.get("test"), dict):
-        cov = conformal["test"].get("relative_coverage")
-    if cov is None and isinstance(conformal.get("Ac-225"), dict):
-        rel = conformal["Ac-225"].get("relative", {})
-        cov = rel.get("test_coverage")
-    return {
-        "ac225_pilstm": float(ac.get("pilstm", 0.0512)),
-        "ac225_v2_paired": float(ac.get("v2", 0.0818)),
-        "batched_ms": float(speed.get("batched", {}).get("ms_per_scenario", 1.65)),
-        "speedup": float(speed.get("batched", {}).get("speedup_vs_eager", 83.0)),
-        "conformal": float(cov) if cov is not None else 0.909,
-        "species": species,
-    }
 
 
 @st.cache_data(show_spinner=False)
@@ -215,202 +172,98 @@ def _load_graph_image(rel_path: str):
         return None
 
 
-def _first_existing_graph(*candidates: str) -> str | None:
-    for rel in candidates:
-        if (ROOT / rel).is_file():
-            return rel
-    return None
-
-
-def _fig_to_png_bytes(fig, *, dpi: int = 100) -> bytes:
-    import matplotlib.pyplot as plt
-
-    if _EVIDENCE is not None and hasattr(_EVIDENCE, "figure_to_png_bytes"):
-        return _EVIDENCE.figure_to_png_bytes(fig, dpi=dpi)
-    buf = io.BytesIO()
-    fig.savefig(buf, format="png", dpi=dpi, bbox_inches="tight", facecolor=fig.get_facecolor())
-    plt.close(fig)
-    return buf.getvalue()
-
-
-def _show_dark_png(png_bytes: bytes | None, caption: str | None = None) -> None:
-    if not png_bytes:
-        return
-    st.image(png_bytes, caption=caption, use_container_width=True)
-
-
-def _show_static_graph(img: Image.Image | None, caption: str | None = None) -> None:
-    """Light-background PNGs: padded frame so black labels stay readable on the dark page."""
-    if img is None:
-        return
-    buf = io.BytesIO()
-    img.save(buf, format="PNG")
-    b64 = base64.b64encode(buf.getvalue()).decode("ascii")
-    cap = (
-        f'<p style="color:#94a3b8;font-size:0.82rem;margin:0.4rem 0 0.75rem 0;">{caption}</p>'
-        if caption
-        else ""
-    )
-    st.markdown(
-        f'<div class="static-graph-wrap"><img src="data:image/png;base64,{b64}" alt="figure"/></div>{cap}',
-        unsafe_allow_html=True,
-    )
-
-
-def _show_graph_path(rel_path: str, caption: str | None = None) -> None:
-    """Display a graph file; legacy light PNGs get a readable frame on the dark page."""
+def _show_graph(rel_path: str, caption: str | None = None) -> bool:
+    """Show a committed PNG from graphs/; returns False (with note) if absent."""
     img = _load_graph_image(rel_path)
     if img is None:
-        return
-    legacy_light = (
-        "loss_components" in rel_path
-        or "pinn_loss_history" in rel_path
-        or ("pinn_ac225" in rel_path and "isef_" not in rel_path)
-    )
-    if legacy_light:
-        _show_static_graph(img, caption)
-        return
+        st.info(f"Figure `{rel_path}` is not present in this deployment.")
+        return False
     buf = io.BytesIO()
     img.save(buf, format="PNG")
-    _show_dark_png(buf.getvalue(), caption)
+    st.image(buf.getvalue(), caption=caption, use_container_width=True)
+    return True
 
 
 @st.cache_data(show_spinner=False)
-def _chart_loss_story_png() -> bytes | None:
-    if _EVIDENCE is None:
-        return None
-    return _fig_to_png_bytes(_EVIDENCE.figure_loss_physics_story(), dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _chart_heldout_regimes_png() -> bytes | None:
-    if _EVIDENCE is None:
-        return None
-    return _fig_to_png_bytes(_EVIDENCE.figure_heldout_regimes(), dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _cached_pinn_ode_curves(
-    weights_key: str,
-    phi: float,
-    hours: float,
-    energy_ev: float,
-) -> tuple[list[float], list[float], list[float]] | None:
-    if _EVIDENCE is None or not weights_key:
-        return None
-    model, _ = get_cached_pinn(weights_key)
-    t_h, pinn, ode = _EVIDENCE.compute_pinn_ode_trajectory(
-        model, phi=float(phi), hours=float(hours), energy_ev=float(energy_ev),
-    )
-    return t_h.tolist(), pinn.tolist(), ode.tolist()
-
-
-@st.cache_data(show_spinner=False)
-def _chart_pinn_ode_png(
-    weights_key: str,
-    phi: float = 1e14,
-    hours: float = 300.0,
-    energy_ev: float = 14e6,
-) -> bytes | None:
-    curves = _cached_pinn_ode_curves(weights_key, phi, hours, energy_ev)
-    if curves is None or _EVIDENCE is None:
-        return None
-    t_h, pinn, ode = curves
-    fig = _EVIDENCE.figure_pinn_vs_ode_from_arrays(
-        np.asarray(t_h), np.asarray(pinn), np.asarray(ode),
-        phi=float(phi), energy_ev=float(energy_ev),
-    )
-    return _fig_to_png_bytes(fig, dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _chart_nn_vs_pinn_schematic_png() -> bytes | None:
-    if _EVIDENCE is None:
-        return None
-    return _fig_to_png_bytes(_EVIDENCE.figure_nn_vs_pinn_schematic(), dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _chart_failure_regimes_png() -> bytes | None:
-    if _EVIDENCE is None:
-        return None
-    return _fig_to_png_bytes(_EVIDENCE.figure_failure_regimes(), dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _chart_flux_sensitivity_png() -> bytes | None:
-    if _EVIDENCE is None:
-        return None
-    fig = _EVIDENCE.figure_flux_sensitivity_summary()
-    if fig is None:
-        return None
-    return _fig_to_png_bytes(fig, dpi=100)
-
-
-@st.cache_data(show_spinner=False)
-def _cached_speed_benchmark(weights_key: str, n_scenarios: int) -> dict:
-    if not weights_key or _EVIDENCE is None:
-        return {}
+def _load_upgrade_log_entries() -> list[dict]:
+    """Parse docs/UPGRADE_LOG.md headings into a timeline; static fallback."""
+    path = ROOT / "docs" / "UPGRADE_LOG.md"
+    entries: list[dict] = []
     try:
-        model, _ = get_cached_pinn(weights_key)
-        return _EVIDENCE.benchmark_pinn_vs_ode_speed(model, n_scenarios=int(n_scenarios))
+        sprint = ""
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.startswith("## 20"):
+                sprint = line.lstrip("# ").strip()
+            elif line.startswith("### "):
+                title = line.lstrip("# ").strip()
+                num = title.split(".", 1)[0]
+                entries.append({"sprint": sprint, "num": num, "title": title})
     except Exception:
-        return {}
+        entries = []
+    if not entries:
+        entries = [
+            {"sprint": "Sprint 1", "num": str(i), "title": t}
+            for i, t in enumerate([
+                "Deterministic seeding everywhere", "Exponential-integrator physics loss",
+                "True-1 g inventory, versioned", "Trainable vanilla-LSTM baseline",
+                "Conformal at meaningful n", "Honest speed benchmark",
+                "Jackknife+ / CV+ conformal", "Self-adaptive per-species physics weights",
+                "Stiffness curriculum scaffold", "Deep-ensemble runner",
+                "Evaluated data layer (JENDL-5/EXFOR/NuDat)", "Spectrum folding — the discovery",
+            ], start=1)
+        ]
+    return entries
 
 
-@st.fragment
-def _live_pinn_ode_demo(*, weights_key: str, key_prefix: str = "live") -> None:
-    """Isolated rerun for slider demo — avoids reloading the full app."""
-    if not weights_key:
-        st.warning("Load trained weights to run the live PINN vs ODE demo.")
-        return
-    d1, d2, d3 = st.columns(3)
-    with d1:
-        demo_phi = st.select_slider(
-            "Neutron flux φ (n/cm²/s)",
-            options=[1e12, 1e13, 1e14, 1e15],
-            value=1e14,
-            format_func=lambda x: f"{x:.0e}",
-            key=f"{key_prefix}_demo_phi",
+# ── ODE REFERENCE ACCESS (ra226_ac225_transmutation.py is read-only) ──────────
+def _ode_module():
+    import ra226_ac225_transmutation as ode
+    return ode
+
+
+@st.cache_data(show_spinner="Running stiff ODE reference…")
+def _joyo_ode_gbq(version: str, spectrum: str, fast_fraction: float, days: float,
+                  flux: float = SANO_FLUX) -> float | None:
+    """
+    Honest, live re-computation of a Joyo-style anchor with the real ODE.
+    version: 'v1' (legacy synthetic sigmoid) | 'v2' (evaluated data layer)
+    spectrum (v2 only): 'mono' | 'watt' | 'twogroup'
+    Uses each version's own decay constants for the activity conversion.
+    """
+    prev_version = os.environ.get("ODE_DATA_VERSION")
+    prev_ffrac = os.environ.get("SPECTRUM_FAST_FRACTION")
+    try:
+        os.environ["ODE_DATA_VERSION"] = version
+        if version == "v2" and spectrum == "twogroup":
+            os.environ["SPECTRUM_FAST_FRACTION"] = str(float(fast_fraction))
+        ode = _ode_module()
+        spec_arg = None if version == "v1" else spectrum
+        env = ode.IsotopeEnvironment(
+            phi=float(flux), neutron_energy_ev=SANO_ENERGY_EV,
+            target_mass_g=1.0, spectrum=spec_arg,
         )
-    with d2:
-        demo_hours = st.slider(
-            "Irradiation time (h)", 50.0, 400.0, 250.0, 10.0, key=f"{key_prefix}_demo_hours",
+        t_h, Y = ode.run_simulation(
+            env, t_end_h=float(days) * 24.0, n_points=121, N_ra0=2.664e21,
         )
-    with d3:
-        demo_e_mev = st.select_slider(
-            "Neutron energy (MeV)",
-            options=[0.025, 1.0, 6.4, 14.0],
-            value=14.0,
-            key=f"{key_prefix}_demo_energy",
-        )
-    demo_png = _chart_pinn_ode_png(
-        weights_key,
-        phi=float(demo_phi),
-        hours=float(demo_hours),
-        energy_ev=float(demo_e_mev) * 1e6,
-    )
-    _show_dark_png(
-        demo_png,
-        caption=f"Ac-225 atoms vs time — φ={demo_phi:.0e}, E={demo_e_mev} MeV, virgin Ra-226 feed",
-    )
+        lam_per_s = float(env.lambda_ac225_per_h) / 3600.0
+        return float(Y[-1, 2]) * lam_per_s / 1e9  # GBq
+    except Exception:
+        return None
+    finally:
+        if prev_version is None:
+            os.environ.pop("ODE_DATA_VERSION", None)
+        else:
+            os.environ["ODE_DATA_VERSION"] = prev_version
+        if prev_ffrac is None:
+            os.environ.pop("SPECTRUM_FAST_FRACTION", None)
+        else:
+            os.environ["SPECTRUM_FAST_FRACTION"] = prev_ffrac
 
 
-def _species_p95_rel_error(species: str) -> float | None:
-    df = _load_validation_summary()
-    if df.empty or "species" not in df.columns or "p95_rel_error" not in df.columns:
-        return None
-    rows = df[df["species"] == species]
-    if rows.empty:
-        return None
-    return float(rows["p95_rel_error"].max())
+@st.cache_data(show_spinner=False)
+def _evaluated_data_available() -> bool:
+    return (ROOT / "data" / "evaluated" / "jendl5_ra226_n2n_sigmaE.csv").is_file()
 
-def _holdout_interval(value: float, species: str) -> tuple[float, float] | None:
-    p95 = _species_p95_rel_error(species)
-    if p95 is None or not np.isfinite(p95):
-        return None
-    v = max(float(value), 0.0)
-    return (v / (1.0 + p95), v * (1.0 + p95))
 
 # ── MODEL LOADING ─────────────────────────────────────────────────────────────
 def get_weights_path() -> pathlib.Path | None:
@@ -435,287 +288,542 @@ def get_cached_pinn(weights_path_str: str):
     )
     return model, info
 
-# ── DESIGN SETUP (CLINICAL DARK THEME) ─────────────────────────────────────────
+
+# ── LIGHT EDITORIAL MATPLOTLIB THEME ──────────────────────────────────────────
+_PAPER = "#faf8f3"
+_PANEL = "#ffffff"
+_INK = "#292524"
+_MUTED = "#78716c"
+_BORDER = "#e5ddd0"
+_ACCENT = "#b45309"      # deep amber
+_ACCENT_DK = "#92400e"
+_OK = "#4d7c0f"          # muted olive
+_BAD = "#b91c1c"         # muted brick
+_WARN = "#a16207"
+_TEAL = "#0f766e"        # muted teal (secondary series only)
+
+
+def _light_rc():
+    return {
+        "figure.facecolor": _PANEL,
+        "axes.facecolor": _PANEL,
+        "axes.edgecolor": _BORDER,
+        "axes.labelcolor": _INK,
+        "axes.titlecolor": _INK,
+        "text.color": _INK,
+        "xtick.color": _MUTED,
+        "ytick.color": _MUTED,
+        "grid.color": _BORDER,
+        "legend.facecolor": _PANEL,
+        "legend.edgecolor": _BORDER,
+        "font.size": 10,
+    }
+
+
+def _fig_to_png_bytes(fig, *, dpi: int = 110) -> bytes:
+    import matplotlib.pyplot as plt
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi=dpi, bbox_inches="tight",
+                facecolor=fig.get_facecolor(), edgecolor="none")
+    plt.close(fig)
+    return buf.getvalue()
+
+
+# ── CHART BUILDERS (cached, light editorial palette, data from committed JSON) ─
+@st.cache_data(show_spinner=False)
+def _chart_discovery_ratios_png() -> bytes | None:
+    """Joyo anchor ratios across the four physics variants (committed spectrum JSON)."""
+    spec = _load_json("results/ode_data_v2_spectrum_20260718.json")
+    anchors = spec.get("anchors") or []
+    if not anchors:
+        return None
+    import matplotlib.pyplot as plt
+
+    labels = ["Sano 2024\n45 d", "Iwahashi 2022\n60 d + 8 d cool", "Iwahashi 2022\nmilking 3×17.5 d"]
+    series = [
+        ("v1 synthetic σ (27 mb)", "v1_ratio_pred_over_meas", "#a8a29e"),
+        ("v2 evaluated σ, pointwise (mono)", "v2_mono_ratio_pred_over_meas", _BAD),
+        ("v2 evaluated σ, Watt fold", "v2_watt_ratio_pred_over_meas", _WARN),
+        ("v2 evaluated σ, two-group f*", "v2_twogroup_fstar_ratio_pred_over_meas", _OK),
+    ]
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(8.6, 4.4))
+        x = np.arange(len(anchors))
+        w = 0.19
+        for i, (name, key, color) in enumerate(series):
+            vals = [float(a.get(key, np.nan)) for a in anchors]
+            ax.bar(x + (i - 1.5) * w, vals, width=w, color=color, label=name,
+                   edgecolor=_PANEL, linewidth=0.6)
+            for xi, v in zip(x + (i - 1.5) * w, vals):
+                if np.isfinite(v):
+                    ax.text(xi, v * 1.15, f"{v:.2g}×", ha="center", fontsize=8, color=_MUTED)
+        ax.axhline(1.0, color=_INK, lw=1.2, ls="--")
+        ax.axhspan(1.0 - SANO_ERR_GBQ / SANO_MEASURED_GBQ,
+                   1.0 + SANO_ERR_GBQ / SANO_MEASURED_GBQ,
+                   color=_ACCENT, alpha=0.10)
+        ax.text(2.42, 1.05, "Sano ±6.2 GBq band", fontsize=8, color=_ACCENT_DK)
+        ax.set_yscale("log")
+        ax.set_ylim(0.2, 4000)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, fontsize=9)
+        ax.set_ylabel("ODE prediction ÷ measurement (log scale)")
+        ax.set_title("Each physics fix revealed the next-deeper assumption")
+        ax.grid(axis="y", alpha=0.5)
+        ax.legend(fontsize=8, loc="upper right", framealpha=0.95)
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _chart_fstar_sweep_png() -> bytes | None:
+    """Sano ratio vs above-threshold fraction f (committed sweep in spectrum JSON)."""
+    spec = _load_json("results/ode_data_v2_spectrum_20260718.json")
+    sweep = spec.get("f_sensitivity_sweep_sano") or []
+    inv = spec.get("inversion") or {}
+    if not sweep:
+        return None
+    import matplotlib.pyplot as plt
+
+    f = np.array([float(s["f"]) for s in sweep])
+    r = np.array([float(s["ratio_vs_sano"]) for s in sweep])
+    fstar = float(inv.get("inferred_fast_fraction_fstar", FSTAR_INFERRED))
+    band = inv.get("inferred_fast_fraction_band") or []
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(8.2, 3.9))
+        ax.axhspan(1.0 - SANO_ERR_GBQ / SANO_MEASURED_GBQ,
+                   1.0 + SANO_ERR_GBQ / SANO_MEASURED_GBQ,
+                   color=_ACCENT, alpha=0.12, label="Sano 15.4 ± 6.2 GBq band")
+        ax.plot(f, r, "o-", color=_ACCENT_DK, lw=2, ms=5, label="ODE prediction ÷ Sano")
+        ax.axhline(1.0, color=_INK, lw=1.0, ls="--")
+        if len(band) == 2:
+            ax.axvspan(float(band[0]), float(band[1]), color=_OK, alpha=0.14)
+        ax.axvline(fstar, color=_OK, lw=1.6)
+        ax.text(fstar * 1.25, 60, f"f* = {fstar:.2e}\n[7.4e-4, 1.7e-3]",
+                fontsize=9, color=_OK)
+        ax.set_xscale("log")
+        ax.set_yscale("log")
+        ax.set_xlabel("Above-threshold (>6.42 MeV) fast fraction f")
+        ax.set_ylabel("Prediction ÷ Sano (log)")
+        ax.set_title("One effective parameter closes the gap — with an uncertainty band")
+        ax.grid(alpha=0.4, which="both")
+        ax.legend(fontsize=8.5, loc="lower right")
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _chart_species_compare_png() -> bytes | None:
+    """v2 PINN vs v3 PI-LSTM per-species median endpoint error (committed compare JSON)."""
+    cmpj = _load_json("v3_pilstm/results/compare_v2_pilstm.json")
+    species = cmpj.get("species_median_rel_error") or {}
+    if not species:
+        return None
+    import matplotlib.pyplot as plt
+
+    names = list(species.keys())
+    v2 = [100.0 * float(species[s]["v2"]) for s in names]
+    v3 = [100.0 * float(species[s]["pilstm"]) for s in names]
+    x = np.arange(len(names))
+    w = 0.36
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(8.2, 4.0))
+        ax.bar(x - w / 2, v2, width=w, color="#d6c9b4", edgecolor=_BORDER,
+               label="Model A · v2 PINN")
+        ax.bar(x + w / 2, v3, width=w, color=_ACCENT, edgecolor=_BORDER,
+               label="Model B · v3 PI-LSTM")
+        for xi, v in zip(x - w / 2, v2):
+            ax.text(xi, v + 0.25, f"{v:.1f}%", ha="center", fontsize=8.5, color=_MUTED)
+        for xi, v in zip(x + w / 2, v3):
+            ax.text(xi, v + 0.25, f"{v:.1f}%", ha="center", fontsize=8.5, color=_ACCENT_DK)
+        ax.axhline(10.0, color=_BAD, lw=1.0, ls="--")
+        ax.text(len(names) - 0.5, 10.4, "10% gate", fontsize=8, color=_BAD, ha="right")
+        ax.set_xticks(x)
+        ax.set_xticklabels(names)
+        ax.set_ylabel("Median endpoint rel. error vs ODE (%)")
+        ax.set_title("Endpoint protocol, 22 held-out scenarios — both models, warts and all")
+        ax.grid(axis="y", alpha=0.5)
+        ax.legend(fontsize=9)
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _chart_heldout_buckets_png() -> bytes | None:
+    """Canonical v63 held-out Ac-225 error by regime."""
+    v63 = _load_json("results/v63_validation_20260530.json")
+    buckets = v63.get("heldout_buckets_ac225_median_rel") or {}
+    if not buckets:
+        return None
+    import matplotlib.pyplot as plt
+
+    order = [
+        ("all", "All held-out"), ("fast14_virgin", "Fast 14 MeV virgin"),
+        ("thermal_virgin", "Thermal virgin"), ("thermal_recycled", "Thermal recycled"),
+        ("epithermal_virgin", "Epithermal virgin"), ("epithermal_recycled", "Epithermal recycled"),
+        ("threshold_virgin", "Threshold virgin"), ("threshold_recycled", "Threshold recycled"),
+    ]
+    rows = [(lbl, 100.0 * float(buckets[k])) for k, lbl in order if k in buckets]
+    if not rows:
+        return None
+    labels = [r[0] for r in rows][::-1]
+    vals = [r[1] for r in rows][::-1]
+    colors = [_OK if v <= 6.0 else _WARN if v <= 10.0 else _BAD for v in vals]
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(8.2, 4.0))
+        ax.barh(labels, vals, color=colors, edgecolor=_PANEL)
+        for i, v in enumerate(vals):
+            ax.text(v + 0.12, i, f"{v:.2f}%", va="center", fontsize=8.5, color=_MUTED)
+        ax.axvline(10.0, color=_BAD, lw=1.0, ls="--")
+        ax.text(10.05, -0.45, "10% gate", fontsize=8, color=_BAD)
+        ax.set_xlabel("Median Ac-225 rel. error vs ODE (%)")
+        ax.set_title("Canonical v63: 22 held-out scenarios, by neutron-energy regime")
+        ax.grid(axis="x", alpha=0.5)
+        ax.set_xlim(0, 11.5)
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _chart_joyo_lab_png(mode_key: str, pred_gbq: float, days: float) -> bytes | None:
+    """Marker of the live ODE result against the Sano measurement band."""
+    import matplotlib.pyplot as plt
+
+    lo = SANO_MEASURED_GBQ - SANO_ERR_GBQ
+    hi = SANO_MEASURED_GBQ + SANO_ERR_GBQ
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(8.0, 2.6))
+        ax.axhspan(0, 1, color=_PANEL)
+        ax.axvspan(lo, hi, color=_ACCENT, alpha=0.15,
+                   label=f"Sano 2024: {SANO_MEASURED_GBQ} ± {SANO_ERR_GBQ} GBq")
+        ax.axvline(SANO_MEASURED_GBQ, color=_ACCENT_DK, lw=1.4, ls="--")
+        ax.axvline(pred_gbq, color=_INK, lw=2.2)
+        ax.scatter([pred_gbq], [0.5], s=90, color=_INK, zorder=5)
+        ratio = pred_gbq / SANO_MEASURED_GBQ
+        ax.text(pred_gbq, 0.82, f"ODE now: {pred_gbq:.2f} GBq ({ratio:.2f}×)",
+                fontsize=10, color=_INK, ha="center")
+        ax.set_xscale("log")
+        xmax = max(hi * 2.2, pred_gbq * 2.2, 60.0)
+        ax.set_xlim(min(lo / 3.0, pred_gbq / 3.0, 1.0), xmax)
+        ax.set_yticks([])
+        ax.set_xlabel("Ac-225 activity after irradiation (GBq, log scale)")
+        ax.set_title(f"Live ODE result — {mode_key}, {days:.0f} d irradiation", fontsize=11)
+        ax.legend(fontsize=8.5, loc="upper left")
+        for s in ("left", "right", "top"):
+            ax.spines[s].set_visible(False)
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _chart_pinn_ode_live_png(weights_key: str, phi: float, hours: float,
+                             energy_ev: float, ra226_0: float) -> bytes | None:
+    """Light-theme PINN vs ODE trajectory for one scenario (Screening explorer)."""
+    if not weights_key:
+        return None
+    try:
+        model, _ = get_cached_pinn(weights_key)
+        from pinn_model import (
+            DEFAULT_N226_SCALE as N226S, DEFAULT_NAC_SCALE as NACS,
+            DEFAULT_PHI_SCALE as PHIS, DEFAULT_T_REF_H as TSH,
+            neutron_energy_ev_to_feature_numpy as _efn,
+        )
+        times = np.linspace(1.0, float(hours), 80)
+        e_nn = float(_efn(float(energy_ev)))
+        rows = np.column_stack([
+            times / TSH,
+            np.full_like(times, phi / PHIS),
+            np.full_like(times, e_nn),
+            np.full_like(times, ra226_0 / N226S),
+            np.zeros_like(times), np.zeros_like(times),
+            np.zeros_like(times), np.zeros_like(times),
+        ])
+        x_t = torch.tensor(rows, dtype=torch.float32)
+        model.eval()
+        with torch.no_grad():
+            pred = model(x_t).cpu().numpy()
+        ac_pinn = np.maximum(pred[:, 2] * NACS, 0.0)
+
+        ode = _ode_module()
+        env = ode.IsotopeEnvironment(phi=float(phi), neutron_energy_ev=float(energy_ev))
+        t_ode, Y = ode.run_simulation(env, t_end_h=float(hours), n_points=80, N_ra0=float(ra226_0))
+        ac_ode = Y[:, 2]
+    except Exception:
+        return None
+
+    import matplotlib.pyplot as plt
+
+    with plt.rc_context(_light_rc()):
+        fig, ax = plt.subplots(figsize=(7.6, 3.9))
+        ax.semilogy(t_ode, np.maximum(ac_ode, 1.0), color=_MUTED, ls="--", lw=1.8,
+                    label="ODE reference (Radau)")
+        ax.semilogy(times, np.maximum(ac_pinn, 1.0), color=_ACCENT, lw=2.4,
+                    label="PINN surrogate")
+        ax.set_xlabel("Irradiation time (h)")
+        ax.set_ylabel("Ac-225 atoms (log)")
+        ax.set_title(f"φ={phi:.1e} n/cm²/s · E={energy_ev:.3g} eV · {hours:.0f} h")
+        ax.grid(alpha=0.4, which="both")
+        ax.legend(fontsize=9)
+        fig.tight_layout()
+    return _fig_to_png_bytes(fig)
+
+
+@st.cache_data(show_spinner=False)
+def _cached_speed_benchmark(weights_key: str, n_scenarios: int) -> dict:
+    """
+    Honest live timing: batched surrogate inference vs SEQUENTIAL stiff Radau
+    ODE solves on random in-domain scenarios. Throughput framing only.
+    """
+    if not weights_key:
+        return {}
+    try:
+        model, _ = get_cached_pinn(weights_key)
+        from pinn_model import (
+            DEFAULT_N226_SCALE as N226S, DEFAULT_NAC_SCALE as NACS,
+            DEFAULT_PHI_SCALE as PHIS, DEFAULT_T_REF_H as TSH,
+            neutron_energy_ev_to_feature_numpy as _efn,
+        )
+        ode = _ode_module()
+        rng = np.random.default_rng(42)
+        n = int(n_scenarios)
+        phis = 10.0 ** rng.uniform(12.0, 15.0, n)
+        energies = rng.choice([0.025, 1.0, 14.0e6], n)
+        hours = rng.uniform(50.0, 400.0, n)
+
+        e_nn = np.array([float(_efn(e)) for e in energies])
+        rows = np.column_stack([
+            hours / TSH, phis / PHIS, e_nn,
+            np.full(n, 6.022e23 / N226S),
+            np.zeros(n), np.zeros(n), np.zeros(n), np.zeros(n),
+        ])
+        x_t = torch.tensor(rows, dtype=torch.float32)
+        model.eval()
+        with torch.no_grad():
+            model(x_t)  # warmup
+        t0 = time.perf_counter()
+        with torch.no_grad():
+            pred = model(x_t).cpu().numpy()
+        pinn_ms = (time.perf_counter() - t0) * 1000.0
+
+        t0 = time.perf_counter()
+        ac_ode = []
+        for i in range(n):
+            env = ode.IsotopeEnvironment(phi=float(phis[i]), neutron_energy_ev=float(energies[i]))
+            _, Y = ode.run_simulation(env, t_end_h=float(hours[i]), n_points=32, N_ra0=6.022e23)
+            ac_ode.append(float(Y[-1, 2]))
+        ode_ms = (time.perf_counter() - t0) * 1000.0
+
+        ac_pinn = np.maximum(pred[:, 2] * NACS, 1e-30)
+        rel = np.abs(ac_pinn - np.maximum(np.asarray(ac_ode), 1e-30)) / np.maximum(np.asarray(ac_ode), 1e-30)
+        return {
+            "n_scenarios": n,
+            "pinn_ms": pinn_ms,
+            "ode_ms": ode_ms,
+            "throughput_ratio": ode_ms / max(pinn_ms, 1e-9),
+            "pinn_ms_per_scenario": pinn_ms / n,
+            "ode_ms_per_scenario": ode_ms / n,
+            "median_rel_err_ac225": float(np.median(rel)),
+        }
+    except Exception:
+        return {}
+
+
+# ── DESIGN SETUP (WARM EDITORIAL / SCIENTIFIC PRINT) ──────────────────────────
 st.set_page_config(
-    page_title="IsotopePINN | Ac-225 · v2 + PI-LSTM Results-6",
+    page_title="IsotopePINN | Ac-225 Production Surrogate",
     page_icon="⚛️",
     layout="wide",
     initial_sidebar_state="auto",
 )
 
-st.markdown("""
+st.markdown(f"""
 <style>
-/* Core Color Tokens */
-:root {
-  --bg-dark: #070913;
-  --panel-dark: #0f1322;
-  --border-dark: #1b223c;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --teal-glow: #0ea5e9;
-  --emerald-safe: #10b981;
-  --rose-toxic: #f43f5e;
-  --amber-warning: #f59e0b;
-}
+/* Warm editorial design tokens */
+:root {{
+  --paper: {_PAPER};
+  --panel: {_PANEL};
+  --panel-alt: #f4efe6;
+  --border: {_BORDER};
+  --ink: {_INK};
+  --muted: {_MUTED};
+  --faint: #a8a29e;
+  --accent: {_ACCENT};
+  --accent-dk: {_ACCENT_DK};
+  --accent-soft: #fdf3e7;
+  --ok: {_OK};
+  --bad: {_BAD};
+  --warn: {_WARN};
+}}
 
-/* Background overrides */
-.stApp {
-  background-color: var(--bg-dark) !important;
-  color: var(--text-primary) !important;
+.stApp {{
+  background-color: var(--paper) !important;
+  color: var(--ink) !important;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-}
+}}
+header[data-testid="stHeader"] {{ background-color: var(--paper) !important; }}
+section[data-testid="stSidebar"] {{
+  background-color: var(--panel-alt) !important;
+  border-right: 1px solid var(--border);
+}}
 
-header[data-testid="stHeader"] {
-  background-color: var(--bg-dark) !important;
-}
+/* Editorial typography */
+h1, h2, h3, .serif {{
+  font-family: Georgia, "Charter", "Times New Roman", serif !important;
+  color: var(--ink) !important;
+  letter-spacing: -0.01em;
+}}
 
-/* Clinical Panels */
-.clinical-card {
-  background: #0f1322;
-  border: 1px solid var(--border-dark);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.25rem;
-  transition: border-color 0.2s ease;
-}
-
-.clinical-card:hover {
-  border-color: rgba(148, 163, 184, 0.35);
-}
-
-.clinical-card.safe { border-left: 5px solid var(--emerald-safe); }
-.clinical-card.toxic { border-left: 5px solid var(--rose-toxic); }
-.clinical-card.warning { border-left: 5px solid var(--amber-warning); }
-
-.clinical-card h4 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+.sh {{
+  font-family: Georgia, "Charter", serif;
+  font-size: 1.45rem;
   font-weight: 700;
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.35rem;
+  margin: 2.2rem 0 1rem 0;
+}}
+.sh-sm {{
+  font-family: Georgia, "Charter", serif;
   font-size: 1.1rem;
-}
-
-.clinical-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Headers */
-.sh {
-  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--text-primary);
-  border-left: 4px solid var(--teal-glow);
-  padding-left: 0.75rem;
-  margin: 2rem 0 1rem 0;
-  letter-spacing: -0.5px;
-}
+  color: var(--accent-dk);
+  margin: 1.4rem 0 0.5rem 0;
+}}
+.kicker {{
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.6px; color: var(--accent);
+}}
 
-/* Metrics styles */
-div[data-testid="stMetricValue"] {
-  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
-  color: var(--text-primary) !important;
-}
-
-div[data-testid="stMetricLabel"] {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  color: var(--text-secondary) !important;
-}
-
-/* Custom Tabs styling */
-div[data-testid="stTabs"] button {
-  background-color: transparent !important;
-  color: var(--text-secondary) !important;
-  border: 1px solid transparent !important;
-  border-radius: 8px 8px 0 0 !important;
-  font-weight: 600 !important;
-  padding: 0.5rem 1rem !important;
-  font-size: 0.9rem !important;
-}
-
-div[data-testid="stTabs"] button[aria-selected="true"] {
-  color: var(--teal-glow) !important;
-  background-color: rgba(14, 165, 233, 0.08) !important;
-  border-bottom: 2px solid var(--teal-glow) !important;
-}
-
-/* Triage Dot Grid */
-.triage-grid {
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  gap: 4px;
-  background: #0b0d18;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid var(--border-dark);
-}
-
-.triage-dot {
-  aspect-ratio: 1;
-  border-radius: 3px;
-  transition: transform 0.1s ease;
-}
-
-.triage-dot:hover {
-  transform: scale(1.3);
-  z-index: 10;
-}
-
-.triage-dot.safe { background-color: var(--emerald-safe); box-shadow: 0 0 6px var(--emerald-safe); }
-.triage-dot.toxic { background-color: var(--rose-toxic); }
-.triage-dot.low { background-color: #1e293b; }
-
-/* Custom Buttons */
-.stButton>button {
-  background: #0e82b9 !important;
-  color: #f8fafc !important;
-  border: 1px solid #1391c9 !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  padding: 0.6rem 1.5rem !important;
-  transition: background 0.15s ease, border-color 0.15s ease !important;
-}
-
-.stButton>button:hover {
-  background: #1391c9 !important;
-  border-color: #38bdf8 !important;
-}
-
-/* Laymans Translation Accordions */
-.layman-box {
-  background: rgba(14, 165, 233, 0.07);
-  border: 1px solid rgba(14, 165, 233, 0.25);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.physics-banner {
-  background: linear-gradient(90deg, rgba(239, 68, 68, 0.12) 0%, rgba(14, 165, 233, 0.10) 100%);
-  border: 1px solid rgba(248, 113, 113, 0.35);
-  border-left: 5px solid #f87171;
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
-  margin: 1rem 0 1.5rem 0;
-}
-
-.physics-banner h3 {
-  margin: 0 0 0.5rem 0;
-  color: #fecaca;
-  font-size: 1.05rem;
-}
-
-.physics-banner p {
-  margin: 0;
-  color: #cbd5e1;
-  font-size: 0.92rem;
-  line-height: 1.55;
-}
-
-.nav-hint {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.static-graph-wrap {
-  background: #e8edf4;
+/* Cards */
+.card {{
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 12px;
-  border: 1px solid #334155;
-  margin-bottom: 0.25rem;
-}
-.static-graph-wrap img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-}
+  padding: 1.15rem 1.3rem;
+  margin-bottom: 1rem;
+}}
+.card.accent {{ border-left: 4px solid var(--accent); background: var(--accent-soft); }}
+.card.ok {{ border-left: 4px solid var(--ok); }}
+.card.bad {{ border-left: 4px solid var(--bad); }}
+.card.warn {{ border-left: 4px solid var(--warn); }}
+.card h4 {{ margin: 0 0 0.45rem 0; font-size: 1.02rem; }}
+.card p {{ color: #57534e; font-size: 0.92rem; line-height: 1.6; margin: 0; }}
 
-/* Footer styling */
-.ft {
-  text-align: center;
-  padding: 2.5rem 1rem;
-  margin-top: 4rem;
-  border-top: 1px solid var(--border-dark);
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-}
-.ft a { color: var(--teal-glow); text-decoration: none; font-weight: 600; }
+/* KPI cards */
+.kpi-grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin: 1rem 0 1.4rem 0; }}
+.kpi {{
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1rem 1.1rem; border-top: 3px solid var(--accent);
+}}
+.kpi .v {{
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 1.55rem; font-weight: 700; color: var(--ink); line-height: 1.1;
+}}
+.kpi .l {{
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.1px; color: var(--muted); margin-top: 0.35rem;
+}}
+.kpi .s {{ font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.45; }}
 
-/* Mobile / narrow screens */
-@media (max-width: 768px) {
-  .hero-block { padding: 1.15rem 1rem !important; margin-bottom: 1.25rem !important; }
-  .hero-block h1 { font-size: 1.35rem !important; line-height: 1.25 !important; }
-  .hero-block p { font-size: 0.92rem !important; }
-  .hero-pill { font-size: 0.68rem !important; padding: 0.25rem 0.55rem !important; }
-  .sh { font-size: 1.05rem; margin: 1.25rem 0 0.65rem 0; }
-  .clinical-card { padding: 1rem; margin-bottom: 0.85rem; }
-  .nav-hint { font-size: 0.78rem; }
-  div[data-testid="stTabs"] { overflow-x: auto; }
-  div[data-testid="stTabs"] button {
-    font-size: 0.68rem !important;
-    padding: 0.4rem 0.45rem !important;
-    min-width: 0 !important;
-    white-space: nowrap;
-  }
-  div[data-testid="stMetricValue"] { font-size: 1.25rem !important; }
-  div[data-testid="stMetricLabel"] { font-size: 0.65rem !important; }
-  .triage-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; padding: 6px; }
-  .static-graph-wrap { padding: 6px; }
-  .model-rung { font-size: 0.82rem; padding: 0.65rem 0.75rem; }
-  .block-container { padding-left: 0.75rem; padding-right: 0.75rem; }
-}
-@media (max-width: 480px) {
-  .triage-grid { grid-template-columns: repeat(8, 1fr); }
-}
+/* Validation ladder */
+.rung {{
+  display: flex; gap: 0.9rem; align-items: flex-start;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.95rem 1.15rem; margin-bottom: 0.55rem;
+}}
+.rung .n {{
+  flex: 0 0 auto; width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  background: var(--accent-soft); border: 1.5px solid var(--accent);
+  color: var(--accent-dk); font-weight: 700; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+}}
+.rung .b {{ font-size: 0.92rem; color: #57534e; line-height: 1.55; }}
+.rung .b b {{ color: var(--ink); }}
 
-.model-rung {
-  background: #0f1322;
-  border: 1px solid var(--border-dark);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  color: #cbd5e1;
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-.model-rung b { color: #f8fafc; }
-.model-rung.you { border-left: 4px solid var(--teal-glow); background: rgba(14, 165, 233, 0.06); }
+/* Timeline (upgrade log) */
+.tl {{ border-left: 2px solid var(--border); margin-left: 0.55rem; padding-left: 1.3rem; }}
+.tl-item {{ position: relative; margin-bottom: 0.85rem; }}
+.tl-item::before {{
+  content: ""; position: absolute; left: -1.62rem; top: 0.3rem;
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--paper);
+}}
+.tl-item .d {{ font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }}
+.tl-item .t {{ font-size: 0.92rem; color: var(--ink); font-weight: 600; }}
+.tl-item .s {{ font-size: 0.84rem; color: var(--muted); line-height: 1.5; }}
 
+/* Model cards */
+.model-card {{
+  background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.3rem 1.4rem; height: 100%;
+}}
+.model-card .tag {{
+  display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--accent-dk);
+  background: var(--accent-soft); border: 1px solid var(--accent);
+  border-radius: 5px; padding: 0.15rem 0.55rem; margin-bottom: 0.55rem;
+}}
+
+/* Triage dot grid */
+.triage-grid {{
+  display: grid; grid-template-columns: repeat(20, 1fr); gap: 4px;
+  background: var(--panel-alt); padding: 10px; border-radius: 10px; border: 1px solid var(--border);
+}}
+.triage-dot {{ aspect-ratio: 1; border-radius: 3px; transition: transform 0.1s ease; }}
+.triage-dot:hover {{ transform: scale(1.3); z-index: 10; }}
+.triage-dot.safe {{ background-color: var(--ok); }}
+.triage-dot.toxic {{ background-color: var(--bad); }}
+.triage-dot.low {{ background-color: #d6cfc2; }}
+
+/* Streamlit chrome overrides (warm) */
+.stButton>button {{
+  background: var(--accent) !important; color: #fff !important;
+  border: 1px solid var(--accent-dk) !important; border-radius: 8px !important;
+  font-weight: 600 !important; padding: 0.55rem 1.4rem !important;
+}}
+.stButton>button:hover {{ background: var(--accent-dk) !important; }}
+div[data-testid="stTabs"] button {{
+  color: var(--muted) !important; font-weight: 600 !important; font-size: 0.92rem !important;
+}}
+div[data-testid="stTabs"] button[aria-selected="true"] {{
+  color: var(--accent-dk) !important;
+  border-bottom: 2px solid var(--accent) !important;
+}}
+div[data-testid="stMetricValue"] {{
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace !important;
+  color: var(--ink) !important;
+}}
+div[data-testid="stMetricLabel"] {{ color: var(--muted) !important; }}
+
+/* Footer */
+.ft {{
+  text-align: center; padding: 2.2rem 1rem; margin-top: 3.5rem;
+  border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem;
+}}
+.ft a {{ color: var(--accent-dk); text-decoration: none; font-weight: 600; }}
+
+@media (max-width: 900px) {{
+  .kpi-grid {{ grid-template-columns: repeat(2, 1fr); }}
+  .sh {{ font-size: 1.2rem; }}
+}}
+@media (max-width: 768px) {{
+  .triage-grid {{ grid-template-columns: repeat(10, 1fr); gap: 2px; padding: 6px; }}
+  div[data-testid="stTabs"] button {{ font-size: 0.72rem !important; padding: 0.4rem 0.5rem !important; }}
+}}
 </style>
 """, unsafe_allow_html=True)
 
-# ── HERO PORTAL HEADER ────────────────────────────────────────────────────────
-v63_report = _load_v63_validation()
-_pi = _pilstm_headline_metrics()
-_pi_pct = 100.0 * _pi["ac225_pilstm"]
-_v2_paired_pct = 100.0 * _pi["ac225_v2_paired"]
-_v2_solo = v63_report.get("criteria", {}).get("heldout_ac225_median_rel")
-_v2_solo_pct = 100.0 * float(_v2_solo) if _v2_solo is not None else 4.51
-
-st.markdown(f"""
-<div class="hero-block" style="background: #0b1020; padding: 2.25rem 2.25rem; border-radius: 16px; border: 1px solid #1b223c; margin-bottom: 2rem;">
-  <span style="color: #7dd3fc; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Computational pharmacology &middot; Physics-informed ML &middot; NCSU ARTISANS mentorship</span>
-  <h1 style="font-size: 2.3rem; font-weight: 700; color: #f8fafc; margin: 0.5rem 0 0.5rem 0; letter-spacing: -0.5px; line-height: 1.15;">IsotopePINN: Ac-225 Production Surrogate for Targeted Alpha Therapy</h1>
-  <p style="font-size: 1.05rem; color: #94a3b8; max-width: 860px; line-height: 1.6; margin: 0 0 1.25rem 0;">
-    Actinium-225 is scarce. This demo is a <b>0D physics-informed surrogate</b> for the Ra-226 &rarr; Ac-225
-    chain: frozen <b>v2 MLP-PINN</b> for interactive screening, plus flagship <b>PI-LSTM Results-6</b>
-    (exact physics loss, conformal UQ) reviewed with <b>Jaden Palmer</b> (NCSU ARTISANS Lab).
-    Errors are vs a stiff Bateman ODE (NNDC/JENDL) — not clinical or reactor assay data.
-  </p>
-  <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-    <span class="hero-pill" style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; color: #6ee7b7;">PI-LSTM Results-6 · {_pi_pct:.2f}% Ac-225 endpoint vs ODE</span>
-    <span class="hero-pill" style="background: rgba(14, 165, 233, 0.12); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 6px; padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; color: #7dd3fc;">v2 demo · {_v2_solo_pct:.2f}% held-out (solo protocol) · 6/6 gates</span>
-    <span class="hero-pill" style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 0.3rem 0.8rem; font-size: 0.78rem; font-weight: 600; color: #fcd34d;">~{_pi["batched_ms"]:.1f} ms/scenario batched · ~{_pi["speedup"]:.0f}× vs eager</span>
-  </div>
-</div>
-""", unsafe_allow_html=True)
+# ── LOAD COMMITTED EVIDENCE ───────────────────────────────────────────────────
+v63_report = _load_json("results/v63_validation_20260530.json")
+ode_v2_val = _load_json("results/ode_data_v2_validation_20260718.json")
+ode_v2_spec = _load_json("results/ode_data_v2_spectrum_20260718.json")
+cmp_v2_v3 = _load_json("v3_pilstm/results/compare_v2_pilstm.json")
+conformal = _load_json("v3_pilstm/results/conformal_validation.json")
+empirical = _load_json("v3_pilstm/results/empirical_validation.json")
+joyo_cal = _load_json("v3_pilstm/results/joyo_sigma_calibration.json")
+speed_v3 = _load_json("v3_pilstm/results/speed_harness.json")
+v3_train = _load_json("v3_pilstm/results/train_summary.json")
+iter_log = _load_json("results/isef_iteration_log.json")
 
 weights_p = get_weights_path()
 model = None
@@ -730,1023 +838,1313 @@ else:
 
 _weights_key_str = str(weights_p.resolve()) if weights_p else ""
 
+crit = v63_report.get("criteria", {})
+heldout_rel = float(crit.get("heldout_ac225_median_rel", 0.0451)) if crit else 0.0451
+
+# ── HERO ──────────────────────────────────────────────────────────────────────
+st.markdown(f"""
+<div style="background: {_PANEL}; border: 1px solid {_BORDER}; border-radius: 14px; padding: 2rem 2.2rem; margin-bottom: 1.6rem; border-top: 4px solid {_ACCENT};">
+  <div class="kicker">Physics-informed machine learning · Isotope production · ISEF project</div>
+  <h1 style="font-size: 2.15rem; font-weight: 700; margin: 0.45rem 0 0.55rem 0; line-height: 1.18;">
+    IsotopePINN: screening the Ra-226 → Ac-225 chain, and the data hunt that changed the answer
+  </h1>
+  <p style="font-size: 1.02rem; color: #57534e; max-width: 860px; line-height: 1.65; margin: 0;">
+    Actinium-225 powers targeted alpha therapy, an experimental cancer treatment — but the world
+    produces only a few patient doses' worth per year. This project builds <b>two physics-informed
+    surrogate models</b> that screen reactor production settings in milliseconds, then progressively
+    replaces every synthetic assumption in the physics reference with <b>evaluated nuclear data</b> —
+    uncovering, along the way, why the model disagreed with a national lab, and fixing it.
+  </p>
+</div>
+""", unsafe_allow_html=True)
+
+# ── SIDEBAR ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("### IsotopePINN")
-    st.caption("v2 interactive demo + PI-LSTM Results-6")
-    st.metric("PI-LSTM Ac-225", f"{_pi_pct:.2f}%", "endpoint vs ODE")
-    st.metric("v2 held-out (solo)", f"{_v2_solo_pct:.2f}%")
-    if v63_report.get("criteria", {}).get("overall"):
-        st.success(f"v2 gates: {v63_report['criteria']['overall']}")
+    st.caption("Two-model physics-informed surrogate · Ra-226 → Ac-225")
+    if crit.get("overall"):
+        st.success(f"v63 validation: {crit['overall']}")
+    st.metric("Canonical held-out Ac-225 vs ODE", f"{100.0 * heldout_rel:.2f}% median")
+    if ode_v2_spec.get("anchors"):
+        sano = ode_v2_spec["anchors"][0]
+        st.metric(
+            "Joyo anchor (spectrum-folded ODE)",
+            f"{float(sano['v2_twogroup_fstar_ratio_pred_over_meas']):.2f}× of Sano",
+        )
     st.divider()
-    st.markdown("**Suggested walkthrough**")
+    st.markdown("**Judge walkthrough**")
     st.markdown(
-        '<p class="nav-hint">1. <b>Overview</b> — plain-language scope<br>'
-        "2. <b>PI-LSTM</b> — flagship Results-6 vs v2<br>"
-        "3. <b>Validation</b> — v2 six ODE checks<br>"
-        "4. <b>Screening</b> — 10k-point sweep</p>",
-        unsafe_allow_html=True,
+        "1. **Overview** — problem, system, headline evidence\n"
+        "2. **The Discovery** — the 3-act data story (start here if short on time)\n"
+        "3. **The Science** — validation ladder, UQ, failure honesty\n"
+        "4. **Screening** — live surrogate + 10,000-scenario triage\n"
+        "5. **Speed** — honest throughput numbers\n"
+        "6. **Methods & Data** — model cards, provenance, limitations"
     )
     st.divider()
-    st.markdown(
-        "[GitHub repo](https://github.com/samogunnubi0-del/PINN2.0) · "
-        "[PI-LSTM-only app](https://github.com/samogunnubi0-del/PINN2.0/blob/main/v3_pilstm/app_v3.py)"
-    )
     st.caption(
-        "Hosted demos may sleep when idle; first load after sleep can take up to ~90 s while PyTorch initializes."
+        "Hosted demos sleep when idle; first load after sleep can take up to ~90 s while PyTorch initializes."
     )
 
-with st.expander("How to use this demo", expanded=False):
-    st.markdown(
-        "**Overview** = plain English + scope. **PI-LSTM** = current flagship numbers and figures. "
-        "**Validation** = frozen v2 six ODE checks. **Screening / Scenario** = interactive v2 MLP-PINN. "
-        "Open `streamlit run v3_pilstm/app_v3.py` locally for a live PI-LSTM vs ODE trajectory."
-    )
 
-# ── MAIN TABS ──────────────────────────────────────────────────────────────────
-(tab_start, tab_pilstm, tab_triage, tab_live, tab_contour, tab_dose, tab_empirical, tab_validation, tab_tech) = st.tabs([
+# ── MAIN TABS ─────────────────────────────────────────────────────────────────
+(tab_overview, tab_science, tab_discovery, tab_screen, tab_speed, tab_methods, tab_about) = st.tabs([
     "Overview",
-    "PI-LSTM",
+    "The Science",
+    "The Discovery",
     "Screening",
-    "Scenario",
-    "Production Map",
-    "Clinical Context",
-    "Methods",
-    "Validation",
+    "Speed",
+    "Methods & Data",
     "About",
 ])
 
 # ==============================================================================
 # TAB — OVERVIEW
 # ==============================================================================
-with tab_start:
-    st.markdown('<div class="sh">Project scope</div>', unsafe_allow_html=True)
+with tab_overview:
+    st.markdown('<div class="kicker">The problem</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">A cancer drug the world cannot make enough of</div>', unsafe_allow_html=True)
     st.markdown(
-        "IsotopePINN is a **planning surrogate** for Actinium-225 production. Given reactor parameters "
-        "(neutron flux, energy, irradiation time, starting inventories), it predicts five linked isotope "
-        "inventories in milliseconds and is validated against a stiff **Bateman ODE** integrator using "
-        "NNDC/JENDL nuclear data."
+        "Actinium-225 is an alpha-emitting isotope at the heart of **targeted alpha therapy (TAT)** — "
+        "radiolabeled conjugates such as Ac-225–PSMA-617 now in clinical trials for metastatic prostate "
+        "cancer and leukemia. Alpha particles deposit ~28 MeV within a few cell diameters, killing tumor "
+        "cells while sparing surrounding tissue. The bottleneck is supply: global Ac-225 production "
+        "covers only a small fraction of what trials need. One promising route is neutron transmutation "
+        "of Radium-226 in reactors — **Ra-226(n,2n)Ra-225 → β⁻ → Ac-225** — but finding irradiation "
+        "conditions that maximize Ac-225 while suppressing the long-lived Ac-227 impurity requires "
+        "sweeping a large parameter space, and each full physics evaluation is a stiff ODE solve."
+    )
+
+    st.markdown('<div class="kicker" style="margin-top:1.6rem;">What was built</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">A two-model physics-informed surrogate system</div>', unsafe_allow_html=True)
+    mc1, mc2 = st.columns(2)
+    with mc1:
+        st.markdown(f"""
+        <div class="model-card">
+          <span class="tag">Model A · shipped</span>
+          <h4 style="margin:0.2rem 0 0.4rem 0;">v2 PINN (v63)</h4>
+          <p style="color:#57534e;font-size:0.92rem;line-height:1.6;margin:0;">
+          Semi-analytic Bateman backbone + learned correction (4×128 MLP, SiLU, float64).
+          600 epochs physics-only pretrain, then 3,400 joint epochs. Physics residuals and
+          mass-budget constraints sit inside the loss, so the network cannot invent Ac-225
+          from an empty target. <b>Canonical result: {100.0*heldout_rel:.2f}% median
+          Ac-225 error vs the stiff ODE reference on 22 held-out scenarios, 6/6 gates PASS.</b>
+          </p>
+        </div>
+        """, unsafe_allow_html=True)
+    with mc2:
+        v3_epochs = v3_train.get("epochs", 6000)
+        st.markdown(f"""
+        <div class="model-card">
+          <span class="tag">Model B · research line</span>
+          <h4 style="margin:0.2rem 0 0.4rem 0;">v3 PI-LSTM</h4>
+          <p style="color:#57534e;font-size:0.92rem;line-height:1.6;margin:0;">
+          Sequence model (2×256 LSTM, Fourier time/energy features, hard initial condition)
+          trained {v3_epochs:,} epochs with an exact exponential-integrator physics loss,
+          distilled from the v2 teacher, at a matched parameter budget against a trained
+          vanilla-LSTM ablation. Endpoint-protocol Ac-225 median <b>5.12% vs ODE</b>
+          (v2: 8.18% on the same protocol — see The Science for the reconciliation footnote).
+          </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown('<div class="sh">Headline evidence</div>', unsafe_allow_html=True)
+    sano_ratio = "—"
+    if ode_v2_spec.get("anchors"):
+        sano_ratio = f"{float(ode_v2_spec['anchors'][0]['v2_twogroup_fstar_ratio_pred_over_meas']):.2f}×"
+    st.markdown(f"""
+    <div class="kpi-grid">
+      <div class="kpi"><div class="v">{100.0*heldout_rel:.2f}%</div><div class="l">Held-out Ac-225 vs ODE</div>
+        <div class="s">Canonical v63 result · 22 unseen scenarios · ODE reference</div></div>
+      <div class="kpi"><div class="v">{crit.get('overall','—')}</div><div class="l">Validation gates</div>
+        <div class="s">Empty-tank safety, production, decay chain, quality, correlation, held-out</div></div>
+      <div class="kpi"><div class="v">{sano_ratio}</div><div class="l">Joyo anchor after spectrum fix</div>
+        <div class="s">vs Sano 2024's 15.4 ± 6.2 GBq — inside national-lab uncertainty</div></div>
+      <div class="kpi"><div class="v">28×</div><div class="l">The error we found</div>
+        <div class="s">Synthetic σ(n,2n) was 28× too small vs JENDL-5 at 14 MeV</div></div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="sh">The discovery, in one paragraph</div>', unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="card accent">
+    <p>
+    When we checked the physics reference against Japan's Joyo reactor results, our synthetic cross
+    section (27 mb) overpredicted Ac-225 by <b>~19×</b>. We replaced it with the real evaluated
+    JENDL-5 data — and the prediction got <b>worse</b> (369×), proving the cross section was never the
+    dominant error: the model treated <i>every</i> neutron as a 14.5 MeV neutron, while only the tiny
+    above-threshold tail of a reactor spectrum can drive the (n,2n) reaction at all. Folding the
+    evaluated cross section over a documented spectrum shape closes the gap to <b>1.00×</b> of the
+    national-lab measurement, with an inferred fast fraction f* = 1.24×10⁻³ [7.4×10⁻⁴, 1.7×10⁻³].
+    Each fix revealed the next-deeper assumption — <b>that iteration is the research</b>.
+    Full story in <b>The Discovery</b> tab; provenance in <b>Methods & Data</b>.
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="sh">Where everything lives</div>', unsafe_allow_html=True)
+    g1, g2, g3 = st.columns(3)
+    g1.markdown(
+        '<div class="card"><h4>→ The Discovery</h4><p>The 3-act story: synthetic σ wrong → real σ made '
+        'it worse → spectrum folding fixed it (1.00×). Includes a live ODE lab with a mono-vs-folded '
+        'spectrum toggle.</p></div>',
+        unsafe_allow_html=True,
+    )
+    g2.markdown(
+        '<div class="card"><h4>→ The Science</h4><p>Canonical v63 gates, v2-vs-v3 comparison with the '
+        'protocol footnote, the four-rung validation ladder, conformal uncertainty, and the '
+        'failure/transparency section.</p></div>',
+        unsafe_allow_html=True,
+    )
+    g3.markdown(
+        '<div class="card"><h4>→ Screening & Speed</h4><p>Live scenario explorer, 10,000-scenario '
+        'triage, 2D production map — and an honest speed tab (batched throughput, eager latency '
+        'disclosed, re-verification in progress).</p></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown('<div class="sh">What changed in the July 2026 engineering sprints</div>', unsafe_allow_html=True)
+    n1, n2 = st.columns(2)
+    n1.markdown(
+        '<div class="card"><h4>Stronger physics &amp; evaluation</h4><p>'
+        '<b>Exact propagator loss:</b> the physics residual now uses the closed-form matrix-exponential '
+        'interval propagator — ≤ 1.2e-14 on any grid (the trapezoid leaked up to 8.9e-8 on exact '
+        'trajectories).<br/>'
+        '<b>Locked test set:</b> 60 scenarios, seed 20260725, <i>shifted</i> regime boundaries — never '
+        'used for training, checkpointing, or early stopping. Dev set (seed 2025) handles selection.<br/>'
+        '<b>Coverage rebalance:</b> epithermal + threshold regimes oversampled 2× after measured bucket '
+        'errors (9.55% / 8.52%) exposed the gaps.</p></div>',
+        unsafe_allow_html=True,
+    )
+    n2.markdown(
+        '<div class="card"><h4>Integrity &amp; what is pending</h4><p>'
+        '<b>26/26 checks green:</b> bit-for-bit reproducibility, legacy checkpoint compatibility, '
+        'fold-constant asserts, atom-budget conservation exact to 1e-12, plus the four Sprint 6 '
+        'guards (Jacobian, QSSA, CRAM, EMA bias).<br/>'
+        '<b>Implemented, not yet accuracy-claimed:</b> SOAP optimizer, causality-weighted loss, '
+        'multi-fidelity head, JAWS+ACI conformal, active learning, minGRU baseline, Ra-227 QSSA prior.<br/>'
+        '<b>Pending:</b> the locked-set &lt; 3% Ac-225 gate (TC-ACC-001) is being measured by the '
+        'B0/S1 GPU runs — no dev-set number will be substituted.</p></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        '<div class="sh" style="margin-top:1.6rem;">Sprint 6 (31 Jul 2026) — we audited our own '
+        'physics loss and found two real bugs</div>',
+        unsafe_allow_html=True,
     )
     st.markdown(
+        '<div class="card"><p>A physics-informed loss is supposed to enforce the Bateman equations. '
+        'So we audited it the obvious way: <b>hand it the exact ODE solution and check that it scores '
+        'zero.</b> It did not. Two defects were found in code that had already shipped, and both are '
+        'now fixed, measured, and guarded by regression tests.</p></div>',
+        unsafe_allow_html=True,
+    )
+    s1, s2, s3 = st.columns(3)
+    s1.markdown(
+        '<div class="card bad"><h4>Bug 1 — a dropped identity term</h4><p>'
+        'The Jacobian row norms divide each species\' residual so no isotope dominates simply because '
+        'its rate constants are large. Three rows carried the identity term; the two <b>actinium</b> '
+        'rows did not.<br/><br/>'
+        'Ac-225\'s divisor was <b>0.0035 instead of 1.0</b>, inflating its physics residual '
+        '<b>285×</b> — on the exact species every headline number reports.</p></div>',
+        unsafe_allow_html=True,
+    )
+    s2.markdown(
+        '<div class="card bad"><h4>Bug 2 — rates that did not match the data</h4><p>'
+        'The ODE that generates our training labels applies <code>exp(-0.01·mass)</code> self-shielding. '
+        'The trapezoid residual did not.<br/><br/>'
+        'That ~1% mismatch meant <b>true trajectories were not zeros of the loss</b>: the physics term '
+        'was pulling the model off the very solution it is supervised on.</p></div>',
+        unsafe_allow_html=True,
+    )
+    s3.markdown(
+        '<div class="card ok"><h4>Result</h4><p>'
+        'Residual on the true solution fell from <b>8.9e-08 → 5.2e-12</b> (621× on the median), and the '
+        'exact propagator is a further 446× below that — now the default.<br/><br/>'
+        '<b>The model has not been retrained yet</b>, so the reported 5.12% is unchanged. Fixing a loss '
+        'changes what a model learns; the new number needs a full GPU run.</p></div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
         """
-        <div class="clinical-card">
-        <h4 style="margin-top:0;">What it is not</h4>
-        <p style="margin:0;color:#cbd5e1;">
-        This is <b>not</b> a patient dose calculator, a clinical approval tool, or a substitute for lab measurements.
-        Errors reported here are <b>PINN vs ODE reference</b>, not error in a real reactor or hospital batch.
+        <div class="card warn">
+        <h4>Scope — what this is not</h4>
+        <p>
+        This is a <b>0D planning surrogate</b>, not a patient dose calculator, a clinical approval tool,
+        or a substitute for lab measurements. Errors reported here compare the surrogate to a
+        <b>stiff ODE reference</b> and to evaluated nuclear data — not error in a real reactor or
+        hospital batch. It is not for clinical use.
         </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
-    st.markdown('<div class="sh">Modeling scope (0D surrogate)</div>', unsafe_allow_html=True)
+# ==============================================================================
+# TAB — THE SCIENCE (VALIDATION)
+# ==============================================================================
+with tab_science:
+    st.markdown('<div class="kicker">Evidence, with the protocol stated</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">Canonical validation — v63, 6/6 gates</div>', unsafe_allow_html=True)
     st.markdown(
-        """
-        <div class="model-rung"><b>3D transport (MCNP / OpenMC)</b> — geometry-resolved neutron transport (out of scope).</div>
-        <div class="model-rung"><b>1D beam models</b> — depth-dependent reaction rates (future extension).</div>
-        <div class="model-rung you"><b>0D Bateman ODE (reference)</b> — well-mixed target, scalar flux and energy; NNDC/JENDL constants.</div>
-        <div class="model-rung you"><b>v2 MLP-PINN (this interactive demo)</b> — differential physics loss; 6/6 ODE gates; ~4.5% held-out (solo protocol).</div>
-        <div class="model-rung you"><b>v3 PI-LSTM Results-6 (flagship)</b> — LSTM + exact/<code>expmix</code> loss; 5.12% Ac-225 endpoint on paired protocol; conformal UQ.</div>
-        <div class="model-rung you" style="border-left: 4px solid #f59e0b; background: rgba(245, 158, 11, 0.08);"><b>Sprint 4/5 SOTA Architecture (July 2026)</b> — Evaluated EXFOR/JENDL data spine, <code>expmix</code> exact matrix-exponential physics loss, 60-scenario locked-test protocol (seed 20260725), 22/22 smoke suite passing, SOAP optimizer (arXiv:2409.11321), JAWS+ACI conformal error bars.</div>
-        <div class="model-rung"><b>Separations / QC</b> — recovery yield and impurity limits are post-processed in the Clinical Context tab, not in the network loss.</div>
-        """,
-        unsafe_allow_html=True,
+        "The **canonical accuracy number is 4.51%**: median Ac-225 relative error vs the stiff Radau ODE "
+        "reference on **22 held-out scenarios**, full-trajectory pipeline protocol "
+        "(`results/v63_validation_20260530.json`, weights v63 sha256 prefix `7c21debe`). "
+        "Six independent gates were evaluated separately — not one lucky plot."
     )
-
-    st.markdown('<div class="sh">Validation summary</div>', unsafe_allow_html=True)
-    crit = v63_report.get("criteria", {})
     if crit:
-        u1, u2, u3, u4 = st.columns(4)
-        u1.metric("Validation gates", crit.get("overall", "—"))
-        u2.metric("Held-out Ac-225", f"{100.0 * float(crit.get('heldout_ac225_median_rel', 0)):.2f}%")
-        u3.metric("Trio A (empty tank)", crit.get("trio_a", "—"))
-        u4.metric("Quality gate", crit.get("quality_gate", "—"))
+        gcols = st.columns(6)
+        gcols[0].metric("Gates", crit.get("overall", "—"))
+        gcols[1].metric("Held-out Ac-225", f"{100.0 * heldout_rel:.2f}%")
+        gcols[2].metric("Trio A (empty)", crit.get("trio_a", "—").split(" ")[0])
+        trio_b_err = crit.get("trio_b_ac225_rel_error")
+        gcols[3].metric("Trio B", f"{100.0 * float(trio_b_err):.1f}%" if trio_b_err is not None else "—")
+        gcols[4].metric("Trio C", crit.get("trio_c", "—").split(" ")[0])
+        gcols[5].metric("Quality gate", crit.get("quality_gate", "—").split(" ")[0])
+    else:
+        st.info("`results/v63_validation_20260530.json` not found — gate table unavailable in this deployment.")
+
+    held_png = _chart_heldout_buckets_png()
+    if held_png:
+        st.image(held_png, use_container_width=True)
+
+    with st.expander("What each gate proves"):
+        st.markdown(
+            "- **Trio A — empty tank + flux:** all inventories zero at φ=1e15 for 100 h; the model must "
+            "stay at zero (a data-only net can hallucinate Ac-225 from nothing; this one doesn't).\n"
+            "- **Trio B — production scenario:** 1e22 Ra-226 atoms, φ=1e14, 14 MeV, 250 h; Ac-225 within "
+            "10% of the ODE.\n"
+            "- **Trio C — decay chain:** φ=0, Ra-225 feed only; Ac-225 ingrowth from β-decay alone.\n"
+            "- **Quality gate / correlation / held-out:** species-wise error budgets, prediction–reference "
+            "correlation, and the 22-scenario unseen-set median."
+        )
+
+    # ── Sprint 6: auditing the physics loss itself ──────────────────────────
+    st.markdown(
+        '<div class="sh">Auditing the referee: is the physics loss itself correct?</div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        "Every number above compares the **model** to the ODE. But the physics loss is also a piece of "
+        "software, and it can be wrong. There is a clean way to test it: **hand it the exact ODE "
+        "solution.** That curve satisfies the Bateman equations by definition, so a correct loss must "
+        "score it at zero. Anything left over is the loss function's own error, with the neural network "
+        "removed from the picture entirely."
+    )
+
+    _s6a, _s6b = st.columns(2)
+    with _s6a:
+        _show_graph(
+            "graphs/sprint6_physics_residual.png",
+            "Residual the loss reports on the true solution. The old trapezoid claimed the correct "
+            "answer violated its own equation by 0.042% per step; that bias was systematic, not noise, "
+            "so it accumulated instead of cancelling.",
+        )
+    with _s6b:
+        _show_graph(
+            "graphs/sprint6_jacobian_fix.png",
+            "The divisor that makes species comparable. Three rows carried the identity term, the two "
+            "actinium rows did not. Fixed values match closed form exactly: Ra-227 = sqrt(1 + 0.9855²) "
+            "= 1.4040.",
+        )
 
     st.markdown(
-        """
-        | Reason | What it means in practice |
-        |---|---|
-        | **Six independent gates (6/6 PASS)** | Empty-tank safety, production scenario, decay chain, quality gate, correlation, and held-out accuracy were checked separately — not one lucky plot. |
-        | **Physics embedded in the network** | Bateman ODE residuals and mass-budget constraints are in the training loss, so the model cannot freely "guess" Ac-225 from an empty target. |
-        | **Validated vs stiff ODE, not lab data** | Every percentage error is relative to a Radau integrator using the same cross sections and half-lives as training — a consistent reference, not cherry-picked points. |
-        | **Speed for planning** | Screening 10,000 flux/time combinations takes seconds here; the reference ODE would take hours for the same sweep. |
-        """
+        '<div class="card accent"><p><b>Why the fixed numbers are trustworthy, not just smaller.</b> '
+        'The exact propagator now sits at <b>1.16e-14</b> — that is float64 roundoff accumulated over '
+        '63 intervals, i.e. the arithmetic floor rather than a tuning achievement. And the corrected '
+        'Jacobian rows can be derived by hand, which is a stronger check than "it improved".</p></div>',
+        unsafe_allow_html=True,
     )
 
-    st.markdown('<div class="sh">What the errors mean</div>', unsafe_allow_html=True)
-    st.markdown(
-        "All **relative errors** on this site compare the PINN prediction to the **ODE reference** for the same inputs. "
-        "They describe how closely the surrogate tracks the physics simulator — not how wrong a hospital dose would be."
-    )
-
-    held = float(crit.get("heldout_ac225_median_rel", 0.0451)) if crit else 0.0451
-    buckets = v63_report.get("heldout_buckets_ac225_median_rel", {})
-    err_rows = [
-        ("Overall held-out (22 scenarios)", held, "Typical planning margin when flux, energy, and inventory vary."),
-        ("Fast 14 MeV virgin", buckets.get("fast14_virgin", 0.039), "Strongest regime — close to the main production case."),
-        ("Thermal virgin", buckets.get("thermal_virgin", 0.047), "Still within a few percent of the ODE."),
-        ("Epithermal virgin", buckets.get("epithermal_virgin", 0.095), "Harder physics — resonance structure; expect wider error."),
-        ("Threshold virgin (~6.4 MeV)", buckets.get("threshold_virgin", 0.085), "Hardest edge — (n,2n) threshold cliff; largest uncertainty."),
-    ]
-    err_df = pd.DataFrame(
-        [{"Regime": r[0], "Median error vs ODE": f"{100.0 * float(r[1]):.1f}%", "Plain-language meaning": r[2]} for r in err_rows if r[1] is not None]
-    )
-    st.dataframe(err_df, use_container_width=True, hide_index=True)
-
-    st.markdown(
-        """
-        **How to read a number:** A **4.5%** held-out median means that across unseen ODE scenarios, the PINN's Ac-225
-        inventory is typically within about **±4–5%** of the reference integrator — useful for ranking reactor settings,
-        not for signing off a clinical batch without lab assay.
-
-        **10% gate:** Validation requires production scenarios (Trio B) and held-out medians to stay below **10%** relative error vs ODE.
-        Current model passes both.
-        """
-    )
-
-    st.markdown('<div class="sh">Neural network vs physics-informed PINN</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        A **neural network** is a function approximator: it takes numbers in (time, flux, energy, starting atoms)
-        and outputs predicted atom counts. A standard network is trained only to match example points.
-
-        A **physics-informed neural network (PINN)** adds a second requirement: outputs must also satisfy the
-        **Bateman transmutation equations** (decay + neutron capture). This project uses a semi-analytic Bateman
-        backbone with a small learned correction, plus 600 epochs of **physics-only pretrain** before any data fit.
-        """
-    )
-    schematic = _chart_nn_vs_pinn_schematic_png()
-    if schematic:
-        _show_dark_png(schematic, caption="Standard NN fits data only; PINN is also penalized when it breaks Bateman physics")
-
-    st.markdown('<div class="sh">Live demo: PINN vs ODE on one scenario</div>', unsafe_allow_html=True)
-    st.caption("Adjust sliders — only this panel rerenders (batched inference, cached curves).")
-    _live_pinn_ode_demo(weights_key=_weights_key_str, key_prefix="start")
-    st.markdown(
-        "The dashed line is the **ODE reference**; the green line is the **PINN**. "
-        "When they track closely, the surrogate is safe to use for that region of parameter space. "
-        "When they track closely, the surrogate is appropriate for that region of parameter space. "
-        "See the **Methods** tab for training curriculum and loss design. "
-        "See the **PI-LSTM** tab for the Results-6 flagship comparison."
-    )
-
-# ==============================================================================
-# TAB — PI-LSTM RESULTS-6
-# ==============================================================================
-with tab_pilstm:
-    st.markdown('<div class="sh">Flagship: PI-LSTM Results-6</div>', unsafe_allow_html=True)
-    st.markdown(
-        "After mentorship review with **Jaden Palmer** (NCSU ARTISANS Lab), the project moved from "
-        "differential MLP-PINN residuals toward an **LSTM** backbone with **exact / integrated physics loss**, "
-        "**conformal prediction** (replacing MC Dropout), and a controlled **v2 vs PI-LSTM** benchmark."
-    )
-
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("PI-LSTM Ac-225 endpoint", f"{_pi_pct:.2f}%", "22 held-out vs ODE")
-    c2.metric("v2 on same protocol", f"{_v2_paired_pct:.2f}%")
-    c3.metric("Batched CPU", f"{_pi['batched_ms']:.2f} ms/sc", f"~{_pi['speedup']:.0f}× vs eager")
-    c4.metric("Conformal coverage", f"{100.0 * _pi['conformal']:.1f}%", "target ~90%")
-
-    st.caption(
-        f"Note: v2 solo validation is {_v2_solo_pct:.2f}% (`results/v63_validation_20260530.json`) — "
-        "a different scoring pipeline than the paired 8.18% figure. Use paired numbers when comparing to PI-LSTM."
-    )
-
-    st.markdown('<div class="sh">Species median relative error (paired protocol)</div>', unsafe_allow_html=True)
-    if _pi["species"]:
-        rows = []
-        for sp, vals in _pi["species"].items():
-            rows.append(
-                {
-                    "Species": sp,
-                    "v2 %": f"{100.0 * float(vals.get('v2', float('nan'))):.2f}",
-                    "PI-LSTM %": f"{100.0 * float(vals.get('pilstm', float('nan'))):.2f}",
-                }
+    with st.expander("Independent cross-validation, and a physics prior we tested before trusting"):
+        c1, c2 = st.columns(2)
+        with c1:
+            _show_graph(
+                "graphs/sprint6_cram_crosscheck.png",
+                "CRAM is the matrix-exponential depletion solver used in Serpent and OpenMC. It shares "
+                "no mathematics with our hand-derived propagator, yet agrees to 3.8e-15.",
             )
-        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+            st.caption(
+                "We implemented CRAM and then **chose not to adopt it**. It computes all species "
+                "through shared linear algebra and cannot resolve a nuclide below ~1e-16 of the "
+                "largest — and trace nuclides are the product here. Its value is the cross-check."
+            )
+        with c2:
+            _show_graph(
+                "graphs/sprint6_qssa_validity.png",
+                "Ra-227 (42 min) against Ra-226 (1600 y) is a ~10⁷ timescale ratio — the actual source "
+                "of stiffness. Its quasi-steady state was measured against Radau truth before being "
+                "used as a training prior.",
+            )
+            st.caption(
+                "38 of 39 scenarios agree to under 1%. The single failure is the no-feed case: with no "
+                "Ra-226 there is no production, so the assumption correctly does not apply — and it is "
+                "gated out inside the loss rather than papered over."
+            )
 
-    st.markdown('<div class="sh">Figures</div>', unsafe_allow_html=True)
-    g1, g2 = st.columns(2)
-    with g1:
-        p = _first_existing_graph("graphs/v3_v2_vs_pilstm_ac225.png")
-        if p:
-            _show_graph_path(p, caption="v2 vs PI-LSTM Ac-225")
-        p = _first_existing_graph("graphs/v3_species_median_errors.png")
-        if p:
-            _show_graph_path(p, caption="Species median errors")
-    with g2:
-        p = _first_existing_graph("graphs/v3_trajectory_example.png")
-        if p:
-            _show_graph_path(p, caption="Example trajectory")
-        p = _first_existing_graph("graphs/v3_joyo_sigma_calibration.png")
-        if p:
-            _show_graph_path(p, caption="Joyo σ calibration (sensitivity — not primary validation)")
+    with st.expander("Two results we could have hidden and did not"):
+        h1, h2 = st.columns(2)
+        with h1:
+            _show_graph(
+                "graphs/sprint6_ablation_forest.png",
+                "Screening six training upgrades. The shaded band is the baseline's own seed-to-seed "
+                "spread.",
+            )
+            st.caption(
+                "**A negative result.** The same configuration scores anywhere from 75.6% to 97.2% "
+                "across random seeds on this short CPU screen — a 21.6-point spread that swamps every "
+                "variant we tested. So none of them is resolved, and reporting a winner here would be "
+                "reading noise. The GPU screen settles it."
+            )
+        with h2:
+            _show_graph(
+                "graphs/sprint6_conformal_coverage.png",
+                "Split-conformal coverage per species against the 90% nominal target.",
+            )
+            st.caption(
+                "**Ra-226 under-covers at 72.7%**, below its 90% target. With n_test = 11 each "
+                "scenario is worth 9.1 coverage points, so these estimates are coarse — which is "
+                "itself the finding, and why the larger calibration mode runs before any published "
+                "uncertainty claim."
+            )
 
+    # ── v2 vs v3 comparison with protocol footnote ──────────────────────────
+    st.markdown('<div class="sh">Two models, one protocol (and one footnote)</div>', unsafe_allow_html=True)
+    st.markdown(
+        "Model B (PI-LSTM) was benchmarked against Model A (v2 PINN) on the same 22 scenarios under an "
+        "**endpoint protocol** — error measured at the irradiation endpoint, Ac-225 channel. "
+        "Result: **v2 = 8.18%, v3 = 5.12%** median relative error vs ODE "
+        "(`v3_pilstm/results/compare_v2_pilstm.json`)."
+    )
     st.markdown(
         """
-        <div class="clinical-card">
-        <h4 style="margin-top:0;">What still needs help</h4>
-        <p style="margin:0;color:#cbd5e1;">
-        Ac-227 / thermal impurity modeling is still weaker than v2 on some anchors.
-        Joyo literature match needs spectrum-calibrated σ(n,2n). Experimental reactor assay comparison is future work.
-        Collaborators: open an issue on
-        <a href="https://github.com/samogunnubi0-del/PINN2.0" target="_blank">GitHub</a>
-        or email sam.ogunnubi0@gmail.com.
+        <div class="card warn">
+        <h4>Protocol footnote — read before quoting any percentage</h4>
+        <p>
+        <b>4.51%</b> (canonical v63) and <b>8.18%</b> (v2 in the head-to-head) describe the <i>same model</i>
+        under two different measurement protocols: full-trajectory pipeline vs endpoint-only. They are not
+        contradictory and must not be mixed. Comparisons between models use only same-protocol numbers.
         </p>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    st.info(
-        "Live PI-LSTM vs ODE trajectory: run locally with "
-        "`streamlit run v3_pilstm/app_v3.py` (weights + compare JSON ship in this repo)."
+    sp_png = _chart_species_compare_png()
+    if sp_png:
+        st.image(sp_png, use_container_width=True)
+    else:
+        _show_graph("graphs/v3_species_median_errors.png",
+                    caption="Per-species median endpoint error, v2 vs PI-LSTM (committed figure)")
+    if cmp_v2_v3:
+        st.markdown(
+            "Honesty notes from the same committed file: PI-LSTM is **worse on Ac-227** "
+            f"({100.0 * float(cmp_v2_v3['species_median_rel_error']['Ac-227']['pilstm']):.1f}% vs "
+            f"{100.0 * float(cmp_v2_v3['species_median_rel_error']['Ac-227']['v2']):.1f}%), and its eager "
+            f"inference is ~{float(cmp_v2_v3['mean_inference_ms']['pilstm']) / max(float(cmp_v2_v3['mean_inference_ms']['v2']), 1e-9):.0f}× slower per scenario "
+            f"({float(cmp_v2_v3['mean_inference_ms']['pilstm']):.1f} ms vs {float(cmp_v2_v3['mean_inference_ms']['v2']):.1f} ms). "
+            "Neither model overshoots Ra-227 at high flux (0/22 both)."
+        )
+
+    # ── Validation ladder ───────────────────────────────────────────────────
+    st.markdown('<div class="sh">The validation ladder</div>', unsafe_allow_html=True)
+    st.markdown(
+        "Each rung is a stronger, more independent check. Rungs 3–4 compare the **ODE reference** to "
+        "measurements (the surrogate is validated at rung 1) — the ladder is labeled so no rung is oversold."
     )
+    st.markdown(f"""
+    <div class="rung"><div class="n">1</div><div class="b">
+      <b>Surrogate vs stiff ODE reference.</b> 22 held-out scenarios, unseen during training:
+      {100.0*heldout_rel:.2f}% median Ac-225 error, 6/6 gates. This is the surrogate-accuracy claim.
+    </div></div>
+    <div class="rung"><div class="n">2</div><div class="b">
+      <b>ODE reference vs evaluated nuclear data.</b> Synthetic constants replaced by JENDL-5 σ(E)
+      (verified identical to ENDF/B-VIII.0, max dev 0.0 b), the only experimental (n,2n) point
+      (EXFOR 21405), EXFOR 31760 thermal capture 13.8 ± 0.3 b, and NuDat 3 half-lives — all behind a
+      versioned flag (<code>ODE_DATA_VERSION=v2</code>), machine-parsed, audit-trailed.
+    </div></div>
+    <div class="rung"><div class="n">3</div><div class="b">
+      <b>ODE vs national-lab production estimates.</b> After spectrum folding, the v2 ODE lands at
+      <b>1.00×</b> of Sano 2024's 15.4 ± 6.2 GBq Joyo measurement — inside published uncertainty —
+      and 0.57× / 1.14× on the two Iwahashi 2022 anchors (which mutually disagree ~2×).
+    </div></div>
+    <div class="rung"><div class="n">4</div><div class="b">
+      <b>ODE vs decay-leg and thermal-leg measurements.</b> Snow 2025 φ=0 ingrowth: 1.00× of
+      126.8 ± 12.6 Bq. Hogle 2016 HFIR Ac-227: 0.82× (3 d) and <b>0.98×</b> (7 d) of measurement;
+      the 26 d near-saturation point is ~3× over by both data versions — flagged as missing
+      long-irradiation physics, not hidden.
+    </div></div>
+    """, unsafe_allow_html=True)
+
+    # ── Conformal UQ ────────────────────────────────────────────────────────
+    st.markdown('<div class="sh">Uncertainty quantification — honest intervals</div>', unsafe_allow_html=True)
+    if conformal:
+        ac_rel = conformal.get("Ac-225", {}).get("relative", {})
+        cov = ac_rel.get("test_coverage")
+        q_rel = ac_rel.get("q")
+        n_cal, n_test = conformal.get("n_calibration"), conformal.get("n_test")
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Nominal coverage", f"{100.0 * float(conformal.get('nominal_coverage', 0.9)):.0f}%")
+        c2.metric("Ac-225 test coverage", f"{100.0 * float(cov):.1f}%" if cov is not None else "—",
+                  f"n_test = {n_test}")
+        c3.metric("Relative half-width q", f"{float(q_rel):.2f}" if q_rel is not None else "—",
+                  "interval = prediction × (1 ± q)")
+        st.markdown(
+            f"""
+            <div class="card warn">
+            <h4>The intervals are wide — and we say so</h4>
+            <p>
+            Split conformal at n_cal = {n_cal} gives Ac-225 relative intervals of ±{100.0*float(q_rel):.0f}%
+            at 90% nominal — driven by the worst calibration scenario. Coverage lands at {100.0*float(cov):.1f}%
+            on {n_test} test scenarios, but {n_test} points cannot distinguish 90% from 70%. The fix is built and
+            smoke-verified — large-n conformal (≥100+100 disjoint scenarios), jackknife+/CV+ with bootstrap
+            stability reporting, and a K=5 deep ensemble as a second UQ signal — all awaiting full-budget
+            Kaggle runs before any tighter interval is claimed (docs/UPGRADE_LOG.md #5, #7, #10).
+            </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.info("`v3_pilstm/results/conformal_validation.json` not found — UQ panel unavailable.")
+
+    # ── Failure / transparency ──────────────────────────────────────────────
+    st.markdown('<div class="sh">Where the models fail — disclosed, not buried</div>', unsafe_allow_html=True)
+    buckets = v63_report.get("heldout_buckets_ac225_median_rel", {})
+    ep = 100.0 * float(buckets.get("epithermal_virgin", 0.0955))
+    th = 100.0 * float(buckets.get("threshold_virgin", 0.0852))
+    f1, f2, f3 = st.columns(3)
+    f1.markdown(f"""
+    <div class="card bad"><h4>Epithermal regime ≈ {ep:.1f}%</h4>
+    <p>Resonance-region capture is hardest for the surrogate. Use for ranking only; confirm with the
+    ODE near resonance structure.</p></div>""", unsafe_allow_html=True)
+    f2.markdown(f"""
+    <div class="card bad"><h4>(n,2n) threshold ≈ {th:.1f}%</h4>
+    <p>At the ~6.4 MeV cliff the cross section turns on sharply; largest surrogate uncertainty lives
+    here. Confirm with ODE near onset.</p></div>""", unsafe_allow_html=True)
+    f3.markdown(f"""
+    <div class="card bad"><h4>PI-LSTM thermal Ac-227 leg</h4>
+    <p>On two thermal Ac-227 literature rows the PI-LSTM is orders of magnitude off
+    (v2 PINN: 2.8% MAPE on the same rows). Out-of-domain channel — flagged in
+    empirical_validation.json, not retrained yet.</p></div>""", unsafe_allow_html=True)
+    st.markdown(
+        "Also disclosed in the provenance file: the 26-day HFIR Ac-227 point is overpredicted ~3× by "
+        "**both** data versions (likely capsule self-shielding/burnup absent from the point-model ODE), "
+        "and the evaluated σ shape disagrees with the single experimental point at 14.5 MeV by ~3× "
+        "(experiment ~3× the evaluation) — a real, citable tension, left unresolved."
+    )
+
+
+# ==============================================================================
+# TAB — THE DISCOVERY
+# ==============================================================================
+with tab_discovery:
+    st.markdown('<div class="kicker">The flagship result of this sprint</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">Chasing a 19× error down to 1.00×</div>', unsafe_allow_html=True)
+    st.markdown(
+        "The surrogate is only as honest as the physics it learns from. This sprint, every synthetic "
+        "constant in the reference ODE was replaced with **evaluated nuclear data** — and the "
+        "replacements refused to behave. What follows is the three-act story, told with the committed "
+        "numbers (`results/ode_data_v2_validation_20260718.json`, "
+        "`results/ode_data_v2_spectrum_20260718.json`, `docs/DATA_PROVENANCE.md`)."
+    )
+
+    a1, a2, a3 = st.columns(3)
+    a1.markdown("""
+    <div class="card"><h4>Act 1 · The synthetic σ was wrong</h4>
+    <p>The original model used a smooth sigmoid σ(n,2n) saturating at <b>27 mb</b>, believed to be a
+    "spectrum-averaged fast-reactor value". Against Japan's Joyo reactor anchors it overpredicted
+    Ac-225 by <b>18.9×</b> (Sano 2024). The evaluated JENDL-5 pointwise value at 14 MeV is
+    <b>755.7 mb — ~28× larger</b>.</p></div>
+    """, unsafe_allow_html=True)
+    a2.markdown("""
+    <div class="card bad"><h4>Act 2 · The correct σ made it worse</h4>
+    <p>Installing the real evaluated σ moved the Joyo prediction from 18.9× to <b>369.6×</b>
+    (up to 2153× on the milking anchor). The cross section was never the dominant error: the model
+    treated <b>every neutron as a 14.5 MeV neutron</b> — the monoenergetic-flux approximation.
+    The old 27 mb had been accidentally compensating for that. Two wrongs, roughly right.</p></div>
+    """, unsafe_allow_html=True)
+    a3.markdown("""
+    <div class="card ok"><h4>Act 3 · Folding over a spectrum fixed it</h4>
+    <p>Folding σ(E) over a bare U-235 Watt fission spectrum gives ⟨σ⟩ = <b>26.7 mb ≈ the old 27 mb</b>
+    — mystery solved. A two-group model with inferred above-threshold fraction
+    <b>f* = 1.24×10⁻³ [7.4×10⁻⁴, 1.7×10⁻³]</b> lands at <b>1.00×</b> of Sano's
+    15.4 ± 6.2 GBq — inside published national-lab uncertainty.</p></div>
+    """, unsafe_allow_html=True)
+
+    ratios_png = _chart_discovery_ratios_png()
+    if ratios_png:
+        st.image(ratios_png, use_container_width=True)
+
+    _show_graph(
+        "graphs/ode_v2_spectrum_anchors.png",
+        caption="Committed figure: Joyo anchors across physics variants (left); the evaluated σ(E) and "
+                "Watt spectrum on the tail physics (right). Source: analysis/validate_ode_spectrum.py.",
+    )
+
+    # ── Plain-English explainer ─────────────────────────────────────────────
+    st.markdown('<div class="sh">Why the yield lives in the tail</div>', unsafe_allow_html=True)
+    e1, e2 = st.columns([1.15, 1])
+    with e1:
+        st.markdown(
+            "The first step of the production chain, Ra-226(n,2n)Ra-225, is a **threshold reaction**: "
+            "a neutron carrying less than **6.42 MeV** simply cannot start it, no matter how many "
+            "neutrons there are. In a reactor, the overwhelming majority of neutrons are far slower "
+            "than that — thermalized by collisions with coolant and structure. Ac-225 production "
+            "therefore depends on the **small high-energy tail** of the spectrum, not the total flux. "
+            "Treating the full Joyo core flux (5.7×10¹⁵ n/cm²/s) as if it were all 14.5 MeV neutrons "
+            "is why the pointwise model overpredicts by ~370×. The inferred f* says only about "
+            "**1 neutron in 800** at that irradiation position sits above threshold — order-of-magnitude "
+            "plausible for a sodium-cooled MOX fast breeder, ~16× softer than a bare fission spectrum."
+        )
+        st.markdown(
+            f"""
+            <div class="card accent"><h4>The 27 mb mystery, solved</h4>
+            <p>Folding the evaluated table over a bare fission spectrum reproduces ⟨σ⟩ = 26.7 mb —
+            essentially the legacy synthetic constant. The old model wasn't using a pointwise cross
+            section at all; it was a <b>fission-spectrum average used in the wrong place</b>.
+            Real irradiation-position spectra are far softer (⟨σ⟩ ≈ 1.66 mb at f*).</p></div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with e2:
+        st.markdown(
+            f"""
+            <div class="card"><h4>Numbers a judge can check</h4>
+            <p>
+            Threshold: <b>6.4218 MeV</b> (evaluated table start)<br>
+            Evaluated σ at 14 MeV: <b>755.7 mb</b>; peak 2.53 b @ 10 MeV<br>
+            Only experimental (n,2n) point: <b>1.60 ± 0.20 b @ 14.5 MeV</b> (EXFOR 21405, 1960)<br>
+            Bare-Watt fold: <b>26.7 mb</b>; two-group at f*: <b>1.66 mb</b><br>
+            f* = <b>1.24×10⁻³</b> [7.4×10⁻⁴, 1.7×10⁻³] (exact ODE inversion on Sano's band)<br>
+            Joyo anchors at f*: <b>1.00× / 0.57× / 1.14×</b> (Sano / Iwahashi-60d / milking)
+            </p></div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            '<div class="layman-box" style="background:#fdf3e7;border:1px solid #e9d9c3;border-radius:10px;padding:1rem;">'
+            + laymans_explanation("tail") + "</div>",
+            unsafe_allow_html=True,
+        )
+
+    # ── Interactive ODE lab (real computation, mono vs folded) ─────────────
+    st.markdown('<div class="sh">Live ODE lab — flip the spectrum assumption yourself</div>', unsafe_allow_html=True)
+    st.markdown(
+        "This panel re-runs the **real stiff ODE** (Radau integrator, evaluated JENDL-5/EXFOR/NuDat data) "
+        "for a Joyo-style scenario — 1 g Ra-226, φ = 5.7×10¹⁵ n/cm²/s — under each physics variant. "
+        "Nothing here is a lookup table: every change re-integrates the Bateman chain on CPU."
+    )
+    if not _evaluated_data_available():
+        st.info(
+            "Evaluated data layer (`data/evaluated/`) is not present in this deployment, so only the "
+            "legacy synthetic variant can run. The committed results above still tell the full story."
+        )
+
+    lab_l, lab_r = st.columns([1, 1.6])
+    with lab_l:
+        mode_options = ["v1 synthetic σ (legacy)", "v2 evaluated σ · monoenergetic",
+                        "v2 evaluated σ · Watt fission fold", "v2 evaluated σ · two-group (adjust f)"]
+        if not _evaluated_data_available():
+            mode_options = mode_options[:1]
+        mode_label = st.radio("Physics variant", mode_options, index=3 if len(mode_options) > 1 else 0)
+        days = st.slider("Irradiation time (days)", 10, 90, int(SANO_DAYS), 5, key="joyo_days")
+        f_val = FSTAR_INFERRED
+        if mode_label.endswith("(adjust f)"):
+            f_exp = st.slider(
+                "log₁₀ fast fraction f (>6.42 MeV)", -4.0, -0.7,
+                float(np.log10(FSTAR_INFERRED)), 0.05, key="joyo_f",
+            )
+            f_val = 10.0 ** f_exp
+            st.caption(f"f = {f_val:.2e} — inferred f* = {FSTAR_INFERRED:.2e} [7.4e-4, 1.7e-3]")
+        st.caption(
+            "v2 runs use each variant's own evaluated half-lives (NuDat 3); v1 uses the legacy "
+            "hard-coded set — matching the committed validation scripts exactly."
+        )
+    with lab_r:
+        mode_map = {
+            "v1 synthetic σ (legacy)": ("v1", "mono", None),
+            "v2 evaluated σ · monoenergetic": ("v2", "mono", None),
+            "v2 evaluated σ · Watt fission fold": ("v2", "watt", None),
+            "v2 evaluated σ · two-group (adjust f)": ("v2", "twogroup", f_val),
+        }
+        ver, spec_mode, ff = mode_map[mode_label]
+        pred_gbq = _joyo_ode_gbq(ver, spec_mode, ff if ff is not None else FSTAR_INFERRED, float(days))
+        if pred_gbq is None:
+            st.error("ODE evaluation failed in this deployment — showing committed results instead.")
+        else:
+            ratio = pred_gbq / SANO_MEASURED_GBQ
+            in_band = abs(pred_gbq - SANO_MEASURED_GBQ) <= SANO_ERR_GBQ
+            k1, k2, k3 = st.columns(3)
+            k1.metric("ODE prediction", f"{pred_gbq:.2f} GBq")
+            k2.metric("÷ Sano 15.4 GBq", f"{ratio:.2f}×")
+            k3.metric("Within ±6.2 GBq band?", "Yes ✓" if in_band else "No")
+            lab_png = _chart_joyo_lab_png(mode_label.split("·")[-1].strip(), pred_gbq, float(days))
+            if lab_png:
+                st.image(lab_png, use_container_width=True)
+            if days != SANO_DAYS:
+                st.caption(
+                    f"Note: Sano's measurement is a {SANO_DAYS:.0f}-d irradiation — at {days} d the "
+                    "comparison band is indicative, not a formal test."
+                )
+
+    # ── f* sweep + what remains uncertain ───────────────────────────────────
+    st.markdown('<div class="sh">One parameter, with an honest band</div>', unsafe_allow_html=True)
+    fs_png = _chart_fstar_sweep_png()
+    if fs_png:
+        st.image(fs_png, use_container_width=True)
+    st.markdown(
+        """
+        <div class="card warn">
+        <h4>What remains uncertain (said out loud)</h4>
+        <p>
+        f* is an <b>effective inferred parameter, not a tuned truth</b>: the measured Joyo MK-III spectrum
+        is paywalled, Sano (±40%) and Iwahashi disagree with each other by ~2×, and only one experimental
+        (n,2n) cross-section point exists anywhere (1960). The two-group spectrum is a documented
+        assumption with citable form (Watt 1952; Iwahashi 2022; Aoyama 2005). A published MK-III spectrum
+        table would replace the whole f* exercise with a direct fold — that is the field's open problem,
+        and it is now the app's open problem too. Full list: docs/DATA_PROVENANCE.md §4.
+        </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    with st.expander("Decay-leg and thermal-leg anchors (spectrum-independent)"):
+        _show_graph(
+            "graphs/ode_v2_literature_anchors.png",
+            caption="Committed figure: Hogle 2016 (HFIR thermal (n,γ) Ac-227 leg) and Snow 2025 (φ=0 "
+                    "Ra-225→Ac-225 ingrowth) anchors under v1 vs v2 data.",
+        )
+        if ode_v2_val.get("anchors"):
+            rows = []
+            for a in ode_v2_val["anchors"]:
+                if a["id"].startswith(("hogle", "snow")):
+                    rows.append({
+                        "Anchor": a["id"],
+                        "Measured": f"{a['measured_bq']:.4g} Bq" + (f" ± {a['measured_err_bq']:.3g}" if a.get("measured_err_bq") else ""),
+                        "v1 ratio": f"{a['v1_ratio_pred_over_meas']:.2f}×",
+                        "v2 ratio": f"{a['v2_ratio_pred_over_meas']:.2f}×",
+                    })
+            if rows:
+                st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
 
 # ==============================================================================
 # TAB — SCREENING
 # ==============================================================================
-with tab_triage:
-    st.markdown('<div class="sh">Parameter screening</div>', unsafe_allow_html=True)
+with tab_screen:
+    st.markdown('<div class="kicker">The surrogate at work</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">Interactive screening</div>', unsafe_allow_html=True)
     st.markdown(
-        "Sweep **10,000 reactor settings** at once to screen out unsafe runs and find the "
-        "flux and timing combinations that hit your Ac-225 target within the impurity limit."
+        "Everything on this tab runs the **v2 PINN surrogate** (Model A) live on CPU. "
+        "A screening note first, so the interactivity is never oversold:"
+    )
+    st.markdown(
+        """
+        <div class="card accent">
+        <h4>Spectrum-aware screening — coming after the retrain</h4>
+        <p>
+        The deployed surrogate was trained against the v1 (synthetic-σ, monoenergetic) reference, so its
+        fast-regime sweeps inherit that assumption. Spectrum-aware scenarios (mono for D-T accelerator
+        settings, folded Watt / two-group for reactor settings) are a <b>scenario-level input the next
+        model will learn from</b> — the ODE-side physics is live today in <b>The Discovery → Live ODE
+        lab</b>; the retrained surrogate follows the Kaggle run. No fake toggles here.
+        </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
-    t1, t2 = st.columns([1, 1.8])
-    with t1:
-        st.markdown('<div class="clinical-card">', unsafe_allow_html=True)
-        st.markdown("<h4>Triage Constraints</h4>", unsafe_allow_html=True)
-        target_ac = st.slider("Target Ac-225 Activity (mCi)", 1.0, 50.0, 15.0, 1.0)
-        max_impurity = st.slider("Max Allowed Ac-227 Impurity (%)", 0.05, 0.5, 0.15, 0.01)
-        st.caption(f"Reference impurity limit used in screening: {STRICT_AC227_IMPURITY_LIMIT_PCT:.2f}% Ac-227 activity")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-        # Simple explanation spot
-        st.markdown('<div class="layman-box">', unsafe_allow_html=True)
-        st.markdown("**Context**")
-        st.markdown(laymans_explanation("flux"), unsafe_allow_html=True)
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(laymans_explanation("impurity"), unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    with t2:
-        if model is None:
-            st.warning("Trained model weights not found. Deploy to the weights folder to activate simulator.")
-        else:
-            if st.button("Run 10,000-scenario triage"):
-                t0 = time.perf_counter()
-                
-                # Setup 100x100 grid of Flux vs Time
-                fluxes = np.logspace(12.0, 15.5, 100)
-                times_h = np.linspace(1.0, 500.0, 100)
-                
-                flux_grid, time_grid = np.meshgrid(fluxes, times_h)
-                
-                from pinn_model import (
-                    DEFAULT_N226_SCALE as N226S, DEFAULT_N225_SCALE as N225S,
-                    DEFAULT_NAC_SCALE as NACS, DEFAULT_N227_SCALE as N227S,
-                    DEFAULT_NAC227_SCALE as NAC7S, DEFAULT_PHI_SCALE as PHIS,
-                    DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy as _efn
-                )
-                
-                e_nn = float(_efn(14.0e6)) # Fast spectrum 14 MeV
-                
-                # Prep inputs for PINN (batched tensor)
-                rows = np.column_stack([
-                    time_grid.ravel() / TSH,
-                    flux_grid.ravel() / PHIS,
-                    np.full(10000, e_nn),
-                    np.full(10000, 6.022e23 / N226S), # standard Ra-226 target (1 mole, i.e. 226g)
-                    np.zeros(10000),
-                    np.zeros(10000),
-                    np.zeros(10000),
-                    np.zeros(10000)
-                ])
-                
-                x_t = torch.tensor(rows, dtype=torch.float32)
-                model.eval()
-                with torch.no_grad():
-                    pred = model(x_t).cpu().numpy()
-                
-                elapsed_ms = (time.perf_counter() - t0) * 1000
-                
-                raw_ac225 = np.maximum(pred[:, 2] * NACS, 0.0)
-                raw_ac227 = np.maximum(pred[:, 4] * NAC7S, 0.0)
-                
-                # Apply 5 days cooling, 90% recovery
-                usable_ac225 = raw_ac225 * _decay_factor(5.0, AC225_HALF_LIFE_DAYS) * 0.90
-                recovered_ac227 = raw_ac227 * _decay_factor(5.0, AC227_HALF_LIFE_DAYS) * 0.90
-                
-                ac225_bq = _activity_bq(usable_ac225, AC225_HALF_LIFE_DAYS)
-                ac225_mci = ac225_bq / 3.7e7
-                impurity_pct = _ac227_impurity_activity_pct(usable_ac225, recovered_ac227)
-                
-                # Classification
-                is_safe = (impurity_pct <= max_impurity) & (ac225_mci >= target_ac)
-                is_toxic = impurity_pct > max_impurity
-                is_low = (ac225_mci < target_ac) & ~is_toxic
-                
-                safe_count = int(np.sum(is_safe))
-                toxic_count = int(np.sum(is_toxic))
-                low_count = int(np.sum(is_low))
-                
-                st.markdown("#### Triage Summary Metrics")
-                m1, m2, m3, m4 = st.columns(4)
-                m1.metric("Scenarios Triage", "10,000")
-                m2.metric("Inference Time", f"{elapsed_ms:.1f} ms", f"{10000/(elapsed_ms/1000):,.0f} runs/s")
-                m3.metric("Within constraints", f"{safe_count}", f"{(safe_count/10000)*100:.1f}% of grid")
-                m4.metric("Impurity exceeded", f"{toxic_count}", f"{(toxic_count/10000)*100:.1f}% of grid")
-                
-                # Sweet spot finder
-                if safe_count > 0:
-                    best_idx = np.argmax(np.where(is_safe, ac225_mci, -1.0))
-                    opt_flux = flux_grid.ravel()[best_idx]
-                    opt_time = time_grid.ravel()[best_idx]
-                    opt_yield = ac225_mci[best_idx]
-                    opt_imp = impurity_pct[best_idx]
-                    
-                    st.success(
-                        f"**Best feasible setting in sweep:** {opt_time:.1f} h at {opt_flux:.2e} n/cm²/s — "
-                        f"~{opt_yield:.2f} mCi Ac-225 activity (post-processing assumptions applied), "
-                        f"Ac-227 impurity {opt_imp:.3f}%."
-                    )
-                
-                # Render 20x20 representative grid
-                st.markdown("#### Design-space sample (20×20 subset of 10,000 grid)")
-                st.caption(
-                    "Green = meets yield and impurity constraints | "
-                    "Red = impurity limit exceeded | "
-                    "Gray = insufficient yield"
-                )
-                
-                grid_html = '<div class="triage-grid">'
-                sub_safe = is_safe.reshape(100, 100)[::5, ::5].ravel()
-                sub_toxic = is_toxic.reshape(100, 100)[::5, ::5].ravel()
-                
-                for idx in range(400):
-                    if sub_safe[idx]:
-                        grid_html += '<div class="triage-dot safe" title="Usable batch"></div>'
-                    elif sub_toxic[idx]:
-                        grid_html += '<div class="triage-dot toxic" title="Impurity breached"></div>'
-                    else:
-                        grid_html += '<div class="triage-dot low" title="Low yield"></div>'
-                grid_html += '</div>'
-                st.markdown(grid_html, unsafe_allow_html=True)
-            else:
-                st.info("Press \"Run 10,000-scenario triage\" above to populate the map.")
-
-# ==============================================================================
-# TAB 2 -- LIVE PREDICTOR
-# ==============================================================================
-with tab_live:
-    st.markdown('<div class="sh">Interactive Bateman Engine</div>', unsafe_allow_html=True)
-    st.markdown("Adjust target inputs and initial conditions to simulate the reactor live using the physics surrogate.")
-
+    # ── Scenario explorer ───────────────────────────────────────────────────
+    st.markdown('<div class="sh-sm">Scenario explorer — one setting, PINN vs ODE</div>', unsafe_allow_html=True)
     if model is None:
-        st.warning("Trained weights not found.")
+        st.warning("Trained weights not found. Deploy weights/pinn_best_weights.pth to activate the simulator.")
     else:
-        ci, co = st.columns([1, 2])
+        ci, co = st.columns([1, 1.7])
         with ci:
-            st.markdown("#### Scenario Knobs")
-            flux_exp = st.slider("Flux (log10 n/cm²/s)", 12.0, 15.5, 14.0, 0.1, key="live_flux")
+            flux_exp = st.slider("Flux (log₁₀ n/cm²/s)", 12.0, 15.5, 14.0, 0.1, key="live_flux")
             flux = 10.0 ** flux_exp
-            st.caption(f"phi = {flux:.2e} n/cm²/s")
-            
+            st.caption(f"φ = {flux:.2e} n/cm²/s")
             time_h = st.slider("Irradiation time (hours)", 1.0, 500.0, 200.0, 5.0, key="live_time")
-            
             spectrum = st.selectbox(
-                "Neutron spectrum profile",
-                ["Fast production (14 MeV)", "Thermal capture (0.025 eV)", "Custom"],
-                key="live_spectrum"
+                "Neutron energy regime",
+                ["Fast production (14 MeV)", "Threshold edge (6.4 MeV)", "Epithermal (1 eV)", "Thermal capture (0.025 eV)"],
+                key="live_spectrum",
             )
-            if spectrum == "Fast production (14 MeV)":
-                energy_ev = 14.0e6
-            elif spectrum == "Thermal capture (0.025 eV)":
-                energy_ev = 0.025
-            else:
-                energy_log = st.slider("Neutron energy log10(eV)", -2.0, 7.3, 7.0, 0.1)
-                energy_ev = 10.0 ** energy_log
+            energy_ev = {
+                "Fast production (14 MeV)": 14.0e6,
+                "Threshold edge (6.4 MeV)": 6.4e6,
+                "Epithermal (1 eV)": 1.0,
+                "Thermal capture (0.025 eV)": 0.025,
+            }[spectrum]
             st.caption(f"E = {energy_ev:.3e} eV")
-            
-            st.markdown("#### Initial Feedstock Target")
             ra226_0 = st.number_input("Starting Ra-226 (atoms)", value=6.022e23, format="%.3e", key="live_ra226_0")
-            st.caption(f"Readable Weight: **{format_atoms_human(ra226_0, 226)}**")
-            ra225_0 = st.number_input("Starting Ra-225 (atoms)", value=0.0, format="%.3e")
-            ac225_0 = st.number_input("Starting Ac-225 (atoms)", value=0.0, format="%.3e")
-
-            # Layman explanation
-            st.markdown('<div class="layman-box">', unsafe_allow_html=True)
-            st.markdown("**Context**")
-            st.markdown(laymans_explanation("transmutation"), unsafe_allow_html=True)
-            st.markdown("</div>", unsafe_allow_html=True)
-
+            st.caption(f"Readable weight: **{format_atoms_human(ra226_0, 226)}**")
+            st.markdown(
+                '<div style="background:#fdf3e7;border:1px solid #e9d9c3;border-radius:10px;padding:0.9rem;margin-top:0.6rem;">'
+                + laymans_explanation("transmutation") + "</div>",
+                unsafe_allow_html=True,
+            )
         with co:
             from pinn_model import (
                 DEFAULT_N226_SCALE as N226S, DEFAULT_N225_SCALE as N225S,
                 DEFAULT_NAC_SCALE as NACS, DEFAULT_N227_SCALE as N227S,
                 DEFAULT_NAC227_SCALE as NAC7S, DEFAULT_PHI_SCALE as PHIS,
-                DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy
+                DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy,
             )
-            
             e_nn = float(neutron_energy_ev_to_feature_numpy(energy_ev))
             x_input = torch.tensor([[
-                time_h/TSH, flux/PHIS, e_nn,
-                ra226_0/N226S, ra225_0/N225S, ac225_0/NACS,
-                0.0, 0.0,
+                time_h / TSH, flux / PHIS, e_nn,
+                ra226_0 / N226S, 0.0, 0.0, 0.0, 0.0,
             ]], dtype=torch.float32)
-            
+            model.eval()
             with torch.no_grad():
                 pred = model(x_input)
-            
-            p226 = float(pred[0,0]*N226S)
-            p225 = float(pred[0,1]*N225S)
-            pac = float(pred[0,2]*NACS)
-            p227 = float(pred[0,3]*N227S)
-            pac7 = float(pred[0,4]*NAC7S)
-            
+            p226 = float(pred[0, 0] * N226S)
+            pac = float(pred[0, 2] * NACS)
+            pac7 = float(pred[0, 4] * NAC7S)
+
             for msg in _domain_warnings(flux=flux, energy_ev=energy_ev, time_h=time_h):
                 st.warning(f"Domain warning: {msg}")
-            
-            st.markdown("#### Real-time Output Weights")
+
             m1, m2, m3 = st.columns(3)
-            m1.metric("Ra-226 (Fuel)", f"{p226:.2e}", help=f"Mass: {format_atoms_human(p226, 226)}")
-            m2.metric("Ra-225 (Interm.)", f"{p225:.2e}", help=f"Mass: {format_atoms_human(p225, 225)}")
-            m3.metric("Ac-225 (Product)", f"{pac:.2e}", help=f"Mass: {format_atoms_human(pac, 225)}")
-            
-            st.markdown("#### Trace-level Impurity Scales")
-            st.caption(
-                f"**Radium-226 Weight:** {format_atoms_human(p226, 226)} | "
-                f"**Radium-225 Weight:** {format_atoms_human(p225, 225)} | "
-                f"**Actinium-225 Weight:** {format_atoms_human(pac, 225)}"
-            )
-            
-            m4, m5 = st.columns(2)
-            m4.metric("Ra-227 (Interm.)", f"{p227:.2e}", help=f"Mass: {format_atoms_human(p227, 227)}")
-            m5.metric("Ac-227 (Impurity)", f"{pac7:.2e}", help=f"Mass: {format_atoms_human(pac7, 227)}")
-            
-            st.caption(
-                f"**Radium-227 Weight:** {format_atoms_human(p227, 227)} | "
-                f"**Actinium-227 Weight:** {format_atoms_human(pac7, 227)}"
-            )
+            m1.metric("Ra-226 remaining", f"{p226:.2e}", help=format_atoms_human(p226, 226))
+            m2.metric("Ac-225 product", f"{pac:.2e}", help=format_atoms_human(pac, 225))
+            m3.metric("Ac-227 impurity", f"{pac7:.2e}", help=format_atoms_human(pac7, 227))
 
             ac225_bq = float(_activity_bq(pac, AC225_HALF_LIFE_DAYS))
             ac227_bq = float(_activity_bq(pac7, AC227_HALF_LIFE_DAYS))
-            ac_total_bq = ac225_bq + ac227_bq
-            
-            if ac_total_bq > 0:
-                purity = (ac225_bq / ac_total_bq) * 100.0
-                st.markdown("#### Activity Purity Metric")
-                st.metric("Ac-225 Purity", f"{purity:.4f} %", delta=f"{100-purity:.4f}% impurity", delta_color="inverse")
-                if purity >= 99.85:
-                    st.success("Within the 0.15% Ac-227 activity-impurity reference threshold.")
+            if ac225_bq + ac227_bq > 0:
+                purity = (ac225_bq / (ac225_bq + ac227_bq)) * 100.0
+                st.metric("Ac-225 activity purity", f"{purity:.4f}%",
+                          delta=f"{100.0 - purity:.4f}% impurity", delta_color="inverse")
+                if purity >= 100.0 - STRICT_AC227_IMPURITY_LIMIT_PCT:
+                    st.success(f"Within the {STRICT_AC227_IMPURITY_LIMIT_PCT:.2f}% Ac-227 activity-impurity reference threshold.")
                 else:
-                    st.error("Above the 0.15% Ac-227 activity-impurity reference threshold used in this demo.")
+                    st.error(f"Above the {STRICT_AC227_IMPURITY_LIMIT_PCT:.2f}% Ac-227 activity-impurity reference threshold.")
 
-            st.markdown("#### Single Scenario Time Series")
-            times = np.linspace(1.0, float(time_h), 80)
-            ac_c, ac7_c = [], []
-            for t in times:
-                xt = torch.tensor([[
-                    t/TSH, flux/PHIS, e_nn,
-                    ra226_0/N226S, ra225_0/N225S, ac225_0/NACS,
-                    0.0, 0.0,
-                ]], dtype=torch.float32)
-                with torch.no_grad():
-                    p = model(xt)
-                ac_c.append(float(p[0,2]*NACS))
-                ac7_c.append(float(p[0,4]*NAC7S))
-            
-            chart_df = pd.DataFrame({
-                "Irradiation Time (h)": times,
-                "Ac-225 (Product)": ac_c,
-                "Ac-227 (Impurity)": ac7_c,
-            })
-            st.line_chart(chart_df, x="Irradiation Time (h)", y=["Ac-225 (Product)", "Ac-227 (Impurity)"], color=["#10b981", "#f43f5e"])
+            live_png = _chart_pinn_ode_live_png(_weights_key_str, flux, time_h, energy_ev, ra226_0)
+            if live_png:
+                st.image(live_png, use_container_width=True,
+                         caption="Surrogate vs the stiff ODE reference on this exact scenario.")
 
-# ==============================================================================
-# TAB 3 -- 2D HEATMAP & SAFE-ZONE
-# ==============================================================================
-with tab_contour:
-    st.markdown('<div class="sh">2D Safe-Zone Optimization Space</div>', unsafe_allow_html=True)
+    st.divider()
+
+    # ── 10,000-scenario triage ──────────────────────────────────────────────
+    st.markdown('<div class="sh-sm">10,000-scenario triage</div>', unsafe_allow_html=True)
     st.markdown(
-        "By scanning a 2D grid across Irradiation Time and Neutron Flux, "
-        "we can outline the exact boundaries of clinical usability. "
-        "Parameters that exceed the **0.15% Ac-227 activity impurity** reference threshold used in this demo."
+        "Sweep a 100×100 grid of flux × irradiation time at 14 MeV, apply post-processing "
+        "(5 d cooling, 90% recovery), and classify every point against your yield target and the "
+        "Ac-227 impurity limit — in one batched inference call."
     )
+    t1, t2 = st.columns([1, 1.8])
+    with t1:
+        st.markdown('<div class="card"><h4>Triage constraints</h4>', unsafe_allow_html=True)
+        target_ac = st.slider("Target Ac-225 activity (mCi)", 1.0, 50.0, 15.0, 1.0)
+        max_impurity = st.slider("Max allowed Ac-227 impurity (%)", 0.05, 0.5, 0.15, 0.01)
+        st.caption(f"Reference impurity limit: {STRICT_AC227_IMPURITY_LIMIT_PCT:.2f}% Ac-227 activity")
+        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(
+            '<div style="background:#fdf3e7;border:1px solid #e9d9c3;border-radius:10px;padding:0.9rem;">'
+            + laymans_explanation("flux") + "<br><br>" + laymans_explanation("impurity") + "</div>",
+            unsafe_allow_html=True,
+        )
+    with t2:
+        if model is None:
+            st.warning("Trained model weights not found.")
+        elif st.button("Run 10,000-scenario triage"):
+            t0 = time.perf_counter()
+            fluxes = np.logspace(12.0, 15.5, 100)
+            times_h = np.linspace(1.0, 500.0, 100)
+            flux_grid, time_grid = np.meshgrid(fluxes, times_h)
 
+            from pinn_model import (
+                DEFAULT_N226_SCALE as N226S, DEFAULT_NAC_SCALE as NACS,
+                DEFAULT_NAC227_SCALE as NAC7S, DEFAULT_PHI_SCALE as PHIS,
+                DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy as _efn,
+            )
+            e_nn = float(_efn(14.0e6))
+            rows = np.column_stack([
+                time_grid.ravel() / TSH,
+                flux_grid.ravel() / PHIS,
+                np.full(10000, e_nn),
+                np.full(10000, 6.022e23 / N226S),
+                np.zeros(10000), np.zeros(10000), np.zeros(10000), np.zeros(10000),
+            ])
+            x_t = torch.tensor(rows, dtype=torch.float32)
+            model.eval()
+            with torch.no_grad():
+                pred = model(x_t).cpu().numpy()
+            elapsed_ms = (time.perf_counter() - t0) * 1000.0
+
+            raw_ac225 = np.maximum(pred[:, 2] * NACS, 0.0)
+            raw_ac227 = np.maximum(pred[:, 4] * NAC7S, 0.0)
+            usable_ac225 = raw_ac225 * _decay_factor(5.0, AC225_HALF_LIFE_DAYS) * 0.90
+            recovered_ac227 = raw_ac227 * _decay_factor(5.0, AC227_HALF_LIFE_DAYS) * 0.90
+            ac225_mci = _activity_bq(usable_ac225, AC225_HALF_LIFE_DAYS) / 3.7e7
+            impurity_pct = _ac227_impurity_activity_pct(usable_ac225, recovered_ac227)
+
+            is_safe = (impurity_pct <= max_impurity) & (ac225_mci >= target_ac)
+            is_toxic = impurity_pct > max_impurity
+            safe_count = int(np.sum(is_safe))
+            toxic_count = int(np.sum(is_toxic))
+
+            m1, m2, m3, m4 = st.columns(4)
+            m1.metric("Scenarios triaged", "10,000")
+            m2.metric("Inference time", f"{elapsed_ms:.1f} ms", f"{10000 / max(elapsed_ms / 1000.0, 1e-9):,.0f} runs/s")
+            m3.metric("Within constraints", f"{safe_count}", f"{safe_count / 100:.1f}% of grid")
+            m4.metric("Impurity exceeded", f"{toxic_count}", f"{toxic_count / 100:.1f}% of grid")
+
+            if safe_count > 0:
+                best_idx = np.argmax(np.where(is_safe, ac225_mci, -1.0))
+                st.success(
+                    f"**Best feasible setting:** {time_grid.ravel()[best_idx]:.1f} h at "
+                    f"{flux_grid.ravel()[best_idx]:.2e} n/cm²/s — ~{ac225_mci[best_idx]:.2f} mCi Ac-225 "
+                    f"(post-processing applied), Ac-227 impurity {impurity_pct[best_idx]:.3f}%."
+                )
+            st.caption(
+                "Green = meets yield and impurity constraints · Red = impurity exceeded · Gray = insufficient yield. "
+                "Dot map shows a 20×20 sample of the full grid. Batched-throughput timing, not per-scenario latency."
+            )
+            grid_html = '<div class="triage-grid">'
+            sub_safe = is_safe.reshape(100, 100)[::5, ::5].ravel()
+            sub_toxic = is_toxic.reshape(100, 100)[::5, ::5].ravel()
+            for idx in range(400):
+                if sub_safe[idx]:
+                    grid_html += '<div class="triage-dot safe" title="Usable batch"></div>'
+                elif sub_toxic[idx]:
+                    grid_html += '<div class="triage-dot toxic" title="Impurity breached"></div>'
+                else:
+                    grid_html += '<div class="triage-dot low" title="Low yield"></div>'
+            grid_html += "</div>"
+            st.markdown(grid_html, unsafe_allow_html=True)
+        else:
+            st.info('Press "Run 10,000-scenario triage" to populate the map.')
+
+    st.divider()
+
+    # ── 2D production map ───────────────────────────────────────────────────
+    st.markdown('<div class="sh-sm">2D production map — the clinical safe-zone</div>', unsafe_allow_html=True)
     if model is None:
         st.warning("Weights not loaded.")
     else:
         c1, c2 = st.columns([1, 2.5])
         with c1:
-            st.markdown('<div class="clinical-card">', unsafe_allow_html=True)
-            st.markdown("<h4>Optimization Settings</h4>", unsafe_allow_html=True)
-            chem_recovery = st.slider("Separation Recovery Yield (%)", 50, 100, 90, 5) / 100.0
-            cooling = st.slider("Post-Irradiation Cooling (days)", 0, 14, 5, 1)
+            st.markdown('<div class="card"><h4>Post-processing</h4>', unsafe_allow_html=True)
+            chem_recovery = st.slider("Separation recovery yield (%)", 50, 100, 90, 5) / 100.0
+            cooling = st.slider("Post-irradiation cooling (days)", 0, 14, 5, 1)
             st.markdown("</div>", unsafe_allow_html=True)
-            
-            st.markdown('<div class="layman-box">', unsafe_allow_html=True)
-            st.markdown("**Context**")
-            st.markdown(laymans_explanation("half_life"), unsafe_allow_html=True)
-            st.markdown("</div>", unsafe_allow_html=True)
-
+            st.markdown(
+                '<div style="background:#fdf3e7;border:1px solid #e9d9c3;border-radius:10px;padding:0.9rem;">'
+                + laymans_explanation("half_life") + "</div>",
+                unsafe_allow_html=True,
+            )
         with c2:
-            if st.button("📈 MAP THE CLINICAL SAFE-ZONE"):
-                with st.spinner("Compiling 2D contours via batched inference..."):
+            if st.button("Map the safe-zone (2,500 scenarios)"):
+                with st.spinner("Batched inference over the 2D grid…"):
                     t_vec = np.linspace(10.0, 500.0, 50)
                     f_vec = np.logspace(13.0, 15.5, 50)
                     T, F = np.meshgrid(t_vec, f_vec)
-                    
                     from pinn_model import (
-                        DEFAULT_N226_SCALE as N226S, DEFAULT_N225_SCALE as N225S,
-                        DEFAULT_NAC_SCALE as NACS, DEFAULT_N227_SCALE as N227S,
+                        DEFAULT_N226_SCALE as N226S, DEFAULT_NAC_SCALE as NACS,
                         DEFAULT_NAC227_SCALE as NAC7S, DEFAULT_PHI_SCALE as PHIS,
-                        DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy as _efn
+                        DEFAULT_T_REF_H as TSH, neutron_energy_ev_to_feature_numpy as _efn,
                     )
-                    
                     e_nn = float(_efn(14.0e6))
                     rows = np.column_stack([
-                        T.ravel() / TSH,
-                        F.ravel() / PHIS,
-                        np.full(2500, e_nn),
+                        T.ravel() / TSH, F.ravel() / PHIS, np.full(2500, e_nn),
                         np.full(2500, 6.022e23 / N226S),
-                        np.zeros(2500),
-                        np.zeros(2500),
-                        np.zeros(2500),
-                        np.zeros(2500)
+                        np.zeros(2500), np.zeros(2500), np.zeros(2500), np.zeros(2500),
                     ])
-                    
                     x_t = torch.tensor(rows, dtype=torch.float32)
                     model.eval()
                     with torch.no_grad():
                         pred = model(x_t).cpu().numpy()
-                    
                     raw_ac225 = np.maximum(pred[:, 2] * NACS, 0.0).reshape(50, 50)
                     raw_ac227 = np.maximum(pred[:, 4] * NAC7S, 0.0).reshape(50, 50)
-                    
                     usable_ac225 = raw_ac225 * _decay_factor(cooling, AC225_HALF_LIFE_DAYS) * chem_recovery
                     recovered_ac227 = raw_ac227 * _decay_factor(cooling, AC227_HALF_LIFE_DAYS) * chem_recovery
-                    
-                    ac225_mci = (_activity_bq(usable_ac225, AC225_HALF_LIFE_DAYS) / 3.7e7)
+                    ac225_mci = _activity_bq(usable_ac225, AC225_HALF_LIFE_DAYS) / 3.7e7
                     impurity = _ac227_impurity_activity_pct(usable_ac225, recovered_ac227)
-                    
+
                     import matplotlib.pyplot as plt
 
-                    fig, ax = plt.subplots(figsize=(9, 6), facecolor="#090d16")
-                    ax.set_facecolor("#0f1322")
-                    
-                    cp = ax.contourf(T, F, ac225_mci, levels=20, cmap="viridis", alpha=0.85)
-                    cbar = fig.colorbar(cp, ax=ax)
-                    cbar.set_label("Recovered Ac-225 Activity (mCi)", color="white", fontweight="bold")
-                    cbar.ax.tick_params(colors="white")
-                    
-                    ax.contour(T, F, impurity, levels=[STRICT_AC227_IMPURITY_LIMIT_PCT], colors="#f43f5e", linewidths=3.0)
-                    ax.contourf(T, F, impurity, levels=[STRICT_AC227_IMPURITY_LIMIT_PCT, 100.0], colors=["#f43f5e"], alpha=0.3)
-                    
-                    safe_mask = impurity <= STRICT_AC227_IMPURITY_LIMIT_PCT
-                    if np.any(safe_mask):
-                        max_safe_idx = np.unravel_index(np.argmax(np.where(safe_mask, ac225_mci, -1)), ac225_mci.shape)
-                        best_t = T[max_safe_idx]
-                        best_f = F[max_safe_idx]
-                        best_y = ac225_mci[max_safe_idx]
-                        ax.scatter(best_t, best_f, color="#f59e0b", edgecolors="white", s=120, zorder=5, label="Optimal Schedule")
-                        ax.legend(facecolor="#0f1322", edgecolor="#1b223c", labelcolor="white")
-                    
-                    ax.set_yscale("log")
-                    ax.set_xlabel("Irradiation Time (hours)", color="white", fontweight="bold")
-                    ax.set_ylabel("Neutron Flux (n/cm²/s)", color="white", fontweight="bold")
-                    ax.tick_params(colors="white")
-                    ax.grid(True, alpha=0.1, color="white")
-                    
-                    for spine in ax.spines.values():
-                        spine.set_color("#1b223c")
-                        
-                    fig.tight_layout()
+                    with plt.rc_context(_light_rc()):
+                        fig, ax = plt.subplots(figsize=(8.6, 5.2))
+                        cp = ax.contourf(T, F, ac225_mci, levels=20, cmap="YlOrBr", alpha=0.92)
+                        cbar = fig.colorbar(cp, ax=ax)
+                        cbar.set_label("Recovered Ac-225 activity (mCi)")
+                        ax.contour(T, F, impurity, levels=[STRICT_AC227_IMPURITY_LIMIT_PCT],
+                                   colors=[_BAD], linewidths=2.4)
+                        ax.contourf(T, F, impurity, levels=[STRICT_AC227_IMPURITY_LIMIT_PCT, 100.0],
+                                    colors=[_BAD], alpha=0.18)
+                        safe_mask = impurity <= STRICT_AC227_IMPURITY_LIMIT_PCT
+                        if np.any(safe_mask):
+                            bi = np.unravel_index(np.argmax(np.where(safe_mask, ac225_mci, -1)), ac225_mci.shape)
+                            ax.scatter(T[bi], F[bi], color=_TEAL, edgecolors="white", s=120, zorder=5,
+                                       label="Optimal schedule")
+                            ax.legend(fontsize=9)
+                        ax.set_yscale("log")
+                        ax.set_xlabel("Irradiation time (h)")
+                        ax.set_ylabel("Neutron flux (n/cm²/s)")
+                        ax.set_title("Safe-zone boundary at the 0.15% Ac-227 impurity reference line")
+                        fig.tight_layout()
                     st.pyplot(fig)
                     plt.close(fig)
-                    
                     if np.any(safe_mask):
                         st.success(
-                            f"**Feasible setting in sweep:** {best_t:.1f} h at {best_f:.2e} n/cm²/s — "
-                            f"~{best_y:.2f} mCi Ac-225 (post-processing applied)."
+                            f"**Feasible setting:** {T[bi]:.1f} h at {F[bi]:.2e} n/cm²/s — "
+                            f"~{ac225_mci[bi]:.2f} mCi Ac-225 (post-processing applied)."
                         )
                     else:
-                        st.error("Every setting in this sweep exceeds the impurity threshold. Try a longer cooling window or different inputs.")
+                        st.error("Every setting in this sweep exceeds the impurity threshold. Try longer cooling.")
 
-# ==============================================================================
-# TAB 4 -- DOSE & PATIENT IMPACT
-# ==============================================================================
-with tab_dose:
-    st.markdown('<div class="sh">Clinical context — supply chain only</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="clinical-card warning">
-        <h4 style="margin-top:0;">Manufacturing planning, not patient dosing</h4>
-        <p style="margin:0;color:#cbd5e1;">
-        This tab translates <b>atoms produced in a target</b> into rough order-of-magnitude therapeutic capacity.
-        It is <b>not</b> in vivo pharmacokinetics and <b>not</b> regulatory dosing guidance.
-        The PINN models irradiation inventory; recovery, separation, and assay are separate steps.
-        </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.markdown("Illustrative translation of batch activity to treatment-scale doses (literature-order magnitudes only).")
-
-    st.markdown("""
-    <div class="clinical-card safe">
-    <h4>Targeted alpha therapy (TAT) background</h4>
-    <p>
-    Ac-225 emits alpha particles through its decay chain (~28 MeV total energy deposited locally).
-    Radiolabeled conjugates such as <b>Ac-225–PSMA-617</b> are under clinical investigation for metastatic
-    prostate cancer and other indications. Global Ac-225 supply remains a bottleneck for trials and treatment.
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    dc1, dc2 = st.columns([1.2, 1.8])
-    with dc1:
-        st.markdown('<div class="clinical-card">', unsafe_allow_html=True)
-        st.markdown("<h4>Transmutation Batch Yield</h4>", unsafe_allow_html=True)
-        atoms_input = st.number_input("Atoms Produced (Ac-225)", value=1.5e17, format="%.3e")
-        st.caption(f"Readable Weight: **{format_atoms_human(atoms_input, 225)}**")
-        
-        st.markdown("<h4>Patient Demographics</h4>", unsafe_allow_html=True)
-        weight = st.slider("Average Patient Mass (kg)", 50, 110, 75, 5)
-        dose_rate = st.slider("Therapeutic Target Dosage (kBq/kg)", 50, 250, 100, 10)
-        st.markdown("</div>", unsafe_allow_html=True)
-
-        # Simple explanation
-        st.markdown('<div class="layman-box">', unsafe_allow_html=True)
-        st.markdown("**Context**")
-        st.markdown(laymans_explanation("surrogate"), unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    with dc2:
-        # Calculate clinical values
-        decay_const = math.log(2.0) / (AC225_HALF_LIFE_DAYS * SECONDS_PER_DAY)
-        act_bq = atoms_input * decay_const
-        act_mci = act_bq / 3.7e7
-        
-        target_bq = dose_rate * 1000 * weight
-        target_atoms = target_bq / decay_const
-        patients_served = atoms_input / max(target_atoms, 1)
-        
-        # Clinical targets profiles
-        psma_dose_mbq = 8.0  # PSMA-617 typical dose
-        leukemia_dose_mbq = 18.0  # CD33 typical dose
-        
-        patients_prostate = (act_bq / 1e6) / psma_dose_mbq
-        patients_leuk = (act_bq / 1e6) / leukemia_dose_mbq
-        
-        # Commercial Value — removed from college-facing demo (speculative pricing)
-
-        st.markdown("#### Illustrative dose capacity")
-        dm1, dm2, dm3 = st.columns(3)
-        dm1.metric("Batch activity (mCi)", f"{act_mci:.2f} mCi")
-        dm2.metric("PSMA-scale doses", f"{patients_prostate:.1f}", "8 MBq reference")
-        dm3.metric("CD33-scale doses", f"{patients_leuk:.1f}", "18 MBq reference")
-
-        st.caption(
-            "Reference activity levels from published trial orders of magnitude — not patient-specific prescribing. "
-            "See Wikipedia / clinical trial literature for current protocols."
-        )
-
-        if patients_prostate >= 1:
-            st.info(f"At these reference doses, batch activity corresponds to ~{patients_prostate:.1f} PSMA-scale administrations (illustrative).")
-        else:
-            st.warning("Batch activity is below one reference-scale dose at the settings shown.")
-
-# ==============================================================================
-# TAB — METHODS
-# ==============================================================================
-with tab_empirical:
-    st.markdown('<div class="sh">Physics-informed training</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="physics-banner">
-        <h3>Accuracy comes after physics constraints, not instead of them</h3>
-        <p>
-        A vanilla neural net can scatter perfectly on training points yet predict Actinium from an <b>empty target</b> under high flux.
-        This PINN embeds the Bateman transmutation chain, enforces mass-budget residuals, and runs <b>600 epochs of physics-only pretrain</b>
-        before ODE supervision enters the loss. The charts below show <i>both</i> physics and data losses — parity alone is only the final check.
-        </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    if v63_report.get("criteria"):
-        ec1, ec2, ec3, ec4 = st.columns(4)
-        ec1.metric("Training curriculum", "600 phys → 3400 joint")
-        ec2.metric("Validation checks", v63_report["criteria"].get("overall", "—"))
-        ec3.metric("Held-out Ac-225", f"{100.0 * float(v63_report['criteria'].get('heldout_ac225_median_rel', 0)):.2f}%")
-        trio_b = v63_report["criteria"].get("trio_b_ac225_rel_error")
-        if trio_b is not None:
-            ec4.metric("Trio B vs ODE", f"{100.0 * float(trio_b):.1f}%")
-
-    st.markdown("#### Training loss story (live from `results/loss_history.csv`)")
-    loss_png = _chart_loss_story_png()
-    if loss_png:
-        _show_dark_png(loss_png)
-        st.caption(
-            "Left: physics-only pretrain (red band). Center: Bateman residual MSE vs supervised ODE data MSE. "
-            "Right: weighted terms the optimizer actually minimizes in joint phase."
-        )
-    else:
-        fallback = _first_existing_graph(
-            "graphs/isef_physics_training_story.png",
-            "graphs/loss_components.png",
-            "graphs/isef_loss_trajectory_12k.png",
-        )
-        if fallback:
-            _show_graph_path(fallback, caption="Static physics training figure")
-        else:
-            st.info("Run `python scripts/app_evidence.py` or train to populate loss history.")
-
-    st.markdown("#### Dynamics check: PINN track vs stiff ODE (same scenario)")
-    row_dyn1, row_dyn2 = st.columns(2)
-    with row_dyn1:
-        if _weights_key_str:
-            _live_pinn_ode_demo(weights_key=_weights_key_str, key_prefix="phys")
-        else:
-            st.warning("Load trained weights to render live PINN vs ODE track.")
-    with row_dyn2:
-        evo_rel = _first_existing_graph("graphs/isef_isotope_evolution.png")
-        if evo_rel:
-            _show_graph_path(evo_rel, caption="Ac-225 activity: PINN vs ODE + harvest window")
-
-    st.markdown("#### Mass budget & where errors remain")
-    row_mass1, row_mass2 = st.columns(2)
-    with row_mass1:
-        mass_rel = _first_existing_graph("graphs/isef_mass_conservation.png")
-        if mass_rel:
-            _show_graph_path(mass_rel, caption="Mass conservation residual across scenarios")
-    with row_mass2:
-        held_png = _chart_heldout_regimes_png()
-        if held_png:
-            _show_dark_png(held_png)
-            st.caption("Held-out Ac-225 error by neutron energy regime — epithermal/threshold are hardest physics edges.")
-
-    with st.expander("Secondary: parity scatter (accuracy after physics — not proof of physics alone)"):
+    # ── Clinical context (supply chain only) ────────────────────────────────
+    with st.expander("Clinical context — supply-chain translation (illustrative only)"):
         st.markdown(
-            "Parity plots can look \"too good\" for a black-box net. Here, points are **held-out ODE scenarios** "
-            "after Bateman backbone + physics pretrain. Compare with empty-tank safety test on the Validation tab."
+            "Order-of-magnitude translation of a production batch into treatment-scale doses. "
+            "**Not** in vivo pharmacokinetics, **not** regulatory dosing guidance."
         )
-        parity_rel = _first_existing_graph(
-            "graphs/isef_parity_restyled.png",
-            "graphs/pinn_ac225_pred_vs_true.png",
-        )
-        if parity_rel:
-            _show_graph_path(parity_rel)
-        comp_rel = _first_existing_graph("graphs/loss_components.png")
-        if comp_rel:
-            _show_graph_path(comp_rel, caption="Legacy loss components export (static)")
+        dc1, dc2 = st.columns([1, 1.6])
+        with dc1:
+            atoms_input = st.number_input("Ac-225 atoms produced", value=1.5e17, format="%.3e")
+            st.caption(f"Readable weight: **{format_atoms_human(atoms_input, 225)}**")
+            dose_rate = st.slider("Therapeutic reference dosage (kBq/kg)", 50, 250, 100, 10)
+            weight = st.slider("Reference patient mass (kg)", 50, 110, 75, 5)
+        with dc2:
+            decay_const = math.log(2.0) / (AC225_HALF_LIFE_DAYS * SECONDS_PER_DAY)
+            act_bq = atoms_input * decay_const
+            act_mci = act_bq / 3.7e7
+            psma_dose_mbq = 8.0
+            leukemia_dose_mbq = 18.0
+            dm1, dm2, dm3 = st.columns(3)
+            dm1.metric("Batch activity", f"{act_mci:.2f} mCi")
+            dm2.metric("PSMA-scale doses", f"{(act_bq / 1e6) / psma_dose_mbq:.1f}", "8 MBq reference")
+            dm3.metric("CD33-scale doses", f"{(act_bq / 1e6) / leukemia_dose_mbq:.1f}", "18 MBq reference")
+            st.caption(
+                "Reference activity levels from published trial orders of magnitude — not patient-specific "
+                "prescribing. Surrogate outputs are planning estimates vs the ODE reference, never batch sign-off."
+            )
 
 # ==============================================================================
-# TAB — VALIDATION
+# TAB — SPEED
 # ==============================================================================
-with tab_validation:
-    st.markdown('<div class="sh">Independent validation (vs ODE reference)</div>', unsafe_allow_html=True)
-    st.markdown(
-        "Six checks — empty-target safety, production scenario, decay-chain ingrowth, species quality gate, "
-        "correlation, and held-out accuracy — evaluated against the same stiff Radau integrator used to generate training data."
-    )
-
-    crit = v63_report.get("criteria", {})
-    if crit:
-        g1, g2, g3, g4 = st.columns(4)
-        g1.metric("Trio A", crit.get("trio_a", "—"))
-        g2.metric("Trio B", crit.get("trio_b", "—"))
-        g3.metric("Trio C", crit.get("trio_c", "—"))
-        g4.metric("Quality gate", crit.get("quality_gate", "—"))
-        g5, g6 = st.columns(2)
-        g5.metric("Correlation", crit.get("correlation", "—"))
-        g6.metric("Held-out Ac-225", f"{100.0 * float(crit.get('heldout_ac225_median_rel', 0)):.2f}% median")
-
-    st.markdown("""
-    <div class="clinical-card warning">
-    <h4>Physics safety (why Trio matters)</h4>
-    <p>
-    A data-only network can predict Ac-225 from an empty target under high flux. The PINN embeds Bateman chain physics
-    and mass-budget constraints so **Trio A** (empty tank) stays at zero and **Trio B/C** track the reference ODE integrator.
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown('<div class="sh">Scenario integrity tests</div>', unsafe_allow_html=True)
-    trio_b_pct = 100.0 * float(crit.get("trio_b_ac225_rel_error", 0.099)) if crit else 9.9
-    tc1, tc2, tc3 = st.columns(3)
-    with tc1:
-        st.markdown(f"""
-        <div class="clinical-card safe">
-        <h4>Test A: Empty tank + flux</h4>
-        <p><b>Condition:</b> all inventories 0, φ = 1e15, 100 h.<br>
-        <b>Expected:</b> stay at zero (no alchemy).<br>
-        <b>Result:</b> {crit.get("trio_a", "PASS")} — PINN and ODE both ~0 atoms.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with tc2:
-        st.markdown(f"""
-        <div class="clinical-card safe">
-        <h4>Test B: Full Ra-226 feed + flux</h4>
-        <p><b>Condition:</b> N_Ra226 = 1e22, φ = 1e14, 14 MeV, 250 h.<br>
-        <b>Expected:</b> Ac-225 within 10% of ODE.<br>
-        <b>Result:</b> {crit.get("trio_b", "PASS")} — Ac-225 error ~{trio_b_pct:.1f}%.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with tc3:
-        st.markdown(f"""
-        <div class="clinical-card safe">
-        <h4>Test C: Ra-225 decay chain</h4>
-        <p><b>Condition:</b> φ = 0, N_Ra225 = 1e18, 48 h.<br>
-        <b>Expected:</b> Ac-225 ingrowth from β-decay only.<br>
-        <b>Result:</b> {crit.get("trio_c", "PASS")} — chain physics preserved.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    buckets = v63_report.get("heldout_buckets_ac225_median_rel", {})
-    if buckets:
-        st.markdown('<div class="sh">Held-out error by energy regime (Ac-225 median)</div>', unsafe_allow_html=True)
-        bucket_rows = [
-            ("All scenarios", buckets.get("all")),
-            ("Thermal virgin", buckets.get("thermal_virgin")),
-            ("Epithermal virgin", buckets.get("epithermal_virgin")),
-            ("Threshold virgin (~6.4 MeV cliff)", buckets.get("threshold_virgin")),
-            ("Fast 14 MeV virgin", buckets.get("fast14_virgin")),
-        ]
-        for label, val in bucket_rows:
-            if val is not None:
-                st.caption(f"**{label}:** {100.0 * float(val):.1f}%")
-
-    st.markdown('<div class="sh">Error geography</div>', unsafe_allow_html=True)
-    fail_png = _chart_failure_regimes_png()
-    if fail_png:
-        _show_dark_png(fail_png)
+with tab_speed:
+    st.markdown('<div class="kicker">Honest throughput, disclosed latency</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">How fast is it, exactly?</div>', unsafe_allow_html=True)
     st.markdown(
         """
-        | Regime | Median error (approx.) | Recommended use |
-        |---|---|---|
-        | Thermal / 14 MeV virgin | ~4-5% | Primary planning sweeps |
-        | Epithermal virgin | ~9.5% | Ranking only; simplified capture model |
-        | Threshold ~6.4 MeV | ~8.5% | Confirm with ODE near (n,2n) onset |
-        """
+        <div class="card warn">
+        <h4>No bare "500×" here</h4>
+        <p>
+        Early materials quoted a ~500× speedup with no committed evidence file; the audit showed the number
+        was a <b>batching effect</b> (one batched GPU/CPU call vs sequential stiff ODE solves), and that
+        PI-LSTM <i>eager</i> inference is actually ~10× <b>slower</b> than the v2 PINN per scenario.
+        The honest claim is <b>throughput under batching</b>. A formal re-verification of the speed
+        benchmark is in progress (docs/UPGRADE_LOG.md #6); until it lands, this tab shows committed
+        harness numbers plus an optional live measurement on this machine.
+        </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
-    sens_png = _chart_flux_sensitivity_png()
-    if sens_png:
-        st.markdown("#### Flux sensitivity (thermal baseline)")
-        _show_dark_png(sens_png)
+    st.markdown('<div class="sh-sm">Committed harness numbers</div>', unsafe_allow_html=True)
+    h1, h2 = st.columns(2)
+    with h1:
+        st.markdown("**Single-scenario eager latency** (the number that matters for interactive use)")
+        eager_rows = []
+        if cmp_v2_v3.get("mean_inference_ms"):
+            ms = cmp_v2_v3["mean_inference_ms"]
+            eager_rows.append({"Model": "v2 PINN", "Eager latency": f"{float(ms['v2']):.1f} ms", "Source": "compare_v2_pilstm.json"})
+            eager_rows.append({"Model": "v3 PI-LSTM", "Eager latency": f"{float(ms['pilstm']):.1f} ms", "Source": "compare_v2_pilstm.json"})
+        if speed_v3.get("eager"):
+            eager_rows.append({"Model": "v3 PI-LSTM (harness)", "Eager latency": f"{float(speed_v3['eager']['ms_per_scenario']):.1f} ms/scenario", "Source": "speed_harness.json"})
+        if eager_rows:
+            st.dataframe(pd.DataFrame(eager_rows), use_container_width=True, hide_index=True)
+        st.caption("PI-LSTM eager is ~10× slower than the v2 PINN — disclosed, not hidden.")
+    with h2:
+        st.markdown("**Batched throughput** (the number that matters for sweeps)")
+        batch_rows = []
+        if speed_v3.get("batched"):
+            b = speed_v3["batched"]
+            batch_rows.append({
+                "Measurement": "PI-LSTM batched (22 scenarios)",
+                "Value": f"{float(b['ms_per_scenario']):.2f} ms/scenario",
+                "Note": f"{float(b['speedup_vs_eager']):.0f}× vs its own eager mode — a batching effect",
+            })
+        batch_rows.append({
+            "Measurement": "Reference Radau ODE",
+            "Value": "seconds per solve (sequential)",
+            "Note": "each scenario is a stiff solve; no batching possible",
+        })
+        st.dataframe(pd.DataFrame(batch_rows), use_container_width=True, hide_index=True)
+        st.caption("Screening value comes from batching 10²–10⁴ scenarios into one tensor call.")
 
-    st.markdown('<div class="sh">Computational performance</div>', unsafe_allow_html=True)
-    st.caption("Random scenarios: batched PINN inference vs sequential stiff ODE solves.")
-    bench_n = int(os.environ.get("PINN_BENCH_SCENARIOS", "120"))
-    if _weights_key_str and st.button("Run PINN vs ODE timing benchmark", key="val_bench_btn"):
-        with st.spinner(f"Timing {bench_n} scenarios..."):
+    st.markdown('<div class="sh-sm">Live measurement on this machine</div>', unsafe_allow_html=True)
+    st.caption(
+        "Batched PINN inference vs sequential stiff Radau ODE solves on the same random in-domain "
+        "scenarios. Throughput framing: the ODE cannot be batched; per-scenario eager latency is above."
+    )
+    bench_n = int(os.environ.get("PINN_BENCH_SCENARIOS", "24"))
+    if _weights_key_str and st.button(f"Run throughput benchmark ({bench_n} scenarios)", key="speed_bench_btn"):
+        with st.spinner(f"Timing {bench_n} scenarios (ODE solves are the slow part)…"):
             st.session_state["bench_result"] = _cached_speed_benchmark(_weights_key_str, bench_n)
     bench = st.session_state.get("bench_result")
     if bench:
         b1, b2, b3, b4 = st.columns(4)
-        b1.metric("Scenarios", f"{bench.get('n_scenarios', '—')}")
-        b2.metric("PINN (batch)", f"{bench.get('pinn_ms', 0):.1f} ms")
-        b3.metric("ODE (sequential)", f"{bench.get('ode_ms', 0):.0f} ms")
-        b4.metric("Speedup", f"{bench.get('speedup_x', 0):.0f}x")
+        b1.metric("Scenarios", bench.get("n_scenarios", "—"))
+        b2.metric("PINN batched", f"{bench.get('pinn_ms', 0):.1f} ms",
+                  f"{bench.get('pinn_ms_per_scenario', 0):.2f} ms/scenario")
+        b3.metric("ODE sequential", f"{bench.get('ode_ms', 0):.0f} ms",
+                  f"{bench.get('ode_ms_per_scenario', 0):.0f} ms/scenario")
+        b4.metric("Throughput ratio", f"{bench.get('throughput_ratio', 0):.0f}×",
+                  "batched vs serial — not an eager-latency ratio")
         st.caption(
-            f"Median Ac-225 error on benchmark draws: {100.0 * bench.get('median_rel_err_ac225', 0):.1f}% vs ODE"
+            f"Median Ac-225 error on benchmark draws: {100.0 * bench.get('median_rel_err_ac225', 0):.1f}% vs ODE. "
+            "Ratio varies with hardware and batch size; the committed, reproducible benchmark is the pending Kaggle job."
         )
     elif _weights_key_str:
-        st.caption("Press the button above to measure timing on this machine.")
+        st.caption("Press the button to measure timing on this machine.")
     else:
-        st.info("Model weights required for timing benchmark.")
+        st.info("Model weights required for the live benchmark.")
+
+    st.markdown(
+        """
+        <div class="card"><h4>Why batching is the honest framing</h4>
+        <p>
+        Planning asks "which of 10,000 settings is worth a second look" — a throughput question.
+        One tensor call evaluating 10,000 scenarios in ~tens of milliseconds is genuinely useful even
+        though a single eager call is merely millisecond-scale, and even though per-call the PI-LSTM is
+        slower than the PINN. The claim is <b>screening throughput vs sequential ODE integration</b>,
+        with hardware, batch size, and eager latency disclosed alongside.
+        </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ==============================================================================
+# TAB — METHODS & DATA
+# ==============================================================================
+with tab_methods:
+    st.markdown('<div class="kicker">Reproducibility starts here</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">Model cards</div>', unsafe_allow_html=True)
+    mca, mcb = st.columns(2)
+    with mca:
+        w_sha = v63_report.get("weights", {}).get("sha256", "")[:8] or "—"
+        st.markdown(f"""
+        <div class="model-card">
+          <span class="tag">Model A · deployed surrogate</span>
+          <h4 style="margin:0.2rem 0 0.5rem 0;">v2 PINN — weights v63</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:#57534e;">
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Architecture</b></td><td>Semi-analytic Bateman backbone + learned correction; 4×128 MLP, SiLU, float64</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Training</b></td><td>600 epochs physics-only pretrain → 3,400 joint epochs (4,000 total; the 12k run was rejected at 7.27%)</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Loss</b></td><td>Bateman physics residual + ODE supervision + mass-budget + fuel anchor + zero-injection</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Canonical result</b></td><td>4.51% held-out Ac-225 median vs ODE (22 scenarios), 6/6 gates PASS</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Weights hash</b></td><td>sha256 <code>{w_sha}…</code> (results/v63_validation_20260530.json)</td></tr>
+            <tr><td style="padding:6px 0;"><b>Reference physics</b></td><td>v1 synthetic σ (27 mb sigmoid) + hard-coded half-lives — retrain against v2 evaluated physics pending</td></tr>
+          </table>
+        </div>
+        """, unsafe_allow_html=True)
+    with mcb:
+        v3_epochs = v3_train.get("epochs", 6000)
+        v3_best = v3_train.get("best_epoch", "—")
+        st.markdown(f"""
+        <div class="model-card">
+          <span class="tag">Model B · research line</span>
+          <h4 style="margin:0.2rem 0 0.5rem 0;">v3 PI-LSTM — distilled sequence model</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:#57534e;">
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Architecture</b></td><td>2-layer LSTM (hidden 256), Fourier time/energy features (16/8), hard initial condition</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Training</b></td><td>{v3_epochs:,} epochs, best checkpoint @ {v3_best}; distilled from the frozen v2 teacher; deterministic seed (PI_LSTM_SEED=42)</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Physics loss</b></td><td>Exact exponential-integrator propagator (closed-form matrix exponential, stiff-stable) — residual ≤1.2e-14 on exact trajectories</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Fair baseline</b></td><td>Matched-budget vanilla LSTM trained (847,114 vs 850,349 params, 0.4% delta) — the "why physics at all" ablation</td></tr>
+            <tr style="border-bottom:1px solid {_BORDER};"><td style="padding:6px 0;"><b>Result</b></td><td>5.12% Ac-225 endpoint median vs ODE (v2: 8.18%, same protocol); Ac-227 channel disclosed weaker</td></tr>
+            <tr><td style="padding:6px 0;"><b>Reference physics</b></td><td>Same v1 synthetic reference as Model A — the v2 evaluated, spectrum-aware retrain is the next Kaggle run</td></tr>
+          </table>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown('<div class="sh">Data provenance — where every physics number comes from</div>', unsafe_allow_html=True)
+    st.markdown(
+        "Retrieved 2026-07-18 from free, no-login sources; machine-parsed (not transcribed); raw "
+        "downloads kept in `data/evaluated/_raw/` for audit. Full document: `docs/DATA_PROVENANCE.md`."
+    )
+    prov_rows = [
+        {"Data": "σ(n,2n)(E) evaluated table", "Source": "JENDL-5 (IAEA-NDS mirror); ENDF/B-VIII.0 verified identical, max dev 0.0 b", "Used in": "ODE_DATA_VERSION=v2"},
+        {"Data": "σ(n,2n) experimental point", "Source": "EXFOR 21405 — O'Connor & Perkin 1960: 1.60 ± 0.20 b @ 14.5 MeV (the only one that exists)", "Used in": "evaluation tension check"},
+        {"Data": "σ(n,γ) thermal anchor", "Source": "EXFOR 31760 — Bagheri 2015: 13.8 ± 0.3 b (libraries tabulate zero below 1 keV)", "Used in": "v2 thermal capture leg"},
+        {"Data": "Half-lives (5 nuclides)", "Source": "NuDat 3 / ENSDF live retrieval with uncertainties", "Used in": "v2 decay constants"},
+        {"Data": "Spectrum forms", "Source": "Watt 1952 Phys. Rev. 87, 1037 (a=0.988, b=2.249); Iwahashi 2022 MDPI Processes 10(7):1239; Aoyama 2005 J. Nucl. Radiochem. Sci. 6(3)", "Used in": "SPECTRUM_MODE folding"},
+        {"Data": "Production anchors", "Source": "Sano 2024 JNST 61:509; Iwahashi 2022; Hogle 2016 (OSTI 1253240); Snow 2025 (OSTI 3028837)", "Used in": "validation ladder rungs 3–4"},
+        {"Data": "Legacy synthetic σ", "Source": "Sigmoid → 27 mb 'spectrum average' — shown to be a fission-spectrum average, ~28× too small pointwise", "Used in": "v1 (bit-preserved default)"},
+    ]
+    st.dataframe(pd.DataFrame(prov_rows), use_container_width=True, hide_index=True)
+
+    # ── Upgrade timeline ────────────────────────────────────────────────────
+    st.markdown('<div class="sh">The iteration story — 12 logged upgrades</div>', unsafe_allow_html=True)
+    st.markdown(
+        "Every upgrade is dated, flag-gated, and records its rationale — the iteration *is* the "
+        "research method. Full log with citations: `docs/UPGRADE_LOG.md`."
+    )
+    entries = _load_upgrade_log_entries()
+    tl_html = '<div class="tl">'
+    for e in entries:
+        tl_html += (
+            f'<div class="tl-item"><div class="d">{e["sprint"]}</div>'
+            f'<div class="t">{e["title"]}</div></div>'
+        )
+    tl_html += "</div>"
+    tl_left, tl_right = st.columns([1, 1])
+    with tl_left:
+        st.markdown(tl_html, unsafe_allow_html=True)
+    with tl_right:
+        st.markdown("""
+        <div class="card"><h4>How to read the log</h4>
+        <p>
+        Sprint 1 made the work reproducible and the physics loss correct (seeds, exact propagator,
+        1 g inventory, real baseline, honest speed). Sprint 2 built the next tier of UQ and training
+        methodology (jackknife+/CV+, adaptive weights, stiffness curriculum, deep ensemble).
+        Sprint 3 replaced the data itself — evaluated JENDL-5/EXFOR/NuDat — and produced the spectrum
+        discovery in <b>The Discovery</b> tab. All 10 regression smoke checks pass; legacy behavior is
+        bit-preserved behind default flags.
+        </p></div>
+        """, unsafe_allow_html=True)
+        smoke = _load_json("v3_pilstm/results/smoke_20260718.json")
+        if smoke:
+            checks = smoke.get("checks") or smoke.get("results") or {}
+            if isinstance(checks, dict) and checks:
+                passed = sum(1 for v in checks.values() if (v.get("ok") if isinstance(v, dict) else bool(v)))
+                st.metric("Regression smoke checks", f"{passed}/{len(checks)} pass")
+
+    # ── Limitations ─────────────────────────────────────────────────────────
+    st.markdown('<div class="sh">Limitations — the box judges should read first</div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card bad">
+    <h4>Scope and limitations</h4>
+    <p>
+    • <b>0D point model</b>: well-mixed target, scalar flux and energy — no geometry, self-shielding,
+    or burnup (the 26-day HFIR overprediction shows exactly this gap).<br>
+    • <b>Validation is vs the ODE reference and evaluated data</b>, not lab experiments on the surrogate
+    itself; rungs 3–4 of the ladder test the ODE, not the network.<br>
+    • <b>Both surrogates were trained on the v1 synthetic-σ reference</b>; the v2 evaluated,
+    spectrum-aware retrain is pending. Fast-regime absolute yields carry that caveat.<br>
+    • <b>The spectrum shape is the largest remaining modeling uncertainty</b>; f* is an inferred
+    effective parameter with a band, not a tuned truth.<br>
+    • <b>Not for clinical use</b>: nothing here is a dose calculation, assay, or regulatory artifact.
+    </p></div>
+    """, unsafe_allow_html=True)
+
+    # ── References ──────────────────────────────────────────────────────────
+    st.markdown('<div class="sh">References</div>', unsafe_allow_html=True)
+    refs = iter_log.get("research_refs", [])
+    if refs:
+        with st.expander(f"ML/PINN methods references ({len(refs)} entries from the iteration log)"):
+            for r in refs:
+                cite = r.get("citation", "")
+                role = r.get("role", "")
+                code = r.get("code", "")
+                st.markdown(f"- {cite} — *{role}*" + (f" (`{code}`)" if code else ""))
+    st.markdown("""
+    **Nuclear data & production anchors**
+
+    - JENDL-5 evaluated nuclear data library (IAEA-NDS distribution); ENDF/B-VIII.0 cross-check (identical Ra-226 (n,2n) evaluation, max dev 0.0 b).
+    - EXFOR entry 21405 — O'Connor & Perkin 1960, σ(n,2n) = 1.60 ± 0.20 b @ 14.5 MeV.
+    - EXFOR entry 31760 — Bagheri 2015, σ(n,γ) = 13.8 ± 0.3 b thermal.
+    - NuDat 3 / ENSDF — half-lives with uncertainties, live retrieval 2026-07-18.
+    - Watt B.E. 1952, *Phys. Rev.* 87, 1037 — fission spectrum form (a = 0.988 MeV, b = 2.249 MeV⁻¹).
+    - Sano et al. 2024, *J. Nucl. Sci. Technol.* 61:509, DOI 10.1080/00223131.2023.2243941 — Joyo Ac-225 uncertainty analysis.
+    - Iwahashi et al. 2022, *Processes* 10(7):1239 — Joyo ORIGEN benchmarks, MK-III spectra (open access).
+    - Aoyama et al. 2005, *J. Nucl. Radiochem. Sci.* 6(3) — Joyo MK-III spectral softness by position.
+    - Hogle et al. 2016, OSTI 1253240 — HFIR Ra-226 irradiation, Ac-227 series (full text).
+    - Snow et al. 2025, OSTI 3028837 — INL photonuclear, φ=0 ingrowth leg (full text).
+    - Barber, Candès, Ramdas & Tibshirani 2021, *Ann. Statist.* 49(1) — jackknife+ predictive inference (arXiv:1905.02928).
+    - Lakshminarayanan, Pritzel & Blundell 2017 — deep ensembles for predictive uncertainty (arXiv:1612.01474).
+    """)
 
 # ==============================================================================
 # TAB — ABOUT
 # ==============================================================================
-# ==============================================================================
-# ABOUT
-# ==============================================================================
-with tab_tech:
-    st.markdown('<div class="sh">Model and Equations</div>', unsafe_allow_html=True)
-
-    tech1, tech2 = st.columns(2)
-    with tech1:
-        st.markdown("#### Neural Network Config")
+with tab_about:
+    st.markdown('<div class="kicker">The student behind the model</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh" style="margin-top:0.2rem;">About this project</div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        IsotopePINN is an independent student research project on physics-informed machine learning for
+        medical-isotope production planning. It started as "can a neural network learn the Bateman
+        equations", and became a study in **chasing your own assumptions**: the most important result
+        here is not a percentage but a discovery process — every time the model was checked against
+        better data, it revealed the next-deeper approximation (synthetic cross section → evaluated
+        cross section → monoenergetic flux → spectrum shape).
+        """
+    )
+    a1, a2 = st.columns(2)
+    with a1:
         st.markdown("""
-        <table style="width:100%; border-collapse:collapse; color:#94a3b8; font-size:0.9rem;">
-          <tr style="border-bottom:1px solid #1b223c; text-align:left;"><th style="padding:8px 0; color:#fff;">Parameter</th><th style="padding:8px 0; color:#fff;">Setting</th></tr>
-          <tr style="border-bottom:1px solid #1b223c;"><td style="padding:8px 0;">Layers</td><td>4-layer Multi-Layer Perceptron (MLP)</td></tr>
-          <tr style="border-bottom:1px solid #1b223c;"><td style="padding:8px 0;">Hidden Units</td><td>128 hidden units per layer</td></tr>
-          <tr style="border-bottom:1px solid #1b223c;"><td style="padding:8px 0;">Activations</td><td>SiLU (hidden layers only)</td></tr>
-          <tr style="border-bottom:1px solid #1b223c;"><td style="padding:8px 0;">Float Precision</td><td>Float64 (double precision)</td></tr>
-          <tr style="border-bottom:1px solid #1b223c;"><td style="padding:8px 0;">Optimization</td><td>Adam, learning rate 1e-3, scheduler plateau</td></tr>
-        </table>
+        <div class="card ok"><h4>What I can defend</h4>
+        <p>
+        • Every on-screen metric traces to a committed JSON/CSV/PNG in the repository — hover any
+        number and I can name the file.<br>
+        • The canonical number (4.51%) and the comparison numbers (8.18% / 5.12%) come from different
+        protocols, and the app says so next to each.<br>
+        • Failures are in the open: epithermal ~9.5%, threshold ~8.5%, PI-LSTM's thermal Ac-227 leg,
+        the ~3× 26-day HFIR overprediction, the wide conformal intervals.<br>
+        • Speed claims are throughput-under-batching with eager latency disclosed.
+        </p></div>
         """, unsafe_allow_html=True)
-    with tech2:
-        st.markdown("#### Bateman Decay Equations")
-        st.latex(r"\frac{dN_{226}}{dt} = -(\lambda_{226} + k) \, N_{226}")
-        st.latex(r"\frac{dN_{225}}{dt} = k \, N_{226} \frac{S_{226}}{S_{225}} - \lambda_{225} \, N_{225}")
-        st.latex(r"\frac{dN_{Ac}}{dt} = \lambda_{225} \, N_{225} \frac{S_{225}}{S_{Ac}} - \lambda_{Ac} \, N_{Ac}")
-        st.markdown(r"Where $k = \phi \cdot \sigma \cdot \sqrt{0.025/E} \cdot 3600$ (1/v energy scaling, per hour)")
+    with a2:
+        st.markdown("""
+        <div class="card warn"><h4>What I cannot claim (yet)</h4>
+        <p>
+        • Validation against lab experiments on the <i>surrogate</i> itself — current validation is vs
+        the ODE reference and evaluated data.<br>
+        • A surrogate trained on evaluated, spectrum-aware physics — the checkpoints still encode the
+        v1 synthetic reference; the retrain is the next Kaggle run.<br>
+        • The measured Joyo MK-III spectrum (paywalled) — f* is an inference with an uncertainty band,
+        not a measurement.<br>
+        • Anything clinical. This is a planning tool for isotope production research.
+        </p></div>
+        """, unsafe_allow_html=True)
 
-    st.markdown('<div class="sh">Training Loss Weights</div>', unsafe_allow_html=True)
-    st.markdown("""
-    | Loss Component | Purpose | Target Weight |
-    |---|---|---|
-    | **Physics MSE** | Bateman differential consistency | 2,000 |
-    | **Data MSE** | Fit against experimental data points | 80 |
-    | **Mass Conservation** | Keeps sum of products <= fuel target | 350 |
-    | **Fuel Anchor** | Prevents Ra-226 underdepletion | 100 |
-    | **Zero-Injection** | Clamps empty tank to zero output | 150 |
-    """)
-
-    # ── References and Methods ────────────────────────────────────────────────
-    st.markdown('<div class="sh">References and Methods</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sh-sm">AI-assistance acknowledgment</div>', unsafe_allow_html=True)
     st.markdown(
-        "This model is a planning surrogate validated against a stiff ODE reference (NNDC/JENDL constants), "
-        "not against patient or lab measurements. The methods below are the published work this project builds on; "
-        "each entry maps a technique to the code that uses it."
+        """
+        <div class="card"><p>
+        <em>[Placeholder — to be completed by the student per ISEF rules.]
+        AI coding and research assistants (including large-language-model tools) were used during
+        development for code drafting, debugging, literature retrieval support, and document editing.
+        All physics choices, validation decisions, and final claims were reviewed and verified by the
+        student against the committed artifacts. A detailed, tool-by-tool disclosure will be appended
+        before fair submission.</em>
+        </p></div>
+        """,
+        unsafe_allow_html=True,
     )
 
-    _iter_log = _load_iteration_log()
-    _refs = _iter_log.get("research_refs", [])
-    if _refs:
-        _ref_by_rank = {int(r.get("rank", 0)): r for r in _refs if r.get("rank") is not None}
-        _groups = [
-            ("PINN core and architecture", [1, 2, 3, 10, 11]),
-            ("Training strategy", [4, 5, 6, 7, 9]),
-            ("Network and optimization", [8, 12, 13, 14, 15, 16]),
-        ]
-        _used = set()
-        for _title, _ranks in _groups:
-            _items = [_ref_by_rank[r] for r in _ranks if r in _ref_by_rank]
-            if not _items:
-                continue
-            st.markdown(f"**{_title}**")
-            _rows = ""
-            for _r in _items:
-                _used.add(int(_r.get("rank", 0)))
-                _code = _r.get("code", "")
-                _code_html = f" <code>{_code}</code>" if _code else ""
-                _rows += (
-                    "<li style='margin-bottom:0.5rem;'>"
-                    f"<span style='color:#e8edf6;'>{_r.get('citation','')}</span><br>"
-                    f"<span style='color:#94a3b8;font-size:0.85rem;'>{_r.get('role','')}{_code_html}</span>"
-                    "</li>"
-                )
-            st.markdown(
-                f"<ol style='margin-top:0.25rem;color:#cbd5e1;'>{_rows}</ol>",
-                unsafe_allow_html=True,
-            )
-
-        _leftover = [r for r in _refs if int(r.get("rank", 0)) not in _used]
-        if _leftover:
-            st.markdown("**Additional methods**")
-            _rows = "".join(
-                "<li style='margin-bottom:0.5rem;'>"
-                f"<span style='color:#e8edf6;'>{r.get('citation','')}</span><br>"
-                f"<span style='color:#94a3b8;font-size:0.85rem;'>{r.get('role','')}"
-                + (f" <code>{r.get('code')}</code>" if r.get("code") else "")
-                + "</span></li>"
-                for r in _leftover
-            )
-            st.markdown(f"<ol style='color:#cbd5e1;'>{_rows}</ol>", unsafe_allow_html=True)
-    else:
-        st.caption("Reference list unavailable (results/isef_iteration_log.json not found).")
-
-    _prior = _iter_log.get("related_prior_art", [])
-    if _prior:
-        st.markdown("**Related prior art**")
-        for _p in _prior:
-            st.markdown(
-                f"- **{_p.get('citation','')}** — overlaps on {_p.get('overlap','')}; "
-                f"differs in that it is {_p.get('difference','')}."
-            )
-
-    _novelty = _iter_log.get("novelty_summary")
-    if _novelty:
-        st.markdown(
-            f"""
-            <div class="clinical-card">
-            <h4 style="margin-top:0;">Scope and limitations</h4>
-            <p>{_novelty} Validated against ODE reference code only; experimental reactor or clinical assay comparison is future work.</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
+    st.markdown('<div class="sh-sm">License & reuse</div>', unsafe_allow_html=True)
     st.markdown(
-        "**Data sources.** Half-lives and neutron cross sections are taken from the "
-        "[NNDC](https://www.nndc.bnl.gov/) and JENDL evaluated nuclear data libraries. "
-        "Modeling assumptions are documented in `docs/DATA_ASSUMPTIONS.md`."
+        "Code is released under the license in the repository root (`LICENSE`). Committed result JSONs, "
+        "figures, and this app may be reused with attribution. Nuclear data files retain the terms of "
+        "their source libraries (IAEA-NDS JENDL-5 / ENDF, EXFOR, NNDC NuDat)."
+    )
+    st.markdown(
+        "**Repository map:** `app.py` (this app) · `ra226_ac225_transmutation.py` (ODE reference, "
+        "versioned data layer) · `pinn_model.py` (Model A) · `v3_pilstm/` (Model B) · "
+        "`docs/DATA_PROVENANCE.md` + `docs/UPGRADE_LOG.md` (the audit trail) · `results/` + "
+        "`v3_pilstm/results/` (every committed number)."
     )
 
-# ── FOOTER CREDIT ─────────────────────────────────────────────────────────────
-st.markdown(f"""
+# ── FOOTER ────────────────────────────────────────────────────────────────────
+st.markdown("""
 <div class="ft">
-  <b>IsotopePINN</b> — Sam Ogunnubi · mentor Jaden Palmer (NCSU ARTISANS)<br>
-  v2 interactive demo + PI-LSTM Results-6 · validated vs stiff ODE (NNDC/JENDL), not clinical assay &nbsp;|&nbsp;
-  <a href="https://github.com/samogunnubi0-del/PINN2.0" target="_blank">GitHub</a> &nbsp;|&nbsp;
-  <a href="https://en.wikipedia.org/wiki/Actinium-225" target="_blank">Ac-225 background</a> &nbsp;|&nbsp;
-  <a href="https://www.nndc.bnl.gov/" target="_blank">NNDC</a>
+  <b>IsotopePINN</b> — physics-informed surrogates for Ac-225 production planning<br>
+  Validated vs stiff ODE reference (JENDL-5 / EXFOR / NuDat v2 layer) · not clinical or assay data ·
+  spectrum discovery: 18.9× → 369× → <b>1.00×</b> of Sano 2024 &nbsp;|&nbsp;
+  PyTorch + Streamlit &nbsp;|&nbsp;
+  <a href="https://www.nndc.bnl.gov/" target="_blank">NNDC</a> ·
+  <a href="https://www-nds.iaea.org/" target="_blank">IAEA-NDS</a> ·
+  <a href="https://en.wikipedia.org/wiki/Actinium-225" target="_blank">Ac-225 background</a>
 </div>
 """, unsafe_allow_html=True)

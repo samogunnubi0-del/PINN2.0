@@ -74,4 +74,6 @@ prep_smoke.py
 setup_kaggle.py
 colab_script.txt
 debug-*.log
+_deck_css.txt
+_deck_js.txt
 IsotopePINN_Project.zip

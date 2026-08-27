@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-04",
+  "purpose": "Canonical checkpoint and validation-record inventory. Update after any checkpoint replacement or validation run.",
+  "artifacts": [
+    {
+      "id": "v2-streamlit-checkpoint",
+      "path": "weights/pinn_best_weights.pth",
+      "sha256": "77bede87ea783bade5a82700bac3ab3af1fb20d05b03d67ea9ba06532cc2b857",
+      "consumer": "app.py, test_single.py, analysis/validate_predictor.py",
+      "validation_record": "results/v63_validation_20260530.json",
+      "validation_record_sha256": "7c21debe209be2112a4b5c16bf168fe3be2465cb9d1145f2b1221a702259d597",
+      "evidence_status": "requires_revalidation"
+    },
+    {
+      "id": "v3-pi-lstm-checkpoint",
+      "path": "v3_pilstm/weights/pi_lstm_best.pth",
+      "sha256": "c94d623484e4a1e4450e8a3c49a9142662e1e0b33bfe296179b33aef9f7291cb",
+      "consumer": "v3_pilstm/app_v3.py",
+      "validation_record": "v3_pilstm/results/compare_v2_pilstm.json",
+      "evidence_status": "checksum_not_yet_reconciled"
+    }
+  ]
+}

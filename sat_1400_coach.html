@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>The Big Y Plan — Digital SAT</title>
+<meta name="description" content="A last-week Digital SAT hub a friend made for a 1400. Calm plan, videos that actually play, practice that explains the move."/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Big Y Plan">
+<meta name="theme-color" content="#6A7EA8">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%236A7EA8%22/><text y=%2268%22 x=%2230%22 font-family=%22Georgia, serif%22 font-weight=%22bold%22 font-size=%2255%22 fill=%22%23faf8f5%22>Y</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Nunito:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #F4F1EC;
+  --panel: #FAF8F5;
+  --border: #DDD6CC;
+  --t1: #2E3340;
+  --t2: #6B7180;
+  --t3: #9AA0AB;
+  --accent: #6A7EA8;
+  --amber: #C4A07A;
+  --gold: #E8DFD4;
+  --cream: #EDE7DF;
+  --olive: #6A7EA8;
+  --rose: #B57A74;
+  --sky: #8FA3C1;
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'Nunito', sans-serif;
+  --shadow-soft: 0 8px 30px -4px rgba(106, 126, 168, 0.12);
+  --shadow-float: 0 16px 40px -10px rgba(196, 160, 122, 0.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--t1);
+  min-height: 100vh;
+  padding: 20px 16px 80px;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Global Paper Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* HEADER - Wabi-Sabi Asymmetric Radii */
+header {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 3rem 2rem 4rem 2.5rem;
+  padding: 26px 30px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.header-title p {
+  color: var(--t2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.live-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: rgba(106, 126, 168), 0.08);
+  border: 1px solid rgba(106, 126, 168), 0.2);
+  padding: 8px 16px;
+  border-radius: 99px;
+}
+
+.profile-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ppill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+}
+
+.ppill.blue {
+  background: rgba(140, 160, 186, 0.12);
+  border-color: rgba(140, 160, 186, 0.3);
+  color: #4a5d78;
+}
+
+.ppill.olive {
+  background: rgba(106, 126, 168), 0.08);
+  border-color: rgba(106, 126, 168), 0.2);
+  color: var(--accent);
+}
+
+/* COUNTDOWN - Soft ambient bar */
+.countdown-bar {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.cd-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cd-icon {
+  font-size: 2rem;
+}
+
+.cd-label {
+  font-size: 0.78rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.cd-val {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+
+.cd-track {
+  flex: 1;
+  min-width: 220px;
+}
+
+.cd-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--t2);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.cd-bar {
+  height: 10px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.cd-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.8s ease;
+}
+
+/* TABS - Pill styled navbar */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--t2);
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 99px;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans);
+}
+
+.tab-btn:hover {
+  color: var(--t1);
+  background: var(--cream);
+}
+
+.tab-btn.active {
+  color: var(--primary-foreground, #F3F4F1);
+  background: var(--accent);
+  box-shadow: 0 4px 12px rgba(106, 126, 168), 0.2);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* CARDS - Organic Rounded */
+.card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px -8px rgba(106, 126, 168), 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--cream);
+  padding-bottom: 14px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+}
+
+/* INPUTS - Pill shapes */
+input, select, textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 99px;
+  padding: 12px 20px;
+  color: var(--t1);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(106, 126, 168), 0.15);
+}
+
+select option {
+  background: #ffffff;
+  color: var(--t1);
+}
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.search-row input {
+  flex: 2;
+  min-width: 180px;
+}
+
+.search-row select {
+  flex: 1;
+  min-width: 140px;
+}
+
+/* CAT PILLS - Rounded Pill shapes */
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.cpill {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cpill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.cpill:hover:not(.active) {
+  color: var(--t1);
+  border-color: var(--t2);
+  background: #ffffff;
+}
+
+/* TABLES - Organic paper structure */
+.table-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 18px;
+}
+
+.sch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.sch-table th, .sch-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--cream);
+}
+
+.sch-table th {
+  background: rgba(106, 126, 168), 0.04);
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.sch-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sch-table tbody tr:hover {
+  background: rgba(106, 126, 168), 0.02);
+}
+
+.sch-link {
+  color: var(--amber);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.sch-link:hover {
+  color: var(--t1);
+  text-decoration: underline;
+}
+
+/* BADGES - Soft colored tones */
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.mh {
+  background: rgba(106, 126, 168), 0.1);
+  border: 1px solid rgba(106, 126, 168), 0.3);
+  color: var(--accent);
+}
+
+.mm {
+  background: rgba(193, 140, 93, 0.1);
+  border: 1px solid rgba(193, 140, 93, 0.3);
+  color: var(--amber);
+}
+
+.ml {
+  background: rgba(168, 84, 72, 0.08);
+  border: 1px solid rgba(168, 84, 72, 0.25);
+  color: var(--rose);
+}
+
+.gpa-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.gn {
+  background: rgba(106, 126, 168), 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(106, 126, 168), 0.2);
+}
+
+.gl {
+  background: rgba(140, 160, 186, 0.08);
+  color: #4a5d78;
+  border: 1px solid rgba(140, 160, 186, 0.2);
+}
+
+.gm {
+  background: rgba(193, 140, 93, 0.08);
+  color: var(--amber);
+  border: 1px solid rgba(193, 140, 93, 0.2);
+}
+
+.cat-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-left: 6px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t2);
+}
+
+/* BUTTONS - tactile pill design */
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(106, 126, 168), 0.2);
+  width: 100%;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(106, 126, 168), 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-sec {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 10px 20px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+}
+
+.btn-sec:hover {
+  background: var(--cream);
+  border-color: var(--t2);
+}
+
+.btn-track {
+  background: rgba(106, 126, 168), 0.08);
+  border: 2px solid rgba(106, 126, 168), 0.2);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-track:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.btn-del {
+  background: transparent;
+  border: none;
+  color: var(--rose);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px 8px;
+  border-radius: 99px;
+  transition: background 0.2s;
+}
+
+.btn-del:hover {
+  background: rgba(168, 84, 72, 0.08);
+}
+
+.page-btn {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 8px 18px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--cream);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+#page-indicator {
+  font-size: 0.85rem;
+  color: var(--t2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tracker-item {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ti-info h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: var(--accent);
+}
+
+.ti-info p {
+  font-size: 0.78rem;
+  color: var(--t2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ti-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-sel {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+  width: auto;
+  cursor: pointer;
+}
+
+.status-sel.submitted {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(106, 126, 168), 0.05);
+}
+
+.status-sel.inprogress {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: rgba(193, 140, 93, 0.05);
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 16px;
+  color: var(--t2);
+  font-size: 0.9rem;
+}
+
+.empty-state span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--t2);
+  letter-spacing: 0.5px;
+}
+
+/* STREAK - Asymmetric visual clay blob color tint */
+.streak-hero {
+  background: linear-gradient(135deg, rgba(106, 126, 168), 0.08), rgba(193, 140, 93, 0.08));
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.streak-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.streak-flame {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.streak-count {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 0.85rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-top: 4px;
+}
+
+.streak-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ss-item {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 12px 18px;
+  text-align: center;
+}
+
+.ss-val {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.ss-lbl {
+  font-size: 0.7rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.checkin-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 15px 30px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 16px rgba(106, 126, 168), 0.25);
+  white-space: nowrap;
+}
+
+.checkin-btn:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(106, 126, 168), 0.35);
+}
+
+.checkin-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.checkin-btn.done {
+  background: rgba(106, 126, 168), 0.15);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
+
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.sub-tab {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--t2);
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 99px;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.sub-tab.active {
+  background: var(--cream);
+  border-color: var(--t2);
+  color: var(--t1);
+}
+
+.sub-tab:hover:not(.active) {
+  color: var(--t1);
+  background: #ffffff;
+}
+
+.sub-content {
+  display: none;
+}
+
+.sub-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.score-banner {
+  background: rgba(193, 140, 93, 0.06);
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.score-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-icon {
+  font-size: 1.6rem;
+}
+
+.score-label {
+  font-size: 0.78rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.score-val {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+
+.score-bar-wrap {
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+}
+
+.score-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--t2);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.score-bar-track {
+  height: 9px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.8s ease;
+}
+
+.score-edit {
+  background: rgba(193, 140, 93, 0.1);
+  border: 2px solid rgba(193, 140, 93, 0.25);
+  color: var(--amber);
+  border-radius: 99px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.score-edit:hover {
+  background: var(--amber);
+  color: #ffffff;
+  border-color: var(--amber);
+}
+
+.tip-list {
+  list-style: none;
+}
+
+.tip-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.92rem;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cream);
+  line-height: 1.6;
+  color: var(--t1);
+}
+
+.tip-list li:last-child {
+  border-bottom: none;
+}
+
+.ti-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* MODALS - Tactile glassmorphism details */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 44, 36, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 32px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+
+.modal-lbl {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--t2);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t2);
+  border-radius: 99px;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  flex: 1;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--cream);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-float);
+  z-index: 9999;
+  transform: translateY(24px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── VIDEO SECTION ── */
+.video-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.vid-card {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+}
+
+.vid-card:hover {
+  border-color: var(--accent);
+  background: rgba(106, 126, 168), 0.03);
+  transform: translateY(-2px);
+}
+
+.vid-card.active-vid {
+  border-color: var(--accent);
+  background: rgba(106, 126, 168), 0.08);
+  box-shadow: 0 4px 16px rgba(106, 126, 168), 0.12);
+}
+
+.vid-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--amber);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.vid-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.vid-creator {
+  font-size: 0.78rem;
+  color: var(--t2);
+}
+
+.vid-checkpoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.cp-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border: 1.5px solid var(--border);
+  color: var(--t2);
+  background: var(--cream);
+  transition: all 0.2s;
+}
+
+.cp-dot.done {
+  background: rgba(106, 126, 168), 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cp-dot.current {
+  background: rgba(193, 140, 93, 0.15);
+  border-color: var(--amber);
+  color: var(--amber);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(193, 140, 93, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(193, 140, 93, 0); }
+}
+
+.video-player-wrap {
+  background: #2E3340;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+  isolation: isolate;
+  z-index: 2;
+  box-shadow: var(--shadow-soft);
+}
+
+.video-player-wrap iframe,
+.video-player-wrap .yt-frame,
+.video-player-wrap .video-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #c9cdd6;
+  font-size: 0.95rem;
+  background: #3a4050;
+  padding: 16px;
+  text-align: center;
+}
+
+.yt-fallback {
+  display: none;
+  margin: 0 0 16px;
+}
+.yt-fallback a {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.88rem;
+  text-decoration: none;
+  padding: 8px 0;
+}
+.yt-fallback a:hover { text-decoration: underline; }
+
+.video-placeholder .big-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.checkpoint-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cp-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cp-legend-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--t2);
+}
+
+.cp-bar-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cp-bar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.cp-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.cp-markers {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+}
+
+.cp-marker {
+  position: absolute;
+  top: -3px;
+  width: 3px;
+  height: 14px;
+  background: var(--amber);
+  border-radius: 99px;
+}
+
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.topic-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+}
+
+.manual-quiz-btn {
+  background: rgba(106, 126, 168), 0.08);
+  border: 2px solid rgba(106, 126, 168), 0.25);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.manual-quiz-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+/* ── AI SECTION ── */
+.ai-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ai-card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.ai-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+}
+
+.ai-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ai-gen-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(106, 126, 168), 0.2);
+}
+
+.ai-gen-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(106, 126, 168), 0.3);
+}
+
+.ai-gen-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ai-result-area {
+  min-height: 80px;
+}
+
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 14px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(106, 126, 168), 0.1);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.ai-loading-text {
+  font-size: 0.9rem;
+  color: var(--t2);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.ai-passage {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--t1);
+  border-left: 5px solid var(--amber);
+}
+
+.ai-passage-label {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+/* ── QUIZ ── */
+.quiz-q-card {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.quiz-q-num {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.quiz-q-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.quiz-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 12px 20px;
+  color: var(--t1);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.quiz-opt:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: var(--accent);
+  transform: scale(1.01);
+}
+
+.quiz-opt.correct {
+  background: rgba(106, 126, 168), 0.15) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  font-weight: 800;
+}
+
+.quiz-opt.wrong {
+  background: rgba(168, 84, 72, 0.08) !important;
+  border-color: var(--rose) !important;
+  color: var(--rose) !important;
+}
+
+.quiz-exp {
+  display: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 4px solid var(--amber);
+  margin-top: 10px;
+  color: var(--t2);
+}
+
+.quiz-exp.show {
+  display: block;
+}
+
+.quiz-summary {
+  background: linear-gradient(135deg, rgba(106, 126, 168), 0.08), rgba(193, 140, 93, 0.06));
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 20px;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.quiz-summary .big-score {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.quiz-summary .summary-label {
+  font-size: 0.88rem;
+  color: var(--t2);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ── CHECKPOINT MODAL ── */
+.cp-modal-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 32px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.cp-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.cp-modal-icon {
+  font-size: 2.8rem;
+}
+
+.cp-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.cp-modal-sub {
+  font-size: 0.88rem;
+  color: var(--t2);
+  margin-bottom: 20px;
+}
+
+.cp-score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.resume-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.resume-btn:hover {
+  transform: scale(1.02);
+}
+
+.skip-cp-btn {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--t2);
+  border-radius: 99px;
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  width: 100%;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.skip-cp-btn:hover {
+  background: var(--cream);
+  color: var(--t1);
+}
+
+/* ── MOBILE NAVBAR ── */
+.bottom-nav {
+  display: none;
+}
+
+@media(max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+  .ai-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 600px) {
+  body {
+    padding: 12px 12px 100px;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  header {
+    padding: 18px 16px;
+    border-radius: 1.6rem;
+  }
+  .header-title h1 {
+    font-size: 1.55rem;
+    line-height: 1.15;
+  }
+  .header-top {
+    align-items: flex-start;
+  }
+  .header-top > div:last-child {
+    align-items: stretch !important;
+    width: 100%;
+  }
+  .live-date {
+    text-align: center;
+  }
+  .countdown-bar {
+    padding: 14px 16px;
+    border-radius: 1.4rem;
+  }
+  .cd-val { font-size: 1.45rem; }
+  .stat-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    display: none !important;
+  }
+  .card {
+    padding: 18px 16px;
+    border-radius: 1.4rem;
+  }
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: 12px;
+    right: 12px;
+    background: rgba(250, 248, 245, 0.94);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--border);
+    border-radius: 99px;
+    z-index: 900;
+    justify-content: space-around;
+    padding: 8px 8px;
+    box-shadow: var(--shadow-float);
+  }
+  .bn-btn {
+    background: transparent;
+    border: none;
+    color: var(--t2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    gap: 4px;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.2s ease;
+    font-family: var(--font-sans);
+    padding: 8px 0;
+    min-height: 44px;
+  }
+  .bn-btn.active {
+    color: var(--accent);
+  }
+  .bn-btn .icon {
+    font-size: 1.25rem;
+  }
+  .ai-section {
+    grid-template-columns: 1fr;
+  }
+  .video-selector {
+    grid-template-columns: 1fr;
+  }
+  .video-player-wrap {
+    border-radius: 1rem;
+  }
+  .streak-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.6rem;
+  }
+  .streak-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .sch-table, .sch-table thead, .sch-table tbody, .sch-table tr, .sch-table td, .sch-table th {
+    display: block;
+    width: 100%;
+  }
+  .sch-table thead {
+    display: none;
+  }
+  .sch-table tr {
+    background: #ffffff;
+    border: 2px solid var(--border);
+    border-radius: 1.5rem;
+    margin-bottom: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow-soft);
+  }
+  .sch-table td {
+    border: none;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+  }
+  .sch-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--t2);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .sch-table td:first-child {
+    display: block;
+    text-align: left;
+    border-bottom: 2px solid var(--cream);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+  }
+  .sch-table td:first-child::before {
+    display: none;
+  }
+  .table-wrap {
+    border: none;
+    background: transparent;
+  }
+  .search-row {
+    flex-direction: column;
+  }
+  .checkin-btn {
+    width: 100%;
+  }
+  .score-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.6rem;
+  }
+  .score-bar-wrap {
+    max-width: 100%;
+  }
+  .checkpoint-info {
+    flex-direction: column;
+  }
+  .manual-quiz-btn {
+    width: 100%;
+  }
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: calc(92px + env(safe-area-inset-bottom));
+    text-align: center;
+  }
+  .letter-card {
+    padding: 22px 18px 18px;
+  }
+}
+
+/* ── LETTER / ENVELOPE ── */
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  background: rgba(46, 51, 64, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  cursor: pointer;
+  animation: letterFadeIn 0.4s ease;
+}
+.letter-overlay[hidden] { display: none !important; }
+.letter-overlay.hiding { animation: letterFadeOut 0.35s ease forwards; }
+@keyframes letterFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes letterFadeOut { to { opacity: 0; } }
+
+.letter-stage {
+  width: min(440px, 94vw);
+  min-height: 320px;
+  perspective: 1000px;
+  position: relative;
+  cursor: default;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin: 70px auto 0;
+}
+
+.env-pocket {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 150px;
+  background: linear-gradient(180deg, #d4c4b0 0%, #c4b19a 100%);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 18px 40px rgba(46,51,64,.28);
+  z-index: 3;
+}
+.env-pocket::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(255,255,255,.18), transparent);
+  pointer-events: none;
+}
+
+.env-flap {
+  position: absolute;
+  top: 100px;
+  left: 0; right: 0;
+  height: 118px;
+  background: linear-gradient(180deg, #e4d5c3, #cbb9a4);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  z-index: 4;
+  animation: flapOpen 0.9s 0.45s ease forwards;
+  box-shadow: 0 6px 12px rgba(46,51,64,.12);
+}
+@keyframes flapOpen {
+  to { transform: rotateX(180deg); z-index: 1; }
+}
+
+.letter-card {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 28px;
+  background: #FBF7F1;
+  border: 1px solid #E4D8CA;
+  border-radius: 16px;
+  padding: 26px 22px 18px;
+  z-index: 2;
+  transform: translateY(16px) scale(0.94);
+  opacity: 0;
+  animation: letterRise 0.95s 1.05s cubic-bezier(.2,.8,.2,1) forwards;
+  box-shadow: 0 14px 36px rgba(46,51,64,.16);
+  max-height: min(62vh, 420px);
+  overflow: auto;
+}
+@keyframes letterRise {
+  to { transform: translateY(-118px) scale(1); opacity: 1; }
+}
+
+.letter-card p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #3a3f4c;
+  margin-bottom: 14px;
+}
+.letter-sign {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px !important;
+}
+.letter-close {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.letter-hint {
+  text-align: center;
+  margin-top: 10px;
+  color: #efe8df;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .env-flap { animation: none; transform: rotateX(180deg); z-index: 1; }
+  .letter-card { animation: none; transform: translateY(-118px) scale(1); opacity: 1; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="header-top">
+    <div class="header-title">
+      <h1>The Big Y Plan</h1>
+      <p id="hello-line">A last-week SAT hub a friend made for you. You do not need a miracle. You need a plan you can actually finish.</p>
+      <div class="profile-pills">
+        <span class="ppill olive">Goal 1400</span>
+        <span class="ppill">Digital SAT · Sat Aug 22, 2026</span>
+        <span class="ppill blue">~700 Math · ~700 R&amp;W</span>
+        <span class="ppill">Bluebook only</span>
+        <span class="ppill olive">Desmos first</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+      <div class="live-date" id="live-date">Loading…</div>
+      <button class="btn-sec" onclick="openSettings()">Your name</button>
+    </div>
+  </div>
+</header>
+
+<div class="countdown-bar">
+  <div class="cd-left">
+    <div>
+      <div class="cd-label">Days until Saturday, August 22 SAT</div>
+      <div class="cd-val" id="cd-days">—</div>
+    </div>
+  </div>
+  <div class="cd-track">
+    <div class="cd-bar-labels"><span>Today</span><span>Test day</span></div>
+    <div class="cd-bar"><div class="cd-bar-fill" id="cd-bar-fill" style="width:0%"></div></div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:.75rem;color:var(--t2);margin-bottom:4px;">Study streak</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:800;color:var(--accent);"><span id="hdr-streak">0</span> days</div>
+  </div>
+</div>
+
+<div class="score-banner">
+  <div class="score-left">
+    <div><div class="score-label">Target score</div><div class="score-val" id="display-score">1400</div></div>
+  </div>
+  <div class="score-bar-wrap">
+    <div class="score-bar-labels"><span>400</span><span>1400</span><span>1600</span></div>
+    <div class="score-bar-track"><div class="score-bar-fill" id="score-bar" style="width:83%"></div></div>
+  </div>
+  <button class="score-edit" onclick="openScoreModal()">Update goal</button>
+</div>
+
+<div class="stat-row">
+  <div class="stat-box"><div class="stat-num" id="stat-days">—</div><div class="stat-lbl">Days left</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-sessions">0</div><div class="stat-lbl">Study sessions</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-streak-long">0</div><div class="stat-lbl">Longest streak</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-cp-done">0</div><div class="stat-lbl">Video checkpoints</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('t-today')">Today</button>
+  <button class="tab-btn" onclick="switchTab('t-sat')">Videos</button>
+  <button class="tab-btn" onclick="switchTab('t-practice')">Practice</button>
+  <button class="tab-btn" onclick="switchTab('t-tips')">Plan &amp; calm</button>
+</div>
+
+<!-- TODAY -->
+<div id="t-today" class="tab-content active">
+  <div class="card" style="background:linear-gradient(135deg, rgba(93,112,82,.08), rgba(193,140,93,.07));">
+    <div class="card-header"><div class="card-title" id="pep-title">You are allowed to be nervous</div></div>
+    <p id="pep-body" style="font-size:1.02rem;line-height:1.7;color:var(--t1);">A 1400 is not perfection. It is about 12–15 wrong across the whole test. Missing hard Module 2 questions is normal. Today we do one video, one short drill, and stop.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Today’s 70-minute mission</div></div>
+        <ul class="tip-list" id="today-mission"></ul>
+        <button class="checkin-btn" id="checkin-btn" onclick="doCheckin()" style="width:100%;margin-top:8px;">Mark today as studied</button>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">If you start spiraling</div></div>
+        <ul class="tip-list">
+          <li><span class="ti-icon">1</span><span>Close extra tabs. Open only this page + Bluebook or Desmos.</span></li>
+          <li><span class="ti-icon">2</span><span>Do 10 questions, not 100. Review every miss. That is how 1400s are built.</span></li>
+          <li><span class="ti-icon">3</span><span>If a question takes more than 90 seconds, guess, flag, move. Come back if time is left.</span></li>
+          <li><span class="ti-icon">4</span><span>Sleep beats another hour of panicked review. Tired brains drop 50–80 points.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div id="t-sat" class="tab-content">
+  <div class="streak-hero">
+    <div class="streak-left">
+      <div><div class="streak-count" id="streak-count">0</div><div class="streak-label">Day streak</div></div>
+    </div>
+    <div class="streak-stats">
+      <div class="ss-item"><div class="ss-val" id="ss-longest">0</div><div class="ss-lbl">Longest</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl">Sessions</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-cp-total">0</div><div class="ss-lbl">Checkpoints</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-days-left">—</div><div class="ss-lbl">Days left</div></div>
+    </div>
+    <button class="checkin-btn" onclick="switchTab('t-today')">Back to today</button>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Last-week videos (not random Desmos dumps)</div>
+      <span style="font-size:.78rem;color:var(--t2);">Watch in order. Pause for a 3-question check, not a 7-question pile.</span>
+    </div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:16px;line-height:1.6;">
+      These replace the all-Desmos dump. This week you need a <strong>plan</strong>, <strong>short Desmos hacks</strong>, <strong>regression</strong>, and <strong>English test-day order</strong>. Video 5 is a long walkthrough — only if you still have energy.
+    </p>
+    <div class="video-selector" id="video-selector"></div>
+    <div class="video-player-wrap" id="video-player-wrap">
+      <div class="video-placeholder">
+        <div>Pick video 1 if you feel lost. Pick video 2 if you already know Desmos basics.</div>
+        <div style="font-size:.75rem;margin-top:6px;color:#9aa3b4;">Checkpoints pause for a tiny quiz</div>
+      </div>
+    </div>
+    <div class="yt-fallback" id="yt-fallback">
+      <a id="yt-open-link" href="#" target="_blank" rel="noopener">Video blank? Open it in YouTube</a>
+    </div>
+    <div class="checkpoint-info" id="cp-info" style="display:none;">
+      <div class="cp-bar-wrap">
+        <div style="font-size:.72rem;color:var(--t2);margin-bottom:5px;display:flex;justify-content:space-between;">
+          <span>Video progress</span><span id="cp-bar-pct">0%</span>
+        </div>
+        <div class="cp-bar">
+          <div class="cp-bar-fill" id="cp-bar-fill" style="width:0%"></div>
+          <div class="cp-markers">
+            <div class="cp-marker" style="left:25%"></div>
+            <div class="cp-marker" style="left:50%"></div>
+            <div class="cp-marker" style="left:75%"></div>
+            <div class="cp-marker" style="left:100%"></div>
+          </div>
+        </div>
+      </div>
+      <button class="manual-quiz-btn" onclick="manualCheckpoint()">Take 3-question check</button>
+    </div>
+    <div id="vid-topic-info" style="display:none;margin-top:12px;">
+      <div style="font-size:.75rem;color:var(--t2);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;">What this video is for</div>
+      <div class="topics-list" id="topics-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRACTICE -->
+<div id="t-practice" class="tab-content">
+  <div class="ai-section">
+    <div class="ai-card">
+      <div class="ai-card-title">Math — Desmos path to 700</div>
+      <div class="ai-controls">
+        <div>
+          <label class="modal-lbl">Focus</label>
+          <select id="math-topic">
+            <option value="graphing both sides of an equation in Desmos and reading the intersection x-value">Graph both sides</option>
+            <option value="systems of equations by finding intersection points in Desmos">Systems / intersection</option>
+            <option value="quadratics: roots, vertex, and max/min from the parabola in Desmos">Quadratics</option>
+            <option value="linear regression y1 ~ mx1 + b from a Desmos table">Linear regression</option>
+            <option value="the tilde trick: replace = with ~ to solve for unknown constants">Tilde trick / constants</option>
+            <option value="percent change, mean, median, and two-way tables">Stats &amp; percents</option>
+            <option value="hard Module 2 word problems that still have a Desmos setup">Hard Module 2 setup</option>
+          </select>
+        </div>
+        <div>
+          <label class="modal-lbl">Difficulty</label>
+          <select id="math-diff">
+            <option value="easy Module 1">Easy · Module 1</option>
+            <option value="medium early Module 2" selected>Medium · 1400 range</option>
+            <option value="hard late Module 2">Hard · skip if tired</option>
+          </select>
+        </div>
+        <button class="ai-gen-btn" id="math-gen-btn" onclick="generateMathAI()">Give me 3 math questions</button>
+      </div>
+      <div class="ai-result-area" id="math-ai-result">
+        <div style="text-align:center;padding:20px;color:var(--t2);font-size:.82rem;">Three questions. Review every miss. That is enough for one sitting.</div>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-card-title">Reading &amp; Writing — 700 path</div>
+      <div class="ai-controls">
+        <div>
+          <label class="modal-lbl">Question type</label>
+          <select id="rw-focus">
+            <option value="Standard English conventions: commas, semicolons, colons, and complete sentences" selected>Grammar &amp; punctuation</option>
+            <option value="transitions and logical relationships between sentences">Transitions</option>
+            <option value="vocabulary in context, tone, and precise word choice">Vocab in context</option>
+            <option value="short-passage inference and main purpose">Short reading / inference</option>
+            <option value="student notes questions: pick the choice that matches the goal">Notes questions</option>
+          </select>
+        </div>
+        <div>
+          <label class="modal-lbl">Passage flavor</label>
+          <select id="rw-topic">
+            <option value="ecology and animal behavior">Science · ecology</option>
+            <option value="US history and civic documents">History</option>
+            <option value="psychology of stress, attention, and learning">Psych / learning</option>
+            <option value="literature about friendship and confidence">Humanities</option>
+          </select>
+        </div>
+        <button class="ai-gen-btn" id="rw-gen-btn" onclick="generateRWAI()">Give me a short drill</button>
+      </div>
+      <div class="ai-result-area" id="rw-ai-result">
+        <div style="text-align:center;padding:20px;color:var(--t2);font-size:.82rem;">Grammar first this week. Reading second. Vocab last.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLAN -->
+<div id="t-tips" class="tab-content">
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">What a 1400 actually requires</div></div>
+        <ul class="tip-list">
+          <li><span><strong>Not a perfect test.</strong> Roughly 1400 ≈ 700/700. You can miss several Module 2 questions and still land it.</span></li>
+          <li><span><strong>Math:</strong> Module 1 should feel easy with Desmos. Save brain for 4–6 hard Module 2 items. Regression and the tilde (~) trick are the 1400 differentiator.</span></li>
+          <li><span><strong>English:</strong> Do not start at question 1 on Module 2. Jump to grammar (~15) or start at 27 and work backward. Save long reading for last. Transitions: name contrast / cause / add before you pick.</span></li>
+          <li><span><strong>Never leave blanks.</strong> No penalty. If time is dying, pick one letter for the rest and keep a 3-second pause so it does not look like spam-clicking.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Desmos moves worth locking</div></div>
+        <ul class="tip-list">
+          <li><span>Solve: graph y = left and y = right. Click the intersection. That x is the answer.</span></li>
+          <li><span>System: graph both. Intersection = (x, y).</span></li>
+          <li><span>Data: + Table, then <code>y1 ~ mx1 + b</code> or <code>y1 ~ ax1^2 + bx1 + c</code>.</span></li>
+          <li><span>Unknown constants: replace = with ~ (tilde, Shift+` ). Desmos fills a, b, k.</span></li>
+          <li><span>Practice on <a class="sch-link" href="https://www.desmos.com/testing" target="_blank" rel="noopener">desmos.com/testing</a> so the SAT keyboard matches.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Day-by-day until Sat Aug 22</div></div>
+        <div id="week-plan" style="display:flex;flex-direction:column;gap:10px;"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Test-morning script</div></div>
+        <ul class="tip-list">
+          <li><span class="ti-icon">🔋</span><span>Charger, Bluebook login, snack, water. No new topics after 8pm the night before.</span></li>
+          <li><span class="ti-icon">🧠</span><span>First 2 questions are supposed to feel easy. That is the test warming up, not a trap.</span></li>
+          <li><span class="ti-icon">💛</span><span>Someone made this page because they believe you can do a 1400. Trust the plan more than the panic.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="bn-btn active" id="bn-today" onclick="switchTab('t-today')">Today</button>
+  <button class="bn-btn" id="bn-sat" onclick="switchTab('t-sat')">Videos</button>
+  <button class="bn-btn" id="bn-practice" onclick="switchTab('t-practice')">Practice</button>
+  <button class="bn-btn" id="bn-tips" onclick="switchTab('t-tips')">Plan</button>
+</nav>
+
+<div class="modal-overlay" id="score-modal">
+  <div class="modal-box">
+    <div class="modal-title">Update SAT goal</div>
+    <label class="modal-lbl">Goal (400–1600)</label>
+    <input type="number" id="modal-score" min="400" max="1600" step="10" value="1400">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('score-modal')">Cancel</button>
+      <button class="btn-primary" style="flex:1;padding:10px;font-size:.88rem;" onclick="saveScore()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal-box" style="max-width:440px;">
+    <div class="modal-title">Your name</div>
+    <label class="modal-lbl">So the pep talks can say it</label>
+    <input type="text" id="set-name" placeholder="optional" style="margin-bottom:12px;">
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('settings-modal')">Close</button>
+      <button class="btn-primary" style="flex:1;padding:10px;font-size:.88rem;" onclick="saveSettings()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="cp-modal">
+  <div class="cp-modal-box">
+    <div class="cp-modal-header">
+      <div>
+        <div class="cp-modal-title" id="cp-modal-title">Checkpoint</div>
+      </div>
+    </div>
+    <div class="cp-modal-sub" id="cp-modal-sub">Tiny check. No pile-on.</div>
+    <div id="cp-quiz-area"></div>
+    <button class="skip-cp-btn" onclick="closeCheckpointModal()">Skip and keep watching</button>
+  </div>
+</div>
+
+<div class="letter-overlay" id="letter-overlay" hidden onclick="closeLetter()">
+  <div>
+    <div class="letter-stage" onclick="event.stopPropagation()">
+      <div class="envelope">
+        <div class="letter-card">
+          <p>I would hate for you to stress. So if this is something that can ease that stress, I was more than happy to make this. I know it isn’t much, but if it can be of help even in the slightest, it was worth doing.</p>
+          <p class="letter-sign">The Big Y Plan</p>
+          <button class="letter-close" type="button" onclick="closeLetter()">Got it</button>
+        </div>
+        <div class="env-pocket"></div>
+        <div class="env-flap"></div>
+      </div>
+    </div>
+    <div class="letter-hint">Tap anywhere outside to close</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+const SAT_DATE = new Date('2026-08-22T07:45:00');
+const LS = {
+  goal: 'sat1400_goal',
+  streak: 'sat1400_streak',
+  longest: 'sat1400_longest',
+  sessions: 'sat1400_sessions',
+  last: 'sat1400_last_checkin',
+  cp: 'sat1400_cp_done',
+  name: 'sat1400_name',
+  letter: 'bigy_letter_seen',
+  key: 'OPENROUTER_API_KEY',
+  model: 'SAT1400_MODEL'
+};
+
+const VIDEO_DATA = [
+  {
+    id:'v1', youtubeId:'fPWCn5OCe0s',
+    title:'How to study for the SAT in 1–2 weeks',
+    creator:'Strategic Test Prep · Laura Whitmore',
+    why:'Start here if you feel behind. High-yield plan, not a new textbook.',
+    topics:['Last-week schedule','Error log','Bluebook tests','Strategy over cramming'],
+    cpTopics:{
+      25:'building a 1-week SAT plan: diagnostic, error log, and not learning new low-yield topics',
+      50:'why 2–3 Bluebook tests beat random practice, and how to review misses',
+      75:'elimination and timing strategies that matter more than extra content this close to the test',
+      100:'what to do in the final 48 hours: sleep, one light review, no new systems'
+    }
+  },
+  {
+    id:'v2', youtubeId:'JsALkg3ENrc',
+    title:'Desmos hacks for a higher SAT Math score',
+    creator:'Strategic Test Prep',
+    why:'Fourteen-ish minutes. Graph, systems, and Module 2 speed — not a 50-minute 800 flex.',
+    topics:['Graph both sides','Systems / intersection','Module 2 time-savers','When to skip algebra'],
+    cpTopics:{
+      25:'Desmos navigation and graphing both sides of an equation to read the intersection',
+      50:'solving systems by clicking the intersection point',
+      75:'using Desmos on a hard Module 2 item instead of long algebra',
+      100:'when 20-second mental math is faster than opening Desmos'
+    }
+  },
+  {
+    id:'v3', youtubeId:'e-O4nwVHQ-Y',
+    title:'The last SAT Desmos guide you need',
+    creator:'James Lu SAT',
+    why:'This is the 1400 lever: tables, tilde (~) regression, unknown constants.',
+    topics:['Tilde ~','Tables','Linear/quadratic regression','Unknown constants'],
+    cpTopics:{
+      25:'using the tilde ~ instead of = so Desmos solves for constants',
+      50:'adding a table and typing y1 ~ mx1 + b',
+      75:'quadratic and exponential regression from data',
+      100:'common mistakes: wrong subscripts, degrees vs radians, using = instead of ~'
+    }
+  },
+  {
+    id:'v4', youtubeId:'of9TBZqvcdo',
+    title:'Last-minute SAT tips (English order + test day)',
+    creator:'Strategic Test Prep · March 2026',
+    why:'Short. Grammar-first / start at 27. Pacing. No blanks. Watch the night before.',
+    topics:['Grammar first','English Module 2 order','Skip and return','Test-day calm'],
+    cpTopics:{
+      25:'not starting English Module 2 at question 1 — grammar first or work backward from 27',
+      50:'semicolon and comma rules: two complete sentences vs a fragment',
+      75:'never leave blanks; pause a beat so Bluebook does not think you are spam-clicking',
+      100:'test-day execution: flag hard items, protect easy points, stay calm on Module 2'
+    }
+  },
+  {
+    id:'v5', youtubeId:'U04SZfX-nv0',
+    title:'Full SAT Math with only Desmos (long, optional)',
+    creator:'Ping Pong Physics',
+    why:'51 minutes. Skip if you are fried. Use only after videos 2 and 3.',
+    topics:['Module 1 walkthrough','Constants in Desmos','Percents','Quadratic regression'],
+    cpTopics:{
+      25:'graphing both sides on Module 1 so easy points stay easy',
+      50:'unknown constants: replace = with ~ or use a slider',
+      75:'percent and word problems still have a graph or table setup',
+      100:'what to ignore in a long 800 walkthrough when the goal is 700 math'
+    }
+  }
+];
+
+const PEPS = [
+  ['You are allowed to be nervous','Nerves mean you care. They are not a prediction. We convert them into a 70-minute mission.'],
+  ['1400 is not perfect','You can miss hard Module 2 questions and still hit 1400. Protect easy points. That is the whole game.'],
+  ['Short sessions win','Ten reviewed questions beat fifty panicked ones. Your brain keeps what you explain back to yourself.'],
+  ['You are not behind','This week is for strategy and sleep, not a new textbook. The plan is small on purpose.']
+];
+
+const WEEK = [
+  {d:'Fri–Sat', t:'Stabilize', b:'Watch Video 1. One Bluebook section OR 20 mixed questions. Error log: type + why you missed it. Stop at 70 minutes.'},
+  {d:'Sun', t:'Desmos speed', b:'Video 2 (short hacks). Then 12–15 Module-1-style math questions. Goal: finish with time left.'},
+  {d:'Mon–Tue', t:'Regression', b:'Video 3. Practice tables and y1 ~ mx1 + b on desmos.com/testing. This is the 1400 lever.'},
+  {d:'Wed–Thu', t:'English bank', b:'Video 4. Grammar-first drill. Transitions: name contrast / cause / add before picking.'},
+  {d:'Fri Aug 21', t:'Light day', b:'No new systems. 10 easy questions if you want. Pack charger, ID, snack. Sleep 8 hours.'},
+  {d:'Sat Aug 22', t:'Test day', b:'Bluebook already set up. First questions should feel easy. Flag hard ones. You can miss several Module 2 items and still hit 1400.'}
+];
+
+let satGoal = parseInt(localStorage.getItem(LS.goal) || '1400', 10);
+let satStreak = parseInt(localStorage.getItem(LS.streak) || '0', 10);
+let satLongest = parseInt(localStorage.getItem(LS.longest) || '0', 10);
+let satSessions = parseInt(localStorage.getItem(LS.sessions) || '0', 10);
+let lastCheckin = localStorage.getItem(LS.last) || '';
+let cpDone = JSON.parse(localStorage.getItem(LS.cp) || '{}');
+let ytPlayer = null, activeVideoIdx = -1, ytInterval = null, cpFired = {};
+let cpCurrentAnswers = {}, cpTotalQ = 0, cpCorrect = 0;
+let cpQuizBank = [];
+let practiceQuizBank = { math: [], rw: [] };
+
+function friendName(){
+  const n = (localStorage.getItem(LS.name) || '').trim();
+  return n || 'you';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('live-date').textContent =
+    new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  VIDEO_DATA.forEach(v => { if(!cpDone[v.id]) cpDone[v.id] = {25:false,50:false,75:false,100:false}; });
+  updateCountdown();
+  updateScoreBanner();
+  updateStreakUI();
+  buildVideoSelector();
+  checkCheckinState();
+  renderPep();
+  renderToday();
+  renderWeek();
+  refreshApiBanner();
+  updateHello();
+  maybeShowLetter();
+});
+
+function updateHello(){
+  const n = friendName();
+  document.getElementById('hello-line').textContent =
+    n === 'you'
+      ? 'A last-week SAT hub a friend made for you. You do not need a miracle. You need a plan you can actually finish.'
+      : `${n} — a last-week SAT hub a friend made for you. You do not need a miracle. You need a plan you can actually finish.`;
+}
+
+function renderPep(){
+  const i = new Date().getDate() % PEPS.length;
+  document.getElementById('pep-title').textContent = PEPS[i][0];
+  document.getElementById('pep-body').textContent = PEPS[i][1];
+}
+
+function renderToday(){
+  const days = Math.ceil((SAT_DATE - new Date()) / 86400000);
+  let items;
+  if(days <= 0){
+    items = ['Test day. No new videos. Water, charger, snack. First questions should feel easy.','If panic hits: exhale for 4 seconds, pick an answer, go to the next one.'];
+  } else if(days === 1){
+    items = ['Light day. Watch Video 4 only if you have 15 minutes. Then stop.','Pack charger, ID, snack. Sleep 8 hours.','Do not start a new math system tonight.'];
+  } else if(days <= 3){
+    items = ['Video 3 (regression) if you have not finished it. Then Video 4.','10 grammar questions. Review every miss.','20-minute walk. Then stop studying.'];
+  } else {
+    items = ['Watch the next unfinished video in order (1 → 4). Skip video 5 unless you have leftover energy.','3 AI math questions + 1 short English drill.','Log misses: type + why. That log is your real tutor.'];
+  }
+  document.getElementById('today-mission').innerHTML = items.map((t,i)=>`<li><span class="ti-icon">${i+1}</span><span>${t}</span></li>`).join('');
+}
+
+function renderWeek(){
+  document.getElementById('week-plan').innerHTML = WEEK.map(w => `
+    <div style="background:rgba(93,112,82,.07);border:1px solid var(--border);border-radius:12px;padding:12px;">
+      <div style="font-size:.75rem;font-weight:800;color:var(--amber);margin-bottom:4px;">${w.d} · ${w.t}</div>
+      <div style="font-size:.85rem;line-height:1.5;">${w.b}</div>
+    </div>`).join('');
+}
+
+function updateCountdown(){
+  const diff = Math.ceil((SAT_DATE - new Date()) / 86400000);
+  document.getElementById('cd-days').textContent = diff > 0 ? diff : (diff === 0 ? 'TODAY' : 'Done');
+  document.getElementById('ss-days-left').textContent = Math.max(0, diff);
+  document.getElementById('stat-days').textContent = Math.max(0, diff);
+  document.getElementById('cd-bar-fill').style.width = Math.min(100, Math.max(0, ((7-diff)/7)*100)) + '%';
+}
+
+function updateCpStat(){
+  let total = 0;
+  VIDEO_DATA.forEach(v => { [25,50,75,100].forEach(cp => { if(cpDone[v.id] && cpDone[v.id][cp]) total++; }); });
+  document.getElementById('stat-cp-done').textContent = total;
+  document.getElementById('ss-cp-total').textContent = total;
+}
+
+function switchTab(id){
+  document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.bn-btn').forEach(e=>e.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={'t-today':'bn-today','t-sat':'bn-sat','t-practice':'bn-practice','t-tips':'bn-tips'};
+  const bn = map[id]; if(bn) document.getElementById(bn).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{ if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(id)) b.classList.add('active'); });
+}
+
+function updateScoreBanner(){
+  document.getElementById('display-score').textContent = satGoal.toLocaleString();
+  document.getElementById('score-bar').style.width = (((satGoal-400)/1200)*100) + '%';
+}
+function openScoreModal(){ document.getElementById('modal-score').value=satGoal; document.getElementById('score-modal').classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function saveScore(){
+  const v=parseInt(document.getElementById('modal-score').value,10);
+  if(v>=400&&v<=1600){ satGoal=v; localStorage.setItem(LS.goal,satGoal); updateScoreBanner(); closeModal('score-modal'); showToast('Goal set to '+satGoal); }
+}
+
+function openSettings(){
+  document.getElementById('set-name').value = localStorage.getItem(LS.name) || '';
+  document.getElementById('set-key').value = localStorage.getItem(LS.key) || '';
+  document.getElementById('set-model').value = localStorage.getItem(LS.model) || 'openai/gpt-4o-mini';
+  document.getElementById('settings-modal').classList.add('open');
+}
+function saveSettings(){
+  localStorage.setItem(LS.name, document.getElementById('set-name').value.trim());
+  localStorage.setItem(LS.key, document.getElementById('set-key').value.trim());
+  localStorage.setItem(LS.model, document.getElementById('set-model').value);
+  updateHello();
+  refreshApiBanner();
+  closeModal('settings-modal');
+  showToast('Saved on this device only');
+}
+async function testApiKey(){
+  const typed = document.getElementById('set-key').value.trim();
+  const model = document.getElementById('set-model').value;
+  if(typed) localStorage.setItem(LS.key, typed);
+  if(model) localStorage.setItem(LS.model, model);
+  showToast('Testing coach…');
+  try{
+    const raw = await callCoach('Return JSON {"ok":true,"msg":"ready"} and nothing else.');
+    const data = parseJSON(raw);
+    showToast(data.ok ? 'Key works. Coach is ready.' : 'Got a reply. You are set.');
+  }catch(e){
+    const m = String(e.message||e);
+    if(m==='no-key') showToast('Paste a key first.', true);
+    else if(m.includes('401') || m.includes('403')) showToast('Key rejected. Check it on openrouter.ai', true);
+    else if(m.includes('CORS') || m.includes('Failed to fetch') || m.includes('Network')) showToast('Browser blocked the call. Open this file on a site (not file://) or use /api/chat.', true);
+    else showToast('Test failed: '+m, true);
+  }
+}
+function refreshApiBanner(){
+  const el = document.getElementById('api-banner');
+  el.style.display = getApiKey() ? 'none' : 'block';
+}
+function getApiKey(){ return (localStorage.getItem(LS.key) || '').trim(); }
+function getModel(){ return localStorage.getItem(LS.model) || 'openai/gpt-4o-mini'; }
+
+function coachSystem(){
+  const n = friendName();
+  return `You are a calm SAT coach for a high-school student${n!=='you'?' named '+n:''}.
+Goal: Digital SAT 1400 on Saturday August 22, 2026 (~700 Math, ~700 Reading & Writing).
+Voice: supportive older friend. Short sentences. No "delve", "moreover", "furthermore", "it's important to note", "unlock your potential".
+Never shame. A miss is data. Say what to try next time.
+Difficulty: 1400 range = medium / early Module 2. Do NOT write olympiad or 1550 trick items.
+Math: every question must have a Desmos path (graph both sides, intersection, table, or tilde ~ regression). Algebra is backup only.
+English: grammar and transitions first. Reading last. Vocab = meaning in THIS sentence.
+Exactly 3 questions. Return ONLY valid JSON. No markdown fences.`;
+}
+
+function checkCheckinState(){
+  const today = new Date().toDateString();
+  const btn = document.getElementById('checkin-btn');
+  if(lastCheckin===today){ btn.textContent='Studied today. That counts.'; btn.disabled=true; btn.classList.add('done'); }
+  else { btn.textContent='Mark today as studied'; btn.disabled=false; btn.classList.remove('done'); }
+}
+function doCheckin(){
+  const today=new Date().toDateString();
+  const yesterday=new Date(); yesterday.setDate(yesterday.getDate()-1);
+  if(lastCheckin===today){ showToast('Already counted today',true); return; }
+  if(lastCheckin!==yesterday.toDateString()&&satStreak>0) satStreak=0;
+  satStreak++; satSessions++;
+  if(satStreak>satLongest) satLongest=satStreak;
+  lastCheckin=today;
+  localStorage.setItem(LS.streak,satStreak);
+  localStorage.setItem(LS.longest,satLongest);
+  localStorage.setItem(LS.sessions,satSessions);
+  localStorage.setItem(LS.last,lastCheckin);
+  updateStreakUI(); checkCheckinState();
+  showToast('Day '+satStreak+'. Proud of you.');
+}
+function updateStreakUI(){
+  document.getElementById('streak-count').textContent=satStreak;
+  document.getElementById('hdr-streak').textContent=satStreak;
+  document.getElementById('ss-longest').textContent=satLongest;
+  document.getElementById('ss-sessions').textContent=satSessions;
+  document.getElementById('stat-sessions').textContent=satSessions;
+  document.getElementById('stat-streak-long').textContent=satLongest;
+  updateCpStat();
+}
+
+function buildVideoSelector(){
+  const el = document.getElementById('video-selector');
+  el.innerHTML = VIDEO_DATA.map((v,i) => {
+    const cps = cpDone[v.id] || {};
+    const dots = [25,50,75,100].map(cp =>
+      `<div class="cp-dot ${cps[cp]?'done':''}" title="${cp}%">${cp}</div>`
+    ).join('');
+    return `<div class="vid-card" id="vc-${v.id}" onclick="loadVideo(${i})">
+      <div class="vid-num">${i===4?'Optional':'Video '+(i+1)}</div>
+      <div class="vid-title">${v.title}</div>
+      <div class="vid-creator">${v.creator}</div>
+      <div style="font-size:.78rem;color:var(--t2);margin-top:6px;line-height:1.4;">${v.why}</div>
+      <div class="vid-checkpoints">${dots}</div>
+    </div>`;
+  }).join('');
+}
+
+window.onYouTubeIframeAPIReady = function(){};
+
+function loadVideo(idx){
+  const v = VIDEO_DATA[idx];
+  if(!v) return;
+  document.querySelectorAll('.vid-card').forEach(c=>c.classList.remove('active-vid'));
+  document.getElementById('vc-'+v.id).classList.add('active-vid');
+  activeVideoIdx = idx;
+  cpFired = { ...cpDone[v.id] };
+  const wrap = document.getElementById('video-player-wrap');
+  const isLocal = window.location.protocol === 'file:';
+  if (isLocal) {
+    wrap.innerHTML = `<iframe id="yt-player" style="width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/${v.youtubeId}?rel=0&modestbranding=1&playsinline=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  } else {
+    const originParam = encodeURIComponent(location.origin);
+    wrap.innerHTML = `<iframe id="yt-player" style="width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/${v.youtubeId}?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&origin=${originParam}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  }
+  if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer=null; }
+  if(!isLocal && typeof YT !== 'undefined' && YT.Player){
+    try {
+      ytPlayer = new YT.Player('yt-player', { events:{ onReady: () => startTracking(v.id), onStateChange: (e) => onPlayerState(e, v.id) } });
+    } catch(e) {}
+  }
+  document.getElementById('cp-info').style.display='flex';
+  document.getElementById('vid-topic-info').style.display='block';
+  document.getElementById('topics-list').innerHTML = v.topics.map(t=>`<span class="topic-tag">${t}</span>`).join('');
+  document.getElementById('cp-bar-pct').textContent = isLocal ? 'manual mode' : '0%';
+  document.getElementById('cp-bar-fill').style.width = '0%';
+  updateCpUI(v.id);
+  showToast('Playing: '+v.title);
+}
+
+function startTracking(videoId){
+  clearInterval(ytInterval);
+  ytInterval = setInterval(()=>{
+    if(!ytPlayer || typeof ytPlayer.getCurrentTime !== 'function') return;
+    try{
+      if(ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) return;
+      const cur = ytPlayer.getCurrentTime();
+      const dur = ytPlayer.getDuration();
+      if(!dur || dur <= 0) return;
+      const pct = (cur/dur)*100;
+      document.getElementById('cp-bar-fill').style.width = Math.min(100,pct)+'%';
+      document.getElementById('cp-bar-pct').textContent = Math.round(pct)+'%';
+      for(const cp of [25,50,75,100]){
+        if(pct >= cp && !cpFired[cp]){
+          cpFired[cp] = true;
+          ytPlayer.pauseVideo();
+          triggerCheckpoint(videoId, cp);
+          break;
+        }
+      }
+    }catch(e){}
+  }, 1500);
+}
+function onPlayerState(e, videoId){
+  if(e.data === YT.PlayerState.ENDED && !cpFired[100]){ cpFired[100]=true; triggerCheckpoint(videoId,100); }
+}
+function updateCpUI(videoId){
+  buildVideoSelector();
+  if(activeVideoIdx>=0) document.getElementById('vc-'+VIDEO_DATA[activeVideoIdx].id).classList.add('active-vid');
+  updateCpStat();
+}
+function manualCheckpoint(){
+  if(activeVideoIdx<0){ showToast('Pick a video first',true); return; }
+  const v = VIDEO_DATA[activeVideoIdx];
+  const incomplete = [25,50,75,100].find(cp => !cpDone[v.id][cp]);
+  const cp = incomplete || 100;
+  if(ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+  triggerCheckpoint(v.id, cp);
+}
+
+function triggerCheckpoint(videoId, cpPct){
+  const v = VIDEO_DATA.find(x=>x.id===videoId);
+  document.getElementById('cp-modal-title').textContent = `${cpPct}% check — ${v.title}`;
+  document.getElementById('cp-modal-sub').textContent = 'Three questions. Then you keep watching.';
+  document.getElementById('cp-quiz-area').innerHTML = `<div class="ai-loading"><div class="spinner"></div><div class="ai-loading-text">Writing a tiny quiz…</div></div>`;
+  document.getElementById('cp-modal').classList.add('open');
+  generateCheckpointQuiz(v, cpPct);
+}
+
+function escHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function generateCheckpointQuiz(videoData, cpPct){
+  const topic = videoData.cpTopics[cpPct];
+  const prompt = `Create exactly 3 Digital SAT-style questions that check this idea: "${topic}".
+Keep them at 1400 difficulty, not 1550.
+Return JSON:
+{"questions":[{"question":"...","options":["A. ...","B. ...","C. ...","D. ..."],"correct":0,"explanation":"one calm sentence. If math, include the Desmos move."}]}
+correct is the 0-based index.`;
+  try{
+    const raw = await callCoach(prompt);
+    renderCheckpointQuiz(parseJSON(raw), videoData, cpPct);
+  }catch(e){
+    renderCheckpointQuizFallback(videoData, cpPct);
+  }
+}
+
+function renderCheckpointQuiz(data, videoData, cpPct){
+  const qs = (data.questions || []).slice(0,3);
+  cpTotalQ = qs.length; cpCorrect = 0; cpCurrentAnswers = {};
+  cpQuizBank = qs;
+  document.getElementById('cp-quiz-area').innerHTML = qs.map((q,qi) => `
+    <div class="quiz-q-card">
+      <div class="quiz-q-num">Question ${qi+1} of ${cpTotalQ}</div>
+      <div class="quiz-q-text">${escHtml(q.question)}</div>
+      ${(q.options||[]).map((o,oi) => `<button type="button" class="quiz-opt" data-qi="${qi}" data-oi="${oi}">${escHtml(o)}</button>`).join('')}
+      <div class="quiz-exp" id="cpq-exp-${qi}"></div>
+    </div>`).join('') + `<div id="cp-summary" style="display:none;"></div>`;
+}
+
+function answerCpQ(qi, chosen, correct, explanation){
+  [0,1,2,3].forEach(oi=>{
+    const btn = document.querySelector(`#cp-quiz-area .quiz-opt[data-qi="${qi}"][data-oi="${oi}"]`);
+    if(!btn) return;
+    btn.disabled=true;
+    if(oi===correct) btn.classList.add('correct');
+    if(oi===chosen&&chosen!==correct) btn.classList.add('wrong');
+  });
+  const exp = document.getElementById(`cpq-exp-${qi}`);
+  if(exp){ exp.textContent = (chosen===correct?'Nice. ':'All good — ') + explanation; exp.classList.add('show'); }
+  if(!cpCurrentAnswers[qi]){
+    cpCurrentAnswers[qi] = chosen===correct;
+    if(chosen===correct) cpCorrect++;
+  }
+  if(Object.keys(cpCurrentAnswers).length >= cpTotalQ) setTimeout(showCpSummary, 400);
+}
+
+function showCpSummary(){
+  const el = document.getElementById('cp-summary');
+  if(!el) return;
+  const msg = cpCorrect===cpTotalQ ? 'Locked in. Keep going.' : cpCorrect>=2 ? 'That is 1400-range work.' : 'Watch a minute more, then try one similar question later. Not a verdict.';
+  el.style.display='block';
+  el.innerHTML=`<div class="quiz-summary"><div class="big-score">${cpCorrect}/${cpTotalQ}</div><div class="summary-label">${msg}</div><button class="resume-btn" onclick="completeCheckpoint()">Resume video</button></div>`;
+}
+
+function renderCheckpointQuizFallback(videoData, cpPct){
+  const bank = {
+    25:[
+      {question:'To solve 2x+3=11 in Desmos, what should you graph?',options:['A. Only y=2x+3','B. y=2x+3 and y=11','C. Only y=11','D. x=11'],correct:1,explanation:'Graph both sides. The intersection x-value is the solution.'},
+      {question:'A 1400 plan this week should prioritize…',options:['A. Learning every new grammar rule','B. An error log + high-yield review','C. Watching 8-hour lecture series','D. Skipping Module 1 entirely'],correct:1,explanation:'Error log plus Bluebook beats random content cramming.'},
+      {question:'If a Module 2 question eats 90 seconds you should…',options:['A. Stay until it clicks','B. Guess, flag, move','C. Restart the module','D. Skip the rest of the test'],correct:1,explanation:'Protect later easy points. Come back if time remains.'}
+    ],
+    50:[
+      {question:'y1 ~ mx1 + b is used after you…',options:['A. Draw a freehand line','B. Add a table of x1,y1 data','C. Turn off the graph','D. Type y=mx+b with an equals sign'],correct:1,explanation:'Table first, then tilde regression. Equals will not fit data.'},
+      {question:'A system of two lines is solved in Desmos by…',options:['A. Guessing x then y','B. Clicking the intersection point','C. Covering one equation','D. Switching to radians'],correct:1,explanation:'Two graphs, one click. That (x,y) is the answer.'},
+      {question:'Why do 2–3 Bluebook tests beat 200 random questions?',options:['A. They are shorter','B. They match the adaptive format and timing','C. They hide your mistakes','D. They skip English'],correct:1,explanation:'Bluebook is the real interface, including Desmos and Module 2 difficulty.'}
+    ],
+    75:[
+      {question:'A semicolon on SAT Writing most often joins…',options:['A. A fragment and a sentence','B. Two complete sentences','C. A list of adjectives','D. A title and a name'],correct:1,explanation:'Default: independent clause ; independent clause.'},
+      {question:'On English Module 2, a 1400 strategy is to…',options:['A. Start at question 1 no matter what','B. Bank grammar first, save long reading for last','C. Skip all transitions','D. Spend 3 minutes on every vocab item'],correct:1,explanation:'Grammar is faster points. Reading last protects the clock.'},
+      {question:'The tilde (~) in Desmos is for…',options:['A. Comments','B. Regression / unknown constants','C. Changing colors','D. Absolute value'],correct:1,explanation:'Replace = with ~ so Desmos solves for a, b, m, k.'}
+    ],
+    100:[
+      {question:'If 90 seconds pass on a hard Module 2 question you should…',options:['A. Stay until it clicks','B. Guess, flag, move','C. Restart the module','D. Skip the rest of the test'],correct:1,explanation:'Protect later easy points. Come back if time remains.'},
+      {question:'The night before the SAT, the best move is…',options:['A. A new 3-hour math system','B. Sleep, pack charger, light review only','C. An all-nighter Bluebook','D. Memorizing 400 vocab words'],correct:1,explanation:'Tired brains drop easy points. Sleep is the 1400 strategy.'},
+      {question:'A 1400 means you must…',options:['A. Get every Module 2 item right','B. Protect easy points and miss some hard ones','C. Never use Desmos','D. Start English at question 1'],correct:1,explanation:'1400 is not perfect. Easy points plus a few Module 2 misses is the plan.'}
+    ]
+  };
+  renderCheckpointQuiz({questions: bank[cpPct] || bank[25]}, videoData, cpPct);
+}
+
+function completeCheckpoint(){
+  if(activeVideoIdx>=0){
+    const vid = VIDEO_DATA[activeVideoIdx];
+    [25,50,75,100].forEach(cp=>{ if(cpFired[cp]) cpDone[vid.id][cp] = true; });
+    localStorage.setItem(LS.cp, JSON.stringify(cpDone));
+    updateCpUI(vid.id);
+  }
+  closeCheckpointModal();
+  showToast('Checkpoint done');
+  setTimeout(()=>{ if(ytPlayer&&ytPlayer.playVideo) ytPlayer.playVideo(); }, 400);
+}
+function closeCheckpointModal(){
+  document.getElementById('cp-modal').classList.remove('open');
+  if(ytPlayer&&ytPlayer.playVideo) ytPlayer.playVideo();
+}
+
+function resolveApi(key){
+  if(key.startsWith('nvapi-')){
+    return { url:'https://integrate.api.nvidia.com/v1/chat/completions', model:'meta/llama-3.1-70b-instruct', vendor:'nvidia' };
+  }
+  if(key.startsWith('sk-or-') || key.startsWith('sk-orv1-')){
+    return { url:'https://openrouter.ai/api/v1/chat/completions', model:getModel(), vendor:'openrouter' };
+  }
+  if(key.startsWith('sk-')){
+    return { url:'https://api.openai.com/v1/chat/completions', model:'gpt-4o-mini', vendor:'openai' };
+  }
+  return { url:'https://openrouter.ai/api/v1/chat/completions', model:getModel(), vendor:'openrouter' };
+}
+
+async function callCoach(userPrompt){
+  const messages = [
+    {role:'system', content: coachSystem()},
+    {role:'user', content: userPrompt}
+  ];
+
+  if(window.location.protocol !== 'file:'){
+    try {
+      const resp = await fetch('/api/chat', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ messages, model: getModel() })
+      });
+      if(resp.ok){
+        const data = await resp.json();
+        const text = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+        if(text) return text;
+      }
+      if(resp.status && resp.status !== 404){
+        const err = await resp.json().catch(()=>({}));
+        throw new Error(err.error || ('proxy '+resp.status));
+      }
+    } catch(e) {
+      if(String(e.message||e).startsWith('proxy')) throw e;
+    }
+  }
+
+  const key = getApiKey();
+  if(!key) throw new Error('no-key');
+  const ep = resolveApi(key);
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+key
+  };
+  if(ep.vendor === 'openrouter'){
+    headers['HTTP-Referer'] = (location.origin && location.origin !== 'null') ? location.origin : 'https://localhost';
+    headers['X-Title'] = '1400 Calm Coach';
+  }
+  const body = {
+    model: ep.model,
+    messages,
+    temperature: 0.3,
+    max_tokens: 2200
+  };
+  if(ep.vendor === 'openai' || (ep.model && ep.model.indexOf('gpt') !== -1) || ep.model === 'openai/gpt-4o-mini'){
+    body.response_format = { type: 'json_object' };
+  }
+  const resp = await fetch(ep.url, { method:'POST', headers, body: JSON.stringify(body) });
+  if(!resp.ok){
+    const err = await resp.json().catch(()=>({}));
+    throw new Error(err.error && err.error.message ? err.error.message : ('api '+resp.status));
+  }
+  const data = await resp.json();
+  const text = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+  if(!text) throw new Error('empty-reply');
+  return text;
+}
+
+function parseJSON(text){
+  text = String(text||'').replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
+  const start = text.indexOf('{');
+  const end = text.lastIndexOf('}');
+  if(start!==-1 && end!==-1) text = text.substring(start, end+1);
+  return JSON.parse(text);
+}
+
+async function generateMathAI(){
+  const topic = document.getElementById('math-topic').value;
+  const diff = document.getElementById('math-diff').value;
+  const box = document.getElementById('math-ai-result');
+  const btn = document.getElementById('math-gen-btn');
+  btn.disabled = true;
+  box.innerHTML = `<div class="ai-loading"><div class="spinner"></div><div class="ai-loading-text">Writing 3 ${diff} questions…</div></div>`;
+  const prompt = `Write exactly 3 Digital SAT math questions on: ${topic}. Difficulty: ${diff}.
+Each must be solvable with Desmos. Include desmos_tip.
+JSON: {"questions":[{"question":"...","options":["A.","B.","C.","D."],"correct":0,"desmos_tip":"...","explanation":"..."}]}`;
+  try{
+    const data = parseJSON(await callCoach(prompt));
+    renderQuiz(box, data.questions, 'math');
+  }catch(e){
+    renderQuiz(box, fallbackMath(), 'math');
+    if(e.message==='no-key') showToast('Using offline questions. Add an API key in Settings for live coaching.');
+  }
+  btn.disabled = false;
+}
+
+async function generateRWAI(){
+  const topic = document.getElementById('rw-topic').value;
+  const focus = document.getElementById('rw-focus').value;
+  const box = document.getElementById('rw-ai-result');
+  const btn = document.getElementById('rw-gen-btn');
+  btn.disabled = true;
+  box.innerHTML = `<div class="ai-loading"><div class="spinner"></div><div class="ai-loading-text">Building a short ${focus} drill…</div></div>`;
+  const prompt = `Create one short Digital SAT Reading & Writing drill.
+Passage topic: ${topic}. Question focus: ${focus}.
+Passage 80-120 words. Then exactly 3 questions.
+JSON: {"passage":"...","source":"Adapted SAT-style","questions":[{"question":"...","options":["A.","B.","C.","D."],"correct":0,"explanation":"..."}]}`;
+  try{
+    const data = parseJSON(await callCoach(prompt));
+    let html = '';
+    if(data.passage){
+      html += `<div class="ai-passage"><div class="ai-passage-label">${escHtml(data.source||'Passage')}</div>${escHtml(data.passage)}</div>`;
+    }
+    box.innerHTML = html;
+    renderQuiz(box, data.questions, 'rw');
+  }catch(e){
+    box.innerHTML = '';
+    renderQuiz(box, fallbackRW(), 'rw');
+    if(e.message==='no-key') showToast('Offline drill loaded. Add a key for custom passages.');
+  }
+  btn.disabled = false;
+}
+
+function renderQuiz(box, questions, prefix){
+  const qs = (questions||[]).slice(0,3);
+  practiceQuizBank[prefix] = qs;
+  const passageKeep = box.querySelector('.ai-passage');
+  const passageHtml = passageKeep ? passageKeep.outerHTML : '';
+  box.innerHTML = passageHtml + qs.map((q,qi)=>`
+    <div class="quiz-q-card" data-prefix="${prefix}" data-qi="${qi}">
+      <div class="quiz-q-num">${prefix==='math'?'Math':'R&W'} ${qi+1}/3${q.desmos_tip?' · Desmos':''}</div>
+      <div class="quiz-q-text">${escHtml(q.question).replace(/\n/g,'<br>')}</div>
+      ${(q.options||[]).map((o,oi)=>`<button type="button" class="quiz-opt" data-practice="1" data-qi="${qi}" data-oi="${oi}">${escHtml(o)}</button>`).join('')}
+      <div class="quiz-exp"></div>
+    </div>`).join('');
+}
+
+function fallbackMath(){
+  return [
+    {question:'Graph y=2x-1 and y=5. What is the x-value of the intersection?',options:['A. 2','B. 3','C. 4','D. 5'],correct:1,desmos_tip:'Graph both lines and click the intersection.',explanation:'2x-1=5 → 2x=6 → x=3.'},
+    {question:'After entering a table of (x1,y1) points, which expression fits a line of best fit?',options:['A. y1 = mx1 + b','B. y1 ~ mx1 + b','C. y = mx + b','D. fit(x,y)'],correct:1,desmos_tip:'Use tilde, not equals.',explanation:'~ tells Desmos to run regression on the table columns.'},
+    {question:'A parabola y=x^2-6x+5 crosses the x-axis at which pair?',options:['A. 1 and 5','B. 2 and 3','C. -1 and 6','D. 0 and 5'],correct:0,desmos_tip:'Graph and click x-intercepts.',explanation:'Factors to (x-1)(x-5)=0.'}
+  ];
+}
+function fallbackRW(){
+  return [
+    {question:'Which choice correctly joins two complete sentences?',options:['A. The study ended, the results were clear.','B. The study ended; the results were clear.','C. The study ended: and the results were clear.','D. The study ended the results were clear.'],correct:1,explanation:'Semicolon joins two independent clauses without a conjunction.'},
+    {question:'The previous sentence gives a cause. The next sentence should start with…',options:['A. However','B. Therefore','C. For example','D. Meanwhile'],correct:1,explanation:'Cause → effect uses therefore/thus/so, not contrast.'},
+    {question:'In context, “modest” most nearly means…',options:['A. shy in personality','B. small in amount','C. old-fashioned','D. temporary'],correct:1,explanation:'SAT vocab is about meaning in this sentence, not the most common everyday sense.'}
+  ];
+}
+
+function showToast(msg, warn){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.borderColor = warn? 'var(--rose)':'var(--border)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+document.addEventListener('click', e=>{
+  if(e.target.id==='score-modal') closeModal('score-modal');
+  if(e.target.id==='settings-modal') closeModal('settings-modal');
+  if(e.target.id==='cp-modal') closeModal('cp-modal');
+  const cpBtn = e.target.closest('#cp-quiz-area .quiz-opt');
+  if(cpBtn && !cpBtn.disabled){
+    const qi = +cpBtn.dataset.qi, oi = +cpBtn.dataset.oi;
+    const q = cpQuizBank[qi];
+    if(q) answerCpQ(qi, oi, q.correct, q.explanation||'');
+    return;
+  }
+  const pBtn = e.target.closest('.quiz-opt[data-practice="1"]');
+  if(pBtn && !pBtn.disabled){
+    const card = pBtn.closest('.quiz-q-card');
+    const qi = +pBtn.dataset.qi, oi = +pBtn.dataset.oi;
+    const prefix = card && card.dataset.prefix;
+    const q = prefix && practiceQuizBank[prefix] && practiceQuizBank[prefix][qi];
+    if(!q || !card) return;
+    card.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+      b.disabled = true;
+      if(i===q.correct) b.classList.add('correct');
+      if(i===oi && oi!==q.correct) b.classList.add('wrong');
+    });
+    const exp = card.querySelector('.quiz-exp');
+    const tip = q.desmos_tip ? ('Desmos: '+q.desmos_tip+' ') : '';
+    exp.textContent = (oi===q.correct?'Nice. ':'All good — ') + tip + (q.explanation||'');
+    exp.classList.add('show');
+  }
+});
+</script>
+</body>
+</html>

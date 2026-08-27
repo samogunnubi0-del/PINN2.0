@@ -1,0 +1,5605 @@
+{
+  "meta": {
+    "count": 8,
+    "db_response_time_ms": 143,
+    "page": 1,
+    "per_page": 50,
+    "groups_count": null,
+    "x_query": {
+      "oql": "works where full text has (Gaussian process discharged fuel nuclide composition surrogate SERPENT)",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "Gaussian process discharged fuel nuclide composition surrogate SERPENT",
+            "operator": "has"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:Gaussian process discharged fuel nuclide composition surrogate SERPENT&per_page=50"
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W3036499915",
+      "doi": "https://doi.org/10.1016/j.anucene.2020.108085",
+      "display_name": "Gaussian processes for surrogate modeling of discharged fuel nuclide compositions",
+      "publication_year": 2021,
+      "publication_date": "2021-03-13",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/j.anucene.2020.108085",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1016/j.anucene.2020.108085",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S197743716",
+          "display_name": "Annals of Nuclear Energy",
+          "issn_l": "0306-4549",
+          "issn": [
+            "0306-4549",
+            "1873-2100"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Annals of Nuclear Energy",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5073683457",
+            "display_name": "Antonio Figueroa",
+            "orcid": "https://orcid.org/0000-0001-9822-3592"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I887968799",
+              "display_name": "RWTH Aachen University",
+              "ror": "https://ror.org/04xfq0f34",
+              "country_code": "DE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ],
+          "countries": [
+            "DE"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Antonio Figueroa",
+          "raw_affiliation_strings": [
+            "Nuclear Verification and Disarmament Group, RWTH Aachen University Schinkelstra\u00dfe 2a, 52062 Aachen, Germany"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Verification and Disarmament Group, RWTH Aachen University Schinkelstra\u00dfe 2a, 52062 Aachen, Germany",
+              "institution_ids": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5068033539",
+            "display_name": "Malte G\u00f6ttsche",
+            "orcid": "https://orcid.org/0000-0001-8700-0537"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I887968799",
+              "display_name": "RWTH Aachen University",
+              "ror": "https://ror.org/04xfq0f34",
+              "country_code": "DE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ],
+          "countries": [
+            "DE"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Malte G\u00f6ttsche",
+          "raw_affiliation_strings": [
+            "Nuclear Verification and Disarmament Group, RWTH Aachen University Schinkelstra\u00dfe 2a, 52062 Aachen, Germany"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Verification and Disarmament Group, RWTH Aachen University Schinkelstra\u00dfe 2a, 52062 Aachen, Germany",
+              "institution_ids": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 15,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://arxiv.org/pdf/2006.12921",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": null,
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W2967809308",
+      "doi": "https://doi.org/10.1002/er.4698",
+      "display_name": "Combining simulations and data with deep learning and uncertainty quantification for advanced energy modeling",
+      "publication_year": 2019,
+      "publication_date": "2019-08-16",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1002/er.4698",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1002/er.4698",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S32776067",
+          "display_name": "International Journal of Energy Research",
+          "issn_l": "0363-907X",
+          "issn": [
+            "0363-907X",
+            "1099-114X"
+          ],
+          "is_oa": false,
+          "is_in_doaj": true,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320595",
+          "host_organization_name": "Wiley",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320595"
+          ],
+          "host_organization_lineage_names": [
+            "Wiley"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "International Journal of Energy Research",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5049880944",
+            "display_name": "Majdi I. Radaideh",
+            "orcid": "https://orcid.org/0000-0002-2743-0567"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I157725225",
+              "display_name": "University of Illinois Urbana-Champaign",
+              "ror": "https://ror.org/047426m28",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I157725225"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Majdi I. Radaideh",
+          "raw_affiliation_strings": [
+            "Department of Nuclear, Plasma, and Radiological Engineering University of Illinois at Urbana Champaign Urbana Illinois",
+            "Department of Nuclear, Plasma, and Radiological Engineering, University of Illinois at Urbana Champaign, Urbana, Illinois"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-2743-0567",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Nuclear, Plasma, and Radiological Engineering University of Illinois at Urbana Champaign Urbana Illinois",
+              "institution_ids": [
+                "https://openalex.org/I157725225"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Nuclear, Plasma, and Radiological Engineering, University of Illinois at Urbana Champaign, Urbana, Illinois",
+              "institution_ids": [
+                "https://openalex.org/I157725225"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5077023628",
+            "display_name": "Tomasz Koz\u0142owski",
+            "orcid": "https://orcid.org/0000-0001-9317-5309"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I157725225",
+              "display_name": "University of Illinois Urbana-Champaign",
+              "ror": "https://ror.org/047426m28",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I157725225"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Tomasz Kozlowski",
+          "raw_affiliation_strings": [
+            "Department of Nuclear, Plasma, and Radiological Engineering University of Illinois at Urbana Champaign Urbana Illinois",
+            "Department of Nuclear, Plasma, and Radiological Engineering, University of Illinois at Urbana Champaign, Urbana, Illinois"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Nuclear, Plasma, and Radiological Engineering University of Illinois at Urbana Champaign Urbana Illinois",
+              "institution_ids": [
+                "https://openalex.org/I157725225"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Department of Nuclear, Plasma, and Radiological Engineering, University of Illinois at Urbana Champaign, Urbana, Illinois",
+              "institution_ids": [
+                "https://openalex.org/I157725225"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 45,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://www.osti.gov/servlets/purl/1801252",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "A": [
+          0
+        ],
+        "novel": [
+          1
+        ],
+        "and": [
+          2,
+          20,
+          27,
+          36,
+          40,
+          62,
+          65,
+          98
+        ],
+        "modern": [
+          3
+        ],
+        "framework": [
+          4,
+          23,
+          46,
+          70,
+          132
+        ],
+        "for": [
+          5
+        ],
+        "energy": [
+          6,
+          18,
+          124,
+          156
+        ],
+        "modeling": [
+          7,
+          19
+        ],
+        "is": [
+          8,
+          47,
+          71,
+          133
+        ],
+        "developed": [
+          9
+        ],
+        "in": [
+          10,
+          73,
+          79,
+          151
+        ],
+        "this": [
+          11,
+          131
+        ],
+        "paper": [
+          12
+        ],
+        "with": [
+          13,
+          30
+        ],
+        "a": [
+          14,
+          53,
+          137
+        ],
+        "focus": [
+          15
+        ],
+        "on": [
+          16,
+          49
+        ],
+        "nuclear": [
+          17,
+          103,
+          111
+        ],
+        "simulation.": [
+          21
+        ],
+        "The": [
+          22,
+          44,
+          69,
+          105
+        ],
+        "combines": [
+          24
+        ],
+        "multiphysics": [
+          25,
+          82
+        ],
+        "simulations": [
+          26
+        ],
+        "real": [
+          28,
+          59
+        ],
+        "data,": [
+          29,
+          60
+        ],
+        "validation": [
+          31
+        ],
+        "by": [
+          32,
+          38
+        ],
+        "uncertainty": [
+          33
+        ],
+        "quantification": [
+          34
+        ],
+        "tasks": [
+          35
+        ],
+        "facilitation": [
+          37
+        ],
+        "machine": [
+          39,
+          88
+        ],
+        "deep": [
+          41,
+          92
+        ],
+        "learning": [
+          42,
+          89,
+          93
+        ],
+        "methods.": [
+          43
+        ],
+        "hybrid": [
+          45
+        ],
+        "built": [
+          48
+        ],
+        "the": [
+          50,
+          118,
+          142,
+          152,
+          155
+        ],
+        "basis": [
+          51
+        ],
+        "of": [
+          52,
+          56,
+          85,
+          94,
+          102,
+          117,
+          130,
+          141,
+          154
+        ],
+        "wide": [
+          54
+        ],
+        "range": [
+          55
+        ],
+        "physical": [
+          57,
+          143
+        ],
+        "models,": [
+          58,
+          91
+        ],
+        "mathematical": [
+          61
+        ],
+        "statistical": [
+          63
+        ],
+        "methods,": [
+          64
+        ],
+        "artificial": [
+          66
+        ],
+        "intelligence": [
+          67
+        ],
+        "techniques.": [
+          68
+        ],
+        "demonstrated": [
+          72,
+          107
+        ],
+        "different": [
+          74
+        ],
+        "applications,": [
+          75
+        ],
+        "including": [
+          76
+        ],
+        "quantifying": [
+          77
+        ],
+        "uncertainties": [
+          78,
+          101
+        ],
+        "computer": [
+          80
+        ],
+        "simulations,": [
+          81,
+          113
+        ],
+        "coupling,": [
+          83
+        ],
+        "analysis": [
+          84
+        ],
+        "variance": [
+          86
+        ],
+        "using": [
+          87
+        ],
+        "surrogate": [
+          90
+        ],
+        "time": [
+          95
+        ],
+        "series": [
+          96
+        ],
+        "phenomena,": [
+          97
+        ],
+        "propagating": [
+          99
+        ],
+        "parametric": [
+          100
+        ],
+        "data.": [
+          104
+        ],
+        "applications": [
+          106
+        ],
+        "are": [
+          108,
+          120
+        ],
+        "oriented": [
+          109
+        ],
+        "to": [
+          110,
+          122,
+          135
+        ],
+        "engineering": [
+          112
+        ],
+        "even": [
+          114
+        ],
+        "though": [
+          115
+        ],
+        "majority": [
+          116
+        ],
+        "methods": [
+          119
+        ],
+        "applicable": [
+          121
+        ],
+        "other": [
+          123
+        ],
+        "sources": [
+          125
+        ],
+        "(eg,": [
+          126
+        ],
+        "renewable).": [
+          127
+        ],
+        "Efficient": [
+          128
+        ],
+        "utilization": [
+          129
+        ],
+        "expected": [
+          134
+        ],
+        "yield": [
+          136
+        ],
+        "much": [
+          138
+        ],
+        "better": [
+          139
+        ],
+        "understanding": [
+          140
+        ],
+        "phenomena": [
+          144
+        ],
+        "analyzed": [
+          145
+        ],
+        "as": [
+          146,
+          148
+        ],
+        "well": [
+          147
+        ],
+        "an": [
+          149
+        ],
+        "improvement": [
+          150
+        ],
+        "performance": [
+          153
+        ],
+        "design/model": [
+          157
+        ],
+        "under": [
+          158
+        ],
+        "construction.": [
+          159
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4410734534",
+      "doi": "https://doi.org/10.31224/4655",
+      "display_name": "On the Impact of Monte Carlo Statistical Uncertainty on Surrogate-based Design Optimization",
+      "publication_year": 2025,
+      "publication_date": "2025-05-26",
+      "type": "preprint",
+      "primary_location": {
+        "id": "doi:10.31224/4655",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.31224/4655",
+        "pdf_url": "https://engrxiv.org/preprint/download/4655/8048/6649",
+        "source": null,
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "acceptedVersion",
+        "is_accepted": true,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "posted-content"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5107099797",
+            "display_name": "Omer Erdem",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I27837315",
+              "display_name": "University of Michigan",
+              "ror": "https://ror.org/00jmfr291",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I27837315"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Omer F Erdem",
+          "raw_affiliation_strings": [
+            "University of Michigan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "University of Michigan",
+              "institution_ids": [
+                "https://openalex.org/I27837315"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5006520464",
+            "display_name": "David Broughton",
+            "orcid": "https://orcid.org/0000-0003-4700-8133"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1343871089",
+              "display_name": "Los Alamos National Laboratory",
+              "ror": "https://ror.org/01e41cf67",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I1343871089",
+                "https://openalex.org/I198811213",
+                "https://openalex.org/I4210120050"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "David P Broughton",
+          "raw_affiliation_strings": [
+            "Los Alamos National Laboratory"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Los Alamos National Laboratory",
+              "institution_ids": [
+                "https://openalex.org/I1343871089"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5041669099",
+            "display_name": "Josef Svoboda",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1343871089",
+              "display_name": "Los Alamos National Laboratory",
+              "ror": "https://ror.org/01e41cf67",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I1343871089",
+                "https://openalex.org/I198811213",
+                "https://openalex.org/I4210120050"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Josef Svoboda",
+          "raw_affiliation_strings": [
+            "Los Alamos National Laboratory"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Los Alamos National Laboratory",
+              "institution_ids": [
+                "https://openalex.org/I1343871089"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5082565705",
+            "display_name": "Chengkun Huang",
+            "orcid": "https://orcid.org/0000-0002-3176-8042"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1343871089",
+              "display_name": "Los Alamos National Laboratory",
+              "ror": "https://ror.org/01e41cf67",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I1343871089",
+                "https://openalex.org/I198811213",
+                "https://openalex.org/I4210120050"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Chengkun Huang",
+          "raw_affiliation_strings": [
+            "Los Alamos National Laboratory"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Los Alamos National Laboratory",
+              "institution_ids": [
+                "https://openalex.org/I1343871089"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5049880944",
+            "display_name": "Majdi I. Radaideh",
+            "orcid": "https://orcid.org/0000-0002-2743-0567"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I27837315",
+              "display_name": "University of Michigan",
+              "ror": "https://ror.org/00jmfr291",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I27837315"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Majdi I Radaideh",
+          "raw_affiliation_strings": [
+            "University of Michigan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "University of Michigan",
+              "institution_ids": [
+                "https://openalex.org/I27837315"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 2,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://engrxiv.org/preprint/download/4655/8048/6649",
+        "any_repository_has_fulltext": null
+      },
+      "abstract_inverted_index": {
+        "In": [
+          0,
+          159,
+          177
+        ],
+        "multi-objective": [
+          1,
+          68
+        ],
+        "design": [
+          2,
+          31,
+          69
+        ],
+        "tasks,": [
+          3
+        ],
+        "the": [
+          4,
+          26,
+          30,
+          53,
+          61,
+          122,
+          141,
+          151,
+          160,
+          179,
+          210,
+          221
+        ],
+        "computational": [
+          5,
+          146,
+          232
+        ],
+        "cost": [
+          6,
+          23
+        ],
+        "increases": [
+          7
+        ],
+        "rapidly": [
+          8
+        ],
+        "when": [
+          9
+        ],
+        "high-fidelity": [
+          10,
+          193
+        ],
+        "simulations": [
+          11,
+          186
+        ],
+        "are": [
+          12
+        ],
+        "used": [
+          13
+        ],
+        "to": [
+          14,
+          97,
+          139,
+          167,
+          190
+        ],
+        "evaluate": [
+          15,
+          140
+        ],
+        "objective": [
+          16,
+          169
+        ],
+        "functions.": [
+          17
+        ],
+        "Surrogate": [
+          18,
+          205
+        ],
+        "models": [
+          19,
+          38,
+          107,
+          206
+        ],
+        "help": [
+          20,
+          219
+        ],
+        "mitigate": [
+          21
+        ],
+        "this": [
+          22
+        ],
+        "by": [
+          24
+        ],
+        "approximating": [
+          25
+        ],
+        "simulation": [
+          27,
+          134,
+          154
+        ],
+        "output,": [
+          28
+        ],
+        "simplifying": [
+          29
+        ],
+        "process.": [
+          32
+        ],
+        "However,": [
+          33
+        ],
+        "under": [
+          34,
+          212
+        ],
+        "high": [
+          35
+        ],
+        "uncertainty,": [
+          36
+        ],
+        "surrogate": [
+          37,
+          104
+        ],
+        "trained": [
+          39
+        ],
+        "on": [
+          40,
+          52,
+          66,
+          128
+        ],
+        "noisy": [
+          41,
+          213
+        ],
+        "data": [
+          42,
+          64,
+          100,
+          126
+        ],
+        "can": [
+          43,
+          207,
+          218
+        ],
+        "produce": [
+          44
+        ],
+        "inaccurate": [
+          45
+        ],
+        "predictions,": [
+          46
+        ],
+        "as": [
+          47
+        ],
+        "their": [
+          48
+        ],
+        "performance": [
+          49
+        ],
+        "depends": [
+          50
+        ],
+        "heavily": [
+          51
+        ],
+        "quality": [
+          54,
+          127
+        ],
+        "of": [
+          55,
+          63,
+          124,
+          153
+        ],
+        "training": [
+          56,
+          99,
+          125
+        ],
+        "data.": [
+          57,
+          194
+        ],
+        "This": [
+          58
+        ],
+        "study": [
+          59
+        ],
+        "investigates": [
+          60
+        ],
+        "impact": [
+          62,
+          123
+        ],
+        "uncertainty": [
+          65,
+          95,
+          119,
+          155,
+          223
+        ],
+        "two": [
+          67
+        ],
+        "problems": [
+          70
+        ],
+        "modelled": [
+          71
+        ],
+        "using": [
+          72,
+          91,
+          111
+        ],
+        "Monte": [
+          73
+        ],
+        "Carlo": [
+          74
+        ],
+        "transport": [
+          75
+        ],
+        "simulations:": [
+          76
+        ],
+        "a": [
+          77,
+          86,
+          199
+        ],
+        "neutron": [
+          78,
+          161
+        ],
+        "moderator": [
+          79,
+          162
+        ],
+        "and": [
+          80,
+          121,
+          145,
+          171,
+          215,
+          234
+        ],
+        "an": [
+          81
+        ],
+        "ion-to-neutron": [
+          82,
+          180
+        ],
+        "converter.": [
+          83
+        ],
+        "For": [
+          84
+        ],
+        "each,": [
+          85
+        ],
+        "grid": [
+          87
+        ],
+        "search": [
+          88
+        ],
+        "was": [
+          89,
+          131,
+          183
+        ],
+        "performed": [
+          90
+        ],
+        "five": [
+          92
+        ],
+        "different": [
+          93
+        ],
+        "tally": [
+          94
+        ],
+        "levels": [
+          96
+        ],
+        "generate": [
+          98
+        ],
+        "for": [
+          101,
+          225
+        ],
+        "neural": [
+          102
+        ],
+        "network": [
+          103
+        ],
+        "models.": [
+          105
+        ],
+        "These": [
+          106,
+          195
+        ],
+        "were": [
+          108,
+          116,
+          136
+        ],
+        "then": [
+          109
+        ],
+        "optimized": [
+          110
+        ],
+        "NSGA-III.": [
+          112
+        ],
+        "The": [
+          113
+        ],
+        "recovered": [
+          114
+        ],
+        "Pareto-fronts": [
+          115
+        ],
+        "analyzed": [
+          117
+        ],
+        "across": [
+          118
+        ],
+        "levels,": [
+          120
+        ],
+        "optimization": [
+          129,
+          235
+        ],
+        "outcomes": [
+          130
+        ],
+        "quantified.": [
+          132
+        ],
+        "Average": [
+          133
+        ],
+        "times": [
+          135
+        ],
+        "also": [
+          137
+        ],
+        "compared": [
+          138
+        ],
+        "trade-off": [
+          142
+        ],
+        "between": [
+          143,
+          231
+        ],
+        "accuracy": [
+          144
+        ],
+        "cost.": [
+          147
+        ],
+        "Results": [
+          148
+        ],
+        "show": [
+          149
+        ],
+        "that": [
+          150,
+          198
+        ],
+        "influence": [
+          152
+        ],
+        "is": [
+          156,
+          202
+        ],
+        "strongly": [
+          157
+        ],
+        "problem-dependent.": [
+          158
+        ],
+        "case,": [
+          163
+        ],
+        "higher": [
+          164
+        ],
+        "uncertainties": [
+          165
+        ],
+        "led": [
+          166
+        ],
+        "exaggerated": [
+          168
+        ],
+        "sensitivities": [
+          170
+        ],
+        "distorted": [
+          172
+        ],
+        "Pareto-fronts,": [
+          173
+        ],
+        "reducing": [
+          174
+        ],
+        "normalized": [
+          175
+        ],
+        "hypervolume.": [
+          176
+        ],
+        "contrast,": [
+          178
+        ],
+        "converter": [
+          181
+        ],
+        "task": [
+          182
+        ],
+        "less": [
+          184
+        ],
+        "affected\u2014low-fidelity": [
+          185
+        ],
+        "produced": [
+          187
+        ],
+        "results": [
+          188
+        ],
+        "similar": [
+          189
+        ],
+        "those": [
+          191
+        ],
+        "from": [
+          192
+        ],
+        "findings": [
+          196
+        ],
+        "suggest": [
+          197
+        ],
+        "fixed-fidelity": [
+          200
+        ],
+        "approach": [
+          201
+        ],
+        "not": [
+          203
+        ],
+        "optimal.": [
+          204
+        ],
+        "still": [
+          208
+        ],
+        "recover": [
+          209
+        ],
+        "Pareto-front": [
+          211
+        ],
+        "conditions,": [
+          214
+        ],
+        "multi-fidelity": [
+          216
+        ],
+        "studies": [
+          217
+        ],
+        "identify": [
+          220
+        ],
+        "appropriate": [
+          222
+        ],
+        "level": [
+          224
+        ],
+        "each": [
+          226
+        ],
+        "problem,": [
+          227
+        ],
+        "enabling": [
+          228
+        ],
+        "better": [
+          229
+        ],
+        "trade-offs": [
+          230
+        ],
+        "efficiency": [
+          233
+        ],
+        "accuracy.": [
+          236
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4402883181",
+      "doi": "https://doi.org/10.1016/j.anucene.2024.110917",
+      "display_name": "Griffin: A MOOSE-based reactor physics application for multiphysics simulation of advanced nuclear reactors",
+      "publication_year": 2024,
+      "publication_date": "2024-09-26",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/j.anucene.2024.110917",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.anucene.2024.110917",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S197743716",
+          "display_name": "Annals of Nuclear Energy",
+          "issn_l": "0306-4549",
+          "issn": [
+            "0306-4549",
+            "1873-2100"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Annals of Nuclear Energy",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5100352466",
+            "display_name": "Yaqi Wang",
+            "orcid": "https://orcid.org/0000-0002-3737-3498"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Yaqi Wang",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-3737-3498",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5039540052",
+            "display_name": "Zachary M. Prince",
+            "orcid": "https://orcid.org/0000-0003-0288-9643"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Zachary M. Prince",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0003-0288-9643",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5101471819",
+            "display_name": "Hansol Park",
+            "orcid": "https://orcid.org/0000-0001-7461-1988"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1282105669",
+              "display_name": "Argonne National Laboratory",
+              "ror": "https://ror.org/05gvnxz63",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1282105669",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I39565521",
+                "https://openalex.org/I40347166"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Hansol Park",
+          "raw_affiliation_strings": [
+            "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+            "Argonne National Laboratory (ANL), Argonne, IL (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Argonne National Laboratory (ANL), Argonne, IL (United States)",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5020260319",
+            "display_name": "Olin Calvin",
+            "orcid": "https://orcid.org/0000-0001-9560-0356"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Olin W. Calvin",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5058614877",
+            "display_name": "Namjae Choi",
+            "orcid": "https://orcid.org/0000-0003-1586-6272"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Namjae Choi",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0003-1586-6272",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5000908967",
+            "display_name": "Yeon Sang Jung",
+            "orcid": "https://orcid.org/0000-0001-9103-2814"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1282105669",
+              "display_name": "Argonne National Laboratory",
+              "ror": "https://ror.org/05gvnxz63",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1282105669",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I39565521",
+                "https://openalex.org/I40347166"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Yeon Sang Jung",
+          "raw_affiliation_strings": [
+            "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+            "Argonne National Laboratory (ANL), Argonne, IL (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0001-9103-2814",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Argonne National Laboratory (ANL), Argonne, IL (United States)",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5108120575",
+            "display_name": "Sebastian Schunert",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Sebastian Schunert",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5024071462",
+            "display_name": "Shikhar Kumar",
+            "orcid": "https://orcid.org/0000-0002-5771-0375"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1282105669",
+              "display_name": "Argonne National Laboratory",
+              "ror": "https://ror.org/05gvnxz63",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1282105669",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I39565521",
+                "https://openalex.org/I40347166"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Shikhar Kumar",
+          "raw_affiliation_strings": [
+            "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+            "Argonne National Laboratory (ANL), Argonne, IL (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-5771-0375",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Argonne National Laboratory (ANL), Argonne, IL (United States)",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5032898532",
+            "display_name": "Joshua Hanophy",
+            "orcid": "https://orcid.org/0000-0003-4209-1011"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Joshua T. Hanophy",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5027316907",
+            "display_name": "Vincent Labour\u00e9",
+            "orcid": "https://orcid.org/0000-0001-9316-9048"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Vincent M. Labour\u00e9",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0001-9316-9048",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5100723872",
+            "display_name": "Changho Lee",
+            "orcid": "https://orcid.org/0000-0001-5206-2420"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I1282105669",
+              "display_name": "Argonne National Laboratory",
+              "ror": "https://ror.org/05gvnxz63",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1282105669",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I39565521",
+                "https://openalex.org/I40347166"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Changho Lee",
+          "raw_affiliation_strings": [
+            "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+            "Argonne National Laboratory (ANL), Argonne, IL (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering, Argonne National Laboratory, Lemont, IL, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Argonne National Laboratory (ANL), Argonne, IL (United States)",
+              "institution_ids": [
+                "https://openalex.org/I1282105669"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": null,
+            "display_name": "Javier Ortensi",
+            "orcid": "https://orcid.org/0000-0003-1685-3916"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Javier Ortensi",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0003-1685-3916",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5071363885",
+            "display_name": "Logan Harbour",
+            "orcid": "https://orcid.org/0000-0003-1192-9328"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Logan H. Harbour",
+          "raw_affiliation_strings": [
+            "Computational Frameworks, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Computational Frameworks, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5033909904",
+            "display_name": "Jackson Harter",
+            "orcid": "https://orcid.org/0000-0002-6385-4535"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2800102766",
+              "display_name": "Idaho National Laboratory",
+              "ror": "https://ror.org/00ty2a548",
+              "country_code": "US",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I1325736334",
+                "https://openalex.org/I1330989302",
+                "https://openalex.org/I2800102766",
+                "https://openalex.org/I2801818860"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Jackson R. Harter",
+          "raw_affiliation_strings": [
+            "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+            "Idaho National Laboratory (INL), Idaho Falls, ID (United States)"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Reactor Physics Methods and Analysis, Idaho National Laboratory, Idaho Falls, ID, United States of America",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Idaho National Laboratory (INL), Idaho Falls, ID (United States)",
+              "institution_ids": [
+                "https://openalex.org/I2800102766"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 43,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "hybrid",
+        "oa_url": "https://doi.org/10.1016/j.anucene.2024.110917",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Griffin": [
+          0,
+          41,
+          116,
+          153,
+          171,
+          200,
+          257,
+          278,
+          303,
+          345,
+          357,
+          368
+        ],
+        "is": [
+          1,
+          123,
+          126,
+          137,
+          237,
+          292,
+          304
+        ],
+        "a": [
+          2,
+          71,
+          305,
+          360
+        ],
+        "Multiphysics": [
+          3
+        ],
+        "Object-Oriented": [
+          4
+        ],
+        "Simulation": [
+          5
+        ],
+        "Environment": [
+          6
+        ],
+        "(MOOSE)": [
+          7
+        ],
+        "based": [
+          8,
+          128,
+          307
+        ],
+        "reactor": [
+          9,
+          17,
+          54,
+          65,
+          120,
+          192,
+          196,
+          284,
+          308
+        ],
+        "physics": [
+          10,
+          66,
+          157,
+          197,
+          309
+        ],
+        "application": [
+          11
+        ],
+        "for": [
+          12,
+          88,
+          168,
+          176,
+          185,
+          194,
+          206,
+          211,
+          225,
+          265,
+          287,
+          311
+        ],
+        "multiphysics": [
+          13,
+          141,
+          312
+        ],
+        "simulations": [
+          14,
+          313
+        ],
+        "of": [
+          15,
+          39,
+          98,
+          150,
+          314
+        ],
+        "advanced": [
+          16,
+          53,
+          315
+        ],
+        "designs": [
+          18
+        ],
+        "jointly": [
+          19
+        ],
+        "developed": [
+          20,
+          127
+        ],
+        "by": [
+          21,
+          107
+        ],
+        "Idaho": [
+          22
+        ],
+        "National": [
+          23,
+          27
+        ],
+        "Laboratory": [
+          24
+        ],
+        "and": [
+          25,
+          37,
+          44,
+          76,
+          83,
+          91,
+          103,
+          159,
+          165,
+          178,
+          191,
+          214,
+          222,
+          254,
+          268,
+          291,
+          299
+        ],
+        "Argonne": [
+          26
+        ],
+        "Laboratory.": [
+          28
+        ],
+        "This": [
+          29
+        ],
+        "paper": [
+          30
+        ],
+        "summarizes": [
+          31
+        ],
+        "the": [
+          32,
+          49,
+          130,
+          148,
+          187,
+          231,
+          260,
+          274,
+          283,
+          288,
+          376
+        ],
+        "motivation,": [
+          33
+        ],
+        "significance,": [
+          34
+        ],
+        "architecture,": [
+          35
+        ],
+        "design,": [
+          36
+        ],
+        "features": [
+          38,
+          46,
+          57,
+          69
+        ],
+        "Griffin.": [
+          40
+        ],
+        "offers": [
+          42
+        ],
+        "flexible": [
+          43
+        ],
+        "extensible": [
+          45
+        ],
+        "to": [
+          47,
+          63,
+          161,
+          229,
+          243,
+          349,
+          374
+        ],
+        "address": [
+          48
+        ],
+        "challenges": [
+          50
+        ],
+        "associated": [
+          51
+        ],
+        "with": [
+          52,
+          140,
+          269,
+          273,
+          324,
+          363
+        ],
+        "designs.": [
+          55,
+          256
+        ],
+        "These": [
+          56
+        ],
+        "range": [
+          58,
+          73
+        ],
+        "from": [
+          59,
+          118
+        ],
+        "fundamental": [
+          60,
+          112
+        ],
+        "particle": [
+          61
+        ],
+        "transport": [
+          62,
+          85,
+          184,
+          189,
+          233,
+          378
+        ],
+        "specific": [
+          64
+        ],
+        "tasks.": [
+          67
+        ],
+        "The": [
+          68,
+          110
+        ],
+        "cover": [
+          70
+        ],
+        "wide": [
+          72
+        ],
+        "including": [
+          74
+        ],
+        "on-the-fly": [
+          75
+        ],
+        "traditional": [
+          77
+        ],
+        "two-step": [
+          78
+        ],
+        "cross-section": [
+          79
+        ],
+        "generation": [
+          80
+        ],
+        "methods,": [
+          81
+        ],
+        "steady-state": [
+          82
+        ],
+        "transient": [
+          84
+        ],
+        "solvers": [
+          86
+        ],
+        "suitable": [
+          87
+        ],
+        "both": [
+          89
+        ],
+        "heterogeneous": [
+          90
+        ],
+        "homogeneous": [
+          92
+        ],
+        "models,": [
+          93
+        ],
+        "high-fidelity": [
+          94
+        ],
+        "depletion": [
+          95,
+          105
+        ],
+        "where": [
+          96
+        ],
+        "thousands": [
+          97
+        ],
+        "isotopes": [
+          99
+        ],
+        "can": [
+          100,
+          321
+        ],
+        "be": [
+          101
+        ],
+        "tracked": [
+          102
+        ],
+        "low-fidelity": [
+          104
+        ],
+        "characterized": [
+          106
+        ],
+        "burnup,": [
+          108
+        ],
+        "etc.": [
+          109,
+          355
+        ],
+        "most": [
+          111
+        ],
+        "aspect": [
+          113
+        ],
+        "that": [
+          114,
+          124
+        ],
+        "sets": [
+          115
+        ],
+        "apart": [
+          117
+        ],
+        "other": [
+          119,
+          162
+        ],
+        "analysis": [
+          121,
+          193,
+          198,
+          285
+        ],
+        "codes": [
+          122
+        ],
+        "it": [
+          125
+        ],
+        "on": [
+          129
+        ],
+        "MOOSE": [
+          131,
+          156,
+          306
+        ],
+        "framework.": [
+          132
+        ],
+        "A": [
+          133
+        ],
+        "modular": [
+          134
+        ],
+        "development": [
+          135,
+          258,
+          358
+        ],
+        "approach": [
+          136
+        ],
+        "strongly": [
+          138
+        ],
+        "enforced,": [
+          139
+        ],
+        "being": [
+          142
+        ],
+        "an": [
+          143
+        ],
+        "essential": [
+          144
+        ],
+        "element": [
+          145,
+          204,
+          372
+        ],
+        "considered": [
+          146
+        ],
+        "since": [
+          147
+        ],
+        "beginning": [
+          149
+        ],
+        "Griffin\u2019s": [
+          151,
+          235,
+          240,
+          318
+        ],
+        "development.": [
+          152
+        ],
+        "links": [
+          154
+        ],
+        "various": [
+          155,
+          202,
+          241,
+          370
+        ],
+        "modules": [
+          158
+        ],
+        "couples": [
+          160
+        ],
+        "MOOSE-based": [
+          163,
+          266
+        ],
+        "applications": [
+          164,
+          167,
+          242,
+          267,
+          348
+        ],
+        "non-MOOSE-based": [
+          166
+        ],
+        "multiphyiscs": [
+          169
+        ],
+        "simulations.": [
+          170
+        ],
+        "includes": [
+          172
+        ],
+        "three": [
+          173
+        ],
+        "modules:": [
+          174
+        ],
+        "ISOXML": [
+          175
+        ],
+        "preparing": [
+          177
+        ],
+        "managing": [
+          179
+        ],
+        "multigroup": [
+          180,
+          209
+        ],
+        "cross": [
+          181
+        ],
+        "sections,": [
+          182
+        ],
+        "radiation": [
+          183
+        ],
+        "solving": [
+          186
+        ],
+        "neutron": [
+          188,
+          232,
+          377
+        ],
+        "equation,": [
+          190
+        ],
+        "user-oriented": [
+          195
+        ],
+        "functionalities.": [
+          199
+        ],
+        "uses": [
+          201
+        ],
+        "finite": [
+          203,
+          371
+        ],
+        "methods": [
+          205,
+          373
+        ],
+        "spatial": [
+          207
+        ],
+        "discretization,": [
+          208
+        ],
+        "approximation": [
+          210,
+          224
+        ],
+        "energy": [
+          212
+        ],
+        "discretization": [
+          213,
+          228
+        ],
+        "discrete": [
+          215
+        ],
+        "ordinates": [
+          216
+        ],
+        "method,": [
+          217,
+          221
+        ],
+        "spherical": [
+          218
+        ],
+        "harmonics": [
+          219
+        ],
+        "expansion": [
+          220
+        ],
+        "diffusion": [
+          223
+        ],
+        "streaming": [
+          226
+        ],
+        "direction": [
+          227
+        ],
+        "solve": [
+          230,
+          322,
+          375
+        ],
+        "equation.": [
+          234,
+          379
+        ],
+        "flexibility": [
+          236
+        ],
+        "evidenced": [
+          238
+        ],
+        "through": [
+          239
+        ],
+        "fast": [
+          244,
+          350
+        ],
+        "reactor,": [
+          245,
+          247,
+          250,
+          253
+        ],
+        "high-temperature": [
+          246
+        ],
+        "pebble": [
+          248,
+          352
+        ],
+        "bed": [
+          249,
+          353
+        ],
+        "molten": [
+          251
+        ],
+        "salt": [
+          252
+        ],
+        "microreactor": [
+          255
+        ],
+        "follows": [
+          259,
+          359
+        ],
+        "software": [
+          261,
+          270
+        ],
+        "quality": [
+          262
+        ],
+        "assurance": [
+          263
+        ],
+        "procedure": [
+          264,
+          361
+        ],
+        "requirements": [
+          271
+        ],
+        "consistent": [
+          272,
+          362
+        ],
+        "ASME": [
+          275,
+          364
+        ],
+        "NQA-1": [
+          276,
+          365
+        ],
+        "standard.": [
+          277,
+          366
+        ],
+        "has": [
+          279,
+          346
+        ],
+        "been": [
+          280
+        ],
+        "adopted": [
+          281
+        ],
+        "into": [
+          282
+        ],
+        "system": [
+          286
+        ],
+        "U.S.": [
+          289,
+          296
+        ],
+        "NRC": [
+          290
+        ],
+        "in": [
+          293,
+          330
+        ],
+        "use": [
+          294
+        ],
+        "at": [
+          295
+        ],
+        "companies,": [
+          297
+        ],
+        "universities": [
+          298
+        ],
+        "national": [
+          300
+        ],
+        "laboratories.": [
+          301
+        ],
+        "\u2022": [
+          302,
+          317,
+          344,
+          356,
+          367
+        ],
+        "code": [
+          310
+        ],
+        "reactors.": [
+          316
+        ],
+        "DFEM-SN": [
+          319
+        ],
+        "solver": [
+          320
+        ],
+        "problems": [
+          323
+        ],
+        "\u223c": [
+          325,
+          331,
+          338
+        ],
+        "1": [
+          326,
+          332,
+          339
+        ],
+        "0": [
+          327,
+          333,
+          340
+        ],
+        "10": [
+          328
+        ],
+        "unknowns": [
+          329
+        ],
+        "3": [
+          334
+        ],
+        "s": [
+          335
+        ],
+        "requiring": [
+          336
+        ],
+        "only": [
+          337
+        ],
+        "2": [
+          341
+        ],
+        "CPU": [
+          342
+        ],
+        "cores.": [
+          343
+        ],
+        "had": [
+          347
+        ],
+        "reactors,": [
+          351,
+          354
+        ],
+        "provides": [
+          369
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4391899821",
+      "doi": "https://doi.org/10.1016/j.net.2024.02.031",
+      "display_name": "Towards inferring reactor operations from high-level waste",
+      "publication_year": 2024,
+      "publication_date": "2024-02-17",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/j.net.2024.02.031",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.net.2024.02.031",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S82136278",
+          "display_name": "Nuclear Engineering and Technology",
+          "issn_l": "1738-5733",
+          "issn": [
+            "1738-5733",
+            "2234-358X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Nuclear Engineering and Technology",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5000644908",
+            "display_name": "Benjamin Jung",
+            "orcid": "https://orcid.org/0000-0002-5512-6933"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I887968799",
+              "display_name": "RWTH Aachen University",
+              "ror": "https://ror.org/04xfq0f34",
+              "country_code": "DE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ],
+          "countries": [
+            "DE"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Benjamin Jung",
+          "raw_affiliation_strings": [
+            "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-5512-6933",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany",
+              "institution_ids": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5073683457",
+            "display_name": "Antonio Figueroa",
+            "orcid": "https://orcid.org/0000-0001-9822-3592"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I887968799",
+              "display_name": "RWTH Aachen University",
+              "ror": "https://ror.org/04xfq0f34",
+              "country_code": "DE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ],
+          "countries": [
+            "DE"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Antonio Figueroa",
+          "raw_affiliation_strings": [
+            "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0001-9822-3592",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany",
+              "institution_ids": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5068033539",
+            "display_name": "Malte G\u00f6ttsche",
+            "orcid": "https://orcid.org/0000-0001-8700-0537"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I887968799",
+              "display_name": "RWTH Aachen University",
+              "ror": "https://ror.org/04xfq0f34",
+              "country_code": "DE",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ],
+          "countries": [
+            "DE"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Malte G\u00f6ttsche",
+          "raw_affiliation_strings": [
+            "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0001-8700-0537",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Nucler Verification and Disarmament, RWTH Aachen University, Schinkelstra\u00dfe 2, Aachen, 52062, Germany",
+              "institution_ids": [
+                "https://openalex.org/I887968799"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "diamond",
+        "oa_url": "https://doi.org/10.1016/j.net.2024.02.031",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Nuclear": [
+          0
+        ],
+        "archaeology": [
+          1
+        ],
+        "research": [
+          2
+        ],
+        "provides": [
+          3
+        ],
+        "scientific": [
+          4
+        ],
+        "methods": [
+          5
+        ],
+        "to": [
+          6,
+          16,
+          135,
+          154
+        ],
+        "reconstruct": [
+          7
+        ],
+        "the": [
+          8,
+          44,
+          59,
+          97,
+          113,
+          131,
+          143,
+          149,
+          155,
+          160,
+          168,
+          174,
+          177
+        ],
+        "operating": [
+          9
+        ],
+        "histories": [
+          10
+        ],
+        "of": [
+          11,
+          64,
+          70,
+          88,
+          120,
+          123,
+          130,
+          138,
+          159,
+          176
+        ],
+        "fissile": [
+          12,
+          20
+        ],
+        "material": [
+          13,
+          21,
+          30
+        ],
+        "production": [
+          14
+        ],
+        "facilities": [
+          15
+        ],
+        "account": [
+          17
+        ],
+        "for": [
+          18,
+          57,
+          185
+        ],
+        "past": [
+          19
+        ],
+        "production.": [
+          22
+        ],
+        "While": [
+          23
+        ],
+        "it": [
+          24
+        ],
+        "has": [
+          25
+        ],
+        "typically": [
+          26
+        ],
+        "focused": [
+          27
+        ],
+        "on": [
+          28,
+          167
+        ],
+        "analyzing": [
+          29
+        ],
+        "in": [
+          31,
+          125
+        ],
+        "permanent": [
+          32
+        ],
+        "reactor": [
+          33,
+          45
+        ],
+        "structures,": [
+          34
+        ],
+        "spent": [
+          35
+        ],
+        "fuel": [
+          36,
+          98,
+          114
+        ],
+        "or": [
+          37
+        ],
+        "high-level": [
+          38
+        ],
+        "waste": [
+          39,
+          72,
+          124
+        ],
+        "also": [
+          40
+        ],
+        "hold": [
+          41
+        ],
+        "information": [
+          42
+        ],
+        "about": [
+          43
+        ],
+        "operation.": [
+          46
+        ],
+        "In": [
+          47
+        ],
+        "this": [
+          48
+        ],
+        "computational": [
+          49
+        ],
+        "study,": [
+          50
+        ],
+        "we": [
+          51
+        ],
+        "explore": [
+          52
+        ],
+        "a": [
+          53,
+          68,
+          126,
+          136
+        ],
+        "Bayesian": [
+          54,
+          178
+        ],
+        "inference": [
+          55,
+          78,
+          179
+        ],
+        "framework": [
+          56,
+          180
+        ],
+        "reconstructing": [
+          58,
+          96
+        ],
+        "operational": [
+          60
+        ],
+        "history": [
+          61
+        ],
+        "from": [
+          62,
+          67
+        ],
+        "measurements": [
+          63
+        ],
+        "isotope": [
+          65
+        ],
+        "ratios": [
+          66
+        ],
+        "sample": [
+          69
+        ],
+        "nuclear": [
+          71
+        ],
+        ".": [
+          73
+        ],
+        "We": [
+          74
+        ],
+        "investigate": [
+          75
+        ],
+        "two": [
+          76,
+          121
+        ],
+        "different": [
+          77
+        ],
+        "models.": [
+          79
+        ],
+        "The": [
+          80,
+          109
+        ],
+        "first": [
+          81
+        ],
+        "model": [
+          82,
+          111
+        ],
+        "discriminates": [
+          83
+        ],
+        "between": [
+          84
+        ],
+        "three": [
+          85
+        ],
+        "potential": [
+          86,
+          175
+        ],
+        "reactors": [
+          87
+        ],
+        "origin": [
+          89
+        ],
+        "(Magnox,": [
+          90
+        ],
+        "PWR,": [
+          91
+        ],
+        "and": [
+          92,
+          105,
+          116,
+          142,
+          181
+        ],
+        "PHWR)": [
+          93
+        ],
+        "while": [
+          94
+        ],
+        "simultaneously": [
+          95
+        ],
+        "burnup,": [
+          99
+        ],
+        "time": [
+          100,
+          117
+        ],
+        "since": [
+          101,
+          118
+        ],
+        "irradiation,": [
+          102
+        ],
+        "initial": [
+          103
+        ],
+        "enrichment,": [
+          104
+        ],
+        "average": [
+          106
+        ],
+        "power": [
+          107
+        ],
+        "density.": [
+          108
+        ],
+        "second": [
+          110
+        ],
+        "reconstructs": [
+          112
+        ],
+        "burnup": [
+          115
+        ],
+        "irradiation": [
+          119
+        ],
+        "batches": [
+          122
+        ],
+        "mixed": [
+          127
+        ],
+        "sample.": [
+          128
+        ],
+        "Each": [
+          129
+        ],
+        "models": [
+          132,
+          164
+        ],
+        "is": [
+          133,
+          145
+        ],
+        "applied": [
+          134
+        ],
+        "set": [
+          137
+        ],
+        "simulated": [
+          139,
+          169
+        ],
+        "test": [
+          140,
+          161,
+          170
+        ],
+        "data,": [
+          141
+        ],
+        "performance": [
+          144
+        ],
+        "evaluated": [
+          146
+        ],
+        "by": [
+          147
+        ],
+        "comparing": [
+          148
+        ],
+        "highest": [
+          150
+        ],
+        "posterior": [
+          151
+        ],
+        "density": [
+          152
+        ],
+        "regions": [
+          153
+        ],
+        "corresponding": [
+          156
+        ],
+        "parameter": [
+          157
+        ],
+        "values": [
+          158
+        ],
+        "dataset.": [
+          162
+        ],
+        "Both": [
+          163
+        ],
+        "perform": [
+          165
+        ],
+        "well": [
+          166
+        ],
+        "cases,": [
+          171
+        ],
+        "which": [
+          172
+        ],
+        "highlights": [
+          173
+        ],
+        "opens": [
+          182
+        ],
+        "up": [
+          183
+        ],
+        "avenues": [
+          184
+        ],
+        "further": [
+          186
+        ],
+        "investigation.": [
+          187
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W2958920632",
+      "doi": null,
+      "display_name": "Reactor Physics Uncertainty and Sensitivity Analysis of Prismatic HTGRs.",
+      "publication_year": 2019,
+      "publication_date": "2019-01-21",
+      "type": "article",
+      "primary_location": {
+        "id": "pmh:oai:repository.lib.ncsu.edu:1840.20/36592",
+        "is_oa": true,
+        "landing_page_url": "http://www.lib.ncsu.edu/resolver/1840.20/36592",
+        "pdf_url": "http://www.lib.ncsu.edu/resolver/1840.20/36592",
+        "source": {
+          "id": "https://openalex.org/S4306402468",
+          "display_name": "NCSU Libraries Repository (North Carolina State University Libraries)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I137902535",
+          "host_organization_name": "North Carolina State University",
+          "host_organization_lineage": [
+            "https://openalex.org/I137902535"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": null
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5076187980",
+            "display_name": "Pascal Rouxelin",
+            "orcid": "https://orcid.org/0000-0001-8142-8153"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": true,
+          "raw_author_name": "Pascal Rouxelin",
+          "raw_affiliation_strings": [],
+          "raw_orcid": "https://orcid.org/0000-0001-8142-8153",
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "http://www.lib.ncsu.edu/resolver/1840.20/36592",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "North": [
+          0
+        ],
+        "Carolina": [
+          1
+        ],
+        "State": [
+          2
+        ],
+        "University": [
+          3
+        ],
+        "Theses": [
+          4
+        ],
+        "Nuclear": [
+          5
+        ],
+        "Engineering.": [
+          6
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W3216841082",
+      "doi": "https://doi.org/10.25394/pgs.11955063.v1",
+      "display_name": "Efficient Uncertainty Characterization Framework in Neutronics Core Simulation with Application to Thermal-Spectrum Reactor Systems",
+      "publication_year": 2020,
+      "publication_date": "2020-04-16",
+      "type": "dissertation",
+      "primary_location": {
+        "id": "pmh:oai:figshare.com:article/11955063",
+        "is_oa": true,
+        "landing_page_url": "https://figshare.com/articles/Efficient_Uncertainty_Characterization_Framework_in_Neutronics_Core_Simulation_with_Application_to_Thermal-Spectrum_Reactor_Systems/11955063",
+        "pdf_url": "https://figshare.com/articles/Efficient_Uncertainty_Characterization_Framework_in_Neutronics_Core_Simulation_with_Application_to_Thermal-Spectrum_Reactor_Systems/11955063",
+        "source": {
+          "id": "https://openalex.org/S4377196282",
+          "display_name": "Figshare",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I4210132348",
+          "host_organization_name": "Figshare (United Kingdom)",
+          "host_organization_lineage": [
+            "https://openalex.org/I4210132348"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "",
+        "raw_type": "Thesis"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5055710477",
+            "display_name": "Dongli Huang",
+            "orcid": "https://orcid.org/0000-0003-4053-0148"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": true,
+          "raw_author_name": "Huang, Dongli",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://figshare.com/articles/Efficient_Uncertainty_Characterization_Framework_in_Neutronics_Core_Simulation_with_Application_to_Thermal-Spectrum_Reactor_Systems/11955063",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "This": [
+          0
+        ],
+        "dissertation": [
+          1,
+          143,
+          580
+        ],
+        "is": [
+          2,
+          31,
+          56,
+          102,
+          155,
+          182,
+          301,
+          371,
+          544,
+          621,
+          668
+        ],
+        "devoted": [
+          3
+        ],
+        "to": [
+          4,
+          36,
+          45,
+          57,
+          79,
+          103,
+          115,
+          119,
+          126,
+          162,
+          183,
+          260,
+          275,
+          279,
+          287,
+          302,
+          328,
+          333,
+          358,
+          372,
+          379,
+          396,
+          422,
+          557,
+          568,
+          584,
+          595,
+          629,
+          635
+        ],
+        "developing": [
+          5
+        ],
+        "a": [
+          6,
+          225,
+          359,
+          381,
+          429,
+          435,
+          457,
+          477,
+          582,
+          612,
+          630,
+          648,
+          655
+        ],
+        "first-of-a-kind": [
+          7
+        ],
+        "uncertainty": [
+          8,
+          20,
+          150,
+          175,
+          258,
+          265,
+          293,
+          343,
+          376,
+          466,
+          504,
+          534,
+          553,
+          603,
+          638,
+          657,
+          661,
+          671,
+          688,
+          699
+        ],
+        "characterization": [
+          9,
+          21
+        ],
+        "framework": [
+          10
+        ],
+        "(UCF)": [
+          11
+        ],
+        "providing": [
+          12
+        ],
+        "comprehensive,": [
+          13
+        ],
+        "efficient": [
+          14,
+          277,
+          459
+        ],
+        "and": [
+          15,
+          59,
+          74,
+          95,
+          131,
+          170,
+          209,
+          229,
+          243,
+          316,
+          341,
+          384,
+          434,
+          481,
+          499,
+          514,
+          524,
+          592,
+          594,
+          640
+        ],
+        "scientifically": [
+          16
+        ],
+        "defendable": [
+          17
+        ],
+        "methodologies": [
+          18
+        ],
+        "for": [
+          19,
+          347,
+          469,
+          659
+        ],
+        "(UC)": [
+          22
+        ],
+        "in": [
+          23,
+          77,
+          87,
+          135,
+          148,
+          196,
+          238,
+          292,
+          338,
+          456,
+          485,
+          529,
+          560,
+          633,
+          647
+        ],
+        "best-estimate": [
+          24
+        ],
+        "(BE)": [
+          25
+        ],
+        "reactor": [
+          26,
+          48,
+          92,
+          136,
+          168,
+          363
+        ],
+        "physics": [
+          27,
+          117,
+          420
+        ],
+        "simulations.": [
+          28,
+          297
+        ],
+        "The": [
+          29,
+          50,
+          97,
+          153,
+          179,
+          298,
+          540,
+          677
+        ],
+        "UCF": [
+          30,
+          55,
+          101,
+          160,
+          285
+        ],
+        "designed": [
+          32
+        ],
+        "with": [
+          33,
+          212,
+          502,
+          562,
+          643,
+          663,
+          697
+        ],
+        "primary": [
+          34,
+          290
+        ],
+        "application": [
+          35,
+          696
+        ],
+        "CANDU": [
+          37,
+          660,
+          695
+        ],
+        "neutronics": [
+          38,
+          271,
+          296
+        ],
+        "calculations,": [
+          39,
+          118
+        ],
+        "but": [
+          40
+        ],
+        "could": [
+          41
+        ],
+        "also": [
+          42
+        ],
+        "be": [
+          43,
+          326,
+          356,
+          558
+        ],
+        "applied": [
+          44,
+          628
+        ],
+        "other": [
+          46,
+          75,
+          188
+        ],
+        "thermal-spectrum": [
+          47
+        ],
+        "systems.": [
+          49
+        ],
+        "overarching": [
+          51
+        ],
+        "goal": [
+          52,
+          181
+        ],
+        "of": [
+          53,
+          63,
+          84,
+          91,
+          99,
+          141,
+          158,
+          166,
+          173,
+          187,
+          190,
+          199,
+          227,
+          240,
+          264,
+          270,
+          295,
+          306,
+          336,
+          362,
+          393,
+          431,
+          442,
+          465,
+          479,
+          511,
+          517,
+          519,
+          532,
+          552,
+          588,
+          611,
+          614,
+          651
+        ],
+        "the": [
+          54,
+          82,
+          88,
+          109,
+          113,
+          120,
+          124,
+          133,
+          156,
+          159,
+          163,
+          185,
+          197,
+          213,
+          232,
+          244,
+          253,
+          262,
+          276,
+          281,
+          284,
+          321,
+          330,
+          334,
+          352,
+          368,
+          374,
+          390,
+          397,
+          400,
+          405,
+          408,
+          443,
+          446,
+          463,
+          474,
+          503,
+          530,
+          586,
+          597,
+          600,
+          609,
+          637,
+          644,
+          674,
+          686,
+          694,
+          698
+        ],
+        "propagate": [
+          58,
+          104,
+          329
+        ],
+        "prioritize": [
+          60,
+          373
+        ],
+        "all": [
+          61,
+          304
+        ],
+        "sources": [
+          62,
+          189,
+          305,
+          392,
+          467,
+          672
+        ],
+        "uncertainties,": [
+          64,
+          71,
+          203,
+          307,
+          311,
+          426,
+          578
+        ],
+        "including": [
+          65,
+          231,
+          308
+        ],
+        "those": [
+          66
+        ],
+        "originating": [
+          67
+        ],
+        "from": [
+          68,
+          108,
+          415,
+          673
+        ],
+        "nuclear": [
+          69,
+          105,
+          167,
+          201,
+          309,
+          409,
+          470,
+          563
+        ],
+        "data": [
+          70,
+          106,
+          202,
+          310,
+          410,
+          471,
+          564
+        ],
+        "modeling": [
+          72,
+          207,
+          247,
+          312,
+          489,
+          571,
+          590,
+          615,
+          678
+        ],
+        "assumptions,": [
+          73,
+          313
+        ],
+        "approximations,": [
+          76
+        ],
+        "order": [
+          78,
+          246,
+          567,
+          634
+        ],
+        "reliably": [
+          80
+        ],
+        "use": [
+          81
+        ],
+        "results": [
+          83
+        ],
+        "BE": [
+          85
+        ],
+        "simulations": [
+          86
+        ],
+        "various": [
+          89,
+          206,
+          589
+        ],
+        "aspects": [
+          90
+        ],
+        "design,": [
+          93
+        ],
+        "operation,": [
+          94
+        ],
+        "safety.": [
+          96
+        ],
+        "scope": [
+          98
+        ],
+        "this": [
+          100,
+          142,
+          216,
+          486,
+          579,
+          607
+        ],
+        "uncertainties": [
+          107,
+          134,
+          191,
+          332,
+          354,
+          394,
+          411,
+          448,
+          472,
+          572,
+          620,
+          679
+        ],
+        "multi-group": [
+          110,
+          416
+        ],
+        "format,": [
+          111,
+          122
+        ],
+        "representing": [
+          112,
+          123
+        ],
+        "input": [
+          114,
+          125
+        ],
+        "lattice": [
+          116,
+          419
+        ],
+        "few-group": [
+          121,
+          424,
+          447
+        ],
+        "nodal": [
+          127
+        ],
+        "diffusion-based": [
+          128
+        ],
+        "core": [
+          129,
+          137,
+          339,
+          349,
+          364,
+          401,
+          454,
+          618,
+          652,
+          666
+        ],
+        "simulators": [
+          130
+        ],
+        "quantify": [
+          132
+        ],
+        "attributes.The": [
+          138
+        ],
+        "main": [
+          139
+        ],
+        "contribution": [
+          140
+        ],
+        "addresses": [
+          144
+        ],
+        "two": [
+          145,
+          601
+        ],
+        "major": [
+          146,
+          391,
+          541,
+          602
+        ],
+        "challenges": [
+          147
+        ],
+        "current": [
+          149
+        ],
+        "analysis": [
+          151,
+          255,
+          294,
+          346,
+          505,
+          535,
+          662
+        ],
+        "approaches.": [
+          152
+        ],
+        "first": [
+          154,
+          214,
+          299,
+          413,
+          627
+        ],
+        "feasibility": [
+          157
+        ],
+        "due": [
+          161
+        ],
+        "complex": [
+          164
+        ],
+        "nature": [
+          165
+        ],
+        "simulation": [
+          169,
+          340,
+          455
+        ],
+        "computational": [
+          171,
+          282
+        ],
+        "burden": [
+          172
+        ],
+        "conventional": [
+          174
+        ],
+        "quantification": [
+          176
+        ],
+        "(UQ)": [
+          177,
+          345
+        ],
+        "methods.": [
+          178
+        ],
+        "second": [
+          180
+        ],
+        "assess": [
+          184,
+          569
+        ],
+        "impact": [
+          186,
+          398,
+          464,
+          575,
+          610,
+          684
+        ],
+        "that": [
+          192,
+          545
+        ],
+        "are": [
+          193,
+          412,
+          449,
+          483,
+          691
+        ],
+        "typically": [
+          194
+        ],
+        "ignored": [
+          195
+        ],
+        "course": [
+          198
+        ],
+        "propagating": [
+          200
+        ],
+        "such": [
+          204,
+          491
+        ],
+        "as": [
+          205,
+          250,
+          252,
+          492,
+          665,
+          680,
+          682
+        ],
+        "assumptions": [
+          208,
+          482,
+          490,
+          500,
+          525,
+          547,
+          591,
+          616
+        ],
+        "approximations.To": [
+          210
+        ],
+        "deal": [
+          211
+        ],
+        "challenge,": [
+          215
+        ],
+        "thesis": [
+          217
+        ],
+        "work": [
+          218
+        ],
+        "proposes": [
+          219,
+          581
+        ],
+        "an": [
+          220,
+          439,
+          574
+        ],
+        "integrated": [
+          221
+        ],
+        "UC": [
+          222,
+          323,
+          475,
+          624
+        ],
+        "process": [
+          223,
+          324,
+          583,
+          625,
+          642,
+          690
+        ],
+        "employing": [
+          224
+        ],
+        "number": [
+          226,
+          478,
+          516,
+          613
+        ],
+        "approaches": [
+          228
+        ],
+        "algorithms,": [
+          230
+        ],
+        "physics-guided": [
+          233
+        ],
+        "coverage": [
+          234
+        ],
+        "mapping": [
+          235
+        ],
+        "(PCM)": [
+          236
+        ],
+        "method": [
+          237
+        ],
+        "support": [
+          239
+        ],
+        "model": [
+          241
+        ],
+        "validation,": [
+          242
+        ],
+        "reduced": [
+          245
+        ],
+        "(ROM)": [
+          248
+        ],
+        "techniques": [
+          249,
+          278
+        ],
+        "well": [
+          251,
+          681
+        ],
+        "sensitivity": [
+          254
+        ],
+        "(SA)": [
+          256
+        ],
+        "on": [
+          257,
+          399,
+          462,
+          473,
+          576,
+          617,
+          685,
+          693
+        ],
+        "sources,": [
+          259,
+          377
+        ],
+        "reduce": [
+          261,
+          280
+        ],
+        "dimensionality": [
+          263
+        ],
+        "space": [
+          266
+        ],
+        "at": [
+          267
+        ],
+        "each": [
+          268
+        ],
+        "interface": [
+          269
+        ],
+        "calculations.": [
+          272
+        ],
+        "In": [
+          273,
+          404,
+          566
+        ],
+        "addition": [
+          274
+        ],
+        "cost,": [
+          283
+        ],
+        "aims": [
+          286
+        ],
+        "accomplish": [
+          288
+        ],
+        "four": [
+          289
+        ],
+        "functions": [
+          291
+        ],
+        "function": [
+          300,
+          370
+        ],
+        "identify": [
+          303
+        ],
+        "numerical": [
+          314
+        ],
+        "approximations": [
+          315,
+          480,
+          523,
+          593
+        ],
+        "technological": [
+          317
+        ],
+        "parameter": [
+          318,
+          577,
+          687
+        ],
+        "uncertainties.": [
+          319,
+          403,
+          565
+        ],
+        "Second,": [
+          320
+        ],
+        "proposed": [
+          322,
+          406,
+          623,
+          675
+        ],
+        "will": [
+          325,
+          355
+        ],
+        "able": [
+          327
+        ],
+        "identified": [
+          331,
+          375
+        ],
+        "responses": [
+          335
+        ],
+        "interest": [
+          337
+        ],
+        "provide": [
+          342
+        ],
+        "quantifications": [
+          344
+        ],
+        "these": [
+          348,
+          546
+        ],
+        "attributes.": [
+          350
+        ],
+        "Third,": [
+          351
+        ],
+        "propagated": [
+          353,
+          414,
+          451
+        ],
+        "mapped": [
+          357
+        ],
+        "wide": [
+          360,
+          649
+        ],
+        "range": [
+          361,
+          650
+        ],
+        "operation": [
+          365
+        ],
+        "conditions.": [
+          366,
+          653
+        ],
+        "Finally,": [
+          367,
+          654
+        ],
+        "fourth": [
+          369
+        ],
+        "i.e.,": [
+          378
+        ],
+        "generate": [
+          380,
+          423
+        ],
+        "priority": [
+          382
+        ],
+        "identification": [
+          383
+        ],
+        "ranking": [
+          385
+        ],
+        "table": [
+          386
+        ],
+        "(PIRT)": [
+          387
+        ],
+        "which": [
+          388
+        ],
+        "sorts": [
+          389
+        ],
+        "according": [
+          395
+        ],
+        "attributes\u2019": [
+          402
+        ],
+        "implementation,": [
+          407
+        ],
+        "level": [
+          417,
+          510
+        ],
+        "through": [
+          418,
+          452
+        ],
+        "calculation": [
+          421
+        ],
+        "parameters": [
+          425
+        ],
+        "described": [
+          427
+        ],
+        "using": [
+          428
+        ],
+        "vector": [
+          430
+        ],
+        "mean": [
+          432
+        ],
+        "values": [
+          433
+        ],
+        "covariance": [
+          436,
+          444
+        ],
+        "matrix.": [
+          437
+        ],
+        "Employing": [
+          438
+        ],
+        "ROM-based": [
+          440
+        ],
+        "compression": [
+          441
+        ],
+        "matrix,": [
+          445
+        ],
+        "then": [
+          450
+        ],
+        "downstream": [
+          453
+        ],
+        "computationally": [
+          458
+        ],
+        "manner.To": [
+          460
+        ],
+        "explore": [
+          461,
+          606
+        ],
+        "except": [
+          468
+        ],
+        "process,": [
+          476
+        ],
+        "investigated": [
+          484,
+          692
+        ],
+        "thesis,": [
+          487
+        ],
+        "e.g.,": [
+          488,
+          507
+        ],
+        "resonance": [
+          493
+        ],
+        "treatment,": [
+          494
+        ],
+        "energy": [
+          495
+        ],
+        "group": [
+          496
+        ],
+        "structure,": [
+          497
+        ],
+        "etc.,": [
+          498
+        ],
+        "associated": [
+          501,
+          515
+        ],
+        "itself,": [
+          506
+        ],
+        "linearity": [
+          508
+        ],
+        "assumption,": [
+          509
+        ],
+        "ROM": [
+          512,
+          645
+        ],
+        "reduction": [
+          513
+        ],
+        "degrees": [
+          518
+        ],
+        "freedom": [
+          520
+        ],
+        "employed.": [
+          521
+        ],
+        "These": [
+          522
+        ],
+        "have": [
+          526,
+          573
+        ],
+        "been": [
+          527
+        ],
+        "employed": [
+          528
+        ],
+        "literature": [
+          531
+        ],
+        "neutronic": [
+          533
+        ],
+        "yet": [
+          536
+        ],
+        "without": [
+          537
+        ],
+        "formal": [
+          538
+        ],
+        "verifications.": [
+          539
+        ],
+        "argument": [
+          542
+        ],
+        "here": [
+          543
+        ],
+        "may": [
+          548
+        ],
+        "introduce": [
+          549
+        ],
+        "another": [
+          550
+        ],
+        "source": [
+          551
+        ],
+        "whose": [
+          554
+        ],
+        "magnitude": [
+          555
+        ],
+        "needs": [
+          556
+        ],
+        "quantified": [
+          559
+        ],
+        "tandem": [
+          561
+        ],
+        "whether": [
+          570
+        ],
+        "evaluate": [
+          585
+        ],
+        "influence": [
+          587
+        ],
+        "investigate": [
+          596
+        ],
+        "interactions": [
+          598
+        ],
+        "between": [
+          599
+        ],
+        "sources.": [
+          604
+        ],
+        "To": [
+          605
+        ],
+        "endeavor,": [
+          608
+        ],
+        "attributes": [
+          619
+        ],
+        "quantified.The": [
+          622
+        ],
+        "has": [
+          626
+        ],
+        "BWR": [
+          631
+        ],
+        "application,": [
+          632
+        ],
+        "test": [
+          636
+        ],
+        "propagation": [
+          639,
+          689
+        ],
+        "prioritization": [
+          641
+        ],
+        "implementation": [
+          646
+        ],
+        "comprehensive": [
+          656
+        ],
+        "library": [
+          658
+        ],
+        "NESTLE-C": [
+          664
+        ],
+        "simulator": [
+          667
+        ],
+        "generated": [
+          669
+        ],
+        "compressed": [
+          670
+        ],
+        "UCF.": [
+          676
+        ],
+        "their": [
+          683
+        ],
+        "library.": [
+          700
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4241755530",
+      "doi": "https://doi.org/10.2172/1333562",
+      "display_name": "The Texas A&amp;M Radioisotope Production and Radiochemistry Program",
+      "publication_year": 2016,
+      "publication_date": "2016-10-28",
+      "type": "report",
+      "primary_location": {
+        "id": "doi:10.2172/1333562",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.2172/1333562",
+        "pdf_url": "https://www.osti.gov/servlets/purl/1333562",
+        "source": null,
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Chicago Operations Office",
+        "raw_type": "report"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5009160870",
+            "display_name": "Gamal Akabani",
+            "orcid": "https://orcid.org/0000-0002-2662-0254"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I91045830",
+              "display_name": "Texas A&M University",
+              "ror": "https://ror.org/01f5ytq51",
+              "country_code": "US",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I91045830"
+              ]
+            }
+          ],
+          "countries": [
+            "US"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Gamal Akabani",
+          "raw_affiliation_strings": [
+            "Texas A & M Univ., College Station, TX (United States). Dept. of Nuclear Engineering. Dept. of Veterinary Integrative Biosciences"
+          ],
+          "raw_orcid": "https://orcid.org/0000-0002-2662-0254",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Texas A & M Univ., College Station, TX (United States). Dept. of Nuclear Engineering. Dept. of Veterinary Integrative Biosciences",
+              "institution_ids": [
+                "https://openalex.org/I91045830"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://www.osti.gov/servlets/purl/1333562",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "The": [
+          0,
+          115,
+          148,
+          165,
+          188,
+          212
+        ],
+        "main": [
+          1
+        ],
+        "motivation": [
+          2
+        ],
+        "of": [
+          3,
+          16,
+          54,
+          65,
+          92,
+          123,
+          135,
+          155,
+          160,
+          175,
+          180,
+          182,
+          192,
+          199,
+          207,
+          226,
+          233
+        ],
+        "the": [
+          4,
+          14,
+          44,
+          51,
+          63,
+          88,
+          121,
+          153,
+          186,
+          193,
+          197,
+          208,
+          224,
+          231,
+          244,
+          248,
+          256
+        ],
+        "project": [
+          5,
+          78
+        ],
+        "at": [
+          6,
+          185,
+          247
+        ],
+        "Texas": [
+          7,
+          45,
+          52,
+          249
+        ],
+        "A&M": [
+          8,
+          46,
+          250
+        ],
+        "University": [
+          9,
+          47
+        ],
+        "was": [
+          10,
+          221,
+          238
+        ],
+        "to": [
+          11,
+          28,
+          72,
+          120,
+          230,
+          242
+        ],
+        "carry": [
+          12
+        ],
+        "out": [
+          13
+        ],
+        "production": [
+          15,
+          35,
+          64,
+          110,
+          122,
+          134,
+          159,
+          174,
+          198,
+          217
+        ],
+        "critically": [
+          17
+        ],
+        "needed": [
+          18
+        ],
+        "radioisotopes": [
+          19
+        ],
+        "used": [
+          20
+        ],
+        "in": [
+          21,
+          33,
+          67,
+          74,
+          76,
+          215,
+          223
+        ],
+        "medicine": [
+          22
+        ],
+        "for": [
+          23,
+          62,
+          108,
+          112,
+          168,
+          196,
+          252
+        ],
+        "diagnostics": [
+          24
+        ],
+        "and": [
+          25,
+          27,
+          36,
+          85,
+          90,
+          101,
+          111,
+          132,
+          158,
+          162,
+          173,
+          190,
+          218
+        ],
+        "therapy,": [
+          26
+        ],
+        "establish": [
+          29
+        ],
+        "an": [
+          30
+        ],
+        "academic": [
+          31,
+          213,
+          245
+        ],
+        "program": [
+          32,
+          214,
+          246
+        ],
+        "radionuclide": [
+          34,
+          216
+        ],
+        "separation": [
+          37,
+          219
+        ],
+        "methods.": [
+          38
+        ],
+        "After": [
+          39
+        ],
+        "a": [
+          40,
+          60,
+          127,
+          141,
+          234
+        ],
+        "lengthy": [
+          41
+        ],
+        "battle": [
+          42
+        ],
+        "with": [
+          43,
+          144
+        ],
+        "Radiation": [
+          48
+        ],
+        "Safety": [
+          49
+        ],
+        "Office,": [
+          50
+        ],
+        "Department": [
+          53
+        ],
+        "State": [
+          55
+        ],
+        "Health": [
+          56
+        ],
+        "Services": [
+          57
+        ],
+        "granted": [
+          58
+        ],
+        "us": [
+          59,
+          71
+        ],
+        "license": [
+          61
+        ],
+        "radionuclides": [
+          66
+        ],
+        "July": [
+          68
+        ],
+        "2015,": [
+          69
+        ],
+        "allowing": [
+          70
+        ],
+        "work": [
+          73
+        ],
+        "earnest": [
+          75
+        ],
+        "our": [
+          77,
+          93
+        ],
+        "objectives.": [
+          79
+        ],
+        "Experiments": [
+          80
+        ],
+        "began": [
+          81
+        ],
+        "immediately": [
+          82
+        ],
+        "after": [
+          83
+        ],
+        "licensing,": [
+          84
+        ],
+        "we": [
+          86
+        ],
+        "started": [
+          87
+        ],
+        "assembly": [
+          89
+        ],
+        "testing": [
+          91,
+          191
+        ],
+        "target": [
+          94,
+          104,
+          130
+        ],
+        "systems.": [
+          95,
+          105
+        ],
+        "There": [
+          96
+        ],
+        "were": [
+          97,
+          107,
+          118,
+          152
+        ],
+        "four": [
+          98
+        ],
+        "analytical/theoretical": [
+          99
+        ],
+        "projects": [
+          100,
+          117,
+          151
+        ],
+        "two": [
+          102,
+          149
+        ],
+        "experimental": [
+          103,
+          150
+        ],
+        "These": [
+          106
+        ],
+        "At-211": [
+          109,
+          161,
+          169,
+          176
+        ],
+        "Zn-62/Cu-62": [
+          113,
+          163,
+          200
+        ],
+        "production.": [
+          114
+        ],
+        "theoretical": [
+          116
+        ],
+        "related": [
+          119
+        ],
+        "Mo-99/Tc-99m": [
+          124
+        ],
+        "using": [
+          125
+        ],
+        "a)": [
+          126
+        ],
+        "subcritical": [
+          128
+        ],
+        "aqueous": [
+          129
+        ],
+        "system": [
+          131,
+          167,
+          195
+        ],
+        "b)": [
+          133
+        ],
+        "Tc-99m": [
+          136
+        ],
+        "from": [
+          137
+        ],
+        "accelerator-generated": [
+          138
+        ],
+        "Mo-99": [
+          139
+        ],
+        "utilizing": [
+          140
+        ],
+        "photon-neutron": [
+          142
+        ],
+        "interaction": [
+          143
+        ],
+        "enriched": [
+          145
+        ],
+        "Mo-100": [
+          146
+        ],
+        "targets.": [
+          147
+        ],
+        "development": [
+          154
+        ],
+        "targetry": [
+          156,
+          166,
+          194
+        ],
+        "systems": [
+          157,
+          209
+        ],
+        "generator.": [
+          164
+        ],
+        "has": [
+          170,
+          201
+        ],
+        "been": [
+          171,
+          203
+        ],
+        "tested": [
+          172
+        ],
+        "is": [
+          177,
+          210
+        ],
+        "chronic": [
+          178
+        ],
+        "depending": [
+          179
+        ],
+        "availability": [
+          181
+        ],
+        "beam": [
+          183
+        ],
+        "time": [
+          184
+        ],
+        "cyclotron.": [
+          187
+        ],
+        "installation": [
+          189
+        ],
+        "not": [
+          202
+        ],
+        "finalized.": [
+          204
+        ],
+        "A": [
+          205
+        ],
+        "description": [
+          206
+        ],
+        "described.": [
+          211
+        ],
+        "methods": [
+          220
+        ],
+        "initiated": [
+          222
+        ],
+        "fall": [
+          225
+        ],
+        "2011": [
+          227
+        ],
+        "and,": [
+          228
+        ],
+        "due": [
+          229
+        ],
+        "lack": [
+          232
+        ],
+        "radiochemistry": [
+          235
+        ],
+        "laboratory,": [
+          236
+        ],
+        "it": [
+          237
+        ],
+        "suspended.": [
+          239
+        ],
+        "We": [
+          240
+        ],
+        "expect": [
+          241
+        ],
+        "re-start": [
+          243
+        ],
+        "Institute": [
+          251
+        ],
+        "Preclinical": [
+          253
+        ],
+        "Studies": [
+          254
+        ],
+        "under": [
+          255
+        ],
+        "Molecular": [
+          257
+        ],
+        "Imaging": [
+          258
+        ],
+        "Program.": [
+          259
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    }
+  ],
+  "group_by": []
+}

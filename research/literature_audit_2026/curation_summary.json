@@ -1,0 +1,54 @@
+{
+  "discovered_records": 2281,
+  "eligible_after_type_topic_and_title_dedup": 2014,
+  "scholarly_comparison_rows": 120,
+  "authoritative_supplement_rows": 9,
+  "manual_key_scholarly_rows_added": 9,
+  "total_comparison_rows": 137,
+  "category_counts": {
+    "Ac-225 production, separation, and quality": 25,
+    "Ra-226 nuclear data and neutron-spectrum evidence": 22,
+    "Depletion, activation, and trusted solvers": 23,
+    "Nuclear machine-learning and temporal surrogates": 23,
+    "Surrogate-assisted and multi-objective optimization": 23,
+    "Uncertainty, distribution shift, and reliability": 21
+  },
+  "source_type_counts": {
+    "article": 102,
+    "dissertation": 10,
+    "review": 2,
+    "report": 13,
+    "evaluated library paper": 1,
+    "official technical report": 1,
+    "doctoral dissertation": 1,
+    "official evaluated database": 1,
+    "official software documentation": 3,
+    "official metrology release": 1,
+    "official regulatory research context": 1,
+    "preprint": 1
+  },
+  "evidence_depth_counts": {
+    "title and abstract screened": 120,
+    "publisher abstract screened": 2,
+    "official source screened": 3,
+    "full text close-read": 3,
+    "official source close-read": 3,
+    "background only": 1,
+    "NIST full text close-read": 1,
+    "full text and publisher page close-read": 1,
+    "publisher page close-read": 2,
+    "preprint abstract screened": 1
+  },
+  "doi_count": 122,
+  "high_relevance_count": 83,
+  "missing_core_dois_in_automated_discovery": [
+    "10.1016/j.anucene.2014.07.048",
+    "10.13182/nse10-81",
+    "10.1016/j.anucene.2019.107230",
+    "10.1109/sccc57464.2022.10000327",
+    "10.1016/j.egyai.2025.100655",
+    "10.1016/j.jocs.2016.05.013"
+  ],
+  "missing_core_note": "Some missing discovery DOIs are appended from verified manual metadata below; this field audits search recall, not final-matrix absence.",
+  "method_note": "The 120 scholarly rows are a balanced scoping comparison selected from title/abstract metadata. The authoritative supplement is separately labeled. Claim-level conclusions rely on the smaller close-read and official evidence set identified in the report."
+}

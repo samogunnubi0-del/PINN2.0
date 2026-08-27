@@ -1,0 +1,316 @@
+{
+  "generated_at_utc": "2026-08-12T15:57:45Z",
+  "discovery_index": "OpenAlex",
+  "searches": [
+    {
+      "category": "Ac-225 production and supply",
+      "questions": "Q1,Q3,Q4",
+      "query": "actinium-225 production accelerator reactor radium thorium",
+      "limit": 80
+    },
+    {
+      "category": "Ra-226 fast-neutron pathway",
+      "questions": "Q1,Q2,Q3,Q4,Q5,Q10",
+      "query": "radium-226 neutron actinium-225 radium-225 production",
+      "limit": 80
+    },
+    {
+      "category": "Berkeley experiment and neutron spectrum",
+      "questions": "Q4,Q10",
+      "query": "deuteron breakup beryllium neutron spectrum radium-226 actinium-225 Morrell",
+      "limit": 50
+    },
+    {
+      "category": "Ac-227 impurity and radionuclidic purity",
+      "questions": "Q2,Q3,Q4",
+      "query": "actinium-227 impurity actinium-225 production radionuclidic purity",
+      "limit": 60
+    },
+    {
+      "category": "Depletion and transport solvers",
+      "questions": "Q1,Q4,Q5,Q10",
+      "query": "ORIGEN OpenMC SERPENT depletion isotope inventory validation",
+      "limit": 90
+    },
+    {
+      "category": "Nuclear depletion ML surrogates",
+      "questions": "Q5,Q6,Q7",
+      "query": "machine learning surrogate nuclear depletion nuclide inventory",
+      "limit": 100
+    },
+    {
+      "category": "Nuclear dynamics and recurrent models",
+      "questions": "Q5,Q6",
+      "query": "LSTM recurrent neural network nuclear reactor dynamics surrogate",
+      "limit": 90
+    },
+    {
+      "category": "Physics-informed stiff dynamics",
+      "questions": "Q4,Q5,Q6",
+      "query": "physics-informed neural network stiff ODE chemical kinetics surrogate",
+      "limit": 90
+    },
+    {
+      "category": "Nuclear surrogate optimization",
+      "questions": "Q1,Q2,Q7,Q9",
+      "query": "machine learning surrogate multi-objective optimization nuclear reactor",
+      "limit": 100
+    },
+    {
+      "category": "Surrogate-assisted optimization metrics",
+      "questions": "Q7,Q9",
+      "query": "surrogate-assisted optimization ranking regret top-k candidate selection",
+      "limit": 80
+    },
+    {
+      "category": "Uncertainty and nuclear data",
+      "questions": "Q3,Q4,Q8,Q10",
+      "query": "uncertainty quantification nuclear depletion cross section isotope inventory",
+      "limit": 90
+    },
+    {
+      "category": "OOD and scientific surrogate reliability",
+      "questions": "Q8,Q9",
+      "query": "out-of-distribution detection scientific machine learning surrogate reliability uncertainty",
+      "limit": 90
+    },
+    {
+      "category": "Closest depletion surrogate competitors",
+      "questions": "Q5,Q6,Q7,Q9",
+      "query": "deep learning nuclear fuel transmutation ORIGEN Cyclus surrogate",
+      "limit": 60
+    },
+    {
+      "category": "Closest depletion surrogate competitors",
+      "questions": "Q5,Q6,Q7,Q9",
+      "query": "Gaussian process discharged fuel nuclide composition surrogate SERPENT",
+      "limit": 50
+    },
+    {
+      "category": "Closest depletion surrogate competitors",
+      "questions": "Q5,Q6,Q7,Q9",
+      "query": "inverse depletion artificial neural network used nuclear fuel",
+      "limit": 60
+    },
+    {
+      "category": "Closest depletion surrogate competitors",
+      "questions": "Q5,Q6,Q7,Q9",
+      "query": "ANICCA irradiation module multi-task learning CRAM SERPENT2",
+      "limit": 40
+    },
+    {
+      "category": "Closest recurrent nuclear competitors",
+      "questions": "Q5,Q6,Q8",
+      "query": "physics constrained CNN LSTM radionuclide activity nuclear",
+      "limit": 60
+    },
+    {
+      "category": "Medical isotope optimization",
+      "questions": "Q1,Q2,Q3,Q7,Q9",
+      "query": "medical isotope production irradiation schedule optimization surrogate machine learning",
+      "limit": 80
+    },
+    {
+      "category": "Ra-226 nuclear data",
+      "questions": "Q3,Q4,Q10",
+      "query": "radium-226 n 2n cross section neutron measurement",
+      "limit": 60
+    },
+    {
+      "category": "Deuteron breakup neutron source",
+      "questions": "Q3,Q4,Q10",
+      "query": "thick target deuteron breakup beryllium neutron spectrum measurement",
+      "limit": 70
+    },
+    {
+      "category": "Stiff reaction-network surrogates",
+      "questions": "Q4,Q5,Q6",
+      "query": "stiff nuclear reaction network neural surrogate solver",
+      "limit": 60
+    },
+    {
+      "category": "Surrogate validation and OOD",
+      "questions": "Q8,Q9",
+      "query": "surrogate model validation out of distribution uncertainty engineering simulation",
+      "limit": 70
+    },
+    {
+      "category": "Ac-225 production and supply",
+      "questions": "Q1,Q2,Q3,Q4",
+      "query": "actinium-225 production review radium-226 thorium-232 quality control",
+      "limit": 80
+    },
+    {
+      "category": "Ac-227 impurity and radionuclidic purity",
+      "questions": "Q2,Q3,Q4",
+      "query": "actinium-227 impurity in actinium-225 measurement dosimetry radionuclidic purity",
+      "limit": 70
+    },
+    {
+      "category": "Ac-225 separation and generators",
+      "questions": "Q1,Q2,Q3,Q10",
+      "query": "radium-225 actinium-225 separation generator production",
+      "limit": 70
+    },
+    {
+      "category": "Medical-isotope scheduling",
+      "questions": "Q1,Q2,Q3,Q7,Q9",
+      "query": "medical radionuclide production irradiation cooling time optimization",
+      "limit": 70
+    },
+    {
+      "category": "Ra-226 nuclear data",
+      "questions": "Q3,Q4,Q10",
+      "query": "226Ra n 2n 225Ra cross section",
+      "limit": 60
+    },
+    {
+      "category": "Deuteron breakup neutron source",
+      "questions": "Q3,Q4,Q10",
+      "query": "deuteron breakup neutron spectra beryllium thick target activation foil time of flight",
+      "limit": 90
+    },
+    {
+      "category": "Nuclear data for isotope production",
+      "questions": "Q3,Q4,Q10",
+      "query": "nuclear data medical radioisotope production cross sections uncertainty",
+      "limit": 90
+    },
+    {
+      "category": "Evaluated neutron data libraries",
+      "questions": "Q3,Q4,Q10",
+      "query": "TENDL ENDF EXFOR IRDFF nuclear reaction data evaluation neutron",
+      "limit": 80
+    },
+    {
+      "category": "Neutron-spectrum measurement",
+      "questions": "Q3,Q4,Q10",
+      "query": "activation foil neutron spectrum unfolding measurement",
+      "limit": 80
+    },
+    {
+      "category": "Depletion solver validation",
+      "questions": "Q1,Q4,Q5,Q10",
+      "query": "ORIGEN depletion validation isotopic assay spent fuel",
+      "limit": 90
+    },
+    {
+      "category": "Depletion solver validation",
+      "questions": "Q1,Q4,Q5,Q10",
+      "query": "OpenMC depletion validation nuclide inventory",
+      "limit": 70
+    },
+    {
+      "category": "Depletion solver validation",
+      "questions": "Q1,Q4,Q5,Q10",
+      "query": "Serpent depletion validation nuclide inventory burnup",
+      "limit": 80
+    },
+    {
+      "category": "Depletion numerical methods",
+      "questions": "Q1,Q4,Q5",
+      "query": "CRAM burnup depletion matrix exponential solver",
+      "limit": 70
+    },
+    {
+      "category": "Depletion numerical methods",
+      "questions": "Q1,Q4,Q5",
+      "query": "Bateman equations isotope depletion activation solver",
+      "limit": 70
+    },
+    {
+      "category": "Activation solver validation",
+      "questions": "Q1,Q4,Q5,Q10",
+      "query": "FISPACT activation code validation nuclear inventory",
+      "limit": 70
+    },
+    {
+      "category": "Nuclear depletion ML surrogates",
+      "questions": "Q5,Q6,Q7,Q8,Q9",
+      "query": "neural network surrogate nuclide inventory depletion transmutation",
+      "limit": 100
+    },
+    {
+      "category": "Nuclear depletion ML surrogates",
+      "questions": "Q5,Q6,Q7,Q8,Q9",
+      "query": "machine learning spent nuclear fuel composition surrogate",
+      "limit": 100
+    },
+    {
+      "category": "Nuclear dynamics and recurrent models",
+      "questions": "Q5,Q6,Q8",
+      "query": "recurrent neural network reactor transient surrogate nuclear",
+      "limit": 90
+    },
+    {
+      "category": "Physics-informed nuclear dynamics",
+      "questions": "Q5,Q6,Q8",
+      "query": "physics informed neural network nuclear reactor kinetics surrogate",
+      "limit": 90
+    },
+    {
+      "category": "Stiff reaction-network surrogates",
+      "questions": "Q4,Q5,Q6,Q8",
+      "query": "nuclear reaction network neural surrogate stiff equations",
+      "limit": 80
+    },
+    {
+      "category": "Nuclear surrogate optimization",
+      "questions": "Q1,Q2,Q7,Q9",
+      "query": "surrogate assisted optimization nuclear reactor design",
+      "limit": 100
+    },
+    {
+      "category": "Nuclear surrogate optimization",
+      "questions": "Q1,Q2,Q7,Q9",
+      "query": "multiobjective optimization nuclear engineering surrogate model",
+      "limit": 100
+    },
+    {
+      "category": "Accelerator surrogate optimization",
+      "questions": "Q1,Q2,Q7,Q9",
+      "query": "machine learning surrogate optimization particle accelerator",
+      "limit": 90
+    },
+    {
+      "category": "Neutron-source optimization",
+      "questions": "Q1,Q2,Q7,Q9",
+      "query": "Bayesian optimization neutron source design Monte Carlo surrogate",
+      "limit": 80
+    },
+    {
+      "category": "Isotope-production optimization",
+      "questions": "Q1,Q2,Q3,Q7,Q9",
+      "query": "machine learning optimization isotope production irradiation schedule",
+      "limit": 80
+    },
+    {
+      "category": "Scientific ML reliability",
+      "questions": "Q8,Q9",
+      "query": "out-of-distribution detection scientific machine learning physics surrogate",
+      "limit": 90
+    },
+    {
+      "category": "Scientific ML reliability",
+      "questions": "Q8,Q9",
+      "query": "conformal prediction scientific machine learning engineering surrogate",
+      "limit": 80
+    },
+    {
+      "category": "Scientific ML reliability",
+      "questions": "Q8,Q9",
+      "query": "model validation uncertainty nuclear machine learning surrogate",
+      "limit": 90
+    },
+    {
+      "category": "Surrogate optimization reliability",
+      "questions": "Q7,Q8,Q9",
+      "query": "surrogate error optimization regret ranking candidate selection",
+      "limit": 80
+    }
+  ],
+  "unique_candidates": 2281,
+  "with_doi": 2167,
+  "peer_review_like": 1742,
+  "note": "Candidate discovery only. Claim-level screening and close reading are separate."
+}

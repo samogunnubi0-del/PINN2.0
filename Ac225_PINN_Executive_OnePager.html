@@ -1,633 +1,944 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ac-225 AI Project — Sam Ogunnubi | Looking for Collaborators</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #142033;
-    --ink-soft: #3d4f66;
-    --mute: #6b7c90;
-    --paper: #fbfaf7;
-    --panel: #ffffff;
-    --line: #d7dee8;
-    --navy: #16324f;
-    --steel: #2a5f7a;
-    --signal: #b42318;
-    --signal-soft: #f8ebe8;
-    --help: #0b5f4b;
-    --help-soft: #e8f5f0;
-    --help-line: #9bc9b8;
-    --stat: #eef3f8;
-    --serif: "Fraunces", Georgia, serif;
-    --sans: "Source Sans 3", "Segoe UI", sans-serif;
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="August 2026 research update on Sam Ogunnubi's physics-informed recurrent surrogate for a reduced Ra-226 to Ac-225 transmutation benchmark.">
+  <title>Ac-225 Surrogate Research Update | Sam Ogunnubi</title>
+  <style>
+    :root {
+      --ink: #15212b;
+      --muted: #566572;
+      --paper: #ffffff;
+      --canvas: #e9eef1;
+      --line: #cfd8de;
+      --line-dark: #aebcc6;
+      --red: #b11f2e;
+      --red-soft: #f8e9eb;
+      --teal: #006b6e;
+      --teal-soft: #e2f1f0;
+      --blue: #275d8c;
+      --blue-soft: #e8f0f7;
+      --gold: #a86b0a;
+      --gold-soft: #fbf1dc;
+      --gray-soft: #f3f6f7;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background:
-      radial-gradient(1200px 500px at 10% -10%, #dce8f2 0%, transparent 55%),
-      radial-gradient(900px 420px at 100% 0%, #e8f0e9 0%, transparent 50%),
-      #e8eef4;
-    color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.45;
-    -webkit-font-smoothing: antialiased;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  .wrap {
-    width: min(920px, calc(100% - 2rem));
-    margin: 1.5rem auto 2.5rem;
-  }
+    html {
+      background: var(--canvas);
+    }
 
-  .page {
-    background: var(--paper);
-    border: 1px solid #c9d4e1;
-    box-shadow: 0 18px 50px rgba(20, 32, 51, 0.12);
-    padding: 1.35rem 1.45rem 1.2rem;
-  }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.42;
+    }
 
-  /* Masthead */
-  .masthead {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: flex-end;
-    padding-bottom: 0.85rem;
-    border-bottom: 2px solid var(--navy);
-  }
-  .kicker {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--steel);
-  }
-  .name {
-    font-family: var(--serif);
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.1;
-    margin-top: 0.15rem;
-  }
-  .meta {
-    text-align: right;
-    font-size: 0.82rem;
-    color: var(--mute);
-  }
-  .meta .affil {
-    color: var(--signal);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
-  }
-  .meta a { color: var(--steel); font-weight: 600; text-decoration: none; }
-  .meta a:hover { text-decoration: underline; }
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
 
-  /* Hero */
-  .hero { margin: 0.95rem 0 0.85rem; }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
-    line-height: 1.18;
-    color: var(--navy);
-    max-width: 34ch;
-  }
-  .hero .plain {
-    margin-top: 0.55rem;
-    font-size: 1.02rem;
-    color: var(--ink-soft);
-    max-width: 62ch;
-  }
+    button,
+    .action-link {
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--paper);
+      font: inherit;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  /* Plain-language strip */
-  .eli5 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.65rem;
-    margin: 0.85rem 0 1rem;
-  }
-  .eli5 .step {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--steel);
-    padding: 0.7rem 0.75rem 0.75rem;
-  }
-  .eli5 .n {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--steel);
-  }
-  .eli5 h3 {
-    font-family: var(--serif);
-    font-size: 1rem;
-    margin: 0.2rem 0 0.3rem;
-    color: var(--navy);
-  }
-  .eli5 p { font-size: 0.88rem; color: var(--ink-soft); }
+    button:hover,
+    .action-link:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
 
-  /* Stats */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.55rem;
-    margin-bottom: 1rem;
-  }
-  .stat {
-    background: var(--stat);
-    border: 1px solid var(--line);
-    padding: 0.65rem 0.55rem;
-    text-align: center;
-  }
-  .stat .num {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1;
-  }
-  .stat .lbl {
-    margin-top: 0.28rem;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--mute);
-  }
+    .actions button {
+      border-color: var(--red);
+      color: #ffffff;
+      background: var(--red);
+    }
 
-  /* Sections */
-  .section { margin: 0.85rem 0; }
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 0.35rem;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-  .section-label::before {
-    content: "";
-    width: 0.7rem;
-    height: 2px;
-    background: var(--navy);
-  }
-  p { color: var(--ink-soft); margin-bottom: 0.45rem; font-size: 0.92rem; }
-  p strong { color: var(--ink); }
-  ul { margin: 0.2rem 0 0.5rem 1.15rem; }
-  li { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 0.28rem; }
-  li strong { color: var(--ink); }
-  code {
-    font-family: ui-monospace, Consolas, monospace;
-    font-size: 0.84em;
-    background: #eef2f6;
-    padding: 0.05em 0.28em;
-    border-radius: 3px;
-  }
+    .actions button:hover {
+      border-color: var(--red-dark, #8f1723);
+      color: #ffffff;
+      background: #8f1723;
+    }
 
-  .two-col {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 0.75rem;
-  }
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    padding: 0.7rem 0.8rem;
-  }
-  .panel h4 {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 0.35rem;
-  }
+    button:focus-visible,
+    .action-link:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #efc765;
+      outline-offset: 2px;
+    }
 
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.84rem;
-    margin: 0.35rem 0 0.5rem;
-  }
-  th, td {
-    border: 1px solid var(--line);
-    padding: 0.4rem 0.5rem;
-    text-align: left;
-    vertical-align: top;
-  }
-  th {
-    background: var(--stat);
-    color: var(--navy);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .badge {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.12rem 0.35rem;
-    border-radius: 2px;
-  }
-  .ok { background: #ddf5e8; color: #146c43; }
-  .note { background: #fff1d6; color: #8a5a00; }
+    .actions {
+      width: min(1050px, calc(100% - 28px));
+      margin: 18px auto 10px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
 
-  /* Mentor */
-  .mentor {
-    background: var(--signal-soft);
-    border: 1px solid #e8b8b2;
-    border-left: 4px solid var(--signal);
-    padding: 0.7rem 0.85rem;
-    margin: 0.75rem 0;
-  }
-  .mentor h4 {
-    color: var(--signal);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
-  }
-  .mentor p { color: #6a2a24; margin: 0; font-size: 0.88rem; }
+    .sheet {
+      width: min(1050px, calc(100% - 28px));
+      min-height: 11in;
+      margin: 0 auto 26px;
+      padding: 36px 42px 28px;
+      border: 1px solid #dbe2e6;
+      background: var(--paper);
+      box-shadow: 0 8px 28px rgba(25, 42, 54, 0.13);
+    }
 
-  /* HELP CTA — visual focus */
-  .help {
-    margin-top: 1rem;
-    background:
-      linear-gradient(135deg, #0b5f4b 0%, #147a62 48%, #1b6b7a 100%);
-    color: #f4fffb;
-    padding: 1.05rem 1.1rem 1rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .help::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: -50px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    pointer-events: none;
-  }
-  .help .tag {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    background: rgba(255,255,255,0.16);
-    padding: 0.22rem 0.5rem;
-    margin-bottom: 0.45rem;
-  }
-  .help h2 {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    line-height: 1.2;
-    margin-bottom: 0.4rem;
-    max-width: 28ch;
-  }
-  .help .lead {
-    color: #ddf5ee;
-    font-size: 0.95rem;
-    max-width: 60ch;
-    margin-bottom: 0.75rem;
-  }
-  .help-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 0.75rem;
-    position: relative;
-    z-index: 1;
-  }
-  .need-list {
-    list-style: none;
-    margin: 0;
-    display: grid;
-    gap: 0.35rem;
-  }
-  .need-list li {
-    color: #eefaf6;
-    font-size: 0.88rem;
-    margin: 0;
-    padding: 0.45rem 0.55rem;
-    background: rgba(0,0,0,0.14);
-    border-left: 3px solid #8fe0c6;
-  }
-  .need-list strong { color: #fff; }
-  .actions {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.22);
-    padding: 0.7rem 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    justify-content: center;
-  }
-  .actions p {
-    color: #ddf5ee;
-    font-size: 0.82rem;
-    margin: 0;
-  }
-  .btn {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.55rem 0.75rem;
-    background: #ffffff;
-    color: var(--help);
-    border: none;
-  }
-  .btn:hover { filter: brightness(0.97); }
-  .btn.ghost {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.55);
-  }
-  .btn.ghost:hover { background: rgba(255,255,255,0.08); }
+    .color-rule {
+      display: grid;
+      grid-template-columns: 4fr 2fr 1fr 1fr;
+      height: 6px;
+      margin: -36px -42px 26px;
+    }
 
-  .footnote {
-    margin-top: 0.85rem;
-    padding-top: 0.55rem;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.75rem;
-    color: var(--mute);
-  }
-  .footnote a { color: var(--steel); }
+    .color-rule span:nth-child(1) { background: var(--red); }
+    .color-rule span:nth-child(2) { background: var(--teal); }
+    .color-rule span:nth-child(3) { background: var(--gold); }
+    .color-rule span:nth-child(4) { background: var(--blue); }
 
-  @media (max-width: 760px) {
-    .eli5, .stats, .two-col, .help-grid, .masthead { grid-template-columns: 1fr; display: grid; }
-    .meta { text-align: left; }
-    .hero h1 { max-width: none; }
-  }
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
 
-  @media print {
-    body { background: white; }
-    .wrap { width: 100%; margin: 0; }
-    .page { box-shadow: none; border: none; padding: 0.35in; }
-    .btn, .btn.ghost { border: 1px solid #333 !important; color: #000 !important; background: #fff !important; }
-    .help { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-</style>
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin: 0;
+      font-size: 31px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 790px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .identity {
+      min-width: 218px;
+      padding: 11px 0 11px 17px;
+      border-left: 4px solid var(--red);
+      text-align: left;
+    }
+
+    .identity strong,
+    .identity span {
+      display: block;
+    }
+
+    .identity strong {
+      font-size: 18px;
+      line-height: 1.15;
+    }
+
+    .identity span {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .status-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .status {
+      padding: 4px 7px;
+      border: 1px solid var(--line-dark);
+      border-radius: 3px;
+      color: #34444f;
+      background: var(--gray-soft);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .status.complete {
+      border-color: #84b9b6;
+      color: #075a5c;
+      background: var(--teal-soft);
+    }
+
+    .claim-banner {
+      margin: 18px 0 0;
+      padding: 13px 15px;
+      border-top: 1px solid #b8d8d5;
+      border-right: 1px solid #b8d8d5;
+      border-bottom: 1px solid #b8d8d5;
+      border-left: 5px solid var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .claim-banner strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #064f51;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .claim-banner p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.42;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 20px 0 0;
+      padding: 0 14px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #f7f9fa;
+    }
+
+    .metric {
+      position: relative;
+      min-width: 0;
+      padding: 18px 15px 15px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric::before {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      width: 38px;
+      height: 4px;
+      background: var(--red);
+      content: "";
+    }
+
+    .metric:first-child::before { left: 0; }
+    .metric:nth-child(2)::before { background: var(--blue); }
+    .metric:nth-child(3)::before { background: var(--teal); }
+    .metric:nth-child(4)::before { background: var(--gold); }
+
+    .metric:first-child {
+      padding-left: 0;
+    }
+
+    .metric:last-child {
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    .metric-value {
+      display: block;
+      color: var(--red);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .metric:nth-child(2) .metric-value { color: var(--blue); }
+    .metric:nth-child(3) .metric-value { color: var(--teal); }
+    .metric:nth-child(4) .metric-value { color: var(--gold); }
+
+    .metric-label {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .metric-note {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .method-strip {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 28px;
+      margin-top: 22px;
+    }
+
+    section {
+      break-inside: avoid;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-dark);
+      color: #1b3447;
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 13px 0 6px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 9px;
+    }
+
+    .compact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .compact-list li {
+      position: relative;
+      margin: 0;
+      padding: 0 0 7px 15px;
+    }
+
+    .compact-list li::before {
+      position: absolute;
+      top: 7px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      content: "";
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 10px 0 14px;
+      border: 1px solid var(--line);
+    }
+
+    .workflow div {
+      position: relative;
+      min-width: 0;
+      padding: 11px 8px 9px;
+      border-top: 3px solid var(--teal);
+      border-right: 1px solid var(--line);
+      background: var(--gray-soft);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .workflow div:last-child {
+      border-right: 0;
+    }
+
+    .workflow div:nth-child(2) { border-top-color: var(--blue); }
+    .workflow div:nth-child(3) { border-top-color: var(--gold); }
+    .workflow div:nth-child(4) { border-top-color: var(--red); }
+
+    .bar-chart {
+      margin: 4px 0 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 95px minmax(90px, 1fr) 54px;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    .bar-label {
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .bar-track {
+      height: 13px;
+      overflow: hidden;
+      background: #e8edef;
+    }
+
+    .bar {
+      height: 100%;
+      min-width: 2px;
+    }
+
+    .bar.lstm { width: 32.2%; background: var(--teal); }
+    .bar.mlp { width: 97.1%; background: var(--blue); }
+
+    .bar-value {
+      font-size: 11px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .delta-note {
+      padding: 8px 10px;
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      font-size: 11px;
+    }
+
+    .claim-box {
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--teal);
+      background: #fbfdfd;
+    }
+
+    .claim-box.caution {
+      margin-top: 9px;
+      border-left-color: var(--gold);
+      background: #fffcf5;
+    }
+
+    .claim-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .claim-box p {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.38;
+    }
+
+    .distribution {
+      margin: 10px 0 0;
+    }
+
+    .dist-row {
+      display: grid;
+      grid-template-columns: 68px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0;
+    }
+
+    .dist-label {
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .stack {
+      display: flex;
+      width: 100%;
+      height: 14px;
+      overflow: hidden;
+      border: 1px solid #d2dadd;
+      background: #eef2f3;
+    }
+
+    .seg-3 { background: var(--teal); }
+    .seg-10 { background: var(--blue); }
+    .seg-50 { background: var(--gold); }
+    .seg-over { background: var(--red); }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 12px;
+      margin: 8px 0 0 76px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+    }
+
+    .risk-note {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-left: 4px solid var(--red);
+      background: var(--red-soft);
+      color: #5c252c;
+      font-size: 10px;
+      line-height: 1.38;
+    }
+
+    .bottom-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 28px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .ask {
+      padding: 12px 14px;
+      border-left: 5px solid var(--red);
+      background: var(--gray-soft);
+    }
+
+    .ask h2 {
+      margin-bottom: 8px;
+      border: 0;
+      padding: 0;
+    }
+
+    .ask p {
+      margin-bottom: 7px;
+      font-size: 11px;
+    }
+
+    .ask p:last-child {
+      margin-bottom: 0;
+    }
+
+    .next-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 12px;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
+      list-style: none;
+    }
+
+    .next-list li {
+      position: relative;
+      min-height: 28px;
+      padding-left: 26px;
+      font-size: 10px;
+      line-height: 1.35;
+      counter-increment: step;
+    }
+
+    .next-list li::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 19px;
+      height: 19px;
+      border: 1px solid var(--line-dark);
+      color: var(--blue);
+      background: var(--paper);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 18px;
+      text-align: center;
+      content: counter(step);
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-top: 19px;
+      padding-top: 11px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .contact {
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .contact a + a::before {
+      margin: 0 7px;
+      color: var(--line-dark);
+      content: "|";
+    }
+
+    @media (max-width: 760px) {
+      .sheet {
+        width: min(100% - 18px, 680px);
+        padding: 28px 24px 24px;
+      }
+
+      .actions {
+        width: min(100% - 18px, 680px);
+      }
+
+      .color-rule {
+        margin: -28px -24px 22px;
+      }
+
+      .masthead,
+      .main-grid,
+      .bottom-band,
+      footer {
+        grid-template-columns: 1fr;
+      }
+
+      .identity,
+      .contact {
+        text-align: left;
+      }
+
+      .identity {
+        max-width: 320px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metric:nth-child(2) {
+        border-right: 0;
+      }
+
+      .metric:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metric:nth-child(3) {
+        padding-left: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .actions {
+        justify-content: stretch;
+      }
+
+      .actions > * {
+        flex: 1;
+        text-align: center;
+      }
+
+      .metrics,
+      .workflow,
+      .next-list {
+        grid-template-columns: 1fr;
+      }
+
+      .metric,
+      .metric:first-child,
+      .metric:nth-child(3) {
+        padding: 11px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .workflow div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .workflow div:last-child {
+        border-bottom: 0;
+      }
+
+      .legend {
+        margin-left: 0;
+      }
+    }
+
+    @page {
+      size: Letter portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 8.5in;
+        min-height: 11in;
+        background: #ffffff;
+      }
+
+      body {
+        font-size: 8.3pt;
+        line-height: 1.3;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .actions {
+        display: none;
+      }
+
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0;
+        padding: 0.34in 0.43in 0.28in;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .color-rule {
+        margin: -0.34in -0.43in 0.19in;
+      }
+
+      h1 { font-size: 20pt; }
+      .subtitle { font-size: 9.6pt; }
+      .claim-banner { margin-top: 0.13in; padding: 0.08in 0.1in; }
+      .claim-banner p { font-size: 8.7pt; }
+      .metrics { margin-top: 0.13in; }
+      .metric { padding-top: 0.09in; padding-bottom: 0.08in; }
+      .metric-value { font-size: 18pt; }
+      .metric-label { font-size: 7.7pt; }
+      .metric-note, .method-strip { font-size: 6.6pt; }
+      .main-grid { gap: 0.2in; margin-top: 0.14in; }
+      .bottom-band { gap: 0.2in; margin-top: 0.13in; padding-top: 0.11in; }
+      h2 { margin-bottom: 0.06in; padding-bottom: 0.03in; font-size: 10pt; }
+      h3 { margin-top: 0.08in; margin-bottom: 0.03in; font-size: 6.8pt; }
+      p { margin-bottom: 0.05in; }
+      .compact-list li { padding-bottom: 0.035in; }
+      .workflow { margin: 0.05in 0 0.08in; }
+      .workflow div { padding: 0.05in 0.04in; font-size: 6.3pt; }
+      .bar-row { margin: 0.045in 0; }
+      .delta-note, .claim-box p, .ask p { font-size: 6.8pt; }
+      .claim-box, .claim-box.caution { padding: 0.06in 0.07in; }
+      .dist-row { margin: 0.045in 0; }
+      .risk-note { margin-top: 0.06in; padding: 0.05in 0.06in; font-size: 6.3pt; }
+      .ask { padding: 0.07in 0.09in; }
+      .next-list { gap: 0.04in 0.08in; }
+      .next-list li { min-height: 0.19in; font-size: 6.4pt; }
+      footer { margin-top: 0.11in; padding-top: 0.06in; font-size: 6pt; }
+      .contact { font-size: 6.8pt; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <article class="page">
+  <nav class="actions" aria-label="Document actions">
+    <button type="button" onclick="window.print()">Print / PDF</button>
+    <a class="action-link" href="mailto:sam.ogunnubi0@gmail.com">Email Sam</a>
+    <a class="action-link" href="https://github.com/samogunnubi0-del/PINN2.0">View project</a>
+  </nav>
+
+  <main class="sheet">
+    <div class="color-rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
     <header class="masthead">
       <div>
-        <div class="kicker">Student research brief · Seeking collaborators</div>
-        <div class="name">Sam Ogunnubi</div>
+        <p class="eyebrow">Student research update | August 11, 2026</p>
+        <h1>Physics-Informed Surrogate Modeling for Ra-226 to Ac-225 Transmutation</h1>
+        <p class="subtitle">A computational study of whether a recurrent neural model can reproduce a reduced five-nuclide transmutation system more accurately than a matched non-recurrent control. The long-term goal is faster, auditable screening for Ac-225 production research.</p>
+        <div class="status-line" aria-label="Project status">
+          <span class="status complete">V3 seed-42 run complete</span>
+          <span class="status">Computational proof of concept</span>
+          <span class="status">External validation needed</span>
+        </div>
       </div>
-      <div class="meta">
-        <div class="affil">NCSU ARTISANS Lab mentorship</div>
-        <div>Computational physics + machine learning</div>
-        <div><a href="https://github.com/samogunnubi0-del/PINN2.0">github.com/samogunnubi0-del/PINN2.0</a></div>
+      <div class="identity">
+        <strong>Sam Ogunnubi</strong>
+        <span>12th-grade student researcher</span>
+        <span>Glen Burnie High School | AACPS | Maryland, USA</span>
+        <span>Computational nuclear engineering and machine learning</span>
       </div>
     </header>
 
-    <section class="hero">
-      <h1>Can AI help make a scarce cancer-therapy isotope faster to plan?</h1>
-      <p class="plain">
-        I’m building a physics-constrained neural network that predicts how
-        <strong>Actinium-225 (Ac-225)</strong> — a rare isotope used in targeted cancer therapy —
-        builds up when radium is irradiated. The goal: keep the physics honest, run thousands of
-        “what-if” plans in milliseconds, and share the work so others can help improve it.
-      </p>
-    </section>
+    <div class="claim-banner">
+      <strong>Current evidence-based conclusion</strong>
+      <p>On a frozen synthetic benchmark, the seed-42 V3 LSTM achieved a 0.97% worst-mesh median Ac-225 endpoint error and outperformed a parameter-matched MLP on the predeclared paired median criterion. A hidden test using intentionally different conditions reached a 1.56% median point estimate, but its uncertainty interval did not establish a universal below-3% guarantee.</p>
+    </div>
 
-    <section class="eli5" aria-label="Plain-language overview">
-      <div class="step">
-        <div class="n">In plain English</div>
-        <h3>The need</h3>
-        <p>Ac-225 can destroy cancer cells with alpha particles, but the world makes very little of it. Planning production means lots of slow math.</p>
+    <div class="metrics" aria-label="Headline V3 results">
+      <div class="metric">
+        <span class="metric-value">0.97%</span>
+        <span class="metric-label">Matched LSTM median</span>
+        <span class="metric-note">111 positive Ac-225 cases; worst of four mesh medians</span>
       </div>
-      <div class="step">
-        <div class="n">What I built</div>
-        <h3>An AI “shortcut”</h3>
-        <p>A model that learns from a trusted physics simulator, then answers similar questions much faster — without inventing impossible mass.</p>
+      <div class="metric">
+        <span class="metric-value">2.91%</span>
+        <span class="metric-label">Matched MLP median</span>
+        <span class="metric-note">Same seed, data contract, inputs, schedule, and tests</span>
       </div>
-      <div class="step">
-        <div class="n">Why it matters</div>
-        <h3>Faster design sweeps</h3>
-        <p>Engineers could scan many flux / time options quickly, then verify favorites with full solvers — not replace the lab.</p>
+      <div class="metric">
+        <span class="metric-value">-0.63 pp</span>
+        <span class="metric-label">Paired median difference</span>
+        <span class="metric-note">95% CI: -1.09 to -0.30 percentage points; favors LSTM</span>
       </div>
-    </section>
+      <div class="metric">
+        <span class="metric-value">1.56%</span>
+        <span class="metric-label">Hidden shifted-test median</span>
+        <span class="metric-note">Different conditions from training; 95% CI: 0.69% to 7.60%, so this is not a guarantee</span>
+      </div>
+    </div>
+    <p class="method-strip">Five-nuclide reduced system | 1,400 synthetic training cases | 6,000 epochs | seed 42 | meshes 32, 48, 64, 96 | NVIDIA A100</p>
 
-    <div class="stats" aria-label="Key results">
-      <div class="stat">
-        <div class="num">5.12%</div>
-        <div class="lbl">Ac-225 error vs physics solver</div>
+    <div class="main-grid">
+      <div>
+        <section>
+          <h2>What I Built and Verified</h2>
+          <div class="workflow" aria-label="Research workflow">
+            <div>Evaluated nuclear inputs</div>
+            <div>Exact and Radau trajectories</div>
+            <div>Matched LSTM and MLP</div>
+            <div>Frozen tests and audit</div>
+          </div>
+          <ul class="compact-list">
+            <li><strong>Physics model:</strong> a reduced Ra-226 / Ra-227 / Ac-227 / Ra-225 / Ac-225 chain with spectrum-aware reaction inputs and Bateman dynamics.</li>
+            <li><strong>V3 architecture:</strong> an LSTM sequence surrogate constrained by initial conditions, endpoint objectives, atom-budget behavior, and physics residuals.</li>
+            <li><strong>Controlled comparison:</strong> 818,442 LSTM parameters versus 797,706 MLP parameters, a 2.53% budget difference, with verified paired scenarios and provenance.</li>
+            <li><strong>Engineering audit:</strong> 16 documented defects were repaired or isolated, including Jacobian, shielding, loss scaling, timing-input, random-stream, reporting, and Colab-resume failures.</li>
+            <li><strong>Checkpoint replay:</strong> local evaluation reproduced the cloud results; exact Bateman propagation and FP64 Radau agreed near numerical precision for this reduced system.</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 18px;">
+          <h2>Matched Architecture Result</h2>
+          <div class="bar-chart" role="img" aria-label="Worst-mesh median Ac-225 endpoint error: LSTM 0.97 percent and MLP 2.91 percent">
+            <div class="bar-row">
+              <span class="bar-label">V3 LSTM</span>
+              <div class="bar-track"><div class="bar lstm"></div></div>
+              <span class="bar-value">0.97%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Matched MLP</span>
+              <div class="bar-track"><div class="bar mlp"></div></div>
+              <span class="bar-value">2.91%</span>
+            </div>
+          </div>
+          <p class="delta-note"><strong>Why this comparison matters:</strong> V2 used a different scenario draw and scoring pipeline. The matched MLP is the valid control for testing whether V3's recurrent structure helped under this protocol.</p>
+        </section>
       </div>
-      <div class="stat">
-        <div class="num">~1.65 ms</div>
-        <div class="lbl">Per scenario (batched CPU)</div>
-      </div>
-      <div class="stat">
-        <div class="num">~83×</div>
-        <div class="lbl">Faster than eager loop</div>
-      </div>
-      <div class="stat">
-        <div class="num">90.9%</div>
-        <div class="lbl">Uncertainty coverage target hit</div>
+
+      <div>
+        <section>
+          <h2>Scientific Claim Boundary</h2>
+          <div class="claim-box">
+            <strong>Supported by the completed experiment</strong>
+            <p>For seed 42 on this reduced synthetic benchmark, the recurrent V3 model met the 1-3% median point-estimate target on both untouched evaluations and beat the matched pointwise control on the declared paired median criterion.</p>
+          </div>
+          <div class="claim-box caution">
+            <strong>Not yet supported</strong>
+            <p>Universal 1-3% prediction accuracy, real reactor or isotope-production accuracy, general LSTM superiority across seeds, clinical validity, or superiority to exact Bateman, ORIGEN, or OpenMC calculations.</p>
+          </div>
+        </section>
+
+        <section style="margin-top: 18px;">
+          <h2>The Median Is Not the Whole Story</h2>
+          <p style="font-size: 11px; color: var(--muted);">Distribution of each positive scenario's worst error across four evaluation meshes:</p>
+          <div class="distribution">
+            <div class="dist-row">
+              <span class="dist-label">Matched<br>n = 111</span>
+              <div class="stack" aria-label="Matched: 64.9 percent within 3 percent, 9.9 percent from 3 to 10, 10.8 percent from 10 to 50, and 14.4 percent above 50">
+                <span class="seg-3" style="width:64.9%"></span>
+                <span class="seg-10" style="width:9.9%"></span>
+                <span class="seg-50" style="width:10.8%"></span>
+                <span class="seg-over" style="width:14.4%"></span>
+              </div>
+            </div>
+            <div class="dist-row">
+              <span class="dist-label">Locked<br>n = 28</span>
+              <div class="stack" aria-label="Locked: 64.3 percent within 3 percent, 7.1 percent from 3 to 10, 28.6 percent from 10 to 50, and none above 50">
+                <span class="seg-3" style="width:64.3%"></span>
+                <span class="seg-10" style="width:7.1%"></span>
+                <span class="seg-50" style="width:28.6%"></span>
+              </div>
+            </div>
+          </div>
+          <div class="legend" aria-label="Error band legend">
+            <span><i class="seg-3"></i>&le;3%</span>
+            <span><i class="seg-10"></i>3-10%</span>
+            <span><i class="seg-50"></i>10-50%</span>
+            <span><i class="seg-over"></i>&gt;50%</span>
+          </div>
+          <p class="risk-note"><strong>Open reliability problem:</strong> matched p95 was 99.6%, locked p95 was 31.2%, and fast-spectrum cases dominated locked failures. Rare exact-zero matched cases also produced false positives as high as 8.09 &times; 10<sup>16</sup> atoms. These failures remain visible in the report.</p>
+        </section>
       </div>
     </div>
 
-    <section class="section">
-      <div class="section-label">The problem (a little more detail)</div>
-      <p>
-        Making Ac-225 in a reactor from <strong>Ra-226</strong> requires solving the
-        <strong>Bateman equations</strong> — a stiff chain of five isotopes.
-        Some species change in minutes; others over centuries (stiffness &gt; 20,000,000:1).
-        Classic solvers are accurate but slow for large design searches.
-        Plain neural nets are fast but can break conservation laws (negative atoms, wrong mass).
-      </p>
-    </section>
+    <div class="bottom-band">
+      <section class="ask">
+        <h2>Where External Collaboration Would Help Most</h2>
+        <p><strong>Highest-value contribution:</strong> an independent ORIGEN, OpenMC/depletion, measured irradiation, or production dataset that can test transfer beyond the project's own synthetic generator.</p>
+        <p>Additional help is welcome with reaction-channel review, uncertainty propagation, fast-spectrum failure analysis, and a confirmatory multi-seed design. The present reduced exact solver is already fast; the next scientific gain is stronger realism and validation, not another claim based only on a lower training loss.</p>
+      </section>
 
-    <div class="mentor">
-      <h4>Mentorship — Jaden Palmer, NCSU ARTISANS Lab</h4>
-      <p>
-        Technical review from <strong>Jaden Palmer</strong> (PhD researcher, NC State Nuclear Engineering)
-        pushed the project toward integrated / exact physics losses, conformal uncertainty
-        (instead of MC Dropout), and a fair PI-LSTM vs baseline comparison.
-      </p>
+      <section>
+        <h2>Next Research Milestones</h2>
+        <ol class="next-list">
+          <li>Freeze V3 and do not tune on either revealed test set.</li>
+          <li>Obtain one independent high-fidelity or measured benchmark.</li>
+          <li>Investigate fast-spectrum tails and zero-production failures.</li>
+          <li>Run additional seeds only if claiming general recurrent superiority.</li>
+          <li>Document uncertainty, provenance, and all negative results.</li>
+          <li>Present V3 as a computational proof of concept until externally validated.</li>
+        </ol>
+      </section>
     </div>
 
-    <section class="section two-col">
-      <div class="panel">
-        <h4>Technical approach — PI-LSTM (Results-6)</h4>
-        <ul>
-          <li><strong>Physics-Informed LSTM</strong> with hard initial conditions + Fourier features for sharp energy thresholds.</li>
-          <li><strong><code>expmix</code> physics loss</strong> — exact / integrated constraints so the network respects stiff Bateman dynamics and mass.</li>
-          <li><strong>Distillation</strong> from a stiff Radau ODE teacher on trajectory data.</li>
-          <li><strong>Spectrum-aware σ</strong> options (JENDL-5 / EXFOR folding); Joyo σ scaling treated as sensitivity, not primary proof.</li>
-          <li><strong>Split conformal prediction</strong> for ~90% relative coverage on Ac-225.</li>
-        </ul>
+    <footer>
+      <div>
+        <strong>Metric contract:</strong> relative error = |prediction - truth| / max(|truth|, 10<sup>12</sup> atoms); positive-case reporting mask = 10<sup>10</sup> atoms. Matched evaluation contained 220 total scenarios (111 scored positive cases); shifted locked evaluation contained 60 total scenarios (28 scored positive cases). Results are from one training seed.
       </div>
-      <div class="panel">
-        <h4>What this is / isn’t</h4>
-        <p><strong>Is:</strong> a 0D (lumped) surrogate vs a stiff ODE teacher — useful for fast screening.</p>
-        <p><strong>Isn’t yet:</strong> validated against reactor assay data, a full 3D transport model, or a clinical dosing tool.</p>
-        <p style="margin-bottom:0"><strong>Still weak:</strong> Ac-227 / thermal impurity channel vs the older v2 model on some anchors.</p>
+      <div class="contact">
+        <a href="mailto:sam.ogunnubi0@gmail.com">sam.ogunnubi0@gmail.com</a>
+        <a href="https://github.com/samogunnubi0-del/PINN2.0">GitHub project</a>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="section-label">Headline benchmark (22 held-out scenarios)</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Idea in one line</th>
-            <th>Ac-225 endpoint error</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Frozen v2 MLP-PINN</strong></td>
-            <td>Earlier physics-informed network</td>
-            <td>8.18%</td>
-            <td><span class="badge note">Same test protocol</span></td>
-          </tr>
-          <tr>
-            <td><strong>PI-LSTM Results-6</strong></td>
-            <td>Current flagship (exact physics loss)</td>
-            <td><strong>5.12%</strong></td>
-            <td><span class="badge ok">Primary teacher</span></td>
-          </tr>
-          <tr>
-            <td><strong>Ablations</strong></td>
-            <td>No physics / weaker integration</td>
-            <td>Much worse</td>
-            <td><span class="badge note">Controls only</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="font-size:0.8rem;color:var(--mute);margin:0">
-        Note: a separate v2-only pipeline reports ~4.5% — different scoring, not directly comparable to the paired 8.18% figure.
-        Full write-up: <code>v3_pilstm/results/ISEF_BOARD_PACK.md</code> on GitHub.
-      </p>
-    </section>
-
-    <!-- NEW 12k GPU TEST RESULTS SECTION -->
-    <section class="section">
-      <div class="section-label">Fresh 12,000-Epoch GPU Test Results (NVIDIA A100 Colab Run)</div>
-      <p>
-        Full-scale training completed on an <strong>NVIDIA A100-SXM4 GPU (42.4 GB VRAM)</strong> using double-precision (<code>torch.float64</code>). The optimal model checkpoint was saved at <strong>Epoch 11,810</strong> during the final cosine learning rate annealing phase.
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Species / Metric</th>
-            <th>Evaluated Rows</th>
-            <th>Median Relative Error</th>
-            <th>95th Percentile (p95)</th>
-            <th>Validation Verdict</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Ra-226 (Parent Fuel)</strong></td>
-            <td>17,143</td>
-            <td><strong>5.54%</strong></td>
-            <td>0.999</td>
-            <td><span class="badge ok">Single-Digit Accuracy</span></td>
-          </tr>
-          <tr>
-            <td><strong>Ac-225 (Target Isotope)</strong></td>
-            <td>16,304</td>
-            <td><strong>9.58%</strong> (Full Dataset) / <strong>~4.5%</strong> (Canonical)</td>
-            <td>0.403</td>
-            <td><span class="badge ok">High Precision</span></td>
-          </tr>
-          <tr>
-            <td><strong>Ac-227 (Toxic Impurity)</strong></td>
-            <td>16,177</td>
-            <td><strong>10.30%</strong></td>
-            <td>0.632</td>
-            <td><span class="badge ok">Impurity Bounded</span></td>
-          </tr>
-          <tr>
-            <td><strong>Ra-225 (Intermediate)</strong></td>
-            <td>16,843</td>
-            <td><strong>11.32%</strong></td>
-            <td>0.491</td>
-            <td><span class="badge ok">Decay Tracked</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Embedded Graphs Grid -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-top: 0.6rem;">
-        <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.45rem;">
-          <h4 style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.2rem;">Parity: Predicted vs True Ac-225</h4>
-          <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/pinn_ac225_pred_vs_true.png" alt="Predicted vs True Ac-225 Yield" style="width: 100%; border: 1px solid var(--line); margin-top: 0.2rem;" />
-          <p style="font-size: 0.75rem; color: var(--mute); margin-top: 0.25rem;">
-            <strong>Parity Plot:</strong> Shows PINN predicted yields vs. empirical ODE ground-truth. Points tightly cluster along the 1:1 diagonal line, confirming high predictive fidelity across diverse neutron flux scenarios.
-          </p>
-        </div>
-
-        <div style="background: #ffffff; border: 1px solid var(--line); padding: 0.45rem;">
-          <h4 style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.2rem;">12,000-Epoch Loss Convergence</h4>
-          <img src="file:///c:/Users/ogunn/Downloads/New folder/graphs/pinn_loss_history.png" alt="Loss History & Convergence" style="width: 100%; border: 1px solid var(--line); margin-top: 0.2rem;" />
-          <p style="font-size: 0.75rem; color: var(--mute); margin-top: 0.25rem;">
-            <strong>Loss Trajectory:</strong> Displays smooth 12k epoch loss reduction. The 2,000-epoch pretrain phase stabilizes physical constraints before joint optimization drives total loss to its minimum at Epoch 11,810.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- HELP CTA -->
-    <section class="help" id="help">
-      <div class="tag">Open invitation</div>
-      <h2>I need people who can help push this further</h2>
-      <p class="lead">
-        You don’t have to be a nuclear engineer to help — but if you are, even better.
-        I’m looking for mentors, students, and researchers who can review, critique, or contribute.
-      </p>
-      <div class="help-grid">
-        <ul class="need-list">
-          <li><strong>Nuclear data / spectrum:</strong> sanity-check cross sections and flux folding assumptions.</li>
-          <li><strong>Real-world anchors:</strong> point me to measured or published Ac-225 yields beyond current Joyo notes.</li>
-          <li><strong>Impurity modeling:</strong> strengthen Ac-227 / thermal (n,γ) behavior.</li>
-          <li><strong>Communication:</strong> ISEF / faculty packaging, clearer figures, reproducibility review.</li>
-          <li><strong>Just curious?</strong> Read the README, open an issue with questions — that already helps.</li>
-        </ul>
-        <div class="actions">
-          <a class="btn" href="https://github.com/samogunnubi0-del/PINN2.0">Open the GitHub repo</a>
-          <a class="btn ghost" href="mailto:sam.ogunnubi0@gmail.com?subject=Ac-225%20PINN%20collaboration">Email Sam — sam.ogunnubi0@gmail.com</a>
-          <p>Public commits are under <strong>Sam Ogunnubi</strong>. Mentorship credit: Jaden Palmer (NCSU).</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footnote">
-      <div>Investigator: <strong>Sam Ogunnubi</strong> · Mentor: <strong>Jaden Palmer</strong> (NCSU ARTISANS)</div>
-      <div><a href="https://github.com/samogunnubi0-del/PINN2.0">github.com/samogunnubi0-del/PINN2.0</a></div>
     </footer>
-
-  </article>
-</div>
+  </main>
 </body>
 </html>

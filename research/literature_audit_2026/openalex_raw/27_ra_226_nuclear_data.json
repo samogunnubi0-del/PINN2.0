@@ -1,0 +1,6426 @@
+{
+  "meta": {
+    "count": 10,
+    "db_response_time_ms": 49,
+    "page": 1,
+    "per_page": 60,
+    "groups_count": null,
+    "x_query": {
+      "oql": "works where full text has (226Ra n 2n 225Ra cross section)",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "226Ra n 2n 225Ra cross section",
+            "operator": "has"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:226Ra n 2n 225Ra cross section&per_page=60"
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W2005868477",
+      "doi": "https://doi.org/10.1016/0022-1902(60)80227-8",
+      "display_name": "Cross-sections for the reactions 226Ra(n,2n)225Ra and 226Ra(n,3n)224Ra with 14\u00b75 MeV neutrons",
+      "publication_year": 1960,
+      "publication_date": "1960-04-01",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1016/0022-1902(60)80227-8",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1016/0022-1902(60)80227-8",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S139901720",
+          "display_name": "Journal of Inorganic and Nuclear Chemistry",
+          "issn_l": "0022-1902",
+          "issn": [
+            "0022-1902",
+            "1878-1225"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/P4310320146",
+          "host_organization_name": "Pergamon Press",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320146"
+          ],
+          "host_organization_lineage_names": [
+            "Pergamon Press"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Inorganic and Nuclear Chemistry",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5031742421",
+            "display_name": "L.P. O'Connor",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2802201010",
+              "display_name": "AWE Nuclear Security Technologies",
+              "ror": "https://ror.org/02gv4h649",
+              "country_code": "GB",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I2802201010"
+              ]
+            }
+          ],
+          "countries": [
+            "GB"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "L.P. O'Connor",
+          "raw_affiliation_strings": [
+            "Atomic Weapons Research Establishment, Aldermaston, Berks, UK"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Atomic Weapons Research Establishment, Aldermaston, Berks, UK",
+              "institution_ids": [
+                "https://openalex.org/I2802201010"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5027908320",
+            "display_name": "J.L. Perkin",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I2802201010",
+              "display_name": "AWE Nuclear Security Technologies",
+              "ror": "https://ror.org/02gv4h649",
+              "country_code": "GB",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I2802201010"
+              ]
+            }
+          ],
+          "countries": [
+            "GB"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "J.L. Perkin",
+          "raw_affiliation_strings": [
+            "Atomic Weapons Research Establishment, Aldermaston, Berks, UK"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Atomic Weapons Research Establishment, Aldermaston, Berks, UK",
+              "institution_ids": [
+                "https://openalex.org/I2802201010"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 5,
+      "open_access": {
+        "is_oa": false,
+        "oa_status": "closed",
+        "oa_url": null,
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": null,
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4389725162",
+      "doi": "https://doi.org/10.1080/00223131.2023.2295018",
+      "display_name": "Status of the <sup>226</sup> Ra nuclear data library and its impact on the production amount of <sup>225</sup> Ac via the <sup>226</sup> Ra (n,2n) reaction",
+      "publication_year": 2023,
+      "publication_date": "2023-12-14",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1080/00223131.2023.2295018",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.1080/00223131.2023.2295018",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S140210197",
+          "display_name": "Journal of Nuclear Science and Technology",
+          "issn_l": "0022-3131",
+          "issn": [
+            "0022-3131",
+            "1881-1248"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320547",
+          "host_organization_name": "Taylor & Francis",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320547"
+          ],
+          "host_organization_lineage_names": [
+            "Taylor & Francis"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Nuclear Science and Technology",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5105410412",
+            "display_name": "Y. Sasaki",
+            "orcid": "https://orcid.org/0009-0005-4034-8401"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Yuto Sasaki",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Oarai Research and Development Institute, Japan Atomic Energy Agency, Ibaraki, Japan"
+          ],
+          "raw_orcid": "https://orcid.org/0009-0005-4034-8401",
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Oarai Research and Development Institute, Japan Atomic Energy Agency, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5035597525",
+            "display_name": "Nobuyuki Iwamoto",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Nobuyuki Iwamoto",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5014489268",
+            "display_name": "Naoyuki Takaki",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I185088104",
+              "display_name": "Tokyo City University",
+              "ror": "https://ror.org/04dt6bw53",
+              "country_code": "JP",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Naoyuki Takaki",
+          "raw_affiliation_strings": [
+            "Tokyo City University",
+            "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Tokyo, Setagaya-Ku, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Tokyo City University",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Tokyo, Setagaya-Ku, Japan",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5108424803",
+            "display_name": "Shigetaka Maeda",
+            "orcid": "https://orcid.org/0000-0002-5572-2575"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Shigetaka Maeda",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Oarai Research and Development Institute, Japan Atomic Energy Agency, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Oarai Research and Development Institute, Japan Atomic Energy Agency, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": false,
+        "oa_status": "closed",
+        "oa_url": null,
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": {
+        "225Ac": [
+          0,
+          15,
+          38,
+          49,
+          105,
+          120
+        ],
+        "is": [
+          1,
+          17
+        ],
+        "a": [
+          2,
+          33
+        ],
+        "promising": [
+          3
+        ],
+        "alpha": [
+          4,
+          8
+        ],
+        "emitter": [
+          5
+        ],
+        "for": [
+          6,
+          99,
+          104
+        ],
+        "targeted": [
+          7
+        ],
+        "therapy.": [
+          9
+        ],
+        "However,": [
+          10
+        ],
+        "the": [
+          11,
+          26,
+          70,
+          74,
+          85,
+          93,
+          109,
+          117,
+          140,
+          150,
+          155
+        ],
+        "current": [
+          12
+        ],
+        "capability": [
+          13
+        ],
+        "of": [
+          14,
+          29,
+          48,
+          84,
+          95,
+          111,
+          119
+        ],
+        "supply": [
+          16
+        ],
+        "limited": [
+          18
+        ],
+        "to": [
+          19,
+          60
+        ],
+        "approximately": [
+          20
+        ],
+        "63": [
+          21
+        ],
+        "GBq/y,": [
+          22
+        ],
+        "primarily": [
+          23
+        ],
+        "relying": [
+          24
+        ],
+        "on": [
+          25,
+          73,
+          116
+        ],
+        "natural": [
+          27
+        ],
+        "source": [
+          28
+        ],
+        "229Th": [
+          30
+        ],
+        "stocked": [
+          31
+        ],
+        "at": [
+          32
+        ],
+        "few": [
+          34
+        ],
+        "institutes.": [
+          35
+        ],
+        "Therefore,": [
+          36
+        ],
+        "alternative": [
+          37
+        ],
+        "production": [
+          39,
+          54,
+          157
+        ],
+        "methods": [
+          40,
+          55
+        ],
+        "are": [
+          41,
+          65
+        ],
+        "highly": [
+          42
+        ],
+        "desired.": [
+          43
+        ],
+        "The": [
+          44
+        ],
+        "research": [
+          45
+        ],
+        "and": [
+          46,
+          50,
+          58,
+          63,
+          107,
+          132,
+          154
+        ],
+        "development": [
+          47
+        ],
+        "its": [
+          51
+        ],
+        "parent": [
+          52
+        ],
+        "nuclide": [
+          53
+        ],
+        "using": [
+          56,
+          77
+        ],
+        "accelerators": [
+          57
+        ],
+        "reactors": [
+          59
+        ],
+        "target": [
+          61,
+          103
+        ],
+        "226Ra": [
+          62
+        ],
+        "232Th": [
+          64
+        ],
+        "actively": [
+          66
+        ],
+        "pursued": [
+          67
+        ],
+        "worldwide.": [
+          68
+        ],
+        "Hence,": [
+          69
+        ],
+        "authors": [
+          71
+        ],
+        "focused": [
+          72
+        ],
+        "226Ra(n,2n)225Ra": [
+          75
+        ],
+        "method": [
+          76
+        ],
+        "fast": [
+          78,
+          87
+        ],
+        "neutron": [
+          79
+        ],
+        "spectra": [
+          80
+        ],
+        "as": [
+          81
+        ],
+        "an": [
+          82,
+          101
+        ],
+        "application": [
+          83
+        ],
+        "experimental": [
+          86
+        ],
+        "reactor": [
+          88
+        ],
+        "Joyo.": [
+          89
+        ],
+        "This": [
+          90
+        ],
+        "study": [
+          91
+        ],
+        "investigated": [
+          92
+        ],
+        "status": [
+          94
+        ],
+        "nuclear": [
+          96,
+          113,
+          142,
+          152
+        ],
+        "data": [
+          97,
+          114,
+          126,
+          143
+        ],
+        "libraries": [
+          98,
+          115
+        ],
+        "226Ra,": [
+          100
+        ],
+        "essential": [
+          102
+        ],
+        "production,": [
+          106
+        ],
+        "evaluated": [
+          108
+        ],
+        "impact": [
+          110
+        ],
+        "different": [
+          112
+        ],
+        "amount": [
+          118,
+          158
+        ],
+        "produced.": [
+          121
+        ],
+        "Consequently,": [
+          122
+        ],
+        "cross-sections": [
+          123
+        ],
+        "with": [
+          124
+        ],
+        "covariance": [
+          125
+        ],
+        "were": [
+          127
+        ],
+        "stored": [
+          128
+        ],
+        "in": [
+          129,
+          136
+        ],
+        "TENDL-2021,": [
+          130
+        ],
+        "JEFF-3.3,": [
+          131
+        ],
+        "EAF-2010": [
+          133
+        ],
+        "but": [
+          134
+        ],
+        "not": [
+          135
+        ],
+        "ENDF": [
+          137
+        ],
+        "or": [
+          138
+        ],
+        "JENDL,": [
+          139
+        ],
+        "major": [
+          141
+        ],
+        "libraries.": [
+          144
+        ],
+        "Furthermore,": [
+          145
+        ],
+        "no": [
+          146
+        ],
+        "consistency": [
+          147
+        ],
+        "occurred": [
+          148
+        ],
+        "among": [
+          149
+        ],
+        "respective": [
+          151
+        ],
+        "data,": [
+          153
+        ],
+        "225Ra": [
+          156
+        ],
+        "varied.": [
+          159
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4385658191",
+      "doi": "https://doi.org/10.1080/00223131.2023.2243941",
+      "display_name": "Evaluation of the production amount of <sup>225</sup> Ac and its uncertainty through the <sup>226</sup> Ra(n,2n) reaction in the experimental fast reactor Joyo",
+      "publication_year": 2023,
+      "publication_date": "2023-08-08",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.1080/00223131.2023.2243941",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1080/00223131.2023.2243941",
+        "pdf_url": "https://www.tandfonline.com/doi/pdf/10.1080/00223131.2023.2243941",
+        "source": {
+          "id": "https://openalex.org/S140210197",
+          "display_name": "Journal of Nuclear Science and Technology",
+          "issn_l": "0022-3131",
+          "issn": [
+            "0022-3131",
+            "1881-1248"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320547",
+          "host_organization_name": "Taylor & Francis",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320547"
+          ],
+          "host_organization_lineage_names": [
+            "Taylor & Francis"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Nuclear Science and Technology",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5105410412",
+            "display_name": "Y. Sasaki",
+            "orcid": "https://orcid.org/0009-0005-4034-8401"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I185088104",
+              "display_name": "Tokyo City University",
+              "ror": "https://ror.org/04dt6bw53",
+              "country_code": "JP",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Yuto Sasaki",
+          "raw_affiliation_strings": [
+            "Tokyo City University",
+            "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Setagaya-Ku, Tokyo, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Tokyo City University",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Setagaya-Ku, Tokyo, Japan",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5082622232",
+            "display_name": "Aaru Sano",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Aaru Sano",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5110288305",
+            "display_name": "Shinji Sasaki",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Shinji Sasaki",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5035597525",
+            "display_name": "Nobuyuki Iwamoto",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Nobuyuki Iwamoto",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5032618342",
+            "display_name": "Kazuki Ouchi",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Kazuki Ouchi",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5046797549",
+            "display_name": "Yoshihiro Kitatsuji",
+            "orcid": "https://orcid.org/0009-0000-4476-4617"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Yoshihiro Kitatsuji",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Science and Engineering Center, Japan Atomic Energy Agency, Naka-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5019259025",
+            "display_name": "Naoyuki Takaki",
+            "orcid": "https://orcid.org/0000-0002-3835-1450"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I185088104",
+              "display_name": "Tokyo City University",
+              "ror": "https://ror.org/04dt6bw53",
+              "country_code": "JP",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Naoyuki Takaki",
+          "raw_affiliation_strings": [
+            "Tokyo City University",
+            "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Setagaya-Ku, Tokyo, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Tokyo City University",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Nuclear Energy Systems Laboratory, Cooperative Major in Nuclear Energy, Graduate School of Integrative Science and Engineering, Tokyo City University, Setagaya-Ku, Tokyo, Japan",
+              "institution_ids": [
+                "https://openalex.org/I185088104"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5108424803",
+            "display_name": "Shigetaka Maeda",
+            "orcid": "https://orcid.org/0000-0002-5572-2575"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I117197279",
+              "display_name": "Japan Atomic Energy Agency",
+              "ror": "https://ror.org/05nf86y53",
+              "country_code": "JP",
+              "type": "funder",
+              "lineage": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ],
+          "countries": [
+            "JP"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "Shigetaka Maeda",
+          "raw_affiliation_strings": [
+            "Japan Atomic Energy Agency",
+            "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Japan Atomic Energy Agency",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            },
+            {
+              "raw_affiliation_string": "Oarai Research and Development Institute, Japan Atomic Energy Agency, Higashi-Ibaraki-Gun, Ibaraki, Japan",
+              "institution_ids": [
+                "https://openalex.org/I117197279"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 14,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "bronze",
+        "oa_url": "https://www.tandfonline.com/doi/pdf/10.1080/00223131.2023.2243941",
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": {
+        "225Ac": [
+          0,
+          53,
+          72
+        ],
+        "is": [
+          1,
+          13,
+          26,
+          32
+        ],
+        "a": [
+          2
+        ],
+        "promising": [
+          3
+        ],
+        "nuclide": [
+          4,
+          12
+        ],
+        "for": [
+          5,
+          96
+        ],
+        "targeted": [
+          6
+        ],
+        "alpha": [
+          7
+        ],
+        "therapy.": [
+          8
+        ],
+        "At": [
+          9
+        ],
+        "present,": [
+          10
+        ],
+        "the": [
+          11,
+          24,
+          49,
+          59,
+          68,
+          74,
+          81,
+          100,
+          141
+        ],
+        "mainly": [
+          14
+        ],
+        "extracted": [
+          15
+        ],
+        "from": [
+          16
+        ],
+        "229Th": [
+          17
+        ],
+        "generators,": [
+          18
+        ],
+        "but": [
+          19
+        ],
+        "its": [
+          20,
+          55
+        ],
+        "total": [
+          21
+        ],
+        "radioactivity": [
+          22
+        ],
+        "of": [
+          23,
+          52,
+          71,
+          94,
+          103,
+          111,
+          133,
+          140
+        ],
+        "world": [
+          25,
+          143
+        ],
+        "only": [
+          27
+        ],
+        "63": [
+          28
+        ],
+        "GBq/y.": [
+          29
+        ],
+        "Therefore,": [
+          30,
+          113
+        ],
+        "it": [
+          31
+        ],
+        "unclear": [
+          33
+        ],
+        "whether": [
+          34
+        ],
+        "this": [
+          35,
+          45
+        ],
+        "method": [
+          36
+        ],
+        "alone": [
+          37
+        ],
+        "can": [
+          38,
+          105,
+          127
+        ],
+        "meet": [
+          39
+        ],
+        "future": [
+          40
+        ],
+        "global": [
+          41
+        ],
+        "medical": [
+          42
+        ],
+        "demand.": [
+          43
+        ],
+        "In": [
+          44
+        ],
+        "study,": [
+          46
+        ],
+        "we": [
+          47
+        ],
+        "analyzed": [
+          48
+        ],
+        "production": [
+          50
+        ],
+        "amount": [
+          51
+        ],
+        "and": [
+          54,
+          62
+        ],
+        "uncertainty": [
+          56
+        ],
+        "due": [
+          57
+        ],
+        "to": [
+          58,
+          130,
+          136,
+          138
+        ],
+        "neutron": [
+          60
+        ],
+        "flux": [
+          61
+        ],
+        "nuclear": [
+          63
+        ],
+        "reaction": [
+          64
+        ],
+        "cross-sections": [
+          65
+        ],
+        "while": [
+          66
+        ],
+        "analyzing": [
+          67
+        ],
+        "generation": [
+          69
+        ],
+        "process": [
+          70
+        ],
+        "using": [
+          73
+        ],
+        "experimental": [
+          75
+        ],
+        "fast": [
+          76
+        ],
+        "reactor": [
+          77
+        ],
+        "Joyo": [
+          78,
+          104,
+          126
+        ],
+        "operated": [
+          79
+        ],
+        "by": [
+          80
+        ],
+        "Japan": [
+          82
+        ],
+        "Atomic": [
+          83
+        ],
+        "Energy": [
+          84
+        ],
+        "Agency": [
+          85
+        ],
+        "(JAEA).": [
+          86
+        ],
+        "The": [
+          87
+        ],
+        "analysis": [
+          88
+        ],
+        "showed": [
+          89
+        ],
+        "that": [
+          90
+        ],
+        "irradiating": [
+          91
+        ],
+        "1": [
+          92
+        ],
+        "g": [
+          93
+        ],
+        "226Ra": [
+          95
+        ],
+        "45": [
+          97
+        ],
+        "d": [
+          98,
+          120
+        ],
+        "at": [
+          99
+        ],
+        "core": [
+          101
+        ],
+        "center": [
+          102
+        ],
+        "produce": [
+          106,
+          128
+        ],
+        "15.4": [
+          107
+        ],
+        "\u00b1": [
+          108
+        ],
+        "6.2": [
+          109
+        ],
+        "GBq": [
+          110,
+          132
+        ],
+        "225Ac.": [
+          112
+        ],
+        "with": [
+          114
+        ],
+        "six": [
+          115
+        ],
+        "irradiations": [
+          116
+        ],
+        "per": [
+          117
+        ],
+        "year": [
+          118
+        ],
+        "(45": [
+          119
+        ],
+        "\u00d7": [
+          121
+        ],
+        "6": [
+          122
+        ],
+        "=": [
+          123
+        ],
+        "270": [
+          124
+        ],
+        "d/year),": [
+          125
+        ],
+        "55.3": [
+          129
+        ],
+        "129.1": [
+          131
+        ],
+        "225Ac,": [
+          134
+        ],
+        "equivalent": [
+          135
+        ],
+        "86": [
+          137
+        ],
+        "200%": [
+          139
+        ],
+        "current": [
+          142
+        ],
+        "supply.": [
+          144
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4387350982",
+      "doi": "https://doi.org/10.18103/mra.v11i9.4409",
+      "display_name": "Local Production of the Alpha-Emitting Radioi-sotope Actinium 225 with Low Impurities for Targeted Alpha Ther-apy by a Compact Neutron Generator System",
+      "publication_year": 2023,
+      "publication_date": "2023-01-01",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.18103/mra.v11i9.4409",
+        "is_oa": true,
+        "landing_page_url": "http://dx.doi.org/10.18103/mra.v11i9.4409",
+        "pdf_url": "https://esmed.org/MRA/mra/article/download/4409/99193547286",
+        "source": {
+          "id": "https://openalex.org/S2764661345",
+          "display_name": "Medical Research Archives",
+          "issn_l": "2375-1916",
+          "issn": [
+            "2375-1916",
+            "2375-1924"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4376882788",
+          "host_organization_name": "European Society of Medicine",
+          "host_organization_lineage": [
+            "https://openalex.org/P4376882788"
+          ],
+          "host_organization_lineage_names": [
+            "European Society of Medicine"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Medical Research Archives",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5076824252",
+            "display_name": "M. Martellini",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210112069",
+              "display_name": "Theranostics (New Zealand)",
+              "ror": "https://ror.org/02wykja76",
+              "country_code": "NZ",
+              "type": "company",
+              "lineage": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ],
+          "countries": [
+            "NZ"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Maurizio Martellini",
+          "raw_affiliation_strings": [
+            "Scientific Director of Theranosti Centre Srl"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Scientific Director of Theranosti Centre Srl",
+              "institution_ids": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5060367215",
+            "display_name": "K. N. Leung",
+            "orcid": "https://orcid.org/0009-0008-3585-6585"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Ka-Ngo Leung",
+          "raw_affiliation_strings": [
+            "Berkion Technology LLC"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Berkion Technology LLC",
+              "institution_ids": []
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5009912257",
+            "display_name": "Giuseppe Gherardi",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210112069",
+              "display_name": "Theranostics (New Zealand)",
+              "ror": "https://ror.org/02wykja76",
+              "country_code": "NZ",
+              "type": "company",
+              "lineage": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ],
+          "countries": [
+            "NZ"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Giuseppe Gherardi",
+          "raw_affiliation_strings": [
+            "Theranosti Centre Srl"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Theranosti Centre Srl",
+              "institution_ids": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5069409128",
+            "display_name": "Lidia Falzone",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210112069",
+              "display_name": "Theranostics (New Zealand)",
+              "ror": "https://ror.org/02wykja76",
+              "country_code": "NZ",
+              "type": "company",
+              "lineage": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ],
+          "countries": [
+            "NZ"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Lidia Falzone",
+          "raw_affiliation_strings": [
+            "Theranosti Centre Srl"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Theranosti Centre Srl",
+              "institution_ids": [
+                "https://openalex.org/I4210112069"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "diamond",
+        "oa_url": "https://esmed.org/MRA/mra/article/download/4409/99193547286",
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": {
+        "Alpha-particle": [
+          0
+        ],
+        "emitting": [
+          1
+        ],
+        "radioisotope": [
+          2
+        ],
+        "Actinium225": [
+          3
+        ],
+        "(225Ac)": [
+          4
+        ],
+        "is": [
+          5,
+          32,
+          143,
+          171,
+          219,
+          253,
+          292
+        ],
+        "of": [
+          6,
+          17,
+          39,
+          54,
+          63,
+          71,
+          94,
+          98,
+          107,
+          137,
+          150,
+          168,
+          192,
+          203,
+          214,
+          246,
+          250,
+          259,
+          275,
+          280,
+          305
+        ],
+        "great": [
+          7
+        ],
+        "interest": [
+          8
+        ],
+        "for": [
+          9,
+          36,
+          75,
+          186,
+          224,
+          277,
+          307,
+          322
+        ],
+        "use": [
+          10
+        ],
+        "in": [
+          11,
+          264,
+          272,
+          293,
+          316
+        ],
+        "Targeted": [
+          12
+        ],
+        "Alpha": [
+          13
+        ],
+        "Therapy": [
+          14
+        ],
+        "(TAT)": [
+          15
+        ],
+        "treatments": [
+          16
+        ],
+        "e.g.,": [
+          18
+        ],
+        "brain": [
+          19
+        ],
+        "tumors,": [
+          20
+        ],
+        "bladder": [
+          21
+        ],
+        "cancer,": [
+          22,
+          281
+        ],
+        "neuroendocrine": [
+          23
+        ],
+        "tumors": [
+          24
+        ],
+        "and": [
+          25,
+          41,
+          57,
+          152,
+          267,
+          297,
+          309
+        ],
+        "leukemia.": [
+          26
+        ],
+        "A": [
+          27,
+          125
+        ],
+        "suitable": [
+          28,
+          233
+        ],
+        "225": [
+          29,
+          77
+        ],
+        "Ac": [
+          30,
+          78
+        ],
+        "radioligand": [
+          31
+        ],
+        "also": [
+          33
+        ],
+        "potentially": [
+          34,
+          131
+        ],
+        "resolutive": [
+          35
+        ],
+        "the": [
+          37,
+          76,
+          147,
+          159,
+          174,
+          200,
+          221,
+          243,
+          256,
+          268,
+          273,
+          278,
+          302,
+          324
+        ],
+        "treatment": [
+          38,
+          202,
+          317
+        ],
+        "advanced": [
+          40,
+          318
+        ],
+        "metastatic": [
+          42,
+          319,
+          325
+        ],
+        "Castration-Resistant": [
+          43
+        ],
+        "Prostate": [
+          44,
+          329
+        ],
+        "Cancers": [
+          45
+        ],
+        "(mCRPCs).": [
+          46
+        ],
+        "The": [
+          47,
+          248
+        ],
+        "mCRPC": [
+          48
+        ],
+        "has": [
+          49,
+          79,
+          122
+        ],
+        "a": [
+          50,
+          59,
+          68,
+          116,
+          164,
+          180,
+          232,
+          239,
+          283,
+          294
+        ],
+        "mean": [
+          51
+        ],
+        "survival": [
+          52
+        ],
+        "rate": [
+          53
+        ],
+        "9-36": [
+          55
+        ],
+        "months": [
+          56
+        ],
+        "encompasses": [
+          58
+        ],
+        "heterogeneous": [
+          60
+        ],
+        "ample": [
+          61
+        ],
+        "range": [
+          62
+        ],
+        "molecular": [
+          64
+        ],
+        "cancer": [
+          65,
+          320
+        ],
+        "behavior": [
+          66
+        ],
+        "with": [
+          67,
+          139,
+          209
+        ],
+        "high": [
+          69,
+          88,
+          148
+        ],
+        "risk": [
+          70
+        ],
+        "progression.": [
+          72
+        ],
+        "Global": [
+          73
+        ],
+        "demand": [
+          74
+        ],
+        "spurred": [
+          80
+        ],
+        "several": [
+          81
+        ],
+        "production": [
+          82,
+          229,
+          257
+        ],
+        "efforts": [
+          83
+        ],
+        "including": [
+          84
+        ],
+        "extraction": [
+          85
+        ],
+        "from": [
+          86
+        ],
+        "233U,": [
+          87
+        ],
+        "energy": [
+          89,
+          155
+        ],
+        "protons": [
+          90
+        ],
+        "or": [
+          91,
+          96,
+          114
+        ],
+        "photon": [
+          92
+        ],
+        "irradiation": [
+          93
+        ],
+        "226Ra": [
+          95,
+          184
+        ],
+        "spallation": [
+          97
+        ],
+        "232Th": [
+          99
+        ],
+        "by,": [
+          100
+        ],
+        "at": [
+          101
+        ],
+        "least,": [
+          102
+        ],
+        "100": [
+          103,
+          187
+        ],
+        "MeV": [
+          104,
+          154
+        ],
+        "protons.": [
+          105
+        ],
+        "Instead": [
+          106
+        ],
+        "using": [
+          108
+        ],
+        "accelerators": [
+          109
+        ],
+        "systems": [
+          110
+        ],
+        "such": [
+          111
+        ],
+        "as": [
+          112,
+          321
+        ],
+        "cyclotrons": [
+          113
+        ],
+        "LINACs,": [
+          115
+        ],
+        "Compact": [
+          117,
+          288
+        ],
+        "Neutron": [
+          118,
+          289
+        ],
+        "Generator": [
+          119
+        ],
+        "(CNG)": [
+          120,
+          291
+        ],
+        "system": [
+          121
+        ],
+        "been": [
+          123
+        ],
+        "developed.": [
+          124
+        ],
+        "400kV-10": [
+          126
+        ],
+        "mA": [
+          127
+        ],
+        "DC": [
+          128
+        ],
+        "(D_7Li)": [
+          129,
+          160
+        ],
+        "CNG": [
+          130,
+          234
+        ],
+        "able": [
+          132
+        ],
+        "to": [
+          133,
+          162,
+          199,
+          237,
+          254,
+          261,
+          300
+        ],
+        "produce": [
+          134,
+          301
+        ],
+        "substantial": [
+          135
+        ],
+        "amount": [
+          136
+        ],
+        "225Ac": [
+          138,
+          193,
+          228
+        ],
+        "low": [
+          140
+        ],
+        "227Ac": [
+          141,
+          212
+        ],
+        "impurities": [
+          142
+        ],
+        "here": [
+          144
+        ],
+        "presented.": [
+          145
+        ],
+        "Exploiting": [
+          146
+        ],
+        "flux": [
+          149
+        ],
+        "10": [
+          151
+        ],
+        "13": [
+          153
+        ],
+        "neutrons": [
+          156
+        ],
+        "generated": [
+          157
+        ],
+        "by": [
+          158,
+          231
+        ],
+        "reactions": [
+          161
+        ],
+        "bombard": [
+          163
+        ],
+        "thin": [
+          165
+        ],
+        "target": [
+          166
+        ],
+        "layer": [
+          167,
+          185
+        ],
+        "226Ra,": [
+          169
+        ],
+        "225Ra/225Ac": [
+          170
+        ],
+        "produced": [
+          172,
+          196
+        ],
+        "via": [
+          173
+        ],
+        "226Ra(n,2n)225Ra": [
+          175
+        ],
+        "nuclear": [
+          176
+        ],
+        "reaction.": [
+          177
+        ],
+        "By": [
+          178
+        ],
+        "irradiating": [
+          179
+        ],
+        "5": [
+          181
+        ],
+        "mm": [
+          182
+        ],
+        "thick": [
+          183
+        ],
+        "hours,": [
+          188
+        ],
+        "about": [
+          189,
+          204,
+          215
+        ],
+        "11-13": [
+          190
+        ],
+        "mCi": [
+          191
+        ],
+        "can": [
+          194
+        ],
+        "be": [
+          195,
+          262,
+          314
+        ],
+        "\u2013": [
+          197,
+          208,
+          327
+        ],
+        "corresponding": [
+          198
+        ],
+        "TAT": [
+          201
+        ],
+        "65": [
+          205
+        ],
+        "oncological": [
+          206
+        ],
+        "patients": [
+          207
+        ],
+        "an": [
+          210
+        ],
+        "estimated": [
+          211
+        ],
+        "contamination": [
+          213
+        ],
+        "one": [
+          216
+        ],
+        "percent,": [
+          217
+        ],
+        "which": [
+          218
+        ],
+        "below": [
+          220
+        ],
+        "acceptable": [
+          222
+        ],
+        "limit": [
+          223
+        ],
+        "clinical": [
+          225,
+          308
+        ],
+        "use.": [
+          226
+        ],
+        "This": [
+          227,
+          312
+        ],
+        "scheme": [
+          230
+        ],
+        "should": [
+          235
+        ],
+        "allow": [
+          236,
+          299
+        ],
+        "adopt": [
+          238
+        ],
+        "local/regional": [
+          240
+        ],
+        "approach": [
+          241
+        ],
+        "avoiding": [
+          242
+        ],
+        "shipment": [
+          244
+        ],
+        "costs": [
+          245
+        ],
+        "225Ac.": [
+          247
+        ],
+        "aim": [
+          249
+        ],
+        "this": [
+          251
+        ],
+        "paper": [
+          252
+        ],
+        "inform": [
+          255
+        ],
+        "chain": [
+          258
+        ],
+        "radioisotopes": [
+          260,
+          306
+        ],
+        "used": [
+          263
+        ],
+        "medical": [
+          265,
+          269
+        ],
+        "field": [
+          266
+        ],
+        "community": [
+          270
+        ],
+        "involved": [
+          271
+        ],
+        "application": [
+          274
+        ],
+        "radiopharmaceuticals": [
+          276
+        ],
+        "cure": [
+          279
+        ],
+        "that": [
+          282
+        ],
+        "new": [
+          284
+        ],
+        "technology": [
+          285
+        ],
+        "based": [
+          286
+        ],
+        "on": [
+          287
+        ],
+        "Generators": [
+          290
+        ],
+        "R&amp;D": [
+          295
+        ],
+        "phase": [
+          296
+        ],
+        "will": [
+          298,
+          313
+        ],
+        "necessary": [
+          303
+        ],
+        "quantity": [
+          304
+        ],
+        "research": [
+          310
+        ],
+        "purpose.": [
+          311
+        ],
+        "essential": [
+          315
+        ],
+        "instance": [
+          323
+        ],
+        "Castration": [
+          326
+        ],
+        "Resistant": [
+          328
+        ],
+        "Cancer.": [
+          330
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4400241909",
+      "doi": "https://doi.org/10.4103/jmp.jmp_22_24",
+      "display_name": "Actinium-225 in Targeted Alpha Therapy",
+      "publication_year": 2024,
+      "publication_date": "2024-04-01",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.4103/jmp.jmp_22_24",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.4103/jmp.jmp_22_24",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S17683331",
+          "display_name": "Journal of Medical Physics",
+          "issn_l": "0971-6203",
+          "issn": [
+            "0971-6203",
+            "1998-3913"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "host_organization": "https://openalex.org/P4310320448",
+          "host_organization_name": "Medknow",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320448",
+            "https://openalex.org/P4310318547"
+          ],
+          "host_organization_lineage_names": [
+            "Medknow",
+            "Wolters Kluwer"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-sa",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-sa",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Medical Physics",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5059223487",
+            "display_name": "A. K. M. Rezaur Rahman",
+            "orcid": "https://orcid.org/0000-0002-3879-6863"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": true,
+          "raw_author_name": "A. K. M. Rezaur Rahman",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5102699534",
+            "display_name": "Mahathe Hasan Babu",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Mahathe Hasan Babu",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5094063178",
+            "display_name": "Mustofa Khalid Ovi",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Mustofa Khalid Ovi",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5099845152",
+            "display_name": "Md. Mahiuddin Zilani",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Md. Mahiuddin Zilani",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5099845153",
+            "display_name": "Israt Sultana Eithu",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Israt Sultana Eithu",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5114165393",
+            "display_name": "Amit Chakraborty",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I894293524",
+              "display_name": "University of Chittagong",
+              "ror": "https://ror.org/01173vs27",
+              "country_code": "BD",
+              "type": "education",
+              "lineage": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ],
+          "countries": [
+            "BD"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "Amit Chakraborty",
+          "raw_affiliation_strings": [
+            "Department of Physics, University of Chittagong, Chittagong, Bangladesh"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Department of Physics, University of Chittagong, Chittagong, Bangladesh",
+              "institution_ids": [
+                "https://openalex.org/I894293524"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 19,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "diamond",
+        "oa_url": "https://doi.org/10.4103/jmp.jmp_22_24",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "The": [
+          0,
+          126
+        ],
+        "utilization": [
+          1
+        ],
+        "of": [
+          2,
+          32,
+          50,
+          91,
+          95,
+          114,
+          133
+        ],
+        "actinium-225": [
+          3
+        ],
+        "(": [
+          4
+        ],
+        "225": [
+          5,
+          33,
+          54,
+          102,
+          115
+        ],
+        "Ac)": [
+          6
+        ],
+        "radionuclides": [
+          7
+        ],
+        "in": [
+          8,
+          17,
+          62,
+          98,
+          109
+        ],
+        "targeted": [
+          9
+        ],
+        "alpha": [
+          10
+        ],
+        "therapy": [
+          11
+        ],
+        "for": [
+          12,
+          71,
+          123
+        ],
+        "cancer": [
+          13
+        ],
+        "was": [
+          14
+        ],
+        "initially": [
+          15
+        ],
+        "outlined": [
+          16
+        ],
+        "1993.": [
+          18
+        ],
+        "Over": [
+          19
+        ],
+        "the": [
+          20,
+          30,
+          68,
+          92,
+          110,
+          120,
+          129
+        ],
+        "past": [
+          21
+        ],
+        "two": [
+          22
+        ],
+        "decades,": [
+          23
+        ],
+        "substantial": [
+          24
+        ],
+        "research": [
+          25
+        ],
+        "has": [
+          26
+        ],
+        "been": [
+          27,
+          83
+        ],
+        "conducted,": [
+          28
+        ],
+        "encompassing": [
+          29
+        ],
+        "establishment": [
+          31
+        ],
+        "Ac": [
+          34,
+          55,
+          116
+        ],
+        "production": [
+          35,
+          74,
+          111
+        ],
+        "methods,": [
+          36
+        ],
+        "various": [
+          37,
+          106
+        ],
+        "preclinical": [
+          38,
+          138
+        ],
+        "investigations,": [
+          39
+        ],
+        "and": [
+          40,
+          60,
+          112,
+          131,
+          140
+        ],
+        "several": [
+          41
+        ],
+        "clinical": [
+          42,
+          63,
+          96,
+          143
+        ],
+        "studies.": [
+          43
+        ],
+        "Currently,": [
+          44
+        ],
+        "there": [
+          45
+        ],
+        "is": [
+          46
+        ],
+        "a": [
+          47,
+          88
+        ],
+        "growing": [
+          48,
+          121
+        ],
+        "number": [
+          49
+        ],
+        "compounds": [
+          51,
+          99
+        ],
+        "labeled": [
+          52,
+          100
+        ],
+        "with": [
+          53,
+          101
+        ],
+        "that": [
+          56
+        ],
+        "are": [
+          57,
+          76
+        ],
+        "being": [
+          58,
+          78
+        ],
+        "developed": [
+          59
+        ],
+        "tested": [
+          61
+        ],
+        "trials.": [
+          64,
+          144
+        ],
+        "In": [
+          65
+        ],
+        "response": [
+          66
+        ],
+        "to": [
+          67,
+          117,
+          119
+        ],
+        "increasing": [
+          69
+        ],
+        "demand": [
+          70,
+          122
+        ],
+        "this": [
+          72,
+          124
+        ],
+        "nuclide,": [
+          73
+        ],
+        "facilities": [
+          75
+        ],
+        "either": [
+          77
+        ],
+        "built": [
+          79
+        ],
+        "or": [
+          80
+        ],
+        "have": [
+          81
+        ],
+        "already": [
+          82
+        ],
+        "established.": [
+          84
+        ],
+        "This": [
+          85
+        ],
+        "article": [
+          86,
+          127
+        ],
+        "offers": [
+          87
+        ],
+        "concise": [
+          89
+        ],
+        "summary": [
+          90
+        ],
+        "present": [
+          93
+        ],
+        "state": [
+          94
+        ],
+        "advancements": [
+          97
+        ],
+        "Ac.": [
+          103
+        ],
+        "It": [
+          104
+        ],
+        "outlines": [
+          105
+        ],
+        "processes": [
+          107
+        ],
+        "involved": [
+          108
+        ],
+        "purification": [
+          113
+        ],
+        "cater": [
+          118
+        ],
+        "radionuclide.": [
+          125
+        ],
+        "examines": [
+          128
+        ],
+        "merits": [
+          130
+        ],
+        "drawbacks": [
+          132
+        ],
+        "different": [
+          134
+        ],
+        "procedures,": [
+          135
+        ],
+        "delves": [
+          136
+        ],
+        "into": [
+          137
+        ],
+        "trials,": [
+          139
+        ],
+        "discusses": [
+          141
+        ],
+        "ongoing": [
+          142
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4401429112",
+      "doi": "https://doi.org/10.59277/romrepphys.2024.76.203",
+      "display_name": "Production of medical radioisotopes via photonuclear reactions: review of candidates and opportunities for the planned radioactive ion facility at IFIN-HH",
+      "publication_year": 2024,
+      "publication_date": "2024-08-08",
+      "type": "article",
+      "primary_location": {
+        "id": "doi:10.59277/romrepphys.2024.76.203",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.59277/romrepphys.2024.76.203",
+        "pdf_url": "https://doi.org/10.59277/romrepphys.2024.76.203",
+        "source": {
+          "id": "https://openalex.org/S65915788",
+          "display_name": "Romanian Reports in Physics",
+          "issn_l": "1221-1451",
+          "issn": [
+            "1221-1451",
+            "1841-8759"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/P4310314685",
+          "host_organization_name": "Romanian Academy's Publishing House",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310314685"
+          ],
+          "host_organization_lineage_names": [
+            "Romanian Academy's Publishing House"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Romanian Reports in Physics",
+        "raw_type": "journal-article"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5017581334",
+            "display_name": "Hermann Schubert",
+            "orcid": null
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210092312",
+              "display_name": "Horia Hulubei National Institute for R and D in Physics and Nuclear Engineering",
+              "ror": "https://ror.org/00d3pnh21",
+              "country_code": "RO",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ],
+          "countries": [
+            "RO"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "H. SCHUBERT",
+          "raw_affiliation_strings": [
+            "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania",
+              "institution_ids": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5069399565",
+            "display_name": "Radu Leonte",
+            "orcid": "https://orcid.org/0000-0002-2929-8280"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210092312",
+              "display_name": "Horia Hulubei National Institute for R and D in Physics and Nuclear Engineering",
+              "ror": "https://ror.org/00d3pnh21",
+              "country_code": "RO",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ],
+          "countries": [
+            "RO"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "R. LEONTE",
+          "raw_affiliation_strings": [
+            "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania",
+              "institution_ids": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ]
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5004059152",
+            "display_name": "Simona I. Baruta",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "S. B\u0102RU\u021a\u0102",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5077317908",
+            "display_name": "F. Negoi\u0163\u0103",
+            "orcid": "https://orcid.org/0009-0004-4175-1836"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "F. NEGOI\u021a\u0102",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5078095735",
+            "display_name": "Dana Niculae",
+            "orcid": "https://orcid.org/0000-0002-4769-843X"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210092312",
+              "display_name": "Horia Hulubei National Institute for R and D in Physics and Nuclear Engineering",
+              "ror": "https://ror.org/00d3pnh21",
+              "country_code": "RO",
+              "type": "facility",
+              "lineage": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ],
+          "countries": [
+            "RO"
+          ],
+          "is_corresponding": false,
+          "raw_author_name": "D. NICULAE",
+          "raw_affiliation_strings": [
+            "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania"
+          ],
+          "raw_orcid": null,
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Horia Hulubei National Institute for Physics and Nuclear Engineering (IFIN-HH) , RO-077125 Mgurele , Romania",
+              "institution_ids": [
+                "https://openalex.org/I4210092312"
+              ]
+            }
+          ]
+        }
+      ],
+      "cited_by_count": 4,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "bronze",
+        "oa_url": "https://doi.org/10.59277/romrepphys.2024.76.203",
+        "any_repository_has_fulltext": false
+      },
+      "abstract_inverted_index": {
+        "Radioisotopes": [
+          0
+        ],
+        "have": [
+          1,
+          72
+        ],
+        "a": [
+          2
+        ],
+        "growing": [
+          3
+        ],
+        "impact": [
+          4
+        ],
+        "in": [
+          5,
+          13,
+          49,
+          78
+        ],
+        "various": [
+          6
+        ],
+        "fields": [
+          7
+        ],
+        "of": [
+          8,
+          20,
+          44,
+          57,
+          69,
+          84,
+          120,
+          130,
+          167,
+          185,
+          192,
+          200,
+          212
+        ],
+        "industry": [
+          9
+        ],
+        "and": [
+          10,
+          24,
+          34,
+          55,
+          95,
+          104,
+          134,
+          155,
+          160,
+          198
+        ],
+        "medicine.": [
+          11
+        ],
+        "Especially": [
+          12
+        ],
+        "modern": [
+          14
+        ],
+        "medicine,": [
+          15
+        ],
+        "based": [
+          16,
+          64,
+          125
+        ],
+        "on": [
+          17,
+          65,
+          126
+        ],
+        "the": [
+          18,
+          26,
+          66,
+          127,
+          152,
+          165,
+          193,
+          201,
+          205
+        ],
+        "synergies": [
+          19
+        ],
+        "nuclear": [
+          21
+        ],
+        "physics,": [
+          22
+        ],
+        "radiochemistry,": [
+          23
+        ],
+        "radiobiology,": [
+          25
+        ],
+        "demand": [
+          27
+        ],
+        "for": [
+          28,
+          52,
+          164,
+          196
+        ],
+        "more": [
+          29,
+          105
+        ],
+        "readily": [
+          30
+        ],
+        "available,": [
+          31
+        ],
+        "higher": [
+          32
+        ],
+        "quality,": [
+          33
+        ],
+        "also": [
+          35,
+          149
+        ],
+        "new": [
+          36,
+          103
+        ],
+        "radioisotopes": [
+          37,
+          184
+        ],
+        "is": [
+          38
+        ],
+        "constantly": [
+          39
+        ],
+        "increasing.": [
+          40
+        ],
+        "As": [
+          41
+        ],
+        "key": [
+          42
+        ],
+        "components": [
+          43
+        ],
+        "radiopharmaceuticals,": [
+          45
+        ],
+        "they": [
+          46,
+          115
+        ],
+        "are": [
+          47,
+          116,
+          142
+        ],
+        "used": [
+          48,
+          143
+        ],
+        "many": [
+          50
+        ],
+        "ways": [
+          51
+        ],
+        "diagnostics": [
+          53
+        ],
+        "imaging,": [
+          54
+        ],
+        "treatments": [
+          56
+        ],
+        "cancer": [
+          58,
+          137
+        ],
+        "or": [
+          59,
+          97,
+          177
+        ],
+        "other": [
+          60,
+          98
+        ],
+        "health": [
+          61
+        ],
+        "issues.": [
+          62
+        ],
+        "Diagnostics": [
+          63
+        ],
+        "precise": [
+          67,
+          106,
+          128
+        ],
+        "positioning": [
+          68
+        ],
+        "imaging": [
+          70
+        ],
+        "photons": [
+          71
+        ],
+        "improved": [
+          73
+        ],
+        "due": [
+          74
+        ],
+        "to": [
+          75,
+          102,
+          108,
+          136,
+          146,
+          150
+        ],
+        "recent": [
+          76
+        ],
+        "advances": [
+          77
+        ],
+        "molecular": [
+          79
+        ],
+        "biology.": [
+          80
+        ],
+        "Ongoing": [
+          81
+        ],
+        "intense": [
+          82
+        ],
+        "research": [
+          83
+        ],
+        "biological": [
+          85
+        ],
+        "vehicles": [
+          86
+        ],
+        "(transporters),": [
+          87
+        ],
+        "such": [
+          88,
+          171
+        ],
+        "as": [
+          89,
+          172
+        ],
+        "monoclonal": [
+          90
+        ],
+        "antibodies": [
+          91
+        ],
+        "(mAbs),": [
+          92
+        ],
+        "specific": [
+          93,
+          110,
+          161
+        ],
+        "proteins": [
+          94
+        ],
+        "peptides,": [
+          96
+        ],
+        "designed": [
+          99
+        ],
+        "molecules": [
+          100
+        ],
+        "led": [
+          101
+        ],
+        "methods": [
+          107
+        ],
+        "place": [
+          109
+        ],
+        "radioisotopes,": [
+          111
+        ],
+        "exactly": [
+          112
+        ],
+        "there": [
+          113
+        ],
+        "where": [
+          114
+        ],
+        "intended.": [
+          117
+        ],
+        "The": [
+          118
+        ],
+        "techniques": [
+          119,
+          141
+        ],
+        "targeted": [
+          121
+        ],
+        "therapy": [
+          122,
+          153
+        ],
+        "were": [
+          123
+        ],
+        "developed,": [
+          124
+        ],
+        "delivery": [
+          129
+        ],
+        "cell-killing": [
+          131
+        ],
+        "radiation": [
+          132
+        ],
+        "directly": [
+          133
+        ],
+        "specifically": [
+          135
+        ],
+        "cells,": [
+          138
+        ],
+        "too.": [
+          139
+        ],
+        "Imaging": [
+          140
+        ],
+        "not": [
+          144
+        ],
+        "only": [
+          145
+        ],
+        "diagnose": [
+          147
+        ],
+        "but": [
+          148
+        ],
+        "monitor": [
+          151
+        ],
+        "efficacy": [
+          154
+        ],
+        "follow-up,": [
+          156
+        ],
+        "using": [
+          157
+        ],
+        "highly": [
+          158
+        ],
+        "selective": [
+          159
+        ],
+        "vectors,": [
+          162
+        ],
+        "allowing": [
+          163
+        ],
+        "quantification": [
+          166
+        ],
+        "essential": [
+          168
+        ],
+        "tumour": [
+          169
+        ],
+        "parameters": [
+          170
+        ],
+        "receptor": [
+          173
+        ],
+        "density,": [
+          174
+        ],
+        "proliferation": [
+          175
+        ],
+        "index,": [
+          176
+        ],
+        "hypoxia.": [
+          178
+        ],
+        "Thus,": [
+          179
+        ],
+        "theranostics,": [
+          180
+        ],
+        "which": [
+          181
+        ],
+        "combines": [
+          182
+        ],
+        "matching": [
+          183
+        ],
+        "similar": [
+          186
+        ],
+        "elements": [
+          187
+        ],
+        "or,": [
+          188
+        ],
+        "ideally,": [
+          189
+        ],
+        "different": [
+          190
+        ],
+        "emissions": [
+          191
+        ],
+        "same": [
+          194,
+          206
+        ],
+        "radioisotope(s)": [
+          195
+        ],
+        "treatment": [
+          197
+        ],
+        "monitoring": [
+          199
+        ],
+        "therapeutic": [
+          202
+        ],
+        "response": [
+          203
+        ],
+        "at": [
+          204
+        ],
+        "time,": [
+          207
+        ],
+        "became": [
+          208
+        ],
+        "an": [
+          209
+        ],
+        "important": [
+          210
+        ],
+        "tool": [
+          211
+        ],
+        "clinical": [
+          213
+        ],
+        "practice.": [
+          214
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4403702985",
+      "doi": "https://doi.org/10.61092/iaea.ckxz-ynrk",
+      "display_name": "Summary Report Third Research Coordination Meeting on Nuclear Data for Charged-particle Monitor Reactions and Medical Isotope Production",
+      "publication_year": 2017,
+      "publication_date": "2017-01-01",
+      "type": "report",
+      "primary_location": {
+        "id": "doi:10.61092/iaea.ckxz-ynrk",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.61092/iaea.ckxz-ynrk",
+        "pdf_url": "https://nds.iaea.org/records/38b32-m9a47/files/indc-nds-0717.pdf",
+        "source": null,
+        "license": "public-domain",
+        "license_id": "https://openalex.org/licenses/public-domain",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "International Atomic Energy Agency",
+        "raw_type": "report"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5048778257",
+            "display_name": "Alan L. Nichols",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Alan L. Nichols",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5075698508",
+            "display_name": "F.M. Nortier",
+            "orcid": "https://orcid.org/0000-0002-7549-8101"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "F. Meiring Nortier",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5113207909",
+            "display_name": "R. Capote Noy",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "R. Capote Noy",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://nds.iaea.org/records/38b32-m9a47/files/indc-nds-0717.pdf",
+        "any_repository_has_fulltext": null
+      },
+      "abstract_inverted_index": {
+        "A": [
+          0
+        ],
+        "summary": [
+          1
+        ],
+        "is": [
+          2
+        ],
+        "given": [
+          3
+        ],
+        "of": [
+          4,
+          34,
+          39,
+          59,
+          79,
+          97
+        ],
+        "the": [
+          5,
+          32,
+          35,
+          47,
+          65,
+          74,
+          83
+        ],
+        "third": [
+          6
+        ],
+        "and": [
+          7,
+          20,
+          25,
+          37,
+          42,
+          61,
+          77,
+          91,
+          95
+        ],
+        "final": [
+          8
+        ],
+        "IAEA": [
+          9
+        ],
+        "research": [
+          10
+        ],
+        "coordination": [
+          11
+        ],
+        "meeting": [
+          12
+        ],
+        "on": [
+          13,
+          51,
+          82
+        ],
+        "\"Nuclear": [
+          14
+        ],
+        "Data": [
+          15
+        ],
+        "for": [
+          16,
+          54,
+          70,
+          73
+        ],
+        "Charged-particle": [
+          17
+        ],
+        "Monitor": [
+          18
+        ],
+        "Reactions": [
+          19
+        ],
+        "Medical": [
+          21
+        ],
+        "Isotope": [
+          22
+        ],
+        "Production\".Participants": [
+          23
+        ],
+        "re-assessed": [
+          24
+        ],
+        "reviewed": [
+          26
+        ],
+        "their": [
+          27
+        ],
+        "progress": [
+          28
+        ],
+        "with": [
+          29,
+          64
+        ],
+        "respect": [
+          30
+        ],
+        "to": [
+          31,
+          101
+        ],
+        "completion": [
+          33
+        ],
+        "measurements": [
+          36
+        ],
+        "evaluations": [
+          38
+        ],
+        "specific": [
+          40,
+          71
+        ],
+        "cross-section": [
+          41,
+          52
+        ],
+        "decay": [
+          43,
+          68
+        ],
+        "data": [
+          44,
+          69
+        ],
+        "agreed": [
+          45,
+          100
+        ],
+        "at": [
+          46
+        ],
+        "previous": [
+          48
+        ],
+        "RCM.Debate": [
+          49
+        ],
+        "focused": [
+          50
+        ],
+        "studies": [
+          53
+        ],
+        "a": [
+          55
+        ],
+        "reasonably": [
+          56
+        ],
+        "wide": [
+          57
+        ],
+        "range": [
+          58
+        ],
+        "targets": [
+          60
+        ],
+        "projectiles,": [
+          62
+        ],
+        "along": [
+          63
+        ],
+        "relevant": [
+          66
+        ],
+        "recommended": [
+          67
+        ],
+        "radionuclides.Options": [
+          72
+        ],
+        "possible": [
+          75
+        ],
+        "preparation": [
+          76
+        ],
+        "publication": [
+          78
+        ],
+        "peer-reviewed": [
+          80
+        ],
+        "papers": [
+          81
+        ],
+        "work": [
+          84
+        ],
+        "were": [
+          85,
+          99
+        ],
+        "also": [
+          86
+        ],
+        "discussed": [
+          87
+        ],
+        "in": [
+          88
+        ],
+        "some": [
+          89
+        ],
+        "detail,": [
+          90
+        ],
+        "future": [
+          92
+        ],
+        "related": [
+          93
+        ],
+        "actions": [
+          94
+        ],
+        "exchanges": [
+          96
+        ],
+        "information": [
+          98
+        ],
+        "assemble": [
+          102
+        ],
+        "such": [
+          103
+        ],
+        "papers.": [
+          104
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W1601469195",
+      "doi": "https://doi.org/10.2172/956835",
+      "display_name": "Release of the 2008 Evaluated Nuclear Data Library (ENDL2008)",
+      "publication_year": 2009,
+      "publication_date": "2009-05-08",
+      "type": "report",
+      "primary_location": {
+        "id": "doi:10.2172/956835",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.2172/956835",
+        "pdf_url": "https://www.osti.gov/servlets/purl/956835",
+        "source": null,
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Lawrence Livermore National Laboratory (LLNL)",
+        "raw_type": "report"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5019423205",
+            "display_name": "David Brown",
+            "orcid": "https://orcid.org/0000-0002-9869-0278"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "D Brown",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5020920674",
+            "display_name": "Marie-Anne Descalle",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "M Descalle",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5026957810",
+            "display_name": "R. D. Hoffman",
+            "orcid": "https://orcid.org/0000-0002-9577-3043"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "R Hoffman",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5039631020",
+            "display_name": "K Kelley",
+            "orcid": "https://orcid.org/0000-0001-7253-9011"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "K Kelley",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5062196201",
+            "display_name": "P. Navr\u00e1til",
+            "orcid": "https://orcid.org/0000-0002-6535-2141"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "P Navratil",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5065740791",
+            "display_name": "J Pruet",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "J Pruet",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5033640356",
+            "display_name": "Neil Summers",
+            "orcid": "https://orcid.org/0000-0002-4276-7483"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "N Summers",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5087507345",
+            "display_name": "I. J. Thompson",
+            "orcid": "https://orcid.org/0000-0002-8058-5963"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "I Thompson",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5066433062",
+            "display_name": "R. Vogt",
+            "orcid": "https://orcid.org/0000-0002-0633-1260"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "R Vogt",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 1,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://www.osti.gov/servlets/purl/956835",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Livermore's": [
+          0
+        ],
+        "N-Division": [
+          1
+        ],
+        "is": [
+          2,
+          56,
+          304,
+          411,
+          452
+        ],
+        "now": [
+          3,
+          284,
+          412
+        ],
+        "releasing": [
+          4
+        ],
+        "the": [
+          5,
+          23,
+          26,
+          68,
+          81,
+          84,
+          110,
+          114,
+          125,
+          132,
+          138,
+          159,
+          187,
+          196,
+          210,
+          215,
+          222,
+          226,
+          231,
+          273,
+          291,
+          318,
+          361,
+          366,
+          418,
+          441,
+          455,
+          460,
+          488
+        ],
+        "first": [
+          6
+        ],
+        "version": [
+          7
+        ],
+        "of": [
+          8,
+          47,
+          77,
+          113,
+          158,
+          180,
+          200,
+          209,
+          237,
+          288,
+          290,
+          311,
+          339,
+          372,
+          384,
+          426,
+          432,
+          462,
+          479,
+          491
+        ],
+        "a": [
+          9,
+          61,
+          75,
+          164,
+          177,
+          246,
+          286,
+          337,
+          353,
+          381,
+          391
+        ],
+        "major": [
+          10,
+          320
+        ],
+        "new": [
+          11,
+          85,
+          188,
+          324
+        ],
+        "nuclear": [
+          12,
+          64,
+          117
+        ],
+        "data": [
+          13,
+          118,
+          367
+        ],
+        "library.": [
+          14,
+          189,
+          407
+        ],
+        "This": [
+          15,
+          92,
+          190
+        ],
+        "includes": [
+          16,
+          193
+        ],
+        "some": [
+          17,
+          436
+        ],
+        "500": [
+          18
+        ],
+        "evaluations": [
+          19,
+          185,
+          249,
+          271
+        ],
+        "(roughly": [
+          20
+        ],
+        "four": [
+          21
+        ],
+        "times": [
+          22
+        ],
+        "number": [
+          24
+        ],
+        "in": [
+          25,
+          104,
+          183,
+          186,
+          294,
+          300,
+          317,
+          487,
+          494
+        ],
+        "previous": [
+          27,
+          69
+        ],
+        "standard)": [
+          28
+        ],
+        "and": [
+          29,
+          45,
+          49,
+          59,
+          98,
+          137,
+          202,
+          235,
+          257,
+          260,
+          268,
+          345,
+          386,
+          396,
+          429,
+          468,
+          476
+        ],
+        "many": [
+          30
+        ],
+        "physics": [
+          31,
+          65
+        ],
+        "improvements": [
+          32
+        ],
+        "important": [
+          33,
+          212
+        ],
+        "for": [
+          34,
+          87,
+          218,
+          250,
+          360,
+          377,
+          380,
+          417
+        ],
+        "calculating": [
+          35
+        ],
+        "weapon": [
+          36
+        ],
+        "performance,": [
+          37
+        ],
+        "output": [
+          38
+        ],
+        "effects,": [
+          39
+        ],
+        "attribution": [
+          40
+        ],
+        "signatures,": [
+          41
+        ],
+        "key": [
+          42
+        ],
+        "radiochemical": [
+          43,
+          251,
+          313
+        ],
+        "diagnostics": [
+          44,
+          252
+        ],
+        "performance": [
+          46,
+          397
+        ],
+        "conventional": [
+          48
+        ],
+        "hybrid": [
+          50
+        ],
+        "fission/fusion": [
+          51
+        ],
+        "reactors.": [
+          52
+        ],
+        "As": [
+          53,
+          239,
+          364
+        ],
+        "this": [
+          54,
+          105,
+          449,
+          492
+        ],
+        "library": [
+          55,
+          325
+        ],
+        "more": [
+          57,
+          244,
+          465
+        ],
+        "extensive": [
+          58,
+          328
+        ],
+        "on": [
+          60,
+          149
+        ],
+        "much": [
+          62
+        ],
+        "firmer": [
+          63
+        ],
+        "footing": [
+          66
+        ],
+        "than": [
+          67,
+          245,
+          402
+        ],
+        "ENDL99": [
+          70,
+          395
+        ],
+        "it": [
+          71
+        ],
+        "should": [
+          72
+        ],
+        "become,": [
+          73
+        ],
+        "after": [
+          74
+        ],
+        "period": [
+          76
+        ],
+        "trial": [
+          78
+        ],
+        "use": [
+          79,
+          262,
+          299
+        ],
+        "by": [
+          80,
+          96,
+          130,
+          230,
+          254
+        ],
+        "applied": [
+          82
+        ],
+        "community,": [
+          83
+        ],
+        "standard": [
+          86
+        ],
+        "programmatic": [
+          88,
+          456
+        ],
+        "applications": [
+          89,
+          151,
+          169
+        ],
+        "at": [
+          90,
+          206,
+          352
+        ],
+        "Livermore.": [
+          91,
+          207
+        ],
+        "work": [
+          93,
+          112,
+          204
+        ],
+        "was": [
+          94,
+          107,
+          368
+        ],
+        "supported": [
+          95
+        ],
+        "ASC-PEM": [
+          97
+        ],
+        "Campaign": [
+          99
+        ],
+        "4.": [
+          100
+        ],
+        "Our": [
+          101,
+          446
+        ],
+        "basic": [
+          102
+        ],
+        "philosophy": [
+          103
+        ],
+        "release": [
+          106,
+          191,
+          451,
+          490
+        ],
+        "to": [
+          108,
+          147,
+          175,
+          279,
+          296,
+          308,
+          335,
+          349,
+          399,
+          453,
+          458
+        ],
+        "adopt": [
+          109
+        ],
+        "best": [
+          111
+        ],
+        "world's": [
+          115
+        ],
+        "different": [
+          116
+        ],
+        "efforts.": [
+          119
+        ],
+        "We": [
+          120,
+          471
+        ],
+        "have": [
+          121,
+          171,
+          242
+        ],
+        "drawn": [
+          122
+        ],
+        "heavily": [
+          123
+        ],
+        "from": [
+          124,
+          195,
+          272
+        ],
+        "U.S.": [
+          126
+        ],
+        "ENDF": [
+          127
+        ],
+        "project": [
+          128,
+          135,
+          141
+        ],
+        "(led": [
+          129
+        ],
+        "Brookhaven),": [
+          131
+        ],
+        "Japanese": [
+          133
+        ],
+        "JENDL": [
+          134
+        ],
+        "(JAEA),": [
+          136
+        ],
+        "European": [
+          139
+        ],
+        "JEFF": [
+          140
+        ],
+        "(NEA).": [
+          142
+        ],
+        "Because": [
+          143
+        ],
+        "those": [
+          144
+        ],
+        "efforts": [
+          145
+        ],
+        "tend": [
+          146
+        ],
+        "focus": [
+          148
+        ],
+        "reactor": [
+          150
+        ],
+        "they": [
+          152,
+          355
+        ],
+        "do": [
+          153,
+          356
+        ],
+        "not": [
+          154,
+          357
+        ],
+        "include": [
+          155,
+          214,
+          285
+        ],
+        "an": [
+          156,
+          305
+        ],
+        "account": [
+          157
+        ],
+        "charged": [
+          160,
+          181
+        ],
+        "particles": [
+          161,
+          182,
+          292
+        ],
+        "emitted": [
+          162,
+          293
+        ],
+        "following": [
+          163
+        ],
+        "reaction.": [
+          165
+        ],
+        "To": [
+          166
+        ],
+        "enable": [
+          167,
+          297
+        ],
+        "broader": [
+          168
+        ],
+        "we": [
+          170,
+          241
+        ],
+        "used": [
+          172
+        ],
+        "theory-based": [
+          173,
+          248
+        ],
+        "calculations": [
+          174
+        ],
+        "add": [
+          176
+        ],
+        "complete": [
+          178,
+          282
+        ],
+        "description": [
+          179,
+          287
+        ],
+        "all": [
+          184,
+          289,
+          310
+        ],
+        "also": [
+          192
+        ],
+        "results": [
+          194,
+          213,
+          416
+        ],
+        "last": [
+          197
+        ],
+        "ten": [
+          198
+        ],
+        "years": [
+          199
+        ],
+        "theory": [
+          201,
+          274
+        ],
+        "experimental": [
+          203
+        ],
+        "here": [
+          205
+        ],
+        "Some": [
+          208
+        ],
+        "most": [
+          211
+        ],
+        "surrogate": [
+          216
+        ],
+        "campaign": [
+          217
+        ],
+        "unstable": [
+          219
+        ],
+        "uranium": [
+          220
+        ],
+        "isotopes,": [
+          221
+        ],
+        "LLNL/LANL": [
+          223
+        ],
+        "239Pu(n,2n)": [
+          224
+        ],
+        "evaluation,": [
+          225
+        ],
+        "241Am(n,2n)": [
+          227
+        ],
+        "evaluation": [
+          228
+        ],
+        "validated": [
+          229,
+          369
+        ],
+        "recent": [
+          232
+        ],
+        "Livermore-led": [
+          233
+        ],
+        "experiments,": [
+          234
+        ],
+        "measurements": [
+          236
+        ],
+        "48Ti(n,2n).": [
+          238
+        ],
+        "well,": [
+          240,
+          365
+        ],
+        "adopted": [
+          243
+        ],
+        "hundred": [
+          247
+        ],
+        "completed": [
+          253
+        ],
+        "R.": [
+          255
+        ],
+        "Hoffman": [
+          256
+        ],
+        "M.": [
+          258
+        ],
+        "Mustafa": [
+          259
+        ],
+        "that": [
+          261
+        ],
+        "improved": [
+          263
+        ],
+        "optical": [
+          264
+        ],
+        "models,": [
+          265
+        ],
+        "level": [
+          266
+        ],
+        "densities,": [
+          267
+        ],
+        "decay": [
+          269
+        ],
+        "scheme": [
+          270
+        ],
+        "effort.": [
+          275
+        ],
+        "These": [
+          276,
+          483
+        ],
+        "were": [
+          277,
+          333
+        ],
+        "extended": [
+          278
+        ],
+        "be": [
+          280,
+          485
+        ],
+        "transport": [
+          281,
+          362
+        ],
+        "(they": [
+          283
+        ],
+        "reactions)": [
+          295
+        ],
+        "their": [
+          298
+        ],
+        "neutronics": [
+          301
+        ],
+        "simulations.": [
+          302
+        ],
+        "There": [
+          303
+        ],
+        "ongoing": [
+          306
+        ],
+        "effort": [
+          307
+        ],
+        "provide": [
+          309
+        ],
+        "these": [
+          312
+        ],
+        "evaluations,": [
+          314
+        ],
+        "including": [
+          315
+        ],
+        "isomers,": [
+          316
+        ],
+        "next": [
+          319
+        ],
+        "ENDL": [
+          321
+        ],
+        "release.": [
+          322
+        ],
+        "The": [
+          323
+        ],
+        "has": [
+          326
+        ],
+        "undergone": [
+          327
+        ],
+        "unclassified": [
+          329,
+          467
+        ],
+        "testing.": [
+          330
+        ],
+        "All": [
+          331
+        ],
+        "isotopes": [
+          332
+        ],
+        "required": [
+          334
+        ],
+        "pass": [
+          336
+        ],
+        "set": [
+          338
+        ],
+        "simple": [
+          340
+        ],
+        "tests": [
+          341
+        ],
+        "with": [
+          342,
+          415,
+          435,
+          440,
+          448,
+          464
+        ],
+        "both": [
+          343
+        ],
+        "deterministic": [
+          344
+        ],
+        "Monte": [
+          346
+        ],
+        "Carlo": [
+          347
+        ],
+        "codes": [
+          348
+        ],
+        "ensure": [
+          350
+        ],
+        "that,": [
+          351
+        ],
+        "minimum,": [
+          354
+        ],
+        "cause": [
+          358
+        ],
+        "problems": [
+          359,
+          480
+        ],
+        "codes.": [
+          363
+        ],
+        "through": [
+          370
+        ],
+        "simulations": [
+          371,
+          425
+        ],
+        "historical": [
+          373
+        ],
+        "integral": [
+          374
+        ],
+        "experiments.": [
+          375,
+          445
+        ],
+        "Calculations": [
+          376
+        ],
+        "k": [
+          378
+        ],
+        "eigenvalues": [
+          379
+        ],
+        "broad": [
+          382
+        ],
+        "array": [
+          383
+        ],
+        "bare": [
+          385,
+          419
+        ],
+        "reflected": [
+          387
+        ],
+        "critical": [
+          388
+        ],
+        "assemblies": [
+          389
+        ],
+        "show": [
+          390
+        ],
+        "marked": [
+          392
+        ],
+        "improvement": [
+          393
+        ],
+        "over": [
+          394
+        ],
+        "comparable": [
+          398
+        ],
+        "or": [
+          400,
+          481
+        ],
+        "better": [
+          401
+        ],
+        "any": [
+          403,
+          477
+        ],
+        "other": [
+          404
+        ],
+        "currently": [
+          405
+        ],
+        "available": [
+          406
+        ],
+        "In": [
+          408
+        ],
+        "particular,": [
+          409
+        ],
+        "there": [
+          410
+        ],
+        "excellent": [
+          413,
+          438
+        ],
+        "agreement": [
+          414,
+          439
+        ],
+        "plutonium": [
+          420
+        ],
+        "Jezebel": [
+          421
+        ],
+        "assembly": [
+          422
+        ],
+        "(k=1.0007).": [
+          423
+        ],
+        "Similarly,": [
+          424
+        ],
+        "photon": [
+          427
+        ],
+        "production": [
+          428
+        ],
+        "neutron": [
+          430
+        ],
+        "time": [
+          431
+        ],
+        "flight": [
+          433
+        ],
+        "show,": [
+          434
+        ],
+        "exceptions,": [
+          437
+        ],
+        "LLNL": [
+          442
+        ],
+        "pulsed": [
+          443
+        ],
+        "sphere": [
+          444
+        ],
+        "intention": [
+          447
+        ],
+        "initial": [
+          450
+        ],
+        "engage": [
+          454
+        ],
+        "community": [
+          457
+        ],
+        "begin": [
+          459
+        ],
+        "process": [
+          461
+        ],
+        "testing": [
+          463
+        ],
+        "complicated": [
+          466
+        ],
+        "classified": [
+          469
+        ],
+        "problems.": [
+          470
+        ],
+        "would": [
+          472
+        ],
+        "greatly": [
+          473
+        ],
+        "appreciate": [
+          474
+        ],
+        "recommendations": [
+          475
+        ],
+        "reports": [
+          478
+        ],
+        "oddities.": [
+          482
+        ],
+        "will": [
+          484
+        ],
+        "included": [
+          486
+        ],
+        "final": [
+          489
+        ],
+        "database": [
+          493
+        ],
+        "2009.": [
+          495
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4405432920",
+      "doi": null,
+      "display_name": "A Composite Target of a Radium Salt and a Soft Metal Matrix for Production of Ac-225 with a Proton or Electron Accelerator",
+      "publication_year": 2024,
+      "publication_date": "2024-12-13",
+      "type": "preprint",
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2412.09798",
+        "is_oa": true,
+        "landing_page_url": "http://arxiv.org/abs/2412.09798",
+        "pdf_url": "https://arxiv.org/pdf/2412.09798",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv (Cornell University)",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I205783295",
+          "host_organization_name": "Cornell University",
+          "host_organization_lineage": [
+            "https://openalex.org/I205783295"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5045673078",
+            "display_name": "William Diamond",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Diamond, William",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5058549227",
+            "display_name": "C. K. Ross",
+            "orcid": "https://orcid.org/0000-0002-6608-3975"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Ross, Carl",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5059975401",
+            "display_name": "Herbert Moore",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Moore, Herbert",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://arxiv.org/pdf/2412.09798",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "The": [
+          0,
+          115
+        ],
+        "production": [
+          1
+        ],
+        "of": [
+          2,
+          14,
+          46,
+          74,
+          78,
+          111,
+          162,
+          173,
+          207,
+          247,
+          256,
+          282
+        ],
+        "225Ac": [
+          3,
+          163,
+          257
+        ],
+        "using": [
+          4
+        ],
+        "either": [
+          5
+        ],
+        "a": [
+          6,
+          12,
+          25,
+          35,
+          41,
+          75,
+          79,
+          84,
+          229,
+          264,
+          268,
+          285,
+          289
+        ],
+        "proton": [
+          7,
+          273
+        ],
+        "or": [
+          8
+        ],
+        "electron": [
+          9,
+          294
+        ],
+        "accelerator": [
+          10
+        ],
+        "requires": [
+          11
+        ],
+        "target": [
+          13,
+          36,
+          116,
+          136,
+          189,
+          199,
+          223,
+          234,
+          249
+        ],
+        "226Ra.": [
+          15
+        ],
+        "Radium": [
+          16
+        ],
+        "metal": [
+          17,
+          85,
+          106
+        ],
+        "is": [
+          18,
+          32,
+          49,
+          55,
+          101,
+          225,
+          258
+        ],
+        "difficult": [
+          19
+        ],
+        "to": [
+          20,
+          155,
+          227,
+          239
+        ],
+        "work": [
+          21,
+          70
+        ],
+        "with": [
+          22,
+          83,
+          120,
+          267,
+          288
+        ],
+        "and": [
+          23,
+          51,
+          151,
+          191,
+          209,
+          275
+        ],
+        "so": [
+          24
+        ],
+        "radium": [
+          26,
+          30,
+          80,
+          113
+        ],
+        "salt,": [
+          27
+        ],
+        "such": [
+          28
+        ],
+        "as": [
+          29,
+          34,
+          40
+        ],
+        "carbonate,": [
+          31
+        ],
+        "preferred": [
+          33
+        ],
+        "material.": [
+          37
+        ],
+        "Normally": [
+          38
+        ],
+        "available": [
+          39
+        ],
+        "powder,": [
+          42
+        ],
+        "the": [
+          43,
+          47,
+          52,
+          59,
+          67,
+          72,
+          105,
+          109,
+          131,
+          141,
+          153,
+          160,
+          170,
+          177,
+          187,
+          198,
+          204,
+          210,
+          214,
+          222,
+          233,
+          241,
+          248,
+          254,
+          277
+        ],
+        "average": [
+          44
+        ],
+        "density": [
+          45
+        ],
+        "powder": [
+          48,
+          82,
+          89,
+          100,
+          238
+        ],
+        "low": [
+          50,
+          121
+        ],
+        "thermal": [
+          53,
+          149,
+          194
+        ],
+        "conductivity": [
+          54,
+          150
+        ],
+        "poor,": [
+          56
+        ],
+        "thus": [
+          57,
+          129
+        ],
+        "limiting": [
+          58
+        ],
+        "beam": [
+          60,
+          192,
+          274
+        ],
+        "power": [
+          61
+        ],
+        "that": [
+          62,
+          98,
+          169,
+          197,
+          253
+        ],
+        "can": [
+          63,
+          117,
+          144
+        ],
+        "be": [
+          64,
+          118,
+          145,
+          202,
+          217
+        ],
+        "dissipated": [
+          65
+        ],
+        "in": [
+          66,
+          93,
+          108
+        ],
+        "target.": [
+          68
+        ],
+        "This": [
+          69
+        ],
+        "proposes": [
+          71
+        ],
+        "creation": [
+          73
+        ],
+        "solid": [
+          76,
+          142
+        ],
+        "mixture": [
+          77,
+          143
+        ],
+        "salt": [
+          81
+        ],
+        "matrix.": [
+          86
+        ],
+        "Although": [
+          87
+        ],
+        "aluminum": [
+          88
+        ],
+        "has": [
+          90
+        ],
+        "been": [
+          91
+        ],
+        "used": [
+          92
+        ],
+        "similar": [
+          94
+        ],
+        "applications,": [
+          95
+        ],
+        "we": [
+          96,
+          251
+        ],
+        "suggest": [
+          97
+        ],
+        "indium": [
+          99,
+          174,
+          208,
+          237
+        ],
+        "good": [
+          102
+        ],
+        "choice": [
+          103
+        ],
+        "for": [
+          104,
+          127,
+          135,
+          263,
+          279
+        ],
+        "matrix": [
+          107
+        ],
+        "case": [
+          110
+        ],
+        "radioactive": [
+          112,
+          171
+        ],
+        "salts.": [
+          114
+        ],
+        "formed": [
+          119
+        ],
+        "die": [
+          122
+        ],
+        "pressure": [
+          123
+        ],
+        "without": [
+          124
+        ],
+        "any": [
+          125
+        ],
+        "need": [
+          126
+        ],
+        "heating,": [
+          128
+        ],
+        "simplifying": [
+          130
+        ],
+        "hot-cell": [
+          132
+        ],
+        "equipment": [
+          133
+        ],
+        "needed": [
+          134
+        ],
+        "preparation.": [
+          137
+        ],
+        "We": [
+          138,
+          158
+        ],
+        "describe": [
+          139
+        ],
+        "how": [
+          140
+        ],
+        "formed,": [
+          146
+        ],
+        "measure": [
+          147
+        ],
+        "its": [
+          148
+        ],
+        "compare": [
+          152
+        ],
+        "value": [
+          154
+        ],
+        "model": [
+          156
+        ],
+        "estimates.": [
+          157
+        ],
+        "calculate": [
+          159
+        ],
+        "yield": [
+          161,
+          255
+        ],
+        "under": [
+          164
+        ],
+        "different": [
+          165
+        ],
+        "scenarios.": [
+          166
+        ],
+        "Calculations": [
+          167
+        ],
+        "show": [
+          168
+        ],
+        "isotopes": [
+          172
+        ],
+        "produced": [
+          175
+        ],
+        "during": [
+          176
+        ],
+        "irradiation": [
+          178,
+          266,
+          287
+        ],
+        "should": [
+          179
+        ],
+        "not": [
+          180
+        ],
+        "produce": [
+          181
+        ],
+        "significant": [
+          182
+        ],
+        "handling": [
+          183
+        ],
+        "challenges": [
+          184
+        ],
+        "post-irradiation.": [
+          185
+        ],
+        "For": [
+          186
+        ],
+        "proposed": [
+          188
+        ],
+        "geometry": [
+          190
+        ],
+        "parameters,": [
+          193
+        ],
+        "modelling": [
+          195
+        ],
+        "indicates": [
+          196
+        ],
+        "temperature": [
+          200
+        ],
+        "will": [
+          201,
+          216
+        ],
+        "below": [
+          203
+        ],
+        "melting": [
+          205
+        ],
+        "point": [
+          206
+        ],
+        "heat": [
+          211
+        ],
+        "flux": [
+          212
+        ],
+        "from": [
+          213
+        ],
+        "surfaces": [
+          215
+        ],
+        "manageable.": [
+          218
+        ],
+        "Thermal": [
+          219
+        ],
+        "resistance": [
+          220
+        ],
+        "at": [
+          221
+        ],
+        "interfaces": [
+          224
+        ],
+        "shown": [
+          226
+        ],
+        "have": [
+          228
+        ],
+        "large": [
+          230
+        ],
+        "effect": [
+          231
+        ],
+        "on": [
+          232
+        ],
+        "temperature.": [
+          235
+        ],
+        "Using": [
+          236
+        ],
+        "form": [
+          240
+        ],
+        "mixture,": [
+          242
+        ],
+        "occupying": [
+          243
+        ],
+        "about": [
+          244
+        ],
+        "40": [
+          245
+        ],
+        "%": [
+          246
+        ],
+        "volume,": [
+          250
+        ],
+        "find": [
+          252
+        ],
+        "80": [
+          259
+        ],
+        "GBq": [
+          260
+        ],
+        "(2": [
+          261
+        ],
+        "Ci)": [
+          262
+        ],
+        "10-day": [
+          265,
+          286
+        ],
+        "24": [
+          269
+        ],
+        "MeV,": [
+          270,
+          291
+        ],
+        "3": [
+          271
+        ],
+        "kW": [
+          272,
+          293
+        ],
+        "approximately": [
+          276
+        ],
+        "same": [
+          278
+        ],
+        "three": [
+          280
+        ],
+        "milkings": [
+          281
+        ],
+        "225Ra": [
+          283
+        ],
+        "after": [
+          284
+        ],
+        "25": [
+          290
+        ],
+        "20": [
+          292
+        ],
+        "beam.": [
+          295
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    },
+    {
+      "id": "https://openalex.org/W4386756178",
+      "doi": "https://doi.org/10.5281/zenodo.8348103",
+      "display_name": "Strategy for implementing novel societal applications of accelerators",
+      "publication_year": 2023,
+      "publication_date": "2023-09-14",
+      "type": "report",
+      "primary_location": {
+        "id": "pmh:oai:zenodo.org:8348103",
+        "is_oa": true,
+        "landing_page_url": "https://zenodo.org/record/8348103",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4306400562",
+          "display_name": "Zenodo (CERN European Organization for Nuclear Research)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I67311998",
+          "host_organization_name": "European Organization for Nuclear Research",
+          "host_organization_lineage": [
+            "https://openalex.org/I67311998"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "",
+        "raw_type": "info:eu-repo/semantics/report"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5092875102",
+            "display_name": "IFAST WP members",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": true,
+          "raw_author_name": "IFAST WP12 Members",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://zenodo.org/record/8348103",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "Particle": [
+          0
+        ],
+        "accelerators": [
+          1,
+          47,
+          50
+        ],
+        "are": [
+          2
+        ],
+        "already": [
+          3
+        ],
+        "extensively": [
+          4
+        ],
+        "used": [
+          5
+        ],
+        "in": [
+          6,
+          74
+        ],
+        "health": [
+          7
+        ],
+        "and": [
+          8,
+          41,
+          84,
+          104,
+          109,
+          113
+        ],
+        "industry": [
+          9,
+          75,
+          103
+        ],
+        "for": [
+          10,
+          100
+        ],
+        "a": [
+          11,
+          52,
+          70,
+          101
+        ],
+        "wide": [
+          12
+        ],
+        "range": [
+          13
+        ],
+        "of": [
+          14,
+          22,
+          37,
+          46,
+          72,
+          76,
+          87,
+          92
+        ],
+        "applications,": [
+          15
+        ],
+        "including": [
+          16,
+          69
+        ],
+        "cancer": [
+          17
+        ],
+        "treatment,": [
+          18,
+          30
+        ],
+        "polymer": [
+          19
+        ],
+        "modification,": [
+          20
+        ],
+        "sterilisation": [
+          21
+        ],
+        "medical": [
+          23
+        ],
+        "products,": [
+          24
+        ],
+        "radioisotope": [
+          25
+        ],
+        "production,": [
+          26
+        ],
+        "imaging,": [
+          27
+        ],
+        "phyto-sanitation,": [
+          28
+        ],
+        "food": [
+          29
+        ],
+        "etc.": [
+          31
+        ],
+        "These": [
+          32
+        ],
+        "exploit": [
+          33
+        ],
+        "the": [
+          34,
+          38,
+          42,
+          44,
+          82,
+          88,
+          90,
+          93,
+          98,
+          107
+        ],
+        "unique": [
+          35
+        ],
+        "features": [
+          36
+        ],
+        "accelerated": [
+          39
+        ],
+        "beams": [
+          40
+        ],
+        "control": [
+          43
+        ],
+        "use": [
+          45
+        ],
+        "provides.": [
+          48
+        ],
+        "Nevertheless,": [
+          49
+        ],
+        "have": [
+          51
+        ],
+        "much": [
+          53
+        ],
+        "greater": [
+          54
+        ],
+        "potential": [
+          55,
+          99
+        ],
+        "which": [
+          56
+        ],
+        "is": [
+          57,
+          64
+        ],
+        "currently": [
+          58
+        ],
+        "not": [
+          59
+        ],
+        "being": [
+          60
+        ],
+        "fully": [
+          61
+        ],
+        "exploited.": [
+          62
+        ],
+        "This": [
+          63
+        ],
+        "due": [
+          65
+        ],
+        "to": [
+          66,
+          96,
+          105
+        ],
+        "many": [
+          67
+        ],
+        "reasons,": [
+          68
+        ],
+        "lack": [
+          71
+        ],
+        "knowledge": [
+          73
+        ],
+        "what": [
+          77
+        ],
+        "benefits": [
+          78
+        ],
+        "they": [
+          79
+        ],
+        "could": [
+          80
+        ],
+        "bring,": [
+          81
+        ],
+        "perceived": [
+          83
+        ],
+        "real": [
+          85
+        ],
+        "cost": [
+          86
+        ],
+        "technology,": [
+          89
+        ],
+        "absence": [
+          91
+        ],
+        "skills": [
+          94
+        ],
+        "required": [
+          95
+        ],
+        "assess": [
+          97
+        ],
+        "specific": [
+          102
+        ],
+        "implement": [
+          106
+        ],
+        "technology": [
+          108
+        ],
+        "concerns": [
+          110
+        ],
+        "over": [
+          111
+        ],
+        "safety": [
+          112
+        ],
+        "regulation.": [
+          114
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    }
+  ],
+  "group_by": []
+}

@@ -1,0 +1,5 @@
+2026/08/23-08:53:37.220 1259c Creating DB C:\Users\ogunn\Downloads\New folder\tmp\pdfs\edge-cdp-profile-2\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/08/23-08:53:37.302 1259c Reusing MANIFEST C:\Users\ogunn\Downloads\New folder\tmp\pdfs\edge-cdp-profile-2\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/08/23-08:53:38.748 f8e4 Level-0 table #5: started
+2026/08/23-08:53:38.759 f8e4 Level-0 table #5: 683273 bytes OK
+2026/08/23-08:53:38.762 f8e4 Delete type=0 #3

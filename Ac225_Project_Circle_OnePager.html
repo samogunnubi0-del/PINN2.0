@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A plain-English visual explanation of Samuel Ogunnubi's Ac-225 physics-guided machine-learning project and its next validation steps.">
+  <title>How My Ac-225 Project Works | Samuel Ogunnubi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c1218;
+      --canvas: #f0f4f8;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --ink: #0f172a;
+      --ink-secondary: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      
+      /* Distinct Theme Accents */
+      --step1-crimson: #e11d48;
+      --step1-bg: #fff1f2;
+      --step2-amber: #d97706;
+      --step2-bg: #fffbeb;
+      --step3-blue: #2563eb;
+      --step3-bg: #eff6ff;
+      --step4-cyan: #0284c7;
+      --step4-bg: #f0f9ff;
+      --step5-emerald: #059669;
+      --step5-bg: #ecfdf5;
+      --step6-purple: #7c3aed;
+      --step6-bg: #f5f3ff;
+      --step7-teal: #0d9488;
+      --step7-bg: #f0fdfa;
+
+      --center-glow: rgba(225, 29, 72, 0.08);
+      --center-border: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #e2e8f0;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.06) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(225, 29, 72, 0.06) 0px, transparent 50%);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .actions-bar {
+      width: min(1040px, calc(100% - 32px));
+      margin: 16px auto 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .badge-live::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    }
+
+    .btn-print svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Main One-Pager Sheet */
+    .sheet {
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto 32px;
+      padding: 36px 42px 30px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    /* Top decorative gradient line */
+    .sheet::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      border-radius: 16px 16px 0 0;
+      background: linear-gradient(90deg, 
+        var(--step1-crimson) 0%, 
+        var(--step2-amber) 25%, 
+        var(--step3-blue) 50%, 
+        var(--step5-emerald) 75%, 
+        var(--step6-purple) 100%
+      );
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      background: var(--step1-bg);
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      border-radius: 6px;
+      color: var(--step1-crimson);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      max-width: 660px;
+      line-height: 1.4;
+    }
+
+    .author-card {
+      text-align: right;
+      padding-left: 20px;
+      border-left: 2px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .author-role {
+      font-size: 11.5px;
+      color: #475569;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .author-school {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    /* ==========================================================================
+       CIRCULAR STORY SECTION
+       ========================================================================== */
+    .circle-container {
+      position: relative;
+      width: 100%;
+      height: 650px;
+      margin: 22px 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Circular SVG Track & Flow Arrows */
+    .circle-svg-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Central Hub */
+    .center-hub {
+      position: absolute;
+      z-index: 10;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #ffffff 50%, #f8fafc 100%);
+      border: 2px solid #e2e8f0;
+      box-shadow: 
+        0 0 0 8px rgba(241, 245, 249, 0.8),
+        0 0 0 16px rgba(225, 29, 72, 0.04),
+        0 20px 35px -10px rgba(15, 23, 42, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 22px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .center-hub:hover {
+      box-shadow: 
+        0 0 0 10px rgba(241, 245, 249, 0.9),
+        0 0 0 20px rgba(225, 29, 72, 0.08),
+        0 25px 45px -10px rgba(15, 23, 42, 0.18);
+    }
+
+    .center-hub .goal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%);
+      border: 1px solid #fda4af;
+      border-radius: 999px;
+      color: var(--step1-crimson);
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .center-hub .goal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin: 0 0 6px;
+    }
+
+    .center-hub .goal-desc {
+      font-size: 11px;
+      color: #64748b;
+      line-height: 1.35;
+      margin: 0 0 12px;
+      max-width: 250px;
+    }
+
+    .reaction-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #1e293b;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .reaction-pill span.arrow {
+      color: var(--step1-crimson);
+      font-weight: 800;
+    }
+
+    /* -------------------------------------------------------------
+       Circularly Positioned Step Cards (1 to 7)
+       ------------------------------------------------------------- */
+    .step-card {
+      position: absolute;
+      z-index: 12;
+      width: 232px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 12px 14px 12px 42px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(0,0,0,0.02);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+    }
+
+    .step-card:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 28px -6px rgba(15, 23, 42, 0.16);
+      z-index: 20;
+    }
+
+    .step-num-bubble {
+      position: absolute;
+      top: 12px;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .step-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .step-card strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 10.5px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* -------------------------------------------------------------
+       STEP 1 - HIGHLIGHTED PROMINENTLY (Start / Motivation)
+       Position: Top Center (12 o'clock)
+       ------------------------------------------------------------- */
+    .step-card.c-s1 {
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      border: 2px solid var(--step1-crimson);
+      background: linear-gradient(180deg, #fffafa 0%, #ffffff 100%);
+      box-shadow: 0 10px 25px -4px rgba(225, 29, 72, 0.2), 0 0 0 4px rgba(225, 29, 72, 0.06);
+    }
+
+    .step-card.c-s1:hover {
+      transform: translateX(-50%) translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 32px -4px rgba(225, 29, 72, 0.3), 0 0 0 6px rgba(225, 29, 72, 0.1);
+    }
+
+    .step-card.c-s1 .step-num-bubble {
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      box-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+    }
+
+    .start-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--step1-crimson);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1px 7px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+
+    .step-card.c-s1 .step-tag { color: var(--step1-crimson); }
+
+    /* STEP 2 - Top Right (~1:45 position) */
+    .step-card.c-s2 {
+      top: 90px;
+      right: 18px;
+      border-top: 3px solid var(--step2-amber);
+    }
+    .step-card.c-s2 .step-num-bubble { background: var(--step2-amber); }
+    .step-card.c-s2 .step-tag { color: var(--step2-amber); }
+
+    /* STEP 3 - Mid-Low Right (~4:00 position) */
+    .step-card.c-s3 {
+      top: 285px;
+      right: 4px;
+      border-top: 3px solid var(--step3-blue);
+    }
+    .step-card.c-s3 .step-num-bubble { background: var(--step3-blue); }
+    .step-card.c-s3 .step-tag { color: var(--step3-blue); }
+
+    /* STEP 4 - Bottom Right (~5:30 position) */
+    .step-card.c-s4 {
+      bottom: 0px;
+      right: 110px;
+      border-top: 3px solid var(--step4-cyan);
+    }
+    .step-card.c-s4 .step-num-bubble { background: var(--step4-cyan); }
+    .step-card.c-s4 .step-tag { color: var(--step4-cyan); }
+
+    /* STEP 5 - Bottom Left (~6:30 position) */
+    .step-card.c-s5 {
+      bottom: 0px;
+      left: 110px;
+      border-top: 3px solid var(--step5-emerald);
+    }
+    .step-card.c-s5 .step-num-bubble { background: var(--step5-emerald); }
+    .step-card.c-s5 .step-tag { color: var(--step5-emerald); }
+
+    /* STEP 6 - Mid-Low Left (~8:00 position) */
+    .step-card.c-s6 {
+      top: 285px;
+      left: 4px;
+      border-top: 3px solid var(--step6-purple);
+    }
+    .step-card.c-s6 .step-num-bubble { background: var(--step6-purple); }
+    .step-card.c-s6 .step-tag { color: var(--step6-purple); }
+
+    /* STEP 7 - Top Left (~10:15 position) */
+    .step-card.c-s7 {
+      top: 90px;
+      left: 18px;
+      border-top: 3px solid var(--step7-teal);
+    }
+    .step-card.c-s7 .step-num-bubble { background: var(--step7-teal); }
+    .step-card.c-s7 .step-tag { color: var(--step7-teal); }
+
+    /* ==========================================================================
+       BOTTOM PANELS & OUTCOMES
+       ========================================================================== */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-top: 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .outcome-panel {
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .outcome-panel.completed-panel {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .outcome-panel.hope-panel {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .panel-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .completed-panel .panel-icon {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    .hope-panel .panel-icon {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 14px;
+      margin: 0;
+      padding: 0 0 0 16px;
+      list-style: square;
+    }
+
+    .check-list li {
+      font-size: 10.5px;
+      line-height: 1.35;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .hope-panel p {
+      margin: 0;
+      font-size: 11px;
+      color: #1e3a8a;
+      line-height: 1.45;
+    }
+
+    /* Boundary Note */
+    .boundary-card {
+      margin: 12px 0 0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #64748b;
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: #475569;
+    }
+
+    .boundary-card strong {
+      color: #0f172a;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: #94a3b8;
+      font-size: 10px;
+    }
+
+    footer a {
+      color: var(--step3-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE & MOBILE
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .sheet {
+        padding: 24px 20px 20px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .author-card {
+        text-align: left;
+        padding-left: 0;
+        border-left: none;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        width: 100%;
+      }
+      .circle-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 18px 0;
+      }
+      .circle-svg-layer {
+        display: none;
+      }
+      .center-hub {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        padding: 20px;
+        order: 8;
+      }
+      .step-card {
+        position: relative;
+        inset: auto !important;
+        width: 100% !important;
+        transform: none !important;
+      }
+      .c-s1 { order: 1; }
+      .c-s2 { order: 2; }
+      .c-s3 { order: 3; }
+      .c-s4 { order: 4; }
+      .c-s5 { order: 5; }
+      .c-s6 { order: 6; }
+      .c-s7 { order: 7; }
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+      .check-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       PRINT STYLES - FITS EXACTLY ON 1 LETTER PAGE (8.5in x 11in)
+       ========================================================================== */
+    @page {
+      size: Letter portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 8.5in;
+        height: 11in;
+        background: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .actions-bar {
+        display: none !important;
+      }
+
+      .sheet {
+        width: 8.5in !important;
+        height: 11in !important;
+        max-height: 11in !important;
+        margin: 0 !important;
+        padding: 0.28in 0.38in 0.22in !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+      }
+
+      .sheet::before {
+        height: 4px !important;
+        border-radius: 0 !important;
+      }
+
+      header {
+        flex-direction: row !important;
+        align-items: flex-end !important;
+        gap: 0.18in !important;
+      }
+
+      header > div:first-child {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+      }
+
+      .author-card {
+        flex: 0 0 1.65in !important;
+        width: 1.65in !important;
+        min-width: 0 !important;
+        padding-top: 0 !important;
+        padding-left: 0.14in !important;
+        border-top: 0 !important;
+        border-left: 2px solid var(--line) !important;
+        text-align: right !important;
+      }
+
+      h1 { max-width: none !important; font-size: 19pt !important; line-height: 1.1 !important; overflow-wrap: anywhere !important; }
+      .subtitle { max-width: none !important; font-size: 8.5pt !important; margin-top: 3px !important; }
+      .author-name { font-size: 12pt !important; }
+      .author-role { font-size: 8pt !important; }
+      .author-school { font-size: 7.5pt !important; }
+
+      .circle-container {
+        position: relative !important;
+        display: flex !important;
+        height: 5.7in !important;
+        margin: 0.12in 0 0.08in !important;
+      }
+
+      .circle-svg-layer {
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important;
+      }
+
+      .center-hub {
+        position: absolute !important;
+        order: initial !important;
+        width: 2.5in !important;
+        height: 2.5in !important;
+        border-radius: 50% !important;
+        padding: 0.14in !important;
+      }
+
+      .center-hub .goal-title { font-size: 12pt !important; line-height: 1.15 !important; }
+      .center-hub .goal-desc { font-size: 7pt !important; line-height: 1.25 !important; margin-bottom: 6px !important; }
+      .reaction-pill { font-size: 6.8pt !important; padding: 3px 8px !important; }
+
+      .step-card {
+        position: absolute !important;
+        inset: auto !important;
+        width: 1.95in !important;
+        padding: 0.08in 0.08in 0.07in 0.32in !important;
+        transform: none !important;
+      }
+
+      .step-card.c-s1 {
+        top: 0 !important;
+        left: 50% !important;
+        width: 2.35in !important;
+        transform: translateX(-50%) !important;
+      }
+
+      .step-card.c-s2 { top: 0.78in !important; right: 0.14in !important; }
+      .step-card.c-s3 { top: 2.58in !important; right: 0.03in !important; }
+      .step-card.c-s4 { right: 0.86in !important; bottom: 0 !important; }
+      .step-card.c-s5 { left: 0.86in !important; bottom: 0 !important; }
+      .step-card.c-s6 { top: 2.58in !important; left: 0.03in !important; }
+      .step-card.c-s7 { top: 0.78in !important; left: 0.14in !important; }
+
+      .step-num-bubble {
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 8pt !important;
+        top: 8px !important;
+        left: 8px !important;
+      }
+
+      .step-card strong { font-size: 8pt !important; }
+      .step-card p { font-size: 6.4pt !important; line-height: 1.25 !important; }
+      .step-tag, .start-badge { font-size: 6.2pt !important; }
+
+      .bottom-grid {
+        grid-template-columns: 1.15fr 0.85fr !important;
+        margin-top: 0.06in !important;
+        padding-top: 0.08in !important;
+        gap: 0.12in !important;
+      }
+
+      .check-list {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .outcome-panel {
+        padding: 0.08in 0.1in !important;
+      }
+
+      h2 { font-size: 8.5pt !important; margin-bottom: 0.03in !important; }
+      .check-list li { font-size: 6.3pt !important; line-height: 1.25 !important; }
+      .hope-panel p { font-size: 6.5pt !important; line-height: 1.3 !important; }
+      .boundary-card { font-size: 6.2pt !important; margin-top: 0.06in !important; padding: 0.05in 0.08in !important; }
+      footer { margin-top: 0.06in !important; padding-top: 0.04in !important; font-size: 5.8pt !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar -->
+  <div class="actions-bar">
+    <div class="badge-live">Interactive Circular Infographic • Ac-225 Research</div>
+    <button type="button" class="btn-print" onclick="window.print()" title="Print this one-pager or save as clean single-page PDF">
+      <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <!-- Main Printable Sheet -->
+  <main class="sheet">
+
+    <!-- Header Section -->
+    <header>
+      <div>
+        <div class="eyebrow-tag">My project, explained simply</div>
+        <h1>Can AI Help Screen Ac-225 Production Plans Faster?</h1>
+        <p class="subtitle">A physics-guided project testing whether many possible irradiation and cooling schedules can be screened quickly, then checked with trusted nuclear calculations.</p>
+      </div>
+      <div class="author-card">
+        <span class="author-name">Samuel Ogunnubi</span>
+        <div class="author-role">12th-grade student researcher</div>
+        <div class="author-school">Biomedical Allied Health Magnet<br>Glen Burnie High School, Maryland</div>
+      </div>
+    </header>
+
+    <!-- Circular Interactive Story Graph -->
+    <section class="circle-container" aria-label="Circular project workflow from need to validation">
+      
+      <!-- SVG Orbital Cycle Track with Directional Gradient Flow -->
+      <svg class="circle-svg-layer" viewBox="0 0 960 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="orbitalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e11d48" stop-opacity="0.8"/>
+            <stop offset="25%" stop-color="#d97706" stop-opacity="0.7"/>
+            <stop offset="50%" stop-color="#2563eb" stop-opacity="0.7"/>
+            <stop offset="75%" stop-color="#059669" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#0d9488" stop-opacity="0.8"/>
+          </linearGradient>
+          
+          <marker id="arrow-crimson" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48" />
+          </marker>
+          <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+          </marker>
+          <marker id="arrow-teal" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#0d9488" />
+          </marker>
+        </defs>
+
+        <!-- Outer Dashed Orbital Ring -->
+        <ellipse cx="480" cy="325" rx="360" ry="260" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6" opacity="0.85"/>
+        
+        <!-- Inner Accent Ring -->
+        <ellipse cx="480" cy="325" rx="200" ry="170" stroke="url(#orbitalGrad)" stroke-width="1.5" stroke-dasharray="4 8" opacity="0.6"/>
+
+        <!-- Directional Flow Indicator Arrows along the cycle -->
+        <!-- Top Right Flow -->
+        <path d="M 670 125 Q 780 180 810 270" stroke="#d97706" stroke-width="2" stroke-dasharray="5 5" fill="none" marker-end="url(#arrow-blue)"/>
+        <!-- Bottom Flow -->
+        <path d="M 750 480 Q 480 610 210 480" stroke="#059669" stroke-width="2" stroke-dasharray="5 5" fill="none" marker-end="url(#arrow-teal)"/>
+        <!-- Top Left Return Flow into Step 1 -->
+        <path d="M 150 270 Q 180 140 330 75" stroke="#e11d48" stroke-width="2" stroke-dasharray="5 5" fill="none" marker-end="url(#arrow-crimson)"/>
+      </svg>
+
+      <!-- Central Core: Goal & Chemical Equation Hub -->
+      <div class="center-hub">
+        <span class="goal-tag">
+          My Goal
+        </span>
+        <h3 class="goal-title">Test a faster way to screen Ac-225 production plans</h3>
+        <p class="goal-desc">Compare many computer scenarios quickly, then check every promising result with trusted physics software.</p>
+        
+        <div class="reaction-pill" title="Transmutation and Decay Pathway">
+          <span>Ra-226 + n<sub>fast</sub></span>
+          <span class="arrow">to</span>
+          <span>Ra-225</span>
+          <span class="arrow">to</span>
+          <span style="color: var(--step1-crimson); font-weight:800;">Ac-225</span>
+        </div>
+      </div>
+
+      <!-- STEP 1: PROMINENT START (12 o'clock) -->
+      <article class="step-card c-s1">
+        <span class="step-num-bubble">1</span>
+        <div class="start-badge">Start Here: Motivation</div>
+        <div class="step-tag">Step 1: Clinical Target</div>
+        <strong>The need</strong>
+        <p>When attached to a cancer-targeting medicine, Ac-225 releases short-range alpha radiation that can damage cancer cells. It is scarce and difficult to produce.</p>
+      </article>
+
+      <!-- STEP 2: FEEDSTOCK (1:45 o'clock) -->
+      <article class="step-card c-s2">
+        <span class="step-num-bubble">2</span>
+        <div class="step-tag">Step 2: Source Isotope</div>
+        <strong>The starting material</strong>
+        <p>The pathway begins with Ra-226, a long-lived radioactive material used as the target that receives the fast neutrons.</p>
+      </article>
+
+      <!-- STEP 3: REACTION PHYSICS (4:00 o'clock) -->
+      <article class="step-card c-s3">
+        <span class="step-num-bubble">3</span>
+        <div class="step-tag">Step 3: Transmutation</div>
+        <strong>The nuclear pathway</strong>
+        <p>Deuterons strike beryllium and release fast neutrons. The neutrons convert some Ra-226 into Ra-225, which naturally decays into Ac-225.</p>
+      </article>
+
+      <!-- STEP 4: NUMERICAL SOLVER (5:30 o'clock) -->
+      <article class="step-card c-s4">
+        <span class="step-num-bubble">4</span>
+        <div class="step-tag">Step 4: Ground Truth</div>
+        <strong>The trusted references</strong>
+        <p>A trusted scientific solver called Radau generated the training examples. An exact Bateman calculation later checked the same simplified equations.</p>
+      </article>
+
+      <!-- STEP 5: AI ARCHITECTURE (6:30 o'clock) -->
+      <article class="step-card c-s5">
+        <span class="step-num-bubble">5</span>
+        <div class="step-tag">Step 5: Physics-Guided AI</div>
+        <strong>The model I built</strong>
+        <p>An LSTM, a model that learns sequences over time, follows the isotope timeline while physics rules discourage impossible answers.</p>
+      </article>
+
+      <!-- STEP 6: FAST INFERENCE (8:00 o'clock) -->
+      <article class="step-card c-s6">
+        <span class="step-num-bubble">6</span>
+        <div class="step-tag">Step 6: Synthetic Screening</div>
+        <strong>The 10,000-scenario test</strong>
+        <p>V3 recovered 18 of Radau's top 20 candidates and selected the candidate Radau ranked second, only 0.047% below the best score.</p>
+      </article>
+
+      <!-- STEP 7: RIGOROUS TESTING (10:15 o'clock) -->
+      <article class="step-card c-s7">
+        <span class="step-num-bubble">7</span>
+        <div class="step-tag">Step 7: Real-World Verification</div>
+        <strong>The reality check</strong>
+        <p>A Berkeley test used conditions outside V3's training range and failed. It showed the next model needs better neutron-spectrum, target-geometry, and beam-timing data.</p>
+      </article>
+
+    </section>
+
+    <!-- Bottom Panels: Completed Achievements & Target Result -->
+    <section class="bottom-grid">
+      <div class="outcome-panel completed-panel">
+        <div class="panel-header">
+          <h2>What I Have Completed</h2>
+        </div>
+        <ul class="check-list">
+          <li>Built a reduced five-isotope physics model</li>
+          <li>Generated 1,400 training examples with Radau</li>
+          <li>Trained the V3 LSTM for 6,000 epochs</li>
+          <li>Compared it with a similarly sized non-recurrent model</li>
+          <li>Froze the model before new comparisons</li>
+          <li>Audited 10,000 simplified scenarios</li>
+          <li>Checked speed against exact and Radau solvers</li>
+          <li>Preserved the failed Berkeley transfer test</li>
+        </ul>
+      </div>
+
+      <div class="outcome-panel hope-panel">
+        <div class="panel-header">
+          <h2>What Must Happen Next</h2>
+        </div>
+        <p><strong>1.</strong> Decide exactly what a real researcher needs the model to choose.<br><strong>2.</strong> Obtain realistic neutron, beam-timing, target-geometry, and uncertainty data.<br><strong>3.</strong> Have an expert check the tracked isotopes and impurity goal.<br><strong>4.</strong> Generate richer training examples with trusted nuclear software.<br><strong>5.</strong> Set aside an unseen benchmark before retraining once.<br><strong>6.</strong> Recheck every suggested finalist with trusted software.</p>
+      </div>
+    </section>
+
+    <!-- Boundary Disclaimer -->
+    <aside class="boundary-card">
+      <strong>Current evidence:</strong> On 10,000 simplified computer scenarios, V3 was 84.9 times faster than the general Radau solver but 56.7 times slower than the exact calculation for the same reduced equations. It is a prototype for screening first and verifying second; it has not yet shown that real Ac-225 production is faster, cheaper, or experimentally validated.
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+      <span>Physics-informed machine learning | Computational nuclear engineering | Updated August 23, 2026</span>
+      <span>Contact: <a href="mailto:sam.ogunnubi0@gmail.com">sam.ogunnubi0@gmail.com</a></span>
+    </footer>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+{
+  "meta": {
+    "count": 1,
+    "db_response_time_ms": 144,
+    "page": 1,
+    "per_page": 50,
+    "groups_count": null,
+    "x_query": {
+      "oql": "works where full text has (deuteron breakup beryllium neutron spectrum radium-226 actinium-225 Morrell)",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "deuteron breakup beryllium neutron spectrum radium-226 actinium-225 Morrell",
+            "operator": "has"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:deuteron breakup beryllium neutron spectrum radium-226 actinium-225 Morrell&per_page=50"
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W4388093180",
+      "doi": "https://doi.org/10.48550/arxiv.2310.19160",
+      "display_name": "A New Family of High-Current Cyclotrons for Isotope Production",
+      "publication_year": 2023,
+      "publication_date": "2023-10-29",
+      "type": "preprint",
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2310.19160",
+        "is_oa": true,
+        "landing_page_url": "http://arxiv.org/abs/2310.19160",
+        "pdf_url": "https://arxiv.org/pdf/2310.19160",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv (Cornell University)",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I205783295",
+          "host_organization_name": "Cornell University",
+          "host_organization_lineage": [
+            "https://openalex.org/I205783295"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A5006007253",
+            "display_name": "Daniel Winklehner",
+            "orcid": "https://orcid.org/0000-0002-0715-6310"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Winklehner, D.",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "middle",
+          "author": {
+            "id": "https://openalex.org/A5078678356",
+            "display_name": "J. Alonso",
+            "orcid": "https://orcid.org/0000-0002-0220-4846"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Alonso, J. R.",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A5021088707",
+            "display_name": "J. M. Conrad",
+            "orcid": "https://orcid.org/0000-0002-6393-0438"
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "Conrad, J. M.",
+          "raw_affiliation_strings": [],
+          "raw_orcid": null,
+          "affiliations": []
+        }
+      ],
+      "cited_by_count": 0,
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "green",
+        "oa_url": "https://arxiv.org/pdf/2310.19160",
+        "any_repository_has_fulltext": true
+      },
+      "abstract_inverted_index": {
+        "We": [
+          0
+        ],
+        "are": [
+          1
+        ],
+        "developing": [
+          2
+        ],
+        "a": [
+          3,
+          7,
+          30
+        ],
+        "high-current": [
+          4
+        ],
+        "cyclotron": [
+          5
+        ],
+        "as": [
+          6,
+          110,
+          112
+        ],
+        "driver": [
+          8
+        ],
+        "for": [
+          9,
+          76,
+          98,
+          120
+        ],
+        "the": [
+          10,
+          24,
+          49,
+          73,
+          92
+        ],
+        "IsoDAR": [
+          11
+        ],
+        "neutrino": [
+          12
+        ],
+        "experiment.": [
+          13
+        ],
+        "It": [
+          14
+        ],
+        "accelerates": [
+          15
+        ],
+        "5": [
+          16,
+          63
+        ],
+        "mA": [
+          17
+        ],
+        "H2+": [
+          18
+        ],
+        "to": [
+          19,
+          28,
+          55,
+          66
+        ],
+        "60": [
+          20,
+          33,
+          67
+        ],
+        "MeV/amu,": [
+          21,
+          68
+        ],
+        "after": [
+          22
+        ],
+        "which": [
+          23
+        ],
+        "electron": [
+          25
+        ],
+        "is": [
+          26
+        ],
+        "removed": [
+          27
+        ],
+        "produce": [
+          29
+        ],
+        "10": [
+          31
+        ],
+        "mA,": [
+          32
+        ],
+        "MeV": [
+          34,
+          64
+        ],
+        "proton": [
+          35
+        ],
+        "beam.": [
+          36
+        ],
+        "The": [
+          37
+        ],
+        "enabling": [
+          38
+        ],
+        "innovations": [
+          39
+        ],
+        "that": [
+          40
+        ],
+        "offset": [
+          41
+        ],
+        "space-charge": [
+          42
+        ],
+        "effects": [
+          43
+        ],
+        "occur": [
+          44
+        ],
+        "at": [
+          45
+        ],
+        "injection": [
+          46
+        ],
+        "and": [
+          47
+        ],
+        "in": [
+          48
+        ],
+        "first": [
+          50
+        ],
+        "few": [
+          51
+        ],
+        "turns,": [
+          52
+        ],
+        "allowing": [
+          53
+        ],
+        "one": [
+          54
+        ],
+        "construct": [
+          56
+        ],
+        "cyclotrons": [
+          57,
+          97
+        ],
+        "with": [
+          58,
+          72,
+          79
+        ],
+        "energies": [
+          59
+        ],
+        "ranging": [
+          60
+        ],
+        "from": [
+          61,
+          117
+        ],
+        "below": [
+          62
+        ],
+        "up": [
+          65
+        ],
+        "or": [
+          69
+        ],
+        "possibly": [
+          70
+        ],
+        "higher,": [
+          71
+        ],
+        "same": [
+          74
+        ],
+        "performance": [
+          75
+        ],
+        "accelerated": [
+          77
+        ],
+        "ions": [
+          78
+        ],
+        "Q/A": [
+          80
+        ],
+        "=": [
+          81
+        ],
+        "0.5": [
+          82
+        ],
+        "(H2+,": [
+          83
+        ],
+        "D+,": [
+          84
+        ],
+        "He++,": [
+          85
+        ],
+        "...).": [
+          86
+        ],
+        "In": [
+          87
+        ],
+        "this": [
+          88
+        ],
+        "paper,": [
+          89
+        ],
+        "we": [
+          90
+        ],
+        "discuss": [
+          91
+        ],
+        "possible": [
+          93
+        ],
+        "uses": [
+          94
+        ],
+        "of": [
+          95,
+          103,
+          123
+        ],
+        "such": [
+          96
+        ],
+        "isotope": [
+          99
+        ],
+        "production,": [
+          100
+        ],
+        "including": [
+          101
+        ],
+        "production": [
+          102,
+          122
+        ],
+        "long-lived": [
+          104
+        ],
+        "generator": [
+          105
+        ],
+        "parents": [
+          106
+        ],
+        "(68Ga,": [
+          107
+        ],
+        "44Ti,": [
+          108
+        ],
+        "82Sr,...),": [
+          109
+        ],
+        "well": [
+          111
+        ],
+        "intense": [
+          113
+        ],
+        "fast": [
+          114
+        ],
+        "neutron": [
+          115
+        ],
+        "beams": [
+          116
+        ],
+        "deuteron": [
+          118
+        ],
+        "breakup": [
+          119
+        ],
+        "(n,2n)": [
+          121
+        ],
+        "isotopes": [
+          124
+        ],
+        "like": [
+          125
+        ],
+        "225Ac.": [
+          126
+        ]
+      },
+      "is_retracted": false,
+      "is_paratext": false
+    }
+  ],
+  "group_by": []
+}

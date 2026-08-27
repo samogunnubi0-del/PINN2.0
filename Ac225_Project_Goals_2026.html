@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive August-December 2026 roadmap for external validation and completion of the Ac-225 V3 student research project.">
+  <title>Ac-225 Project Goals | August-December 2026</title>
+  <style>
+    :root {
+      --ink: #17232d;
+      --text: #354653;
+      --muted: #677682;
+      --paper: #ffffff;
+      --canvas: #e9eef1;
+      --line: #ced8de;
+      --line-dark: #aebdc6;
+      --red: #b21f2d;
+      --red-soft: #f7e8ea;
+      --teal: #006c70;
+      --teal-soft: #e1f1f0;
+      --blue: #285f8e;
+      --blue-soft: #e6eff7;
+      --gold: #a86b0a;
+      --gold-soft: #fbf0d8;
+      --green: #26734d;
+      --green-soft: #e5f2eb;
+      --gray-soft: #f4f7f8;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--canvas); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    button, input { font: inherit; }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid #edc65f;
+      outline-offset: 2px;
+    }
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .actions {
+      width: min(1120px, calc(100% - 28px));
+      margin: 18px auto 10px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .action-button {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--paper);
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .action-button.primary {
+      border-color: var(--red);
+      color: #ffffff;
+      background: var(--red);
+    }
+    .action-button:hover { border-color: var(--blue); color: var(--blue); }
+    .action-button.primary:hover { border-color: #8d1823; color: #ffffff; background: #8d1823; }
+
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto 30px;
+      padding: 34px 42px 32px;
+      border: 1px solid #d9e1e5;
+      background: var(--paper);
+      box-shadow: 0 8px 28px rgba(24, 42, 55, 0.12);
+    }
+    .color-rule {
+      display: grid;
+      grid-template-columns: 4fr 2fr 1fr 1fr;
+      height: 6px;
+      margin: -34px -42px 25px;
+    }
+    .color-rule span:nth-child(1) { background: var(--red); }
+    .color-rule span:nth-child(2) { background: var(--teal); }
+    .color-rule span:nth-child(3) { background: var(--gold); }
+    .color-rule span:nth-child(4) { background: var(--blue); }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 34px;
+      align-items: start;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 7px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 10px;
+      font-size: 31px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .deadline-box {
+      padding: 12px 0 12px 17px;
+      border-left: 4px solid var(--red);
+    }
+    .deadline-box strong, .deadline-box span { display: block; }
+    .deadline-box strong { font-size: 17px; }
+    .deadline-box span { margin-top: 5px; color: var(--muted); font-size: 12px; }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--gray-soft);
+    }
+    .status-item {
+      min-width: 0;
+      padding: 12px 14px;
+      border-right: 1px solid var(--line);
+    }
+    .status-item:last-child { border-right: 0; }
+    .status-item strong { display: block; color: var(--teal); font-size: 12px; text-transform: uppercase; }
+    .status-item span { display: block; margin-top: 3px; color: var(--text); font-size: 11px; line-height: 1.3; }
+    .status-item:nth-child(2) strong { color: var(--blue); }
+    .status-item:nth-child(3) strong { color: var(--gold); }
+    .status-item:nth-child(4) strong { color: var(--red); }
+
+    .progress-section {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 160px;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+    }
+    .progress-count { font-size: 25px; font-weight: 900; }
+    .progress-count small { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .progress-track { height: 14px; overflow: hidden; border: 1px solid var(--line); background: #edf1f3; }
+    .progress-fill { width: 0; height: 100%; background: var(--teal); transition: width 180ms ease; }
+    .next-deadline { color: var(--muted); font-size: 11px; text-align: right; }
+    .next-deadline strong { display: block; color: var(--ink); font-size: 13px; }
+
+    .critical-path {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin-top: 20px;
+      border: 1px solid var(--line);
+    }
+    .path-step {
+      min-width: 0;
+      padding: 11px 10px;
+      border-top: 4px solid var(--teal);
+      border-right: 1px solid var(--line);
+      background: var(--gray-soft);
+      text-align: center;
+    }
+    .path-step:last-child { border-right: 0; }
+    .path-step:nth-child(2) { border-top-color: var(--blue); }
+    .path-step:nth-child(3) { border-top-color: var(--gold); }
+    .path-step:nth-child(4) { border-top-color: var(--red); }
+    .path-step:nth-child(5) { border-top-color: var(--green); }
+    .path-step strong { display: block; font-size: 11px; }
+    .path-step span { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-top: 28px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--ink);
+    }
+    h2 { margin: 0; font-size: 19px; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 11px; text-align: right; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 14px 0 12px;
+    }
+    .filter-button {
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--line-dark);
+      border-right: 0;
+      color: var(--text);
+      background: var(--paper);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .filter-button:first-child { border-radius: 4px 0 0 4px; }
+    .filter-button:last-child { border-right: 1px solid var(--line-dark); border-radius: 0 4px 4px 0; }
+    .filter-button.active { color: #ffffff; background: var(--ink); }
+
+    .task-list { display: grid; gap: 10px; }
+    .task {
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--teal);
+      border-radius: 6px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .task[data-phase="validation"] { border-left-color: var(--blue); }
+    .task[data-phase="decision"] { border-left-color: var(--gold); }
+    .task[data-phase="isef"] { border-left-color: var(--red); }
+    .task.done { border-left-color: var(--green); background: #fbfdfc; }
+    .task.hidden { display: none; }
+
+    .task-head {
+      display: grid;
+      grid-template-columns: 30px 84px minmax(0, 1fr) 120px;
+      gap: 11px;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--gray-soft);
+    }
+    .task.done .task-head { background: var(--green-soft); }
+    .task-check {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+    .task-date { color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .task-title { margin: 0; font-size: 15px; line-height: 1.25; }
+    .task.done .task-title { color: var(--muted); text-decoration: line-through; }
+    .task-status {
+      padding: 4px 6px;
+      border: 1px solid var(--line-dark);
+      border-radius: 3px;
+      color: var(--muted);
+      background: var(--paper);
+      font-size: 9px;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .task.done .task-status { border-color: #95bea8; color: var(--green); background: var(--green-soft); }
+    .task.overdue:not(.done) .task-status { border-color: #d79ca3; color: var(--red); background: var(--red-soft); }
+
+    .task-body {
+      display: grid;
+      grid-template-columns: 0.8fr 1.35fr 0.85fr;
+      gap: 0;
+    }
+    .task-body > div { min-width: 0; padding: 11px 14px; border-right: 1px solid var(--line); }
+    .task-body > div:last-child { border-right: 0; }
+    .task-body strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+    .task-body p { margin: 0; color: var(--text); font-size: 11px; line-height: 1.42; }
+    .task-body b { color: var(--ink); }
+
+    .study-answer {
+      margin-top: 14px;
+      padding: 15px 17px;
+      border-left: 6px solid var(--green);
+      background: var(--green-soft);
+    }
+    .study-answer strong { display: block; margin-bottom: 5px; font-size: 12px; text-transform: uppercase; }
+    .study-answer p { margin: 0; color: var(--text); font-size: 12px; }
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .glossary-item { padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .glossary-item strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 11px; }
+    .glossary-item p { margin: 0; color: var(--text); font-size: 10px; line-height: 1.42; }
+
+    .fallback-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .fallback {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .fallback strong { display: block; margin-bottom: 4px; color: var(--red); font-size: 12px; }
+    .fallback p { margin: 0; color: var(--text); font-size: 11px; }
+
+    .meeting-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 22px;
+      margin-top: 14px;
+      padding: 15px 17px;
+      border-left: 6px solid var(--teal);
+      background: var(--teal-soft);
+    }
+    .meeting-box strong { display: block; margin-bottom: 5px; font-size: 11px; text-transform: uppercase; }
+    .meeting-box p { margin: 0; color: var(--text); font-size: 11px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .contact-card {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      border-radius: 6px;
+      background: var(--paper);
+    }
+    .contact-card.priority { border-top-color: var(--green); }
+    .contact-card h3 { margin: 0 0 3px; font-size: 15px; }
+    .contact-role { margin: 0 0 7px; color: var(--muted); font-size: 10px; }
+    .contact-email { display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 900; }
+    .contact-ask { margin: 0 0 9px; color: var(--text); font-size: 10px; }
+    .contact-card.full { grid-column: 1 / -1; }
+    .contact-status {
+      display: inline-block;
+      margin: 0 0 8px;
+      padding: 3px 7px;
+      border-radius: 3px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .contact-status.active { color: var(--green); background: var(--green-soft); }
+    .contact-status.wait { color: var(--gold); background: var(--gold-soft); }
+    .contact-status.closed { color: var(--red); background: var(--red-soft); }
+    .contact-person {
+      margin: 8px 0;
+      padding: 8px 9px;
+      border-left: 3px solid var(--line-dark);
+      background: var(--gray-soft);
+      font-size: 10px;
+    }
+    .contact-person.primary { border-left-color: var(--green); }
+    .contact-person p { margin: 3px 0 0; color: var(--text); }
+    .contact-person a { font-weight: 800; overflow-wrap: anywhere; }
+    .contact-source { margin: 8px 0 0; font-size: 9px; color: var(--muted); }
+    .outreach-rules {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .outreach-rules div { padding: 10px; background: var(--gray-soft); }
+    .outreach-rules strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 10px; }
+    .outreach-rules span { color: var(--text); font-size: 9px; }
+    .template-box { padding-top: 9px; border-top: 1px solid var(--line); }
+    .template-box summary { color: var(--blue); font-size: 10px; font-weight: 900; cursor: pointer; }
+    .email-template {
+      margin: 8px 0 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: var(--gray-soft);
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+    .email-template p { margin: 0 0 8px; }
+    .email-template p:last-child { margin-bottom: 0; }
+    .copy-template {
+      margin-top: 7px;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 10px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .copy-template:hover { border-color: var(--blue); color: var(--blue); }
+
+    .stop-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 12px;
+      border: 1px solid #e2b9be;
+      background: var(--red-soft);
+    }
+    .stop-list div { padding: 12px; border-right: 1px solid #e2b9be; }
+    .stop-list div:last-child { border-right: 0; }
+    .stop-list strong { display: block; margin-bottom: 4px; color: var(--red); font-size: 11px; }
+    .stop-list span { color: #5c3036; font-size: 10px; }
+
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .source-link {
+      display: block;
+      min-height: 64px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--ink);
+      background: var(--gray-soft);
+      font-size: 10px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .source-link span { display: block; margin-top: 4px; color: var(--muted); font-weight: 400; }
+
+    footer {
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 820px) {
+      .page { padding: 28px 24px; }
+      .color-rule { margin: -28px -24px 22px; }
+      header { grid-template-columns: 1fr; }
+      .deadline-box { max-width: 330px; }
+      .status-strip { grid-template-columns: 1fr 1fr; }
+      .status-item:nth-child(2) { border-right: 0; }
+      .status-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+      .progress-section { grid-template-columns: 1fr; }
+      .next-deadline { text-align: left; }
+      .critical-path { grid-template-columns: 1fr; }
+      .path-step { border-right: 0; border-bottom: 1px solid var(--line); }
+      .path-step:last-child { border-bottom: 0; }
+      .task-head { grid-template-columns: 30px 74px minmax(0, 1fr); }
+      .task-status { grid-column: 2 / -1; justify-self: start; }
+      .task-body, .meeting-box, .contact-grid, .outreach-rules { grid-template-columns: 1fr; }
+      .contact-card.full { grid-column: auto; }
+      .task-body > div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .task-body > div:last-child { border-bottom: 0; }
+      .fallback-grid, .sources, .glossary-grid { grid-template-columns: 1fr 1fr; }
+      .stop-list { grid-template-columns: 1fr 1fr; }
+      .stop-list div:nth-child(2) { border-right: 0; }
+      .stop-list div:nth-child(-n + 2) { border-bottom: 1px solid #e2b9be; }
+    }
+
+    @media (max-width: 520px) {
+      body { font-size: 13px; }
+      .actions, .page { width: calc(100% - 16px); }
+      .actions { justify-content: stretch; }
+      .actions button { flex: 1; }
+      h1 { font-size: 25px; }
+      .status-strip, .fallback-grid, .sources, .stop-list, .glossary-grid { grid-template-columns: 1fr; }
+      .status-item, .status-item:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+      .status-item:last-child { border-bottom: 0; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 5px; text-align: left; }
+      .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+      .filter-button, .filter-button:first-child, .filter-button:last-child { border: 1px solid var(--line-dark); border-radius: 4px; }
+      .task-head { grid-template-columns: 28px 1fr; }
+      .task-date, .task-title, .task-status { grid-column: 2; }
+      .stop-list div, .stop-list div:nth-child(2) { border-right: 0; border-bottom: 1px solid #e2b9be; }
+      .stop-list div:last-child { border-bottom: 0; }
+    }
+
+    @media print {
+      @page { size: Letter portrait; margin: 0.38in; }
+      html, body { background: #ffffff; }
+      body { font-size: 8pt; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .actions, .filters { display: none; }
+      .page { width: auto; margin: 0; padding: 0; border: 0; box-shadow: none; }
+      .color-rule { margin: 0 0 0.16in; }
+      h1 { font-size: 20pt; }
+      .task { break-inside: avoid; }
+      .task-head { padding: 0.07in 0.08in; }
+      .task-body > div { padding: 0.06in 0.08in; }
+      .task-body p { font-size: 6.8pt; }
+      .source-link { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="actions" aria-label="Roadmap actions">
+    <a class="action-button" href="Ac225_Personalized_Expert_Briefs_2026/index.html">Personalized briefs</a>
+    <a class="action-button" href="Ac225_Expert_Email_Templates_2026.html">Email templates</a>
+    <button class="action-button primary" id="print-button" type="button">Print / PDF</button>
+    <button class="action-button" id="reset-button" type="button">Reset checks</button>
+  </nav>
+
+  <main class="page">
+    <div class="color-rule" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <header>
+      <div>
+        <p class="eyebrow">Execution roadmap | August-December 2026</p>
+        <h1>Ac-225 V3 Project Goals</h1>
+        <p class="subtitle">Finish the project by validating the frozen model, documenting its limits, and building a defensible external-evidence package. These are internal target dates, not official AACPS or ISEF deadlines.</p>
+      </div>
+      <div class="deadline-box">
+        <strong>Internal finish: December 7</strong>
+        <span>External comparison complete by October 9</span>
+        <span>Final evidence frozen by October 30</span>
+      </div>
+    </header>
+
+    <section class="status-strip" aria-label="Current project state">
+      <div class="status-item"><strong>Complete</strong><span>Frozen seed-42 LSTM and matched MLP runs</span></div>
+      <div class="status-item"><strong>Complete</strong><span>Matched, hidden shifted, mesh, tail, and reporting audits</span></div>
+      <div class="status-item"><strong>Next</strong><span>Berkeley experimental reconstruction and expert review</span></div>
+      <div class="status-item"><strong>Conditional</strong><span>Additional seeds or physics ablation only with scientific need and compute</span></div>
+    </section>
+
+    <section class="progress-section" aria-label="Roadmap progress">
+      <div class="progress-count"><span id="completed-count">0 / 15</span><small>Tasks complete</small></div>
+      <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="next-deadline"><strong id="next-task">Meeting request</strong><span id="next-date">Due August 14</span></div>
+    </section>
+
+    <section class="critical-path" aria-label="Critical path">
+      <div class="path-step"><strong>1. Prepare</strong><span>Meeting and source extraction</span></div>
+      <div class="path-step"><strong>2. Define</strong><span>Frozen validation protocol</span></div>
+      <div class="path-step"><strong>3. Validate</strong><span>Berkeley and SCALE/ORIGEN</span></div>
+      <div class="path-step"><strong>4. Decide</strong><span>Seeds, ablation, final claim</span></div>
+      <div class="path-step"><strong>5. Present</strong><span>Student-authored ISEF materials</span></div>
+    </section>
+
+    <div class="section-heading">
+      <h2>Completion Plan</h2>
+      <p>Mark a task complete only when its “Done when” condition is satisfied.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter roadmap tasks">
+      <button class="filter-button active" type="button" data-filter="all">All</button>
+      <button class="filter-button" type="button" data-filter="now">Prepare</button>
+      <button class="filter-button" type="button" data-filter="validation">Validate</button>
+      <button class="filter-button" type="button" data-filter="decision">Decide</button>
+      <button class="filter-button" type="button" data-filter="isef">Present</button>
+    </div>
+
+    <section class="task-list" id="task-list">
+      <article class="task" data-id="terminology-guide" data-phase="now" data-due="2026-08-11" data-default-complete="true">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete terminology guide" checked><span class="task-date">Aug 11</span><h3 class="task-title">Create the plain-English one-pager terminology guide</h3><span class="task-status">Complete</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>You must understand every result and limitation well enough to explain it without reading technical wording.</p></div><div><strong>How it was finished</strong><p>The one-pager was reviewed term by term. The guide below defines seed 42, model design, nuclear physics, testing, statistics, evidence, and claim limits in speaking language.</p></div><div><strong>Done when</strong><p>The guide exists in this roadmap. Your next personal goal is to practice it until you can answer the judge questions naturally.</p></div></div>
+      </article>
+
+      <article class="task" data-id="meeting-request" data-phase="now" data-due="2026-08-14">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete meeting request"><span class="task-date">Aug 14</span><h3 class="task-title">Send Jayden the meeting request and one-pager</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Jayden can help choose a realistic validation path and make introductions.</p></div><div><strong>How to finish</strong><p>Send the short email, attach <b>Ac225_PINN_Executive_OnePager.html</b>, and ask for several available meeting times. Follow up after five business days if needed.</p></div><div><strong>Done when</strong><p>The email is sent and the date request is recorded in the research log.</p></div></div>
+      </article>
+
+      <article class="task" data-id="meeting-prep" data-phase="now" data-due="2026-08-18">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete meeting preparation"><span class="task-date">Aug 18</span><h3 class="task-title">Prepare and rehearse the Jayden meeting</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>The meeting should produce decisions, not just a general update.</p></div><div><strong>How to finish</strong><p>Practice the ten-slide deck in 10 minutes. Be able to explain median, p95, mesh, paired comparison, hidden shift, and synthetic benchmark without guessing.</p></div><div><strong>Done when</strong><p>Two timed rehearsals are under 12 minutes and every slide has one clear spoken point.</p></div></div>
+      </article>
+
+      <article class="task" data-id="berkeley-extraction" data-phase="now" data-due="2026-08-21">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete Berkeley source extraction"><span class="task-date">Aug 21</span><h3 class="task-title">Verify and extract the Berkeley Chapter 4 data</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>The Morrell experiments are the closest published end-to-end match to the modeled pathway.</p></div><div><strong>How to finish</strong><p>Read Chapter 4 and record the exact page/table for spectrum, fluence, target mass, irradiation time, cooling time, activities, uncertainties, and impurity limits. Do not reuse numbers copied from chat.</p></div><div><strong>Done when</strong><p>A source table contains every value, unit, page number, and any missing field for both 33 and 40 MeV cases.</p></div></div>
+      </article>
+
+      <article class="task" data-id="protocol" data-phase="now" data-due="2026-08-24">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete external validation protocol"><span class="task-date">Aug 24</span><h3 class="task-title">Write the frozen external-validation protocol</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Rules must be fixed before comparing V3 with the experimental answers.</p></div><div><strong>How to finish</strong><p>Freeze the two-group boundaries, spectrum collapse, units, activity-to-atoms conversion, timing convention, scored isotopes, uncertainty comparison, and treatment of missing data. V3 weights stay unchanged.</p></div><div><strong>Done when</strong><p>A dated protocol states exactly how both Berkeley predictions will be produced and judged.</p></div></div>
+      </article>
+
+      <article class="task" data-id="jayden-meeting" data-phase="now" data-due="2026-08-28">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete Jayden meeting"><span class="task-date">Aug 28</span><h3 class="task-title">Meet Jayden and capture three decisions</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Expert direction now has more value than another blind model change.</p></div><div><strong>How to finish</strong><p>Present the deck and ask slide 10. Request: one benchmark plan, one or more introductions, and a decision about seeds/ablation. Write his exact cautions and suggestions.</p></div><div><strong>Done when</strong><p>The meeting record names the next benchmark, contact route, and compute decision or follow-up owner.</p></div></div>
+      </article>
+
+      <article class="task" data-id="data-requests" data-phase="validation" data-due="2026-09-04">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete data requests"><span class="task-date">Sep 4</span><h3 class="task-title">Request machine-readable data and expert introductions</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Tables or plots alone may be insufficient for a fair reconstruction.</p></div><div><strong>How to finish</strong><p>Use the short outreach templates below from a school email and copy the Adult Sponsor. Personalize each message and ask Jaden for introductions when possible.</p></div><div><strong>Done when</strong><p>Specific requests are sent and tracked, with one polite follow-up date per contact.</p></div></div>
+      </article>
+
+      <article class="task" data-id="adapter" data-phase="validation" data-due="2026-09-11">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete validation adapter"><span class="task-date">Sep 11</span><h3 class="task-title">Build the spectrum and activity conversion adapter</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Published experimental quantities must be converted into V3 inputs without tuning the model.</p></div><div><strong>How to finish</strong><p>Implement the frozen two-group integration, Bq-to-atoms conversion using A = lambda N, irradiation/cooling timeline, and unit checks. Test it on synthetic cases where the expected answer is already known.</p></div><div><strong>Done when</strong><p>Conversion tests pass, assumptions are documented, and no Berkeley result was used to choose a favorable rule.</p></div></div>
+      </article>
+
+      <article class="task" data-id="berkeley-run" data-phase="validation" data-due="2026-09-25">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete frozen Berkeley comparison"><span class="task-date">Sep 25</span><h3 class="task-title">Run the frozen V3 Berkeley comparison</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>This is the highest-value external test that does not require retraining.</p></div><div><strong>How to finish</strong><p>Predict Ra-225, Ac-225, and Ac-227 for both irradiations. Compare predictions with measured values and uncertainty. If 33 MeV is used to adjust any conversion, label it development and keep 40 MeV confirmatory.</p></div><div><strong>Done when</strong><p>A locked result table shows prediction, measurement, uncertainty, error, assumptions, and verdict for every available output.</p></div></div>
+      </article>
+
+      <article class="task" data-id="independent-review" data-phase="validation" data-due="2026-10-09">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete independent physics review"><span class="task-date">Oct 9</span><h3 class="task-title">Obtain a SCALE/ORIGEN comparison or expert physics review</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>An outside solver or expert can test assumptions shared by V3 and its own generator.</p></div><div><strong>How to finish</strong><p>Ask for the smallest credible depletion calculation or a written review of the chain, spectrum collapse, omitted reactions, and timing. Preserve input files or dated notes.</p></div><div><strong>Done when</strong><p>One outside comparison or documented expert review is saved with its scope and limitations.</p></div></div>
+      </article>
+
+      <article class="task" data-id="compute-decision" data-phase="decision" data-due="2026-10-16">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete compute decision"><span class="task-date">Oct 16</span><h3 class="task-title">Decide whether seeds or a physics ablation are necessary</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Extra runs should answer a defined claim, not chase a lower median.</p></div><div><strong>How to finish</strong><p>If claiming general LSTM superiority, consider seeds 43 and 44. If claiming value from physics loss, a matched no-physics LSTM is required. Run only with free/institutional compute, a new protocol, and untouched evaluation data.</p></div><div><strong>Done when</strong><p>A written decision says run or defer, the exact claim affected, estimated compute, and source of access. Deferring can count as complete.</p></div></div>
+      </article>
+
+      <article class="task" data-id="reliability-speed" data-phase="decision" data-due="2026-10-23">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete reliability and speed appendix"><span class="task-date">Oct 23</span><h3 class="task-title">Finish the reliability and speed appendix</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Judges need to see when the surrogate helps and where it fails.</p></div><div><strong>How to finish</strong><p>Use existing checkpoints to report tail errors, zero false positives, regimes, physics checks, and inference timing versus Radau on the same hardware. Include warmup, batch size, and training-cost break-even.</p></div><div><strong>Done when</strong><p>The appendix contains reproducible timing and failure tables without claiming the surrogate replaces the exact reduced solver.</p></div></div>
+      </article>
+
+      <article class="task" data-id="evidence-freeze" data-phase="decision" data-due="2026-10-30">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete final evidence freeze"><span class="task-date">Oct 30</span><h3 class="task-title">Freeze the final evidence package and claim</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>The fair materials need one authoritative result set.</p></div><div><strong>How to finish</strong><p>Save source hashes, checkpoints, protocols, external data, scripts, outputs, uncertainty tables, failures, and final claim wording. Separate measured, published, simulated, and synthetic evidence.</p></div><div><strong>Done when</strong><p>The record index points to one immutable final evidence directory and no claim depends on chat text.</p></div></div>
+      </article>
+
+      <article class="task" data-id="student-writing" data-phase="isef" data-due="2026-11-13">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete student-authored materials"><span class="task-date">Nov 13</span><h3 class="task-title">Write the paper, poster, and abstract independently</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Formal ISEF materials must reflect the student's own understanding and authorship.</p></div><div><strong>How to finish</strong><p>Start from a blank document and write the question, method, controls, results, failures, and conclusion in your own words. Cite primary sources you personally read.</p></div><div><strong>Done when</strong><p>You can explain every sentence, figure, equation, and citation without using the AI-written mentor scripts.</p></div></div>
+      </article>
+
+      <article class="task" data-id="compliance-review" data-phase="isef" data-due="2026-11-20">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete compliance review"><span class="task-date">Nov 20</span><h3 class="task-title">Complete mentor, Adult Sponsor, SRC, and AI review</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>Scientific quality and eligibility both need review before submission.</p></div><div><strong>How to finish</strong><p>Review claim limits, category, mentor contribution, outside data permission, Form 2A requirements, prompt logs, and local AACPS/SRC instructions. Correct the record rather than hiding assistance.</p></div><div><strong>Done when</strong><p>The Adult Sponsor confirms the required forms and disclosure package, and technical reviewers have no unresolved factual correction.</p></div></div>
+      </article>
+
+      <article class="task" data-id="final-package" data-phase="isef" data-due="2026-12-07">
+        <div class="task-head"><input class="task-check" type="checkbox" aria-label="Complete final submission package"><span class="task-date">Dec 7</span><h3 class="task-title">Lock the final package and rehearse judging</h3><span class="task-status">Upcoming</span></div>
+        <div class="task-body"><div><strong>Why</strong><p>A buffer protects the project from deadline and presentation problems.</p></div><div><strong>How to finish</strong><p>Export final figures, verify links and units, print the poster at test size, rehearse 2-minute and 8-minute explanations, and practice answering limitations before strengths.</p></div><div><strong>Done when</strong><p>The package is submitted or ready, backed up in two locations, and three timed rehearsals are complete.</p></div></div>
+      </article>
+    </section>
+
+    <div class="section-heading"><h2>One-Pager Study Guide</h2><p>Plain-English meanings for meeting and judging preparation.</p></div>
+    <section class="study-answer">
+      <strong>Your seed-42 answer</strong>
+      <p>“Seed 42 is the fixed random-number setting used for my final training run. It makes initialization and sampling reproducible. The number 42 has no scientific meaning. Because I currently have one independently trained seed, this result applies to that run and does not prove the LSTM always wins.”</p>
+    </section>
+    <section class="glossary-grid" aria-label="One-pager terminology glossary">
+      <div class="glossary-item"><strong>Seed 42</strong><p>An arbitrary fixed starting setting for computer randomness. It helps repeat the run; it is not 42 experiments or the best of 42 models.</p></div>
+      <div class="glossary-item"><strong>Frozen checkpoint</strong><p>Saved model weights that were no longer changed before final testing.</p></div>
+      <div class="glossary-item"><strong>V3 surrogate</strong><p>The third version of a fast approximation trained to imitate the slower reference calculation.</p></div>
+      <div class="glossary-item"><strong>Physics-informed</strong><p>The governing equations contribute to training loss. This guides learning but does not guarantee that every prediction is physically correct.</p></div>
+      <div class="glossary-item"><strong>LSTM / recurrent model</strong><p>A Long Short-Term Memory network that carries an internal state through a sequence. It is not human-like thinking or memory.</p></div>
+      <div class="glossary-item"><strong>MLP</strong><p>A standard feedforward neural network without recurrent sequence memory.</p></div>
+      <div class="glossary-item"><strong>Parameter-matched control</strong><p>The LSTM and MLP were kept close in learned-weight count and used the same data, loss, schedule, and evaluation so architecture was the main intended difference.</p></div>
+      <div class="glossary-item"><strong>Epoch / batch / loss</strong><p>An epoch is a training cycle through batches; a batch is a subset processed together; loss is the penalty the optimizer tries to reduce. Six thousand epochs are not 6,000 experiments.</p></div>
+      <div class="glossary-item"><strong>Endpoint objective</strong><p>A training penalty that gives special attention to the final Ac-225 inventory.</p></div>
+      <div class="glossary-item"><strong>Five-nuclide reduced system</strong><p>A simplified chain tracking Ra-226, Ra-227, Ac-227, Ra-225, and Ac-225. It is not a complete reactor model.</p></div>
+      <div class="glossary-item"><strong>Inventory / transmutation</strong><p>Inventory means number of atoms. Transmutation means changing one nuclide into another through a nuclear reaction or decay.</p></div>
+      <div class="glossary-item"><strong>Cross section / neutron spectrum</strong><p>Cross section measures how likely a reaction is at a given energy. A spectrum describes the distribution of neutron energies.</p></div>
+      <div class="glossary-item"><strong>Two-group representation</strong><p>A detailed neutron spectrum compressed into two energy ranges or features.</p></div>
+      <div class="glossary-item"><strong>Bateman equations / Radau</strong><p>Bateman equations describe coupled production and decay. Radau is a high-accuracy numerical ODE method used as a reference check.</p></div>
+      <div class="glossary-item"><strong>Physics residual / nonnegativity</strong><p>Residual is mismatch with the governing equation. Nonnegativity means isotope inventories should not become negative.</p></div>
+      <div class="glossary-item"><strong>Shielding and self-shielding</strong><p>Material changes neutron reaction rates by absorbing or attenuating neutrons. The current project represents this only in a simplified way.</p></div>
+      <div class="glossary-item"><strong>Locked shifted test</strong><p>A test not used for training or tuning, with conditions intentionally different from the training distribution.</p></div>
+      <div class="glossary-item"><strong>Mesh</strong><p>The number of time-query points: 32, 48, 64, or 96. It is not a spatial reactor grid.</p></div>
+      <div class="glossary-item"><strong>Worst-mesh median</strong><p>Calculate the median error at every mesh size and report the largest median.</p></div>
+      <div class="glossary-item"><strong>Positive-case mask</strong><p>The headline percentage scores cases above the stated Ac-225 truth threshold. Zero and very-low cases must be reported separately.</p></div>
+      <div class="glossary-item"><strong>Relative error / denominator floor</strong><p>Prediction difference divided by the reference, with a 10^12-atom floor to prevent tiny references from creating extreme percentages.</p></div>
+      <div class="glossary-item"><strong>Median / p95 / tail</strong><p>Median is the middle error, not the average or worst. p95 is the level below which about 95% of cases fall. The tail is the difficult high-error end.</p></div>
+      <div class="glossary-item"><strong>Paired comparison</strong><p>Compare LSTM and MLP errors on the same scenario before summarizing their difference.</p></div>
+      <div class="glossary-item"><strong>Percentage points</strong><p>An absolute difference between two percentages. A 0.63-point improvement is not the same as a 0.63% relative improvement.</p></div>
+      <div class="glossary-item"><strong>Bootstrap 95% confidence interval</strong><p>A range estimated by repeatedly resampling test scenarios. It describes uncertainty in the statistic, not where 95% of individual errors fall.</p></div>
+      <div class="glossary-item"><strong>Inconclusive below-3% gate</strong><p>The shifted point estimate was below 3%, but its confidence interval extended above 3%, so the data did not establish that claim.</p></div>
+      <div class="glossary-item"><strong>False positive</strong><p>The model predicts production when the reference value is exactly zero.</p></div>
+      <div class="glossary-item"><strong>Synthetic benchmark</strong><p>A benchmark generated using equations and nuclear-data inputs, not a physical irradiation measurement.</p></div>
+      <div class="glossary-item"><strong>External validation</strong><p>Testing the already-frozen model against independent experimental measurements or a separate trusted high-fidelity calculation.</p></div>
+      <div class="glossary-item"><strong>ORIGEN / OpenMC</strong><p>Established tools for isotope depletion and particle transport. Agreement would strengthen evidence but still needs clearly stated assumptions.</p></div>
+      <div class="glossary-item"><strong>FP64 / numerical precision</strong><p>Sixty-four-bit arithmetic and close agreement between calculations. Numerical agreement is not experimental or reactor accuracy.</p></div>
+      <div class="glossary-item"><strong>Provenance / SHA-256 hash</strong><p>Provenance records where artifacts came from. A hash fingerprints an exact file but does not prove the science is correct.</p></div>
+      <div class="glossary-item"><strong>Clinical validation / production-ready</strong><p>Evidence for patient treatment or operational decisions. The current project has neither and should not use these labels.</p></div>
+      <div class="glossary-item"><strong>Safest current claim</strong><p>For one reproducible seed, V3 achieved a 0.97% matched positive-case worst-mesh median and beat the matched MLP. Shifted evidence remains inconclusive and experimental validation is still needed.</p></div>
+    </section>
+
+    <div class="section-heading"><h2>Solutions When Something Is Blocked</h2><p>Use the fallback without changing the scientific label.</p></div>
+    <section class="fallback-grid">
+      <div class="fallback"><strong>Jayden meeting is delayed</strong><p>Send the six questions by email, continue Chapter 4 extraction, and freeze the protocol. Do not delay work that does not require his answer.</p></div>
+      <div class="fallback"><strong>Machine-readable Berkeley data is unavailable</strong><p>Reconstruct only values supported by tables and digitized plots, record digitization uncertainty, and label the result a published-case reconstruction rather than full raw-data validation.</p></div>
+      <div class="fallback"><strong>No SCALE or ORIGEN access</strong><p>Obtain an expert review of the input deck you would use, compare with published depletion results, and list the unavailable independent calculation as future work.</p></div>
+      <div class="fallback"><strong>No additional GPU access</strong><p>Keep the claim single-seed and do not run the ablation. A transparent limitation is better than an underpowered or unaffordable experiment.</p></div>
+      <div class="fallback"><strong>Berkeley inputs do not fit V3</strong><p>Report exactly which input is outside the frozen model contract. Validate reaction rates or decay/activity conversion separately instead of forcing an invalid end-to-end number.</p></div>
+      <div class="fallback"><strong>External prediction performs poorly</strong><p>Preserve the result, diagnose the mismatch, and make transfer failure part of the conclusion. Do not tune V3 on the external answer and call it validation.</p></div>
+    </section>
+
+    <div class="section-heading"><h2>Meeting Success Criteria</h2><p>The meeting is successful when these three outputs exist.</p></div>
+    <section class="meeting-box">
+      <div><strong>One benchmark</strong><p>Berkeley reconstruction, SCALE/ORIGEN case, or another clearly defined external reference.</p></div>
+      <div><strong>One contact path</strong><p>A direct introduction or named person for data, depletion modeling, or Ac-225 physics.</p></div>
+      <div><strong>One compute decision</strong><p>Run or defer seeds and ablation, with the claim and access source written down.</p></div>
+    </section>
+
+    <div class="section-heading"><h2>Verified Lab Contact Map</h2><p>You may email one lead at every institution on the same day. Within each lab, contact one person first and use the others only through a referral or after one unanswered follow-up.</p></div>
+    <section class="outreach-rules" aria-label="Outreach rules">
+      <div><strong>One lab, one first email</strong><span>Do not copy several people from the same group.</span></div>
+      <div><strong>Wait five business days</strong><span>Send one short follow-up, then stop.</span></div>
+      <div><strong>Ask for one deliverable</strong><span>A dataset, definition, reference, or 20-minute review.</span></div>
+      <div><strong>Record every answer</strong><span>Save the date, source, advice, and what changed.</span></div>
+    </section>
+
+    <section class="contact-grid" aria-label="Verified project outreach contacts">
+      <article class="contact-card priority">
+        <span class="contact-status active">Active conversation - wait for reply</span>
+        <h3>1. UC Berkeley / LBNL Nuclear Data Program</h3>
+        <p class="contact-role">Exact Ra-226(n,2n)Ra-225 to Ac-225 experimental pathway</p>
+        <div class="contact-person primary">
+          <strong>First contact: Professor Lee A. Bernstein</strong><br>
+          <a href="mailto:labernstein@berkeley.edu">labernstein@berkeley.edu</a>
+          <p>You already have a relationship. Do not restart with a new cold email. After he replies, ask one focused question about target geometry/fluence or whether the reported activities are produced activity or recovered activity after separation.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Technical contact: Dr. Andrew Voyles</strong><br>
+          <a href="mailto:andrew.voyles@berkeley.edu">andrew.voyles@berkeley.edu</a>
+          <p>Leads isotope production at the 88-Inch Cyclotron. Ask Lee for an introduction before contacting him directly.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Introduction targets: Dr. Dajie Sun and Dr. Jonathan Morrell</strong>
+          <p>Sun works on the thick-target deuteron-breakup neutron source; Morrell performed the dissertation experiments. No verified current public email was found for either person, so ask Lee or Voyles to introduce you instead of guessing an address.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> the inputs at the radium target for both experiments: spectrum or spectrum code, normalization/fluence, target position and geometry, irradiation/cooling/separation times, recovered Ac-225 activity, and uncertainty definitions.</p>
+        <p class="contact-source"><a href="https://nucleardata.berkeley.edu/">Official program</a> | <a href="https://nucleardata.berkeley.edu/people/voyles.html">Voyles profile</a> | <a href="https://nucleardata.berkeley.edu/people/sun.html">Sun profile</a> | <a href="https://nucleardata.berkeley.edu/people/alumni/morrell.html">Morrell profile</a></p>
+      </article>
+
+      <article class="contact-card priority">
+        <span class="contact-status active">Existing mentor route</span>
+        <h3>2. NC State ARTISANS Lab</h3>
+        <p class="contact-role">Scientific machine learning, model validation, uncertainty, and reactor digital twins</p>
+        <div class="contact-person primary">
+          <strong>First contact: Jaden Palmer, NSF Graduate Fellow</strong><br>
+          <a href="mailto:jspalme2@ncsu.edu">jspalme2@ncsu.edu</a>
+          <p>He is the relevant graduate researcher and already knows your project. Ask him to review your external-validation plan and introduce you to Dr. Wu if appropriate.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Faculty lead: Dr. Xu Wu</strong><br>
+          <a href="mailto:xwu27@ncsu.edu">xwu27@ncsu.edu</a>
+          <p>Contact through Jaden. His lab specializes in quantitative validation, uncertainty, scientific ML, and predictions where experimental data are scarce.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> a 20-minute review of your frozen-model protocol, error metrics, out-of-range warning, and the minimum evidence needed to claim that the surrogate is useful rather than only accurate on synthetic data.</p>
+        <p class="contact-source"><a href="https://ne.ncsu.edu/artisans/members/">Official members</a> | <a href="https://ne.ncsu.edu/artisans/research/">Research areas</a></p>
+      </article>
+
+      <article class="contact-card priority">
+        <span class="contact-status">Email one person first</span>
+        <h3>3. University of Missouri Research Reactor (MURR)</h3>
+        <p class="contact-role">Real isotope-production operations, purification, target recycling, and process scale-up</p>
+        <div class="contact-person primary">
+          <strong>First contact: Dr. John Brockman, Director of Research and Education</strong><br>
+          <a href="mailto:brockmanjd@missouri.edu">brockmanjd@missouri.edu</a>
+          <p>Ask him to route you to the researcher best able to discuss public production-workflow data and scheduling constraints.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Scientific follow-up: Dr. Heather Hennkens</strong><br>
+          <a href="mailto:HennkensH@missouri.edu">HennkensH@missouri.edu</a>
+          <p>Her work directly covers medical-radionuclide production, targetry, separations, purification, and target-material recycling.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Operations follow-up: Dr. Mark Beary</strong><br>
+          <a href="mailto:bearym@missouri.edu">bearym@missouri.edu</a>
+          <p>He leads development and translation of isotope-production methods into scalable processes. Contact only after a referral or if Brockman does not reply.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> which irradiation, cooling, separation, recovery, quality-control, and target-recycling variables control total turnaround time, plus any public benchmark or example workflow. MURR is not a direct validation of the Berkeley fast-neutron pathway.</p>
+        <p class="contact-source"><a href="https://www.murr.missouri.edu/about/people/john-brockman/">Brockman profile</a> | <a href="https://www.murr.missouri.edu/about/people/heather-hennkens/">Hennkens profile</a> | <a href="https://www.murr.missouri.edu/about/people/mark-beary/">Beary profile</a></p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-status">Local clinical relevance</span>
+        <h3>4. Johns Hopkins Radiopharmaceutical Therapy and Dosimetry</h3>
+        <p class="contact-role">Targeted alpha therapy, dosimetry, and medically meaningful outputs</p>
+        <div class="contact-person primary">
+          <strong>First contact: Dr. Robert F. Hobbs</strong><br>
+          <a href="mailto:rhobbs3@jhmi.edu">rhobbs3@jhmi.edu</a>
+          <p>He is Johns Hopkins core medical-physics faculty and works in alpha-particle therapy, radiopharmaceutical dosimetry, modeling, and treatment planning. He is a closer scientific match than a general administrative assistant for deciding which activity, impurity, timing, and uncertainty outputs are meaningful.</p>
+        </div>
+        <p class="contact-ask"><b>Contact correction:</b> Professor George Sgouros passed away on June 25, 2026. His address is retired from this outreach plan; do not send or copy him on future messages.</p>
+        <p class="contact-ask"><b>Best request:</b> what Ac-225 activity, Ac-227 impurity, reference-time, and uncertainty outputs would make a production-screening model medically meaningful. Do not ask this lab for neutron-spectrum data.</p>
+        <p class="contact-source"><a href="https://profiles.hopkinsmedicine.org/provider/rob-hobbs/2777441">Hobbs profile</a> | <a href="https://medicalphysics.jhmi.edu/research-in-brachytherapy-and-radiopharmaceutical-therapy/">Current faculty page</a> | <a href="https://www.iomp.org/in-memoriam-george-sgouros/">Sgouros memorial</a></p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-status">May email now</span>
+        <h3>5. University of Wisconsin-Madison Cyclotron Lab</h3>
+        <p class="contact-role">Radionuclide production, accelerator targetry, radiochemistry, and nuclear-data measurements</p>
+        <div class="contact-person primary">
+          <strong>First contact: Professor Jonathan W. Engle</strong><br>
+          <a href="mailto:jwengle@wisc.edu">jwengle@wisc.edu</a>
+          <p>He has extensive experience in radionuclide production, targetry, and radiochemistry. Ask him to identify the right junior researcher if someone in his group has a closer process-modeling match.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> the real targetry, chemical-recovery, and turnaround-time inputs that a useful production surrogate must represent, plus a public example dataset or benchmark. His lab studies other isotope routes, so use it for process realism rather than direct Berkeley validation.</p>
+        <p class="contact-source"><a href="https://cyclotron.wisc.edu/staff/engle-jonathan-w/">Engle profile</a> | <a href="https://cyclotron.wisc.edu/research/">Official research</a></p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-status">May email now</span>
+        <h3>6. Michigan State / FRIB Isotope Harvesting</h3>
+        <p class="contact-role">Isotope collection, purification, yield loss, quality control, and process automation</p>
+        <div class="contact-person primary">
+          <strong>First contact: Professor Gregory W. Severin</strong><br>
+          <a href="mailto:severin9@msu.edu">severin9@msu.edu</a>
+          <p>Ask for the best person to discuss how separation and recovery steps should be represented in a full-process timing model.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Technical contact: Dr. Chirag K. Vyas, Project Scientist</strong><br>
+          <a href="mailto:vyaschir@msu.edu">vyaschir@msu.edu</a>
+          <p>His official profile covers target design, radionuclide production, separations, quality assurance, and process automation. Contact after Severin refers you or after one unanswered follow-up.</p>
+        </div>
+        <div class="contact-person">
+          <strong>Junior introduction target: Scott Essenmacher, PhD student</strong><br>
+          <a href="mailto:essenm29@msu.edu">essenm29@msu.edu</a>
+          <p>His listed work includes target production, radiochemical separations, and improving isotope-harvesting yields. Ask Severin or Vyas before contacting him directly.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> a public process example and advice on modeling separation time, recovery fraction, purity checks, and losses between end-of-bombardment production and usable material.</p>
+        <p class="contact-source"><a href="https://www.chemistry.msu.edu/severin-research-group/research.aspx">Official research</a> | <a href="https://www.chemistry.msu.edu/severin-research-group/group-members.aspx">Official members</a></p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-status">Measurement authority</span>
+        <h3>7. NIST Radioactivity Group</h3>
+        <p class="contact-role">Ac-225 activity measurement, decay data, reference time, and uncertainty</p>
+        <div class="contact-person primary">
+          <strong>First contact: Dr. Brian E. Zimmerman, Group Leader</strong><br>
+          <a href="mailto:brian.zimmerman@nist.gov">brian.zimmerman@nist.gov</a>
+          <p>This is the verified replacement for the Denis Bergeron address that bounced. NIST is not a college, but it is the strongest measurement contact on this list.</p>
+        </div>
+        <p class="contact-ask"><b>Best request:</b> the correct activity-to-atoms conversion and how to report progeny equilibrium, assay time, separation time, reference time, and uncertainty when comparing your prediction with a measured Ac-225 activity.</p>
+        <p class="contact-source"><a href="https://www.nist.gov/people/brian-e-zimmerman">Official profile and email</a></p>
+      </article>
+
+      <article class="contact-card full">
+        <span class="contact-status closed">Closed or paused routes</span>
+        <h3>Do not send more emails here right now</h3>
+        <p class="contact-ask"><b>UMD Radiation Facilities:</b> Luke Gilde already explained that the facility cannot offer more isotope-production help and referred you to MURR or medical researchers. <b>ORNL:</b> Dr. Susan Hogle already confirmed that ORNL is not pursuing this production method and correctly referred you to Professor Bernstein. Keep both replies as evidence of responsible expert outreach; do not ask the same question again.</p>
+        <p class="contact-ask"><b>Prestige-only schools:</b> MIT, Stanford, Cornell, and Brown are not added just for their names. For the evidence gaps you have now, Berkeley and Johns Hopkins already provide both strong reputations and a direct scientific match. Wisconsin, Missouri, Michigan State, and NC State are more useful than a famous but unrelated lab.</p>
+      </article>
+
+      <article class="contact-card full">
+        <span class="contact-status active">Ready-to-send materials</span>
+        <h3>Use the specialist attachment and personalized email kit</h3>
+        <p class="contact-ask">The circle one-pager remains the plain-English introduction for general audiences. For researchers, use the named one-page brief made for that person. Each brief includes only Samuel's project context, honest result limits, and the one technical question that matches the expert's field. The email kit contains one short matching email for each primary contact. Do not attach the old all-in-one master request page.</p>
+        <p><a class="action-button" href="Ac225_Personalized_Expert_Briefs_2026/index.html">Open personalized briefs</a> <a class="action-button" href="Ac225_Expert_Email_Templates_2026.html">Open email kit</a></p>
+      </article>
+    </section>
+
+    <div class="section-heading"><h2>Do Not Do These</h2><p>They would weaken the final evidence.</p></div>
+    <section class="stop-list">
+      <div><strong>No V3 tuning</strong><span>Do not change the model after seeing matched, hidden, or Berkeley answers.</span></div>
+      <div><strong>No claim inflation</strong><span>Do not call a synthetic or accelerator benchmark real reactor accuracy.</span></div>
+      <div><strong>No unverified numbers</strong><span>Do not cite measurements until the original page, table, units, and uncertainty are checked.</span></div>
+      <div><strong>No paid blind runs</strong><span>Do not buy more A100 time without a defined claim and protocol.</span></div>
+    </section>
+
+    <div class="section-heading"><h2>Primary Sources</h2><p>Read the source itself before using a number.</p></div>
+    <section class="sources">
+      <a class="source-link" href="https://escholarship.org/uc/item/1cj6716s">Morrell dissertation<span>Berkeley deuteron-breakup and Ac-225 experiment</span></a>
+      <a class="source-link" href="https://nucleardata.berkeley.edu/">Berkeley Nuclear Data Program<span>Exact pathway, members, and experimental work</span></a>
+      <a class="source-link" href="https://ne.ncsu.edu/artisans/">NC State ARTISANS<span>Scientific ML, validation, and uncertainty</span></a>
+      <a class="source-link" href="https://www.murr.missouri.edu/about/people/">MURR people<span>Production, purification, and translation contacts</span></a>
+      <a class="source-link" href="https://www.hopkinsmedicine.org/research/labs/r/radiopharmaceutical-therapy-and-dosimetry-lab">Johns Hopkins RTD Lab<span>Alpha-emitter therapy and dosimetry</span></a>
+      <a class="source-link" href="https://cyclotron.wisc.edu/">UW Cyclotron Lab<span>Targetry, radionuclide production, and radiochemistry</span></a>
+      <a class="source-link" href="https://www.chemistry.msu.edu/severin-research-group/research.aspx">MSU Isotope Harvesting<span>Purification, recovery, and process design</span></a>
+      <a class="source-link" href="https://www.nist.gov/people/brian-e-zimmerman">NIST Radioactivity Group<span>Ac-225 measurement and uncertainty contact</span></a>
+    </section>
+
+    <footer>
+      Roadmap prepared August 11, 2026 and contact map verified August 23, 2026. The deadlines are conservative internal targets and should be moved earlier if AACPS, the local fair, or the SRC requires earlier materials. The V3 model remains frozen. Conditional experiments count as complete when a written, scientifically justified run-or-defer decision is saved. This planning artifact was prepared with AI assistance and is not ISEF submission text.
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      const storageKey = 'ac225-project-goals-2026-v1';
+      const tasks = Array.from(document.querySelectorAll('.task'));
+      const checks = tasks.map((task) => task.querySelector('.task-check'));
+      const completedCount = document.getElementById('completed-count');
+      const progressFill = document.getElementById('progress-fill');
+      const nextTask = document.getElementById('next-task');
+      const nextDate = document.getElementById('next-date');
+
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+        catch (_) { return {}; }
+      }
+
+      function saveState() {
+        const state = {};
+        tasks.forEach((task, index) => { state[task.dataset.id] = checks[index].checked; });
+        localStorage.setItem(storageKey, JSON.stringify(state));
+      }
+
+      function formatDate(dateString) {
+        return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(new Date(`${dateString}T12:00:00`));
+      }
+
+      function update() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        let complete = 0;
+        let next = null;
+
+        tasks.forEach((task, index) => {
+          const checked = checks[index].checked;
+          const due = new Date(`${task.dataset.due}T23:59:59`);
+          const status = task.querySelector('.task-status');
+          task.classList.toggle('done', checked);
+          task.classList.toggle('overdue', !checked && due < today);
+          if (checked) {
+            complete += 1;
+            status.textContent = 'Complete';
+          } else {
+            const days = Math.ceil((due - today) / 86400000);
+            status.textContent = days < 0 ? `${Math.abs(days)}d overdue` : days === 0 ? 'Due today' : `Due in ${days}d`;
+            if (!next || due < next.due) next = { due, task };
+          }
+        });
+
+        completedCount.textContent = `${complete} / ${tasks.length}`;
+        progressFill.style.width = `${(complete / tasks.length) * 100}%`;
+        if (next) {
+          nextTask.textContent = next.task.querySelector('.task-title').textContent;
+          nextDate.textContent = `Due ${formatDate(next.task.dataset.due)}`;
+        } else {
+          nextTask.textContent = 'Roadmap complete';
+          nextDate.textContent = 'Final package ready';
+        }
+      }
+
+      const saved = loadState();
+      tasks.forEach((task, index) => {
+        if (Object.prototype.hasOwnProperty.call(saved, task.dataset.id)) {
+          checks[index].checked = Boolean(saved[task.dataset.id]);
+        } else {
+          checks[index].checked = task.dataset.defaultComplete === 'true';
+        }
+        checks[index].addEventListener('change', () => { saveState(); update(); });
+      });
+
+      document.querySelectorAll('.filter-button').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.filter-button').forEach((item) => item.classList.toggle('active', item === button));
+          const filter = button.dataset.filter;
+          tasks.forEach((task) => task.classList.toggle('hidden', filter !== 'all' && task.dataset.phase !== filter));
+        });
+      });
+
+      document.querySelectorAll('.copy-template').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const template = button.parentElement.querySelector('.email-template').innerText.trim();
+          try {
+            await navigator.clipboard.writeText(template);
+            button.textContent = 'Copied';
+            setTimeout(() => { button.textContent = 'Copy template'; }, 1400);
+          } catch (_) {
+            button.textContent = 'Select text to copy';
+          }
+        });
+      });
+
+      document.getElementById('print-button').addEventListener('click', () => window.print());
+      document.getElementById('reset-button').addEventListener('click', () => {
+        if (!window.confirm('Clear all completed checks?')) return;
+        checks.forEach((check) => { check.checked = false; });
+        localStorage.removeItem(storageKey);
+        update();
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>
