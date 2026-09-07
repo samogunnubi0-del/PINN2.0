@@ -1,0 +1,12 @@
+{
+  "name": "sat-scholarship-hub",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}

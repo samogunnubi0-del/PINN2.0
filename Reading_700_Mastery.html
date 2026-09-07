@@ -1492,7 +1492,10 @@ header {
           <div class="card-title">Module A: Boolean Grammar Engine (Deterministic $T/F$)</div>
           <div class="card-subtitle">Because your Standard English Conventions is currently in the 370–410 band, we replace subjective "ear listening" with mathematical clause logic.</div>
         </div>
-        <button class="btn-sec" onclick="loadNextGrammarDrill()">Next Drill &rarr;</button>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span id="bg-daily-status" style="font-size:.76rem;font-weight:800;color:var(--t2);">Daily 5-Check Set active</span>
+          <button class="btn-sec" id="btn-refresh-grammar" onclick="loadDailyGrammarPack(true)">New Luna 5-Pack</button>
+        </div>
       </div>
 
       <!-- RULE CHEATSHEET -->
@@ -1516,9 +1519,13 @@ header {
 
       <!-- INTERACTIVE CLAUSE EVALUATOR -->
       <div class="grammar-flow" id="clause-eval-container">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
           <h3 style="font-family:var(--font-serif);font-size:1.15rem;color:var(--navy);">Interactive Drill: Clause Evaluator</h3>
-          <span style="font-size:.76rem;background:var(--cream);padding:4px 10px;border-radius:999px;font-weight:700;" id="bg-drill-num">Drill 1 of 5</span>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button class="btn-sec" style="padding:3px 9px;font-size:.75rem;" onclick="loadPrevGrammarDrill()">&larr; Prev</button>
+            <span style="font-size:.76rem;background:var(--cream);padding:4px 10px;border-radius:999px;font-weight:700;" id="bg-drill-num">Drill 1 of 5</span>
+            <button class="btn-sec" style="padding:3px 9px;font-size:.75rem;" onclick="loadNextGrammarDrill()">Next &rarr;</button>
+          </div>
         </div>
         
         <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;">
@@ -1554,14 +1561,18 @@ header {
 
       <!-- SUBJECT-VERB AGREEMENT STRIKEOUT TOOL -->
       <div class="grammar-flow" style="margin-top:24px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
           <div>
             <h3 style="font-family:var(--font-serif);font-size:1.15rem;color:var(--navy);">Subject-Verb Agreement Strikeout Engine</h3>
             <p style="font-size:.85rem;color:var(--t2);margin-top:2px;">
               Click words in the intervening prepositional phrase to cross them out. Then match singular/plural.
             </p>
           </div>
-          <button class="btn-sec" onclick="loadNextSVDDrill()">Next Sentence &rarr;</button>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button class="btn-sec" style="padding:3px 9px;font-size:.75rem;" onclick="loadPrevSVDrill()">&larr; Prev</button>
+            <span style="font-size:.76rem;background:var(--cream);padding:4px 10px;border-radius:999px;font-weight:700;" id="sv-drill-num">Sentence 1 of 5</span>
+            <button class="btn-sec" style="padding:3px 9px;font-size:.75rem;" onclick="loadNextSVDDrill()">Next &rarr;</button>
+          </div>
         </div>
 
         <div class="clause-tagger-box" style="background:#FFFFFF;">
@@ -1587,7 +1598,13 @@ header {
           <div class="card-title">Module B: Evidence Anchor Engine (Information &amp; Ideas)</div>
           <div class="card-subtitle">Lift your 610–670 band into 700+ by eliminating outside assumptions. You cannot select an answer until you highlight the textual proof sentence or translate the chart axes.</div>
         </div>
-        <button class="btn-sec" onclick="loadNextEvidenceDrill()">Next Evidence Drill &rarr;</button>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span id="ev-daily-status" style="font-size:.76rem;font-weight:800;color:var(--t2);">Daily 5-Check Set active</span>
+          <button class="btn-sec" id="btn-refresh-evidence" onclick="loadDailyEvidencePack(true)">New Luna 5-Pack</button>
+          <button class="btn-sec" style="padding:3px 9px;font-size:.75rem;" onclick="loadPrevEvidenceDrill()">&larr; Prev</button>
+          <span style="font-size:.76rem;background:var(--cream);padding:4px 10px;border-radius:999px;font-weight:700;" id="ev-drill-num">Drill 1 of 5</span>
+          <button class="btn-sec" onclick="loadNextEvidenceDrill()">Next &rarr;</button>
+        </div>
       </div>
 
       <div class="two-col">
@@ -1612,7 +1629,7 @@ header {
                 Translate the Trend Before Answering:
               </div>
               <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.88rem;">
-                <span>As depth increases from 100m to 500m, water temperature</span>
+                <span id="chart-assertion-prompt">As depth increases from 100m to 500m, water temperature</span>
                 <select id="chart-trend-select" onchange="verifyChartAssertion()" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);font-family:var(--font-sans);font-weight:700;">
                   <option value="">-- select trend --</option>
                   <option value="DECREASES">decreases sharply</option>
@@ -1951,7 +1968,7 @@ const LS = {
 // ==========================================
 // 2. QUESTION BANKS (RICH OFFLINE DATABASE)
 // ==========================================
-const GRAMMAR_DRILLS = [
+const BUILTIN_GRAMMAR_DRILLS = [
   {
     id: 'g1',
     sentencePart1: 'Marine biologist Sylvia Earle has logged thousands of hours underwater',
@@ -2029,7 +2046,7 @@ const GRAMMAR_DRILLS = [
   }
 ];
 
-const SV_DRILLS = [
+const BUILTIN_SV_DRILLS = [
   {
     words: [
       { text: 'The', type: 'other' },
@@ -2078,10 +2095,84 @@ const SV_DRILLS = [
       { text: 'is influencing (Singular verb)', correct: false }
     ],
     explanation: 'The subject is the plural noun "Fluctuations." All intervening words between the subject and verb are prepositional modifiers and must be ignored. Plural subject requires "influence."'
+  },
+  {
+    words: [
+      { text: 'The', type: 'other' },
+      { text: 'restoration', type: 'subject', isSubject: true },
+      { text: 'of', type: 'prep' },
+      { text: 'historically', type: 'prep' },
+      { text: 'degraded', type: 'prep' },
+      { text: 'coastal', type: 'prep' },
+      { text: 'salt', type: 'prep' },
+      { text: 'marshes', type: 'prep' },
+      { text: 'and', type: 'prep' },
+      { text: 'barrier', type: 'prep' },
+      { text: 'islands', type: 'prep' }
+    ],
+    verbPrompt: '[mitigates / mitigate] storm surge damage along the vulnerable shoreline.',
+    subject: 'restoration (Singular)',
+    correctVerb: 'mitigates',
+    options: [
+      { text: 'mitigates (Singular verb matching singular subject "restoration")', correct: true },
+      { text: 'mitigate (Plural verb erroneously matching "marshes" or "islands")', correct: false },
+      { text: 'have mitigated (Plural verb)', correct: false },
+      { text: 'are mitigating (Plural verb)', correct: false }
+    ],
+    explanation: 'The true subject is the singular noun "restoration." The intervening compound prepositional phrases "of historically degraded coastal salt marshes and barrier islands" do not alter verb number. Singular subject requires "mitigates."'
+  },
+  {
+    words: [
+      { text: 'Advances', type: 'subject', isSubject: true },
+      { text: 'in', type: 'prep' },
+      { text: 'high-resolution', type: 'prep' },
+      { text: 'cryo-electron', type: 'prep' },
+      { text: 'microscopy', type: 'prep' },
+      { text: 'developed', type: 'prep' },
+      { text: 'by', type: 'prep' },
+      { text: 'biochemical', type: 'prep' },
+      { text: 'laboratories', type: 'prep' }
+    ],
+    verbPrompt: '[enables / enable] researchers to determine macromolecular protein structures at atomic resolution.',
+    subject: 'Advances (Plural)',
+    correctVerb: 'enable',
+    options: [
+      { text: 'enable (Plural verb matching plural subject "Advances")', correct: true },
+      { text: 'enables (Singular verb erroneously matching "microscopy" or "laboratories")', correct: false },
+      { text: 'has enabled (Singular verb)', correct: false },
+      { text: 'is enabling (Singular verb)', correct: false }
+    ],
+    explanation: 'The grammatical subject is the plural noun "Advances." The prepositional modifiers "in high-resolution cryo-electron microscopy" and participial modifier "developed by biochemical laboratories" must be ignored. Plural subject requires "enable."'
+  },
+  {
+    words: [
+      { text: 'Each', type: 'subject', isSubject: true },
+      { text: 'of', type: 'prep' },
+      { text: 'the', type: 'prep' },
+      { text: 'twelve', type: 'prep' },
+      { text: 'archaeological', type: 'prep' },
+      { text: 'field', type: 'prep' },
+      { text: 'teams', type: 'prep' },
+      { text: 'surveying', type: 'prep' },
+      { text: 'the', type: 'prep' },
+      { text: 'remote', type: 'prep' },
+      { text: 'Andean', type: 'prep' },
+      { text: 'valley', type: 'prep' }
+    ],
+    verbPrompt: '[relies / rely] on satellite lidar imaging to detect buried stone foundations.',
+    subject: 'Each (Singular indefinite pronoun)',
+    correctVerb: 'relies',
+    options: [
+      { text: 'relies (Singular verb matching singular indefinite pronoun "Each")', correct: true },
+      { text: 'rely (Plural verb erroneously matching "teams" or "valley")', correct: false },
+      { text: 'have relied (Plural verb)', correct: false },
+      { text: 'are relying (Plural verb)', correct: false }
+    ],
+    explanation: 'The subject is the singular indefinite pronoun "Each." While the prepositional phrase "of the twelve archaeological field teams" contains plural nouns, "Each" is mathematically singular and requires "relies."'
   }
 ];
 
-const EVIDENCE_DRILLS = [
+const BUILTIN_EVIDENCE_DRILLS = [
   {
     id: 'ev1',
     domain: 'Textual Evidence',
@@ -2112,15 +2203,21 @@ const EVIDENCE_DRILLS = [
     ],
     proofSentenceId: 's2',
     chartData: {
-      title: 'Spring Runoff vs Summer Algal Biomass (2018-2024)',
+      title: 'Spring Runoff vs Summer Algal Biomass (2018-2022)',
       points: [
         { year: '2018', runoff: 42, algal: 18 },
         { year: '2019', runoff: 78, algal: 64 },
         { year: '2020', runoff: 55, algal: 36 },
         { year: '2021', runoff: 88, algal: 82 },
         { year: '2022', runoff: 32, algal: 14 }
+      ],
+      series: [
+        { key: 'runoff', name: 'Runoff (kt)', color: '#C57B36' },
+        { key: 'algal', name: 'Algal (g/m²)', color: '#256B4E' }
       ]
     },
+    chartAssertionPrompt: 'As spring nitrogen runoff increases, peak summer algal biomass',
+    expectedTrend: 'INCREASES',
     prompt: 'Which assertion best reflects the quantitative evidence shown in the data while supporting the researchers\' hypothesis?',
     options: [
       { text: 'In 2021, when spring nitrogen runoff reached a recorded peak of 88 kilotons, summer algal biomass also achieved its highest level at 82 g/m².', correct: true },
@@ -2128,9 +2225,85 @@ const EVIDENCE_DRILLS = [
       { text: 'In 2019, runoff decreased while algal biomass increased to 64 g/m².', correct: false },
       { text: 'Macroalgal blooms were highest in years with the lowest agricultural runoff.', correct: false }
     ],
-    explanation: 'The chart demonstrates a positive linear correlation: years with higher runoff (2019, 2021) showed corresponding peaks in algal biomass. Choice A cites exact chart coordinates.'
+    explanation: 'The chart demonstrates a positive correlation: years with higher runoff (2019, 2021) showed corresponding peaks in algal biomass. Choice A accurately cites the peak coordinates matching the hypothesis.'
+  },
+  {
+    id: 'ev3',
+    domain: 'Textual Evidence',
+    sentences: [
+      { id: 's1', text: 'Planetary scientists analyzing atmospheric samples collected by the Curiosity rover on Mars detected episodic spikes in background methane concentrations.' },
+      { id: 's2', text: 'Because atmospheric methane is rapidly degraded by solar ultraviolet radiation within roughly three hundred years, any detected methane must originate from relatively recent processes.' },
+      { id: 's3', text: 'Some researchers hypothesized that serpentinization reactions between subsurface olivine minerals and liquid water could generate abiotic methane without biological intervention.' },
+      { id: 's4', text: 'However, isotopic mass spectrometry revealed an anomalous carbon-12 enrichment in the rover samples that closely mirrors the metabolic fractionation signatures characteristic of methanogenic archaea on Earth.' }
+    ],
+    proofSentenceId: 's4',
+    prompt: 'Which sentence from the passage provides the most direct textual evidence that the Martian methane spikes could potentially reflect biological metabolic activity rather than purely abiotic geochemical reactions?',
+    options: [
+      { text: 'Sentence 4 (explaining that anomalous carbon-12 enrichment mirrors the metabolic signatures of terrestrial archaea)', correct: true },
+      { text: 'Sentence 1 (stating the rover detected episodic spikes in methane)', correct: false },
+      { text: 'Sentence 2 (noting methane degrades rapidly under ultraviolet radiation)', correct: false },
+      { text: 'Sentence 3 (describing abiotic serpentinization reactions with olivine)', correct: false }
+    ],
+    explanation: 'Sentence 4 explicitly identifies carbon-12 isotope fractionation that mirrors terrestrial methanogenic archaea, directly supporting the biological origin hypothesis over abiotic mineral reactions.'
+  },
+  {
+    id: 'ev4',
+    domain: 'Quantitative Evidence',
+    hasChart: true,
+    sentences: [
+      { id: 's1', text: 'Oceanographers deployed deep-sea conductivity, temperature, and depth (CTD) profilers to map thermal gradients across the bathypelagic zone.' },
+      { id: 's2', text: 'Marine physical models predict that incoming solar warmth dissipates completely below the photic zone, creating a steep thermocline where water temperatures plummet before stabilizing near freezing.' },
+      { id: 's3', text: 'Telemetry recorded across five distinct ocean depths demonstrates this thermal stratification profile.' }
+    ],
+    proofSentenceId: 's2',
+    chartData: {
+      title: 'Ocean Depth vs Water Temperature Profile',
+      points: [
+        { depth: '100m', temp: 22 },
+        { depth: '300m', temp: 15 },
+        { depth: '600m', temp: 8 },
+        { depth: '1000m', temp: 4 },
+        { depth: '2000m', temp: 2 }
+      ],
+      series: [
+        { key: 'temp', name: 'Temperature (°C)', color: '#416B95' }
+      ]
+    },
+    chartAssertionPrompt: 'As ocean depth increases from 100m to 2000m, water temperature',
+    expectedTrend: 'DECREASES',
+    prompt: 'Which assertion best reflects the quantitative evidence recorded by the profilers while verifying the oceanographers\' model?',
+    options: [
+      { text: 'Water temperature drops precipitously from 22°C at 100 meters to 4°C at 1000 meters, verifying the steep thermocline predicted by the model.', correct: true },
+      { text: 'Water temperature remained constant at 15°C across all depths from 100m to 2000m.', correct: false },
+      { text: 'Water temperature increased as depth extended beyond 600 meters.', correct: false },
+      { text: 'The warmest recorded water temperature occurred at a depth of 2000 meters.', correct: false }
+    ],
+    explanation: 'The data demonstrates a steep negative gradient from 22°C down to 4°C between 100m and 1000m, directly validating the thermocline model stated in Sentence 2. Choice A accurately cites coordinates.'
+  },
+  {
+    id: 'ev5',
+    domain: 'Textual Evidence',
+    sentences: [
+      { id: 's1', text: 'Anthropologists excavating the Olorgesailie basin in Kenya recovered thousands of Acheulean stone handaxes dating from 1.2 million to 500,000 years ago.' },
+      { id: 's2', text: 'For decades, scholars debated whether early hominins selected specific lithic raw materials purely based on immediate local availability or deliberate mechanical suitability.' },
+      { id: 's3', text: 'Geochemical X-ray fluorescence sourcing revealed that hominins consistently transported durable, fine-grained quartzite and obsidian from volcanic outcrops over thirty kilometers away, bypassing the brittle basalt boulders located directly beside the riverbank campsite.' },
+      { id: 's4', text: 'Furthermore, micro-wear edge analysis indicated that handaxes made from imported quartzite retained their sharp cutting edges through twice as many butchery cycles as basalt tools.' }
+    ],
+    proofSentenceId: 's3',
+    prompt: 'Which sentence from the passage provides the strongest evidence that hominins deliberately expended significant effort to procure higher-quality toolstone rather than opportunistically using whatever rock was immediately at hand?',
+    options: [
+      { text: 'Sentence 3 (revealing hominins transported quartzite and obsidian from over thirty kilometers away while ignoring adjacent basalt boulders)', correct: true },
+      { text: 'Sentence 1 (stating thousands of handaxes were recovered in the Olorgesailie basin)', correct: false },
+      { text: 'Sentence 2 (stating scholars debated whether material selection was opportunistic or deliberate)', correct: false },
+      { text: 'Sentence 4 (demonstrating quartzite handaxes retained sharp edges longer than basalt tools)', correct: false }
+    ],
+    explanation: 'Sentence 3 provides decisive behavioral evidence of intentional procurement effort: hominins transported preferred raw materials over 30 kilometers despite immediately accessible local basalt.'
   }
 ];
+
+let GRAMMAR_DRILLS = [...BUILTIN_GRAMMAR_DRILLS];
+let SV_DRILLS = [...BUILTIN_SV_DRILLS];
+let EVIDENCE_DRILLS = [...BUILTIN_EVIDENCE_DRILLS];
 
 // ADAPTIVE SIMULATOR QUESTIONS (Sequential Official Pattern Q1-27)
 const SIM_QUESTIONS = [
@@ -2403,6 +2576,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAccuracyStats();
   initDailyPlan();
   loadDailyQuestionPack(false);
+  loadDailyGrammarPack(false);
+  loadDailyEvidencePack(false);
 });
 
 function localDateKey(date = new Date()) {
@@ -2484,11 +2659,111 @@ async function loadDailyQuestionPack(force = false) {
       body: JSON.stringify({ date: localDateKey(tomorrow), force: false })
     }).catch(() => {});
   } catch (error) {
-    status.textContent = 'Built-in set active • Start the local launcher for daily Luna questions';
-    showToast('Daily generator unavailable; the built-in set is ready.');
+    status.textContent = 'Built-in set active • Standard 27-question module ready';
+    if (force) {
+      showToast('Daily generator busy; using current question set.');
+    }
   } finally {
     button.disabled = false;
   }
+}
+
+async function loadDailyGrammarPack(force = false) {
+  const date = localDateKey();
+  const cacheKey = `sat700_grammar_${date}`;
+  const status = document.getElementById('bg-daily-status');
+  const button = document.getElementById('btn-refresh-grammar');
+
+  if (!force) {
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+      if (cached && Array.isArray(cached.grammarDrills) && cached.grammarDrills.length === 5) {
+        activateDailyGrammarPack(cached, 'Today’s cached Luna 5-pack');
+        return;
+      }
+    } catch {}
+  }
+
+  if (status) status.textContent = force ? 'Creating new Luna 5-pack…' : 'Loading today’s Luna 5-pack…';
+  if (button) button.disabled = true;
+
+  try {
+    const response = await fetch('/api/daily-grammar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date, force })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.pack || !Array.isArray(data.pack.grammarDrills) || data.pack.grammarDrills.length !== 5) {
+      throw new Error('generation-failed');
+    }
+    activateDailyGrammarPack(data.pack, force ? 'New Luna 5-pack' : 'Today’s Luna 5-pack');
+    localStorage.setItem(cacheKey, JSON.stringify(data.pack));
+    showToast('Boolean Grammar 5-pack updated by Luna.');
+  } catch (error) {
+    if (status) status.textContent = 'Built-in 5-check set active • Launcher ready';
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
+function activateDailyGrammarPack(pack, originLabel) {
+  if (!pack || !pack.grammarDrills || pack.grammarDrills.length !== 5) return;
+  GRAMMAR_DRILLS = pack.grammarDrills;
+  if (Array.isArray(pack.svDrills) && pack.svDrills.length === 5) {
+    SV_DRILLS = pack.svDrills;
+  }
+  loadGrammarDrill(0);
+  loadSVDrill(0);
+  const status = document.getElementById('bg-daily-status');
+  if (status) status.textContent = `✓ ${originLabel}`;
+}
+
+async function loadDailyEvidencePack(force = false) {
+  const date = localDateKey();
+  const cacheKey = `sat700_evidence_${date}`;
+  const status = document.getElementById('ev-daily-status');
+  const button = document.getElementById('btn-refresh-evidence');
+
+  if (!force) {
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+      if (cached && Array.isArray(cached.evidenceDrills) && cached.evidenceDrills.length === 5) {
+        activateDailyEvidencePack(cached, 'Today’s cached Luna 5-pack');
+        return;
+      }
+    } catch {}
+  }
+
+  if (status) status.textContent = force ? 'Creating new Luna 5-pack…' : 'Loading today’s Luna 5-pack…';
+  if (button) button.disabled = true;
+
+  try {
+    const response = await fetch('/api/daily-evidence', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date, force })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.pack || !Array.isArray(data.pack.evidenceDrills) || data.pack.evidenceDrills.length !== 5) {
+      throw new Error('generation-failed');
+    }
+    activateDailyEvidencePack(data.pack, force ? 'New Luna 5-pack' : 'Today’s Luna 5-pack');
+    localStorage.setItem(cacheKey, JSON.stringify(data.pack));
+    showToast('Evidence Anchor 5-pack updated by Luna.');
+  } catch (error) {
+    if (status) status.textContent = 'Built-in 5-check set active • Launcher ready';
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
+function activateDailyEvidencePack(pack, originLabel) {
+  if (!pack || !pack.evidenceDrills || pack.evidenceDrills.length !== 5) return;
+  EVIDENCE_DRILLS = pack.evidenceDrills;
+  loadEvidenceDrill(0);
+  const status = document.getElementById('ev-daily-status');
+  if (status) status.textContent = `✓ ${originLabel}`;
 }
 
 const DAILY_PHASES = [
@@ -2586,11 +2861,12 @@ function showToast(msg) {
 // 5. BOOLEAN GRAMMAR ENGINE LOGIC
 // ==========================================
 function loadGrammarDrill(idx) {
-  currentGrammarIndex = idx % GRAMMAR_DRILLS.length;
+  currentGrammarIndex = (idx + GRAMMAR_DRILLS.length) % GRAMMAR_DRILLS.length;
   const drill = GRAMMAR_DRILLS[currentGrammarIndex];
   currentClauseTags = { 1: null, 2: null };
 
-  document.getElementById('bg-drill-num').textContent = `Drill ${currentGrammarIndex + 1} of ${GRAMMAR_DRILLS.length}`;
+  const numEl = document.getElementById('bg-drill-num');
+  if (numEl) numEl.textContent = `Drill ${currentGrammarIndex + 1} of ${GRAMMAR_DRILLS.length}`;
   
   const display = document.getElementById('clause-sentence-display');
   display.innerHTML = `
@@ -2601,15 +2877,18 @@ function loadGrammarDrill(idx) {
 
   // Reset tag buttons
   ['btn-c1-indep', 'btn-c1-dep', 'btn-c2-indep', 'btn-c2-dep'].forEach(id => {
-    document.getElementById(id).style.borderColor = 'transparent';
+    const b = document.getElementById(id);
+    if (b) b.style.borderColor = 'transparent';
   });
 
   const fb = document.getElementById('clause-feedback');
-  fb.style.display = 'none';
+  if (fb) fb.style.display = 'none';
 
   const optArea = document.getElementById('clause-options-area');
-  optArea.style.opacity = '0.35';
-  optArea.style.pointerEvents = 'none';
+  if (optArea) {
+    optArea.style.opacity = '0.35';
+    optArea.style.pointerEvents = 'none';
+  }
 
   renderClauseOptions(drill);
 }
@@ -2681,17 +2960,23 @@ function selectClauseOption(oi) {
   }
 }
 
+function loadPrevGrammarDrill() {
+  loadGrammarDrill((currentGrammarIndex - 1 + GRAMMAR_DRILLS.length) % GRAMMAR_DRILLS.length);
+}
+
 function loadNextGrammarDrill() {
-  loadGrammarDrill(currentGrammarIndex + 1);
+  loadGrammarDrill((currentGrammarIndex + 1) % GRAMMAR_DRILLS.length);
 }
 
 // ==========================================
 // 6. SUBJECT-VERB AGREEMENT STRIKEOUT LOGIC
 // ==========================================
 function loadSVDrill(idx) {
-  currentSVIndex = idx % SV_DRILLS.length;
+  currentSVIndex = (idx + SV_DRILLS.length) % SV_DRILLS.length;
   const drill = SV_DRILLS[currentSVIndex];
   const container = document.getElementById('sv-interactive-text');
+  const badge = document.getElementById('sv-drill-num');
+  if (badge) badge.textContent = `Sentence ${currentSVIndex + 1} of ${SV_DRILLS.length}`;
   
   container.innerHTML = drill.words.map((w, i) => `
     <span class="strike-word ${w.isSubject ? 'subject-locked' : ''}" onclick="toggleStrikeWord(${i})" id="sv-word-${i}">${w.text}</span>
@@ -2740,17 +3025,24 @@ function selectSVOption(oi) {
   }
 }
 
+function loadPrevSVDrill() {
+  loadSVDrill((currentSVIndex - 1 + SV_DRILLS.length) % SV_DRILLS.length);
+}
+
 function loadNextSVDDrill() {
-  loadSVDrill(currentSVIndex + 1);
+  loadSVDrill((currentSVIndex + 1) % SV_DRILLS.length);
 }
 
 // ==========================================
 // 7. EVIDENCE ANCHOR ENGINE LOGIC
 // ==========================================
 function loadEvidenceDrill(idx) {
-  currentEvidenceIndex = idx % EVIDENCE_DRILLS.length;
+  currentEvidenceIndex = (idx + EVIDENCE_DRILLS.length) % EVIDENCE_DRILLS.length;
   const drill = EVIDENCE_DRILLS[currentEvidenceIndex];
   taggedAnchorId = null;
+
+  const evBadge = document.getElementById('ev-drill-num');
+  if (evBadge) evBadge.textContent = `Drill ${currentEvidenceIndex + 1} of ${EVIDENCE_DRILLS.length}`;
 
   document.getElementById('ev-domain-tag').textContent = drill.domain;
   document.getElementById('ev-prompt-text').textContent = drill.prompt;
@@ -2765,8 +3057,13 @@ function loadEvidenceDrill(idx) {
 
   // Chart setup
   const chartBox = document.getElementById('evidence-chart-display');
-  if (drill.hasChart) {
+  if (drill.hasChart && drill.chartData) {
     chartBox.style.display = 'block';
+    document.getElementById('chart-title').textContent = drill.chartData.title || 'Data Chart';
+    const promptEl = document.getElementById('chart-assertion-prompt');
+    if (promptEl) promptEl.textContent = drill.chartAssertionPrompt || 'Translate the chart trend:';
+    const selectEl = document.getElementById('chart-trend-select');
+    if (selectEl) selectEl.value = '';
     renderChartSVG(drill.chartData);
   } else {
     chartBox.style.display = 'none';
@@ -2817,44 +3114,87 @@ function tagAnchorSentence(sentenceId) {
 
 function renderChartSVG(data) {
   const container = document.getElementById('chart-svg-container');
+  if (!container || !data || !data.points || !data.points.length) return;
   const pts = data.points;
-  const width = 460, height = 180, pad = 35;
-  const maxVal = 100;
+  const width = 460, height = 180, pad = 38;
 
-  const svg = `
+  let series = [];
+  if (data.series && data.series.length) {
+    series = data.series;
+  } else if (pts[0].runoff !== undefined && pts[0].algal !== undefined) {
+    series = [
+      { key: 'runoff', name: 'Runoff (kt)', color: '#C57B36' },
+      { key: 'algal', name: 'Algal (g/m²)', color: '#256B4E' }
+    ];
+  } else if (pts[0].temp !== undefined) {
+    series = [
+      { key: 'temp', name: 'Temperature (°C)', color: '#416B95' }
+    ];
+  } else {
+    const keys = Object.keys(pts[0]).filter(k => !['year', 'depth', 'x', 'label', 'id'].includes(k) && typeof pts[0][k] === 'number');
+    const colors = ['#C57B36', '#256B4E', '#416B95', '#A23644'];
+    series = keys.map((k, i) => ({ key: k, name: k, color: colors[i % colors.length] }));
+  }
+
+  let maxVal = 0;
+  pts.forEach(p => {
+    series.forEach(s => {
+      if (typeof p[s.key] === 'number' && p[s.key] > maxVal) maxVal = p[s.key];
+    });
+  });
+  if (maxVal <= 0) maxVal = 100;
+  maxVal = Math.ceil(maxVal * 1.15);
+
+  const barWidth = Math.max(9, Math.min(18, Math.floor(48 / (series.length || 1))));
+  const groupSpan = series.length * barWidth;
+  const step = (width - pad * 2) / pts.length;
+
+  const bars = pts.map((p, i) => {
+    const xCenter = pad + step * (i + 0.5);
+    const xStart = xCenter - groupSpan / 2;
+    const label = p.year || p.depth || p.x || p.label || (i + 1);
+
+    const rects = series.map((s, si) => {
+      const val = typeof p[s.key] === 'number' ? p[s.key] : 0;
+      const h = (val / maxVal) * (height - pad * 2);
+      const y = height - pad - h;
+      const x = xStart + si * barWidth;
+      return `<rect x="${x}" y="${y}" width="${barWidth - 2}" height="${h}" fill="${s.color}" rx="2"><title>${s.name}: ${val}</title></rect>`;
+    }).join('');
+
+    return `
+      ${rects}
+      <text x="${xCenter}" y="${height - 12}" font-size="10" font-weight="700" fill="#5D6877" text-anchor="middle">${label}</text>
+    `;
+  }).join('');
+
+  const legend = series.map((s, si) => {
+    const lx = width - pad - (series.length - si) * 110;
+    return `
+      <rect x="${lx}" y="10" width="10" height="10" fill="${s.color}" rx="2"/>
+      <text x="${lx + 14}" y="19" font-size="10" font-weight="700" fill="#5D6877">${s.name}</text>
+    `;
+  }).join('');
+
+  container.innerHTML = `
     <svg viewBox="0 0 ${width} ${height}" style="width:100%;height:auto;font-family:var(--font-sans);">
-      <!-- Grid lines -->
       <line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#DFD5C6" stroke-width="1.5"/>
       <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#DFD5C6" stroke-width="1.5"/>
-      
-      <!-- Bars / Lines -->
-      ${pts.map((p, i) => {
-        const x = pad + 30 + i * 80;
-        const hRunoff = (p.runoff / maxVal) * (height - pad * 2);
-        const yRunoff = height - pad - hRunoff;
-        const hAlgal = (p.algal / maxVal) * (height - pad * 2);
-        const yAlgal = height - pad - hAlgal;
-        return `
-          <rect x="${x - 14}" y="${yRunoff}" width="12" height="${hRunoff}" fill="#C57B36" rx="2"/>
-          <rect x="${x}" y="${yAlgal}" width="12" height="${hAlgal}" fill="#256B4E" rx="2"/>
-          <text x="${x}" y="${height - 12}" font-size="11" font-weight="700" fill="#5D6877" text-anchor="middle">${p.year}</text>
-        `;
-      }).join('')}
-      
-      <!-- Legend -->
-      <rect x="${width - 160}" y="10" width="10" height="10" fill="#C57B36" rx="2"/>
-      <text x="${width - 145}" y="19" font-size="10" font-weight="700" fill="#5D6877">Runoff (kt)</text>
-      <rect x="${width - 80}" y="10" width="10" height="10" fill="#256B4E" rx="2"/>
-      <text x="${width - 65}" y="19" font-size="10" font-weight="700" fill="#5D6877">Algal (g/m²)</text>
+      <line x1="${pad}" y1="${(height - pad) / 2 + pad / 2}" x2="${width - pad}" y2="${(height - pad) / 2 + pad / 2}" stroke="#EBE4D8" stroke-dasharray="3,3"/>
+      ${bars}
+      ${legend}
     </svg>
   `;
-  container.innerHTML = svg;
 }
 
 function verifyChartAssertion() {
-  const val = document.getElementById('chart-trend-select').value;
-  if (val === 'DECREASES') {
-    showToast('Correct chart axis trend identified.');
+  const selectEl = document.getElementById('chart-trend-select');
+  if (!selectEl) return;
+  const val = selectEl.value;
+  const drill = EVIDENCE_DRILLS[currentEvidenceIndex];
+  const expected = drill.expectedTrend || 'DECREASES';
+  if (val === expected) {
+    showToast('✓ Correct chart axis trend identified.');
   } else if (val) {
     showToast('Chart axis trend misread. Check the variable direction.', true);
     logAutoError('Information and Ideas', 'GRAPH_MISREAD', 'Misinterpreted graph axis direction in Chart Drill');
@@ -2883,8 +3223,12 @@ function selectEvidenceOption(oi) {
   }
 }
 
+function loadPrevEvidenceDrill() {
+  loadEvidenceDrill((currentEvidenceIndex - 1 + EVIDENCE_DRILLS.length) % EVIDENCE_DRILLS.length);
+}
+
 function loadNextEvidenceDrill() {
-  loadEvidenceDrill(currentEvidenceIndex + 1);
+  loadEvidenceDrill((currentEvidenceIndex + 1) % EVIDENCE_DRILLS.length);
 }
 
 // ==========================================
@@ -3266,8 +3610,10 @@ async function checkAIHealth() {
   try {
     const res = await fetch('/api/health', { method: 'GET' });
     if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      const model = (data.model && data.model.includes('luna')) ? 'Luna (gpt-5.6)' : (data.model || 'Luna Coach');
       document.getElementById('ai-status-text').innerHTML = 
-        `<span style="color:var(--forest);font-weight:700;">● Local AI Coach Connected</span> (DeepSeek / OpenRouter active).`;
+        `<span style="color:var(--forest);font-weight:700;">● Coach Engine Connected</span> (${model} active • Medium reasoning).`;
     }
   } catch (e) {
     // Normal in standalone browser mode

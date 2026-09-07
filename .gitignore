@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -56,16 +56,12 @@ kaggle_*/
 _runc_results_inspect/
 node_modules/
 .vercel/
-api/
 index.html
 scholarships.html
 summer_dashboard.html
 isotope_pinn_master_twin_planner.html
 ncsu_pitch_deck*.html
 isef_poster_draft.html
-package.json
-package-lock.json
-vercel.json
 .vercelignore
 run_*.ps1
 build_colab_zip.py

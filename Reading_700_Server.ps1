@@ -304,6 +304,206 @@ $sourceContext
   return $pack
 }
 
+function Get-DailyGrammarPack {
+  param([string]$DateText, [switch]$Force)
+
+  $date = [datetime]::MinValue
+  if (-not [datetime]::TryParseExact($DateText, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$date)) {
+    throw 'Invalid date.'
+  }
+
+  if (-not (Test-Path -LiteralPath $cachePath)) { New-Item -ItemType Directory -Path $cachePath | Out-Null }
+  $cacheFile = Join-Path $cachePath ('grammar_' + $DateText + '.json')
+  if (-not $Force -and (Test-Path -LiteralPath $cacheFile)) {
+    return (Get-Content -LiteralPath $cacheFile -Raw | ConvertFrom-Json)
+  }
+
+  $apiKey = Get-PrivateKey
+  if ([string]::IsNullOrWhiteSpace($apiKey)) { throw 'trainer-not-configured' }
+
+  $prompt = @"
+Generate a daily 5-check set for the Boolean Grammar Engine for $DateText for a Digital SAT student moving from 540 to 700+ in Standard English Conventions.
+
+Return ONLY valid JSON matching this exact structure:
+{
+  "grammarDrills": [
+    {
+      "id": "g1",
+      "sentencePart1": "First clause text...",
+      "sentencePart2": "Second clause text...",
+      "c1True": "INDEPENDENT" or "DEPENDENT",
+      "c2True": "INDEPENDENT" or "DEPENDENT",
+      "rule": "Rule description (e.g. Rule 1: Indep + Indep => Semicolon)",
+      "explanation": "Clear explanation of clause boundaries and why the correct punctuation works.",
+      "options": [
+        { "text": "; option text", "correct": true },
+        { "text": ", option text", "correct": false },
+        { "text": " option text", "correct": false },
+        { "text": ": option text", "correct": false }
+      ]
+    }
+  ],
+  "svDrills": [
+    {
+      "words": [
+        { "text": "The", "type": "other" },
+        { "text": "subject_noun", "type": "subject", "isSubject": true },
+        { "text": "of", "type": "prep" },
+        { "text": "intervening", "type": "prep" },
+        { "text": "nouns", "type": "prep" }
+      ],
+      "verbPrompt": "[verb_singular / verb_plural] rest of sentence...",
+      "subject": "subject_noun (Singular or Plural)",
+      "correctVerb": "verb_singular",
+      "options": [
+        { "text": "verb_singular (Singular verb matching singular subject)", "correct": true },
+        { "text": "verb_plural (Plural verb erroneously matching intervening noun)", "correct": false },
+        { "text": "has/have verb...", "correct": false },
+        { "text": "is/are verbing...", "correct": false }
+      ],
+      "explanation": "Clear explanation identifying the true subject and explaining why distractors fail."
+    }
+  ]
+}
+
+CRITICAL RULES:
+1. Provide exactly 5 grammarDrills covering:
+   - Drill 1: Indep + Indep (Semicolon, Period, or Comma + FANBOYS)
+   - Drill 2: Dep + Indep (Introductory dependent clause -> Comma)
+   - Drill 3: Indep + Explanation/List (Prerequisite full independent clause -> Colon or Dash)
+   - Drill 4: Indep + Dep (Independent followed by essential adverbial dependent clause -> NO comma)
+   - Drill 5: Non-essential parenthetical clause / appositive isolation (paired commas or dashes)
+2. Provide exactly 5 svDrills testing Subject-Verb Agreement across long prepositional phrases, appositives, or inverted clauses.
+3. Deliberate thoroughly on medium reasoning effort. Ensure zero hallucinations, zero grammar ambiguities, and exactly one true option per drill.
+"@
+
+  $apiBody = @{
+    model = $model
+    messages = @(
+      @{ role = 'system'; content = $systemPrompt },
+      @{ role = 'user'; content = $prompt }
+    )
+    reasoning = @{ effort = 'medium' }
+    max_tokens = 9000
+    provider = @{ sort = 'throughput'; require_parameters = $true }
+    response_format = @{ type = 'json_object' }
+  }
+  $apiHeaders = @{
+    Authorization = "Bearer $apiKey"
+    'HTTP-Referer' = $url
+    'X-Title' = 'Reading 700 Daily Boolean Grammar'
+  }
+  $requestJson = $apiBody | ConvertTo-Json -Depth 20 -Compress
+  $requestBytes = [System.Text.Encoding]::UTF8.GetBytes($requestJson)
+  $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body $requestBytes -TimeoutSec 180
+
+  $content = [string]$apiResult.choices[0].message.content
+  if ([string]::IsNullOrWhiteSpace($content)) { throw 'grammar-empty-response' }
+  $pack = $content | ConvertFrom-Json
+  if ($pack.grammarDrills.Count -ne 5) { throw 'invalid-grammar-count' }
+
+  $cacheJson = $pack | ConvertTo-Json -Depth 20 -Compress
+  [System.IO.File]::WriteAllText($cacheFile, $cacheJson, [System.Text.UTF8Encoding]::new($false))
+  return $pack
+}
+
+function Get-DailyEvidencePack {
+  param([string]$DateText, [switch]$Force)
+
+  $date = [datetime]::MinValue
+  if (-not [datetime]::TryParseExact($DateText, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::None, [ref]$date)) {
+    throw 'Invalid date.'
+  }
+
+  if (-not (Test-Path -LiteralPath $cachePath)) { New-Item -ItemType Directory -Path $cachePath | Out-Null }
+  $cacheFile = Join-Path $cachePath ('evidence_' + $DateText + '.json')
+  if (-not $Force -and (Test-Path -LiteralPath $cacheFile)) {
+    return (Get-Content -LiteralPath $cacheFile -Raw | ConvertFrom-Json)
+  }
+
+  $apiKey = Get-PrivateKey
+  if ([string]::IsNullOrWhiteSpace($apiKey)) { throw 'trainer-not-configured' }
+
+  $startIndex = ($date.DayOfYear * 2) % $sourcePool.Count
+  $selectedSources = for ($i = 0; $i -lt 3; $i++) { $sourcePool[($startIndex + $i) % $sourcePool.Count] }
+  $sourceContext = ($selectedSources | ForEach-Object { Get-SourceContext $_ }) -join "`n`n"
+
+  $prompt = @"
+Generate a daily 5-check set for the Evidence Anchor Engine for $DateText. Student is moving to 700+ on Digital SAT Information and Ideas.
+
+Return ONLY valid JSON with this exact structure:
+{
+  "evidenceDrills": [
+    {
+      "id": "ev1",
+      "domain": "Textual Evidence",
+      "hasChart": false,
+      "sentences": [
+        { "id": "s1", "text": "Sentence 1..." },
+        { "id": "s2", "text": "Sentence 2..." },
+        { "id": "s3", "text": "Sentence 3..." },
+        { "id": "s4", "text": "Sentence 4..." }
+      ],
+      "proofSentenceId": "s3",
+      "prompt": "Which sentence from the passage provides the most direct textual evidence that...",
+      "options": [
+        { "text": "Sentence 3 (explanation why it proves claim)", "correct": true },
+        { "text": "Sentence 1 (distractor explanation)", "correct": false },
+        { "text": "Sentence 2 (distractor explanation)", "correct": false },
+        { "text": "Sentence 4 (distractor explanation)", "correct": false }
+      ],
+      "explanation": "Comprehensive diagnostic explanation confirming why Sentence 3 is airtight and why others fail."
+    }
+  ]
+}
+
+CRITICAL RULES:
+1. Exactly 5 evidenceDrills:
+   - 3 Textual Evidence drills (scientific, historical, or cultural passages of 4-5 sentences, clear prompt claim, one unambiguous proofSentenceId, 4 options).
+   - 2 Quantitative Evidence drills (hasChart: true):
+     - sentences: 3 sentences presenting study context and hypothesis.
+     - proofSentenceId: sentence stating the researchers' core hypothesis.
+     - chartData: { title: string, points: [ { year or depth or label: string, val1: number, val2: number } ], series: [ { key: "val1", name: "Label 1", color: "#C57B36" }, { key: "val2", name: "Label 2", color: "#256B4E" } ] }
+     - chartAssertionPrompt: e.g. "As ocean depth increases, water temperature"
+     - expectedTrend: "DECREASES" or "INCREASES"
+     - prompt: target quantitative claim question
+     - options: 4 choices citing exact chart coordinates, exactly one correct.
+2. Deliberate thoroughly on medium reasoning effort. Ensure zero outside assumptions, zero fabricated numbers, and airtight textual/quantitative anchors.
+
+SOURCE CONTEXT (Factual Inspiration):
+$sourceContext
+"@
+
+  $apiBody = @{
+    model = $model
+    messages = @(
+      @{ role = 'system'; content = $systemPrompt },
+      @{ role = 'user'; content = $prompt }
+    )
+    reasoning = @{ effort = 'medium' }
+    max_tokens = 9000
+    provider = @{ sort = 'throughput'; require_parameters = $true }
+    response_format = @{ type = 'json_object' }
+  }
+  $apiHeaders = @{
+    Authorization = "Bearer $apiKey"
+    'HTTP-Referer' = $url
+    'X-Title' = 'Reading 700 Daily Evidence Anchor'
+  }
+  $requestJson = $apiBody | ConvertTo-Json -Depth 20 -Compress
+  $requestBytes = [System.Text.Encoding]::UTF8.GetBytes($requestJson)
+  $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body $requestBytes -TimeoutSec 180
+
+  $content = [string]$apiResult.choices[0].message.content
+  if ([string]::IsNullOrWhiteSpace($content)) { throw 'evidence-empty-response' }
+  $pack = $content | ConvertFrom-Json
+  if ($pack.evidenceDrills.Count -ne 5) { throw 'invalid-evidence-count' }
+
+  $cacheJson = $pack | ConvertTo-Json -Depth 20 -Compress
+  [System.IO.File]::WriteAllText($cacheFile, $cacheJson, [System.Text.UTF8Encoding]::new($false))
+  return $pack
+}
+
 try {
   $listener.Start()
 } catch {
@@ -361,6 +561,44 @@ try {
             elseif ($message -match '402|credits') { 'trainer-needs-credits' }
             elseif ($message -match '429|rate') { 'trainer-busy' }
             else { 'daily-generation-failed' }
+          Write-JsonResponse -Stream $stream -Status 502 -Reason 'Bad Gateway' -Data @{ error = $safeError }
+        }
+        continue
+      }
+
+      if ($method -eq 'POST' -and $path -eq '/api/daily-grammar') {
+        try {
+          $incoming = $request.Body | ConvertFrom-Json
+          $dateText = [string]$incoming.date
+          $force = [bool]$incoming.force
+          $pack = Get-DailyGrammarPack -DateText $dateText -Force:$force
+          Write-JsonResponse -Stream $stream -Status 200 -Reason 'OK' -Data @{ pack = $pack; model = $model; cachedForDay = $true }
+        } catch {
+          $message = [string]$_.Exception.Message
+          $safeError = if ($message -match 'trainer-not-configured') { 'trainer-not-configured' }
+            elseif ($message -match '401|Unauthorized') { 'trainer-key-rejected' }
+            elseif ($message -match '402|credits') { 'trainer-needs-credits' }
+            elseif ($message -match '429|rate') { 'trainer-busy' }
+            else { 'daily-grammar-failed' }
+          Write-JsonResponse -Stream $stream -Status 502 -Reason 'Bad Gateway' -Data @{ error = $safeError }
+        }
+        continue
+      }
+
+      if ($method -eq 'POST' -and $path -eq '/api/daily-evidence') {
+        try {
+          $incoming = $request.Body | ConvertFrom-Json
+          $dateText = [string]$incoming.date
+          $force = [bool]$incoming.force
+          $pack = Get-DailyEvidencePack -DateText $dateText -Force:$force
+          Write-JsonResponse -Stream $stream -Status 200 -Reason 'OK' -Data @{ pack = $pack; model = $model; cachedForDay = $true }
+        } catch {
+          $message = [string]$_.Exception.Message
+          $safeError = if ($message -match 'trainer-not-configured') { 'trainer-not-configured' }
+            elseif ($message -match '401|Unauthorized') { 'trainer-key-rejected' }
+            elseif ($message -match '402|credits') { 'trainer-needs-credits' }
+            elseif ($message -match '429|rate') { 'trainer-busy' }
+            else { 'daily-evidence-failed' }
           Write-JsonResponse -Stream $stream -Status 502 -Reason 'Bad Gateway' -Data @{ error = $safeError }
         }
         continue
