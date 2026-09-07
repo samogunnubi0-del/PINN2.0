@@ -1228,6 +1228,51 @@ header {
   opacity: 1;
 }
 
+/* BRIEFING & ODDS CARD */
+.briefing-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(247, 244, 238, 0.95) 100%);
+  border: 2px solid var(--forest);
+  border-radius: 1.5rem;
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 18px rgba(37, 107, 78, 0.08);
+  position: relative;
+}
+
+.briefing-odds-box {
+  text-align: center;
+  min-width: 150px;
+  background: #FFFFFF;
+  border: 2px solid var(--forest);
+  border-radius: 1.2rem;
+  padding: 10px 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.briefing-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.briefing-metric-item {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.briefing-note-body {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--t1);
+}
+
 /* RESPONSIVE TWEAKS */
 @media (max-width: 600px) {
   header { padding: 20px 18px; }
@@ -1257,6 +1302,9 @@ header {
         </div>
       </div>
       <div style="text-align:right;">
+        <div id="header-today-badge" style="font-family:var(--font-mono);font-size:.82rem;font-weight:800;color:var(--forest);margin-bottom:6px;display:flex;align-items:center;gap:5px;justify-content:flex-end;">
+          <span>📅</span> <span id="current-today-string">Loading date…</span>
+        </div>
         <div style="font-size:.74rem;color:var(--t2);text-transform:uppercase;font-weight:800;letter-spacing:.5px;margin-bottom:4px;">Test Date</div>
         <div style="font-family:var(--font-mono);font-size:.92rem;font-weight:800;color:var(--navy);background:var(--cream);padding:6px 14px;border-radius:999px;border:1px solid var(--border);">
           Sat Oct 3, 2026
@@ -1357,6 +1405,80 @@ header {
 
   <!-- TAB 1: ROADMAP & DAILY EXECUTION -->
   <div id="t-roadmap" class="tab-content active">
+    <!-- DAILY COACH BRIEFING & 700+ WIN PROBABILITY -->
+    <div class="briefing-card" id="daily-coach-briefing-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;">
+        <div style="flex:1;min-width:260px;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span style="background:rgba(37,107,78,0.12);color:var(--forest);font-weight:800;font-size:0.75rem;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:0.5px;">
+              🧠 Luna AI Daily Executive Briefing
+            </span>
+            <span id="briefing-period-tag" style="font-size:0.78rem;font-weight:700;color:var(--t2);">
+              Daily Diagnostic
+            </span>
+          </div>
+          <h2 style="font-family:var(--font-serif);font-size:1.38rem;font-weight:800;color:var(--navy);margin-top:6px;margin-bottom:4px;">
+            Yesterday's Performance &amp; Your 700+ Win Probability
+          </h2>
+          <p style="font-size:0.86rem;color:var(--t2);line-height:1.45;">
+            Dynamic daily diagnosis analyzing your question accuracy, error taxonomy leaks, and day-by-day trajectory toward 48–50 / 54 raw points.
+          </p>
+        </div>
+
+        <div class="briefing-odds-box">
+          <div style="font-size:0.68rem;font-weight:800;color:var(--t2);text-transform:uppercase;letter-spacing:0.5px;">Chances of 700+ R&amp;W</div>
+          <div id="odds-percentage" style="font-family:var(--font-serif);font-size:1.9rem;font-weight:800;color:var(--forest);line-height:1.1;margin:3px 0;">
+            --%
+          </div>
+          <div id="odds-band" style="font-size:0.75rem;font-weight:800;color:var(--navy);">
+            Projected: --
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Row -->
+      <div class="briefing-metrics-grid">
+        <div class="briefing-metric-item">
+          <div style="font-size:0.68rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Overall Accuracy</div>
+          <div id="briefing-acc" style="font-family:var(--font-mono);font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">--%</div>
+          <div style="font-size:0.68rem;color:var(--t2);">Target: 88.8%</div>
+        </div>
+        <div class="briefing-metric-item">
+          <div style="font-size:0.68rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Questions Solved</div>
+          <div id="briefing-total-qs" style="font-family:var(--font-mono);font-size:1.2rem;font-weight:800;color:var(--navy);margin-top:2px;">--</div>
+          <div style="font-size:0.68rem;color:var(--t2);">Drills &amp; Simulator</div>
+        </div>
+        <div class="briefing-metric-item">
+          <div style="font-size:0.68rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Conventions (P1)</div>
+          <div id="briefing-sec-status" style="font-family:var(--font-mono);font-size:1.2rem;font-weight:800;color:var(--forest);margin-top:2px;">--</div>
+          <div style="font-size:0.68rem;color:var(--t2);">Target: 95%+ Lock</div>
+        </div>
+        <div class="briefing-metric-item">
+          <div style="font-size:0.68rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Errors Logged</div>
+          <div id="briefing-error-count" style="font-family:var(--font-mono);font-size:1.2rem;font-weight:800;color:var(--ruby);margin-top:2px;">0</div>
+          <div style="font-size:0.68rem;color:var(--t2);">Audit Tracker</div>
+        </div>
+      </div>
+
+      <!-- Coach Note Body -->
+      <div class="briefing-note-body" id="briefing-note-box">
+        <div id="briefing-note-text">
+          Analyzing your diagnostic profile and calculating today's 700+ odds…
+        </div>
+      </div>
+
+      <!-- Footer Action Bar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06);">
+        <span style="font-size:0.75rem;color:var(--t2);display:flex;align-items:center;gap:6px;">
+          <span>⚡</span>
+          <span>Powered by <strong>Luna</strong> (<code style="font-family:var(--font-mono);color:var(--navy);">openai/gpt-5.6-luna</code> • Medium reasoning)</span>
+        </span>
+        <button class="btn-sec" id="btn-refresh-briefing" onclick="generateLunaBriefing(true)" style="padding:6px 14px;font-size:0.8rem;border-radius:999px;">
+          🔄 Refresh Luna Diagnostic Note
+        </button>
+      </div>
+    </div>
+
     <div class="two-col">
       <div>
         <div class="card">
@@ -1962,7 +2084,8 @@ const LS = {
   lastCheckin: 'sat700_last_checkin',
   errors: 'sat700_error_log_v1',
   drillAccuracy: 'sat700_drill_accuracy',
-  simHistory: 'sat700_sim_history'
+  simHistory: 'sat700_sim_history',
+  dailyJournal: 'sat700_daily_journal'
 };
 
 // ==========================================
@@ -2564,6 +2687,7 @@ let dailyQuestionPack = null;
 // 4. INITIALIZATION & COUNTDOWN
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
+  updateTodayDateDisplay();
   initCountdown();
   initStreak();
   loadGrammarDrill(0);
@@ -2575,6 +2699,7 @@ document.addEventListener('DOMContentLoaded', () => {
   checkAIHealth();
   updateAccuracyStats();
   initDailyPlan();
+  generateLunaBriefing(false);
   loadDailyQuestionPack(false);
   loadDailyGrammarPack(false);
   loadDailyEvidencePack(false);
@@ -2778,14 +2903,219 @@ const DAILY_PHASES = [
 function getStudyDay() {
   const start = new Date('2026-09-04T00:00:00');
   const today = new Date();
-  const elapsed = Math.floor((today - start) / 86400000) + 1;
+  const startMidnight = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const elapsed = Math.round((todayMidnight - startMidnight) / 86400000) + 1;
   return Math.min(30, Math.max(1, elapsed));
+}
+
+function updateTodayDateDisplay() {
+  const now = new Date();
+  const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+  const dateStr = now.toLocaleDateString('en-US', options);
+  const headerEl = document.getElementById('current-today-string');
+  if (headerEl) headerEl.textContent = dateStr;
+  const tagEl = document.getElementById('briefing-period-tag');
+  if (tagEl) tagEl.textContent = `Daily Diagnostic • ${dateStr}`;
+}
+
+function recordDailyJournal(isCorrect, domain = 'General') {
+  try {
+    const journal = JSON.parse(localStorage.getItem(LS.dailyJournal) || '{}');
+    const today = localDateKey();
+    if (!journal[today]) {
+      journal[today] = { date: today, total: 0, correct: 0, domains: {} };
+    }
+    journal[today].total++;
+    if (isCorrect) journal[today].correct++;
+    if (!journal[today].domains[domain]) {
+      journal[today].domains[domain] = { total: 0, correct: 0 };
+    }
+    journal[today].domains[domain].total++;
+    if (isCorrect) journal[today].domains[domain].correct++;
+    journal[today].lastUpdate = Date.now();
+    localStorage.setItem(LS.dailyJournal, JSON.stringify(journal));
+  } catch (e) {}
+}
+
+function calculate700Odds() {
+  const stats = JSON.parse(localStorage.getItem(LS.drillAccuracy) || '{"correct":0,"total":0}');
+  const streak = parseInt(localStorage.getItem(LS.streak) || '0', 10);
+  const errors = getErrorLog();
+  const journal = JSON.parse(localStorage.getItem(LS.dailyJournal) || '{}');
+
+  // Baseline starting estimate for student transitioning from 540 to 700+
+  let baseAcc = stats.total >= 3 ? Math.round((stats.correct / stats.total) * 100) : 74;
+
+  // SAT 700+ benchmark is 48/54 raw questions (88.8% accuracy)
+  let probability = 55;
+  if (baseAcc >= 95) probability = 94;
+  else if (baseAcc >= 90) probability = 86;
+  else if (baseAcc >= 85) probability = 78;
+  else if (baseAcc >= 80) probability = 68;
+  else if (baseAcc >= 70) probability = 56;
+  else if (baseAcc >= 60) probability = 46;
+  else probability = 36;
+
+  // Consistency bonus for regular study streak
+  if (streak >= 7) probability += 5;
+  else if (streak >= 3) probability += 3;
+
+  // Diagnostic error penalty if repetitive trap patterns exist
+  const outsideAssumptions = errors.filter(e => e.taxonomy === 'OUTSIDE_ASSUMPTION').length;
+  if (outsideAssumptions >= 3) probability -= 4;
+
+  probability = Math.min(96, Math.max(30, Math.round(probability)));
+
+  // Projected score range
+  const estScore = Math.min(800, Math.max(480, Math.round(200 + (600 * (baseAcc / 100)))));
+  const lowerBand = Math.max(500, estScore - 20);
+  const upperBand = Math.min(800, estScore + 25);
+  const projectedBand = `${lowerBand} – ${upperBand}`;
+
+  // Priority 1 Conventions Status
+  let secStatus = '95%+ Lock';
+  if (baseAcc < 85) secStatus = `${baseAcc}% (Needs Lock)`;
+
+  return {
+    odds: probability,
+    projectedBand,
+    acc: baseAcc,
+    total: stats.total,
+    correct: stats.correct,
+    streak,
+    errorCount: errors.length,
+    recentErrors: errors.slice(0, 4),
+    journal
+  };
+}
+
+function generateLocalBriefingNote(odds) {
+  const errorNote = odds.recentErrors.length > 0
+    ? `Your audit tracker flags <strong>${odds.errorCount} active diagnostic traps</strong>, notably: <em>"${odds.recentErrors[0].taxonomy} • ${odds.recentErrors[0].proofRule}"</em>. Eliminating these assumption leaps protects 30–50 scaled points immediately.`
+    : `Your audit tracker has zero unaddressed errors. Maintain strict verification so minor blindspots do not creep in.`;
+
+  return `
+    <div style="margin-bottom:12px;">
+      <strong style="color:var(--navy);font-size:1.02rem;">📈 Performance Evaluation &amp; 700+ Trajectory:</strong><br>
+      You have solved <strong>${odds.total} questions/drills</strong> with an overall accuracy of <strong>${odds.acc}%</strong> and an active streak of <strong>${odds.streak} day(s)</strong>.
+      To guarantee a 700+ R&amp;W score to pair with your perfect 800 Math (securing a 1500–1540 total), the required benchmark is <strong>48 / 54 raw points (88.8% accuracy)</strong>.
+      Based on your current pacing and mechanics, your estimated win probability for 700+ is <strong style="color:var(--forest);font-size:1.05rem;">${odds.odds}% (Projected: ${odds.projectedBand})</strong>.
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <strong style="color:var(--navy);font-size:1.02rem;">🔍 What You Are Doing (Diagnostic Diagnosis):</strong><br>
+      ${errorNote} In Standard English Conventions (Priority 1), grammar is strictly mathematical: never choose a comma to join two independent clauses without a FANBOYS coordinator. In Reading items, anchor every choice to an explicit sentence before selecting.
+    </div>
+
+    <div>
+      <strong style="color:var(--forest);font-size:1.02rem;">🎯 Today’s High-Leverage Tactical Plan:</strong>
+      <ol style="margin-top:6px;padding-left:20px;display:flex;flex-direction:column;gap:5px;">
+        <li>Complete today’s 27-question module or Khan Academy set.</li>
+        <li>Execute today's <strong>5-Check Boolean Grammar Engine</strong> set until clause boundary logic is automatic.</li>
+        <li>Execute today's <strong>5-Check Evidence Anchor Engine</strong> set and strictly enforce the 90-Second Pacing Cap.</li>
+      </ol>
+    </div>
+  `;
+}
+
+async function generateLunaBriefing(force = false) {
+  updateTodayDateDisplay();
+  const odds = calculate700Odds();
+
+  const oddsEl = document.getElementById('odds-percentage');
+  const bandEl = document.getElementById('odds-band');
+  const accEl = document.getElementById('briefing-acc');
+  const totalEl = document.getElementById('briefing-total-qs');
+  const secEl = document.getElementById('briefing-sec-status');
+  const errEl = document.getElementById('briefing-error-count');
+
+  if (oddsEl) {
+    oddsEl.textContent = odds.odds + '%';
+    oddsEl.style.color = odds.odds >= 75 ? 'var(--forest)' : odds.odds >= 60 ? 'var(--amber)' : 'var(--ruby)';
+  }
+  if (bandEl) bandEl.textContent = 'Projected: ' + odds.projectedBand;
+  if (accEl) accEl.textContent = odds.acc + '%';
+  if (totalEl) totalEl.textContent = odds.total;
+  if (secEl) secEl.textContent = odds.secStatus;
+  if (errEl) errEl.textContent = odds.errorCount;
+
+  const cacheKey = 'sat700_luna_briefing_' + localDateKey();
+  const noteBox = document.getElementById('briefing-note-text');
+
+  if (!force) {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      if (noteBox) noteBox.innerHTML = cached;
+      return;
+    }
+  }
+
+  const localNote = generateLocalBriefingNote(odds);
+  if (noteBox) noteBox.innerHTML = localNote;
+
+  if (force) {
+    const btn = document.getElementById('btn-refresh-briefing');
+    if (btn) btn.disabled = true;
+    if (noteBox) {
+      noteBox.innerHTML = `<div style="padding:10px;color:var(--amber);font-weight:700;display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-block;animation:pulse 1s infinite;">●</span> Luna is deliberating with medium reasoning effort on your performance trajectory…
+      </div>` + localNote;
+    }
+
+    try {
+      const prompt = `You are Luna, Sam's elite Digital SAT Reading & Writing Coach (targeting 700+ on R&W with perfect 800 Math for 1500+).
+Here are Sam's actual diagnostic stats:
+- Current Date: ${new Date().toDateString()}
+- Active Streak: ${odds.streak} days
+- Total Questions / Drills Solved: ${odds.total}
+- Overall Practice Accuracy: ${odds.acc}% (Goal benchmark: 48/54 raw = 88.8%)
+- Calculated 700+ Win Probability: ${odds.odds}% (Projected Score Band: ${odds.projectedBand})
+- Active Logged Errors: ${odds.errorCount} (${odds.recentErrors.map(e => e.taxonomy + ': ' + e.proofRule).join('; ') || 'None'})
+
+Provide a clear, motivating, 3-paragraph executive diagnostic briefing for Sam:
+1. Evaluation of his current performance numbers and his ${odds.odds}% odds of hitting 700+.
+2. Direct diagnosis of "What you are doing" and the exact root causes of any lost points (grammar vs outside assumptions).
+3. Today's high-leverage tactical mission to raise his probability above 85%.`;
+
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt,
+          messages: [{ role: 'user', content: prompt }],
+          model: 'openai/gpt-5.6-luna'
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        let content = data.content;
+        if (content) {
+          try {
+            const parsed = JSON.parse(content);
+            content = parsed.content || parsed.message || parsed.response || content;
+          } catch {}
+          const formatted = `<div style="line-height:1.75;">${content.replace(/\n\n/g, '<br><br>')}</div>`;
+          if (noteBox) noteBox.innerHTML = formatted;
+          localStorage.setItem(cacheKey, formatted);
+          showToast('Luna daily diagnostic briefing updated.');
+        }
+      }
+    } catch (e) {
+      if (noteBox) noteBox.innerHTML = localNote;
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
 }
 
 function initDailyPlan() {
   const day = getStudyDay();
   const phase = DAILY_PHASES.find(p => day <= p.through) || DAILY_PHASES[DAILY_PHASES.length - 1];
-  document.getElementById('daily-plan-label').textContent = `Day ${day} of 30 • ${phase.focus}`;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  document.getElementById('daily-plan-label').textContent = `Day ${day} of 30 (${dateStr}) • ${phase.focus}`;
   document.getElementById('daily-mission-list').innerHTML = phase.tasks.map((task, i) => `<li style="display:flex;gap:10px;"><span style="font-weight:800;color:var(--amber);">${i + 1}.</span><span>${task}</span></li>`).join('');
 }
 
@@ -2806,6 +3136,7 @@ function initCountdown() {
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
     document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    updateTodayDateDisplay();
   }
   updateTimer();
   setInterval(updateTimer, 60000);
@@ -2952,11 +3283,11 @@ function selectClauseOption(oi) {
   const fb = document.getElementById('clause-feedback');
   if (drill.options[oi].correct) {
     fb.innerHTML += `<div style="margin-top:8px;color:var(--forest);font-weight:700;">✓ Correct! ${drill.explanation}</div>`;
-    recordDrillResult(true);
+    recordDrillResult(true, 'Standard English Conventions');
   } else {
     fb.innerHTML += `<div style="margin-top:8px;color:var(--ruby);font-weight:700;">✗ Wrong choice. ${drill.explanation}</div>`;
     logAutoError('Standard English Conventions', 'GRAMMAR_RULE_BLINDSPOT', 'Picked wrong punctuation on: ' + drill.sentencePart1);
-    recordDrillResult(false);
+    recordDrillResult(false, 'Standard English Conventions');
   }
 }
 
@@ -3017,11 +3348,11 @@ function selectSVOption(oi) {
   fb.style.display = 'block';
   if (drill.options[oi].correct) {
     fb.innerHTML = `<strong style="color:var(--forest);">✓ Subject Verified:</strong> ${drill.explanation}`;
-    recordDrillResult(true);
+    recordDrillResult(true, 'Standard English Conventions');
   } else {
     fb.innerHTML = `<strong style="color:var(--ruby);">✗ Agreement Error:</strong> ${drill.explanation}`;
     logAutoError('Standard English Conventions', 'GRAMMAR_RULE_BLINDSPOT', 'Failed Subject-Verb Agreement: ' + drill.subject);
-    recordDrillResult(false);
+    recordDrillResult(false, 'Standard English Conventions');
   }
 }
 
@@ -3215,11 +3546,11 @@ function selectEvidenceOption(oi) {
   exp.className = 'q-explanation show';
   if (drill.options[oi].correct) {
     exp.innerHTML = `<strong style="color:var(--forest);">✓ Correct Answer:</strong> ${drill.explanation}`;
-    recordDrillResult(true);
+    recordDrillResult(true, 'Information and Ideas');
   } else {
     exp.innerHTML = `<strong style="color:var(--ruby);">✗ Incorrect Choice:</strong> ${drill.explanation}`;
     logAutoError('Information and Ideas', 'OUTSIDE_ASSUMPTION', 'Picked unverified distractor on: ' + drill.prompt.slice(0, 50));
-    recordDrillResult(false);
+    recordDrillResult(false, 'Information and Ideas');
   }
 }
 
@@ -3334,7 +3665,7 @@ function selectSimAnswer(qNum, optIdx) {
   simAnswers[qNum] = optIdx;
   if (!wasAnswered) {
     const q = SIM_QUESTIONS.find(item => item.num === qNum);
-    recordDrillResult(Boolean(q && q.correct === optIdx));
+    recordDrillResult(Boolean(q && q.correct === optIdx), q ? q.domain : 'Reading and Writing');
   }
   loadSimQuestion(currentSimQIdx);
 }
@@ -3548,12 +3879,14 @@ function playVideo(youtubeId, cardEl) {
 // ==========================================
 // 11. CUSTOM DRILLS & AI COACH BRIDGE
 // ==========================================
-function recordDrillResult(isCorrect) {
+function recordDrillResult(isCorrect, domain = 'General') {
   let stats = JSON.parse(localStorage.getItem(LS.drillAccuracy) || '{"correct":0,"total":0}');
   stats.total++;
   if (isCorrect) stats.correct++;
   localStorage.setItem(LS.drillAccuracy, JSON.stringify(stats));
   updateAccuracyStats();
+  recordDailyJournal(isCorrect, domain);
+  generateLunaBriefing(false);
 }
 
 function updateAccuracyStats() {
