@@ -13,9 +13,12 @@ $systemPrompt = @'
 You are Sam's elite Digital SAT Reading & Writing study coach. His goal is 700+ in Reading & Writing (Math baseline is 800 locked, targeting 1500–1540 composite) on the Digital SAT on Saturday, October 3, 2026.
 
 Write with precision, intellectual rigor, and direct diagnostic clarity.
+- Deliberate and Reason: Think through all grammar rules, sentence structures, and passage logic step-by-step before selecting or formatting options.
+- Zero Hallucinations: Ground all reading answers strictly in explicit textual evidence. Never make unfounded assumptions or fabricate details.
+- Trap Verification: Ensure exactly one answer is definitively and unambiguously correct. The remaining three choices must be demonstrably flawed distractors with specific diagnostic rationales.
 - Standard English Conventions: treat grammar as mathematical boolean logic (Independent vs. Dependent clauses, colon rules, subject-verb agreement).
 - Command of Evidence: emphasize strict textual anchors and zero outside assumptions.
-- Quantitative Evidence: translate graph axes and trend lines before considering options.
+- Quantitative Evidence: accurately translate graph axes, values, and trend lines before considering options.
 - Transitions: categorize into Additive, Contrastive, or Causative.
 - Rhetorical Synthesis: match the student's exact specified presentation goal.
 
@@ -242,8 +245,8 @@ $sourceContext
       @{ role = 'system'; content = $systemPrompt },
       @{ role = 'user'; content = $prompt }
     )
-    reasoning = @{ effort = 'none' }
-    max_tokens = 14000
+    reasoning = @{ effort = 'medium' }
+    max_tokens = 20000
     provider = @{ sort = 'throughput'; require_parameters = $true }
     response_format = @{ type = 'json_schema'; json_schema = @{ name = 'daily_sat_rw_module'; strict = $true; schema = $schema } }
     plugins = @(@{ id = 'response-healing' })
@@ -256,7 +259,7 @@ $sourceContext
   try {
     $requestJson = $apiBody | ConvertTo-Json -Depth 30 -Compress
     $requestBytes = [System.Text.Encoding]::UTF8.GetBytes($requestJson)
-    $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body $requestBytes -TimeoutSec 150
+    $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body $requestBytes -TimeoutSec 300
   } catch {
     throw
   }
@@ -381,9 +384,8 @@ try {
               @{ role = 'system'; content = $systemPrompt },
               @{ role = 'user'; content = $prompt }
             )
-            temperature = 0.3
-            max_tokens = 2200
-            reasoning = @{ effort = 'none' }
+            max_tokens = 4000
+            reasoning = @{ effort = 'medium' }
             provider = @{ sort = 'throughput' }
             response_format = @{ type = 'json_object' }
           }
@@ -393,7 +395,7 @@ try {
             'X-Title' = 'Sam Reading 700+ Plan'
           }
           $chatJson = $apiBody | ConvertTo-Json -Depth 12 -Compress
-          $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body ([System.Text.Encoding]::UTF8.GetBytes($chatJson)) -TimeoutSec 75
+          $apiResult = Invoke-RestMethod -Method Post -Uri 'https://openrouter.ai/api/v1/chat/completions' -Headers $apiHeaders -ContentType 'application/json; charset=utf-8' -Body ([System.Text.Encoding]::UTF8.GetBytes($chatJson)) -TimeoutSec 150
           $content = [string]$apiResult.choices[0].message.content
           if ([string]::IsNullOrWhiteSpace($content)) { throw 'The model returned an empty response.' }
           Write-JsonResponse -Stream $stream -Status 200 -Reason 'OK' -Data @{ content = $content; model = $model }
