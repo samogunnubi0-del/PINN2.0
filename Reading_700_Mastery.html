@@ -1361,7 +1361,7 @@ header {
       <div>
         <div class="card">
           <div class="card-header">
-            <div class="card-title">4-Week Target Roadmap (Sep 4 – Oct 3)</div>
+            <div class="card-title">30-Day Target Roadmap (Sep 4 – Oct 3)</div>
             <span style="font-size:.78rem;color:var(--t2);font-weight:700;">Aiming for 48–50 / 54 Raw</span>
           </div>
           
@@ -1427,13 +1427,12 @@ header {
             <div class="card-title">Score Target Projection Formula</div>
           </div>
           <p style="font-size:.9rem;color:var(--t1);line-height:1.7;margin-bottom:12px;">
-            The Digital SAT R&amp;W section uses an adaptive model. Your app calculates your projected score dynamically:
+            The Digital SAT R&amp;W section is adaptive, so raw totals do not convert to one exact score. This page shows only a simple practice estimate:
           </p>
           <div class="rule-card">
-            <div class="rule-math">Projected Score = 200 + (600 &times; Correct Answers / 54) &times; Module Hardness Factor</div>
+            <div class="rule-math">Practice Estimate = 200 + (600 &times; Practice Accuracy)</div>
             <p style="font-size:.82rem;color:var(--t2);margin-top:6px;">
-              <strong>Hard Module 2:</strong> Requires $\ge 18/27$ in Module 1. Module Hardness Factor = 1.0 (unlocks up to 800).<br>
-              <strong>Easy Module 2:</strong> Occurs if $\le 17/27$ in Module 1. Score is strictly capped at 650.
+              <strong>Important:</strong> This estimate is motivational only. College Board does not publish a fixed raw-to-scaled conversion or a universal routing cutoff. Use Bluebook for an official practice score.
             </p>
           </div>
         </div>
@@ -1444,22 +1443,21 @@ header {
           <div class="card-header">
             <div class="card-title">Today's Daily Mission</div>
           </div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.92rem;">
-            <li style="display:flex;gap:10px;">
-              <span style="font-weight:800;color:var(--amber);">1.</span>
-              <span>Complete <strong>5 Clause Evaluator drills</strong> in the Boolean Grammar Engine.</span>
-            </li>
-            <li style="display:flex;gap:10px;">
-              <span style="font-weight:800;color:var(--amber);">2.</span>
-              <span>Run the <strong>Subject-Verb Strikeout</strong> drill to isolate core singular/plural subjects.</span>
-            </li>
-            <li style="display:flex;gap:10px;">
-              <span style="font-weight:800;color:var(--amber);">3.</span>
-              <span>Review any miss in the <strong>Diagnostic Error Logger</strong> to tag the root cause.</span>
-            </li>
-          </ul>
+          <div id="daily-plan-label" style="font-size:.78rem;font-weight:800;color:var(--amber);text-transform:uppercase;margin-bottom:10px;"></div>
+          <ul id="daily-mission-list" style="list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.92rem;"></ul>
           <div style="margin-top:18px;">
-            <button class="btn-primary" style="width:100%;" onclick="switchTab('t-boolean')">Launch Boolean Grammar Engine</button>
+            <button class="btn-primary" style="width:100%;" onclick="launchDailyPractice()">Start Today's Practice</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Official Practice (opens the source)</div></div>
+          <p style="font-size:.84rem;color:var(--t2);line-height:1.55;margin-bottom:12px;">Official questions stay on College Board and Khan Academy. Use these links for released questions; use this page for original SAT-style drills and feedback.</p>
+          <div style="display:grid;gap:9px;">
+            <a class="btn-sec" href="https://mypractice.collegeboard.org/login" target="_blank" rel="noopener">College Board Student Question Bank ↗</a>
+            <a class="btn-sec" href="https://qotd.collegeboard.org/" target="_blank" rel="noopener">Official SAT Question of the Day ↗</a>
+            <a class="btn-sec" href="https://satsuite.collegeboard.org/practice/practice-tests/bluebook" target="_blank" rel="noopener">Official Bluebook Practice Tests ↗</a>
+            <a class="btn-sec" href="https://www.khanacademy.org/test-prep/digital-sat" target="_blank" rel="noopener">Khan Academy Digital SAT ↗</a>
           </div>
         </div>
 
@@ -1653,10 +1651,12 @@ header {
     <div class="card">
       <div class="card-header">
         <div>
-          <div class="card-title">Digital SAT Adaptive Exam Simulator</div>
-          <div class="card-subtitle">Official sequential item grouping, adaptive Module 2 routing (18/27 threshold), and Two-Pass execution mode.</div>
+          <div class="card-title">Original Digital SAT-Style Module</div>
+          <div class="card-subtitle">27 original Reading and Writing questions arranged in the official skill order. This is practice—not a released College Board test.</div>
         </div>
         <div style="display:flex;gap:10px;align-items:center;">
+          <span id="sim-source-status" style="font-size:.76rem;font-weight:800;color:var(--t2);">Loading today's unique set…</span>
+          <button class="btn-sec" id="new-daily-set-btn" onclick="loadDailyQuestionPack(true)">Generate another set</button>
           <div class="mode-toggle">
             <button class="mode-btn active" id="btn-mode-twopass" onclick="setExecMode('TWOPASS')">Two-Pass (16-27 First)</button>
             <button class="mode-btn" id="btn-mode-standard" onclick="setExecMode('STANDARD')">Standard (1-27)</button>
@@ -1708,6 +1708,7 @@ header {
             <div class="q-prompt" id="sim-q-prompt">
               <!-- Dynamically populated -->
             </div>
+            <div id="sim-q-source" style="display:none;margin-top:-4px;margin-bottom:14px;font-size:.76rem;color:var(--t2);"></div>
 
             <div class="q-options" id="sim-q-options">
               <!-- Options -->
@@ -1718,6 +1719,7 @@ header {
             <button class="btn-sec" onclick="prevSimQuestion()">&larr; Previous Question</button>
             <button class="btn-primary" onclick="nextSimQuestion()">Next Question &rarr;</button>
           </div>
+          <div id="sim-answer-feedback" class="q-explanation" aria-live="polite"></div>
         </div>
 
         <div>
@@ -1732,8 +1734,8 @@ header {
                 <strong id="sim-answered-count">0 / 27 Answered</strong>
               </div>
               <div style="display:flex;justify-content:space-between;">
-                <span style="font-size:.85rem;color:var(--t2);">Routing Threshold:</span>
-                <strong style="color:var(--forest);">&ge; 18 / 27 for Hard M2</strong>
+                <span style="font-size:.85rem;color:var(--t2);">700+ Practice Goal:</span>
+                <strong style="color:var(--forest);">&ge; 24 / 27 on this set</strong>
               </div>
               <div style="display:flex;justify-content:space-between;">
                 <span style="font-size:.85rem;color:var(--t2);">Math Baseline (Locked):</span>
@@ -1741,7 +1743,7 @@ header {
               </div>
               <hr style="border:none;border-top:1px solid var(--border-subtle);">
               <div style="display:flex;justify-content:space-between;align-items:baseline;">
-                <span style="font-size:.9rem;font-weight:700;color:var(--navy);">Projected R&amp;W Score:</span>
+                <span style="font-size:.9rem;font-weight:700;color:var(--navy);">Unofficial Practice Estimate:</span>
                 <span style="font-family:var(--font-serif);font-size:1.6rem;font-weight:800;color:var(--amber);" id="sim-proj-rw">540</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:baseline;">
@@ -1752,6 +1754,10 @@ header {
           </div>
         </div>
       </div>
+    </div>
+    <div class="card" id="sim-review-card" style="display:none;">
+      <div class="card-header"><div class="card-title">Answer-by-Answer Review</div></div>
+      <div id="sim-review-list" style="display:grid;gap:12px;"></div>
     </div>
   </div>
 
@@ -2143,6 +2149,39 @@ const SIM_QUESTIONS = [
     correct: 0,
     exp: '"Disrupt" fits the contrast with "linear" and matches the dismantling of existing models before new paradigms arise.'
   },
+  {
+    num: 3, type: 'Words in Context', domain: 'Craft and Structure',
+    prompt: 'Because the surviving records are fragmentary, the historian presents her reconstruction of the trade route as ______ rather than definitive.',
+    options: ['exhaustive', 'provisional', 'irrelevant', 'orthodox'], correct: 1,
+    exp: '“Provisional” means tentative or subject to revision, which matches a conclusion based on incomplete records. “Exhaustive” contradicts “fragmentary,” while the other choices do not express uncertainty.'
+  },
+  {
+    num: 4, type: 'Words in Context', domain: 'Craft and Structure',
+    prompt: 'The new evidence did not ______ the earlier theory; instead, it narrowed the conditions under which that theory could apply.',
+    options: ['invalidate', 'publicize', 'imitate', 'simplify'], correct: 0,
+    exp: 'The semicolon signals contrast: the evidence did not completely disprove, or “invalidate,” the theory; it merely limited the theory’s scope.'
+  },
+  {
+    num: 5, type: 'Text Structure', domain: 'Craft and Structure',
+    passage: 'Biologists once classified glass frogs mainly by visible markings. Genetic analyses, however, revealed that several nearly identical-looking populations belong to distinct evolutionary lineages. Researchers now combine genetic evidence with calls, anatomy, and geography when identifying species.',
+    prompt: 'Which choice best describes the function of the second sentence in the passage?',
+    options: ['It gives an example of the older classification method.', 'It introduces evidence that exposed a weakness in the older method.', 'It argues that visible markings are more reliable than genetics.', 'It explains why glass frog populations share the same calls.'], correct: 1,
+    exp: 'Sentence 2 supplies genetic evidence that visually similar frogs can be evolutionarily distinct, showing why classification by markings alone was inadequate.'
+  },
+  {
+    num: 6, type: 'Purpose', domain: 'Craft and Structure',
+    passage: 'In a discussion of urban heat, the author notes that a mature tree can shade pavement and cool nearby air through transpiration. The author then cautions that young saplings provide far less cooling and require years of care before producing a comparable effect.',
+    prompt: 'Why does the author mention young saplings?',
+    options: ['To reject tree planting as an urban policy', 'To explain how transpiration damages pavement', 'To qualify the immediate benefits of new planting programs', 'To show that mature trees require no maintenance'], correct: 2,
+    exp: 'The sapling detail limits, or qualifies, the earlier claim: planting helps, but newly planted trees do not immediately deliver the cooling of mature trees.'
+  },
+  {
+    num: 7, type: 'Cross-Text Connections', domain: 'Craft and Structure',
+    passage: 'Text 1: Economist Lin argues that remote work can widen a company’s hiring pool by removing geographic limits.\n\nText 2: Researcher Gomez finds that remote teams often struggle to transmit informal knowledge to new employees unless managers deliberately create mentoring routines.',
+    prompt: 'How would Gomez most likely respond to Lin’s claim?',
+    options: ['By agreeing about hiring benefits while noting that remote organizations must address onboarding challenges', 'By denying that geography affects hiring in any way', 'By arguing that mentoring is unnecessary for experienced workers', 'By claiming that remote work always reduces a company’s hiring pool'], correct: 0,
+    exp: 'Text 2 does not dispute the hiring advantage in Text 1. It adds a condition: remote teams need intentional mentoring to transfer informal knowledge.'
+  },
   // Q8-11: Central Idea & Cross-Text
   {
     num: 8, type: 'Central Idea & Structure', domain: 'Craft and Structure',
@@ -2157,6 +2196,27 @@ const SIM_QUESTIONS = [
     correct: 0,
     exp: 'The passage contrasts the old invasion theory with new evidence proving internal drought and resource depletion destabilized the city first.'
   },
+  {
+    num: 9, type: 'Central Ideas and Details', domain: 'Information and Ideas',
+    passage: 'To test whether city noise alters bird behavior, researchers played traffic recordings near nesting sites of house wrens. During playback, adult wrens made shorter feeding visits but returned to nests more often. The total amount of food delivered per hour remained approximately unchanged.',
+    prompt: 'Which choice best states the main idea of the passage?',
+    options: ['Traffic noise caused adult wrens to abandon their nests.', 'Wrens changed the pattern, but not the hourly total, of food delivery during traffic-noise playback.', 'Wrens delivered substantially more food when recordings were played.', 'The researchers compared house wrens with several other bird species.'], correct: 1,
+    exp: 'The passage reports a behavioral shift—shorter, more frequent visits—while explicitly saying the total food delivered per hour stayed about the same.'
+  },
+  {
+    num: 10, type: 'Inference', domain: 'Information and Ideas',
+    passage: 'A museum displayed identical ceramic bowls under either warm or cool lighting. Visitors rated the bowls’ craftsmanship similarly in both conditions, but visitors in warm lighting estimated the bowls to be older on average.',
+    prompt: 'Which conclusion is best supported by the passage?',
+    options: ['Lighting changed visitors’ judgments of craftsmanship more than age.', 'Cool lighting made the bowls appear damaged.', 'Warm lighting influenced perceived age without measurably changing perceived craftsmanship.', 'Visitors correctly identified the bowls’ actual age in warm lighting.'], correct: 2,
+    exp: 'Only estimated age differed by lighting condition; craftsmanship ratings were similar. The passage never states the bowls’ actual age or mentions damage.'
+  },
+  {
+    num: 11, type: 'Command of Evidence', domain: 'Information and Ideas',
+    passage: 'Botanist Amina Patel predicted that a desert shrub’s waxy leaf coating reduces water loss. She measured leaves with intact coatings and leaves whose coatings had been carefully removed. After six hours, intact leaves retained 91% of their initial water mass, whereas treated leaves retained 74%.',
+    prompt: 'Which choice best describes data that support Patel’s prediction?',
+    options: ['Both groups lost some water over six hours.', 'Treated leaves began with more water than intact leaves.', 'Leaves were measured for exactly six hours.', 'Intact leaves retained 17 percentage points more of their initial water mass than treated leaves.'], correct: 3,
+    exp: 'The 91% versus 74% comparison directly supports the coating’s water-retention effect. The difference is 17 percentage points.'
+  },
   // Q12-15: Textual / Quantitative Evidence
   {
     num: 12, type: 'Command of Evidence', domain: 'Information and Ideas',
@@ -2170,6 +2230,27 @@ const SIM_QUESTIONS = [
     ],
     correct: 0,
     exp: 'Direct evidence question: Choice A cites the exact metric proving long-term retention enhancement.'
+  },
+  {
+    num: 13, type: 'Quantitative Evidence', domain: 'Information and Ideas',
+    passage: 'A transit agency tested three bus-lane signal plans. Average trip times were 41 minutes under Plan A, 36 minutes under Plan B, and 38 minutes under Plan C. The existing route averaged 44 minutes.',
+    prompt: 'Which statement most accurately uses the data?',
+    options: ['Plan C produced the longest trip time of all four conditions.', 'Plan B reduced average trip time by 8 minutes relative to the existing route.', 'Plan A and Plan C produced identical times.', 'The existing route was 3 minutes faster than Plan A.'], correct: 1,
+    exp: 'The existing route averaged 44 minutes and Plan B averaged 36, so Plan B reduced the trip by 8 minutes. Each other statement reverses or misstates the data.'
+  },
+  {
+    num: 14, type: 'Inference', domain: 'Information and Ideas',
+    passage: 'After a library eliminated late fees, the percentage of overdue items rose slightly, from 4.1% to 4.5%. At the same time, the number of previously blocked patrons who resumed borrowing increased by 28%.',
+    prompt: 'The data most strongly support which conclusion?',
+    options: ['Removing fees greatly increased overdue items and reduced borrowing.', 'Late fees had no relationship to patron access.', 'The policy substantially restored borrowing access while overdue rates changed only modestly.', 'Every previously blocked patron returned to the library.'], correct: 2,
+    exp: 'A 28% increase in returning blocked patrons is substantial, whereas the overdue rate rose only 0.4 percentage points. “Every” is unsupported.'
+  },
+  {
+    num: 15, type: 'Command of Evidence', domain: 'Information and Ideas',
+    passage: 'Researchers hypothesized that rougher artificial reef tiles would attract more juvenile oysters. After eight weeks, smooth tiles averaged 12 oysters, moderately rough tiles averaged 29, and highly rough tiles averaged 31.',
+    prompt: 'Which finding best supports the hypothesis?',
+    options: ['Highly rough tiles held 31 oysters on average, compared with 12 on smooth tiles.', 'Moderately and highly rough tiles differed by 2 oysters.', 'All tiles remained underwater for eight weeks.', 'Smooth tiles attracted at least one oyster.'], correct: 0,
+    exp: 'The strongest direct comparison is between the roughest and smooth tiles: 31 versus 12 oysters, consistent with the prediction that roughness increases settlement.'
   },
   // Q16-22: Standard English Conventions (Grammar & Punctuation)
   {
@@ -2193,6 +2274,30 @@ const SIM_QUESTIONS = [
     correct: 0,
     exp: 'Rule 2: Dependent clause starting with "Because" requires a comma before the independent clause. Semicolon or period would create a fragment.'
   },
+  {
+    num: 19, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'The archive contains three especially rare ______ a sailor’s journal, a hand-drawn map, and a coded ledger.',
+    options: ['documents,', 'documents;', 'documents:', 'documents'], correct: 2,
+    exp: 'A colon correctly introduces the list because the words before the blank form a complete sentence. A comma alone cannot introduce this list.'
+  },
+  {
+    num: 20, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'Each of the sculptures in the outdoor exhibition ______ treated with a weather-resistant coating before installation.',
+    options: ['were', 'have been', 'was', 'are'], correct: 2,
+    exp: 'The subject is “Each,” which is singular. The plural noun “sculptures” appears inside a prepositional phrase and does not control the verb.'
+  },
+  {
+    num: 21, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'Marine ecologist Dr. Keisha Moore studies kelp forests, ______ habitats that shelter fish, absorb carbon, and reduce coastal erosion.',
+    options: ['they are', 'which are', 'being', 'are'], correct: 1,
+    exp: '“Which are” correctly begins a nonessential relative clause describing kelp forests. The comma before the blank requires a clause that can modify the preceding noun without creating a run-on.'
+  },
+  {
+    num: 22, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'The novelist’s first two books were set in Lagos; her third novel, ______ takes place in Accra.',
+    options: ['however', 'however,', ', however,', '; however,'], correct: 1,
+    exp: '“However” interrupts the second independent clause and must be followed by a comma here. The semicolon before “her” already separates the two clauses.'
+  },
   // Q23-25: Transitions
   {
     num: 23, type: 'Transitions', domain: 'Expression of Ideas',
@@ -2208,6 +2313,12 @@ const SIM_QUESTIONS = [
     correct: 0,
     exp: 'The relationship is contrast: early assumption of uniform melt vs. modern revelation of rapid episodic surges. "however" is correct.'
   },
+  {
+    num: 25, type: 'Transitions', domain: 'Expression of Ideas',
+    prompt: 'The first prototype’s battery lasted only four hours. ______, the engineering team replaced the display and optimized the processor; the revised device ran for eleven hours.',
+    options: ['For example,', 'In contrast,', 'Consequently,', 'Meanwhile,'], correct: 2,
+    exp: 'The weak battery result caused the team’s redesign, so “Consequently” expresses the correct cause-and-effect relationship.'
+  },
   // Q26-27: Rhetorical Synthesis (Bullet Notes)
   {
     num: 26, type: 'Rhetorical Synthesis', domain: 'Expression of Ideas',
@@ -2220,6 +2331,12 @@ const SIM_QUESTIONS = [
     ],
     correct: 0,
     exp: 'Matches the student\'s stated goal: directly emphasizes the efficiency advantage (33% vs. 20-22%) of tandem cells over conventional silicon.'
+  },
+  {
+    num: 27, type: 'Rhetorical Synthesis', domain: 'Expression of Ideas',
+    prompt: 'A student wants to introduce architect Anna Heringer’s use of local materials. Notes:\n• Heringer designed the METI Handmade School in Bangladesh.\n• Local builders used earth and bamboo.\n• The project combined regional building knowledge with structural innovations.\n• It was completed in 2006.\n\nWhich choice most effectively introduces Heringer’s use of local materials?',
+    options: ['The METI Handmade School was completed in 2006 in Bangladesh.', 'Architect Anna Heringer’s METI Handmade School uses locally available earth and bamboo while pairing regional building knowledge with structural innovation.', 'Many architects complete school projects in different countries.', 'Structural innovation can involve a variety of construction dates and locations.'], correct: 1,
+    exp: 'Choice B directly fulfills the goal by naming Heringer, the project, and the two local materials, while also giving relevant context about how they were used.'
   }
 ];
 
@@ -2268,6 +2385,7 @@ let simTimeSpent = {};
 let simTimerSeconds = 32 * 60;
 let simTimerInterval = null;
 let activeSimQuestions = [...SIM_QUESTIONS];
+let dailyQuestionPack = null;
 
 // ==========================================
 // 4. INITIALIZATION & COUNTDOWN
@@ -2283,7 +2401,122 @@ document.addEventListener('DOMContentLoaded', () => {
   renderVideos();
   checkAIHealth();
   updateAccuracyStats();
+  initDailyPlan();
+  loadDailyQuestionPack(false);
 });
+
+function localDateKey(date = new Date()) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function normalizeDailyQuestions(pack) {
+  if (!pack || !Array.isArray(pack.questions) || pack.questions.length !== 27) throw new Error('invalid-pack');
+  const questions = pack.questions.map((q, index) => {
+    if (!Array.isArray(q.options) || q.options.length !== 4 || !Number.isInteger(q.correct) || q.correct < 0 || q.correct > 3) throw new Error('invalid-question');
+    return {
+      num: Number(q.num || index + 1),
+      type: String(q.type || q.skill || 'SAT Practice'),
+      domain: String(q.domain || 'Reading and Writing'),
+      skill: String(q.skill || ''),
+      difficulty: String(q.difficulty || 'Hard'),
+      passage: String(q.passage || ''),
+      prompt: String(q.prompt || ''),
+      options: q.options.map(String),
+      correct: q.correct,
+      exp: String(q.explanation || ''),
+      sourceTitle: String(q.source_title || ''),
+      sourceUrl: String(q.source_url || '')
+    };
+  }).sort((a, b) => a.num - b.num);
+  if (new Set(questions.map(q => q.num)).size !== 27) throw new Error('duplicate-question-number');
+  return questions;
+}
+
+function activateDailyPack(pack, originLabel) {
+  const questions = normalizeDailyQuestions(pack);
+  dailyQuestionPack = pack;
+  SIM_QUESTIONS.splice(0, SIM_QUESTIONS.length, ...questions);
+  activeSimQuestions = [...SIM_QUESTIONS];
+  simAnswers = {};
+  simFlags = {};
+  currentSimQIdx = 0;
+  setExecMode(simMode);
+  document.getElementById('sim-source-status').textContent = `✓ ${originLabel} • ${pack.generated_date}`;
+}
+
+async function loadDailyQuestionPack(force = false) {
+  const date = localDateKey();
+  const cacheKey = `sat700_daily_pack_${date}`;
+  const status = document.getElementById('sim-source-status');
+  const button = document.getElementById('new-daily-set-btn');
+
+  if (!force) {
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+      if (cached) {
+        activateDailyPack(cached, 'Today’s cached Luna set');
+        return;
+      }
+    } catch {}
+  }
+
+  status.textContent = force ? 'Creating another unique 27-question set…' : 'Creating today’s unique 27-question set…';
+  button.disabled = true;
+  try {
+    const response = await fetch('/api/daily-questions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date, force })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.pack) throw new Error(data.error || 'generation-failed');
+    activateDailyPack(data.pack, force ? 'New Luna set' : 'Today’s Luna set');
+    localStorage.setItem(cacheKey, JSON.stringify(data.pack));
+    showToast('Your unique 27-question set is ready.');
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    fetch('/api/daily-questions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: localDateKey(tomorrow), force: false })
+    }).catch(() => {});
+  } catch (error) {
+    status.textContent = 'Built-in set active • Start the local launcher for daily Luna questions';
+    showToast('Daily generator unavailable; the built-in set is ready.');
+  } finally {
+    button.disabled = false;
+  }
+}
+
+const DAILY_PHASES = [
+  { through: 7, focus: 'Grammar Foundations', tasks: ['Complete today’s unique 27-question Luna module untimed.', 'Write the grammar rule for every miss in the Error Logger.', 'Do 10–15 minutes of official Khan Academy grammar practice.'] },
+  { through: 14, focus: 'Evidence and Inference', tasks: ['Complete today’s unique 27-question Luna module.', 'For every reading item, identify the exact proof before choosing.', 'Complete one official Student Question Bank set.'] },
+  { through: 21, focus: 'Craft, Vocabulary, and Synthesis', tasks: ['Complete today’s unique 27-question Luna module.', 'Define unknown words from context before checking a dictionary.', 'Review every explanation, including answers that were guesses.'] },
+  { through: 26, focus: 'Timed Module Work', tasks: ['Complete this 27-question module in 32 minutes.', 'Review all misses and all flagged guesses.', 'Redo missed skills untimed until you can explain the rule.'] },
+  { through: 29, focus: 'Official Simulation and Repair', tasks: ['Take or review an official Bluebook practice module.', 'Use My Practice for targeted official questions.', 'Spend twice as long reviewing as testing.'] },
+  { through: 30, focus: 'Light Review and Test Readiness', tasks: ['Review your five most common error patterns.', 'Complete only 5–8 easy confidence questions.', 'Stop heavy work early and prepare for test day.'] }
+];
+
+function getStudyDay() {
+  const start = new Date('2026-09-04T00:00:00');
+  const today = new Date();
+  const elapsed = Math.floor((today - start) / 86400000) + 1;
+  return Math.min(30, Math.max(1, elapsed));
+}
+
+function initDailyPlan() {
+  const day = getStudyDay();
+  const phase = DAILY_PHASES.find(p => day <= p.through) || DAILY_PHASES[DAILY_PHASES.length - 1];
+  document.getElementById('daily-plan-label').textContent = `Day ${day} of 30 • ${phase.focus}`;
+  document.getElementById('daily-mission-list').innerHTML = phase.tasks.map((task, i) => `<li style="display:flex;gap:10px;"><span style="font-weight:800;color:var(--amber);">${i + 1}.</span><span>${task}</span></li>`).join('');
+}
+
+function launchDailyPractice() {
+  switchTab('t-simulator');
+}
 
 function initCountdown() {
   function updateTimer() {
@@ -2703,8 +2936,23 @@ function loadSimQuestion(idx) {
   const q = activeSimQuestions[idx];
   if (!q) return;
 
-  document.getElementById('sim-q-domain').textContent = q.domain + ' • Q' + q.num;
+  document.getElementById('sim-q-domain').textContent = q.domain + (q.difficulty ? ` • ${q.difficulty}` : '') + ' • Q' + q.num;
   document.getElementById('sim-q-prompt').textContent = q.prompt;
+
+  const sourceBox = document.getElementById('sim-q-source');
+  sourceBox.replaceChildren();
+  if (q.sourceTitle && /^https:\/\//i.test(q.sourceUrl || '')) {
+    const label = document.createTextNode('Factual inspiration: ');
+    const link = document.createElement('a');
+    link.href = q.sourceUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = q.sourceTitle + ' ↗';
+    sourceBox.append(label, link);
+    sourceBox.style.display = 'block';
+  } else {
+    sourceBox.style.display = 'none';
+  }
 
   const passageBox = document.getElementById('sim-passage-wrap');
   if (q.passage) {
@@ -2717,18 +2965,33 @@ function loadSimQuestion(idx) {
   const optContainer = document.getElementById('sim-q-options');
   const chosen = simAnswers[q.num];
   optContainer.innerHTML = q.options.map((opt, oi) => `
-    <button class="opt-btn ${chosen === oi ? 'correct' : ''}" onclick="selectSimAnswer(${q.num}, ${oi})">
+    <button class="opt-btn ${chosen === oi ? (oi === q.correct ? 'correct' : 'wrong') : ''}" onclick="selectSimAnswer(${q.num}, ${oi})">
       <span class="opt-letter">${String.fromCharCode(65 + oi)}</span>
       <span>${opt}</span>
     </button>
   `).join('');
+
+  const feedback = document.getElementById('sim-answer-feedback');
+  if (chosen === undefined) {
+    feedback.className = 'q-explanation';
+    feedback.innerHTML = '';
+  } else {
+    const isCorrect = chosen === q.correct;
+    feedback.className = 'q-explanation show';
+    feedback.innerHTML = `<strong style="color:var(--${isCorrect ? 'forest' : 'ruby'});">${isCorrect ? '✓ Correct.' : `✗ The correct answer is ${String.fromCharCode(65 + q.correct)}.`}</strong> ${q.exp}`;
+  }
 
   buildNavDots();
   updateProjectionCard();
 }
 
 function selectSimAnswer(qNum, optIdx) {
+  const wasAnswered = simAnswers[qNum] !== undefined;
   simAnswers[qNum] = optIdx;
+  if (!wasAnswered) {
+    const q = SIM_QUESTIONS.find(item => item.num === qNum);
+    recordDrillResult(Boolean(q && q.correct === optIdx));
+  }
   loadSimQuestion(currentSimQIdx);
 }
 
@@ -2782,11 +3045,9 @@ function updateProjectionCard() {
   });
 
   // Projection Formula
-  // M1 out of 27 scaled to 54
-  const scaledCorrect = Math.round((correctCount / (answeredKeys.length || 1)) * 54);
-  const isHardM2 = correctCount >= 18;
-  const hardnessFactor = isHardM2 ? 1.0 : 0.82;
-  const projRW = Math.min(800, Math.max(200, Math.round(200 + (600 * (scaledCorrect / 54) * hardnessFactor))));
+  // Motivational estimate only; official digital SAT scoring is adaptive.
+  const answeredAccuracy = correctCount / (answeredKeys.length || 1);
+  const projRW = Math.min(800, Math.max(200, Math.round(200 + (600 * answeredAccuracy))));
   
   document.getElementById('sim-proj-rw').textContent = projRW;
   document.getElementById('sim-proj-total').textContent = projRW + 800; // Math 800 locked!
@@ -2805,10 +3066,21 @@ function finishModule() {
     }
   });
 
-  const routesHard = correct >= 18;
-  const projScore = Math.min(800, Math.round(200 + (600 * (correct / 27) * (routesHard ? 1.0 : 0.8))));
+  const accuracy = Math.round((correct / total) * 100);
+  const practiceBand = correct >= 24 ? '700+ pace' : correct >= 21 ? 'approaching 700 pace' : 'skill-building pace';
 
-  alert(`Module 1 Complete!\n\nScore: ${correct} / ${total} Correct\nAdaptive Routing: ${routesHard ? 'Unlocked HARD Module 2 (700+ Range)' : 'Routed to EASY Module 2 (Max 650)'}\nProjected R&W: ${projScore}\nCombined with 800 Math: ${projScore + 800}`);
+  alert(`Practice Module Complete!\n\nScore: ${correct} / ${total} (${accuracy}%)\nPractice band: ${practiceBand}\n\nThis is not an official scaled SAT score. Review every explanation below.`);
+
+  const reviewCard = document.getElementById('sim-review-card');
+  const reviewList = document.getElementById('sim-review-list');
+  reviewCard.style.display = 'block';
+  reviewList.innerHTML = [...activeSimQuestions].sort((a, b) => a.num - b.num).map(q => {
+    const selected = simAnswers[q.num];
+    const isCorrect = selected === q.correct;
+    const chosenText = selected === undefined ? 'No answer' : `${String.fromCharCode(65 + selected)}. ${q.options[selected]}`;
+    return `<div class="rule-card"><div style="display:flex;justify-content:space-between;gap:12px;"><strong>Question ${q.num} • ${q.type}</strong><strong style="color:var(--${isCorrect ? 'forest' : 'ruby'});">${isCorrect ? 'Correct' : 'Review'}</strong></div><p style="margin-top:7px;font-size:.84rem;"><strong>Your answer:</strong> ${chosenText}</p><p style="margin-top:5px;font-size:.84rem;"><strong>Correct answer:</strong> ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}</p><p style="margin-top:7px;color:var(--t2);font-size:.84rem;line-height:1.55;">${q.exp}</p></div>`;
+  }).join('');
+  reviewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   // Automatically log missed questions to error log
   missedQs.forEach(q => {
