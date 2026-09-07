@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Chat Cheatsheet & Live Mentorship Notetaker</title>
+  <meta name="description" content="Quick reference conversation guide, targeted high-impact questions, and live interactive notepad for a computer science mentorship coffee chat." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0c0e12;
+      --card-bg: #14171f;
+      --card-panel: #1a1e29;
+      --border: #262c3a;
+      --border-bright: #384257;
+
+      --ink: #f0f3f8;
+      --ink-secondary: #9aa5b8;
+      --ink-muted: #626e85;
+
+      --accent: #e06830;       /* Warm Ember Ochre */
+      --accent-soft: rgba(224, 104, 48, 0.15);
+
+      --amber: #f59e0b;        /* Brass Gold */
+      --amber-soft: rgba(245, 158, 11, 0.15);
+
+      --emerald: #10b981;      /* Mint Green */
+      --emerald-soft: rgba(16, 185, 129, 0.15);
+
+      --indigo: #6366f1;
+      --indigo-soft: rgba(99, 102, 241, 0.15);
+
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 24px 16px 80px;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Ambient Background Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      left: 15%;
+      width: 45vw;
+      height: 45vh;
+      background: radial-gradient(circle, rgba(224, 104, 48, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -15%;
+      right: 15%;
+      width: 45vw;
+      height: 45vh;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .tag-row {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .dot-pulse {
+      width: 7px;
+      height: 7px;
+      background: var(--emerald);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px var(--emerald);
+    }
+
+    .header-title h1 {
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .header-title p {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin-top: 4px;
+      max-width: 640px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-bright);
+      background: var(--card-panel);
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--ink-secondary);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: #c85724;
+    }
+
+    /* Main 2-Column Layout */
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-amber { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-emerald { background: var(--emerald-soft); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-indigo { background: var(--indigo-soft); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-accent { background: var(--accent-soft); color: #ff8a65; border: 1px solid rgba(224, 104, 48, 0.3); }
+
+    /* Question Cards */
+    .question-block {
+      background: var(--card-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .question-block:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .q-category {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .q-text {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      line-height: 1.45;
+      color: #ffffff;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .q-purpose {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+    }
+
+    .copy-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--ink-muted);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.15s;
+    }
+    .copy-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Strategy Framework List */
+    .strategy-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .strategy-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .strategy-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--card-panel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .strategy-content h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .strategy-content p {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+    }
+
+    /* Live Notepad Inputs */
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      margin-bottom: 5px;
+    }
+
+    .field-control {
+      width: 100%;
+      background: var(--card-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field-control:focus {
+      border-color: var(--accent);
+    }
+
+    textarea.field-control {
+      resize: vertical;
+      min-height: 70px;
+      line-height: 1.45;
+    }
+
+    /* Saved Notification */
+    .save-indicator {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--emerald);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .save-indicator.active {
+      opacity: 1;
+    }
+
+    /* Script Callout Box */
+    .script-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid var(--emerald);
+      padding: 12px 14px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 10px;
+    }
+    .script-box strong {
+      color: #34d399;
+      font-size: 11.5px;
+      display: block;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      margin-bottom: 2px;
+    }
+    .script-box p {
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      font-style: italic;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    /* LinkedIn Follow-up Template */
+    .template-box {
+      background: #111318;
+      border: 1px dashed var(--border-bright);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+      white-space: pre-wrap;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Header -->
+    <header class="header">
+      <div>
+        <div class="tag-row">
+          <span class="dot-pulse"></span>
+          <span>Coffee Chat Playbook • Computer Science Mentorship</span>
+        </div>
+        <div class="header-title">
+          <h1>CS Coffee Chat Cheatsheet & Live Notetaker</h1>
+          <p>
+            Make a strong impression, build a genuine connection, and turn this short coffee break into a lasting mentorship relationship.
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="copyAllNotes()">
+          📋 Copy My Notes
+        </button>
+        <button class="btn" onclick="clearAllNotes()">
+          🗑️ Clear Form
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="layout-grid">
+
+      <!-- LEFT COLUMN: High Impact Questions & Framework -->
+      <div>
+
+        <!-- Section 1: Questions to Ask -->
+        <section class="section-card">
+          <div class="card-header">
+            <span class="card-title">☕ High-Impact Questions to Ask</span>
+            <span class="badge badge-amber">3 Core Stages</span>
+          </div>
+
+          <!-- Question 1 -->
+          <div class="question-block" style="border-left: 3px solid var(--amber);">
+            <div class="q-meta">
+              <span class="q-category">1. Backstory & Decisions</span>
+              <button class="copy-btn" onclick="copyText('q1-text')">Copy Question</button>
+            </div>
+            <div class="q-text" id="q1-text">
+              "What originally made you choose CS, and looking back, what key decisions or milestones helped you get to where you are today?"
+            </div>
+            <div class="q-purpose">
+              💡 <strong>Why ask this:</strong> Everyone loves sharing their origin story. This gets him talking about his real turning points (specific classes, early projects, internships, mentors) without feeling grilled.
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question-block" style="border-left: 3px solid var(--emerald);">
+            <div class="q-meta">
+              <span class="q-category" style="color: #34d399;">2. Mindsets & Work Ethic</span>
+              <button class="copy-btn" onclick="copyText('q2-text')">Copy Question</button>
+            </div>
+            <div class="q-text" id="q2-text">
+              "As someone who works hard and wants to achieve a similar level of success, what habits, mindsets, or specific skills do you think made the biggest difference for you early on?"
+            </div>
+            <div class="q-purpose">
+              💡 <strong>Why ask this:</strong> Shows you admire his drive and possess high initiative. You learn the non-obvious habits (daily LeetCode, GitHub streaks, cold emailing, deep focus) that separated him from the crowd.
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question-block" style="border-left: 3px solid var(--indigo);">
+            <div class="q-meta">
+              <span class="q-category" style="color: #818cf8;">3. Concrete Recommendations</span>
+              <button class="copy-btn" onclick="copyText('q3-text')">Copy Question</button>
+            </div>
+            <div class="q-text" id="q3-text">
+              "What campus resources, organizations, or types of projects do you highly recommend I focus on right now to set myself up for success?"
+            </div>
+            <div class="q-purpose">
+              💡 <strong>Why ask this:</strong> Yields actionable, localized intel (specific research labs, ACM/hackathons, professors, open-source projects) that you can immediately execute on.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Conversation Strategy -->
+        <section class="section-card">
+          <div class="card-header">
+            <span class="card-title">🎯 How to Structure for Long-Term Benefit</span>
+            <span class="badge badge-accent">Strategy</span>
+          </div>
+
+          <div class="strategy-item">
+            <div class="strategy-icon">✊🏾</div>
+            <div class="strategy-content">
+              <h4>1. Show Genuine Respect for His Work Ethic</h4>
+              <p>Let him know you admire his drive and impact. People are far more willing to mentor someone who shows active initiative and an authentic hunger to learn rather than someone just looking for an easy referral.</p>
+            </div>
+          </div>
+
+          <div class="strategy-item">
+            <div class="strategy-icon">🎯</div>
+            <div class="strategy-content">
+              <h4>2. Be Specific About Your Goals</h4>
+              <p>Briefly mention what areas of tech or personal growth you are focused on (e.g., software engineering, AI/ML, leadership) so his advice can be tailored to you.</p>
+            </div>
+          </div>
+
+          <div class="strategy-item">
+            <div class="strategy-icon">📝</div>
+            <div class="strategy-content">
+              <h4>3. Take Quick Notes During / Right After</h4>
+              <p>Mentally note or jot down specific books, tools, or clubs he mentions on the right panel. Mentioning his exact recommendations in your follow-up email proves you actually listened.</p>
+            </div>
+          </div>
+
+          <div class="strategy-item">
+            <div class="strategy-icon">🤝</div>
+            <div class="strategy-content">
+              <h4>4. Set Up the Next Step (Before Wrapping Up)</h4>
+              <p>Never leave without closing the loop. Use the script below right before getting up from the table:</p>
+              
+              <div class="script-box">
+                <strong>Closing Script (Say this at minute 25):</strong>
+                <p id="script-closing">"Would it be alright if I stayed in touch on LinkedIn and reached out occasionally as I work on these recommendations?"</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3: 24-Hour Follow-Up Template -->
+        <section class="section-card">
+          <div class="card-header">
+            <span class="card-title">✉️ Follow-Up Message (Send Within 24h)</span>
+            <button class="copy-btn" onclick="copyText('text-linkedin-template')">Copy Template</button>
+          </div>
+
+          <p style="font-size: 12.5px; color: var(--ink-secondary); margin-bottom: 10px;">
+            Send this on LinkedIn or Email the next morning. Reference something specific he recommended to stand out:
+          </p>
+
+          <div class="template-box" id="text-linkedin-template">Hi [Name],
+
+Thank you so much for taking the time to grab coffee with me today. I really appreciated hearing about your journey in CS and your advice regarding [mention 1 specific thing, e.g., building portfolio projects / joining ACM].
+
+I’m already looking into [specific tool/club he suggested]. I’d love to stay in touch as I make progress.
+
+Thanks again for your time and guidance!
+
+Best regards,
+[Your Name]</div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Interactive Live Notetaker -->
+      <div>
+
+        <section class="section-card" style="position: sticky; top: 20px;">
+          <div class="card-header">
+            <span class="card-title">📝 Live Coffee Chat Notepad</span>
+            <span class="save-indicator" id="save-tag">✓ Auto-saved</span>
+          </div>
+
+          <div class="field-group">
+            <label>Mentor's Name & Role</label>
+            <input type="text" id="note-name" class="field-control" placeholder="e.g., Alex (Senior @ Google / CS Junior)" oninput="autoSave()">
+          </div>
+
+          <div class="field-group">
+            <label>1. Key Backstory / Milestone Takeaways</label>
+            <textarea id="note-backstory" class="field-control" placeholder="What key decisions or classes helped him succeed early on?..." oninput="autoSave()"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label>2. Key Habits & Mindsets Mentioned</label>
+            <textarea id="note-habits" class="field-control" placeholder="What specific routines, technical skills, or work habits did he emphasize?..." oninput="autoSave()"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label>3. Organizations, Clubs & Campus Resources</label>
+            <textarea id="note-resources" class="field-control" placeholder="Specific clubs, labs, professors, or hackathons he recommended..." oninput="autoSave()"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label>4. Specific Books, Tools & Projects</label>
+            <textarea id="note-tools" class="field-control" placeholder="Tech stacks, websites, LeetCode patterns, or book recommendations..." oninput="autoSave()"></textarea>
+          </div>
+
+          <div class="field-group">
+            <label>5. Immediate Action Items For Me</label>
+            <textarea id="note-actions" class="field-control" placeholder="What do I need to follow up on before our next check-in?..." oninput="autoSave()"></textarea>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 18px;">
+            <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="copyAllNotes()">
+              📋 Copy All Notes
+            </button>
+            <button class="btn" onclick="exportNotesTxt()">
+              💾 Download .TXT
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'coffee_chat_mentorship_notes_v1';
+
+    // Auto-load saved notes
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          document.getElementById('note-name').value = data.name || '';
+          document.getElementById('note-backstory').value = data.backstory || '';
+          document.getElementById('note-habits').value = data.habits || '';
+          document.getElementById('note-resources').value = data.resources || '';
+          document.getElementById('note-tools').value = data.tools || '';
+          document.getElementById('note-actions').value = data.actions || '';
+        } catch(e) {}
+      }
+    });
+
+    // Auto-save to localStorage
+    function autoSave() {
+      const data = {
+        name: document.getElementById('note-name').value,
+        backstory: document.getElementById('note-backstory').value,
+        habits: document.getElementById('note-habits').value,
+        resources: document.getElementById('note-resources').value,
+        tools: document.getElementById('note-tools').value,
+        actions: document.getElementById('note-actions').value,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+      const tag = document.getElementById('save-tag');
+      tag.classList.add('active');
+      setTimeout(() => tag.classList.remove('active'), 1200);
+    }
+
+    // 1-Click Copy helper
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText || document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text.trim()).then(() => {
+        alert('Copied to clipboard!');
+      });
+    }
+
+    // Copy All Notes Formatted
+    function copyAllNotes() {
+      const name = document.getElementById('note-name').value || 'Mentor';
+      const backstory = document.getElementById('note-backstory').value || 'N/A';
+      const habits = document.getElementById('note-habits').value || 'N/A';
+      const resources = document.getElementById('note-resources').value || 'N/A';
+      const tools = document.getElementById('note-tools').value || 'N/A';
+      const actions = document.getElementById('note-actions').value || 'N/A';
+
+      const formatted = `=== COFFEE CHAT NOTES: ${name} ===\n\n` +
+        `1. BACKSTORY & KEY DECISIONS:\n${backstory}\n\n` +
+        `2. HABITS, WORK ETHIC & MINDSETS:\n${habits}\n\n` +
+        `3. RECOMMENDED CLUBS & RESOURCES:\n${resources}\n\n` +
+        `4. TOOLS, BOOKS & PROJECTS:\n${tools}\n\n` +
+        `5. MY NEXT ACTION ITEMS:\n${actions}\n\n` +
+        `Timestamp: ${new Date().toLocaleString()}`;
+
+      navigator.clipboard.writeText(formatted).then(() => {
+        alert('All notes formatted and copied to clipboard!');
+      });
+    }
+
+    // Export as Text file
+    function exportNotesTxt() {
+      const name = document.getElementById('note-name').value || 'Mentor';
+      const backstory = document.getElementById('note-backstory').value || 'N/A';
+      const habits = document.getElementById('note-habits').value || 'N/A';
+      const resources = document.getElementById('note-resources').value || 'N/A';
+      const tools = document.getElementById('note-tools').value || 'N/A';
+      const actions = document.getElementById('note-actions').value || 'N/A';
+
+      const formatted = `=== COFFEE CHAT NOTES: ${name} ===\n\n` +
+        `1. BACKSTORY & KEY DECISIONS:\n${backstory}\n\n` +
+        `2. HABITS, WORK ETHIC & MINDSETS:\n${habits}\n\n` +
+        `3. RECOMMENDED CLUBS & RESOURCES:\n${resources}\n\n` +
+        `4. TOOLS, BOOKS & PROJECTS:\n${tools}\n\n` +
+        `5. MY NEXT ACTION ITEMS:\n${actions}\n\n` +
+        `Timestamp: ${new Date().toLocaleString()}`;
+
+      const blob = new Blob([formatted], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Coffee_Chat_Notes_${name.replace(/\s+/g, '_')}.txt`;
+      a.click();
+    }
+
+    // Clear Form
+    function clearAllNotes() {
+      if (confirm('Clear all your current coffee chat notes?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        document.getElementById('note-name').value = '';
+        document.getElementById('note-backstory').value = '';
+        document.getElementById('note-habits').value = '';
+        document.getElementById('note-resources').value = '';
+        document.getElementById('note-tools').value = '';
+        document.getElementById('note-actions').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>IsotopePINN 30-Day Professional Mastery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1612;--muted:#5c534a;--quiet:#8a8074;--paper:#fbf7f0;--bg:#e8e0d2;--card:#fbf7f0;--line:#d5cbb8;--teal:#c45c26;--blue:#3d4a7a;--coral:#8b2e2e;--gold:#9a6b1f;--green:#2f5d4a;--violet:#5c4a78;--copper:#c45c26;--top:64px;--bottom:54px;--serif:"Fraunces",Georgia,serif;--sans:"IBM Plex Sans","Segoe UI",sans-serif;--mono:"IBM Plex Mono",Consolas,monospace}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--ink);color:var(--ink);font-family:var(--sans)}button,a{font:inherit}sup,sub{line-height:0}
+.topbar{height:var(--top);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:0 20px;background:var(--ink);border-bottom:1px solid #3a3128;position:relative;z-index:20;color:#f4efe6}.brand{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap;letter-spacing:.01em}.brand-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:2px;background:var(--copper);color:#fbf7f0;font-family:var(--serif);font-size:13px;font-weight:700}.brand small{color:#c4b8a8;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}.modules{display:flex;justify-content:center;gap:2px;min-width:0;overflow-x:auto;scrollbar-width:none}.modules::-webkit-scrollbar{display:none}.module-btn,.cmd{min-height:32px;border:1px solid transparent;border-radius:2px;background:transparent;color:#c4b8a8;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap}.module-btn{padding:6px 9px}.module-btn:hover,.module-btn.active{color:#fbf7f0;background:#2a221c;border-color:#5a4a3c}.commands{display:flex;gap:6px;align-items:center}.cmd{padding:6px 10px;color:#f4efe6;background:#2a221c;border-color:#3d342c}.cmd:hover,.cmd.active{color:#fbf7f0;border-color:var(--copper);background:#322820}.mastery{min-width:78px;text-align:center;color:#e8c4a8;font-size:11px;font-weight:600;letter-spacing:.04em}
+.progress{height:3px;background:#2a221c;position:relative;z-index:21}.progress-fill{height:100%;width:0;background:var(--copper);transition:width .18s ease}
+.deck{height:calc(100vh - var(--top) - var(--bottom) - 3px);position:relative;overflow:hidden}.slide{display:none;position:absolute;inset:0;overflow-y:auto;padding:32px 40px 48px;background:var(--bg);background-image:linear-gradient(180deg,rgba(255,251,244,.35),transparent 220px)}.slide.active{display:block}.inner{width:min(1360px,100%);min-height:100%;margin:auto}.eyebrow{margin:0 0 10px;color:var(--copper);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;color:var(--ink)}h1{max-width:1100px;margin-bottom:12px;font-size:40px;line-height:1.12}h2{margin-bottom:10px;font-size:32px;line-height:1.16}h3{margin-bottom:8px;font-size:16px;line-height:1.28;font-weight:700}.subtitle{max-width:1040px;margin-bottom:22px;color:var(--muted);font-size:17px;line-height:1.5}p,li{color:var(--muted);font-size:15px;line-height:1.55}strong{color:var(--ink);font-weight:600}ul,ol{margin:0;padding-left:20px}li{margin:6px 0}
+.hero-rule{width:48px;height:2px;margin:16px 0 22px;background:var(--copper)}.hero-question{max-width:1140px;padding-left:18px;border-left:2px solid var(--copper);font-family:var(--serif);font-size:22px;line-height:1.4;font-weight:500;color:var(--ink)}
+.grid2,.grid3,.grid4,.metrics,.glossary{display:grid;gap:12px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid4,.metrics{grid-template-columns:repeat(4,minmax(150px,1fr))}.glossary{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel,.metric,.recall,.source{background:var(--card);border:1px solid var(--line);border-radius:2px}.panel{padding:18px 18px 18px 20px;border-left:3px solid var(--blue)}.panel.teal{border-left-color:var(--copper)}.panel.coral{border-left-color:var(--coral)}.panel.gold{border-left-color:var(--gold)}.panel.green{border-left-color:var(--green)}.panel.violet{border-left-color:var(--violet)}.panel p:last-child,.panel ul:last-child,.panel ol:last-child{margin-bottom:0}
+.plain,.warn,.success,.say{margin:16px 0;padding:14px 16px;border-left:3px solid var(--blue);font-size:15px;line-height:1.55;border-radius:0 2px 2px 0}.plain{background:#efe8dc}.warn{background:#f6ece6;border-left-color:var(--coral)}.success{background:#e7eee8;border-left-color:var(--green)}.say{background:#efe8f0;border-left-color:var(--violet);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.45;font-weight:500}
+.formula{margin:11px 0;padding:13px 15px;overflow-x:auto;background:#f3ece1;border:1px solid var(--line);border-left:3px solid var(--violet);color:var(--ink);font-family:var(--mono);font-size:16px;line-height:1.5;white-space:nowrap}.formula.small{font-size:13px;white-space:normal}
+.metric{min-height:116px;padding:16px}.metric b{display:block;margin-bottom:7px;color:var(--copper);font-family:var(--serif);font-size:28px;line-height:1;font-weight:600}.metric span{color:var(--muted);font-size:13px;line-height:1.4}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin:20px 0}.flow article{position:relative;min-height:138px;padding:16px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--copper);border-radius:2px}.flow article:not(:last-child):after{content:"\2192";position:absolute;right:-18px;top:45%;z-index:2;color:var(--copper);font-size:18px;font-weight:700}.flow small{color:var(--copper);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.reaction{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center;margin:14px 0}.nuclide{min-height:92px;display:grid;place-items:center;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:2px;text-align:center}.nuclide b{display:block;font-family:var(--serif);font-size:22px;font-weight:600}.nuclide.good{border-color:var(--green);background:#e7eee8}.nuclide.risk{border-color:var(--coral);background:#f6ece6}.arrow{min-width:90px;text-align:center;color:var(--ink);font-size:12px;font-weight:600}.arrow span{display:block;color:var(--copper);font-size:22px}.branch{margin:17px 0 5px;color:var(--copper);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.table-wrap{width:100%;overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:2px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3ece1;color:var(--ink);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}td{color:var(--muted);line-height:1.45}tr:last-child td{border-bottom:0}.yes{color:var(--green);font-weight:700}.no{color:var(--coral);font-weight:700}
+.recall{margin-top:20px;padding:16px 18px;border-left:3px solid var(--gold)}.recall.mastered{border-left-color:var(--green);background:#e7eee8}.recall-label{margin-bottom:5px;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.recall-q{color:var(--ink);font-size:16px;font-weight:600;line-height:1.45}.recall details{margin-top:10px}.recall summary{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink);cursor:pointer;font-size:12px;font-weight:600}.answer{margin-top:10px;padding:12px;background:#f3ece1;border:1px solid var(--line);color:var(--ink);font-size:14px;line-height:1.5}.master-line{display:flex;align-items:center;gap:7px;margin-top:10px;color:var(--muted);font-size:12px;font-weight:600}.master-check{width:16px;height:16px;accent-color:var(--copper)}
+.figure{margin:15px 0;padding:12px;background:var(--card);border:1px solid var(--line)}.figure img{display:block;width:100%;max-height:480px;object-fit:contain}.figure figcaption{padding:9px 4px 1px;color:var(--muted);font-size:12px;line-height:1.45}
+.qa{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.qa article{padding:15px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--blue)}.qa h3{font-size:15px}.qa p{margin-bottom:0;font-size:13px}
+.study-grid{display:grid;grid-template-columns:90px minmax(0,1fr) 240px;background:var(--card);border:1px solid var(--line)}.study-grid>div{padding:11px 13px;border-bottom:1px solid var(--line)}.day{color:var(--copper);font-weight:700;font-family:var(--mono);font-size:13px}.test{color:var(--muted);font-size:13px}.source{padding:14px;overflow-wrap:anywhere}.source a{color:var(--copper);font-size:13px;font-weight:600;text-decoration:none}.source a:hover{text-decoration:underline}.source p{margin:5px 0 0;font-size:12px}
+.lvl{display:inline-block;margin-left:8px;padding:2px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;vertical-align:middle;border:1px solid var(--line);background:var(--card)}.lvl-0{color:var(--green);border-color:#b7c4bc}.lvl-1{color:var(--blue);border-color:#c5c9d6}.lvl-2{color:var(--gold);border-color:#d8c7a4}.lvl-3{color:var(--coral);border-color:#d8b8b4}
+.term-plain,.term-use{margin:8px 0 0;padding:10px 12px;font-size:14px;line-height:1.45}.term-plain{background:#efe8dc;border-left:3px solid var(--blue)}.term-use{background:#e7eee8;border-left:3px solid var(--green)}
+.notes-source{display:none}.notes-panel{width:min(400px,94vw);position:fixed;top:calc(var(--top) + 3px);right:0;bottom:var(--bottom);z-index:50;padding:24px;overflow-y:auto;background:var(--paper);border-left:1px solid var(--line);transform:translateX(103%);transition:transform .18s}.notes-panel.open{transform:translateX(0)}.notes-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:18px}.notes-head h2{font-family:var(--serif);font-size:24px}.close{width:34px;height:34px;border:1px solid var(--line);border-radius:2px;background:#f3ece1;cursor:pointer;font-size:20px}.note{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line)}.note h3{color:var(--copper);font-size:11px;letter-spacing:.12em;text-transform:uppercase}.note p{margin-bottom:0;font-size:14px}
+.overview{display:none;position:fixed;inset:0;z-index:70;padding:28px;overflow-y:auto;background:rgba(28,22,18,.88)}.overview.open{display:block}.overview-box{width:min(1100px,100%);margin:auto;padding:24px;background:var(--paper);border:1px solid var(--line)}.overview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.overview-card{min-height:88px;padding:12px;border:1px solid var(--line);background:#f3ece1;cursor:pointer;text-align:left}.overview-card:hover{border-color:var(--copper);background:var(--card)}.overview-card b{display:block;margin-bottom:5px;color:var(--copper);font-size:12px}.overview-card span{color:var(--muted);font-size:12px}
+.bottom{height:var(--bottom);display:grid;grid-template-columns:52px minmax(0,1fr) auto 52px;align-items:center;gap:10px;padding:0 12px;background:var(--ink);border-top:1px solid #3a3128;position:relative;z-index:25}.arrow-btn{width:38px;height:34px;margin:auto;border:1px solid #3d342c;border-radius:2px;background:#2a221c;color:#f4efe6;cursor:pointer;font-size:18px;font-weight:600}.arrow-btn:disabled{opacity:.35;cursor:default}.bottom-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c4b8a8;font-size:12px;font-weight:500;letter-spacing:.04em}.count{font-family:var(--mono);font-size:12px;font-weight:500;color:#e8c4a8}
+@media(max-width:1100px){.brand small,.mastery{display:none}.flow{grid-template-columns:repeat(3,minmax(0,1fr))}.flow article:nth-child(3):after{display:none}.grid4,.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.glossary{grid-template-columns:repeat(2,minmax(0,1fr))}.overview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){:root{--top:58px}.topbar{grid-template-columns:auto minmax(0,1fr);padding:0 10px}.commands{display:none}.brand{font-size:13px}.slide{padding:22px 16px 38px}h1{font-size:28px}h2{font-size:24px}.subtitle{font-size:16px}.hero-question{font-size:18px}.grid2,.grid3,.grid4,.metrics,.glossary,.qa{grid-template-columns:1fr}.flow{grid-template-columns:1fr;gap:10px}.flow article:after{display:none!important}.reaction{grid-template-columns:1fr}.arrow span{transform:rotate(90deg)}.study-grid{grid-template-columns:80px minmax(0,1fr)}.study-grid .test{grid-column:1/-1}.overview{padding:12px}.overview-grid{grid-template-columns:1fr}.bottom{grid-template-columns:52px 1fr 52px}.bottom-title{display:none}.count{text-align:center}#next{grid-column:3}}
+@media print{html,body{height:auto;overflow:visible;background:#fff}.topbar,.progress,.bottom,.notes-panel,.overview{display:none!important}.deck{height:auto;overflow:visible}.slide{display:block!important;position:relative;min-height:7in;overflow:visible;padding:.35in;page-break-after:always;background:#fff}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">30</span><span>IsotopePINN <small>Thirty-day mastery</small></span></div>
+  <nav class="modules" aria-label="Learning modules">
+    <button class="module-btn" data-target="0">Start</button>
+    <button class="module-btn" data-target="2">Atoms</button>
+    <button class="module-btn" data-target="5">Cancer</button>
+    <button class="module-btn" data-target="8">Pathway</button>
+    <button class="module-btn" data-target="12">Equations</button>
+    <button class="module-btn" data-target="16">ML</button>
+    <button class="module-btn" data-target="22">Struggles</button>
+    <button class="module-btn" data-target="30">Evidence</button>
+    <button class="module-btn" data-target="34">Month</button>
+  </nav>
+  <div class="commands"><span class="mastery" id="mastery">0 mastered</span><button class="cmd" id="drill">Drill</button><button class="cmd" id="overview-open">Overview</button><button class="cmd" id="notes-open">Study notes</button></div>
+</header>
+<div class="progress"><div class="progress-fill" id="progress"></div></div>
+<main class="deck">
+
+<section class="slide active" data-module="Start" data-title="How to become fluent in 30 days"><div class="inner">
+  <p class="eyebrow">Module 0 / Contract <span class="lvl lvl-0">Day 1</span></p>
+  <h1>This is a self-study course, not a poster script</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-question">In 30 days you should be able to explain every idea in this project to a teacher who has never seen a nuclear equation, then answer a follow-up as if you built it.</p>
+  <div class="grid3" style="margin-top:22px">
+    <article class="panel teal"><h3>Who this is for</h3><p>You are a high-school student who wants professional command of nuclear production kinetics, stiff ODEs, and scientific machine learning — without fake expertise.</p></article>
+    <article class="panel"><h3>How learning works here</h3><p>Every term has two boxes: <strong>plain English</strong> and <strong>in this project</strong>. Do not skip the first box. Professionals can still say the simple version.</p></article>
+    <article class="panel coral"><h3>The honesty rule</h3><p>If a sentence sounds impressive but your experiment did not measure it, it is not ready to say. Overclaiming is the fastest way to lose a teacher or a judge.</p></article>
+  </div>
+  <div class="plain"><strong>Daily 40 minutes:</strong> 8 min blank-page recall of yesterday, 15 min new slides, 10 min saying the “Say it aloud” box without looking, 7 min one drill question plus units.</div>
+  <div class="success"><strong>Mastery test for any word:</strong> define it simply, draw it, name its units, say how this project uses it, name one limit, and answer one “why not something else?” question.</div>
+  <article class="recall" data-id="contract"><div class="recall-label">Retrieval drill</div><div class="recall-q">What are the six parts of the mastery test for any term?</div><details><summary>Reveal answer</summary><div class="answer">Define simply; draw it; name units; say how this project uses it; name one limit; answer why not an alternative.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Do not cram wording</h3><p>If forgetting one word collapses the answer, you memorized a script. Explain each idea three ways: to a 9th grader, to your AP teacher, and to a nuclear engineer.</p></div><div class="note"><h3>Use with the ISEF deck</h3><p>This course builds understanding. The ISEF defense masterclass is the later spoken-judge version. Learn here first.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Start" data-title="The one-sentence job"><div class="inner">
+  <p class="eyebrow">Module 0 / North star <span class="lvl lvl-0">Day 1</span></p>
+  <h2>Know the exact job before any jargon</h2>
+  <p class="subtitle">If you cannot say this, nothing else in the project is attached to a purpose.</p>
+  <div class="say"><strong>Say it aloud:</strong> “I built a fast first-pass computer filter for one modeled way of making Actinium-225 from Radium-226. It suggests which irradiation plans deserve a trusted physics calculation. It is not the final authority, and it has not yet been proven on a clean real-world experiment.”</div>
+  <div class="grid2">
+    <article class="panel teal"><h3>The four jobs of the final system</h3><ol><li>Screen many modeled production conditions quickly.</li><li>Report calibrated uncertainty, not a fake-confident number.</li><li>Reject unfamiliar inputs instead of guessing.</li><li>Send accepted finalists back to trusted physics.</li></ol></article>
+    <article class="panel coral"><h3>What it does not prove</h3><ul><li>That cancer treatment is cheaper or available.</li><li>That a reactor or cyclotron will actually make that much Ac-225.</li><li>That OpenMC, SCALE/ORIGEN, or supercomputers are replaced.</li><li>That every error is under 3% in the real world.</li></ul></article>
+  </div>
+  <div class="flow">
+    <article><small>V1</small><h3>Vanilla net</h3><p>Failed: ignored stiffness, invented negative atoms.</p></article>
+    <article><small>V2</small><h3>MLP-PINN</h3><p>Learned physics residuals; still had expert-flagged limits.</p></article>
+    <article><small>V3</small><h3>PI-LSTM</h3><p>Predicts five-isotope time histories and ranks schedules.</p></article>
+    <article><small>V4</small><h3>GP vs LSTM</h3><p>Predicts two reaction rates with uncertainty and rejection.</p></article>
+    <article><small>Now</small><h3>Frozen study</h3><p>Internal modeled evidence is strong. External transfer is unresolved.</p></article>
+  </div>
+  <article class="recall" data-id="job"><div class="recall-label">Retrieval drill</div><div class="recall-q">Give the four jobs, then one sentence of what the project does not prove.</div><details><summary>Reveal answer</summary><div class="answer">Screen, quantify uncertainty, reject unfamiliar inputs, verify with trusted physics. It does not prove cheaper production, reactor accuracy, or clinical safety.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Memory hook</h3><p>Filter, then verify. Never “the AI makes the medicine.”</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Atoms" data-title="Atoms, elements, isotopes"><div class="inner">
+  <p class="eyebrow">Module 1 / From zero <span class="lvl lvl-0">Day 1–2</span></p>
+  <h2>An isotope is the same element with a different neutron count</h2>
+  <div class="grid3">
+    <article class="panel teal"><h3>Atom</h3><div class="term-plain"><strong>Plain English:</strong> The smallest piece of an element that still behaves like that element. A tiny nucleus of protons and neutrons, with electrons around it.</div><div class="term-use"><strong>In this project:</strong> We count nuclei, not molecules. N is “how many atoms of this isotope are in the target.”</div></article>
+    <article class="panel"><h3>Element</h3><div class="term-plain"><strong>Plain English:</strong> Defined by proton number. 88 protons is always radium. 89 protons is always actinium.</div><div class="term-use"><strong>In this project:</strong> (n,2n) stays on radium. Beta-minus decay changes radium into actinium because a neutron becomes a proton.</div></article>
+    <article class="panel gold"><h3>Isotope</h3><div class="term-plain"><strong>Plain English:</strong> Same protons, different neutrons, so different mass number. Ra-226 and Ra-225 are both radium, but not interchangeable.</div><div class="term-use"><strong>In this project:</strong> The five tracked isotopes are Ra-226, Ra-225, Ac-225, Ra-227, and Ac-227.</div></article>
+  </div>
+  <div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>Name</th><th>Protons (Z)</th><th>Nucleons (A)</th><th>Role in the story</th></tr></thead><tbody>
+    <tr><td>Radium-226</td><td>88</td><td>226</td><td>The target material you irradiate</td></tr>
+    <tr><td>Radium-225</td><td>88</td><td>225</td><td>The (n,2n) product; decays into the medicine</td></tr>
+    <tr><td>Actinium-225</td><td>89</td><td>225</td><td>The desired medical isotope</td></tr>
+    <tr><td>Radium-227</td><td>88</td><td>227</td><td>The (n,γ) product; 42.2-minute “fast clock”</td></tr>
+    <tr><td>Actinium-227</td><td>89</td><td>227</td><td>Long-lived competing impurity of concern</td></tr>
+  </tbody></table></div>
+  <div class="say"><strong>Say it aloud:</strong> “Ra-226 and Ac-225 are different elements. Ra-226 and Ra-225 are the same element with one neutron difference. That one neutron is the whole production idea.”</div>
+  <article class="recall" data-id="isotope"><div class="recall-label">Retrieval drill</div><div class="recall-q">Why does (n,2n) keep the element radium, while beta-minus changes it to actinium?</div><details><summary>Reveal answer</summary><div class="answer">(n,2n) changes mass number by removing one neutron, so Z stays 88. Beta-minus converts a neutron into a proton, so Z becomes 89 and the element becomes actinium, while A stays the same.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Draw tonight</h3><p>Two nuclei: 88p/138n for Ra-226, 88p/137n for Ra-225. Then 89p/136n for Ac-225.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Atoms" data-title="Radioactivity and half-life"><div class="inner">
+  <p class="eyebrow">Module 1 / Clocks <span class="lvl lvl-0">Day 2</span></p>
+  <h2>Half-life is a clock, not a countdown to zero atoms</h2>
+  <div class="grid2">
+    <article class="panel"><h3>Radioactivity</h3><div class="term-plain"><strong>Plain English:</strong> An unstable nucleus can change by itself, emitting a particle or energy. That random event is a decay.</div><div class="term-use"><strong>In this project:</strong> Decay is one of two ways inventories change. The other is a neutron-induced reaction while the beam or reactor is on.</div></article>
+    <article class="panel teal"><h3>Half-life T<sub>1/2</sub></h3><div class="term-plain"><strong>Plain English:</strong> The time for half of a large sample to decay. After one half-life, half remains; after two, one quarter remains. It never “finishes” in finite time.</div><div class="term-use"><strong>In this project:</strong> Half-lives set the five clocks. Ra-227 is 42.2 minutes. Ra-226 is about 1,600 years. That mismatch is stiffness.</div></article>
+  </div>
+  <div class="formula">λ = ln(2) / T<sub>1/2</sub> &nbsp;&nbsp; then &nbsp;&nbsp; A = λN</div>
+  <div class="grid3">
+    <article class="panel gold"><h3>Decay constant λ</h3><p>Probability per unit time that one nucleus decays. Units: 1/time, for example h<sup>-1</sup>.</p></article>
+    <article class="panel violet"><h3>Activity A</h3><p>Decays per second, not “how many atoms.” One becquerel (Bq) is one decay per second. A curie is 3.7×10<sup>10</sup> Bq.</p></article>
+    <article class="panel coral"><h3>Teacher trap</h3><p>A timestamp mismatch can look like a model error. Always name the isotope and the exact clock time of an activity.</p></article>
+  </div>
+  <div class="warn"><strong>Produced vs recovered:</strong> atoms made in the target, activity at end of bombardment, activity after cooling, and activity after chemistry are four different numbers. Berkeley recovered only about 37–60% of produced Ac-225 in the tested separations.</div>
+  <article class="recall" data-id="halflife"><div class="recall-label">Retrieval drill</div><div class="recall-q">Convert a half-life into λ, then into activity. What must stay consistent?</div><details><summary>Reveal answer</summary><div class="answer">λ = ln(2)/T½ with T½ in the same time unit you want for λ. Then A = λN. Convert Bq, hours, and atom counts so every unit cancels correctly. Name the reference time.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Practice</h3><p>Ac-225 T½ = 9.920 d. Compute λ in h^-1. Then if N is 1e12 atoms, compute A in Bq.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Atoms" data-title="The five clocks in this chain"><div class="inner">
+  <p class="eyebrow">Module 1 / Your numbers <span class="lvl lvl-1">Day 2</span></p>
+  <h2>Memorize the five half-lives the way a musician memorizes notes</h2>
+  <div class="table-wrap"><table><thead><tr><th>Nuclide</th><th>Half-life used in the reduced model</th><th>Why it matters</th></tr></thead><tbody>
+    <tr><td>Ra-226</td><td>~1,600 years (NuDat v2: 1603 ± 8 y)</td><td>Almost a permanent feedstock on human timescales</td></tr>
+    <tr><td>Ra-225</td><td>14.8 days (NuDat v2: 14.9 ± 2 d)</td><td>The waiting room before Ac-225 appears</td></tr>
+    <tr><td>Ac-225</td><td>9.920 days (NuDat v2: 10.0 ± 1 d)</td><td>The medical product clock; decays during shipping too</td></tr>
+    <tr><td>Ra-227</td><td>42.2 minutes</td><td>The stiff spike that vanilla networks missed</td></tr>
+    <tr><td>Ac-227</td><td>21.772 years</td><td>Long-lived impurity that does not vanish after harvest</td></tr>
+  </tbody></table></div>
+  <div class="formula">1,600 years / 42.2 minutes ≈ 20 million</div>
+  <div class="plain"><strong>What this ratio is:</strong> a statement about separated physical timescales in the equations.</div>
+  <div class="warn"><strong>What this ratio is not:</strong> it does not prove a 20-million-times computer speedup, a 40-hour runtime, or that laboratory solvers “collapse.” Never convert stiffness into a speed claim unless you timed that exact job.</div>
+  <article class="recall" data-id="clocks"><div class="recall-label">Retrieval drill</div><div class="recall-q">List the five half-lives in order from fastest to slowest, then state the stiffness sentence.</div><details><summary>Reveal answer</summary><div class="answer">Ra-227 42.2 min; Ac-225 ~10 d; Ra-225 ~15 d; Ac-227 21.772 y; Ra-226 ~1600 y. The equations contain very fast and very slow clocks, so a stable method must resolve the spike without ignoring the slow buildup.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>v1 vs v2 decay data</h3><p>Training mostly used the round literature values. In July 2026 you fetched live NuDat values. Small shifts, but a judge can check, so you documented them.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Cancer" data-title="Cancer and radiation, simply"><div class="inner">
+  <p class="eyebrow">Module 2 / Motivation <span class="lvl lvl-0">Day 3</span></p>
+  <h2>Radiation can damage DNA. The question is where, and how densely.</h2>
+  <p class="subtitle">Your project does not treat patients. The medical story is why Ac-225 is valuable enough that production planning is a real scientific problem.</p>
+  <div class="grid3">
+    <article class="panel"><h3>Cancer, simply</h3><p>Cells that grow out of control. Metastatic disease has spread. Some tumors resist chemo and ordinary radiation because they can repair isolated DNA damage.</p></article>
+    <article class="panel teal"><h3>Beta radiation</h3><p>Fast electrons. Relatively long range in tissue (millimeters). Lower linear energy transfer. Can cause single-strand DNA breaks that cells may repair, and can irradiate nearby healthy tissue.</p></article>
+    <article class="panel gold"><h3>Alpha radiation</h3><p>A helium-4 nucleus (2 protons + 2 neutrons). Heavy, short range (tens of micrometers, a couple of cell diameters), very dense ionization. Tends to cause complex double-strand DNA breaks.</p></article>
+  </div>
+  <div class="say"><strong>Say it aloud:</strong> “Alpha particles dump a lot of energy in a very short path. If you can park an alpha emitter on a cancer cell, you can damage that cell while nearby tissue is more likely to be spared. That is the idea of targeted alpha therapy.”</div>
+  <div class="warn"><strong>Do not say:</strong> “My model cures cancer” or “this will treat 50,000 patients.” Those are motivation numbers from literature demand estimates, not results you measured.</div>
+  <article class="recall" data-id="tatwhy"><div class="recall-label">Retrieval drill</div><div class="recall-q">In one minute, explain why alphas are discussed for therapy and why that still does not make your model a medical device.</div><details><summary>Reveal answer</summary><div class="answer">Alphas have short range and high LET, so they can kill targeted cells. My work is a computational production-screening study. It never administered a dose, proved safety, or measured clinical outcome.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Cite, don’t invent</h3><p>Kratochwil 2016 and Morgenstern reviews are the clinical context. You are not a physician.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Cancer" data-title="Why Ac-225 specifically"><div class="inner">
+  <p class="eyebrow">Module 2 / The product <span class="lvl lvl-1">Day 3</span></p>
+  <h2>Ac-225 is a four-alpha cascade attached to a useful half-life</h2>
+  <div class="formula small"><sup>225</sup>Ac (9.92 d, α) → <sup>221</sup>Fr → <sup>217</sup>At → <sup>213</sup>Bi / <sup>213</sup>Po → … → stable <sup>209</sup>Bi</div>
+  <div class="grid2">
+    <article class="panel teal"><h3>Why people care</h3><ul><li>Several alphas per parent decay chain, so a lot of local energy.</li><li>~10-day half-life is long enough to ship and label a targeting molecule, short enough not to linger forever.</li><li>Can be attached to molecules such as PSMA ligands that seek certain tumors.</li></ul></article>
+    <article class="panel"><h3>What you must still say</h3><ul><li>This project models production kinetics, not tumor dose.</li><li>The 4-alpha cascade is literature radiobiology, not a result from your code.</li><li>Daughters can also leave the targeting molecule in real chemistry; that is outside your five-nuclide model.</li></ul></article>
+  </div>
+  <div class="plain"><strong>Teacher translation:</strong> Think of Ac-225 as a tiny, short-lived battery of alpha particles. Hospitals want a reliable supply. The world currently does not have one.</div>
+  <article class="recall" data-id="ac225why"><div class="recall-label">Retrieval drill</div><div class="recall-q">Why is a ~10-day half-life a practical compromise?</div><details><summary>Reveal answer</summary><div class="answer">Long enough to produce, separate, label, and ship; short enough that leftover activity decays on a clinical timescale. Much shorter and logistics fail. Much longer and residual dose and waste become harder.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Do not over-quote energy</h3><p>You may say the cascade releases multiple MeV-scale alphas. Do not turn “28 MeV” into a patient-outcome claim.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Cancer" data-title="The supply problem"><div class="inner">
+  <p class="eyebrow">Module 2 / Why production <span class="lvl lvl-0">Day 4</span></p>
+  <h2>The shortage is real. Your model does not close it by itself.</h2>
+  <div class="metrics">
+    <article class="metric"><b>~2 Ci/y</b><span>Order-of-magnitude current world Ac-225 from legacy <sup>229</sup>Th generators (literature supply context)</span></article>
+    <article class="metric"><b>~1,500</b><span>Rough patient-dose scale often quoted for that supply</span></article>
+    <article class="metric"><b>50,000+</b><span>Projected annual demand figure used as motivation, not a measured result</span></article>
+    <article class="metric"><b>97%</b><span>A deficit slogan derived from those estimates — motivation, not your experiment</span></article>
+  </div>
+  <div class="grid3" style="margin-top:14px">
+    <article class="panel"><h3>Thorium-229 milking</h3><p>Legacy <sup>229</sup>Th stocks decay into Ac-225. Reliable but tiny. Cannot meet large demand.</p></article>
+    <article class="panel teal"><h3>Accelerators / cyclotrons</h3><p>Proton, deuteron, or photon routes, including Berkeley’s deuteron-on-beryllium neutron source on Ra-226. Flexible, often small targets.</p></article>
+    <article class="panel gold"><h3>Reactors</h3><p>Irradiate Ra-226 in a neutron field. Fast neutrons favor (n,2n). Thermal neutrons favor capture to Ac-227. This is the path your reduced equations study.</p></article>
+  </div>
+  <div class="say"><strong>Say it aloud:</strong> “The medical motivation is a supply bottleneck. My contribution is a computational screening method for one modeled production pathway, not a new factory.”</div>
+  <article class="recall" data-id="supply"><div class="recall-label">Retrieval drill</div><div class="recall-q">Name three production families and which one your ODEs represent.</div><details><summary>Reveal answer</summary><div class="answer">Generator milking of Th-229; accelerator routes; reactor irradiation of Ra-226. The reduced five-nuclide model represents reactor-style neutron reactions plus decay, with a later Berkeley accelerator-neutron comparison that failed out of domain.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Ra-226 wording</h3><p>It can come from legacy materials, but it is radioactive source material. Do not casually call every Ra-226 target “nuclear waste.”</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Pathway" data-title="The two nuclear branches"><div class="inner">
+  <p class="eyebrow">Module 3 / The map <span class="lvl lvl-1">Day 5</span></p>
+  <h2>Read the pathway like a sentence</h2>
+  <p class="branch">Desired branch — medicine</p>
+  <div class="reaction"><div class="nuclide"><b><sup>226</sup>Ra</b><span>target</span></div><div class="arrow">(n,2n)<span>&rarr;</span>net loss of 1 neutron</div><div class="nuclide"><b><sup>225</sup>Ra</b><span>14.8 days</span></div><div class="arrow">β<sup>-</sup><span>&rarr;</span>neutron becomes proton</div><div class="nuclide good"><b><sup>225</sup>Ac</b><span>9.920 days</span></div></div>
+  <p class="branch">Competing branch — impurity of concern</p>
+  <div class="reaction"><div class="nuclide"><b><sup>226</sup>Ra</b><span>same target</span></div><div class="arrow">(n,γ)<span>&rarr;</span>captures 1 neutron</div><div class="nuclide"><b><sup>227</sup>Ra</b><span>42.2 minutes</span></div><div class="arrow">β<sup>-</sup><span>&rarr;</span>neutron becomes proton</div><div class="nuclide risk"><b><sup>227</sup>Ac</b><span>21.772 years</span></div></div>
+  <div class="grid2">
+    <article class="panel teal"><h3>(n,2n)</h3><div class="term-plain"><strong>Plain English:</strong> A neutron hits the nucleus, and two neutrons leave. Net: lose one neutron.</div><div class="term-use"><strong>In this project:</strong> This is the desired production reaction. It has an energy threshold near 6.42 MeV, so only sufficiently fast neutrons count.</div></article>
+    <article class="panel coral"><h3>(n,γ)</h3><div class="term-plain"><strong>Plain English:</strong> The nucleus swallows a neutron and emits a gamma ray. Mass number goes up by one.</div><div class="term-use"><strong>In this project:</strong> This opens the Ac-227 branch. Thermal and slower neutrons make this worse. Fast, hard spectra are preferred for the medical channel.</div></article>
+  </div>
+  <div class="warn"><strong>Ac-227 wording:</strong> Call it a long-lived tracked impurity concern. Do not quote one universal “FDA 0.01%” as if your project measured a legal limit. Real limits depend on product, time, dosimetry, and measurement.</div>
+  <article class="recall" data-id="branches"><div class="recall-label">Retrieval drill</div><div class="recall-q">Draw both branches from memory, including the reaction labels and half-lives.</div><details><summary>Reveal answer</summary><div class="answer">Ra-226 --(n,2n)--> Ra-225 --β- --> Ac-225. Ra-226 --(n,γ)--> Ra-227 --β- --> Ac-227. Threshold on the first reaction; thermal capture on the second.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Tonight</h3><p>Draw this twice from memory. The second drawing is the real test.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Pathway" data-title="Cross section, flux, barn"><div class="inner">
+  <p class="eyebrow">Module 3 / Collision language <span class="lvl lvl-1">Day 6</span></p>
+  <h2>A reaction rate is “how hard the rain is” times “how big the umbrella is”</h2>
+  <div class="formula">k(E) = φ(E) σ(E)</div>
+  <div class="grid3">
+    <article class="panel teal"><h3>Flux φ</h3><div class="term-plain"><strong>Plain English:</strong> How many neutrons pass through a square centimeter per second.</div><div class="term-use"><strong>Units:</strong> n·cm<sup>-2</sup>·s<sup>-1</sup>. In the model this is a supplied operating condition, not something the network invents.</div></article>
+    <article class="panel"><h3>Cross section σ</h3><div class="term-plain"><strong>Plain English:</strong> How likely that neutron is to cause that specific reaction at that energy. Not a literal geometric circle, but it has area units.</div><div class="term-use"><strong>Units:</strong> barns. 1 b = 10<sup>-24</sup> cm<sup>2</sup>. σ depends strongly on energy.</div></article>
+    <article class="panel gold"><h3>Rate k</h3><div class="term-plain"><strong>Plain English:</strong> Probability per target atom per second that the reaction happens.</div><div class="term-use"><strong>Units:</strong> s<sup>-1</sup> or h<sup>-1</sup>. This is what V4 tries to predict after geometry/spectrum folding.</div></article>
+  </div>
+  <div class="formula small">spectrum-averaged σ̄ = [∫ σ(E) φ(E) dE] / [∫ φ(E) dE]</div>
+  <div class="plain"><strong>Why a single σ number can lie:</strong> O’Connor 1960 measured σ(n,2n) = 1.60 ± 0.20 b at 14.5 MeV. A fast reactor spectrum has only a small fraction of neutrons that hard. Using 1.60 b as if it were a reactor-average value overpredicts Ac-225. That is the Joyo gap.</div>
+  <article class="recall" data-id="ksigma"><div class="recall-label">Retrieval drill</div><div class="recall-q">Show that φσ has units of 1/time, and explain why 14.5 MeV σ is not a Joyo yield.</div><details><summary>Reveal answer</summary><div class="answer">cm^-2 s^-1 × cm^2 = s^-1. A monoenergetic 14.5 MeV cross section does not equal a spectrum-averaged reactor rate. Most reactor neutrons sit below the 6.42 MeV threshold.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Fluence</h3><p>Fluence is flux integrated over time: total neutrons per area. Berkeley needs fluence, not only a flux slogan.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Pathway" data-title="The 6.42 MeV threshold"><div class="inner">
+  <p class="eyebrow">Module 3 / Energy <span class="lvl lvl-1">Day 6</span></p>
+  <h2>The desired reaction is a door with a locked energy latch</h2>
+  <div class="grid2">
+    <article class="panel teal"><h3>Threshold</h3><div class="term-plain"><strong>Plain English:</strong> Below a certain neutron energy, (n,2n) essentially does not happen because there is not enough energy to knock out two neutrons.</div><div class="term-use"><strong>In this project:</strong> Evaluated tables start near 6.4218 MeV. That is why “fast” is not a vibe word. It is a cutoff.</div></article>
+    <article class="panel"><h3>Spectral bias, preview</h3><p>Neural nets like smooth, low-frequency patterns. A sharp “off below 6.42, on above” is hard for them. That is why energy was passed through sine/cosine Fourier features (Tancik et al.).</p></article>
+  </div>
+  <div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>Source</th><th>What it told you about σ(n,2n)</th></tr></thead><tbody>
+    <tr><td>v1 training sigmoid</td><td>Saturated near 27 mb — about 28× too small at 14 MeV versus evaluated tables</td></tr>
+    <tr><td>JENDL-5 / ENDF/B-VIII.0</td><td>Pointwise evaluated curve: threshold 6.4218 MeV, peak 2.53 b at 10 MeV, 755.7 mb at 14 MeV</td></tr>
+    <tr><td>O’Connor &amp; Perkin 1960, EXFOR 21405</td><td>The only experimental (n,2n) point: 1.60 ± 0.20 b at 14.5 MeV</td></tr>
+    <tr><td>Joyo-calibrated effective σ</td><td>~1.44 mb — a spectrum-effective number, not a 14 MeV measurement</td></tr>
+  </tbody></table></div>
+  <div class="warn"><strong>July 2026 data hunt:</strong> you discovered the training sigmoid was mis-used as a pointwise law. You versioned ODE data (v1 frozen for old checkpoints, v2 evaluated). Honesty about this is stronger than hiding it.</div>
+  <article class="recall" data-id="threshold"><div class="recall-label">Retrieval drill</div><div class="recall-q">Why can a model be “accurate to Radau” and still miss Joyo yields?</div><details><summary>Reveal answer</summary><div class="answer">Radau accurately integrates the equations you give it. If σ(E) or the spectrum is wrong, the ODE truth is the wrong physics. Neural error and nuclear-data error are different layers.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>One line</h3><p>Solver truth is not nature truth.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Pathway" data-title="Sources minus sinks"><div class="inner">
+  <p class="eyebrow">Module 3 / Calculus idea <span class="lvl lvl-1">Day 8</span></p>
+  <h2>A derivative is just “how fast the pile is changing right now”</h2>
+  <p class="subtitle">You do not need to be a calculus expert. You need this one sentence: every isotope’s equation is sources minus sinks.</p>
+  <div class="plain"><strong>Start with Ac-225:</strong> it rises when Ra-225 decays into it, and falls when Ac-225 itself decays. No neutron reaction is required on that row in the reduced model.</div>
+  <div class="formula">dN<sub>Ac225</sub>/dt = λ<sub>Ra225</sub> N<sub>Ra225</sub> − λ<sub>Ac225</sub> N<sub>Ac225</sub></div>
+  <div class="grid2">
+    <article class="panel teal"><h3>Source</h3><p>An arrow pointing into the isotope. For Ra-225, the source is (n,2n) on Ra-226: +k<sub>2n</sub> N<sub>226</sub>.</p></article>
+    <article class="panel coral"><h3>Sink</h3><p>An arrow pointing out. For Ra-225, the sink is its own decay: −λ<sub>225</sub> N<sub>225</sub>.</p></article>
+  </div>
+  <div class="say"><strong>Say it to a teacher:</strong> “These are bookkeeping equations. They do not invent physics. They say: atoms of this type appear from parents and disappear when they decay or get hit.”</div>
+  <article class="recall" data-id="sourcesink"><div class="recall-label">Retrieval drill</div><div class="recall-q">Write the Ra-225 equation from the diagram without looking.</div><details><summary>Reveal answer</summary><div class="answer">dN225/dt = k2n N226 − λ225 N225.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Rebuild a row</h3><p>Draw arrows in as plus, arrows out as minus. That is the whole method.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Equations" data-title="The five Bateman equations"><div class="inner">
+  <p class="eyebrow">Module 4 / The model <span class="lvl lvl-2">Day 9</span></p>
+  <h2>This is the entire reduced physics world</h2>
+  <div class="formula small">dN<sub>226</sub>/dt = −(λ<sub>226</sub> + k<sub>2n</sub> + k<sub>γ</sub>) N<sub>226</sub></div>
+  <div class="formula small">dN<sub>225</sub>/dt = k<sub>2n</sub> N<sub>226</sub> − λ<sub>225</sub> N<sub>225</sub></div>
+  <div class="formula small">dN<sub>Ac225</sub>/dt = λ<sub>225</sub> N<sub>225</sub> − λ<sub>Ac225</sub> N<sub>Ac225</sub></div>
+  <div class="formula small">dN<sub>227</sub>/dt = k<sub>γ</sub> N<sub>226</sub> − λ<sub>227</sub> N<sub>227</sub></div>
+  <div class="formula small">dN<sub>Ac227</sub>/dt = λ<sub>227</sub> N<sub>227</sub> − λ<sub>Ac227</sub> N<sub>Ac227</sub></div>
+  <div class="plain"><strong>Compact form:</strong> dN/dt = A N, where A is a 5×5 matrix of those coefficients. For constant rates this is a linear chain. That is why an exact matrix exponential exists, and why “ML vs a five-nuclide solver” is not the same contest as “ML vs OpenMC.”</div>
+  <div class="grid2">
+    <article class="panel green"><h3>Inside the fence</h3><p>Five nuclides, supplied or learned rates, decay, (n,2n), (n,γ).</p></article>
+    <article class="panel coral"><h3>Outside the fence (Dr. Engle)</h3><p>Neutron transport through real geometry, heat, target melting, wet chemistry, recovery yield, shipping, clinical dose, CAD of a specific facility.</p></article>
+  </div>
+  <article class="recall" data-id="fiveodes"><div class="recall-label">Retrieval drill</div><div class="recall-q">Which row has no production from a neutron rate, only decay in and decay out?</div><details><summary>Reveal answer</summary><div class="answer">Ac-225 and Ac-227 in this reduced model. They are fed by parent beta decay, not by a direct (n,2n) or (n,γ) on themselves in the five-species chain.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Bateman</h3><p>Historical name for radioactive-chain inventory equations. You can say “coupled decay-and-production ODEs.”</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Equations" data-title="Stiffness without the myth"><div class="inner">
+  <p class="eyebrow">Module 4 / Numerical physics <span class="lvl lvl-2">Day 10</span></p>
+  <h2>Stiffness is why V1 died. It is not a speed trophy.</h2>
+  <div class="grid2">
+    <article class="panel"><h3>Plain English</h3><p>The system has a very fast process and a very slow process at the same time. If you take big time steps, the fast piece explodes numerically. If you take tiny steps, the slow piece takes forever to compute.</p></article>
+    <article class="panel coral"><h3>What happened in V1</h3><p>A vanilla neural net averaged over the fast Ra-227 spike, missed it, and predicted negative inventories because nothing forced mass or positivity. That is “hallucinating atoms.”</p></article>
+  </div>
+  <div class="formula">S ≈ λ<sub>Ra227</sub> / λ<sub>Ra226</sub> ≈ 2 × 10<sup>7</sup></div>
+  <div class="success"><strong>Professional sentence:</strong> “The reduced chain is stiff because Ra-227’s decay constant is about 20 million times Ra-226’s. I therefore used a stiff ODE integrator (Radau) as a numerical reference, not as experimental truth.”</div>
+  <article class="recall" data-id="stiff2"><div class="recall-label">Retrieval drill</div><div class="recall-q">A judge says “so you are 20 million times faster.” Correct them in two sentences.</div><details><summary>Reveal answer</summary><div class="answer">That ratio is a timescale ratio inside the equations, not a runtime ratio. My measured V3 batch was 84.9× faster than Radau on the reduced ODE task and 56.7× slower than the exact reduced-chain baseline.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Explicit Euler</h3><p>You may mention that naive forward Euler needs tiny steps for the fast eigenvalue. Do not invent a 40-hour cluster sweep unless you timed it.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Equations" data-title="The truth ladder"><div class="inner">
+  <p class="eyebrow">Module 4 / What “true” means <span class="lvl lvl-2">Day 11</span></p>
+  <h2>A solver can be mathematically right and physically incomplete</h2>
+  <div class="table-wrap"><table><thead><tr><th>Reference</th><th>What it is</th><th>What it proves</th><th>What it does not prove</th></tr></thead><tbody>
+    <tr><td><strong>Matrix exponential</strong></td><td>Exact solution of the linear chain for constant rates</td><td>Propagation of the five equations is correct</td><td>That rates or the chain are complete physics</td></tr>
+    <tr><td><strong>Radau</strong></td><td>Implicit stiff ODE integrator (scipy)</td><td>Accurate numerical solution of the declared ODEs</td><td>Reactor or experimental truth</td></tr>
+    <tr><td><strong>OpenMC / SCALE / ORIGEN</strong></td><td>Transport + large depletion networks</td><td>Much richer facility-style calculation</td><td>Anything about your model until you compare directly</td></tr>
+    <tr><td><strong>IAEA Isotopia</strong></td><td>International production-planning tool (Engle recommendation)</td><td>Community benchmark to compare against</td><td>That your surrogate replaces it</td></tr>
+    <tr><td><strong>Joyo papers</strong></td><td>Reactor simulation / planning studies</td><td>Order-of-magnitude external context</td><td>That your default ODE spectrum is Joyo</td></tr>
+    <tr><td><strong>Berkeley / Morrell</strong></td><td>Real accelerator-neutron experiment</td><td>External evidence at two energies</td><td>Universal reactor or clinical validation</td></tr>
+  </tbody></table></div>
+  <div class="say"><strong>Say it aloud:</strong> “I have a ladder of truth. I do not jump from Radau agreement to ‘national laboratory experimental concordance.’”</div>
+  <article class="recall" data-id="ladder"><div class="recall-label">Retrieval drill</div><div class="recall-q">Place Radau, exact expm, OpenMC, and Berkeley on the ladder in one breath.</div><details><summary>Reveal answer</summary><div class="answer">Exact expm and Radau test the reduced equations. OpenMC/SCALE test transport-rich physics I have not fully replaced. Berkeley tests whether a reconstructed real experiment matches, which so far failed by ~600× and was out of domain.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Never mix labels</h3><p>Do not call Radau output “reactor data” or V4 TENDL proxy “OpenMC data.”</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Equations" data-title="Units workshop"><div class="inner">
+  <p class="eyebrow">Module 4 / Hygiene <span class="lvl lvl-1">Day 12</span></p>
+  <h2>Most “model errors” in isotope work are unit errors</h2>
+  <div class="table-wrap"><table><thead><tr><th>Quantity</th><th>SI-ish unit</th><th>Common trap</th></tr></thead><tbody>
+    <tr><td>Inventory N</td><td>atoms, or mol</td><td>Confusing atoms with grams or with activity</td></tr>
+    <tr><td>Activity A</td><td>Bq (also Ci, µCi)</td><td>Missing the reference time (EOB vs after cooling vs after chemistry)</td></tr>
+    <tr><td>Flux φ</td><td>n·cm<sup>-2</sup>·s<sup>-1</sup></td><td>Using a core-average flux as if it were the above-threshold flux</td></tr>
+    <tr><td>Fluence</td><td>n·cm<sup>-2</sup></td><td>Omitting beam-current history</td></tr>
+    <tr><td>Cross section</td><td>b or cm<sup>2</sup></td><td>Using 14 MeV σ as a reactor-average σ</td></tr>
+    <tr><td>Energy</td><td>eV, keV, MeV</td><td>Thermal 0.0253 eV vs 14 MeV fusion-like neutrons vs 33–40 MeV deuterons</td></tr>
+  </tbody></table></div>
+  <div class="grid2" style="margin-top:14px">
+    <article class="panel teal"><h3>Conversion you must own</h3><div class="formula small">1 Ci = 3.7×10<sup>10</sup> Bq</div><div class="formula small">N = A / λ</div></article>
+    <article class="panel gold"><h3>Berkeley distinction</h3><p>Published recovered activities were about 1.4 and 0.7 µCi at 33 and 40 MeV. Produced activity would be higher. Your first reconstruction overpredicted by ~600× and sat outside V3 support.</p></article>
+  </div>
+  <article class="recall" data-id="units2"><div class="recall-label">Retrieval drill</div><div class="recall-q">A paper says “0.7 µCi Ac-225.” What four questions do you ask before comparing to a model?</div><details><summary>Reveal answer</summary><div class="answer">Which isotope; produced or recovered; exact timestamp; and whether chemistry yield, detector efficiency, and decay correction are included.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Practice</h3><p>Convert 0.7 µCi to Bq, then to atoms of Ac-225 using λ from T½ = 9.920 d.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="Machine learning from zero"><div class="inner">
+  <p class="eyebrow">Module 5 / From zero <span class="lvl lvl-0">Day 15</span></p>
+  <h2>A model is a flexible function. Training picks its numbers.</h2>
+  <div class="glossary">
+    <article class="panel teal"><h3>Feature</h3><p>An input. Time, flux, energy, distance, starting inventory.</p></article>
+    <article class="panel"><h3>Target / label</h3><p>The answer you want, here a trajectory or two reaction rates. In this project, labels often come from Radau, not from a hospital.</p></article>
+    <article class="panel violet"><h3>Weights</h3><p>The adjustable numbers inside the network. Not nuclear weights. Not statistical survey weights unless you say so.</p></article>
+    <article class="panel gold"><h3>Loss</h3><p>A score of wrongness. Training tries to lower it. A low loss is not automatically physical truth.</p></article>
+    <article class="panel green"><h3>Epoch</h3><p>One pass through the training set. More epochs can overfit. Best epoch is a choice that must not peek at the final test.</p></article>
+    <article class="panel coral"><h3>Overfitting</h3><p>Memorizing training cases so new cases get worse. Your checkpoint crisis was a cousin of this: optimistic validation.</p></article>
+  </div>
+  <div class="plain"><strong>One training step:</strong> predict → compare to labels and/or physics → compute gradients → update weights. That is not thinking. It is numerical optimization.</div>
+  <div class="warn"><strong>LSTM is not human memory.</strong> “Long Short-Term Memory” is a gated recurrent network that carries a numerical state along a sequence of time points.</div>
+  <article class="recall" data-id="mlzero"><div class="recall-label">Retrieval drill</div><div class="recall-q">Explain feature, label, loss, epoch, and overfitting to someone who has never coded.</div><details><summary>Reveal answer</summary><div class="answer">Inputs; desired answers; a wrongness score; one full practice lap; getting great at yesterday’s homework and failing tomorrow’s quiz.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Synthetic data</h3><p>Call it solver-generated modeled data. Valid for method testing; weaker than independent experiment.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="MLP, LSTM, GP"><div class="inner">
+  <p class="eyebrow">Module 5 / Three tools <span class="lvl lvl-1">Day 16</span></p>
+  <h2>You used three model families on purpose</h2>
+  <div class="grid3">
+    <article class="panel"><h3>MLP (feed-forward)</h3><div class="term-plain"><strong>Plain English:</strong> A stack of layers. Each time point is scored somewhat independently unless you add extra structure.</div><div class="term-use"><strong>In this project:</strong> V1 vanilla MLP failed. V2 was an MLP-PINN. V3 compared against a parameter-matched MLP (2.91% vs V3 0.97% on the matched modeled endpoint test).</div></article>
+    <article class="panel teal"><h3>LSTM</h3><div class="term-plain"><strong>Plain English:</strong> A sequence model with gates that keep or forget numerical state as time walks forward.</div><div class="term-use"><strong>In this project:</strong> V3 PI-LSTM, 2 layers, hidden size 256, 64 time points, 1,400 Radau trajectories. V4 also used LSTMs, but sequence length was one, so memory was not tested there.</div></article>
+    <article class="panel gold"><h3>Gaussian process (GP)</h3><div class="term-plain"><strong>Plain English:</strong> A probabilistic interpolator. Similar inputs give similar outputs, with a built-in uncertainty blob.</div><div class="term-use"><strong>In this project:</strong> V4 baseline for small smooth tabular rate data. Raw ±2 SD joint coverage was only 2.1%, so calibration was mandatory.</div></article>
+  </div>
+  <div class="success"><strong>Why a GP is a serious baseline:</strong> on small, smooth, static tables, a fancy network should not win by default. V4’s scientific winner was “none.”</div>
+  <article class="recall" data-id="threemodels"><div class="recall-label">Retrieval drill</div><div class="recall-q">Which version used an LSTM as a sequence model, and why can V4 not prove that memory helps?</div><details><summary>Reveal answer</summary><div class="answer">V3 is sequential over 64 times. V4 used one-step geometry/rate features, so recurrence had no real sequence to remember.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>PINN is not a fourth architecture</h3><p>Physics-informed is a training/structure idea. You can have a PINN-MLP or a PI-LSTM.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="Splits, seeds, freezing"><div class="inner">
+  <p class="eyebrow">Module 5 / Experimental design <span class="lvl lvl-2">Day 19</span></p>
+  <h2>Good testing is how you avoid accidentally cheating</h2>
+  <div class="grid4">
+    <article class="panel teal"><h3>Train</h3><p>Fits weights.</p></article>
+    <article class="panel"><h3>Selection</h3><p>Chooses checkpoint or settings.</p></article>
+    <article class="panel gold"><h3>Calibration</h3><p>Sizes uncertainty intervals. Does not retrain the mean model.</p></article>
+    <article class="panel coral"><h3>Test</h3><p>Judges after everything is frozen.</p></article>
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <article class="panel violet"><h3>Seed</h3><p>Fixes pseudorandom initialization. Seed 42 is not a physics constant. Multiple seeds test luck. V3’s strongest result is still one independent seed. V4 used five LSTM seeds: 42, 314, 1618, 2026, 2718.</p></article>
+    <article class="panel green"><h3>Frozen</h3><p>Weights and decision rules stop changing before the final look at the test. If you tune after seeing the answer, the test is no longer a test.</p></article>
+  </div>
+  <div class="warn"><strong>Your documented leak:</strong> a Colab zip reported ~1.75% test Ac-225, but validation scenarios had overlapped training seeds, and the bundled weights were a legacy 128/4 model. Local honest scoring was catastrophic. That is why Run C required disjoint seeds and config-in-checkpoint.</div>
+  <article class="recall" data-id="splits2"><div class="recall-label">Retrieval drill</div><div class="recall-q">What are V4’s four split sizes, and why is the 48-case set not a virgin external test?</div><details><summary>Reveal answer</summary><div class="answer">160 train, 24 selection, 24 calibration, 48 locked test. The 48 were locked for V4 but had appeared in an earlier V2 geometry diagnostic.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Hook</h3><p>Train learns. Selection chooses. Calibration sizes. Test judges.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="PINN idea and V1 failure"><div class="inner">
+  <p class="eyebrow">Module 5 / Physics-informed <span class="lvl lvl-2">Day 17</span></p>
+  <h2>A PINN is a model that is punished when it breaks the equations</h2>
+  <div class="term-plain"><strong>Plain English:</strong> Besides matching data, the training loss also asks: if I plug the prediction into dN/dt = A N, how big is the leftover?</div>
+  <div class="term-use"><strong>In this project:</strong> V2 used differential residuals plus Fourier energy, adaptive activations, Jacobian row-norm balancing, and (later abandoned) MC dropout. V3 moved to an integrated trapezoidal residual because derivatives amplify stiffness noise.</div>
+  <div class="grid2" style="margin-top:14px">
+    <article class="panel coral"><h3>V1, Spring 2026</h3><ul><li>Standard MLP: (t, φ, E) → 5 inventories.</li><li>No physics loss that mattered enough.</li><li>Missed the 42-minute Ra-227 spike.</li><li>Predicted negative mass: “alchemy.”</li></ul></article>
+    <article class="panel teal"><h3>Why physics loss is not magic</h3><p>It only enforces the equations you coded. Wrong σ(E), missing transport, or a metric mismatch (train on trajectories, score endpoints) can still fail. Sprint-6 and endpoint-collapse logs exist for that reason.</p></article>
+  </div>
+  <article class="recall" data-id="pinnv1"><div class="recall-label">Retrieval drill</div><div class="recall-q">What two V1 failures would you put on a whiteboard for a teacher?</div><details><summary>Reveal answer</summary><div class="answer">It could not resolve the stiff Ra-227 transient, and it could predict negative inventories because it had no structural physics or positivity prior.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Raissi 2019</h3><p>Cite PINNs as established. You did not invent the class.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="The four physics-ML tricks"><div class="inner">
+  <p class="eyebrow">Module 5 / Architecture <span class="lvl lvl-3">Day 18</span></p>
+  <h2>Four tools, each with a human reason</h2>
+  <div class="grid2">
+    <article class="panel teal"><h3>1. Fourier features (Tancik)</h3><p>Pass energy and time through sines and cosines at several frequencies. Helps the net see sharp thresholds and fast transients instead of only smooth curves. V3: 8 energy bands, later 16 time bands.</p></article>
+    <article class="panel"><h3>2. Hard initial condition (Lagaris)</h3><div class="formula small">N(t) = [1 − α(t)] N(0) + α(t) N<sub>net</sub>(t), &nbsp; α(0) = 0</div><p>Time zero is locked to the input inventory. Stops “mass from nowhere” at t = 0. α uses a learnable per-species timescale.</p></article>
+    <article class="panel violet"><h3>3. Integrated trapezoidal loss (Nasiri &amp; Dargazany)</h3><div class="formula small">r<sub>k</sub> = N<sub>k+1</sub> − N<sub>k</sub> − (Δt/2)[f(N<sub>k</sub>)+f(N<sub>k+1</sub>)]</div><p>Punish interval imbalance instead of instantaneous dN/dt. Jaden Palmer pushed this after V2 overshoots. Limit: trapezoid is approximate on long log-spaced steps for 42.2-minute Ra-227.</p></article>
+    <article class="panel gold"><h3>4. Jacobian row-norm (Bento)</h3><p>Ac-225 is tiny next to Ra-226. Without balancing, the loss ignores the medicine. Divide each residual by that row’s scale so trace species count.</p></article>
+  </div>
+  <div class="plain"><strong>Also in the code:</strong> softplus keeps inventories nonnegative; optional v2 distillation; overshoot penalty on Ra-227; later exact-exponential residual option that must not be claimed for a run that did not use it.</div>
+  <article class="recall" data-id="fourtricks"><div class="recall-label">Retrieval drill</div><div class="recall-q">Give one sentence each for Fourier, hard IC, integrated loss, and Jacobian balancing.</div><details><summary>Reveal answer</summary><div class="answer">Fourier exposes scales; hard IC locks t=0; trapezoid enforces integrated Bateman balance; Jacobian stops bulk Ra-226 from drowning Ac-225 in the loss.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Abandoned: MC dropout</h3><p>Jaden: randomly dropping neurons wrecks physical consistency. Replaced by conformal / later calibration ideas.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="ML" data-title="Uncertainty and rejection"><div class="inner">
+  <p class="eyebrow">Module 5 / Safety <span class="lvl lvl-2">Day 20</span></p>
+  <h2>A useful surrogate must know when not to answer</h2>
+  <div class="grid3">
+    <article class="panel"><h3>Accuracy</h3><p>How close is the point prediction? Median and p95 relative error.</p></article>
+    <article class="panel teal"><h3>Coverage</h3><p>How often does the interval contain the true answer? V4 calibrated joint coverage: 95.8% (46/48) for both models.</p></article>
+    <article class="panel coral"><h3>OOD rejection</h3><p>Out-of-distribution: an input unlike training. The guard refused 184/184 constructed outside-range cases and falsely rejected 0/48 locked in-domain families.</p></article>
+  </div>
+  <div class="warn"><strong>Coverage is not accuracy.</strong> A huge interval can cover everything and still be useless. Rejection is not “OOD accuracy.” You do not report accuracy on rejected cases.</div>
+  <div class="plain"><strong>GP lesson:</strong> raw ±2 SD joint coverage was 2.1% (1/48). Two standard deviations are near 95% only under assumptions. You tested the assumption and it failed until calibration.</div>
+  <article class="recall" data-id="ood"><div class="recall-label">Retrieval drill</div><div class="recall-q">How are calibration and OOD rejection different?</div><details><summary>Reveal answer</summary><div class="answer">Calibration resizes intervals for accepted cases. OOD rejection refuses to answer when the input is unlike the domain, rather than pretending the interval is still trustworthy.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>p95</h3><p>About 95% of errors are at or below this tail number. A pretty median can hide a disastrous tail that mis-ranks schedules.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="V1 and the wall of stiffness"><div class="inner">
+  <p class="eyebrow">Module 6 / Lived history <span class="lvl lvl-2">Day 22</span></p>
+  <h2>Struggle 1: the vanilla network was a total failure</h2>
+  <p class="subtitle">If a teacher asks “why physics-informed?”, this is the answer. Not a slogan. A corpse of a model.</p>
+  <div class="grid2">
+    <article class="panel coral"><h3>What you tried</h3><p>MLP maps time, flux, and energy to five concentrations. Ordinary deep learning. No Bateman structure.</p></article>
+    <article class="panel"><h3>What happened</h3><ul><li>Ra-227 spike averaged away (stiffness 20 million to 1).</li><li>Negative inventories: atoms from nowhere.</li><li>Trace Ac-225 ignored beside bulk Ra-226.</li></ul></article>
+  </div>
+  <div class="say"><strong>Say it aloud:</strong> “My first model failed because it had no concept of decay chains or positivity. That failure is why later versions bake physics into the loss and the architecture.”</div>
+  <article class="recall" data-id="s1"><div class="recall-label">Story drill</div><div class="recall-q">Tell Struggle 1 in 20 seconds.</div><details><summary>Reveal answer</summary><div class="answer">Vanilla MLP could not learn a 42-minute species next to a 1600-year species and predicted negative mass. I had to add physics.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Do not hide this</h3><p>AP Research and ISEF both reward inquiry. Failure that taught you something is evidence of method, not shame.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="V2 PINN and Jaden Palmer"><div class="inner">
+  <p class="eyebrow">Module 6 / Expert stress test <span class="lvl lvl-2">Day 22</span></p>
+  <h2>Struggle 2: a working PINN still had the wrong uncertainty and the wrong loss shape</h2>
+  <div class="plain"><strong>June 20, 2026, 1:50–3:00 PM.</strong> Technical review with Jaden Palmer, PhD researcher, NC State ARTISANS Lab. He later agreed to be ISEF Qualified Scientist (Form 2).</div>
+  <div class="table-wrap"><table><thead><tr><th>His critique</th><th>What you changed</th></tr></thead><tbody>
+    <tr><td>MC dropout randomly killing neurons is not credible epistemic UQ for physics</td><td>Dropped MC dropout; moved toward conformal / calibrated intervals</td></tr>
+    <tr><td>Differential dN/dt loss amplifies noise and stiffness; caused overshoots</td><td>Integrated trapezoidal physics loss (Nasiri &amp; Dargazany Reduced-PINN)</td></tr>
+    <tr><td>Need a real time-series baseline, not only “PINN vs ODE”</td><td>LSTM backbone and later a parameter-matched MLP control</td></tr>
+    <tr><td>Need empirical or analytical benchmarks, not only Radau self-consistency</td><td>Literature CSV, Joyo calibration study, Berkeley attempt</td></tr>
+  </tbody></table></div>
+  <div class="grid2" style="margin-top:14px">
+    <article class="panel teal"><h3>V2 what worked</h3><p>Fourier energy, adaptive activations, Jacobian balancing. Held-out Ac-225 near 4.5% versus Radau on the recorded v2 protocol. 6/6 internal gates on the recorded checkpoint. Streamlit demo.</p></article>
+    <article class="panel gold"><h3>Checksum humility</h3><p>The app checkpoint and the old validation JSON have not always shared the same SHA-256. Never quote 4.51% unless file, checksum, and record agree.</p></article>
+  </div>
+  <article class="recall" data-id="s2"><div class="recall-label">Story drill</div><div class="recall-q">Name Jaden’s four critiques without notes.</div><details><summary>Reveal answer</summary><div class="answer">MC dropout; differential loss; LSTM/time-series baseline; empirical validation.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Tone</h3><p>Expert criticism is a gift. Quote it as method improvement, not as name-dropping.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="The checkpoint crisis"><div class="inner">
+  <p class="eyebrow">Module 6 / Reproducibility <span class="lvl lvl-3">Day 23</span></p>
+  <h2>Struggle 3: the zip file lied; the weights were honest</h2>
+  <p class="subtitle">July 3, 2026 evening. Downloaded PI_LSTM_Results.zip. JSON said ~1.75% test Ac-225. Local compare_models.py said ~74% endpoint error.</p>
+  <div class="table-wrap"><table><thead><tr><th>Failure</th><th>What actually happened</th><th>Rule you now live by</th></tr></thead><tbody>
+    <tr><td>Legacy weights in the zip</td><td>Bundled .pth was 128/4, no hard IC, bare state_dict — not the 256/8 model the JSON described</td><td>Architecture + config must travel with weights</td></tr>
+    <tr><td>Val overlapped train</td><td>Validation seeds were not disjoint → optimistic 0.5–1.8% val</td><td>Val seed 2025, test seed 2024, no train overlap</td></tr>
+    <tr><td>Wrong load</td><td>128/4 weights into 256/8 + hard-IC model silently destroyed trajectories</td><td>Loader instantiates from saved config</td></tr>
+    <tr><td>Wrong metric</td><td>Saved on last-timestep or overlapping val; scored on full 22-scenario trajectories</td><td>Checkpoint metric = the number you will report</td></tr>
+  </tbody></table></div>
+  <div class="say"><strong>Say it to a teacher:</strong> “A good-looking number in a results file is not a result until the model file, the code that scores it, and the split that produced it are the same experiment.”</div>
+  <article class="recall" data-id="s3"><div class="recall-label">Story drill</div><div class="recall-q">What four mismatches created the checkpoint crisis?</div><details><summary>Reveal answer</summary><div class="answer">Wrong architecture in the zip; overlapping val; load mismatch; endpoint vs trajectory / different splits.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>This is professional practice</h3><p>National labs care about this more than about a 0.1% median flex.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="Endpoint collapse"><div class="inner">
+  <p class="eyebrow">Module 6 / Metric alignment <span class="lvl lvl-3">Day 23</span></p>
+  <h2>Struggle 4: the model looked better while Ac-225 at the end went to zero</h2>
+  <div class="formula small">relative endpoint error = |pred − truth| / |truth| &nbsp;→&nbsp; if pred ≈ 0, error ≈ 1 (100%)</div>
+  <div class="grid2">
+    <article class="panel coral"><h3>Train ≠ score</h3><p>Smooth-L1 over 64 log-spaced times barely punishes a tiny product at the last step. Causal physics weights even emphasize early times. Run A: trajectory medians improved while checkpoint “best” locked near 1.0.</p></article>
+    <article class="panel gold"><h3>Curriculum mismatch</h3><p>Stiffness curriculum trained on destiffened ODEs (rate_scale 100 → 1) while “best” always scored full-stiffness Radau. Run A2: endpoint error exploded (~1e27) and best froze at 1.0 by epoch 25.</p></article>
+  </div>
+  <div class="warn"><strong>Lesson:</strong> curriculum is not always bad. It is bad when train stiffness ≠ score stiffness. A2b turned curriculum off and still had a brutal bare relative-endpoint loss. Metric design is research, not a footnote.</div>
+  <article class="recall" data-id="s4"><div class="recall-label">Story drill</div><div class="recall-q">Why does pred = 0 give ~100% relative error, and why did trajectory loss hide it?</div><details><summary>Reveal answer</summary><div class="answer">|0 − truth|/truth = 1. A mean over 64 steps lets 63 earlier points look fine while the harvest time is empty.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>File</h3><p>docs/ENDPOINT_COLLAPSE_HISTORY_20260731.md</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="Wrong cross sections"><div class="inner">
+  <p class="eyebrow">Module 6 / Nuclear data <span class="lvl lvl-3">Day 24</span></p>
+  <h2>Struggle 5: the ODE was trained on a 27 mb sigmoid that was not JENDL</h2>
+  <div class="grid2">
+    <article class="panel coral"><h3>v1 (legacy, still default for old weights)</h3><ul><li>σ(n,2n): smooth sigmoid → 27 mb (~28× too small at 14 MeV)</li><li>σ(n,γ): 12.8 b × 1/v, mislabeled as ENDF; actually Atlas-like</li><li>Half-lives hard-coded</li></ul></article>
+    <article class="panel teal"><h3>v2 (evaluated, July 18, 2026)</h3><ul><li>JENDL-5 / ENDF/B-VIII.0 pointwise tables (identical for Ra-226 (n,2n))</li><li>Thermal (n,γ) anchored to Bagheri 2015 13.8 ± 0.3 b because libraries tabulate zero below 1 keV</li><li>NuDat 3 half-lives with uncertainties</li></ul></article>
+  </div>
+  <div class="plain"><strong>Key experimental finding:</strong> switching to real σ(E) made the monoenergetic Joyo overprediction worse (369–2153× vs 12–24×). That proved the dominant Joyo error is the flux-spectrum approximation, not “the cross section was a bit low.”</div>
+  <div class="success"><strong>Professional move:</strong> version the data, keep v1 bit-stable for old checkpoints, document the hunt in DATA_PROVENANCE.md. Do not silently rewrite history.</div>
+  <article class="recall" data-id="s5"><div class="recall-label">Story drill</div><div class="recall-q">What did v2 data change about the Joyo discrepancy?</div><details><summary>Reveal answer</summary><div class="answer">It got worse, so the remaining gap is how we represent the neutron spectrum, not only the old 27 mb sigmoid.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Cite EXFOR</h3><p>21405 for (n,2n); 31760 for Bagheri thermal capture.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="Joyo and literature honesty"><div class="inner">
+  <p class="eyebrow">Module 6 / External papers <span class="lvl lvl-2">Day 24</span></p>
+  <h2>Struggle 6: you wanted experimental trajectories; the literature does not have them</h2>
+  <div class="grid2">
+    <article class="panel"><h3>What you built</h3><p><code>data/literature_benchmarks.csv</code> — 17 rows with honest source_type labels. Only 3 neutron-comparable for Ac-225 scoring. 14 are structurally non-comparable (wrong reaction, accelerator route, or no activity).</p></article>
+    <article class="panel coral"><h3>Joyo</h3><p>Published simulations ~15–30 GBq. Default ODE at “Joyo-like” slogans sat ~10–25× higher. Both V2 and PI-LSTM track the same ODE, so both “fail” together. That is a physics-input gap, not proof that LSTM is worse at Joyo.</p></article>
+  </div>
+  <div class="warn"><strong>Never say:</strong> “IsotopePINN matched JAEA at 1.00× (15.4 GBq).” That sentence appeared in an earlier paper draft. It is not a supported result. A calibrated effective σ ≈ 1.44 mb can be forced to match; that is a diagnosis, not a validation victory.</div>
+  <div class="say"><strong>Poster sentence you can defend:</strong> “We validate self-consistency against Radau on held-out scenarios, then compare endpoints to published reactor simulations and other routes — labeled honestly by production path.”</div>
+  <article class="recall" data-id="s6"><div class="recall-label">Story drill</div><div class="recall-q">Why is a Joyo match after scaling σ not experimental validation?</div><details><summary>Reveal answer</summary><div class="answer">You adjusted an effective parameter until the number agreed. That explains a discrepancy. It does not independently confirm the original model.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>137-source audit</h3><p>research/literature_audit_2026/RESEARCH_FINDINGS.md — scoping review, not 137 full-text peer reviews.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="Berkeley 600x"><div class="inner">
+  <p class="eyebrow">Module 6 / Real data <span class="lvl lvl-3">Day 25</span></p>
+  <h2>Struggle 7: the failed reconstruction is a result, not an embarrassment</h2>
+  <div class="grid2">
+    <article class="panel teal"><h3>Published experiment (Morrell / Berkeley)</h3><ul><li>33 and 40 MeV deuterons on thick beryllium</li><li>~1 mg Ra-226 as radium nitrate</li><li>Recovered Ac-225 ≈ 1.4 and 0.7 µCi</li><li>No Ac-227 observed — need a numerical detection limit, not “zero”</li></ul></article>
+    <article class="panel coral"><h3>First V3 reconstruction</h3><p>Frozen estimate ~600× high. Cases outside V3 support. Correct action: preserve the failure, reject the input, do not retune the model to force agreement.</p></article>
+  </div>
+  <div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>Still missing for a fair test</th><th>Why</th></tr></thead><tbody>
+    <tr><td>Target-integrated spectrum and absolute fluence</td><td>Sets neutron number and energy at the Ra target</td></tr>
+    <tr><td>Geometry, beam spot, current history</td><td>Converts source neutrons into target exposure versus time</td></tr>
+    <tr><td>Produced vs recovered activity and timestamps</td><td>Separates nuclear yield, decay, and chemistry loss</td></tr>
+    <tr><td>Ac-227 MDA</td><td>“Not observed” is an upper bound</td></tr>
+  </tbody></table></div>
+  <article class="recall" data-id="s7"><div class="recall-label">Defense drill</div><div class="recall-q">Explain the 600× miss without making excuses.</div><details><summary>Reveal answer</summary><div class="answer">The frozen model failed badly on a real case outside its domain. That proves it is not externally validated and supports the rejection rule. Missing fluence, geometry, timing, and recovery still mix reconstruction error with model error.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Success would mean</h3><p>Transfer to two accelerator-neutron experiments, not reactor, commercial, or clinical validation.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Struggles" data-title="Engle and the fence"><div class="inner">
+  <p class="eyebrow">Module 6 / Scope <span class="lvl lvl-2">Day 25</span></p>
+  <h2>Struggle 8: a national expert told you what not to model</h2>
+  <p class="subtitle">August 27, 2026. Dr. Jonathan W. Engle, UW–Madison Cyclotron Research Group.</p>
+  <div class="grid2">
+    <article class="panel teal"><h3>Stay inside</h3><p>Probability of initiating desired reactions (σ·φ) and the decay kinetics dN/dt = A N, given user-specified target composition and incident flux/beam.</p></article>
+    <article class="panel coral"><h3>Stay outside unless you have CAD</h3><p>Target thermodynamics and wet radiochemistry cannot be universally established without proprietary facility geometries. Do not fake them.</p></article>
+  </div>
+  <div class="plain"><strong>Gold-standard pointer:</strong> IAEA Isotopia (<a href="https://www-nds.iaea.org/relnsd/isotopia/isotopia.html" target="_blank" rel="noopener">isotopia.html</a>) as the international production benchmark to compare with and extend using fast screening — not to casually claim you beat.</div>
+  <div class="say"><strong>Say it aloud:</strong> “My model is a nuclear-kinetics and reaction-rate screening layer. Chemistry and heat are out of scope until a specific facility provides geometry and process data.”</div>
+  <article class="recall" data-id="s8"><div class="recall-label">Story drill</div><div class="recall-q">What two things did Engle put in-bounds, and what two did he put out?</div><details><summary>Reveal answer</summary><div class="answer">In: reaction initiation rates and decay/production kinetics. Out: universal heat-transfer limits and wet chemistry without facility CAD.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Use this on Form 2 conversations</h3><p>It shows you take domain experts as constraints, not decorations.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Evidence" data-title="Frozen V3 numbers"><div class="inner">
+  <p class="eyebrow">Module 7 / V3 <span class="lvl lvl-2">Day 26</span></p>
+  <h2>V3 was promising on the reduced modeled problem</h2>
+  <div class="metrics">
+    <article class="metric"><b>0.97%</b><span>Matched modeled test: worst-mesh median Ac-225 endpoint error, frozen seed 42</span></article>
+    <article class="metric"><b>1.57%</b><span>Shifted modeled test median point estimate — not a universal guarantee</span></article>
+    <article class="metric"><b>2.91%</b><span>Parameter-matched MLP on the declared matched comparison</span></article>
+    <article class="metric"><b>1 seed</b><span>Strongest V3 headline still has seed-to-seed uncertainty</span></article>
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <article class="panel teal"><h3>10,000 schedules</h3><p>Recovered 18 of Radau’s top 20. Selected plan was Radau rank 2, 0.047% below Radau’s best objective. Ranking shortcut, then exact verification.</p></article>
+    <article class="panel coral"><h3>Speed boundary</h3><p>84.9× faster than Radau for that batch. 56.7× slower than the exact analytic batch baseline for the same reduced equations. ML is not the fastest five-nuclide solver.</p></article>
+  </div>
+  <div class="warn"><strong>Do not mix:</strong> V3’s 0.97% is Ac-225 trajectory endpoints. V4’s 1.83% is two reaction rates. Different outputs, different datasets.</div>
+  <figure class="figure"><img src="graphs/v3_v2_vs_pilstm_ac225.png" alt="V2 vs PI-LSTM Ac-225"><figcaption>Use figures only with the caption that names model, metric, and modeled vs experimental.</figcaption></figure>
+  <article class="recall" data-id="v3num"><div class="recall-label">Numbers drill</div><div class="recall-q">What do 0.97%, 2.91%, rank 2, 84.9×, and 56.7× each mean?</div><details><summary>Reveal answer</summary><div class="answer">V3 matched median endpoint error; matched MLP; solver-verified schedule rank; speed vs Radau; slowness vs exact reduced-chain baseline.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Architecture to memorize</h3><p>2-layer LSTM, hidden 256, 64 log times, 1400 train trajectories, Fourier energy + time, hard IC, softplus, trapezoidal physics loss.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Evidence" data-title="Frozen V4 numbers"><div class="inner">
+  <p class="eyebrow">Module 7 / V4 <span class="lvl lvl-2">Day 26</span></p>
+  <h2>Both passed. Neither won. That is the result.</h2>
+  <div class="metrics">
+    <article class="metric"><b>1.97%</b><span>GP locked median rate error</span></article>
+    <article class="metric"><b>1.83%</b><span>LSTM locked median rate error</span></article>
+    <article class="metric"><b>3.79%</b><span>GP locked p95 rate error</span></article>
+    <article class="metric"><b>3.93%</b><span>LSTM locked p95 rate error</span></article>
+  </div>
+  <figure class="figure"><img src="results/v4_publication_figures/figure_1_locked_model_comparison.png" alt="V4 GP vs LSTM"><figcaption>Paired-bootstrap 95% interval for LSTM p95 minus GP p95: −0.43 to +0.37 percentage points. It crosses zero, so either ordering remains plausible.</figcaption></figure>
+  <div class="grid3">
+    <article class="panel green"><h3>95.8% coverage</h3><p>After calibration, 46/48 locked cases contained both true rates, both models.</p></article>
+    <article class="panel coral"><h3>2.1% raw GP</h3><p>Uncalibrated ±2 SD joint intervals failed. Calibration is not optional.</p></article>
+    <article class="panel teal"><h3>184/184 reject</h3><p>Every explicit OOD case refused. 0/48 in-domain false rejects.</p></article>
+  </div>
+  <div class="plain"><strong>Propagation:</strong> GP Ac-225 inventory p95 2.04%; LSTM 3.03% on three declared modeled schedules after exact five-nuclide propagation. Not measured activity.</div>
+  <article class="recall" data-id="v4num"><div class="recall-label">Numbers drill</div><div class="recall-q">Why can you not say GP beat LSTM?</div><details><summary>Reveal answer</summary><div class="answer">The p95 gap is smaller than sampling uncertainty; the paired interval includes zero. GP is only the provisional leader on observed p95.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>claim_eligible = false</h3><p>Reference is a finite-geometry/TENDL development proxy, not experimental ground truth.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Evidence" data-title="The claim ladder"><div class="inner">
+  <p class="eyebrow">Module 7 / Integrity <span class="lvl lvl-2">Day 27</span></p>
+  <h2>Match every sentence to its evidence level</h2>
+  <div class="grid3">
+    <article class="panel green"><h3>Supported now</h3><p>On a frozen finite-geometry/TENDL modeled proxy, both GP and five-seed LSTM achieved below-4% p95 rate error, 95.8% calibrated joint coverage, and 100% rejection of explicit outside-range cases. Ordering unresolved. V3 showed useful ranking on reduced Radau schedules after exact verification.</p></article>
+    <article class="panel gold"><h3>Only after a fair Berkeley test</h3><p>The frozen workflow was evaluated against two published accelerator-neutron irradiations. Then state whatever happened, including another miss.</p></article>
+    <article class="panel coral"><h3>Not supported — do not say</h3><p>“Beats supercomputers.” “Solves the shortage.” “1.00× Joyo match.” “Makes production cheaper.” “All errors &lt; 3%.” “Universal FDA 0.01%.” “40-hour Radau sweeps.” “Treats 50,000 patients.”</p></article>
+  </div>
+  <div class="table-wrap" style="margin-top:14px"><table><thead><tr><th>If a teacher asks</th><th>Direct answer</th></tr></thead><tbody>
+    <tr><td>Does this beat OpenMC?</td><td class="no">No. Different, smaller problem.</td></tr>
+    <tr><td>Is it novel?</td><td>Ingredients exist. This pathway-specific failure-aware workflow was not identified in the 137-source scoping audit. Do not say “first ever.”</td></tr>
+    <tr><td>Why ML if exact solver is faster?</td><td>For constant-rate five-nuclide chain, ML is not fastest. The bet is screening when upstream rates come from expensive geometry/transport. That full claim is still untested.</td></tr>
+  </tbody></table></div>
+  <article class="recall" data-id="claims2"><div class="recall-label">Claim drill</div><div class="recall-q">Rewrite “My model makes Ac-225 cheaper” using only current evidence.</div><details><summary>Reveal answer</summary><div class="answer">My modeled study tests whether a surrogate can reduce the computational work of screening candidate conditions. Real cost reduction has not been measured.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Verbs</h3><p>Demonstrated / supports / suggests / aims / does not establish.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Evidence" data-title="Speak three lengths"><div class="inner">
+  <p class="eyebrow">Module 7 / Voice <span class="lvl lvl-1">Day 29</span></p>
+  <h2>Same truth, three clocks</h2>
+  <div class="grid3">
+    <article class="panel teal"><h3>15 seconds</h3><p>“I built a failure-aware computer filter for one Ac-225 production pathway. It screens modeled conditions, reports uncertainty, rejects unfamiliar inputs, and sends promising cases back to trusted physics.”</p></article>
+    <article class="panel"><h3>45 seconds</h3><p>“Ac-225 matters for targeted alpha therapy, so I studied a fast-neutron route from Ra-226 through Ra-225. Five equations track desired Ac-225 and competing Ac-227. V1 failed on stiffness. V2 was a PINN. An NCSU researcher pushed me to integrated loss and LSTMs. V3 ranks modeled schedules. V4 compared a GP and a five-seed LSTM on rates: both passed, neither won. A Berkeley reconstruction missed by about 600 times and was out of domain. That failure is part of the result.”</p></article>
+    <article class="panel coral"><h3>The limit sentence</h3><p>“My results show accuracy on reduced modeled proxies, not experimental production accuracy or proof that the real process is faster or cheaper.”</p></article>
+  </div>
+  <div class="plain"><strong>Order to memorize, not a script:</strong> motivation → route → five equations → V1 fail → V2/Jaden → V3 → V4 → Berkeley/Engle → what you will not claim.</div>
+  <article class="recall" data-id="speech2"><div class="recall-label">Timed drill</div><div class="recall-q">Record your own 45-second version. Did it include a failure?</div><details><summary>Reveal coaching</summary><div class="answer">If there is no failure in the speech, it is still the old overclaiming paper talking. Add V1, the zip crisis, or Berkeley.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Sound like yourself</h3><p>Short sentences. Keep scientific nouns and units. Drop words you never say.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Month" data-title="30-day calendar"><div class="inner">
+  <p class="eyebrow">Module 8 / Plan <span class="lvl lvl-0">Every day</span></p>
+  <h2>One month to professional fluency</h2>
+  <p class="subtitle">40 minutes a day. Look-cover-say-check. Weekends are teach-backs, not new jargon dumps.</p>
+  <div class="study-grid">
+    <div class="day">Day 1</div><div>Contract + one-sentence job + atoms/isotopes</div><div class="test">Draw Ra-226 vs Ra-225 vs Ac-225.</div>
+    <div class="day">Day 2</div><div>Half-life, A=λN, five clocks</div><div class="test">Compute λ for Ac-225; explain stiffness without speedup myths.</div>
+    <div class="day">Day 3</div><div>Cancer, TAT, why Ac-225</div><div class="test">2-minute talk to a non-STEM adult.</div>
+    <div class="day">Day 4</div><div>Supply routes</div><div class="test">Name generator, accelerator, reactor; which ODE you study.</div>
+    <div class="day">Day 5</div><div>Two branches from memory</div><div class="test">Blank-page drawing twice.</div>
+    <div class="day">Day 6</div><div>φ, σ, barn, threshold, Fourier preview</div><div class="test">Units of φσ; why 14.5 MeV ≠ Joyo.</div>
+    <div class="day">Day 7</div><div>Week 1 teach-back</div><div class="test">5-minute lesson to a parent or teacher.</div>
+    <div class="day">Day 8</div><div>Sources minus sinks</div><div class="test">Derive Ac-225 and Ra-225 rows.</div>
+    <div class="day">Day 9</div><div>All five ODEs + Engle fence</div><div class="test">Write A as a matrix story, not symbols only.</div>
+    <div class="day">Day 10</div><div>Stiffness</div><div class="test">Correct the “20 million× faster” judge.</div>
+    <div class="day">Day 11</div><div>Truth ladder</div><div class="test">Place Radau, OpenMC, Berkeley.</div>
+    <div class="day">Day 12</div><div>Units workshop</div><div class="test">0.7 µCi → Bq → atoms; four activity questions.</div>
+    <div class="day">Day 13</div><div>Blank-page physics</div><div class="test">Reconstruct Week 2 in another color.</div>
+    <div class="day">Day 14</div><div>Record an 8-min physics lecture</div><div class="test">Count missing units.</div>
+    <div class="day">Day 15</div><div>ML vocabulary</div><div class="test">Teach feature/loss/epoch to a 9th grader.</div>
+    <div class="day">Day 16</div><div>MLP vs LSTM vs GP</div><div class="test">Why GP is a fair V4 baseline.</div>
+    <div class="day">Day 17</div><div>PINN + V1</div><div class="test">Why V1 went negative.</div>
+    <div class="day">Day 18</div><div>Four tricks</div><div class="test">One sentence each, no notes.</div>
+    <div class="day">Day 19</div><div>Splits and freeze</div><div class="test">160/24/24/48 and why 48 is not virgin.</div>
+    <div class="day">Day 20</div><div>Uncertainty vs OOD</div><div class="test">2.1% vs 95.8%; 184/184.</div>
+    <div class="day">Day 21</div><div>Week 3 teach-back</div><div class="test">Non-STEM friend, 6 minutes.</div>
+    <div class="day">Day 22</div><div>V1 + Jaden</div><div class="test">Four critiques.</div>
+    <div class="day">Day 23</div><div>Zip crisis + endpoint collapse</div><div class="test">Train ≠ score stories.</div>
+    <div class="day">Day 24</div><div>Data v1/v2 + Joyo honesty</div><div class="test">Why 1.00× Joyo is forbidden.</div>
+    <div class="day">Day 25</div><div>Berkeley + Engle</div><div class="test">600× without excuses.</div>
+    <div class="day">Day 26</div><div>V3 and V4 numbers with files</div><div class="test">Every % gets a noun, dataset, limit.</div>
+    <div class="day">Day 27</div><div>Claim ladder; kill five overclaims</div><div class="test">Rewrite them.</div>
+    <div class="day">Day 28</div><div>Open every resource on the next slide</div><div class="test">Point to the file, not the vibe.</div>
+    <div class="day">Day 29</div><div>15-min interrupted mock defense</div><div class="test">Use the ISEF deck after this course.</div>
+    <div class="day">Day 30</div><div>Closed-book oral of the paper to your teacher</div><div class="test">If you need the slide, you do not own it yet.</div>
+  </div>
+  <article class="recall" data-id="plan30"><div class="recall-label">Learning drill</div><div class="recall-q">What is look-cover-say-check?</div><details><summary>Reveal answer</summary><div class="answer">Look once, cover it, say or write from memory, then check and correct. The hard retrieval is the learning.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>If you miss a day</h3><p>Do not skip Week 1. Foundations first. Double a later ML day if needed.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Month" data-title="Resources you must own"><div class="inner">
+  <p class="eyebrow">Module 8 / Library <span class="lvl lvl-1">Day 28</span></p>
+  <h2>Every claim has a file, a paper, or a person</h2>
+  <h3>Project files</h3>
+  <div class="grid3">
+    <article class="source"><a href="ISEF_Planning/project_history.md">Project history log</a><p>The lived timeline of failures and pivots.</p></article>
+    <article class="source"><a href="docs/V4_CURRENT_STATUS_20260828.md">V4 current status</a><p>Frozen metrics and the safe claim.</p></article>
+    <article class="source"><a href="docs/DATA_PROVENANCE.md">Data provenance</a><p>v1 sigmoid vs JENDL/EXFOR/NuDat.</p></article>
+    <article class="source"><a href="docs/ENDPOINT_COLLAPSE_HISTORY_20260731.md">Endpoint collapse</a><p>Train/score mismatch and curriculum bug.</p></article>
+    <article class="source"><a href="docs/PINN_ARCHITECTURE_FIX.md">PINN architecture fix</a><p>Why integral-tanh daughters failed.</p></article>
+    <article class="source"><a href="v3_pilstm/models/pi_lstm.py">PI-LSTM code</a><p>Hard IC, Fourier, softplus.</p></article>
+    <article class="source"><a href="v3_pilstm/physics/integrated_loss.py">Integrated loss</a><p>Trapezoidal Bateman residual.</p></article>
+    <article class="source"><a href="research/literature_audit_2026/RESEARCH_FINDINGS.md">137-source audit</a><p>Novelty boundary; not 137 full-text reviews.</p></article>
+    <article class="source"><a href="results/v4_publication_figures/FIGURE_NOTES.md">Figure notes</a><p>How to read the three V4 figures.</p></article>
+    <article class="source"><a href="IsotopePINN_AP_Research_Paper.html">Revamped AP paper</a><p>Teacher-facing manuscript with struggles.</p></article>
+    <article class="source"><a href="IsotopePINN_ISEF_Masterclass_Deck.html">ISEF defense deck</a><p>Use in week 4 after this course.</p></article>
+    <article class="source"><a href="data/literature_benchmarks.csv">Literature CSV</a><p>Tiered external anchors.</p></article>
+  </div>
+  <h3 style="margin-top:18px">People and outside sources</h3>
+  <div class="grid3">
+    <article class="source"><a target="_blank" rel="noopener" href="https://nucleardata.berkeley.edu/doc/morrell.pdf">Morrell dissertation</a><p>Berkeley 33/40 MeV context.</p></article>
+    <article class="source"><a target="_blank" rel="noopener" href="https://www-nds.iaea.org/relnsd/isotopia/isotopia.html">IAEA Isotopia</a><p>Engle’s recommended benchmark.</p></article>
+    <article class="source"><a target="_blank" rel="noopener" href="https://www.nndc.bnl.gov/nudat3/">NNDC NuDat 3</a><p>Half-lives.</p></article>
+    <article class="source"><a target="_blank" rel="noopener" href="https://www-nds.iaea.org/exfor/">IAEA EXFOR</a><p>21405 (n,2n); 31760 thermal (n,γ).</p></article>
+    <article class="source"><a target="_blank" rel="noopener" href="https://docs.openmc.org/en/stable/usersguide/depletion.html">OpenMC depletion</a><p>What your model is not.</p></article>
+    <article class="source"><a target="_blank" rel="noopener" href="https://scale-manual.ornl.gov/6.3.1/Depletion-Decay-Methods.html">SCALE/ORIGEN</a><p>Established depletion.</p></article>
+  </div>
+  <div class="success"><strong>Experts in the log:</strong> Jaden Palmer (NCSU ARTISANS, Qualified Scientist) and Dr. Jonathan W. Engle (UW–Madison cyclotron). Cite their advice as constraints you adopted.</div>
+  <article class="recall" data-id="res"><div class="recall-label">Final drill</div><div class="recall-q">Where do you point for V4 p95, V3 architecture, nuclear data, and Berkeley?</div><details><summary>Reveal answer</summary><div class="answer">V4 status / figure notes; pi_lstm.py; DATA_PROVENANCE + EXFOR/JENDL; Morrell dissertation.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Finish line</h3><p>You are ready when slides are optional and files are only for proof.</p></div></div>
+</div></section>
+
+<section class="slide" data-module="Month" data-title="Glossary from simple to hard"><div class="inner">
+  <p class="eyebrow">Module 8 / Dictionary <span class="lvl lvl-0">Keep open</span></p>
+  <h2>If you can teach these, you can talk to a teacher to a T</h2>
+  <div class="glossary">
+    <article class="panel"><h3>Isotope</h3><p>Same element, different neutron number.</p></article>
+    <article class="panel"><h3>Half-life</h3><p>Time for half a large sample to decay.</p></article>
+    <article class="panel"><h3>Activity</h3><p>Decays per second. A = λN.</p></article>
+    <article class="panel"><h3>Cross section</h3><p>Energy-dependent reaction likelihood; barns.</p></article>
+    <article class="panel"><h3>Flux / fluence</h3><p>Neutrons per area per time / time-integrated.</p></article>
+    <article class="panel"><h3>Bateman equations</h3><p>Inventory bookkeeping: sources minus sinks.</p></article>
+    <article class="panel"><h3>Stiffness</h3><p>Very different timescales in one ODE system.</p></article>
+    <article class="panel"><h3>Surrogate</h3><p>Fast stand-in for a slower reference inside a domain.</p></article>
+    <article class="panel"><h3>PINN</h3><p>Training or structure that uses governing equations.</p></article>
+    <article class="panel"><h3>LSTM</h3><p>Gated recurrent net; numerical state along a sequence.</p></article>
+    <article class="panel"><h3>Gaussian process</h3><p>Kernel interpolator with a mean and uncertainty.</p></article>
+    <article class="panel"><h3>Hard IC</h3><p>Architecture forces N(0) = given inventory.</p></article>
+    <article class="panel"><h3>Fourier features</h3><p>Sine/cosine lifting to fight spectral bias.</p></article>
+    <article class="panel"><h3>Calibration</h3><p>Resize intervals to hit target coverage.</p></article>
+    <article class="panel"><h3>OOD</h3><p>Unlike the training envelope; refuse, don’t guess.</p></article>
+    <article class="panel"><h3>p95</h3><p>Tail error: 95% of cases at or below.</p></article>
+    <article class="panel"><h3>Bootstrap</h3><p>Resampling to put uncertainty on a statistic.</p></article>
+    <article class="panel"><h3>Frozen</h3><p>No more tuning after seeing the test.</p></article>
+  </div>
+  <div class="say" style="margin-top:18px"><strong>Month-end test:</strong> close this deck. Explain the project to your teacher for 12 minutes. If they can restate your claim boundary in their own words, you are fluent.</div>
+  <article class="recall" data-id="gloss"><div class="recall-label">Glossary drill</div><div class="recall-q">Pick any six terms at random and pass the six-part mastery test on each.</div><details><summary>Reveal coaching</summary><div class="answer">Simple definition, drawing or formula, units, project use, limit, alternative. If any piece is missing, that term is not mastered.</div></details><label class="master-line"><input class="master-check" type="checkbox"> I can explain this without notes</label></article>
+  <div class="notes-source"><div class="note"><h3>Professionalism</h3><p>Professionals are precise and humble on the same slide. That is the standard.</p></div></div>
+</div></section>
+
+</main>
+<aside class="notes-panel" id="notes-panel"><div class="notes-head"><div><p class="eyebrow">Study notes</p><h2 id="notes-title"></h2></div><button class="close" id="notes-close" aria-label="Close notes">&times;</button></div><div id="notes-content"></div></aside>
+<div class="overview" id="overview"><div class="overview-box"><div class="notes-head"><div><p class="eyebrow">All lessons</p><h2>Choose a slide</h2></div><button class="close" id="overview-close" aria-label="Close overview">&times;</button></div><div class="overview-grid" id="overview-grid"></div></div></div>
+<footer class="bottom"><button class="arrow-btn" id="prev" aria-label="Previous slide">&larr;</button><div class="bottom-title" id="bottom-title"></div><div class="count" id="count"></div><button class="arrow-btn" id="next" aria-label="Next slide">&rarr;</button></footer>
+<script>
+(function(){
+var slides=Array.from(document.querySelectorAll(".slide")),current=0;
+var progress=document.getElementById("progress"),prev=document.getElementById("prev"),next=document.getElementById("next"),title=document.getElementById("bottom-title"),count=document.getElementById("count");
+var notes=document.getElementById("notes-panel"),notesTitle=document.getElementById("notes-title"),notesContent=document.getElementById("notes-content");
+var overview=document.getElementById("overview"),overviewGrid=document.getElementById("overview-grid"),moduleButtons=Array.from(document.querySelectorAll(".module-btn"));
+var storageKey="isotope-30day-v1",saved={};try{saved=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){saved={}}
+function pad(n){return String(n).padStart(2,"0")}
+function updateNotes(){var s=slides[current],source=s.querySelector(".notes-source");notesTitle.textContent=s.dataset.title;notesContent.innerHTML=source?source.innerHTML:""}
+function updateMastery(){var cards=Array.from(document.querySelectorAll(".recall")),done=0;cards.forEach(function(card){var checked=!!saved[card.dataset.id],box=card.querySelector(".master-check");box.checked=checked;card.classList.toggle("mastered",checked);if(checked)done++});document.getElementById("mastery").textContent=done+"/"+cards.length+" mastered"}
+function show(i,hash){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach(function(s,j){s.classList.toggle("active",j===current)});slides[current].scrollTop=0;progress.style.width=((current+1)/slides.length*100)+"%";title.textContent=slides[current].dataset.module+" / "+slides[current].dataset.title;count.textContent=pad(current+1)+" / "+pad(slides.length);prev.disabled=current===0;next.disabled=current===slides.length-1;moduleButtons.forEach(function(b){var target=slides[Number(b.dataset.target)];b.classList.toggle("active",target&&target.dataset.module===slides[current].dataset.module)});updateNotes();if(hash!==false)history.replaceState(null,"","#slide-"+(current+1))}
+function openNotes(){updateNotes();notes.classList.add("open");document.getElementById("notes-open").classList.add("active")}
+function closeNotes(){notes.classList.remove("open");document.getElementById("notes-open").classList.remove("active")}
+function runDrill(){var cards=Array.from(document.querySelectorAll(".recall")),pool=cards.filter(function(c){return !saved[c.dataset.id]});if(!pool.length)pool=cards;var card=pool[Math.floor(Math.random()*pool.length)],slide=card.closest(".slide");show(slides.indexOf(slide));setTimeout(function(){card.scrollIntoView({block:"center",behavior:"smooth"})},50)}
+slides.forEach(function(s,i){var b=document.createElement("button");b.className="overview-card";b.innerHTML="<b>"+pad(i+1)+" / "+s.dataset.module+"</b><span>"+s.dataset.title+"</span>";b.onclick=function(){show(i);overview.classList.remove("open")};overviewGrid.appendChild(b)});
+document.querySelectorAll(".master-check").forEach(function(box){box.addEventListener("change",function(){var id=box.closest(".recall").dataset.id;if(box.checked)saved[id]=true;else delete saved[id];try{localStorage.setItem(storageKey,JSON.stringify(saved))}catch(e){}updateMastery()})});
+prev.onclick=function(){show(current-1)};next.onclick=function(){show(current+1)};moduleButtons.forEach(function(b){b.onclick=function(){show(Number(b.dataset.target))}});
+document.getElementById("notes-open").onclick=function(){notes.classList.contains("open")?closeNotes():openNotes()};document.getElementById("notes-close").onclick=closeNotes;
+document.getElementById("overview-open").onclick=function(){overview.classList.add("open")};document.getElementById("overview-close").onclick=function(){overview.classList.remove("open")};overview.onclick=function(e){if(e.target===overview)overview.classList.remove("open")};document.getElementById("drill").onclick=runDrill;
+document.addEventListener("keydown",function(e){if(e.target.matches("button,a,input,textarea,select"))return;if(e.key==="ArrowRight"||e.key==="PageDown")show(current+1);if(e.key==="ArrowLeft"||e.key==="PageUp")show(current-1);if(e.key.toLowerCase()==="n")notes.classList.contains("open")?closeNotes():openNotes();if(e.key.toLowerCase()==="o")overview.classList.add("open");if(e.key.toLowerCase()==="q")runDrill();if(e.key==="Escape"){closeNotes();overview.classList.remove("open")}});
+var match=location.hash.match(/slide-(\d+)/);updateMastery();show(match?Number(match[1])-1:0,false);
+})();
+</script>
+</body>
+</html>

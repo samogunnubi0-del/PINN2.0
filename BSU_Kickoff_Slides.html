@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glen Burnie High School — Black Student Union (2026–2027 Interest Kickoff)</title>
+  <meta name="description" content="Official GBHS BSU presentation deck. Highlighting Black excellence, community support, field trips, executive board form, GroupMe, Instagram, and club culture." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #1c1a19;
+      --bg-cream: #FFF5E7;
+      --card-bg: #292726;
+      --card-border: #3d3a37;
+      
+      --ink: #FFFFFF;
+      --ink-dark: #292726;
+      --ink-secondary: #c9c3bc;
+      --ink-muted: #8c857e;
+      
+      --gold: #E99206;         /* Warm Heritage Brass */
+      --green: #05883A;        /* Emerald / Forest */
+      --terracotta: #8C3B17;   /* Crimson Ochre */
+      --crimson: #990000;
+      
+      --font-display: 'Epilogue', Georgia, sans-serif;
+      --font-body: 'Montserrat', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius: 12px;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Warm Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      left: 10%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(233, 146, 6, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -15%;
+      right: 10%;
+      width: 50vw;
+      height: 50vh;
+      background: radial-gradient(circle, rgba(5, 136, 58, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(28, 26, 25, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-tag {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-ctrl {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: var(--ink);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-ctrl:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--gold);
+    }
+
+    .btn-ctrl-gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #111;
+    }
+    .btn-ctrl-gold:hover {
+      background: #cf8003;
+    }
+
+    /* Deck Slider */
+    #deck {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide {
+      min-width: 100vw;
+      height: 100vh;
+      padding: 75px 6vw 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .slide-inner {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: rgba(233, 146, 6, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(233, 146, 6, 0.3);
+      margin-bottom: 14px;
+    }
+
+    .badge-green {
+      background: rgba(5, 136, 58, 0.15);
+      color: #34d399;
+      border-color: rgba(5, 136, 58, 0.35);
+    }
+
+    .badge-terracotta {
+      background: rgba(140, 59, 23, 0.2);
+      color: #ff8a65;
+      border-color: rgba(140, 59, 23, 0.4);
+    }
+
+    /* Headings */
+    h1.slide-hero {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    h2.slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    p.slide-sub {
+      font-size: clamp(14.5px, 1.3vw, 18px);
+      color: var(--ink-secondary);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    /* Grid Layouts */
+    .cards-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+
+    @media (max-width: 860px) {
+      .cards-grid-2, .cards-grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .slide {
+        padding: 75px 20px 85px;
+      }
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .card-body {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    /* QR Blocks */
+    .qr-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .qr-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+      width: 300px;
+      color: #111;
+      text-align: center;
+      border: 3px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .qr-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .qr-card img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      display: block;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+
+    .qr-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 2px;
+    }
+
+    .qr-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      color: #111;
+    }
+
+    .qr-note {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    /* Bottom Control Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(28, 26, 25, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: var(--ink);
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.15s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: var(--gold);
+    }
+
+    .progress-track {
+      flex: 1;
+      max-width: 360px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      margin: 0 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 10%;
+      background: linear-gradient(90deg, var(--gold), #34d399);
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    /* Speaker Notes Drawer */
+    .speaker-drawer {
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      background: #141312;
+      border-top: 2px solid var(--gold);
+      padding: 16px 32px;
+      font-size: 13.5px;
+      color: #dedede;
+      display: none;
+      z-index: 95;
+      box-shadow: 0 -12px 30px rgba(0,0,0,0.5);
+    }
+    .speaker-drawer.open {
+      display: block;
+    }
+    .speaker-drawer strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-bar">
+    <div class="brand-tag">
+      <span class="brand-dot"></span>
+      <span>Glen Burnie High School • Black Student Union</span>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn-ctrl" onclick="toggleSpeakerNotes()">
+        🎙️ Speaker Notes
+      </button>
+      <button class="btn-ctrl" onclick="toggleFullScreen()">
+        ⛶ Fullscreen
+      </button>
+      <a class="btn-ctrl btn-ctrl-gold" href="GBHS_BSU_Kickoff_2026_Official.pptx" download>
+        📥 Download .PPTX
+      </a>
+      <a class="btn-ctrl" href="BSU_Master_Planner.html">
+        📋 Open Binder
+      </a>
+    </div>
+  </header>
+
+  <!-- Presentation Slider -->
+  <main id="deck">
+
+    <!-- ============================================== -->
+    <!-- SLIDE 1: COVER TITLE (COLLAGE STYLE) -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-1">
+      <div class="slide-inner">
+        <span class="badge">Glen Burnie High School • 2026–2027</span>
+        <h1 class="slide-hero">The Black Student Union</h1>
+        <p class="slide-sub">
+          Highlighting Black Excellence • Community • Leadership • Culture<br>
+          Welcome to our opening general interest meeting.
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+          <img src="bsu_assets/image11.jpg" style="width: 140px; height: 180px; object-fit: cover; border-radius: 8px; border: 2px solid rgba(255,255,255,0.1);" alt="BSU Community">
+          <img src="bsu_assets/image12.jpg" style="width: 220px; height: 180px; object-fit: cover; border-radius: 8px; border: 2px solid var(--gold);" alt="BSU Students">
+          <img src="bsu_assets/image13.png" style="width: 140px; height: 180px; object-fit: cover; border-radius: 8px; border: 2px solid rgba(255,255,255,0.1);" alt="BSU Excellence">
+          <img src="bsu_assets/image8.png" style="width: 150px; height: 180px; object-fit: cover; border-radius: 8px; border: 2px solid rgba(255,255,255,0.1);" alt="BSU Culture">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 2: WELCOME & MEET THE LEADERSHIP -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-2">
+      <div class="slide-inner">
+        <span class="badge badge-green">Leadership & Mentorship</span>
+        <h2 class="slide-title">Welcome to GB’s Black Student Union</h2>
+        <p class="slide-sub">
+          Guided by our dedicated faculty advisors and executive student leadership.
+        </p>
+
+        <div class="cards-grid-2" style="max-width: 900px; margin: 0 auto;">
+          <div class="feature-card" style="border-left: 4px solid var(--gold);">
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--gold); letter-spacing: 1px;">Faculty Leadership</span>
+            <h3 class="card-title" style="margin-top: 4px;">Our Club Advisors</h3>
+            <p class="card-body" style="font-size: 15px; color: #fff; margin-top: 6px;">
+              • <strong>Ms. Azike</strong><br>
+              • <strong>Mr. Gibson</strong><br>
+              • <strong>Dr. Prince-Torain</strong>
+            </p>
+            <p style="font-size: 12px; color: var(--ink-muted); margin-top: 8px;">Guiding student initiatives, academic waivers, and field trip administrative approvals.</p>
+          </div>
+
+          <div class="feature-card" style="border-left: 4px solid var(--green);">
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #34d399; letter-spacing: 1px;">Student Executive Board</span>
+            <h3 class="card-title" style="margin-top: 4px;">Senior Officers</h3>
+            <p class="card-body" style="font-size: 15px; color: #fff; margin-top: 6px;">
+              • <strong>Senior President:</strong> Henry Nwobodo<br>
+              • <strong>Senior Vice President:</strong> Sam Ogunnubi
+            </p>
+            <p style="font-size: 12px; color: var(--ink-muted); margin-top: 8px;">Leading club operations, organizing expeditions, and mentoring underclassmen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 3: ATTENDANCE SIGN-IN -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-3">
+      <div class="slide-inner">
+        <span class="badge">First Step Today</span>
+        <h2 class="slide-title">Welcome! Please Complete Attendance</h2>
+        <p class="slide-sub">
+          Please find a seat, grab some snacks, and take a quick moment to complete the attendance form for today’s meeting.
+        </p>
+
+        <div class="qr-container">
+          <div class="qr-card" style="border-color: var(--gold);">
+            <span class="qr-badge">Sign In</span>
+            <div class="qr-label">Meeting Attendance</div>
+            <img src="bsu_assets/image9.png" alt="Attendance QR Code">
+            <div class="qr-note">Scan with your phone camera to record your attendance and get on our official member roster.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 4: WHAT IS BSU & WHAT WE DO -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-4">
+      <div class="slide-inner">
+        <span class="badge badge-gold">Mission & Purpose</span>
+        <h2 class="slide-title">What is BSU & What Do We Do?</h2>
+        <p class="slide-sub">
+          At the end of the day, we wanted this space to grow as a community and support each other in Black culture.
+        </p>
+
+        <div class="cards-grid-2">
+          <!-- Left: What is BSU -->
+          <div class="feature-card" style="background: rgba(233, 146, 6, 0.08); border-color: rgba(233, 146, 6, 0.4);">
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--gold); font-weight: 700;">Our Heart & Mission</span>
+            <h3 class="card-title" style="margin-top: 4px;">Highlighting Black Excellence</h3>
+            <p class="card-body" style="font-size: 14px; margin-top: 8px;">
+              <strong>BSU is where we want to highlight Black excellence.</strong>
+              High school can be stressful and divided—this room is built as a genuine community where we uplift one another, share our cultural pride, and hold each other to high standards.
+            </p>
+            <p class="card-body" style="font-size: 13px; color: var(--ink-secondary); margin-top: 10px;">
+              Whether you’re a freshman or a senior, you have a support network here that will push you to succeed.
+            </p>
+          </div>
+
+          <!-- Right: What We Do -->
+          <div class="feature-card" style="background: rgba(5, 136, 58, 0.08); border-color: rgba(5, 136, 58, 0.4);">
+            <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #34d399; font-weight: 700;">Real Action & Activities</span>
+            <h3 class="card-title" style="margin-top: 4px;">Experiences That Matter</h3>
+            <div class="card-body" style="font-size: 13.5px; margin-top: 8px; line-height: 1.7;">
+              • <strong>College Field Trips:</strong> Touring HBCUs & Black historical museums.<br>
+              • <strong>Annual HBCU College Fair:</strong> Highlighting historic institutions for our upcoming juniors.<br>
+              • <strong>Spirit Week & Potluck:</strong> Celebrating Black History Month with school-wide events and community feasting.<br>
+              • <strong>Study Jams & Game Nights:</strong> Finals prep with hot cocoa and zero stress.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 5: FIELD TRIPS & SUGGESTION QR -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-5">
+      <div class="slide-inner">
+        <span class="badge badge-green">Put Your Ideas Into Reality</span>
+        <h2 class="slide-title">Field Trips: Where Do YOU Want to Go?</h2>
+        <p class="slide-sub">
+          The main things we've done have been our field trips. We want YOUR help deciding them!
+        </p>
+
+        <div class="qr-container">
+          <!-- QR Box -->
+          <div class="qr-card" style="border-color: var(--green);">
+            <span class="qr-badge" style="color: var(--green);">Vote & Suggest</span>
+            <div class="qr-label">Field Trip Survey</div>
+            <img src="bsu_assets/qr_field_trips.png" alt="Field Trip Survey QR">
+            <div class="qr-note">Scan to suggest HBCUs, museums, and historic sites you want to visit!</div>
+          </div>
+
+          <!-- Explanation text -->
+          <div style="max-width: 480px; text-align: left;">
+            <div class="feature-card" style="margin-bottom: 14px;">
+              <h4 style="color: #fff; font-size: 15px; font-family: var(--font-display); margin-bottom: 4px;">🚌 Our Track Record:</h4>
+              <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
+                We've been through HBCU visits (Bowie State, Howard University, Morgan State) and Black historical museums. Every year we highlight colleges for upcoming juniors at the College Fair!
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4 style="color: var(--gold); font-size: 15px; font-family: var(--font-display); margin-bottom: 4px;">💡 Put Your Ideas Into Reality:</h4>
+              <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
+                If there are any places you guys want to go, fill out the survey so we can book the charter buses and make it happen this year!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 6: EXECUTIVE BOARD & ROLES QR -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-6">
+      <div class="slide-inner">
+        <span class="badge badge-terracotta">Leadership Opportunity</span>
+        <h2 class="slide-title">Join the Executive Board (No Campaigning!)</h2>
+        <p class="slide-sub">
+          It’s a brand new year, meaning a new Executive Board. No stressful speeches—just a Google Form!
+        </p>
+
+        <div class="qr-container">
+          <!-- QR Box -->
+          <div class="qr-card" style="border-color: var(--terracotta);">
+            <span class="qr-badge">Apply Online</span>
+            <div class="qr-label">E-Board Application</div>
+            <img src="bsu_assets/qr_board_roles.png" alt="Executive Board Application QR">
+            <div class="qr-note">Scan to submit your role application. Advisors decide next meeting!</div>
+          </div>
+
+          <!-- Explanation text -->
+          <div style="max-width: 480px; text-align: left;">
+            <div class="feature-card" style="margin-bottom: 14px;">
+              <h4 style="color: #fff; font-size: 15px; font-family: var(--font-display); margin-bottom: 4px;">🗳️ No Campaigning This Year:</h4>
+              <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
+                We’re not making anyone give nerve-wracking speeches or campaign in the hallways. Fill out the Google Form thoughtfully with your skills and what you want to bring to BSU.
+              </p>
+            </div>
+            <div class="feature-card" style="border-left: 3px solid var(--green);">
+              <h4 style="color: #34d399; font-size: 15px; font-family: var(--font-display); margin-bottom: 4px;">⚡ Decision Next Meeting:</h4>
+              <p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
+                Our faculty advisors (Ms. Azike, Mr. Gibson, Dr. Prince-Torain) will review applications and announce the new board at our next meeting!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 7: GROUPME QR (EXISTING IMAGE5) -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-7">
+      <div class="slide-inner">
+        <span class="badge">Official Group Chat</span>
+        <h2 class="slide-title">Join the GroupMe!</h2>
+        <p class="slide-sub">
+          All updates will be sent in here so make sure you have joined before leaving today!
+        </p>
+
+        <div class="qr-container">
+          <div class="qr-card" style="border-color: #00aff0;">
+            <span class="qr-badge" style="color: #00aff0;">Keeping Up With BSU</span>
+            <div class="qr-label">Official BSU GroupMe</div>
+            <img src="bsu_assets/image5.jpg" alt="Official GroupMe QR Code">
+            <div class="qr-note">Meeting alerts, snack menus, room changes, and quick updates.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 8: INSTAGRAM @GBHSBSU (EXISTING IMAGE10 + IMAGE2) -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-8">
+      <div class="slide-inner">
+        <span class="badge badge-gold">Follow The 'Gram</span>
+        <h2 class="slide-title">Follow Us on Instagram: @gbhsbsu</h2>
+        <p class="slide-sub">
+          ✨ Follow our Instagram to stay updated on upcoming meetings, Spirit Week themes, and events!
+        </p>
+
+        <div class="qr-container">
+          <div class="qr-card" style="border-color: #e1306c;">
+            <img src="bsu_assets/image2.png" style="width: 140px; height: auto; margin-bottom: 4px;" alt="Instagram logo">
+            <span class="qr-badge" style="color: #e1306c;">@gbhsbsu</span>
+            <div class="qr-label">Instagram QR Code</div>
+            <img src="bsu_assets/image10.png" alt="Instagram Profile QR Code">
+            <div class="qr-note">Scan to follow @gbhsbsu on Instagram!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 9: THE REAL VIBE (CHILL, FUN & GAMES) -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-9">
+      <div class="slide-inner">
+        <span class="badge badge-green">Club Culture & Vibe</span>
+        <h2 class="slide-title">The Real Vibe: We Have Fun & Play Games!</h2>
+        <p class="slide-sub">
+          Apologies for the "information bomb" at today's first meeting—we had to get all the business out of the way!
+        </p>
+
+        <div class="feature-card" style="background: rgba(255, 245, 231, 0.05); border: 2px solid var(--gold); max-width: 820px; margin: 0 auto; text-align: left; padding: 28px 32px;">
+          <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); margin-bottom: 12px;">
+            🎮 What Everyday BSU Meetings Actually Look Like:
+          </h3>
+          <div style="font-size: 14.5px; line-height: 1.8; color: #fff;">
+            • <strong>It’s Chill:</strong> This is NOT another lecture or test. You come in, grab snacks, sit down, and breathe.<br>
+            • <strong>Games & Fun:</strong> We play Black history trivia, Uno, board games, video games, and music battles.<br>
+            • <strong>Real Conversations:</strong> We talk about life, culture, college, and what's going on in school.<br>
+            • <strong>Zero Pressure:</strong> Whether you want to lead or just come hang out and eat snacks, you belong here!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SLIDE 10: THANK YOU FOR COMING -->
+    <!-- ============================================== -->
+    <section class="slide" id="slide-10">
+      <div class="slide-inner">
+        <span class="badge">Meeting Concluded</span>
+        <h1 class="slide-hero">THANK YOU FOR COMING!</h1>
+        <p class="slide-sub">
+          Make sure you completed Attendance, joined the GroupMe, and submitted your trip/board forms.<br>
+          We'll see you at our next meeting in Room 214!
+        </p>
+
+        <div style="display: inline-block; background: rgba(233, 146, 6, 0.15); border: 1px solid var(--gold); padding: 12px 24px; border-radius: 8px;">
+          <strong style="color: var(--gold); font-family: var(--font-display); font-size: 16px;">
+            Next Meeting: Tuesday, Sept 22 @ 3:30 PM • Room 214
+          </strong>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Bar Controls -->
+  <footer class="bottom-bar">
+    <div style="display: flex; gap: 8px;">
+      <button class="nav-btn" onclick="prevSlide()" title="Previous Slide (←)">←</button>
+      <button class="nav-btn" onclick="nextSlide()" title="Next Slide (→)">→</button>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar"></div>
+    </div>
+
+    <div class="slide-counter" id="slide-counter">
+      Slide 1 of 10
+    </div>
+  </footer>
+
+  <!-- Speaker Notes Drawer -->
+  <div class="speaker-drawer" id="speaker-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+      <strong>🎙️ Speaker Script (What to say aloud on this slide)</strong>
+      <button style="background: none; border: none; color: #888; cursor: pointer;" onclick="toggleSpeakerNotes()">✕ Close</button>
+    </div>
+    <p id="speaker-notes-content" style="line-height: 1.6;">
+      Loading notes...
+    </p>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 10;
+
+    const speakerNotes = [
+      /* Slide 1 */ "Play upbeat music in the background as people walk into Room 214. Greeters should welcome people at the door. Say: 'Welcome everyone to the Black Student Union interest meeting! Grab some food and take a seat.'",
+      /* Slide 2 */ "Introduce the team: 'Welcome to Glen Burnie's BSU! We are supported by our amazing advisors—Ms. Azike, Mr. Gibson, and Dr. Prince-Torain. And leading this year are Senior President Henry Nwobodo and Senior Vice President Sam Ogunnubi.'",
+      /* Slide 3 */ "Make sure everyone signs in: 'Before we get into the presentation, please take a moment to scan the Attendance QR code on the screen so we have you on our official roster for meetings and food!'",
+      /* Slide 4 */ "Deliver the core mission: 'So what is BSU about? BSU is where we want to highlight Black excellence. At the end of the day, we wanted this space to grow as a community and support each other in Black culture. We elevate each other academically, talk about real topics, and build each other up.'",
+      /* Slide 5 */ "Field trips pitch: 'The main things we've done have been our field trips. We've been through HBCU visits and Black historical museums, and we have an HBCU College Fair every year to highlight colleges for our upcoming juniors. If there are any places you guys want to go, scan the QR code right now so we can put your ideas into reality!'",
+      /* Slide 6 */ "E-Board pitch (No campaigning!): 'It’s a new year, meaning a new Executive Board! This year, we are NOT having people stress over campaigning or giving speeches—we're doing a simple Google Form. If you are interested in getting a role, scan this QR code. Our advisors will make the final decision by next meeting!'",
+      /* Slide 7 */ "GroupMe check: 'Do NOT leave this room without scanning the GroupMe code. All meeting updates, room changes, and snack announcements get posted in here.'",
+      /* Slide 8 */ "Instagram check: 'Also, follow our Instagram @gbhsbsu! We post event highlights, senior spotlights, and spirit week updates.'",
+      /* Slide 9 */ "The Vibe reassurance: 'We want to apologize for the information bomb at today’s meeting! We had to get all the forms and links out of the way. But please know: this club is chill! We have fun, play games, eat good food, and hang out. You don't have to be stressed here.'",
+      /* Slide 10 */ "Closing remarks: 'Thank you all so much for coming! Make sure you scanned the forms. Our next meeting is Tuesday, September 22nd at 3:30 PM in Room 214. Bring a friend with you!'"
+    ];
+
+    function updateDeck() {
+      const deck = document.getElementById('deck');
+      deck.style.transform = `translateX(-${(currentSlide - 1) * 100}vw)`;
+
+      const progress = (currentSlide / totalSlides) * 100;
+      document.getElementById('progress-bar').style.width = `${progress}%`;
+      document.getElementById('slide-counter').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+
+      document.getElementById('speaker-notes-content').textContent = speakerNotes[currentSlide - 1];
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateDeck();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateDeck();
+      }
+    }
+
+    function toggleSpeakerNotes() {
+      const drawer = document.getElementById('speaker-drawer');
+      drawer.classList.toggle('open');
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key.toLowerCase() === 's') {
+        toggleSpeakerNotes();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullScreen();
+      }
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    document.addEventListener('touchend', (e) => {
+      let diff = touchStartX - e.changedTouches[0].screenX;
+      if (diff > 50) nextSlide();
+      if (diff < -50) prevSlide();
+    });
+
+    // Initialize
+    updateDeck();
+  </script>
+</body>
+</html>

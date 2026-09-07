@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Student Union — Official Operations Binder & Field Trip Dossier (2026–2027)</title>
+  <meta name="description" content="Official administrative binder for the Black Student Union: 30-member roster ledger, interest meeting Google Form, Maryland & DC HBCU field trip survey, dues protocol, and working calendar." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --canvas: #f4f3ef;
+      --paper: #ffffff;
+      --panel: #fcfbf9;
+      --subtle: #f0eee8;
+      
+      --ink: #191817;
+      --ink-secondary: #4a4744;
+      --ink-muted: #736f6a;
+      --ink-light: #999590;
+      
+      --line: #ded9d0;
+      --line-dark: #b5ada1;
+      
+      --accent: #8c3b17; /* Deep Terracotta / Crimson Ochre */
+      --accent-soft: #fbf0ea;
+      
+      --amber: #9a6700; /* Warm Brass Gold */
+      --amber-soft: #fef7e0;
+      
+      --forest: #1e5c36;
+      --forest-soft: #eaf5ee;
+      
+      --slate: #2b3a4a;
+      --slate-soft: #edf3f8;
+
+      --font-serif: 'Newsreader', 'Georgia', 'Times New Roman', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius: 4px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--canvas);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.6;
+      padding: 30px 16px 100px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dossier-wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .dossier-header {
+      padding: 32px 36px 24px;
+      border-bottom: 2px solid var(--ink);
+      background: var(--panel);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .org-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dossier-title h1 {
+      font-family: var(--font-serif);
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+    }
+
+    .dossier-title p {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin-top: 6px;
+      max-width: 720px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line-dark);
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--subtle);
+      border-color: var(--ink);
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .btn-primary:hover {
+      background: #33312e;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .btn-accent:hover {
+      background: #732f11;
+    }
+
+    .tabs-strip {
+      display: flex;
+      background: var(--subtle);
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      padding: 8px 24px 0;
+      gap: 4px;
+    }
+
+    .tab-tab {
+      padding: 9px 18px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .tab-tab:hover {
+      color: var(--ink);
+      background: rgba(255,255,255,0.6);
+    }
+
+    .tab-tab.active {
+      background: var(--paper);
+      color: var(--ink);
+      border-color: var(--line);
+      border-bottom: 1px solid var(--paper);
+      margin-bottom: -1px;
+      font-weight: 700;
+    }
+
+    .dossier-body {
+      padding: 34px 36px 40px;
+    }
+
+    .section-pane {
+      display: none;
+    }
+    .section-pane.active {
+      display: block;
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      border-radius: var(--radius);
+    }
+
+    @media (max-width: 820px) {
+      .summary-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .summary-item .label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+    }
+
+    .summary-item .value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      line-height: 1.2;
+    }
+
+    .summary-item .note {
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+      margin-top: 3px;
+    }
+
+    h2.section-heading {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    p.section-sub {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin-bottom: 20px;
+      max-width: 880px;
+    }
+
+    .table-container {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    table.dossier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    table.dossier-table th {
+      background: var(--subtle);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line-dark);
+      font-weight: 600;
+    }
+
+    table.dossier-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-secondary);
+      vertical-align: middle;
+    }
+
+    table.dossier-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.dossier-table tr:hover td {
+      background: var(--panel);
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-paid { background: var(--forest-soft); color: var(--forest); border: 1px solid rgba(30,92,54,0.3); }
+    .badge-pending { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(154,103,0,0.3); }
+    .badge-waived { background: var(--slate-soft); color: var(--slate); border: 1px solid rgba(43,58,74,0.3); }
+    .badge-official { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(140,59,23,0.3); }
+
+    .policy-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 22px;
+    }
+
+    .policy-box h4 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .policy-box p {
+      font-size: 13px;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
+
+    .grid-halves {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .grid-halves {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .document-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .document-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .document-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .letter-paper {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      padding: 22px 26px;
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      color: #222;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      position: relative;
+    }
+
+    .form-preview-box {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .form-q-block {
+      padding: 12px 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .form-q-title {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 13px;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .form-q-type {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    .form-q-sub {
+      font-size: 12px;
+      color: var(--ink-secondary);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .field-group {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .field-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .field-control {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--line-dark);
+      border-radius: 3px;
+      padding: 7px 10px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .field-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .schedule-entry {
+      display: flex;
+      gap: 16px;
+      padding: 14px 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .schedule-date-box {
+      width: 80px;
+      background: var(--subtle);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      text-align: center;
+      padding: 6px 4px;
+      flex-shrink: 0;
+    }
+
+    .schedule-month {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .schedule-day {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin: 2px 0;
+    }
+
+    .schedule-time {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--ink-muted);
+    }
+
+    .schedule-info h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .schedule-info p {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+    }
+
+    .schedule-location {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    @media print {
+      body { background: #ffffff !important; padding: 0 !important; font-size: 11pt; }
+      .dossier-wrapper { border: none !important; box-shadow: none !important; max-width: 100% !important; }
+      .tabs-strip, .header-actions, .btn { display: none !important; }
+      .section-pane { display: block !important; page-break-after: always; }
+      .dossier-header { border-bottom: 2px solid #000 !important; background: none !important; padding: 0 0 15px 0 !important; }
+      table.dossier-table th { background: #eee !important; color: #000 !important; }
+      table.dossier-table td { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dossier-wrapper">
+
+    <!-- Official Header -->
+    <header class="dossier-header">
+      <div>
+        <div class="org-meta">
+          <span>BLACK STUDENT UNION</span>
+          <span>•</span>
+          <span>MARYLAND & DC OPERATIONS</span>
+          <span>•</span>
+          <span>2026–2027</span>
+        </div>
+        <div class="dossier-title">
+          <h1>BSU Operations Dossier & Field Trip Playbook</h1>
+          <p>
+            30-member roster ledger (unassigned roles), opening interest meeting Google Form, Maryland/DC HBCU survey, 2-trip expedition plan, February Black History Spirit Week, annual community potluck, monthly dues milestones, and working calendar for the entire 2026–2027 school year.
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.print()">
+          🖨️ Print Dossier / Export PDF
+        </button>
+        <button class="btn" onclick="exportDossierSummary()">
+          📋 Copy Executive Summary
+        </button>
+      </div>
+    </header>
+
+    <!-- Executive Folder Tabs -->
+    <nav class="tabs-strip" role="tablist">
+      <button class="tab-tab active" onclick="switchSection('dues-roster')">📋 I. Active Roster & Dues Ledger</button>
+      <button class="tab-tab" onclick="switchSection('google-forms')">📝 II. Google Forms Setup (Interest & HBCU Trip)</button>
+      <button class="tab-tab" onclick="switchSection('hbcu-outreach')">🚌 III. 2 Field Trips & MD/DC Outreach</button>
+      <button class="tab-tab" onclick="switchSection('february-potluck')">🎉 IV. Feb Black History: Spirit Week & Potluck</button>
+      <button class="tab-tab" onclick="switchSection('calendar')">📅 V. Master Working Calendar (Full Year 2026–2027)</button>
+      <button class="tab-tab" onclick="switchSection('kickoff')">⏱️ VI. Opening Meeting Run-of-Show</button>
+      <button class="tab-tab" onclick="switchSection('dues-policy')">💵 VII. Dues Structure & Parent Notice</button>
+      <button class="tab-tab" onclick="switchSection('collegefair')">🎓 VIII. November College Fair Kit</button>
+      <button class="tab-tab" onclick="switchSection('letters')">✉️ IX. Official Letters & Principal Memo</button>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="dossier-body">
+
+      <!-- ========================================== -->
+      <!-- SECTION 1: ROSTER & DUES LEDGER -->
+      <!-- ========================================== -->
+      <section id="pane-dues-roster" class="section-pane active">
+        
+        <div class="summary-strip">
+          <div class="summary-item">
+            <div class="label">Current Roster</div>
+            <div class="value" id="stat-roster-count">12 / 30</div>
+            <div class="note" id="stat-progress-note">40% toward 30-member goal</div>
+          </div>
+          <div class="summary-item">
+            <div class="label">Dues Collected</div>
+            <div class="value" style="color: var(--forest);" id="stat-dues-collected">$0.00</div>
+            <div class="note">To be collected via webstore/advisor</div>
+          </div>
+          <div class="summary-item">
+            <div class="label">Target Dues Fund</div>
+            <div class="value" style="color: var(--amber);">$450 – $750</div>
+            <div class="note">Covers bus deposit & snacks</div>
+          </div>
+          <div class="summary-item">
+            <div class="label">Next Interest Meeting</div>
+            <div class="value" style="font-size: 1.15rem; font-family: var(--font-sans);">Tue, Sept 8</div>
+            <div class="note">3:30 PM • Room 214</div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h2 class="section-heading">Verified Member Roster & Dues Tracker</h2>
+            <p class="section-sub" style="margin-bottom: 0;">
+              All students listed equally as <strong>Member</strong> (unassigned leadership roles until official elections/selections). Record dues and t-shirt sizes, and add incoming members to reach 30.
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-accent" onclick="openAddMemberModal()">+ Add Incoming Member</button>
+            <button class="btn" onclick="exportRosterCSV()">📥 Export Roster CSV</button>
+          </div>
+        </div>
+
+        <!-- Roster Table -->
+        <div class="table-container">
+          <table class="dossier-table" id="roster-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;">#</th>
+                <th>Student Name</th>
+                <th>Grade</th>
+                <th>Status / Role</th>
+                <th>Dues Status</th>
+                <th>Amount Paid</th>
+                <th>Shirt Size</th>
+                <th>Remind App</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="roster-tbody">
+              <!-- Dynamically populated without pre-assigned roles -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Add Member Inset Form -->
+        <div class="document-card" id="add-member-card" style="display: none;">
+          <div class="document-card-header">
+            <span class="document-card-title">Register Incoming / New BSU Member</span>
+            <button class="btn" style="padding: 2px 8px; font-size: 11px;" onclick="closeAddMemberModal()">✕ Cancel</button>
+          </div>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label>Student Full Name</label>
+              <input type="text" id="new-name" class="field-control" placeholder="e.g., Marcus Davis">
+            </div>
+            <div class="field-group" style="max-width: 110px;">
+              <label>Grade Level</label>
+              <select id="new-grade" class="field-control">
+                <option value="9">9th</option>
+                <option value="10">10th</option>
+                <option value="11">11th</option>
+                <option value="12">12th</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Role</label>
+              <input type="text" id="new-role" class="field-control" value="Member" readonly>
+            </div>
+            <div class="field-group" style="max-width: 155px;">
+              <label>Dues Status</label>
+              <select id="new-dues-status" class="field-control" onchange="autoFillNewAmount()">
+                <option value="Pending">Pending ($0)</option>
+                <option value="Paid">Paid ($25 New Member)</option>
+                <option value="Standard">Paid ($15 Returning)</option>
+                <option value="Waived">Fee Waiver ($0)</option>
+              </select>
+            </div>
+            <div class="field-group" style="max-width: 110px;">
+              <label>Amount Paid ($)</label>
+              <input type="number" id="new-amount" class="field-control" value="0" min="0">
+            </div>
+            <div class="field-group" style="max-width: 100px;">
+              <label>T-Shirt Size</label>
+              <select id="new-shirt" class="field-control">
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 8px;">
+            <button class="btn btn-primary" onclick="submitNewMember()">Save Member to Ledger</button>
+          </div>
+        </div>
+
+        <!-- T-Shirt Summary Box -->
+        <div class="policy-box" style="margin-top: 14px; background: #ffffff;">
+          <h4>📦 T-Shirt Manufacturing Count (Based on Active Ledger)</h4>
+          <p id="tshirt-summary-text" style="font-family: var(--font-mono); font-size: 12px; color: var(--ink);">
+            Calculating...
+          </p>
+        </div>
+
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 2: GOOGLE FORMS SETUP (INTEREST & HBCU) -->
+      <!-- ========================================== -->
+      <section id="pane-google-forms" class="section-pane">
+        <h2 class="section-heading">Google Forms Blueprints (Ready to Copy & Paste)</h2>
+        <p class="section-sub">
+          Create these two Google Forms in 5 minutes. The first collects member sign-ups at the opening interest meeting; the second tallies student preferences for our Maryland/DC HBCU tour.
+        </p>
+
+        <div class="grid-halves">
+          
+          <!-- FORM 1: GENERAL INTEREST MEETING FORM -->
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">Form 1: BSU Opening Interest Meeting Sign-Up</span>
+              <button class="btn" onclick="copySnippet('text-form-interest')">📋 Copy Full Schema</button>
+            </div>
+
+            <div class="form-preview-box">
+              <div style="border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
+                <strong style="font-size: 1.05rem; color: var(--ink);">Black Student Union (BSU) 2026–2027 Interest & Sign-Up</strong>
+                <p style="font-size: 12px; color: var(--ink-secondary); margin-top: 2px;">
+                  Welcome to BSU! Complete this form to join our official roster, get invited to field trips, and receive meeting snack alerts.
+                </p>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>1. Full Name (First & Last)</span> <span class="form-q-type">Short Answer • Required</span></div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>2. Grade Level</span> <span class="form-q-type">Multiple Choice • Required</span></div>
+                <div class="form-q-sub">Options: 9th (Freshman), 10th (Sophomore), 11th (Junior), 12th (Senior)</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>3. Student ID Number & School Email</span> <span class="form-q-type">Short Answer • Required</span></div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>4. Cell Phone Number</span> <span class="form-q-type">Short Answer • Required</span></div>
+                <div class="form-q-sub">Used to send meeting Remind / GroupMe alerts.</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>5. T-Shirt Size (for official club shirts)</span> <span class="form-q-type">Multiple Choice • Required</span></div>
+                <div class="form-q-sub">Options: XS, S, M, L, XL, 2XL</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>6. What are you most excited for in BSU?</span> <span class="form-q-type">Checkboxes</span></div>
+                <div class="form-q-sub">• HBCU Campus Field Trips (MD/DC)<br>• November College Fair Preparation<br>• Study Jams & Academic Boosts<br>• Community Service & Food Drives<br>• Meeting new friends & Social Events</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>7. Are you interested in a Leadership Role?</span> <span class="form-q-type">Multiple Choice</span></div>
+                <div class="form-q-sub">Options: Yes! Definitely | Maybe / Tell me more | No / General Member</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>8. What snacks/drinks do you want at meetings?</span> <span class="form-q-type">Short Answer</span></div>
+              </div>
+            </div>
+
+            <!-- Hidden Raw Text for 1-Click Copy -->
+            <div id="text-form-interest" style="display: none;">FORM TITLE: Black Student Union (BSU) 2026–2027 Interest & Sign-Up Form
+FORM DESCRIPTION: Welcome to BSU! We are focused on academic excellence, college readiness, community service, and cultural connection. All students are welcome. Complete this form to join our official roster.
+
+QUESTION 1: Student Full Name (First & Last) [Short Answer - Required]
+QUESTION 2: Grade Level [Multiple Choice - Required: 9th Grade, 10th Grade, 11th Grade, 12th Grade]
+QUESTION 3: Student ID Number [Short Answer - Required]
+QUESTION 4: School Email Address & Personal Email [Short Answer - Required]
+QUESTION 5: Cell Phone Number (for Remind/text updates) [Short Answer - Required]
+QUESTION 6: T-Shirt Size (for club apparel) [Multiple Choice - Required: XS, S, M, L, XL, 2XL]
+QUESTION 7: What are you most excited for this year? [Checkboxes: HBCU Field Trips, November College Fair, Study Jams, Community Service, Socials/Culture]
+QUESTION 8: Are you interested in running for an Executive Board or Committee Leadership role? [Multiple Choice: Yes! Absolutely, Maybe / I'd like more info, No / I want to be a general member]
+QUESTION 9: What snacks and refreshments would you like at our after-school meetings? [Short Answer]
+QUESTION 10: What is one idea, goal, or activity you would love to see BSU do this year? [Paragraph]</div>
+          </div>
+
+          <!-- FORM 2: MARYLAND & DC HBCU FIELD TRIP SURVEY -->
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">Form 2: Maryland & DC HBCU Field Trip Survey</span>
+              <button class="btn" onclick="copySnippet('text-form-hbcu')">📋 Copy Full Schema</button>
+            </div>
+
+            <div class="form-preview-box">
+              <div style="border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
+                <strong style="font-size: 1.05rem; color: var(--ink);">BSU Fall HBCU Tour Preference Survey (MD & DC)</strong>
+                <p style="font-size: 12px; color: var(--ink-secondary); margin-top: 2px;">
+                  We are organizing a college exploration tour this semester to an HBCU in or near Maryland/DC! Cast your vote so we can book the destination you want.
+                </p>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>1. Student Name & Grade</span> <span class="form-q-type">Short Answer • Required</span></div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>2. Which Maryland/DC HBCU do you want to visit?</span> <span class="form-q-type">Multiple Choice • Required</span></div>
+                <div class="form-q-sub" style="line-height: 1.5; margin-top: 4px;">
+                  • <strong>Bowie State University</strong> (Bowie, MD) — <em>Oldest HBCU in MD; Top Cybersecurity & Business</em><br>
+                  • <strong>Howard University</strong> (Washington, DC) — <em>"The Mecca"; Top National Research HBCU</em><br>
+                  • <strong>Morgan State University</strong> (Baltimore, MD) — <em>National Treasure; Top Engineering & Architecture</em><br>
+                  • <strong>Coppin State University</strong> (Baltimore, MD) — <em>Urban Campus & Nursing Powerhouse</em><br>
+                  • <strong>Univ. of the District of Columbia [UDC]</strong> (Washington, DC) — <em>Public Land-Grant Urban Campus</em>
+                </div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>3. What part of the visit matters most to you?</span> <span class="form-q-type">Checkboxes (Pick up to 2)</span></div>
+                <div class="form-q-sub">• Official Admissions & Scholarship Info Session<br>• Student-led Walking Campus Tour (Dorms & Student Center)<br>• Eating Lunch in the College Dining Hall<br>• Q&A with Current Black College Students / Alumni<br>• Meeting professors in my intended major</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>4. Day Preference</span> <span class="form-q-type">Multiple Choice</span></div>
+                <div class="form-q-sub">Options: Friday School-Excused Day | Saturday Weekend Trip | Either works</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>5. Subsidized Fee ($10–$15)</span> <span class="form-q-type">Multiple Choice</span></div>
+                <div class="form-q-sub">Options: Yes, I can contribute $10–$15 | I will need confidential fee assistance</div>
+              </div>
+
+              <div class="form-q-block">
+                <div class="form-q-title"><span>6. Parent/Guardian Name & Phone Number</span> <span class="form-q-type">Short Answer • Required</span></div>
+              </div>
+            </div>
+
+            <!-- Hidden Raw Text for 1-Click Copy -->
+            <div id="text-form-hbcu" style="display: none;">FORM TITLE: BSU Fall HBCU Tour Preference Survey (Maryland & DC)
+FORM DESCRIPTION: We are actively booking a Fall college campus tour! Due to travel times and bus schedules, our focus is on top HBCUs in Maryland and the DC area. Please complete this survey so we can book the destination the majority wants to visit.
+
+QUESTION 1: Student Full Name & Grade Level [Short Answer - Required]
+QUESTION 2: Which Maryland or DC HBCU campus would you most like to visit? [Multiple Choice - Required:
+  Option A: Bowie State University (Bowie, MD) - Maryland's Oldest HBCU
+  Option B: Howard University (Washington, DC) - "The Mecca"
+  Option C: Morgan State University (Baltimore, MD) - National Treasure HBCU
+  Option D: Coppin State University (Baltimore, MD) - Top Nursing & Urban Research
+  Option E: University of the District of Columbia / UDC (Washington, DC)]
+QUESTION 3: What part of the college tour is most important to you? [Checkboxes:
+  - Official Admissions & Merit Scholarship presentation
+  - Student-led walking tour of campus & dorms
+  - Eating in the campus dining hall
+  - Q&A panel with current Black college students
+  - Exploring specific academic majors / labs]
+QUESTION 4: What trip day works best for you? [Multiple Choice: Friday school-day (excused absence), Saturday weekend trip, Either day is fine]
+QUESTION 5: If BSU subsidizes the charter bus, can you contribute a $10–$15 fee for seat and lunch? [Multiple Choice: Yes I can cover $10–$15, I request confidential fee assistance / financial waiver]
+QUESTION 6: Parent or Guardian Name & Cell Phone Number (for permission updates) [Short Answer - Required]</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 3: 2 FIELD TRIPS & MD/DC HBCU OUTREACH -->
+      <!-- ========================================== -->
+      <section id="pane-hbcu-outreach" class="section-pane">
+        <h2 class="section-heading">2 Field Trips Strategy & Maryland/DC HBCU Outreach</h2>
+        <p class="section-sub">
+          To maximize student college exposure, BSU is staging <strong>two distinct expeditions</strong> this school year: a Fall Maryland HBCU tour and a February Black History Month Washington, DC collegiate & museum expedition.
+        </p>
+
+        <!-- Two Field Trips Overview -->
+        <div class="grid-halves" style="margin-bottom: 24px;">
+          <div style="background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 18px; border-radius: var(--radius);">
+            <span class="status-badge badge-official" style="margin-bottom: 6px;">Expedition #1 • Late Fall (Dec 4, 2026)</span>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--ink); margin: 4px 0;">Maryland HBCU Immersion Tour</h4>
+            <p style="font-size: 12.5px; color: var(--ink-secondary); line-height: 1.5;">
+              <strong>Destination:</strong> Bowie State University (Bowie, MD) or Morgan State University (Baltimore, MD).<br>
+              <strong>Itinerary:</strong> Undergraduate admissions presentation, student-led walking campus tour (dorms, student center, labs), dining hall lunch, and department meetings.
+            </p>
+          </div>
+
+          <div style="background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--forest); padding: 18px; border-radius: var(--radius);">
+            <span class="status-badge badge-paid" style="margin-bottom: 6px;">Expedition #2 • Black History Month (Feb 19, 2027)</span>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--ink); margin: 4px 0;">Washington, DC Collegiate & Cultural Tour</h4>
+            <p style="font-size: 12.5px; color: var(--ink-secondary); line-height: 1.5;">
+              <strong>Destination:</strong> Howard University ("The Mecca") + Smithsonian National Museum of African American History & Culture (NMAAHC).<br>
+              <strong>Itinerary:</strong> Morning tour of Howard University campus → Georgia Avenue lunch → Afternoon exploration of Smithsonian NMAAHC on the National Mall.
+            </p>
+          </div>
+        </div>
+
+        <!-- HBCU Contact Directory -->
+        <div class="table-container" style="margin-bottom: 24px;">
+          <table class="dossier-table">
+            <thead>
+              <tr>
+                <th>HBCU Institution</th>
+                <th>Location</th>
+                <th>Group Tour Contact / Office</th>
+                <th>Official Email & Phone</th>
+                <th>Target Visit Window</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--ink);">Bowie State University</strong></td>
+                <td>Bowie, MD</td>
+                <td>Office of Admissions & Campus Tours</td>
+                <td><span style="font-family: var(--font-mono);">visitus@bowiestate.edu</span><br><span style="font-size: 11px; color: var(--ink-muted);">(301) 860-3415</span></td>
+                <td>Fall Tour (Oct 23 / Nov 6 / Dec 4)</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--ink);">Howard University</strong></td>
+                <td>Washington, DC</td>
+                <td>Undergraduate Admissions & Visitor Center</td>
+                <td><span style="font-family: var(--font-mono);">visithoward@howard.edu</span><br><span style="font-size: 11px; color: var(--ink-muted);">(202) 806-2755</span></td>
+                <td>Feb Black History Tour (Feb 19)</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--ink);">Morgan State University</strong></td>
+                <td>Baltimore, MD</td>
+                <td>Office of Undergraduate Admissions</td>
+                <td><span style="font-family: var(--font-mono);">campustours@morgan.edu</span><br><span style="font-size: 11px; color: var(--ink-muted);">(443) 885-3000</span></td>
+                <td>Fall Tour (Oct / Nov / Dec)</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--ink);">Smithsonian NMAAHC</strong></td>
+                <td>Washington, DC</td>
+                <td>Student Group Education & Reservations</td>
+                <td><span style="font-family: var(--font-mono);">NMAAHCEducation@si.edu</span><br><span style="font-size: 11px; color: var(--ink-muted);">(844) 750-3012</span></td>
+                <td>Feb Black History Tour (Free Passes)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 3 Ready-to-Send Email Templates -->
+        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+          ✉️ Immediate Outreach Email Templates (Click Copy & Send to Admissions Offices)
+        </h3>
+
+        <div class="grid-halves">
+          
+          <!-- Template 1: Bowie State -->
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">1. To Bowie State Group Tours (visitus@bowiestate.edu)</span>
+              <button class="btn" onclick="copySnippet('email-bowie')">📋 Copy Email</button>
+            </div>
+            <div class="letter-paper" id="email-bowie">Subject: Group Campus Tour Request for High School Black Student Union — [School Name]
+
+Dear Bowie State University Admissions & Campus Tours Team,
+
+I hope this email finds you well. 
+
+I am writing on behalf of the Black Student Union (BSU) at [Your High School Name], located in [Your County / City, MD]. Our student organization is eager to organize a group campus visit to Bowie State University this Fall 2026 semester.
+
+Trip Details & Request:
+• Prospective Group Size: Approximately 25–30 high school students (grades 9th–12th) plus 3 faculty chaperones.
+• Preferred Dates: [Option 1: Friday, Oct 23] or [Option 2: Friday, Nov 6] or [Option 3: Friday, Dec 4].
+• Preferred Time Window: 9:30 AM – 1:30 PM.
+• Requested Programming: Undergraduate admissions presentation, student-led walking campus tour, and dining hall lunch information.
+
+Many of our students are actively preparing their college applications and are interested in Bowie State’s academic offerings, specifically in business, computer science, and nursing.
+
+Please let us know your current availability for group tours on these dates, or if there is an official group booking portal we should complete. 
+
+Thank you for your time and guidance!
+
+Warm regards,
+
+[Your Full Name]
+President / Student Representative, Black Student Union
+[Your High School Name]
+Faculty Advisor: [Advisor Name] ([Advisor Email])
+Phone: [Your Phone Number]</div>
+          </div>
+
+          <!-- Template 2: Howard University -->
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">2. To Howard University Group Tours (visithoward@howard.edu)</span>
+              <button class="btn" onclick="copySnippet('email-howard')">📋 Copy Email</button>
+            </div>
+            <div class="letter-paper" id="email-howard">Subject: Group Tour Inquiry for High School Black Student Union — [School Name]
+
+Dear Howard University Visitor Center & Admissions Team,
+
+Greetings from [Your High School Name] in [City, State]!
+
+On behalf of our school's Black Student Union (BSU) and our faculty advisor [Advisor Name], I am reaching out to inquire about scheduling an official group campus tour and admissions information session at Howard University during our Black History Month expedition on Friday, February 19, 2027 (or alternative dates in Fall).
+
+Group Profile:
+• Student Attendees: Approximately 25–30 dedicated high school scholars (primarily juniors and seniors).
+• Faculty Chaperones: 3 certified teachers/advisors.
+• Preferred Dates: Friday, February 19, 2027 (or Friday, November 20 / Friday, December 4, 2026).
+• Schedule Interest: Campus tour, admissions overview (merit scholarships & deadlines), and Q&A.
+
+Howard University is a top collegiate aspiration for many of our members, and we would be honored to experience the campus in person.
+
+Could you please advise on group tour availability and provide instructions for reserving our group slot?
+
+Thank you for your ongoing support of prospective students.
+
+In truth and service,
+
+[Your Full Name]
+Student Leader, Black Student Union
+[Your High School Name]
+Faculty Advisor: [Advisor Name] ([Advisor Email])
+Phone: [Your Phone Number]</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 4: FEB BLACK HISTORY SPIRIT WEEK & POTLUCK -->
+      <!-- ========================================== -->
+      <section id="pane-february-potluck" class="section-pane">
+        <h2 class="section-heading">February Black History Month: Spirit Week & Community Potluck</h2>
+        <p class="section-sub">
+          February is our premier community month. Below is the complete framework for our school-wide Black History Spirit Week and our culminating End-of-February Cultural Potluck.
+        </p>
+
+        <!-- Spirit Week Schedule -->
+        <div class="document-card" style="margin-bottom: 24px;">
+          <div class="document-card-header">
+            <span class="document-card-title">📅 5-Day Black History Spirit Week Theme Guide (Feb 8–12, 2027)</span>
+            <span class="status-badge badge-official">School-Wide Event</span>
+          </div>
+
+          <table class="dossier-table">
+            <thead>
+              <tr>
+                <th style="width: 110px;">Day</th>
+                <th>Spirit Theme</th>
+                <th>Dress-Up Guidelines</th>
+                <th>Daily Lunchtime Activity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--accent);">Monday, Feb 8</strong></td>
+                <td><strong>HBCU & College Pride Day</strong></td>
+                <td>Wear apparel, hoodies, or colors representing any HBCU or collegiate institution.</td>
+                <td>HBCU Trivia Wheel in Cafeteria (Candy & sticker prizes)</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Tuesday, Feb 9</strong></td>
+                <td><strong>Decades of Excellence (90s / 2000s)</strong></td>
+                <td>Throwback 90s/2000s streetwear, vintage jerseys, retro windbreakers, graphic tees.</td>
+                <td>Throwback Hip-Hop & R&B Lunch Playlist + Photo Booth</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Wednesday, Feb 10</strong></td>
+                <td><strong>"Dress for the Future" / Black Excellence</strong></td>
+                <td>Professional or business-smart attire (blazers, ties, collared shirts, sharp dresses).</td>
+                <td>Elevator Pitch Challenge & Professional Headshots</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Thursday, Feb 11</strong></td>
+                <td><strong>Cultural Heritage & Roots Day</strong></td>
+                <td>Pan-African colors (red/black/green), traditional African prints, Caribbean flags/colors.</td>
+                <td>Cultural music showcase & flag photo</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--accent);">Friday, Feb 12</strong></td>
+                <td><strong>BSU Club Shirt / Blackout Friday</strong></td>
+                <td>Wear official 2026–2027 BSU club shirt or all-black attire.</td>
+                <td>School-wide group panoramic photo on stadium bleachers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Community Potluck & Cultural Showcase -->
+        <div class="grid-halves">
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">🍲 Annual BSU Cultural Potluck & Showcase</span>
+                <span class="status-badge badge-paid">Culminating Night</span>
+              </div>
+
+              <div style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
+                <p><strong>Date & Time:</strong> Thursday, February 25, 2027 • 4:00 PM – 6:30 PM</p>
+                <p><strong>Location:</strong> School Cafeteria / Multi-Purpose Room</p>
+                <p><strong>Invited Guests:</strong> BSU members, families, faculty, staff, and school administration.</p>
+                
+                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line);">
+                  <strong style="color: var(--ink);">Evening Program Schedule:</strong>
+                  <ul style="padding-left: 18px; margin-top: 4px; font-size: 12.5px;">
+                    <li><strong>4:00 – 4:30 PM:</strong> Arrival, music, food blessing & buffet opening.</li>
+                    <li><strong>4:30 – 5:15 PM:</strong> Dinner, family mingling, and cultural playlist.</li>
+                    <li><strong>5:15 – 5:45 PM:</strong> Student poetry/spoken word & Black History trivia contest.</li>
+                    <li><strong>5:45 – 6:15 PM:</strong> Member recognition awards & senior spotlights.</li>
+                    <li><strong>6:15 – 6:30 PM:</strong> Closing remarks & clean-up committee.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Potluck Food & Supplies Sign-Up Blueprint -->
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">📋 Potluck Food & Supply Sign-Up Blueprint</span>
+                <button class="btn" onclick="copySnippet('text-potluck-signup')">📋 Copy List</button>
+              </div>
+
+              <div id="text-potluck-signup" style="font-size: 12.5px; color: var(--ink-secondary); line-height: 1.6;">
+                <div style="margin-bottom: 8px;">
+                  <strong style="color: var(--ink);">🍗 Entrees & Mains:</strong><br>
+                  • Jollof Rice (West African style)<br>
+                  • Jerk Chicken & Curry Chicken (Caribbean style)<br>
+                  • Baked Macaroni & Cheese<br>
+                  • Southern Fried Chicken / Tenders<br>
+                  • Suya Skewers / Beef Patties
+                </div>
+                <div style="margin-bottom: 8px;">
+                  <strong style="color: var(--ink);">🥗 Sides & Vegetables:</strong><br>
+                  • Collard Greens & Fried Plantains (Dodo)<br>
+                  • Potato Salad & Garden Salad<br>
+                  • Cornbread & Rice & Peas
+                </div>
+                <div style="margin-bottom: 8px;">
+                  <strong style="color: var(--ink);">🍰 Desserts:</strong><br>
+                  • Peach Cobbler & Sweet Potato Pie<br>
+                  • Banana Pudding & Pound Cake
+                </div>
+                <div>
+                  <strong style="color: var(--ink);">🥤 Drinks & Paper Goods:</strong><br>
+                  • Hibiscus Tea (Zobo / Sorrel) & Sweet Tea / Lemonade<br>
+                  • Paper plates (heavy duty), napkins, plastic forks, serving tongs, chafing warmers
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================== -->
+      <!-- ========================================== -->
+      <!-- SECTION 5: MASTER WORKING CALENDAR (FULL YEAR 2026–2027) -->
+      <!-- ========================================== -->
+      <section id="pane-calendar" class="section-pane">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h2 class="section-heading">Master Working Calendar & Dues Schedule (2026–2027)</h2>
+            <p class="section-sub" style="margin-bottom: 0;">
+              Complete school year operations: Monthly dues payment cutoffs, financial audits, alternating weekly meetings (Tuesdays at 3:30 PM in Room 214), 2 HBCU/DC expeditions, College Fair, Spirit Week, Potluck, Spring Elections, and Senior Cord Ceremony.
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="addNewCalendarEvent()">+ Add Calendar Date</button>
+        </div>
+
+        <!-- Monthly Dues & Financial Milestones Table -->
+        <div class="document-card" style="margin-bottom: 22px; border-left: 3px solid var(--forest);">
+          <div class="document-card-header">
+            <span class="document-card-title">💵 Official Monthly Dues Milestones & Treasury Coverage Schedule</span>
+            <span class="status-badge badge-paid">Payment Policy</span>
+          </div>
+          <p style="font-size: 12.5px; color: var(--ink-secondary); margin-bottom: 12px;">
+            <strong>Dues Model:</strong> <strong>$15.00</strong> for Returning Members (renewal) • <strong>$25.00</strong> for New Members (includes custom club t-shirt) • <strong>$0.00</strong> for Confidential Fee Waivers.
+          </p>
+          <div class="table-container" style="margin-bottom: 0;">
+            <table class="dossier-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Target Date</th>
+                  <th>Dues / Financial Action</th>
+                  <th>Target Amount</th>
+                  <th>What This Money Directly Covers</th>
+                  <th style="width: 100px;">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--accent);">Tue, Sep 22</td>
+                  <td><strong>Early-Bird Dues Window</strong></td>
+                  <td>$15 / $25 per student</td>
+                  <td>First batch of meeting refreshments, welcome snacks, and interest meeting printing.</td>
+                  <td><span class="status-badge badge-pending">Upcoming</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 700; color: #b91c1c;">Fri, Oct 02</td>
+                  <td><strong>Hard Cut-Off: 100% Member Dues Due</strong></td>
+                  <td>~$620 Target Pool</td>
+                  <td><strong>Locks in T-Shirt Manufacturing Order</strong> (XS–2XL print run) & bus initial deposit reserve.</td>
+                  <td><span class="status-badge badge-pending">Mandatory</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--forest);">Fri, Nov 13</td>
+                  <td><strong>Trip #1 Subsidized Seat Fee</strong></td>
+                  <td>$15 per attendee</td>
+                  <td>Covers chartered coach seat & boxed lunch for Bowie State / Morgan State HBCU tour on Dec 4.</td>
+                  <td><span class="status-badge badge-official">Trip #1</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--ink);">Tue, Dec 08</td>
+                  <td><strong>Mid-Year Treasury & Receipts Audit</strong></td>
+                  <td>Full Ledger Reconcile</td>
+                  <td>Advisor audits bus receipts, remaining snack reserves, and winter study jam cocoa budget.</td>
+                  <td><span class="status-badge badge-waived">Audit</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--forest);">Fri, Jan 29</td>
+                  <td><strong>Trip #2 Subsidized Seat Fee</strong></td>
+                  <td>$15 per attendee</td>
+                  <td>Locks in 30 seats on charter bus for Howard University & Smithsonian NMAAHC expedition on Feb 19.</td>
+                  <td><span class="status-badge badge-official">Trip #2</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--amber);">Thu, Feb 25</td>
+                  <td><strong>Annual Cultural Potluck & Showcase</strong></td>
+                  <td>$0 (Free Family Feast)</td>
+                  <td>Family food donations cover dishes; club dues cover $40 paper plates, cups, and warming trays.</td>
+                  <td><span class="status-badge badge-paid">Potluck</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--accent);">Tue, Mar 02</td>
+                  <td><strong>Spring Fundraiser Launch</strong></td>
+                  <td>+$400–$500 Goal</td>
+                  <td>Krispy Kreme / snack sale to replenish treasury for graduation Kente stoles & end-of-year picnic.</td>
+                  <td><span class="status-badge badge-pending">Fundraiser</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: 600; color: var(--forest);">Tue, May 04</td>
+                  <td><strong>Senior Stoles & Year-End Reconcile</strong></td>
+                  <td>100% Covered</td>
+                  <td>Distribute graduation honor cords & stoles to eligible active senior members.</td>
+                  <td><span class="status-badge badge-paid">Graduation</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Alternating Cadence Explanation Box -->
+        <div class="policy-box" style="background: #ffffff; border-left: 3px solid var(--accent); margin-bottom: 20px;">
+          <h4>🔄 Operating Cadence: Alternating Weekly Structure</h4>
+          <p>
+            BSU operates on an alternating rotation on <strong>Tuesdays at 3:30 PM in Room 214</strong>:
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+            <div style="background: var(--panel); border: 1px solid var(--line); padding: 10px 14px; border-radius: 4px;">
+              <span class="status-badge badge-paid" style="margin-bottom: 4px;">Week A: Full Club Meeting</span>
+              <p style="font-size: 12px; color: var(--ink-secondary); margin-top: 2px;">
+                <strong>Audience:</strong> All 30 members.<br>
+                <strong>Focus:</strong> Interactive activities, icebreakers, workshops, College Fair prep, food & bonding.
+              </p>
+            </div>
+            <div style="background: var(--panel); border: 1px solid var(--line); padding: 10px 14px; border-radius: 4px;">
+              <span class="status-badge badge-pending" style="margin-bottom: 4px;">Week B: Executive Planning Meeting</span>
+              <p style="font-size: 12px; color: var(--ink-secondary); margin-top: 2px;">
+                <strong>Audience:</strong> Core planning team & officers.<br>
+                <strong>Focus:</strong> Audit dues, review survey votes, manage 2 field trip contracts, and prep meeting slides/snacks.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="calendar-timeline">
+
+          <!-- SEPTEMBER -->
+          <div style="margin-top: 18px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• September 2026: Kickoff & Survey Phase</strong>
+          </div>
+
+          <!-- Week 1: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">SEP</div>
+              <div class="schedule-day" style="color: var(--forest);">08</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #1</span>
+                <h4 style="margin: 0;">Opening Interest & Welcome Kickoff</h4>
+              </div>
+              <p>Welcome all returning and incoming students. Launch Form 1 (Sign-Up QR) and Form 2 (HBCU Survey). Distribute dues parent letters ($15/$25) and refreshments.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Goal: 30 Sign-Ups</div>
+            </div>
+          </div>
+
+          <!-- Week 2: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">SEP</div>
+              <div class="schedule-day" style="color: var(--amber);">15</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #1</span>
+                <h4 style="margin: 0;">Roster Audit, HBCU Votes & Tour Outreach Review</h4>
+              </div>
+              <p>Review Form 1 interest responses and update ledger. Tally Form 2 HBCU votes. Verify outreach emails sent to Bowie State, Howard, and Morgan State.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Dues deposit check with advisor</div>
+            </div>
+          </div>
+
+          <!-- Week 3: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">SEP</div>
+              <div class="schedule-day" style="color: var(--forest);">22</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #2</span>
+                <h4 style="margin: 0;">HBCU Destination Reveal & Committee Breakouts</h4>
+              </div>
+              <p>Announce the winning Maryland/DC HBCU tour destination from student survey votes. Split members into working sub-committees (Events, Media, Community). Collect initial dues.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Reveal winning HBCU campus</div>
+            </div>
+          </div>
+
+          <!-- Week 4: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">SEP</div>
+              <div class="schedule-day" style="color: var(--amber);">29</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #2</span>
+                <h4 style="margin: 0;">Admin Proposal Sign-Off & Bus Charter Logistics</h4>
+              </div>
+              <p>Deliver formal field trip proposal memorandum (Tab IX) to Principal. Review charter bus quotes. Plan Homecoming banner supplies and joint outreach with SGA.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Deliver memo to Principal</div>
+            </div>
+          </div>
+
+          <!-- OCTOBER -->
+          <div style="margin-top: 24px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• October 2026: Spirit, Dues Audit & Resume Masterclass</strong>
+          </div>
+
+          <!-- Week 5: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">OCT</div>
+              <div class="schedule-day" style="color: var(--forest);">06</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #3</span>
+                <h4 style="margin: 0;">Homecoming Spirit Rally & Banner Painting</h4>
+              </div>
+              <p>Design and paint the BSU Homecoming hallway banner. Coordinate spirit week participation. Remind members about early-bird dues deadline.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Creative community bonding</div>
+            </div>
+          </div>
+
+          <!-- Week 6: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">OCT</div>
+              <div class="schedule-day" style="color: var(--amber);">13</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #3</span>
+                <h4 style="margin: 0;">T-Shirt Order Audit & College Fair Logistics</h4>
+              </div>
+              <p>Tally exact t-shirt size quantities from ledger (XS to 2XL) and submit manufacturing order to print vendor. Finalize College Fair attendance logistics and permission forms.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Submit shirt print order</div>
+            </div>
+          </div>
+
+          <!-- Week 7: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">OCT</div>
+              <div class="schedule-day" style="color: var(--forest);">20</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #4</span>
+                <h4 style="margin: 0;">Resume & College Fair Prep Workshop</h4>
+              </div>
+              <p>Computer lab session: Members draft 1-page academic resumes and extracurricular brag-sheets. Peer reviews on GPA, leadership, and formatting for November fair.</p>
+              <div class="schedule-location">📍 Media Center / Computer Lab • All Members • Action: Print 10 resumes each</div>
+            </div>
+          </div>
+
+          <!-- Week 8: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">OCT</div>
+              <div class="schedule-day" style="color: var(--amber);">27</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #4</span>
+                <h4 style="margin: 0;">Field Trip Bus Lock-In & Chaperone Assignments</h4>
+              </div>
+              <p>Confirm charter bus deposit with bookkeeper for Trip #1. Verify 3 faculty chaperones are confirmed (1:10 ratio). Print field trip permission slips and prepare College Fair question cards.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Bus deposit locked</div>
+            </div>
+          </div>
+
+          <!-- NOVEMBER -->
+          <div style="margin-top: 24px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--forest);">• November 2026: College Fair Execution & Post-Fair Strategy</strong>
+          </div>
+
+          <!-- Week 9: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">NOV</div>
+              <div class="schedule-day" style="color: var(--forest);">03</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #5</span>
+                <h4 style="margin: 0;">College Fair Readiness & Mock Rep Interviews</h4>
+              </div>
+              <p>Distribute question cheat-sheets (Tab VIII). Practice 30-second student self-introductions, firm handshakes, and how to ask admissions reps for application fee waiver codes.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Final prep before the fair</div>
+            </div>
+          </div>
+
+          <!-- THURSDAY NOV 12: SPECIAL EVENT -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest); background: #fcfefc;">
+            <div class="schedule-date-box" style="background: #ffffff; border: 1px solid var(--forest);">
+              <div class="schedule-month" style="color: var(--forest);">NOV</div>
+              <div class="schedule-day" style="color: var(--forest);">12</div>
+              <div class="schedule-time">THU ALL DAY</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid" style="background: var(--forest); color: #fff;">Major Milestone Event</span>
+                <h4 style="margin: 0; color: var(--forest);">COUNTY / REGIONAL COLLEGE FAIR DAY</h4>
+              </div>
+              <p>All-hands BSU delegation attendance. Students meet 5–10 admissions representatives, collect brochures/cards, and request fee waivers. Business casual attire.</p>
+              <div class="schedule-location">📍 County Convention Center / Gymnasium • Lead: All BSU Attendees</div>
+            </div>
+          </div>
+
+          <!-- Week 10: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">NOV</div>
+              <div class="schedule-day" style="color: var(--amber);">17</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #5</span>
+                <h4 style="margin: 0;">College Fair Debrief & Final Field Trip Roster Audit</h4>
+              </div>
+              <p>Audit collected field trip permission slips and finalize 30-seat bus manifest for Dec 4 trip. Review student thank-you email drafts. Plan Thanksgiving canned food drive logistics.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Finalize 30-student seat list</div>
+            </div>
+          </div>
+
+          <!-- Week 11: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">NOV</div>
+              <div class="schedule-day" style="color: var(--forest);">24</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #6</span>
+                <h4 style="margin: 0;">Thanksgiving Community Drive & Final Trip Briefing</h4>
+              </div>
+              <p>Box and organize Thanksgiving canned food donations for local pantry. Distribute final field trip itinerary, departure times, and rules for the December 4 HBCU tour.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Final trip departure briefing</div>
+            </div>
+          </div>
+
+          <!-- DECEMBER -->
+          <div style="margin-top: 24px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• December 2026: Field Trip #1 & Winter Finals Jam</strong>
+          </div>
+
+          <!-- FRIDAY DEC 4: SPECIAL EXPEDITION 1 -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--accent); background: #fefcfb;">
+            <div class="schedule-date-box" style="background: var(--accent-soft);">
+              <div class="schedule-month" style="color: var(--accent);">DEC</div>
+              <div class="schedule-day" style="color: var(--accent);">04</div>
+              <div class="schedule-time">FRI 8:00 AM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-official">Major Expedition #1</span>
+                <h4 style="margin: 0; color: var(--accent);">MARYLAND HBCU TOUR: BOWIE STATE / MORGAN STATE</h4>
+              </div>
+              <p>Charter bus departure for Bowie State University or Morgan State. Official undergraduate admissions presentation, campus walking tour, dining hall lunch, and department visits.</p>
+              <div class="schedule-location">📍 Bus Loop Check-in: 7:45 AM • Return: 3:15 PM • 30 Students + 3 Chaperones</div>
+            </div>
+          </div>
+
+          <!-- Week 12: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">DEC</div>
+              <div class="schedule-day" style="color: var(--amber);">08</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #6</span>
+                <h4 style="margin: 0;">Trip #1 Review, Treasury Audit & Spring 2027 Planning</h4>
+              </div>
+              <p>Audit remaining funds with advisor. Review student trip feedback. Begin preliminary planning for February Black History Month Spirit Week and Trip #2 (Howard / NMAAHC).</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Lock in Spring dates</div>
+            </div>
+          </div>
+
+          <!-- Week 13: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">DEC</div>
+              <div class="schedule-day" style="color: var(--forest);">15</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #7</span>
+                <h4 style="margin: 0;">Winter Finals Study Jam & Hot Cocoa Celebration</h4>
+              </div>
+              <p>Hot chocolate bar, study groups with peer tutors for upcoming midterms, review Fall semester accomplishments, and celebrate member achievements.</p>
+              <div class="schedule-location">📍 Room 214 • Open to all members</div>
+            </div>
+          </div>
+
+          <!-- JANUARY 2027 -->
+          <div style="margin-top: 24px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• January 2027: Spring Kickoff & Spirit Week Prep</strong>
+          </div>
+
+          <!-- Week 14: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">JAN</div>
+              <div class="schedule-day" style="color: var(--amber);">05</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #7</span>
+                <h4 style="margin: 0;">Howard University & NMAAHC Group Booking</h4>
+              </div>
+              <p>Confirm group reservation with Howard University Visitor Center and reserve free passes for the Smithsonian NMAAHC. Book charter bus for February 19.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Reserve Trip #2 bus</div>
+            </div>
+          </div>
+
+          <!-- Week 15: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">JAN</div>
+              <div class="schedule-day" style="color: var(--forest);">12</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #8</span>
+                <h4 style="margin: 0;">Spring Welcome & Launching Black History Month</h4>
+              </div>
+              <p>Announce Expedition #2 to Howard University & NMAAHC. Reveal the February Spirit Week themes. Launch the Potluck Food Sign-Up Sheet for the end of February.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Potluck sheet circulating</div>
+            </div>
+          </div>
+
+          <!-- Week 16: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">JAN</div>
+              <div class="schedule-day" style="color: var(--amber);">19</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #8</span>
+                <h4 style="margin: 0;">Potluck Food Audit & Morning Announcement Drafts</h4>
+              </div>
+              <p>Audit potluck food sign-ups to ensure all categories (mains, sides, desserts, drinks) are covered. Submit daily Spirit Week announcements to main office.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Confirm cafeteria booking for Feb 25</div>
+            </div>
+          </div>
+
+          <!-- Week 17: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">JAN</div>
+              <div class="schedule-day" style="color: var(--forest);">26</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #9</span>
+                <h4 style="margin: 0;">Spirit Week Hallway Decorating & Poster Blitz</h4>
+              </div>
+              <p>Paint hallway banners for Black History Month. Create Instagram graphics for daily themes. Hand out permission slips for the Feb 19 Howard / NMAAHC trip.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Permission slips distributed</div>
+            </div>
+          </div>
+
+          <!-- FEBRUARY 2027 -->
+          <div style="margin-top: 24px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--forest);">• February 2027: Black History Month, Spirit Week, Trip #2 & Potluck</strong>
+          </div>
+
+          <!-- Week 18: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">FEB</div>
+              <div class="schedule-day" style="color: var(--amber);">02</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #9</span>
+                <h4 style="margin: 0;">Final Spirit Week Prep & Cafeteria Logistics</h4>
+              </div>
+              <p>Finalize daily trivia questions for morning announcements. Check sound system and cafeteria tables for the upcoming Potluck night on Feb 25.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Trivia prizes ready</div>
+            </div>
+          </div>
+
+          <!-- FEB 8 - 12: SPIRIT WEEK HIGHLIGHT -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest); background: #fdfefd;">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">FEB</div>
+              <div class="schedule-day" style="color: var(--forest);">8–12</div>
+              <div class="schedule-time">MON–FRI</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid" style="background: var(--forest); color: #fff;">School-Wide Spirit Week</span>
+                <h4 style="margin: 0; color: var(--forest);">BSU BLACK HISTORY SPIRIT WEEK</h4>
+              </div>
+              <p>Daily Themes: Mon (HBCU Day), Tue (90s/2000s Throwback), Wed (Dress for the Future), Thu (Cultural Heritage & Roots), Fri (BSU Club Shirt / Blackout Friday).</p>
+              <div class="schedule-location">📍 School-Wide • Daily Lunchtime Activities in Cafeteria</div>
+            </div>
+          </div>
+
+          <!-- Week 19: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">FEB</div>
+              <div class="schedule-day" style="color: var(--forest);">09</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #10</span>
+                <h4 style="margin: 0;">Mid-Spirit Week Photo Booth & Trivia Contest</h4>
+              </div>
+              <p>Celebrate 90s/2000s throwback day. Take official group photos for the yearbook. Review final departure instructions for the Feb 19 DC trip.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Yearbook photo shoot</div>
+            </div>
+          </div>
+
+          <!-- Week 20: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">FEB</div>
+              <div class="schedule-day" style="color: var(--amber);">16</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #10</span>
+                <h4 style="margin: 0;">Lock In Trip #2 Bus Manifest & Chaperones</h4>
+              </div>
+              <p>Audit 30-student bus manifest for Howard & NMAAHC trip on Friday. Finalize paper plates, utensils, and chafing dishes for next week's Potluck.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Lock in 30 trip seats</div>
+            </div>
+          </div>
+
+          <!-- FRIDAY FEB 19: SPECIAL EXPEDITION 2 -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest); background: #fefcfb;">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">FEB</div>
+              <div class="schedule-day" style="color: var(--forest);">19</div>
+              <div class="schedule-time">FRI 8:00 AM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-official">Major Expedition #2</span>
+                <h4 style="margin: 0; color: var(--forest);">WASHINGTON, DC: HOWARD UNIVERSITY & SMITHSONIAN NMAAHC</h4>
+              </div>
+              <p>Morning walking tour and admissions session at Howard University. Lunch on Georgia Ave. Afternoon guided exploration of the National Museum of African American History & Culture.</p>
+              <div class="schedule-location">📍 Bus Loop Check-in: 7:45 AM • Return: 4:00 PM • 30 Students + 3 Chaperones</div>
+            </div>
+          </div>
+
+          <!-- Week 21: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">FEB</div>
+              <div class="schedule-day" style="color: var(--amber);">23</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #11</span>
+                <h4 style="margin: 0;">Final Setup for Community Potluck Night</h4>
+              </div>
+              <p>Confirm electrical outlets for chafing warmers, sound system microphone, printed programs, and family RSVP numbers. Clean-up assignments.</p>
+              <div class="schedule-location">📍 Cafeteria Walkthrough • Core Planning Team • Action: Final layout ready</div>
+            </div>
+          </div>
+
+          <!-- THURSDAY FEB 25: THE CULMINATING POTLUCK NIGHT -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--accent); background: #fffcfb;">
+            <div class="schedule-date-box" style="background: var(--accent-soft); border: 1px solid var(--accent);">
+              <div class="schedule-month" style="color: var(--accent);">FEB</div>
+              <div class="schedule-day" style="color: var(--accent);">25</div>
+              <div class="schedule-time">THU 4:00 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-official" style="background: var(--accent); color: #fff;">Culminating Community Celebration</span>
+                <h4 style="margin: 0; color: var(--accent);">ANNUAL BSU BLACK HISTORY CULTURAL POTLUCK & SHOWCASE</h4>
+              </div>
+              <p>Community feast celebrating Black culture: Jollof rice, jerk chicken, mac & cheese, fried chicken, plantains, and desserts. Student poetry, Black History trivia challenge, and member recognition awards.</p>
+              <div class="schedule-location">📍 School Cafeteria • 4:00 PM – 6:30 PM • Open to Members, Families & Teachers</div>
+            </div>
+          </div>
+
+          <!-- MARCH 2027 -->
+          <div style="margin-top: 28px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• March 2027: Women's History Month, College Acceptances & Spring Fundraiser</strong>
+          </div>
+
+          <!-- Week 22: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">MAR</div>
+              <div class="schedule-day" style="color: var(--amber);">02</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #12</span>
+                <h4 style="margin: 0;">Spring Treasury Audit & Krispy Kreme Fundraiser Launch</h4>
+              </div>
+              <p>Reconcile receipts from February Potluck & Trip #2. Launch the pre-order box fundraiser (Krispy Kreme doughnuts or snack grams) to fund graduation Kente stoles and end-of-year cookout food.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Distribute fundraiser order sheets</div>
+            </div>
+          </div>
+
+          <!-- Week 23: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">MAR</div>
+              <div class="schedule-day" style="color: var(--forest);">09</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #11</span>
+                <h4 style="margin: 0;">Black Women in Leadership & Senior College Wall Reveal</h4>
+              </div>
+              <p>Celebration for Women’s History Month honoring iconic Black female changemakers. Launch the "BSU College Acceptance Wall" where seniors pin their college offer letters and scholarships.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Pin acceptance letters & celebrate offers</div>
+            </div>
+          </div>
+
+          <!-- Week 24: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">MAR</div>
+              <div class="schedule-day" style="color: var(--amber);">16</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #13</span>
+                <h4 style="margin: 0;">Fundraiser Collection Audit & Senior Stole Vendor Selection</h4>
+              </div>
+              <p>Collect all fundraiser order forms and cash with advisor. Select supplier for authentic Kente graduation stoles and braided honor cords for active graduating seniors.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Deposit fundraiser revenue</div>
+            </div>
+          </div>
+
+          <!-- Week 25: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">MAR</div>
+              <div class="schedule-day" style="color: var(--forest);">23</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #12</span>
+                <h4 style="margin: 0;">Financial Literacy Masterclass: Budgeting, Credit & FAFSA</h4>
+              </div>
+              <p>Guest speaker / interactive workshop: Decoding college financial aid award letters, student loan navigation, building a student credit profile, and opening emergency savings accounts.</p>
+              <div class="schedule-location">📍 Media Center • All Members • Action: Award letter comparison worksheet</div>
+            </div>
+          </div>
+
+          <!-- APRIL 2027 -->
+          <div style="margin-top: 28px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--forest);">• April 2027: Leadership Transition, E-Board Elections & Mentorship</strong>
+          </div>
+
+          <!-- Week 26: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">APR</div>
+              <div class="schedule-day" style="color: var(--amber);">06</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #14</span>
+                <h4 style="margin: 0;">2027–2028 Executive Board Application Release</h4>
+              </div>
+              <p>Publish Google Form applications for next year’s E-Board (President, Vice President, Secretary, Treasurer, Public Relations, Event Coordinator). Set candidate eligibility criteria.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Launch leadership application form</div>
+            </div>
+          </div>
+
+          <!-- Week 27: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">APR</div>
+              <div class="schedule-day" style="color: var(--forest);">13</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #13</span>
+                <h4 style="margin: 0;">Candidate Speeches & 2027–2028 Club Elections</h4>
+              </div>
+              <p>Candidates deliver 2-minute vision speeches. Anonymous voting via Google Forms by all active members who paid dues. Advisor tallies and confirms results.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Cast ballots for next school year</div>
+            </div>
+          </div>
+
+          <!-- Week 28: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">APR</div>
+              <div class="schedule-day" style="color: var(--amber);">20</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #15</span>
+                <h4 style="margin: 0;">E-Board Joint Transition Briefing (Old & New Boards)</h4>
+              </div>
+              <p>Outgoing leaders mentor newly elected officers. Share Google Drive access, advisor contacts, budget templates, and binder protocols to ensure seamless continuity.</p>
+              <div class="schedule-location">📍 Room 214 • Outgoing & Incoming Officers • Action: Digital keys handed over</div>
+            </div>
+          </div>
+
+          <!-- Week 29: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest);">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">APR</div>
+              <div class="schedule-day" style="color: var(--forest);">27</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid">Full Club Meeting #14</span>
+                <h4 style="margin: 0;">Senior & Alumni Panel: "Life After High School"</h4>
+              </div>
+              <p>Graduating seniors and visiting college freshmen share advice with 9th–11th graders: dorm living, studying at college, navigating campus jobs, and making friends.</p>
+              <div class="schedule-location">📍 Room 214 • All Members • Action: Underclassmen Q&A mentorship</div>
+            </div>
+          </div>
+
+          <!-- MAY 2027 -->
+          <div style="margin-top: 28px; margin-bottom: 10px;">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">• May 2027: Senior Recognition, Kente Stoles & End-of-Year Cookout</strong>
+          </div>
+
+          <!-- Week 30: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">MAY</div>
+              <div class="schedule-day" style="color: var(--amber);">04</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #16</span>
+                <h4 style="margin: 0;">Final Logistics for Stole Ceremony & Cookout Permits</h4>
+              </div>
+              <p>Verify delivery of Kente graduation stoles. Audit final senior member roster. Submit courtyard/park permit for the end-of-year outdoor cookout with activities director.</p>
+              <div class="schedule-location">📍 Room 214 • Core Planning Team • Action: Stoles inspected & certified</div>
+            </div>
+          </div>
+
+          <!-- Week 31: CLUB MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--accent); background: #fefcfb;">
+            <div class="schedule-date-box" style="background: var(--accent-soft);">
+              <div class="schedule-month" style="color: var(--accent);">MAY</div>
+              <div class="schedule-day" style="color: var(--accent);">11</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-official">Major Milestone Ceremony</span>
+                <h4 style="margin: 0; color: var(--accent);">SENIOR KENTE STOLE & HONOR CORD CEREMONY</h4>
+              </div>
+              <p>Formal celebration presenting active seniors with their graduation stoles and honor cords. Speeches from underclassmen, advisor remarks, and group photography for the yearbook.</p>
+              <div class="schedule-location">📍 Media Center / Auditorium • Open to Members, Families & Teachers</div>
+            </div>
+          </div>
+
+          <!-- FRIDAY MAY 21: MAJOR EVENT -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--forest); background: #fdfefd;">
+            <div class="schedule-date-box" style="background: var(--forest-soft);">
+              <div class="schedule-month" style="color: var(--forest);">MAY</div>
+              <div class="schedule-day" style="color: var(--forest);">21</div>
+              <div class="schedule-time">FRI 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-paid" style="background: var(--forest); color: #fff;">Culminating Social Event</span>
+                <h4 style="margin: 0; color: var(--forest);">ANNUAL BSU END-OF-YEAR OUTDOOR COOKOUT & FIELD DAY</h4>
+              </div>
+              <p>Celebratory outdoor barbecue and field day: Burgers, hot dogs, music, outdoor games, spikeball, and yearbook signing. Celebrating a transformative school year.</p>
+              <div class="schedule-location">📍 School Courtyard / Athletic Field • 3:30 PM – 6:00 PM • All BSU Members</div>
+            </div>
+          </div>
+
+          <!-- Week 32: EXEC MEETING -->
+          <div class="schedule-entry" style="border-left: 3px solid var(--amber);">
+            <div class="schedule-date-box" style="background: var(--amber-soft);">
+              <div class="schedule-month" style="color: var(--amber);">MAY</div>
+              <div class="schedule-day" style="color: var(--amber);">25</div>
+              <div class="schedule-time">TUE 3:30 PM</div>
+            </div>
+            <div class="schedule-info">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span class="status-badge badge-pending">Executive Planning Meeting #17</span>
+                <h4 style="margin: 0;">Final Binder Hand-Off & Summer Planning Session</h4>
+              </div>
+              <p>Official transition: Treasury books balanced, inventory stored in advisor’s closet, and preliminary calendar drafted for the upcoming 2027–2028 school year.</p>
+              <div class="schedule-location">📍 Room 214 • 2026–2027 and 2027–2028 Leadership Boards • Year-end close</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 6: OPENING MEETING RUN-OF-SHOW -->
+      <!-- ========================================== -->
+      <section id="pane-kickoff" class="section-pane">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h2 class="section-heading">Opening Interest Meeting Run-of-Show (45 Mins)</h2>
+            <p class="section-sub" style="margin-bottom: 0;">
+              Fast-paced, organized, and welcoming. Ensures incoming students fill out Form 1 and Form 2 before leaving.
+            </p>
+          </div>
+          <a class="btn btn-accent" href="BSU_Kickoff_Slides.html" target="_blank" style="text-decoration: none;">🖥️ Launch Presentation Slide Deck</a>
+        </div>
+
+        <div class="grid-halves">
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">Minute-by-Minute Run-of-Show</span>
+                <span class="status-badge badge-official">Tuesday Kickoff</span>
+              </div>
+
+              <div style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line);">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: var(--ink);">1. Doors Open, Music & QR Scan</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent);">00:00 – 00:08 (8 min)</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 2px;">
+                  Upbeat music. Greeters stand at the door welcoming everyone. Large QR code placard stands on table: <em>"Scan to Sign In (Form 1)"</em>. Free snacks on table.
+                </p>
+              </div>
+
+              <div style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line);">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: var(--ink);">2. Icebreaker: Speed Connections</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent);">00:08 – 00:18 (10 min)</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 2px;">
+                  Trios: Name, Grade, Favorite music artist, and one goal for this school year. Breaks the ice so 9th/10th graders feel immediately comfortable.
+                </p>
+              </div>
+
+              <div style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line);">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: var(--ink);">3. What BSU Is Doing This Year (The Hook)</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent);">00:18 – 00:28 (10 min)</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 2px;">
+                  Outline our big year: (1) <strong>2 College Field Trips</strong> (Fall MD HBCU tour to Bowie/Morgan + Feb Black History tour to Howard University & Smithsonian NMAAHC), (2) November College Fair prep & fee waivers, (3) February Black History Spirit Week & Annual Community Potluck, (4) Study jams & socials.
+                </p>
+              </div>
+
+              <div style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line);">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: var(--ink);">4. HBCU Survey (Form 2) & Dues Handout</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent);">00:28 – 00:36 (8 min)</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 2px;">
+                  Have everyone pull out their phones and complete the HBCU Survey (Form 2). Distribute the 1-page parent dues notice slip ($15 / $25).
+                </p>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between;">
+                  <strong style="color: var(--ink);">5. Remind App Check & Next Date</strong>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent);">00:36 – 00:45 (9 min)</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 2px;">
+                  Verify everyone has joined the Remind group. Announce General Meeting #2 date (Sept 22). Challenge: <em>"Bring 1 friend next meeting."</em>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opening Remarks Script -->
+          <div>
+            <div class="document-card-header" style="margin-bottom: 8px;">
+              <span class="document-card-title">Opening Remarks Script</span>
+              <button class="btn" onclick="copySnippet('letter-speech')">📋 Copy Script</button>
+            </div>
+
+            <div class="letter-paper" id="letter-speech">"Good afternoon everyone, and welcome to our opening Black Student Union meeting of the 2026–2027 school year!
+
+Whether you’re a returning member or walking into this room for the very first time as a freshman or sophomore—welcome. 
+
+BSU is a family, a support system, and a community built to help each other succeed. This year, we have clear, tangible plans:
+1. We are organizing a college campus tour to an HBCU right here in Maryland/DC (Bowie State, Howard, or Morgan State).
+2. In November, our entire club is prepping for and attending the County College Fair so you can connect directly with college admissions reps and secure fee waivers.
+3. We are building study jams, community service projects, and cultural spirit events.
+
+To make all of this happen, we need YOUR voice. 
+
+Before you leave today, make sure you scan the QR code on your table to fill out our Sign-Up Form and our HBCU Field Trip Survey so your vote counts. 
+
+Grab some snacks, grab a dues notice sheet to take home to your parents, and let's have an amazing year!"</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 6: DUES STRUCTURE & PARENT NOTICE -->
+      <!-- ========================================== -->
+      <section id="pane-dues-policy" class="section-pane">
+        <h2 class="section-heading">Dues Framework & Official Parent Notice</h2>
+        <p class="section-sub">
+          A clear, defensible dues policy ensures transparency with school administration, parents, and incoming students.
+        </p>
+
+        <div class="grid-halves">
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">Approved 2026–2027 Membership Tiers</span>
+                <span class="status-badge badge-official">Official Policy</span>
+              </div>
+
+              <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <strong style="font-size: 1.05rem; color: var(--ink);">Tier 1: Returning Member Renewal</strong>
+                  <span style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: var(--forest);">$15.00 / year</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 4px;">
+                  <strong>For returning BSU members:</strong> Covers full active membership registration, refreshments at all bi-weekly meetings, access to college fair prep materials, study jams, and subsidized field trip rates. (Uses existing club shirt/gear).
+                </p>
+              </div>
+
+              <div style="padding-top: 14px; border-top: 1px solid var(--line); margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <strong style="font-size: 1.05rem; color: var(--ink);">Tier 2: New Member Full Package (Includes T-Shirt)</strong>
+                  <span style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: var(--accent);">$25.00 / year</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 4px;">
+                  <strong>For freshmen & incoming new members:</strong> Includes full membership registration, all meeting refreshments PLUS the custom screen-printed 2026–2027 Black Student Union club t-shirt and priority seat reservation for the 2 college tours. (Also available for returning members who want the new shirt design).
+                </p>
+              </div>
+
+              <div style="padding-top: 14px; border-top: 1px solid var(--line);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <strong style="font-size: 1.05rem; color: var(--ink);">Tier 3: Confidential Fee Assistance (Waiver)</strong>
+                  <span style="font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: var(--slate);">$0.00</span>
+                </div>
+                <p style="font-size: 12.5px; color: var(--ink-secondary); margin-top: 4px;">
+                  <strong>Financial Inclusion Policy:</strong> No student will ever be excluded from BSU activities, meetings, or field trips due to financial hardship. Full confidential waivers are sponsored by club fundraising.
+                </p>
+              </div>
+            </div>
+
+            <div class="policy-box">
+              <h4>Where Does Every Dollar Go?</h4>
+              <ul style="font-size: 12.5px; color: var(--ink-secondary); padding-left: 18px; margin-top: 6px; line-height: 1.6;">
+                <li><strong>40% Bus & Field Trip Subsidy:</strong> Offsets charter coach booking deposits so college tours cost students minimal out-of-pocket ($15 seat fee).</li>
+                <li><strong>30% Refreshments & Meeting Food:</strong> Pizza, drinks, chips, and snacks for all bi-weekly meetings to support retention and community.</li>
+                <li><strong>20% Club Materials & Cords:</strong> College Fair prep kits, poster supplies, and authentic graduation Kente stoles/cords for active seniors.</li>
+                <li><strong>10% Discretionary Fee Assistance:</strong> Offsets costs for members experiencing temporary financial hardship.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="document-card-header" style="margin-bottom: 8px;">
+              <span class="document-card-title">Official Parent & Guardian Dues Notice</span>
+              <button class="btn" onclick="copySnippet('letter-dues')">📋 Copy Notice</button>
+            </div>
+            
+            <div class="letter-paper" id="letter-dues">BLACK STUDENT UNION (BSU)
+2026–2027 MEMBERSHIP & DUES INFORMATION
+
+Dear Parent or Guardian,
+
+Welcome to the 2026–2027 school year! Your student has expressed interest in joining the Black Student Union (BSU). Our organization is dedicated to fostering academic excellence, leadership development, cultural heritage, and college readiness.
+
+To support our planned activities—including bi-weekly educational meetings, guest speakers, our November College Fair preparation program, and our 2 college campus tours (Bowie State / Morgan State and Howard University / Smithsonian NMAAHC)—we request annual club dues from participating members.
+
+MEMBERSHIP DUES OPTIONS:
+• RETURNING MEMBER RENEWAL: $15.00
+  (For returning members who already have club shirts; covers bi-weekly refreshments, college prep materials, and meeting supplies)
+
+• NEW MEMBER FULL PACKAGE + OFFICIAL CLUB T-SHIRT: $25.00
+  (Includes the custom screen-printed 2026–2027 club t-shirt, bi-weekly meeting snacks, college prep kits, and priority field trip seating. Also available for returning members who want the new shirt design)
+
+PAYMENT DEADLINE: Friday, October 2, 2026 (Hard cutoff to place bulk t-shirt order)
+
+PAYMENT METHODS:
+1. School Webstore / Online Payment Portal (Select: Black Student Union)
+2. Cash or Check made payable to [School Name], with student name and "BSU Dues" on the memo line, turned directly to our faculty advisor, [Advisor Name], in Room [Room Number]. A formal receipt will be provided.
+
+FINANCIAL HARDSHIP ASSISTANCE:
+BSU maintains a strict policy of inclusivity. If your family is experiencing financial hardship, please notify our faculty advisor, [Advisor Name] (Email: [Advisor Email]), and a confidential waiver will be granted without question.
+
+Thank you for supporting your student’s leadership and community engagement!
+
+Sincerely,
+
+The BSU Student Leadership Team
+Faculty Advisor: [Advisor Name]</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 8: NOVEMBER COLLEGE FAIR KIT -->
+      <!-- ========================================== -->
+      <section id="pane-collegefair" class="section-pane">
+        <h2 class="section-heading">November College Fair Readiness Kit</h2>
+        <p class="section-sub">
+          Structured preparation protocol so BSU students arrive confident, polished, and ready to secure admission connections and fee waivers.
+        </p>
+        <div class="grid-halves">
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">Student Checklist (For Fair Day)</span>
+                <span class="status-badge badge-official">Prep Standard</span>
+              </div>
+
+              <div style="font-size: 13px; color: var(--ink-secondary); line-height: 1.7;">
+                <p>☑️ <strong>10 Printed Resumes:</strong> Include GPA, honors, BSU leadership, athletics, and academic interests.</p>
+                <p>☑️ <strong>Professional Email:</strong> Use firstname.lastname@gmail.com rather than school or informal handles.</p>
+                <p>☑️ <strong>Dedicated Notebook & Pen:</strong> For logging representative names, application codes, and deadlines.</p>
+                <p>☑️ <strong>Target Institution List:</strong> Research 5–8 specific colleges prior to arrival.</p>
+                <p>☑️ <strong>Business-Casual Attire:</strong> Collared shirt, blouse, polo, or clean school spirit wear.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="document-card">
+              <div class="document-card-header">
+                <span class="document-card-title">4 High-Impact Questions for Admissions Reps</span>
+                <span class="status-badge badge-official">Talking Points</span>
+              </div>
+
+              <div style="font-size: 12.5px; color: var(--ink-secondary); line-height: 1.6;">
+                <p style="margin-bottom: 10px;">
+                  <strong style="color: var(--ink);">1. Merit Aid & Priority Deadlines:</strong><br>
+                  <em>"What institutional merit scholarships or diversity leadership awards are available for incoming freshmen, and what are the strict deadlines?"</em>
+                </p>
+                <p style="margin-bottom: 10px;">
+                  <strong style="color: var(--ink);">2. Black Student Support & Community:</strong><br>
+                  <em>"What does the Black Student Union or multicultural student support network look like on your campus?"</em>
+                </p>
+                <p style="margin-bottom: 10px;">
+                  <strong style="color: var(--ink);">3. Application Fee Waivers:</strong><br>
+                  <em>"Do you have an application fee waiver code available for high school students attending today's fair?"</em>
+                </p>
+                <p>
+                  <strong style="color: var(--ink);">4. Follow-Up Business Card:</strong><br>
+                  <em>"May I have your business card or direct email so I can follow up when I submit my application?"</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 9: OFFICIAL LETTERS & PRINCIPAL MEMO -->
+      <!-- ========================================== -->
+      <section id="pane-letters" class="section-pane">
+        <h2 class="section-heading">Official Administrative Letters & Forms</h2>
+        <p class="section-sub">
+          Professional, pre-drafted correspondence for school administration, chaperones, and admissions representatives.
+        </p>
+
+        <div class="grid-halves">
+          
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">1. Formal Proposal to Principal</span>
+              <button class="btn" onclick="copySnippet('letter-principal')">📋 Copy</button>
+            </div>
+            <div class="letter-paper" id="letter-principal">MEMORANDUM
+
+TO: [Principal Name], Principal
+FROM: Black Student Union (BSU) Student Leadership
+THROUGH: [Advisor Name], BSU Faculty Advisor
+DATE: September 2026
+SUBJECT: BSU 2026–2027 Fall Activity & Educational Field Trip Proposal
+
+Dear [Principal Name],
+
+On behalf of the Black Student Union (BSU) and our faculty advisor, [Advisor Name], I am pleased to submit our organizational plans and proposed field trip for the Fall 2026 semester.
+
+Our leadership team has established a structured agenda focused on college readiness, leadership development, and civic engagement.
+
+PROPOSED EXPEDITION DETAILS:
+• Destination: [Bowie State University / Howard University / Morgan State University]
+• Proposed Date: Friday, December 4, 2026
+• Student Participation: 30 active, academically eligible members
+• Educational Purpose: Comprehensive college campus tour, undergraduate admissions seminar, and student leadership panel.
+• Chaperones: [Advisor Name] and certified school faculty (maintaining a 1:10 ratio).
+• Transportation: County-approved motorcoach / district bus transportation.
+
+All student dues and fundraising have been coordinated to ensure the trip is fully accessible to every student regardless of financial status.
+
+We request your review and formal approval so that bus requisitions may be processed in accordance with district deadlines. Thank you for your continued support of student leadership.
+
+Respectfully submitted,
+
+BSU Student Leadership
+[Your High School Name]</div>
+          </div>
+
+          <div>
+            <div class="document-card-header">
+              <span class="document-card-title">2. Post-College Fair Follow-Up to Admissions Reps</span>
+              <button class="btn" onclick="copySnippet('letter-rep')">📋 Copy</button>
+            </div>
+            <div class="letter-paper" id="letter-rep">Subject: Follow-up from [School Name] College Fair — [Student Full Name]
+
+Dear [Admissions Counselor Name],
+
+Thank you for taking the time to speak with me at the [Name of College Fair] earlier today. I thoroughly enjoyed our conversation regarding [University Name], especially regarding [mention specific program, e.g., the Honors Program and campus student leadership].
+
+As a current high school [Junior/Senior] and leader within our school's Black Student Union, I am strongly considering [University Name] as one of my top collegiate choices. 
+
+I have attached my academic resume for your reference. If you have any additional guidance regarding upcoming priority scholarship deadlines or campus visit opportunities, I would be grateful for the information.
+
+Thank you again for your time, encouragement, and support of prospective students.
+
+Sincerely,
+
+[Student Full Name]
+[High School Name] | Class of 2027
+Phone: [Phone Number] | Email: [Email Address]</div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    // Initial Verified 12-Member Roster (WITHOUT PRE-ASSIGNED ROLES)
+    let rosterData = [
+      { id: 1, name: "Aliyah", grade: "12", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "M", remind: true },
+      { id: 2, name: "Ayomoposi", grade: "11", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "L", remind: true },
+      { id: 3, name: "Sam", grade: "12", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "L", remind: true },
+      { id: 4, name: "Henry", grade: "11", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "XL", remind: true },
+      { id: 5, name: "Naomi", grade: "12", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "S", remind: true },
+      { id: 6, name: "Halima", grade: "11", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "M", remind: true },
+      { id: 7, name: "Janette", grade: "12", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "S", remind: true },
+      { id: 8, name: "Danielle", grade: "11", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "M", remind: true },
+      { id: 9, name: "Bolaji", grade: "12", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "L", remind: true },
+      { id: 10, name: "Leona", grade: "10", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "M", remind: true },
+      { id: 11, name: "DeAsia", grade: "10", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "S", remind: true },
+      { id: 12, name: "Mimi", grade: "9", role: "Member", duesStatus: "Pending", amountPaid: 0, tshirt: "XS", remind: true }
+    ];
+
+    function initRoster() {
+      const saved = localStorage.getItem('bsu_official_roster_2026_v4');
+      if (saved) {
+        try { rosterData = JSON.parse(saved); } catch(e) {}
+      }
+      renderRosterTable();
+    }
+
+    function saveRoster() {
+      localStorage.setItem('bsu_official_roster_2026_v4', JSON.stringify(rosterData));
+      renderRosterTable();
+    }
+
+    function renderRosterTable() {
+      const tbody = document.getElementById('roster-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      let totalCollected = 0;
+      let sizeCounts = { XS: 0, S: 0, M: 0, L: 0, XL: 0, "2XL": 0 };
+
+      rosterData.forEach((m, index) => {
+        totalCollected += Number(m.amountPaid) || 0;
+
+        if (m.tshirt && sizeCounts[m.tshirt] !== undefined) {
+          sizeCounts[m.tshirt]++;
+        }
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-family: var(--font-mono); color: var(--ink-muted);">${index + 1}</td>
+          <td><strong style="color: var(--ink); font-size: 14px;">${m.name}</strong></td>
+          <td style="font-family: var(--font-mono);">${m.grade}th</td>
+          <td>
+            <input type="text" class="field-control" style="padding: 2px 6px; font-size: 11px; width: 110px;" value="${m.role || 'Member'}" onchange="updateMemberRole(${index}, this.value)">
+          </td>
+          <td>
+            <select class="field-control" style="padding: 2px 6px; font-size: 11px; width: 115px;" onchange="updateDuesStatus(${index}, this.value)">
+              <option value="Pending" ${m.duesStatus === 'Pending' ? 'selected' : ''}>Pending ($0)</option>
+              <option value="Paid" ${m.duesStatus === 'Paid' ? 'selected' : ''}>Paid ($25 New)</option>
+              <option value="Standard" ${m.duesStatus === 'Standard' ? 'selected' : ''}>Paid ($15 Ret)</option>
+              <option value="Waived" ${m.duesStatus === 'Waived' ? 'selected' : ''}>Fee Waiver ($0)</option>
+            </select>
+          </td>
+          <td style="font-family: var(--font-mono); font-weight: 600; color: ${m.amountPaid > 0 ? 'var(--forest)' : 'var(--ink-muted)'};">
+            $${Number(m.amountPaid || 0).toFixed(2)}
+          </td>
+          <td>
+            <select class="field-control" style="padding: 2px 6px; font-size: 11px; width: 65px;" onchange="updateShirtSize(${index}, this.value)">
+              <option value="XS" ${m.tshirt === 'XS' ? 'selected' : ''}>XS</option>
+              <option value="S" ${m.tshirt === 'S' ? 'selected' : ''}>S</option>
+              <option value="M" ${m.tshirt === 'M' ? 'selected' : ''}>M</option>
+              <option value="L" ${m.tshirt === 'L' ? 'selected' : ''}>L</option>
+              <option value="XL" ${m.tshirt === 'XL' ? 'selected' : ''}>XL</option>
+              <option value="2XL" ${m.tshirt === '2XL' ? 'selected' : ''}>2XL</option>
+            </select>
+          </td>
+          <td style="text-align: center;">
+            <input type="checkbox" ${m.remind ? 'checked' : ''} onchange="toggleRemind(${index})" style="accent-color: var(--accent); cursor: pointer;">
+          </td>
+          <td style="text-align: right;">
+            <button style="background: none; border: none; color: var(--ink-muted); cursor: pointer; font-size: 13px; padding: 2px 6px;" onclick="deleteMember(${index})" title="Remove member">✕</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const count = rosterData.length;
+      document.getElementById('stat-roster-count').textContent = `${count} / 30`;
+      const pct = Math.round((count / 30) * 100);
+      document.getElementById('stat-progress-note').textContent = `${pct}% toward 30-member goal`;
+      document.getElementById('stat-dues-collected').textContent = `$${totalCollected.toFixed(2)}`;
+
+      document.getElementById('tshirt-summary-text').textContent = 
+        `Total Roster T-Shirts: ${count} units  |  Distribution: XS: ${sizeCounts.XS}  •  S: ${sizeCounts.S}  •  M: ${sizeCounts.M}  •  L: ${sizeCounts.L}  •  XL: ${sizeCounts.XL}  •  2XL: ${sizeCounts["2XL"]}`;
+    }
+
+    function updateMemberRole(idx, newRole) {
+      rosterData[idx].role = newRole || 'Member';
+      saveRoster();
+    }
+
+    function updateDuesStatus(idx, newStatus) {
+      rosterData[idx].duesStatus = newStatus;
+      if (newStatus === 'Paid') rosterData[idx].amountPaid = 25;
+      else if (newStatus === 'Standard') rosterData[idx].amountPaid = 15;
+      else if (newStatus === 'Pending') rosterData[idx].amountPaid = 0;
+      else if (newStatus === 'Waived') rosterData[idx].amountPaid = 0;
+      saveRoster();
+    }
+
+    function updateShirtSize(idx, newSize) {
+      rosterData[idx].tshirt = newSize;
+      saveRoster();
+    }
+
+    function toggleRemind(idx) {
+      rosterData[idx].remind = !rosterData[idx].remind;
+      saveRoster();
+    }
+
+    function deleteMember(idx) {
+      if (confirm(`Remove ${rosterData[idx].name} from the roster?`)) {
+        rosterData.splice(idx, 1);
+        saveRoster();
+      }
+    }
+
+    function openAddMemberModal() {
+      document.getElementById('add-member-card').style.display = 'block';
+      document.getElementById('new-name').focus();
+    }
+
+    function closeAddMemberModal() {
+      document.getElementById('add-member-card').style.display = 'none';
+    }
+
+    function autoFillNewAmount() {
+      const status = document.getElementById('new-dues-status').value;
+      if (status === 'Paid') document.getElementById('new-amount').value = 25;
+      else if (status === 'Standard') document.getElementById('new-amount').value = 15;
+      else document.getElementById('new-amount').value = 0;
+    }
+
+    function submitNewMember() {
+      const name = document.getElementById('new-name').value.trim();
+      if (!name) {
+        alert('Please enter student name.');
+        return;
+      }
+      const grade = document.getElementById('new-grade').value;
+      const duesStatus = document.getElementById('new-dues-status').value;
+      const amountPaid = parseFloat(document.getElementById('new-amount').value) || 0;
+      const tshirt = document.getElementById('new-shirt').value;
+
+      rosterData.push({
+        id: Date.now(),
+        name,
+        grade,
+        role: "Member",
+        duesStatus,
+        amountPaid,
+        tshirt,
+        remind: true
+      });
+
+      document.getElementById('new-name').value = '';
+      document.getElementById('new-amount').value = '0';
+      closeAddMemberModal();
+      saveRoster();
+      alert(`Success: ${name} added to the official BSU roster!`);
+    }
+
+    function switchSection(sectionId) {
+      document.querySelectorAll('.section-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-tab').forEach(el => el.classList.remove('active'));
+
+      const target = document.getElementById('pane-' + sectionId);
+      if (target) target.classList.add('active');
+
+      const btn = Array.from(document.querySelectorAll('.tab-tab')).find(b => b.getAttribute('onclick').includes(sectionId));
+      if (btn) btn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copySnippet(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard! Ready to paste into Google Forms, an email, or a document.');
+      });
+    }
+
+    function exportRosterCSV() {
+      let csv = "Index,Student Name,Grade,Role,Dues Status,Amount Paid,T-Shirt Size,Remind Joined\n";
+      rosterData.forEach((m, i) => {
+        csv += `${i+1},"${m.name}",${m.grade}th,"${m.role || 'Member'}","${m.duesStatus}",$${m.amountPaid},"${m.tshirt}",${m.remind ? 'Yes' : 'No'}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "BSU_Official_Roster_2026.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function addNewCalendarEvent() {
+      const title = prompt("Enter event title:");
+      if (!title) return;
+      const month = prompt("Enter month (e.g. OCT, NOV, DEC):", "OCT") || "OCT";
+      const day = prompt("Enter day number (e.g. 15):", "15") || "15";
+      const time = prompt("Enter time (e.g. TUE 3:30 PM):", "TUE 3:30 PM") || "TUE 3:30 PM";
+      const desc = prompt("Enter event description:", "BSU meeting or activity.") || "";
+      const loc = prompt("Enter location:", "📍 Room 214") || "📍 Room 214";
+
+      const container = document.getElementById('calendar-timeline');
+      const entry = document.createElement('div');
+      entry.className = 'schedule-entry';
+      entry.innerHTML = `
+        <div class="schedule-date-box">
+          <div class="schedule-month">${month.toUpperCase()}</div>
+          <div class="schedule-day">${day}</div>
+          <div class="schedule-time">${time}</div>
+        </div>
+        <div class="schedule-info">
+          <h4>${title}</h4>
+          <p>${desc}</p>
+          <div class="schedule-location">${loc}</div>
+        </div>
+      `;
+      container.appendChild(entry);
+      alert('Event added to the calendar!');
+    }
+
+    function exportDossierSummary() {
+      const summary = `=== BLACK STUDENT UNION (BSU) OPERATIONS DOSSIER (2026-2027) ===\n\n` +
+        `📊 MEMBERSHIP ROSTER: ${rosterData.length} / 30 Members (All listed as Members)\n` +
+        `💵 DUES STRUCTURE: $15 Standard / $25 with T-Shirt (Confidential waivers available)\n` +
+        `🔄 OPERATING CADENCE: Alternating Weekly (One week Full Club Meeting, one week Executive Planning)\n` +
+        `🚌 2 FIELD TRIPS: \n` +
+        `   • Expedition #1 (Fall - Dec 4, 2026): Maryland HBCU Tour (Bowie State / Morgan State)\n` +
+        `   • Expedition #2 (Feb 19, 2027): Washington, DC (Howard University + Smithsonian NMAAHC)\n` +
+        `🎓 MAJOR FALL MILESTONE: Regional College Fair (Thursday, Nov 12, 2026)\n` +
+        `🎉 FEBRUARY BLACK HISTORY MONTH:\n` +
+        `   • BSU Spirit Week (Feb 8–12, 2027): Daily themes & cafeteria lunchtime games\n` +
+        `   • Annual Cultural Potluck & Showcase (Thursday, Feb 25, 2027 • 4:00 PM in Cafeteria)\n\n` +
+        `📋 ROSTER LIST:\n` +
+        rosterData.map((m, i) => `${i+1}. ${m.name} (${m.grade}th) - ${m.role}`).join('\n');
+
+      navigator.clipboard.writeText(summary).then(() => {
+        alert('Executive Summary copied to clipboard!');
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initRoster();
+    });
+  </script>
+</body>
+</html>

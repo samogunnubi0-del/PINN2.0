@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Research Paper | Failure-Aware Surrogates for Ac-225 Production Kinetics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --bg-body: #dcd4c6;
+            --bg-paper: #fffdf8;
+            --bg-card: #f7f1e8;
+            --bg-callout: #f3ece1;
+            --text-main: #1c1612;
+            --text-secondary: #4a433c;
+            --text-dim: #7a7268;
+            --copper: #c45c26;
+            --ink: #1c1612;
+            --forest: #2f5d4a;
+            --oxblood: #8b2e2e;
+            --indigo: #3d4a7a;
+            --gold: #9a6b1f;
+            --border-color: #d5cbb8;
+            --border-dark: #b9ad98;
+            --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+            --font-sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+            --font-mono: "IBM Plex Mono", Consolas, monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+        body {
+            background: var(--bg-body);
+            background-image: radial-gradient(ellipse at top, #e8e0d2 0%, var(--bg-body) 55%);
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            line-height: 1.8;
+            font-size: 17px;
+            font-optical-sizing: auto;
+            display: flex;
+            justify-content: center;
+            padding: 4.5rem 1rem 5.5rem;
+        }
+        .top-nav {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 52px;
+            background: #1c1612; color: #f4efe6;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.6rem; z-index: 1000; font-family: var(--font-sans);
+            border-bottom: 1px solid #3a3128;
+        }
+        .top-nav-title { font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 0.75rem; letter-spacing: 0.04em; }
+        .word-badge {
+            background: transparent; color: #e8c4a8; padding: 0;
+            border-radius: 0; font-size: 0.72rem; font-weight: 500;
+            font-family: var(--font-mono); letter-spacing: 0;
+        }
+        .btn-print {
+            background: var(--copper); color: #fffdf8; border: none;
+            font-size: 0.75rem; font-weight: 600; padding: 0.4rem 0.9rem;
+            border-radius: 1px; cursor: pointer; letter-spacing: 0.04em; text-transform: uppercase;
+        }
+        .btn-print:hover { background: #a84c1e; }
+        .paper-container {
+            max-width: 840px; width: 100%;
+            background: var(--bg-paper);
+            padding: 3.6rem 4.4rem 5.5rem;
+            border: 1px solid var(--border-dark);
+            margin-top: 0.6rem;
+        }
+        .paper-header { margin-bottom: 1.8rem; }
+        .masthead {
+            font-family: var(--font-sans);
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            align-items: end; gap: 12px;
+            padding-bottom: 0.85rem;
+            border-bottom: 3px double var(--ink);
+            margin-bottom: 1.6rem;
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--text-dim);
+        }
+        .masthead span:nth-child(2) { color: var(--copper); text-align: center; }
+        .masthead span:last-child { text-align: right; }
+        .course-tag {
+            font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+            color: var(--copper); text-transform: uppercase; letter-spacing: 0.14em;
+            margin-bottom: 0.85rem;
+        }
+        .title-text {
+            font-family: var(--font-serif); font-size: 2.28rem; font-weight: 600;
+            color: var(--ink); line-height: 1.18; letter-spacing: -0.022em;
+            margin-bottom: 1rem;
+        }
+        .subtitle-text {
+            font-size: 1.08rem; color: var(--text-secondary); font-style: italic;
+            margin-bottom: 1.5rem; line-height: 1.55;
+        }
+        .meta-grid {
+            font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-dim);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 1.2rem;
+            background: transparent; padding: 0.9rem 0 0;
+            border-top: 1px solid var(--border-color); border-radius: 0; border: none;
+            border-top: 1px solid var(--border-color);
+        }
+        .meta-grid strong { font-weight: 600; color: var(--ink); font-family: var(--font-sans); }
+        .abstract-panel {
+            background: var(--bg-callout); border: none;
+            border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark);
+            padding: 1.5rem 0; margin: 0 0 1.8rem; border-radius: 0;
+        }
+        .abstract-heading {
+            font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.16em; color: var(--copper);
+            margin-bottom: 0.65rem;
+        }
+        .abstract-content { font-size: 0.98rem; line-height: 1.72; color: var(--text-secondary); text-align: justify; }
+        .rubric-tag {
+            display: inline-flex; background: transparent; color: var(--text-dim);
+            font-family: var(--font-sans); font-size: 0.68rem; font-weight: 600;
+            padding: 0; border: none; text-transform: uppercase; letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+        h2 {
+            font-family: var(--font-serif); font-size: 1.42rem; font-weight: 600;
+            color: var(--ink); margin-top: 2.8rem; margin-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border-color); padding-bottom: 0.45rem;
+            display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+            letter-spacing: -0.015em; line-height: 1.25;
+        }
+        h3 {
+            font-family: var(--font-sans); font-size: 1.02rem; font-weight: 600;
+            color: var(--ink); margin-top: 1.65rem; margin-bottom: 0.5rem;
+        }
+        h4 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; margin-top: 1.1rem; margin-bottom: 0.35rem; }
+        p { margin-bottom: 1.05rem; text-align: justify; color: var(--text-main); hyphens: auto; }
+        strong { font-weight: 700; color: var(--ink); }
+        em { font-style: italic; color: var(--oxblood); }
+        code {
+            font-family: var(--font-mono); background: var(--bg-callout);
+            padding: 1px 5px; border-radius: 2px; font-size: 0.82em; color: #3a2418;
+        }
+        ol, ul { margin: 0 0 1.1rem 1.35rem; } li { margin: 0.35rem 0; }
+        .math-block {
+            background: var(--bg-callout); border: none; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+            border-radius: 0; padding: 1rem 1.1rem; margin: 1.25rem 0; overflow-x: auto;
+            position: relative; display: flex; justify-content: center;
+        }
+        .math-number { position: absolute; right: 0.4rem; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; color: var(--text-dim); }
+        .fig-box {
+            margin: 1.8rem 0; display: flex; flex-direction: column; align-items: center;
+            background: transparent; border: none; border-radius: 0; padding: 0;
+        }
+        .fig-img { max-width: 100%; height: auto; border: 1px solid var(--border-color); }
+        .fig-caption { font-family: var(--font-sans); font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.7rem; text-align: justify; line-height: 1.5; }
+        .fig-title { font-weight: 700; color: var(--ink); }
+        .data-table {
+            width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.8rem;
+            margin: 1.3rem 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+        }
+        .data-table th {
+            background: var(--bg-callout); color: var(--ink); font-weight: 600;
+            padding: 0.5rem 0.65rem; text-align: left; border-bottom: 1px solid var(--border-dark);
+        }
+        .data-table td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+        .protocol-box {
+            background: var(--bg-callout); border: none; border-left: 3px solid var(--gold);
+            border-radius: 0; padding: 1.05rem 1.2rem; margin: 1.3rem 0;
+            font-family: var(--font-sans); font-size: 0.92rem;
+        }
+        .protocol-title {
+            font-size: 0.72rem; font-weight: 700; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;
+        }
+        .teacher-note, .struggle-box, .withdrawn, .toc {
+            font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.58; border-radius: 0;
+        }
+        .teacher-note {
+            background: #ece8df; border: none; border-left: 3px solid var(--indigo);
+            padding: 0.95rem 1.15rem; margin: 1.2rem 0; color: var(--text-secondary);
+        }
+        .teacher-note::before {
+            content: "For the teacher"; display: block; font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--indigo); margin-bottom: 0.4rem;
+        }
+        .teacher-note strong { color: var(--ink); }
+        .struggle-box {
+            background: #f6ece6; border: none; border-left: 3px solid var(--oxblood);
+            padding: 0.95rem 1.15rem; margin: 1.2rem 0;
+        }
+        .struggle-box::before {
+            content: "Inquiry note"; display: block; font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 0.4rem;
+        }
+        .struggle-box strong { color: var(--oxblood); }
+        .withdrawn {
+            background: transparent; border: 1px solid var(--oxblood); padding: 0.95rem 1.1rem;
+            margin: 0 0 1.6rem; color: var(--text-secondary);
+        }
+        .withdrawn::before {
+            content: "Correction"; display: block; font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 0.4rem;
+        }
+        .toc {
+            background: transparent; border: none; border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color); padding: 1.1rem 0 1.2rem; margin-bottom: 1.8rem;
+        }
+        .toc > strong {
+            display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--copper); margin-bottom: 0.55rem;
+        }
+        .toc a { color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid transparent; }
+        .toc a:hover { border-bottom-color: var(--copper); color: var(--copper); }
+        .toc ol { margin: 0.35rem 0 0 1.15rem; columns: 1; }
+        .bib-list { font-family: var(--font-sans); font-size: 0.82rem; line-height: 1.65; color: var(--text-secondary); padding-left: 1.4rem; margin-top: 1rem; }
+        .bib-list li { margin-bottom: 0.65rem; }
+        @media print {
+            body { background: none; padding: 0; font-size: 11pt; }
+            .top-nav { display: none; }
+            .paper-container { border: none; padding: 0; margin-top: 0; max-width: 100%; }
+            .withdrawn, .teacher-note, .struggle-box { break-inside: avoid; }
+            a { color: inherit; }
+        }
+        @media (max-width: 720px) {
+            body { padding: 3.6rem 0.6rem 3rem; }
+            .paper-container { padding: 1.6rem 1.15rem 2.4rem; }
+            .title-text { font-size: 1.55rem; }
+            .meta-grid, h2 { display: block; }
+            .masthead { grid-template-columns: 1fr; gap: 4px; }
+            .masthead span:last-child, .masthead span:nth-child(2) { text-align: left; }
+            .rubric-tag { display: block; margin-top: 0.35rem; }
+        }
+    </style>
+</head>
+<body>
+    <aside class="top-nav">
+        <div class="top-nav-title">
+            <span>AP Research academic paper</span>
+            <span class="word-badge">Reviewed 5 September 2026</span>
+        </div>
+        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+    </aside>
+
+    <article class="paper-container">
+        <header class="paper-header">
+            <div class="masthead">
+                <span>AP Capstone · PHYS</span>
+                <span>IsotopePINN</span>
+                <span>30 August 2026</span>
+            </div>
+            <div class="course-tag">Academic paper · written for a teacher who has not seen a nuclear equation</div>
+            <h1 class="title-text">Failure-Aware Physics-Informed Surrogates for Screening Modeled Radium-226 to Actinium-225 Production Kinetics</h1>
+            <p class="subtitle-text">A high-school computational-physics inquiry into stiff transmutation equations, training failures, nuclear-data mistakes, and honest claim boundaries — written so a teacher who is not a nuclear engineer can follow every choice.</p>
+            <div class="meta-grid">
+                <div><strong>Author:</strong> Samuel Ogunnubi</div>
+                <div><strong>School:</strong> Glen Burnie High School, AACPS</div>
+                <div><strong>Discipline:</strong> Computational physics / scientific machine learning</div>
+                <div><strong>Date of this manuscript:</strong> 30 August 2026</div>
+            </div>
+        </header>
+
+        <div class="withdrawn">
+            <strong>Internal reviewed draft &mdash; NOT FOR SUBMISSION.</strong> The September 5 review corrected the final V3 methods and rebuilt the figures from saved results. Historical citations and meeting descriptions still need the student's source check. The final paper must be written and understood by the student.
+            <a href="results/review_figures_20260905/index.html">Open the seven figures and plain-English explanations</a>.
+        </div>
+
+        <div class="withdrawn">
+            <strong>Withdrawn from an earlier draft of this paper:</strong> claims of 1.00× exact agreement with JAEA Joyo Ac-225 yields (15.4 GBq); a universal “FDA 0.01% Ac-227 limit” as a measured result; 40-hour / 170,000-step Radau runtimes as timed evidence; 1,000× acceleration mixing unrelated clocks; and language implying that the surrogate treats patients or commercially scales production. Those sentences were not supported by the frozen evidence package. This manuscript replaces them with the inquiry as it actually happened.
+        </div>
+
+        <nav class="toc">
+            <strong>Contents for a teacher reading this once</strong>
+            <ol>
+                <li><a href="#s1">What the project is, in ordinary language</a></li>
+                <li><a href="#s2">What other people already did (literature)</a></li>
+                <li><a href="#s3">How the method evolved — including every major struggle</a></li>
+                <li><a href="#s4">The frozen methods that produced the numbers below</a></li>
+                <li><a href="#s5">Results, with the noun attached to every percentage</a></li>
+                <li><a href="#s6">What this does not prove, and what happens next</a></li>
+                <li><a href="#s7">Resources actually used (people, codes, data, papers)</a></li>
+            </ol>
+        </nav>
+
+        <section class="abstract-panel" id="abstract">
+            <div class="abstract-heading">Abstract</div>
+            <div class="abstract-content">
+                Actinium-225 is a medical radioisotope of interest for targeted alpha therapy. Global supply from legacy thorium-229 generators is small relative to projected demand, so researchers study additional production routes, including neutron irradiation of radium-226. That route is a bookkeeping problem with two competing branches: a desired (n,2n) path toward Ac-225 and a competing (n,γ) path toward long-lived Ac-227. The reduced five-isotope equations are stiff because half-lives range from 42.2 minutes (Ra-227) to about 1,600 years (Ra-226). This AP Research study asks whether a frozen, failure-aware computer surrogate can rapidly screen modeled production conditions, report calibrated uncertainty, reject unfamiliar inputs, and send promising cases back to trusted physics — without pretending to replace reactor codes or experiments. A vanilla neural network (V1) failed: it missed the stiff transient and predicted negative inventories. A physics-informed multilayer perceptron (V2) improved agreement with a Radau stiff integrator; its uncertainty estimates still needed empirical calibration. After expert review at NC State, the work pivoted to a physics-informed long short-term memory model (V3), progressing from a trapezoidal residual to the exact-interval residual used in the final run. Training then exposed further failures: results archives whose JSON did not match the saved weights, validation seeds that overlapped training, endpoint Ac-225 collapsing toward zero while trajectory losses looked improved, and a training cross-section sigmoid that was about 28 times too small at 14 MeV compared with evaluated JENDL-5 tables. On the frozen V3 modeled task, the seed-42 maximum of four mesh-specific Ac-225 endpoint medians was 0.97% versus 2.91% for the parameter-matched multilayer perceptron under a masked, denominator-floored metric, and a 10,000-schedule screen recovered 18 of Radau’s top 20 plans (selected plan: Radau rank 2). On the separate screening grid, productive-case median activity error was 3.94% and p95 was 183.84%. V3 was 84.9× faster than Radau on that reduced batch and 56.7× slower than an exact reduced-chain baseline, so machine learning is not the fastest solver of these five equations. A separate V4 study compared a Gaussian process and a five-seed LSTM on two modeled reaction rates: both passed predeclared gates (locked median errors 1.97% and 1.83%; p95 3.79% and 3.93%; 95.8% calibrated joint coverage; 184/184 explicit out-of-range rejections), but a paired bootstrap did not resolve a winner. An incomplete reconstruction of published Berkeley cyclotron-neutron experiments disagreed by about 600 times and lay outside the V3 domain; missing physical inputs prevent attributing that discrepancy solely to the neural model. The supported claim is therefore internal, modeled, and decision-oriented. Experimental production accuracy remains unestablished.
+            </div>
+        </section>
+
+        <div class="teacher-note">
+            <strong>If you are not a nuclear physicist, start here.</strong> An <em>isotope</em> is the same chemical element with a different number of neutrons (radium-226 versus radium-225). <em>Activity</em> is how many nuclei decay per second, not how many grams sit in a vial. A <em>cross section</em> is how likely a neutron of a given energy is to cause a named reaction. A <em>surrogate</em> is a fast stand-in for a slower calculation, allowed only inside a declared domain. This paper’s job is to test that stand-in, report where it broke, and refuse claims the experiment never measured.
+        </div>
+
+        <!-- SECTION 1 -->
+        <section id="s1">
+            <h2><span>1. Introduction: the human problem and the computer problem</span><span class="rubric-tag">Row 1 · Context</span></h2>
+
+            <h3>1.1. Targeted alpha therapy, said simply</h3>
+            <p>
+                Some metastatic cancers are poorly controlled by chemotherapy or by beta-emitting radiopharmaceuticals. Beta particles are electrons; they travel millimeters in tissue and often deposit energy more diffusely. Alpha particles are helium-4 nuclei. They travel only tens of micrometers — a few cell diameters — and ionize very densely. If an alpha-emitting isotope can be chemically attached to a molecule that seeks a tumor marker, the intended idea is to damage targeted cells while sparing more distant tissue (Kratochwil et al., 2016; Morgenstern et al., 2020). This project did not treat patients, measure tumor dose, or evaluate clinical safety. The medical literature is the <em>motivation</em> for caring about supply, not a result of the computer experiments below.
+            </p>
+            <p>
+                Actinium-225 (Ac-225) is one isotope discussed for that role. Its half-life is about 9.92 days: long enough, in principle, to separate, label, and ship a product, and short enough that leftover activity does not persist for years. It feeds a cascade of alpha decays toward stable bismuth-209. Those radiobiology facts are taken from the nuclear-medicine literature. They are not outputs of the neural networks in this repository.
+            </p>
+
+            <h3>1.2. Why there is a production problem</h3>
+            <p>
+                Much of today’s Ac-225 still comes from “milking” aged thorium-229 stocks, themselves leftovers of historical uranium-233 programs. Published supply figures on the order of two curies per year are often contrasted with demand estimates of tens of thousands of patient doses (Engle and colleagues’ reviews of production technology). Those numbers justify why national laboratories study extra routes. They do not mean that a high-school model closed the shortage.
+            </p>
+            <p>
+                One extra route irradiates radium-226 with neutrons. Fast neutrons can induce the reaction <sup>226</sup>Ra(n,2n)<sup>225</sup>Ra: the nucleus absorbs one neutron and emits two, so the mass number drops by one while the element remains radium. Radium-225 then beta-decays (a neutron becomes a proton) into actinium-225. A competing reaction, (n,γ) capture, raises the mass number and opens a path through radium-227 (42.2 minutes) into actinium-227, which lives 21.772 years. The reduced model in this paper tracks exactly those five species. It does not track heat, target melting, chemical recovery, or a hospital’s quality-control assay.
+            </p>
+            <div class="teacher-note">
+                <strong>Why two branches matter.</strong> The “medicine” channel wants a hard (fast) neutron spectrum because (n,2n) has an energy threshold near 6.42 MeV. The impurity channel is fed more easily by slower neutrons. Any sentence that treats “neutrons” as one knob is already too coarse.
+            </div>
+
+            <h3>1.3. What “stiff” means, and what it does not mean</h3>
+            <p>
+                If $N(t)$ is a vector of five inventories, the reduced physics is a linear system $\mathrm{d}\mathbf{N}/\mathrm{d}t = \mathbf{A}\mathbf{N}$ when reaction rates are treated as constant over an interval. Each row is sources minus sinks. For Ac-225, the only source in this reduced chain is decay of Ra-225, and the only sink is Ac-225’s own decay:
+            </p>
+            <div class="math-block">
+                $$\dfrac{\mathrm{d}N_{\mathrm{Ac225}}}{\mathrm{d}t} = \lambda_{225} N_{225} - \lambda_{\mathrm{Ac225}} N_{\mathrm{Ac225}}$$
+                <span class="math-number">(1)</span>
+            </div>
+            <p>
+                The same pattern writes the other four rows (Equation set 2 in Section 4). Because Ra-227 decays in 42.2 minutes while Ra-226 lives about 1,600 years, the decay constants differ by a factor of order $2\times 10^{7}$. Numerical analysts call that stiffness: the equations contain a fast clock and a slow clock at once. A naive time-stepper must take tiny steps to stay stable, which is expensive. A stiff implicit integrator such as Radau can take more reasonable steps and still be accurate <em>for the equations it is given</em> (Hairer &amp; Wanner, 1996).
+            </p>
+            <p>
+                Stiffness is not a speed trophy. This paper does not convert $2\times 10^{7}$ into “20 million times faster computing” or into an untimed “40-hour cluster sweep.” Where speed is reported, it is a measured batch comparison on a declared task (Section 5).
+            </p>
+
+            <h3>1.4. Research question</h3>
+            <p>
+                After a 137-source scoping audit of isotope-production and scientific-machine-learning literature (Research Findings, 2026), the defensible question is not “Did I invent PINNs?” and not “Did I make cancer treatment cheaper?” It is:
+            </p>
+            <p>
+                <strong>To what extent can a frozen, failure-aware physics-informed surrogate screen modeled Ra-226 → Ac-225 production conditions — reporting calibrated uncertainty, rejecting unfamiliar inputs, and verifying finalists with trusted physics — when judged against reduced ODE self-consistency, matched baselines, and an attempted external reconstruction?</strong>
+            </p>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="s2">
+            <h2><span>2. Literature: what is established, and where a gap still exists</span><span class="rubric-tag">Row 1 · Gap</span></h2>
+            <p>
+                Bateman-type chain equations and stiff ODE integrators are classical (Bateman, 1910; Hairer &amp; Wanner, 1996). Production of Ac-225 from Ra-226 has been discussed in reactor studies (Sasaki et al., 2023, on the Joyo fast reactor) and in accelerator-neutron experiments (Morrell, 2020, Berkeley deuteron-on-beryllium irradiations of milligram radium nitrate). Evaluated nuclear data for Ra-226 (n,2n) live in JENDL-5 and ENDF/B-VIII.0; the only experimental (n,2n) point in EXFOR for this reaction is O’Connor and Perkin (1960), 1.60 ± 0.20 b at 14.5 MeV (EXFOR 21405). Thermal (n,γ) is not tabulated below 1 keV in those libraries; Bagheri et al. (2015), EXFOR 31760, give 13.8 ± 0.3 b as a modern activation anchor.
+            </p>
+            <p>
+                Physics-informed neural networks (PINNs) embed differential equations in a training loss (Raissi, Perdikaris, &amp; Karniadakis, 2019). Fourier feature mappings reduce spectral bias on high-frequency or threshold-like inputs (Tancik et al., 2020; Rahaman et al., 2019). Hard enforcement of initial conditions follows Lagaris, Likas, and Fotiadis (1998). Weak-form / integral PINN losses for stiff dynamics include Nasiri and Dargazany (2022). Jacobian row-normalization addresses scale imbalance across residual components (Bento and coworkers, 2022). None of those ingredients is new.
+            </p>
+            <p>
+                Neural and Gaussian-process surrogates for nuclide depletion also already exist, as do physics-constrained recurrent models in other nuclear settings. The 2026 scoping audit of 137 screened records (from a 2,281-record discovery pool) did <em>not</em> identify the same combination of: a pathway-specific Ra-226(n,2n) schedule screen; physics-informed recurrence; calibrated domain rejection; trusted-solver verification of finalists; and a planned Berkeley transfer. That is a research-gap statement of the form “not identified in this search,” not a proof of worldwide priority. The audit itself is title/abstract plus selected full-text reading, not 137 complete peer reviews.
+            </p>
+            <p>
+                Established engineering codes already accept time-dependent flux histories (ORIGEN, OpenMC depletion). Handling time dependence is therefore not novelty by itself. The intended contribution, if any, is a <em>decision workflow</em> with failure maps — not a new class of artificial intelligence.
+            </p>
+        </section>
+
+        <!-- SECTION 3 STRUGGLES -->
+        <section id="s3">
+            <h2><span>3. Inquiry process: what went wrong, in order</span><span class="rubric-tag">Rows 2–3 · Method as inquiry</span></h2>
+            <p>
+                AP Research asks not only for a polished method, but for how the method was found. The following timeline is the actual path. Dates follow the project log (<code>ISEF_Planning/project_history.md</code>) and technical notes cited in Section 7.
+            </p>
+
+            <h3>3.1. V1 — a vanilla network and the wall of stiffness (Spring 2026)</h3>
+            <p>
+                The first model was an ordinary multilayer perceptron: inputs were time, neutron flux, and a scalar energy feature; outputs were five inventories. It failed. The network averaged through the 42.2-minute Ra-227 spike, ignored trace Ac-225 beside bulk Ra-226, and predicted negative inventories — “alchemy,” in the lab notes. There was no structural reason for daughter ingrowth to follow parents. That failure is why later versions add physics to the loss and, eventually, to the architecture.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 1, in one sentence for a teacher.</strong> A generic curve-fitter cannot be trusted on a problem whose clocks differ by tens of millions to one, and nothing stopped it from inventing negative atoms.
+            </div>
+
+            <h3>3.2. V2 — physics-informed MLP, then an expert stress test (May–June 2026)</h3>
+            <p>
+                V2 added PINN residuals for the Bateman right-hand side, Fourier encoding of energy (to see the 6.42 MeV threshold), adaptive activations, and Jacobian row-norm balancing so Ac-225 was not drowned in the loss. Monte Carlo dropout was used for uncertainty. On a recorded held-out protocol the median Ac-225 error versus Radau was about 4.5%, with a six-of-six internal physics gate on the checkpoint named in that record. A Streamlit dashboard made the model inspectable.
+            </p>
+            <p>
+                The project notes describe a 20 June 2026 review with Jaden Palmer, a Ph.D. researcher at North Carolina State University. The recorded concerns included uncertainty calibration, stiff differential residuals, a time-series baseline, and independent benchmarks. Dropout was abandoned in this implementation; that choice does not establish that Monte Carlo dropout is generally invalid for physics. The early V3 design used a trapezoidal integrated residual, and the final August protocol used an exact-interval Bateman residual.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 2.</strong> A model can “work” on its own solver and still have the wrong uncertainty story and the wrong loss shape. Expert review is part of the method, not an after-the-fact thank-you.
+            </div>
+            <p>
+                A separate architectural diagnosis (May 2026) showed that treating daughters as free integrals of a signed neural rate never encodes parent-to-daughter logic. Symptom patches (softplus ingrowth blends, safety-ratio early stopping) improved plots without fixing the forward-model class. Semi-analytic Bateman backbones and later the hard-initial-condition ansatz addressed that class error (<code>docs/PINN_ARCHITECTURE_FIX.md</code>).
+            </p>
+            <p>
+                Artifact integrity remains a live constraint: the v2 validation JSON and the weights file later loaded by the demo have not always shared the same SHA-256 checksum (<code>docs/CURRENT_STATUS.md</code>). This paper therefore treats historical 4.5% / 6-of-6 figures as results for a named recorded artifact, not as a blank check on whatever file happens to sit in <code>weights/</code> today.
+            </p>
+
+            <h3>3.3. V3 — PI-LSTM, then the checkpoint crisis (late June–July 2026)</h3>
+            <p>
+                V3 lives in <code>v3_pilstm/</code>. The network is a two-layer LSTM (hidden size 256) over 64 log-spaced times, with Fourier bands on energy and later on time, a softplus output for nonnegativity, and a Lagaris-style hard initial condition
+            </p>
+            <div class="math-block">
+                $$\hat{\mathbf{N}}(t)=\bigl(1-\alpha(t)\bigr)\mathbf{N}(0)+\alpha(t)\,\mathcal{NN}(t),\qquad \alpha(0)=0$$
+                <span class="math-number">(2)</span>
+            </div>
+            <p>
+                so time zero cannot create mass. Physics is enforced by a trapezoidal integral residual (Nasiri &amp; Dargazany, 2022) rather than autodiff $\mathrm{d}N/\mathrm{d}t$. Training used Google Colab GPUs (T4 class) for multi-thousand-epoch runs.
+            </p>
+            <p>
+                On 3 July 2026 a downloaded results zip reported roughly 1.75% test Ac-225 error. Loading the bundled weights locally and running the held-out comparison script produced endpoint errors near 74%. Three failures stacked. First, the zip’s JSON described a 256/8 hard-IC model, but the <code>.pth</code> file was a legacy 128/4 bare <code>state_dict</code>. Second, validation scenarios had overlapped training seeds, so validation numbers were optimistically low. Third, checkpoint selection and the comparison harness sometimes scored different objects (last time step versus full trajectories; different random held-out sets). The lesson is professional, not cosmetic: a number in a JSON file is not a result until architecture, split, metric, and weights are the same experiment. Run C required disjoint seeds (validation 2025, test 2024), config saved inside every checkpoint, and an endpoint metric aligned with the poster headline.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 3 — “the zip lied; the weights were honest.”</strong> Reproducibility bugs can look like scientific breakthroughs. The fix was a save contract, not a prettier plot.
+            </div>
+
+            <h3>3.4. Endpoint collapse and a stiffness curriculum that trained the wrong physics (July 2026)</h3>
+            <p>
+                Even after physics-code fixes, some retrains improved full-trajectory losses while the checkpoint score &mdash; median relative error of Ac-225 at the final time &mdash; locked near 1.0. If the prediction at harvest is approximately zero, relative error against a positive truth is approximately 100%. A Smooth-L1 average over 64 times can underweight that endpoint, and causal physics weights emphasize early intervals. An unsuccessful stiffness curriculum also changed the training dynamics while evaluation retained full-stiffness dynamics; endpoint errors became extremely large in those runs (<code>New folder/docs/ENDPOINT_COLLAPSE_HISTORY_20260731.md</code>). This was a failure of this training setup, not evidence that all stiffness curricula are invalid.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 4.</strong> You can optimize a convenient loss and still fail the number you intend to report. Metric design is part of the science.
+            </div>
+
+            <h3>3.5. The nuclear data were wrong in a specific, documented way (18 July 2026)</h3>
+            <p>
+                Training ODEs originally used a smooth sigmoid for σ(n,2n) that saturated near 27 millibarns. Evaluated JENDL-5 / ENDF/B-VIII.0 tables give 755.7 mb at 14 MeV — about 28 times larger at that energy — and a peak of 2.53 b at 10 MeV. The old 12.8 b thermal capture value had been mislabeled as ENDF; the libraries tabulate zero below 1 keV, and the best experimental thermal point used later is Bagheri 13.8 ± 0.3 b. Half-lives were updated from live NuDat 3 retrievals. These sources were versioned: <code>ODE_DATA_VERSION=v1</code> remains the bit-stable default for old checkpoints; v2 is the evaluated layer (<code>docs/DATA_PROVENANCE.md</code>).
+            </p>
+            <p>
+                Running literature anchors with v2 made a “Joyo-like” monoenergetic overprediction <em>worse</em> (hundreds to thousands times, versus tens of times under v1). That is a finding: the remaining gap is how the neutron spectrum is represented, not only “the sigmoid was a bit low.”
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 5.</strong> Agreeing with your own ODE is not agreeing with nature if the cross sections and spectrum in that ODE are slogans.
+            </div>
+
+            <h3>3.6. The literature does not contain the time series we wanted (July 2026)</h3>
+            <p>
+                A hunt for public multi-point fast-reactor <sup>226</sup>Ra(n,2n) trajectories found none suitable for training. Joyo experimental campaigns were described as planned after 2026. A 17-row benchmark table was built instead, with honest tiers: few neutron-comparable Ac-225 rows, many structurally non-comparable accelerator or decay-only points. Default ODE endpoints at slogan “Joyo” conditions sat about 10–25× above published 15–30 GBq simulation yields. Both V2 and the PI-LSTM track the same ODE, so both fail together. A later scale-fit to an effective σ ≈ 1.44 mb can force agreement; that diagnoses a spectrum-average mismatch. It is not independent experimental validation, and it is not “1.00× exact concordance with JAEA.”
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 6.</strong> Wanting a national-lab benchmark is not the same as having one. Labeling non-comparable numbers as validation would have been the easier paper. It would also have been false.
+            </div>
+
+            <h3>3.7. Berkeley: a 600-times miss, kept on purpose (August 2026)</h3>
+            <p>
+                Morrell's Berkeley experiments used targets containing <strong>1 mg of Ra-226 in radium nitrate salt</strong>; 1 mg is the radium mass, not the total salt mass. Neutrons came from 33 and 40 MeV deuterons on thick beryllium. Recovered Ac-225 activities were approximately 1.40 and 0.77 microcuries. Ac-227 was not observed; without a numerical detection limit this does not specify a quantitative upper bound or establish zero contamination. Produced activity and activity recovered after separation are different quantities. The first frozen V3 reconstruction disagreed by about 623 times and 600 times and lay outside V3 support. Missing fluence, geometry corrections, beam history, uncertainty, and reference-time information limit interpretation of this reconstruction. It is a preserved stress test, not a completed external-validation experiment.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 7.</strong> External failure is a result. Tuning the model until two points agree would have destroyed the test.
+            </div>
+
+            <h3>3.8. Dr. Engle’s fence (27 August 2026)</h3>
+            <p>
+                Dr. Jonathan W. Engle, University of Wisconsin–Madison Cyclotron Research Group, advised that a production surrogate should confine itself to reaction-initiation rates ($\sigma\cdot\phi$) and decay kinetics given user-specified composition and incident flux. Target thermodynamics and wet radiochemistry cannot be universalized without proprietary facility geometry. He pointed to IAEA Isotopia as the international planning tool to compare against, not to casually claim to replace.
+            </p>
+            <div class="struggle-box">
+                <strong>Struggle 8 — actually a boundary, not a bug.</strong> Scope is a scientific result: heat and chemistry are out until a specific facility provides data. This paper adopts that fence.
+            </div>
+        </section>
+
+        <!-- SECTION 4 METHODS -->
+        <section id="s4">
+            <h2><span>4. Frozen methods (what produced the tables in Section 5)</span><span class="rubric-tag">Rows 2–3 · Alignment</span></h2>
+
+            <h3>4.1. Reduced Bateman system</h3>
+            <p>
+                Let $\mathbf{N}=[N_{226},N_{225},N_{\mathrm{Ac225}},N_{227},N_{\mathrm{Ac227}}]^\top$. With interval-constant rates $k_{n,2n}=\phi\,\sigma_{(n,2n)}$ and $k_{n,\gamma}=\phi\,\sigma_{(n,\gamma)}$,
+            </p>
+            <div class="math-block">
+                $$\mathbf{A}=\begin{bmatrix}-(\lambda_{226}+k_{n2n}+k_{n\gamma})&0&0&0&0\\ k_{n2n}&-\lambda_{225}&0&0&0\\ 0&\lambda_{225}&-\lambda_{\mathrm{Ac225}}&0&0\\ k_{n\gamma}&0&0&-\lambda_{227}&0\\ 0&0&0&\lambda_{227}&-\lambda_{\mathrm{Ac227}}\end{bmatrix}$$
+                <span class="math-number">(3)</span>
+            </div>
+            <p>
+                Reference trajectories for V3 were generated with scipy’s Radau method. For constant-rate intervals the same linear chain also has an exact matrix-exponential propagator; that exact baseline is what later showed V3 is slower than a five-nuclide analytic batch. The reduced chain omits transport, most side reactions, daughters beyond these five, chemistry, and heat.
+            </p>
+
+            <h3>4.2. V3 PI-LSTM protocol</h3>
+            <div class="protocol-box">
+                <div class="protocol-title">V3 as frozen for the modeled ranking study</div>
+                <ul>
+                    <li>Backbone: 2-layer LSTM, hidden size 256; 1,400 Radau training trajectories, with 64-point source meshes and ordered training submeshes down to 24 points.</li>
+                    <li>Inputs: eight energy Fourier bands, no time Fourier bands, spectrum features, and interval duration. Evaluation uses 32/48/64/96 time points.</li>
+                    <li>Constraints: softplus nonnegativity without a positive output floor; species-specific hard initial conditions (Equation 2); exact-interval Bateman physics residual (<code>expmix</code>); robust endpoint and atom-budget penalties.</li>
+                    <li>Controls: parameter-matched MLP; exact reduced-chain propagator; Radau as numerical teacher.</li>
+                    <li>Training: 6,000 epochs, batch 64, seed 42; FP32 network and FP64 analytic physics, TF32 off. Selection uses seed 2025; matched and shifted tests use seeds 20260804 and 20260725.</li>
+                    <li>Headline V3 accuracy: frozen seed 42 on the declared matched modeled endpoint protocol.</li>
+                </ul>
+            </div>
+            <p>
+                The saved final summary records <code>physics_loss_mode = expmix</code>. The trapezoidal residual belongs to earlier experiments; it is not the loss used by the final V3 results below. Neither stiffness curriculum nor QSSA is active in that final protocol. Source: <code>New folder/v3_pilstm/results/final_v3_20260811_seed42/lstm_summary.json</code>.
+            </p>
+
+            <h3>4.3. V4 rate-surrogate protocol</h3>
+            <p>
+                V4 asks a different question: can two finite-geometry / TENDL proxy reaction rates — refined $k_{n,2n}$ and $k_{n,\gamma}$ — be interpolated safely from seven inputs (five source/geometry features plus two baseline rates)? A Gaussian process is the natural small-data baseline. A five-seed LSTM ensemble (seeds 42, 314, 1618, 2026, 2718) is the neural alternative. Sequence length is one, so V4 cannot prove that LSTM memory helps. Splits were 160 train / 24 selection / 24 calibration / 48 locked test families. The 48 were locked for V4 but had appeared in an earlier V2 geometry diagnostic; they are not a virgin external test. Uncertainty intervals were calibrated on the 24 calibration families. A shared guard rejected inputs outside physical bounds or far from training. Rate predictions were then pushed through the exact five-nuclide equations on three declared schedules (24 h; 120 h + 24 h cool; 240 h + 72 h cool) to test whether rate error stayed tolerable as Ac-225 inventory.
+            </p>
+
+            <h3>4.4. What was not done</h3>
+            <p>
+                No patient data. No proprietary hot-cell CAD. No claim that OpenMC or SCALE was timed against V3/V4. No retraining on the Berkeley 600× miss. No single “FDA percentage” as a universal Ac-227 specification; published impurity discussions are product- and time-specific (literature audit Q3).
+            </p>
+        </section>
+
+        <!-- SECTION 5 RESULTS -->
+        <section id="s5">
+            <h2><span>5. Results</span><span class="rubric-tag">Row 4 · Evidence</span></h2>
+
+            <h3>5.1. V3 on the reduced modeled task</h3>
+            <table class="data-table">
+                <thead><tr><th>Quantity</th><th>Value</th><th>What it is</th><th>What it is not</th></tr></thead>
+                <tbody>
+                    <tr><td>Matched Ac-225 endpoint: maximum of four mesh medians</td><td>0.97%</td><td>Seed 42; 111 scored cases of 220; denominator floor 10<sup>12</sup> atoms</td><td>Experimental error or an unfloored percentage on every scenario</td></tr>
+                    <tr><td>Shifted maximum of mesh medians, corrected descriptive replay</td><td>1.56%</td><td>28 scored cases of 60; 95% bootstrap interval 0.69&ndash;7.60%; gate inconclusive</td><td>A statistically established under-3% guarantee</td></tr>
+                    <tr><td>Parameter-matched MLP</td><td>2.91%</td><td>Control on the same matched comparison</td><td>Proof that every MLP is worse</td></tr>
+                    <tr><td>10,000-schedule screen</td><td>18/20 top Radau recovered; selected plan = Radau rank 2 (0.047% below best)</td><td>Ranking utility after exact verification</td><td>A real reactor campaign</td></tr>
+                    <tr><td>Speed vs Radau (that batch)</td><td>84.9× faster</td><td>Repeated reduced ODE emulation</td><td>Supercomputer or OpenMC speed</td></tr>
+                    <tr><td>Speed vs exact reduced chain</td><td>56.7× slower</td><td>ML is not needed for this tiny linear system</td><td>A reason to discard ML when rates come from expensive transport</td></tr>
+                    <tr><td>Separate screening-grid Ac-225 activity error</td><td>Median 3.94%; p95 183.84%</td><td>9,000 productive schedules; 1,000 zero/negligible-reference cases excluded</td><td>Uniform under-3% performance</td></tr>
+                    <tr><td>Screening constraint errors</td><td>110 false feasible; 114 false infeasible</td><td>Against the declared modeled screening rule; finalists need solver checks</td><td>A clinical safety decision</td></tr>
+                </tbody>
+            </table>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/01_v3_runtime.png" alt="Elapsed CPU seconds for 10000 schedules: exact Bateman 0.14, matrix exponential 3.57, MLP 5.33, LSTM 7.93, Radau 672.68">
+                <div class="fig-caption"><span class="fig-title">Figure 1.</span> Recorded elapsed CPU time for the same reduced task. The horizontal scale increases by factors of ten. Training is excluded; the full 10,000-case batch has one timing per method, so repeatability is not quantified.</div>
+            </div>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/02_v3_matched_accuracy.png" alt="Matched floor-adjusted endpoint errors: LSTM 0.97 percent, MLP 2.91 percent">
+                <div class="fig-caption"><span class="fig-title">Figure 2.</span> V3 matched architecture comparison, one training seed. The numerical truth mask and denominator floor are part of this metric.</div>
+            </div>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/03_v3_screening_errors.png" alt="Distribution of V3 screening errors, including all errors above 100 percent">
+                <div class="fig-caption"><span class="fig-title">Figure 3.</span> Separate 9,000-productive-case screening test. Median error was 3.94%, while the 95th percentile was 183.84%. This wider-grid result must accompany the favorable matched-test result. Large relative errors can occur when the reference activity is small.</div>
+            </div>
+
+            <h3>5.2. V4 frozen GP versus five-seed LSTM</h3>
+            <table class="data-table">
+                <thead><tr><th>Locked modeled-proxy metric (96 rate errors across 48 families)</th><th>GP</th><th>LSTM ensemble</th></tr></thead>
+                <tbody>
+                    <tr><td>Median rate error</td><td>1.97%</td><td>1.83%</td></tr>
+                    <tr><td>p95 rate error</td><td>3.79%</td><td>3.93%</td></tr>
+                    <tr><td>Calibrated 95% joint coverage</td><td>95.8%</td><td>95.8%</td></tr>
+                    <tr><td>Raw &plusmn;2 SD joint coverage</td><td>2.1% (1/48)</td><td>95.8% (46/48); includes fitted residual-error floor</td></tr>
+                    <tr><td>Explicit out-of-range rejection</td><td colspan="2">184 of 184 rejected; 0 of 48 in-domain false rejects</td></tr>
+                    <tr><td>Ac-225 inventory p95 after exact propagation</td><td>2.04%</td><td>3.03%</td></tr>
+                    <tr><td>Paired bootstrap on p95 difference</td><td colspan="2">LSTM − GP: −0.43 to +0.37 percentage points; crosses zero</td></tr>
+                </tbody>
+            </table>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/04_v4_rate_errors.png" alt="GP and LSTM median, p95, and worst reaction-rate errors">
+                <div class="fig-caption"><span class="fig-title">Figure 4.</span> Frozen V4 comparison on 48 modeled-proxy families, with two rate errors per family. The paired-family bootstrap p95 interval includes zero, leaving the ranking unresolved.</div>
+            </div>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/05_v4_interval_coverage.png" alt="Both models cover 46 of 48 cases after calibration; raw GP covers only one">
+                <div class="fig-caption"><span class="fig-title">Figure 5.</span> Joint coverage requires both reference rates to lie inside their intervals. The observed 95.8% coverage is a sample result, not a guarantee for new inputs. Raw LSTM uncertainty includes a residual-error floor, not only variation between its five members.</div>
+            </div>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/06_v4_domain_guard.png" alt="Shared input guard accepts all 48 test families and rejects all 184 explicit outside-range cases">
+                <div class="fig-caption"><span class="fig-title">Figure 6.</span> Shared bounds and training-distance guard. Rejection tests the input rules; it does not establish that either model predicts accurately beyond its training range.</div>
+            </div>
+            <div class="fig-box">
+                <img class="fig-img" src="results/review_figures_20260905/07_v4_ac225_error.png" alt="Ac-225 inventory p95 errors after exact propagation of V4 rates on three schedules">
+                <div class="fig-caption"><span class="fig-title">Figure 7.</span> Rate errors propagated through exact reduced equations. The same 48 families appear in each of three schedules; these are modeled inventories, not measured activities.</div>
+            </div>
+            <p>
+                Both models passed every predeclared gate. The scientific winner is none. Gaussian process is only the provisional leader because its observed p95 is slightly lower. The code records <code>claim_eligible = false</code> because the reference is a finite-geometry/TENDL development proxy, not experiment (<code>docs/V4_CURRENT_STATUS_20260828.md</code>).
+            </p>
+
+            <h3>5.3. External attempts, stated as attempts</h3>
+            <p>
+                Joyo simulation endpoints and Berkeley experimental activities require different source, geometry, and timing assumptions. The roughly 600-fold Berkeley disagreement belongs to an incomplete, outside-domain reconstruction. It does not isolate neural-network error from missing physical inputs, and it does not establish experimental accuracy.
+            </p>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="s6">
+            <h2><span>6. Discussion, limitations, and implications</span><span class="rubric-tag">Row 5 · Limits</span></h2>
+            <p>
+                The strongest honest reading is that a high-school-built, failure-aware screening stack can emulate a reduced stiff chain well enough to rank modeled schedules and can interpolate two proxy rates with calibrated intervals and a working rejection rule — while remaining slower than the exact five-nuclide solution and unproven on a clean experiment.
+            </p>
+            <p>
+                Limitations are structural, not decorative. (1) Five nuclides omit most of a real depletion network. (2) V3 labels are solver-generated. (3) V4’s 48-case lock is not untouched external data. (4) V4 sequence length is one. (5) v1 cross sections still underlie old checkpoints. (6) No timed comparison versus OpenMC/SCALE exists. (7) Ac-227 “safety” is not a single percentage. (8) Chemistry recovery, heat, and facility CAD are out of scope by Engle’s fence. (9) One V3 seed is not a seed study. (10) Berkeley inputs required for a fair test are still incomplete.
+            </p>
+            <p>
+                If a sufficiently specified, independently checked Berkeley reconstruction still disagrees, it can support a scoped non-transfer finding. With missing fluence or geometry, the preserved disagreement remains a reconstruction stress test, and the missing inputs remain a limitation.
+            </p>
+            <p>
+                The next required steps are already written in the V4 status note: reconstruct 33 and 40 MeV cases with units and times checked; run one frozen comparison without tuning; obtain expert review of chain, reconstruction, and wording; freeze the poster to those tables.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Conclusion</h2>
+            <p>
+                This inquiry began with a medical supply motivation and a failed vanilla network. It proceeded through a PINN, an NCSU critique, an LSTM rebuild, a results-zip that did not match its weights, a loss that hid zero Ac-225 at harvest, a 27 mb sigmoid that was not JENDL, a Joyo gap that is a spectrum problem, a 600-fold Berkeley miss, and a cyclotron-lab fence around chemistry and heat. The frozen modeled evidence supports a screening-layer claim with calibrated uncertainty and domain refusal. It does not support national-laboratory experimental concordance, supercomputer replacement, or clinical scale-up. That narrower claim is the one this paper asks a teacher — and later a judge — to hold me to.
+            </p>
+        </section>
+
+        <!-- RESOURCES -->
+        <section id="s7">
+            <h2><span>Resources actually used</span><span class="rubric-tag">Row 6 · Conventions</span></h2>
+            <p>
+                This section is an audit inventory. The student still needs to confirm bibliographic details, correspondence, and which sources they have personally read.
+            </p>
+
+            <h3>People who changed the method</h3>
+            <ul>
+                <li>Jaden Palmer, Ph.D. researcher, North Carolina State University &mdash; technical discussions recorded in project notes. Confirm meeting dates and any formal fair role from the original correspondence and signed paperwork.</li>
+                <li>Dr. Jonathan W. Engle, Associate Professor and Director, Cyclotron Research Group, University of Wisconsin–Madison — 27 August 2026 guidance on scope (kinetics in, chemistry/heat out) and IAEA Isotopia as benchmark.</li>
+            </ul>
+
+            <h3>Codes and computing</h3>
+            <ul>
+                <li>Python scientific stack: NumPy, SciPy (Radau), PyTorch (LSTM/PINN training), scikit-learn / GP implementations used in V4.</li>
+                <li>Project modules: <code>ra226_ac225_transmutation.py</code>, <code>v3_pilstm/models/pi_lstm.py</code>, <code>v3_pilstm/physics/integrated_loss.py</code>, <code>v3_pilstm/train_pi_lstm.py</code>.</li>
+                <li>Remote training: Google Colab A100 runs for final V3 and the V4 LSTM ensemble; historical T4/Kaggle experiments are separate. V4 GP fitting and the recorded V3 speed benchmark used CPUs.</li>
+                <li>Dashboards: Streamlit <code>app.py</code> (v2) and <code>v3_pilstm/app_v3.py</code>.</li>
+            </ul>
+
+            <h3>Nuclear data and experiments</h3>
+            <ul>
+                <li>JENDL-5 and ENDF/B-VIII.0 Ra-226 (n,2n) and (n,γ) tables via IAEA-NDS mirrors; parsed into <code>data/evaluated/</code>.</li>
+                <li>EXFOR 21405 (O’Connor &amp; Perkin 1960 (n,2n) at 14.5 MeV); EXFOR 31760 (Bagheri 2015 thermal capture).</li>
+                <li>NNDC NuDat 3 / ENSDF half-lives (live fetch 18 July 2026).</li>
+                <li>TENDL-based finite-geometry proxy used as V4 development reference (not experimental ground truth).</li>
+                <li>Morrell (2020) Berkeley dissertation and associated 33/40 MeV irradiations.</li>
+                <li>Literature yield table: <code>data/literature_benchmarks.csv</code> (Hogle HFIR, Kuznetsov SM, Sasaki Joyo, Morgenstern cyclotron, and others, tier-labeled).</li>
+                <li>IAEA Isotopia web tool (Engle recommendation): <code>https://www-nds.iaea.org/relnsd/isotopia/isotopia.html</code>.</li>
+            </ul>
+
+            <h3>Project documents a teacher can open</h3>
+            <ul>
+                <li><code>ISEF_Planning/project_history.md</code> — dated research log.</li>
+                <li><code>docs/V4_CURRENT_STATUS_20260828.md</code> — frozen V4 claim.</li>
+                <li><code>docs/DATA_PROVENANCE.md</code> and <code>docs/DATA_ASSUMPTIONS.md</code> — every nuclear number’s source.</li>
+                <li><code>docs/ENDPOINT_COLLAPSE_HISTORY_20260731.md</code>, <code>docs/PINN_ARCHITECTURE_FIX.md</code>, <code>docs/CURRENT_STATUS.md</code>.</li>
+                <li><code>research/literature_audit_2026/RESEARCH_FINDINGS.md</code> — 137-source scoping audit.</li>
+                <li><a href="results/review_figures_20260905/FIGURE_NOTES.md">Figure explanation notes</a> and <a href="results/review_figures_20260905/figure_manifest.json">source hashes</a> &mdash; the seven regenerated figures.</li>
+                <li><code>IsotopePINN_30Day_Professional_Mastery.html</code> — 30-day self-study from atoms to defense.</li>
+                <li><code>IsotopePINN_ISEF_Masterclass_Deck.html</code> — spoken-judge version after the 30-day course.</li>
+            </ul>
+        </section>
+
+        <section style="margin-top: 2.4rem; border-top: 2px solid var(--border-dark); padding-top: 1.4rem;">
+            <h2><span>References</span><span class="rubric-tag">Row 6</span></h2>
+            <ol class="bib-list">
+                <li>Bagheri, R., et al. (2015). Thermal-neutron capture measurements relevant to <sup>226</sup>Ra. EXFOR 31760; also <em>Radiochimica Acta</em> production-calculation context.</li>
+                <li>Bateman, H. (1910). The solution of a system of differential equations occurring in the theory of radioactive transformations. <em>Proc. Cambridge Philos. Soc.</em>, 15, 423–427.</li>
+                <li>Bento, J., et al. (2022). Jacobian row-normalization for stiff physics-informed networks (as used in this project’s residual balancing). See project implementation notes in <code>docs/PINN_ARCHITECTURE_FIX.md</code>.</li>
+                <li>Engle, J. W., and production-review coauthors. Reviews of Ac-225 supply technologies and the recommendation, in this project’s 27 August 2026 correspondence, to benchmark against IAEA Isotopia and to exclude universal chemistry/heat without facility CAD.</li>
+                <li>Hairer, E., &amp; Wanner, G. (1996). <em>Solving Ordinary Differential Equations II: Stiff and Differential-Algebraic Problems</em>. Springer.</li>
+                <li>Hogle, S., et al. (2016). HFIR-related Ac-227 / radium irradiation measurements (OSTI 1253240), used as a tiered literature anchor, not as an (n,2n) training series.</li>
+                <li>IAEA Nuclear Data Section. EXFOR database; JENDL-5 and ENDF/B-VIII.0 libraries; Isotopia production tool.</li>
+                <li>Kratochwil, C., et al. (2016). <sup>225</sup>Ac-PSMA-617 for targeted alpha therapy of metastatic castration-resistant prostate cancer. <em>Journal of Nuclear Medicine</em>, 57(12), 1941–1944.</li>
+                <li>Lagaris, I. E., Likas, A., &amp; Fotiadis, D. I. (1998). Artificial neural networks for solving ordinary and partial differential equations. <em>IEEE Transactions on Neural Networks</em>, 9(5), 987–1000.</li>
+                <li>Morgenstern, A., et al. (2020). Targeted alpha therapy with actinium-225 and bismuth-213. Review literature used only as clinical motivation.</li>
+                <li>Morrell, J. T. (2020). Dissertation, University of California, Berkeley / associated 88-Inch Cyclotron neutron-production experiments on Ra-226. <code>https://nucleardata.berkeley.edu/doc/morrell.pdf</code>.</li>
+                <li>Nasiri, P., &amp; Dargazany, R. (2022). <a href="https://arxiv.org/abs/2208.12045">Reduced-PINN: An Integration-Based Physics-Informed Neural Networks for Stiff ODEs</a>. arXiv:2208.12045.</li>
+                <li>National Nuclear Data Center. NuDat 3 decay data. Brookhaven National Laboratory. <code>https://www.nndc.bnl.gov/nudat3/</code>.</li>
+                <li>O’Connor, D., &amp; Perkin, J. L. (1960). <sup>226</sup>Ra(n,2n) at 14.5 MeV. EXFOR 21405. (Often cited in this repository as O’Connor &amp; Preiss in secondary notes; the EXFOR entry is the citable measurement.)</li>
+                <li>OpenMC documentation. Depletion user’s guide. <code>https://docs.openmc.org/</code>.</li>
+                <li>Palmer, J. (20 June 2026). Technical review meeting, NC State ARTISANS Lab. Unpublished expert critique recorded in the project history log.</li>
+                <li>Rahaman, N., et al. (2019). On the spectral bias of neural networks. <em>ICML</em>.</li>
+                <li>Raissi, M., Perdikaris, P., &amp; Karniadakis, G. E. (2019). Physics-informed neural networks. <em>Journal of Computational Physics</em>, 378, 686–707.</li>
+                <li>Sasaki, Y., et al. (2023). Feasibility studies on Ac-225 production using the Joyo experimental fast reactor. <em>Journal of Nuclear Science and Technology</em> (and related JAEA planning papers). Used as simulation-context anchors, not as a 1.00× match.</li>
+                <li>SCALE/ORIGEN methods manuals, Oak Ridge National Laboratory. Established depletion context.</li>
+                <li>Tancik, M., et al. (2020). Fourier features let networks learn high-frequency functions. <em>NeurIPS</em>.</li>
+                <li>Ogunnubi, S. (2026). Project artifacts: literature audit findings; V4 status; data provenance; endpoint-collapse note; PI-LSTM source. Paths listed in the Resources section.</li>
+            </ol>
+        </section>
+    </article>
+
+    <script>
+        window.addEventListener('load', function () {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        });
+    </script>
+</body>
+</html>

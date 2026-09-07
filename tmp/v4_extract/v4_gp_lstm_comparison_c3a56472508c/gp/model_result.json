@@ -1,0 +1,255 @@
+{
+  "ac225_inventory": {
+    "grid_median_relative_error": 0.0052603213324077846,
+    "grid_p95_relative_error": 0.02036509355752594,
+    "grid_worst_relative_error": 0.04329832399914208,
+    "propagation": "exact five-nuclide Bateman interval propagation",
+    "schedules": [
+      {
+        "cooling_h": 0.0,
+        "irradiation_h": 24.0,
+        "median_relative_error": 0.005260321351268189,
+        "name": "short",
+        "p95_relative_error": 0.019905055511779738,
+        "worst_relative_error": 0.04329832399914208
+      },
+      {
+        "cooling_h": 24.0,
+        "irradiation_h": 120.0,
+        "median_relative_error": 0.005260321335001291,
+        "name": "medium",
+        "p95_relative_error": 0.019905055420917122,
+        "worst_relative_error": 0.04329832382666293
+      },
+      {
+        "cooling_h": 72.0,
+        "irradiation_h": 240.0,
+        "median_relative_error": 0.0052603213117844525,
+        "name": "long",
+        "p95_relative_error": 0.019905055291287565,
+        "worst_relative_error": 0.04329832358056934
+      }
+    ]
+  },
+  "boundary_test": {
+    "count": 32,
+    "definition": "within 10% of any continuous feature bound",
+    "false_rejection_rate": 0.0,
+    "metrics": {
+      "median_case_mean_relative_error": 0.017956588347954272,
+      "median_n2n_relative_error": 0.007097882342194021,
+      "median_ngamma_relative_error": 0.030623442890390012,
+      "median_relative_error": 0.019707896324678925,
+      "p95_case_mean_relative_error": 0.02944994453389236,
+      "p95_n2n_relative_error": 0.024985436335701265,
+      "p95_ngamma_relative_error": 0.041518684290368486,
+      "p95_relative_error": 0.04015523850499397,
+      "sample_count": 32,
+      "worst_relative_error": 0.0558695523064882
+    }
+  },
+  "claim_eligible": false,
+  "claim_status": "Development architecture comparison on modeled finite-geometry/TENDL proxy data; not experimental, reactor, clinical, or production validation.",
+  "dataset": {
+    "calibration_count": 24,
+    "locked_test_count": 48,
+    "path_in_bundle": "/content/IsotopePINN_V4_GP_LSTM_Comparison/v4_transport_surrogate/results/geometry_rate_surrogate_pilot_v2_20260824/geometry_rate_reference_cases.csv",
+    "reference_type": "modeled proxy",
+    "selection_count": 24,
+    "sha256": "3fcdb80ba5d286fcd6ecac777c03f73086d882d42766e68331b45298ea5b0c56",
+    "split_hash": "693edff8a7b13b287af80f1cf593b597c285cf48017c3ed1ed0c64418350d57a",
+    "test_provenance": "Locked for this protocol but previously evaluated in the V2 geometry diagnostic",
+    "train_count": 160
+  },
+  "decision_rule": {
+    "gates": {
+      "calibrated_joint_coverage": true,
+      "eligible_to_lead": true,
+      "explicit_ood_rejection": true,
+      "median_error": true,
+      "p95_error": true,
+      "test_false_rejection": true
+    },
+    "primary_ranking_metric": "locked-test p95 relative rate error",
+    "thresholds": {
+      "calibrated_joint_coverage_min": 0.85,
+      "explicit_ood_rejection_min": 0.95,
+      "median_relative_error_max": 0.03,
+      "p95_relative_error_max": 0.1,
+      "test_false_rejection_max": 0.1
+    },
+    "tie_breaker": "three-schedule Ac-225 p95 relative error",
+    "timing_used_to_select_winner": false
+  },
+  "domain_challenges": {
+    "accuracy_outside_domain_reported": false,
+    "explicit_ood_count": 184,
+    "explicit_ood_rejection_rate": 1.0,
+    "explicit_ood_to_locked_uncertainty_ratio": 2.4311792306252755,
+    "locked_test_false_rejection_rate": 0.0,
+    "median_mean_log_std_explicit_ood": 0.021712801806304253,
+    "median_mean_log_std_locked_test": 0.008930975360759368,
+    "median_mean_log_std_sparse_corners": 0.03603999377383887,
+    "sparse_corner_count": 32,
+    "sparse_corner_warning_rate": 0.0625
+  },
+  "domain_guard": {
+    "allowed_deuteron_energies_mev": [
+      33.0,
+      40.0
+    ],
+    "distance_feature_space": "training-standardized geometry plus log baseline rates",
+    "feature_domain": {
+      "beam_fwhm_mm": [
+        1.0,
+        15.0
+      ],
+      "deuteron_energy_mev": [
+        33.0,
+        40.0
+      ],
+      "radial_offset_mm": [
+        0.0,
+        8.0
+      ],
+      "target_distance_cm": [
+        1.5,
+        3.0
+      ],
+      "target_radius_mm": [
+        0.5,
+        5.0
+      ]
+    },
+    "nearest_training_distance_threshold": 2.2180628160347466,
+    "neighbor_count_for_threshold": 3,
+    "scaler_mean": [
+      36.4125,
+      2.261407061952416,
+      8.099005075391556,
+      4.100087701906942,
+      2.695934791867713,
+      -22.31761056522111,
+      -27.191416912353514
+    ],
+    "scaler_scale": [
+      3.4989060790481337,
+      0.4201357957820908,
+      4.175348771937513,
+      2.307671314110205,
+      1.329063304325124,
+      0.4412627333892259,
+      0.4261382573576399
+    ],
+    "training_distance_quantile": 0.99
+  },
+  "files": {
+    "ac225_schedule_predictions": "ac225_schedule_predictions.csv",
+    "domain_challenges": "domain_challenges.csv",
+    "domain_uncertainty_plot": "domain_uncertainty.png",
+    "report_plot": "model_report.png",
+    "test_predictions": "test_predictions.csv"
+  },
+  "hardware": {
+    "cpu_count": 2,
+    "cuda_available": false,
+    "joblib": "1.5.3",
+    "matplotlib": "3.10.0",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.35",
+    "processor": "x86_64",
+    "python": "3.13.15",
+    "requested_device": "cpu",
+    "scikit_learn": "1.6.1",
+    "scipy": "1.16.3",
+    "torch": "2.11.0+cpu"
+  },
+  "inference_timing": {
+    "all_seconds": [
+      0.32807713599999033,
+      0.37437982500000544,
+      0.3542871519999835,
+      0.35582866300001115,
+      0.466480305999994,
+      0.5058594280000079,
+      0.5020440280000003,
+      0.5019952179999905,
+      0.4658263310000166
+    ],
+    "batch_size": 10000,
+    "comparison_warning": "Timing is descriptive. Separate Colab notebooks may have different hosts, so timing does not select the scientific winner.",
+    "median_seconds": 0.4658263310000166,
+    "predictions_per_second": 21467.227879824688
+  },
+  "model_kind": "gp",
+  "model_name": "gaussian_process",
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826",
+  "run_complete": true,
+  "sequence_contract": {
+    "meaning": "Static geometry comparison. This cannot establish that LSTM memory helps.",
+    "sequence_length": 1
+  },
+  "test_metrics": {
+    "median_case_mean_relative_error": 0.01759175604261061,
+    "median_n2n_relative_error": 0.005260321354552549,
+    "median_ngamma_relative_error": 0.03033535885404996,
+    "median_relative_error": 0.019707896324678925,
+    "p95_case_mean_relative_error": 0.026609880677013326,
+    "p95_n2n_relative_error": 0.019905055530071422,
+    "p95_ngamma_relative_error": 0.03984129792715499,
+    "p95_relative_error": 0.037906499560525185,
+    "sample_count": 48,
+    "worst_relative_error": 0.0558695523064882
+  },
+  "training": {
+    "artifact": "gaussian_process.joblib",
+    "compute_note": "scikit-learn GP training ran on CPU; an A100 is not used",
+    "fitted_kernels": [
+      "5.07**2 * Matern(length_scale=[50.2, 24.1, 10.4, 8.67, 18.7, 100, 19.2], nu=2.5) + WhiteKernel(noise_level=0.000228)",
+      "6.22**2 * Matern(length_scale=[69.5, 22.6, 13.3, 11.3, 24.5, 100, 27.3], nu=2.5) + WhiteKernel(noise_level=0.000114)"
+    ],
+    "optimizer": "fmin_l_bfgs_b",
+    "random_seed": 42,
+    "training_seconds": 1.5844943660000013
+  },
+  "uncertainty": {
+    "calibrated_95": {
+      "joint_case_coverage": 0.9583333333333334,
+      "marginal_coverage": [
+        1.0,
+        0.9583333333333334
+      ],
+      "mean_log_interval_width": [
+        0.1552335755251882,
+        0.09898485156641869
+      ],
+      "median_upper_to_lower_ratio": [
+        1.1538809582578744,
+        1.0953288685932399
+      ],
+      "multiplier": 6.552182348804311
+    },
+    "calibration_family_count": 24,
+    "calibration_target_joint_coverage": 0.95,
+    "joint_conformal_multiplier": 6.552182348804311,
+    "raw_two_standard_deviations": {
+      "joint_case_coverage": 0.020833333333333332,
+      "marginal_coverage": [
+        0.9583333333333334,
+        0.041666666666666664
+      ],
+      "mean_log_interval_width": [
+        0.04738377757557871,
+        0.030214315260771746
+      ],
+      "median_upper_to_lower_ratio": [
+        1.0446577108537907,
+        1.0281833751853275
+      ],
+      "multiplier": 2.0
+    },
+    "space": "natural-log reaction rate",
+    "warning": "Mean +/- 2 SD and conformal 95% intervals are both reported and are not identical."
+  }
+}

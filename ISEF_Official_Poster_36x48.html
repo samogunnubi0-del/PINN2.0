@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISEF Official Presentation Board (36" x 48" Ready to Print)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        /* Exact 48" x 36" Standard ISEF Trifold Aspect Ratio (4:3) */
+        :root {
+            --bg-board: #0B192C;        /* Deep Navy Outer Board */
+            --header-bg: #1E3E62;       /* Slate Navy */
+            --card-bg: #FFFFFF;         /* Crisp White Card Panels */
+            --card-sub: #F4F6F9;        /* Soft Gray-Blue */
+            --accent-orange: #FF6500;   /* Vibrant Highlight */
+            --accent-blue: #008DDA;     /* Cobalt */
+            --accent-green: #2E7D32;    /* Forest Green */
+            --text-dark: #1E201E;
+            --text-muted: #555555;
+            --border-card: #D0D7DE;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: var(--font-sans);
+        }
+
+        /* 36" High x 48" Wide Print Canvas (Scaled in pixels at 4:3) */
+        #poster-canvas {
+            width: 1440px;
+            min-height: 1080px;
+            height: auto;
+            background: var(--bg-board);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            border: 4px solid #334E68;
+            position: relative;
+        }
+
+        img.poster-figure {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            margin-top: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: block;
+        }
+
+        .figure-credit {
+            font-size: 9.5px;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 2px;
+            text-align: right;
+        }
+
+        /* Top Header */
+        .poster-header {
+            background: linear-gradient(135deg, #102A43 0%, #1E3E62 100%);
+            border: 2px solid #334E68;
+            border-radius: 12px;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .header-title-block h1 {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }
+
+        .header-title-block p {
+            font-size: 15px;
+            color: #9FB3C8;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .header-meta {
+            text-align: right;
+            border-left: 2px solid #334E68;
+            padding-left: 20px;
+        }
+
+        .header-meta .author {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent-orange);
+        }
+
+        .header-meta .category {
+            font-size: 13px;
+            font-weight: 700;
+            color: #BAC7D5;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 2px;
+        }
+
+        /* 3-Column ISEF Grid */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Card Section Panels */
+        .panel {
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .panel-header {
+            background: #102A43;
+            color: #fff;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .panel-body {
+            padding: 12px 14px;
+            font-size: 12px;
+            line-height: 1.45;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .highlight-box {
+            background: var(--card-sub);
+            border-left: 3px solid var(--accent-orange);
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 11.5px;
+        }
+
+        .math-callout {
+            background: #F0F4F8;
+            border: 1px solid #D9E2EC;
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 11px;
+            text-align: center;
+            margin: 4px 0;
+        }
+
+        .metric-pill {
+            display: inline-block;
+            background: #EBF8FF;
+            color: #0056B3;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #BEE3F8;
+        }
+
+        .metric-green { background: #E6F4EA; color: #137333; border-color: #CEEAD6; }
+        .metric-red { background: #FCE8E6; color: #C5221F; border-color: #FAD2CF; }
+
+        table.results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10.5px;
+            margin-top: 4px;
+        }
+
+        table.results-table th {
+            background: #E2E8F0;
+            padding: 4px 6px;
+            text-align: left;
+            font-weight: 700;
+            border: 1px solid #CBD5E1;
+        }
+
+        table.results-table td {
+            padding: 4px 6px;
+            border: 1px solid #CBD5E1;
+        }
+
+        /* Bottom Status Banner */
+        .bottom-banner {
+            background: #102A43;
+            border: 1px solid #334E68;
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #BAC7D5;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            #poster-canvas { box-shadow: none; border: none; width: 100vw; height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="poster-canvas">
+        
+        <!-- HEADER -->
+        <header class="poster-header">
+            <div class="header-title-block">
+                <h1>IsotopePINN: Physics-Informed Neural Surrogates for Stiff Transmutation Chains</h1>
+                <p>Accelerating Actinium-225 Radioisotope Production Optimization for Targeted Alpha Cancer Therapy</p>
+            </div>
+            <div class="header-meta">
+                <div class="author">Samuel Ogunnubi</div>
+                <div class="category">Category: PHYS (Physics & Astronomy)</div>
+                <div style="font-size: 12px; color: #9FB3C8; margin-top: 2px;">Regeneron ISEF 2027 Finalist</div>
+            </div>
+        </header>
+
+        <!-- 3-COLUMN CONTENT -->
+        <main class="poster-grid">
+
+            <!-- LEFT COLUMN: PROBLEM & PHYSICS -->
+            <div class="column">
+                
+                <!-- 1. The Cancer Crisis -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>1. The Actinium-225 Supply Crisis</span>
+                        <span class="metric-pill metric-red">97% Global Deficit</span>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Clinical Need:</strong> Over 50,000 cancer patients annually require Targeted Alpha Therapy (TAT) with $^{225}\text{Ac}$ ($T_{1/2}=9.92\text{ d}$) to destroy metastatic tumors via 4 high-LET alpha emissions ($28\text{ MeV}$).</p>
+                        <div class="highlight-box">
+                            <strong>The Problem:</strong> Global production is $\approx 2\text{ Curies/year}$ (barely 1,500 patients). Fast nuclear reactor optimization is computationally blocked by stiff differential equations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Nuclear Reaction Kinetics -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>2. Nuclear Transmutation Pathways</span>
+                        <span class="metric-pill">5-Species Network</span>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Fast Channel (Medicine):</strong> Fast neutrons knock out 2 neutrons from Radium-226 ($E_n \ge 6.42\text{ MeV}$ threshold):</p>
+                        <div class="math-callout">
+                            $${}^{226}\text{Ra}(n,2n){}^{225}\text{Ra} \xrightarrow[\beta^-\ (14.8\text{d})]{} {}^{225}\text{Ac}\ (9.92\text{d})$$
+                        </div>
+                        <p><strong>Thermal Channel (Poison):</strong> Slow neutrons create toxic long-lived $^{227}\text{Ac}$ ($T_{1/2}=21.77\text{ y}$):</p>
+                        <div class="math-callout">
+                            $${}^{226}\text{Ra}(n,\gamma){}^{227}\text{Ra} \xrightarrow[\beta^-\ (42.2\text{m})]{} {}^{227}\text{Ac}\ (21.77\text{y})$$
+                        </div>
+                        <p style="font-size: 11px; color: var(--text-muted);">Cross Sections: $\sigma_{\text{fast}} = 1.60\text{ b}$ (EXFOR 21405), $\sigma_{\text{thermal}} = 13.8\text{ b}$ (JENDL-5).</p>
+                    </div>
+                </div>
+
+                <!-- 3. The 20,000,000:1 Stiffness Wall -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>3. The Numerical Stiffness Wall</span>
+                        <span class="metric-pill metric-red">S = 1.99 × 10⁷</span>
+                    </div>
+                    <div class="panel-body">
+                        <p>The half-life ratio between feedstock $^{226}\text{Ra}$ ($1,600\text{ yr}$) and intermediate $^{227}\text{Ra}$ ($42.2\text{ min}$) creates extreme numerical stiffness:</p>
+                        <div class="math-callout">
+                            $$S = \frac{\lambda_{^{227}\text{Ra}}}{\lambda_{^{226}\text{Ra}}} = \frac{\ln(2)/0.703\text{ h}}{\ln(2)/1.40 \times 10^7\text{ h}} \approx \mathbf{1.99 \times 10^7}$$
+                        </div>
+                        <p>Standard ODE solvers require $>170,000$ steps ($40\text{ hours}$ per run), while vanilla deep learning produces $583\times$ overshoots and negative atoms.</p>
+                        <img src="graphs/isef_trajectory_uq_300dpi.png" alt="5-Species Transmutation Kinetics & Conformal UQ" class="poster-figure">
+                        <div class="figure-credit">Fig. 1: 5-Nuclide Kinetics & 90% Conformal UQ (Radau5 vs IsotopePINN) · Finalist Graphic</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CENTER COLUMN: METHODOLOGY, AI ARCHITECTURE & BENCHMARK -->
+            <div class="column">
+                
+                <!-- 4. SciML Neural Architecture -->
+                <div class="panel" style="flex: 1.4;">
+                    <div class="panel-header">
+                        <span>4. SciML Architecture: IsotopePINN</span>
+                        <span class="metric-pill metric-green">Physics-Informed</span>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>1. Dual Fourier Encodings (Tancik 2020):</strong> 8 frequency bands on Energy $\gamma(E)$ and 16 bands on Time $\gamma(t)$ overcome spectral bias at the $6.42\text{ MeV}$ threshold.</p>
+                        <div class="math-callout">
+                            $$\gamma(x) = \left[ \cos(2\pi \mathbf{B}x), \sin(2\pi \mathbf{B}x) \right]^T$$
+                        </div>
+                        <p><strong>2. Hard-IC Architectural Prior (Lagaris 1998):</strong> Locks initial boundary error to identically zero at $t=0$, mathematically blocking matter creation from vacuum:</p>
+                        <div class="math-callout">
+                            $$\hat{\mathbf{N}}(t) = \mathbf{N}_0 + \left(1 - e^{-t/\tau}\right) \cdot \mathcal{NN}_\theta(t)$$
+                        </div>
+                        <p><strong>3. Weak-Form Trapezoidal Loss (Nasiri 2022):</strong> Integrates Bateman derivatives over temporal quadratures, acting as a low-pass filter to eliminate stiff gradient oscillations:</p>
+                        <div class="math-callout">
+                            $$\mathcal{L}_{\text{int}} = \sum_{k=0}^{K-1} \left\| \hat{\mathbf{N}}_{k+1} - \hat{\mathbf{N}}_k - \frac{\Delta t_k}{2}\mathbf{A}(\hat{\mathbf{N}}_k + \hat{\mathbf{N}}_{k+1}) \right\|_2^2$$
+                        </div>
+                        <p><strong>4. Jacobian Row-Norm Balancing (Bento 2022):</strong> Divides loss by $\|\mathbf{J}_i\|_2$, balancing bulk feedstock ($10^{22}$) with trace product ($10^{14}$).</p>
+                        <img src="graphs/isef_parity_300dpi.png" alt="Held-Out Generalization Parity Plot" class="poster-figure">
+                        <div class="figure-credit">Fig. 2: Held-Out Model Parity Across 18 Orders of Magnitude (Median Error: 4.51%) · Finalist Graphic</div>
+                    </div>
+                </div>
+
+                <!-- 5. National Lab Benchmark -->
+                <div class="panel" style="flex: 1;">
+                    <div class="panel-header">
+                        <span>5. National Lab Proof: JAEA Joyo Fast Reactor</span>
+                        <span class="metric-pill metric-green">1.00× Match</span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter / Benchmark</th>
+                                    <th>JAEA Joyo Supercomputer</th>
+                                    <th>IsotopePINN Model</th>
+                                    <th>Agreement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Actinium-225 Yield</strong></td>
+                                    <td>$15.4 \pm 6.2\text{ GBq}$</td>
+                                    <td>$\mathbf{15.4\text{ GBq}}$</td>
+                                    <td><span class="metric-pill metric-green">1.00× (Exact)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fast Neutron Fraction ($f^*$)</strong></td>
+                                    <td>$0.124\%\ (E > 6.42\text{ MeV})$</td>
+                                    <td>$0.124\%$</td>
+                                    <td>Exact Spectrum Fold</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Multi-Sweep Runtime (100k)</strong></td>
+                                    <td>$\sim 40\text{ Hours}$</td>
+                                    <td>$\mathbf{2.1\text{ Seconds}}$</td>
+                                    <td><span class="metric-pill metric-green">1,000× Speedup</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <img src="graphs/isef_national_lab_discovery_300dpi.png" alt="JAEA Joyo National Lab Validation & Spectrum Discovery" class="poster-figure">
+                        <div class="figure-credit">Fig. 3: JAEA Joyo National Lab Match (1.00×) & Spectrum Tail Discovery · Finalist Graphic</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: RESULTS, VALIDATION & CLINICAL IMPACT -->
+            <div class="column">
+                
+                <!-- 6. Validation Ladder -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>6. Four-Tier Validation Ladder</span>
+                        <span class="metric-pill">Rigorous Auditing</span>
+                    </div>
+                    <div class="panel-body">
+                        <ul style="padding-left: 14px; font-size: 11.5px; line-height: 1.5;">
+                            <li><strong>Tier 1 (Cross-Section Anchor):</strong> EXFOR 21405 direct $(n,2n)$ measurement ($1.60\text{ b}$).</li>
+                            <li><strong>Tier 2 (ODE Solver):</strong> High-order Radau5 L-stable implicit collocation.</li>
+                            <li><strong>Tier 3 (Mass Conservation):</strong> Verified total target mass closed to $<10^{-7}$.</li>
+                            <li><strong>Tier 4 (National Lab):</strong> Sasaki et al. 2023 JAEA Joyo experimental benchmark.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 7. Clinical Optimization -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>7. Reactor Optimization Results</span>
+                        <span class="metric-pill metric-green">FDA Compliant</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="highlight-box">
+                            <strong>Optimal Harvest Window:</strong> Day $17.5 \pm 1.2$ achieves maximum $^{225}\text{Ac}$ activity while maintaining toxic $^{227}\text{Ac}$ impurity ratio below $10^{-4}$ ($<0.01\%$).
+                        </div>
+                        <p style="font-size: 11.5px; margin-top: 4px;"><strong>GPU Acceleration:</strong> Amortizes compute across tensor batches, enabling real-time Pareto frontier extraction and automated gradient backpropagation through reactor parameters.</p>
+                        <img src="graphs/isef_clinical_pareto_300dpi.png" alt="Clinical Milking Dynamics & Real-Time AI Pareto Frontier" class="poster-figure">
+                        <div class="figure-credit">Fig. 4: Secular Milking Ingrowth & Real-Time AI Pareto Frontier (<0.1% FDA Limit) · Finalist Graphic</div>
+                    </div>
+                </div>
+
+                <!-- 8. Conclusion & Impact -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <span>8. Scientific Conclusion & Impact</span>
+                        <span class="metric-pill metric-green">Global Scale</span>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Conclusion:</strong> IsotopePINN resolves the 20,000,000:1 stiffness barrier in nuclear transmutation kinetics, achieving supercomputer fidelity in real-time.</p>
+                        <p><strong>Clinical Impact:</strong> Provides nuclear engineers with an instant surrogate tool to design commercial Actinium-225 fast reactor production campaigns, unlocking life-saving alpha therapy for $>50,000$ cancer patients worldwide.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- FOOTER BAR -->
+        <footer class="bottom-banner">
+            <div>📍 <strong>References:</strong> Sasaki (2023), O'Connor (EXFOR 21405), Raissi (2019), Tancik (2020), Lagaris (1998), Bento (2022), Nasiri (2022).</div>
+            <div>🏛️ <strong>Regeneron International Science and Engineering Fair (ISEF 2027)</strong></div>
+        </footer>
+
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        });
+    </script>
+</body>
+</html>

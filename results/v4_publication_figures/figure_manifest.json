@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-08-28T22:09:14.920507+00:00",
+  "generator": "C:\\Users\\ogunn\\Downloads\\New folder\\analysis\\plot_v4_publication_figures.py",
+  "generator_sha256": "9ba7b75ae9171115ce1e185b70adeca9d00343adcd0db22280d14b1a5428c134",
+  "input_zip": "C:\\Users\\ogunn\\Downloads\\V4_GP_LSTM_FINAL_c3a56472508c.zip",
+  "input_zip_sha256": "86fd62a67ab932c26eef755146c81310396e7924418b6b98daa2df734365ca24",
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826",
+  "dataset_sha256": "3fcdb80ba5d286fcd6ecac777c03f73086d882d42766e68331b45298ea5b0c56",
+  "claim_eligible": false,
+  "outcome": {
+    "provisional_leader": "gp",
+    "reason": "Both models passed the gates, but the paired bootstrap did not resolve the ordering; gp has the lower observed p95.",
+    "status": "provisional leader",
+    "winner": null
+  },
+  "outputs": {
+    "figure_1_locked_model_comparison.png": "4590dc174eb296d7da1ae230f830a57d01cc7f92cc52050494389955f1d5e466",
+    "figure_1_locked_model_comparison.pdf": "3cafb08278c402f9c1366cab414ca7230240ec5cb7126a532392736cacce8d6e",
+    "figure_2_uncertainty_and_domain.png": "63581f9d6c84319fec8613992c79bfbf8a9ae59905da14818cee4ca3dc697b19",
+    "figure_2_uncertainty_and_domain.pdf": "f81cf62190bbba03363aa727331e2125e0e049da259983ecc16e6ccae9645283",
+    "figure_3_ac225_schedule_propagation.png": "fa5662af8313074ec1ea2b9c485bf4b92e17d0097f790c463c1a0b1ea654dad7",
+    "figure_3_ac225_schedule_propagation.pdf": "59596a2364b6a35b49f4c0ef84bcde1868da66cfd5830e4edca83bce7792c674",
+    "FIGURE_NOTES.md": "95fba82b4e221dbc00b56c67712a8f36605427cfa11e7f7e99e0dc8c0db5dc76"
+  }
+}

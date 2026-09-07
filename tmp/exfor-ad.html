@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML LANG="en">
+<HEAD>
+<LINK REV="made" HREF="mailto:services@jcprg.org">
+<LINK REL="icon" HREF="/favicon.ico">
+<LINK REL="index" HREF="/index.html">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-8859-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META NAME="Keywords" CONTENT="nuclear data,nuclear reaction,cross section,核データ,核反応,断面積,EXFOR,CINDA,ENDF,JENDL,NRDF">
+<LINK REL="stylesheet" HREF="/css/jcprg.css"  TYPE="text/css" TITLE="large">
+
+<TITLE>EXFOR/ENDF: Nuclear Reaction Data</TITLE>
+<SCRIPT SRC="javascript/example.js" TYPE="text/javascript"></SCRIPT>
+<SCRIPT TYPE="text/javascript">
+<!--
+function selector(dict){
+  var selector=("./selector/"+dict+".html");
+  WinSelect=window.open(selector,'WinSelect','toolbar=0,location=0,directories=0,status=0,menubar=1,scrollbars=1, resizable=1, width=500');
+}
+-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<DIV ID="header">
+  <DIV ID="logo">
+    <A HREF="https://www.jcprg.org/">
+    <IMG SRC="/imgs/jcprg-logo-new.jpg" WIDTH="650" HEIGHT="60" ALT="jcprg.org" STYLE="border:0"></A>
+  </DIV>
+  &nbsp;
+  <DIV ID="metanav">
+    <UL>
+      <LI> | <A HREF="/nrdf/">NRDF</A> | </LI>
+      <LI><A HREF="/exfor/">EXFOR</A> | </LI>
+      <LI><A HREF="/cinda/">CINDA</A> | </LI>
+      <LI><A HREF="/endf/">ENDF</A> | </LI>
+      <LI><A HREF="/">English</A> | </LI>
+      <LI><A HREF="/index-j.html">Japanese</A> | </LI>
+      <LI><A HREF="/index-i.html">Internal</A> | </LI>
+    </UL>
+  </DIV>
+</DIV>
+<BR>
+
+<DIV ID="title">
+  <DIV ID="subtitle">
+  Hokkaido University Nuclear Reaction Data Centre (JCPRG)
+  </DIV>
+  <DIV ID="maintitle">
+  EXFOR / ENDF - Search
+  </DIV>
+  (
+   19 May 2026 Updated -
+   [<A HREF="./info/recentdata.pl">new data</A>
+]
+   [<A HREF="./info/feedbacks.html">feedback</A>]
+   [Q and A:
+     <A HREF="./info/questions-e.html">Eng.</A>/
+     <A HREF="./info/questions-j.html">Jpn.</A>
+]
+  )
+</DIV>
+<DIV ID="contents-small">
+EXFOR is compiled by the
+<A HREF="https://www.jcprg.org/nrdc/">
+Nuclear Reaction Data Centres Network (NRDC)
+</A>
+under the auspices of the International Atomic Energy Agency (IAEA).
+JENDL, ENDF, JEFF, BROND and CENDL are produced based on EXFOR by
+JAEA Nuclear Data Center and Japanese Nuclear Data Committee (JAEA-NDC+JNDC),
+Cross Section Evaluataion Working Group (CSWEG),
+NEA Joint Evaluation Project,
+Russian Nuclear Data Center (CJD)
+and
+Chinese Nuclear Data Center and Nuclear Data Committee of China,
+respectively.
+<CENTER>
+<STRONG>
+EXFOR Citation: N.Otuka, E.Dupont, V.Semkova et al., <a href="http://dx.doi.org/10.1016/j.nds.2014.07.065" target="_new">Nucl. Data Sheets 120(2014)272</a>
+</STRONG>
+</CENTER>
+</DIV>
+<DIV ID="home-e" ALIGN="center">
+<FORM NAME="search_form" ACTION="search.pl" METHOD="post">
+<!--=================================================================-->
+[<A HREF="./">basic</A>]
+[advance]
+[<A HREF="index-st.html">beginner</A>]
+<BR>
+( Use ";" (semicolon) for logical OR, "*" (asterisk) for wildcard )
+<BR>
+<!--=================================================================-->
+   <INPUT STYLE="background-color:#fa8072; width:75px" TYPE="submit"  VALUE="Search" TABINDEX="1">
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(1)" TABINDEX="2" ONCLICK="set_example(1)">
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(2)" TABINDEX="3" ONCLICK="set_example(2)">
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(3)" TABINDEX="4" ONCLICK="set_example(3)">
+   <INPUT STYLE="background-color:#98fb98; width:75px" TYPE="reset"   VALUE="Reset" TABINDEX="5" >
+<!--=================================================================-->
+<TABLE SUMMARY="search">
+<TBODY>
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Basic</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>Target</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf1" VALUE="" SIZE=20 TABINDEX="6"></TD>
+<TD><A HREF="javascript:selector('sf1')">selector</A></TD>
+<TD>(fe-56, 56fe, he-4, a,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Projectile</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf2" VALUE="" SIZE=20 TABINDEX="7"></TD>
+<TD><A HREF="javascript:selector('sf2')">selector</A></TD>
+<TD>(n, p, a, g, c-12,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Emission</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf3" VALUE="" SIZE=20 TABINDEX="8"></TD>
+<TD><A HREF="javascript:selector('sf3')">selector</A></TD>
+<TD>(el, inl, f, g, x+n, n+p,2p,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Residual</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf4" VALUE="" SIZE=20 TABINDEX="9"></TD>
+<TD><A HREF="javascript:selector('sf4')">selector</A></TD>
+<TD>(fe-56, 56fe,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Quantity</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="webquant" VALUE="" SIZE=20 TABINDEX="10"></TD>
+<TD><A HREF="javascript:selector('webquant')">selector</A></TD>
+<TD>(CS,DA,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Energy (eV)</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="energy" VALUE="" SIZE=20 TABINDEX="11"></TD>
+<TD></TD>
+<TD>(1.0e-5:2.0e+7)<TD>
+</TR>
+<TR>
+<TD><STRONG>Data No.</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="subent_req" VALUE="" SIZE=20 TABINDEX="12"></TD>
+<TD></TD>
+<TD>(10468,E1901002,...)</TD>
+</TR>
+<!--=================================================================-->
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Plot axis</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>Horizontal (1)</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="horiz1" VALUE="" SIZE=20 TABINDEX="13"></TD>
+<TD><A HREF="javascript:selector('horiz1')">selector</A></TD>
+<TD>(EN,EN-CM,..)</TD>
+</TR>
+<TR>
+<TD><STRONG>Horizontal (2)</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="horiz2" VALUE="" SIZE=20 TABINDEX="14"></TD>
+<TD><A HREF="javascript:selector('horiz2')">selector</A></TD>
+<TD>(ANG,ANG-CM,..)</TD>
+</TR>
+<TR>
+<TD><STRONG>Vertical</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="vertic" VALUE="" SIZE=20 TABINDEX="15"></TD>
+<TD><A HREF="javascript:selector('vertic')">selector</A></TD>
+<TD>(DATA,DATA-CM,..)</TD>
+</TR>
+<!--=================================================================-->
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Bibliography</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>Pub. Year</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="year" VALUE="" SIZE=20 TABINDEX="16"></TD>
+<TD><A HREF="javascript:selector('year')">selector</A></TD>
+<TD>(1988:1990)</TD>
+</TR>
+<TR>
+<TD><STRONG>Journal</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="article" VALUE="" SIZE=20 TABINDEX="17"></TD>
+<TD><A HREF="javascript:selector('article')">selector</A></TD>
+<TD>(NP/A,ORNL-4013...)</TD>
+</TR>
+<TR>
+<TD><STRONG>1st Author</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="last_n_1" VALUE="" SIZE=20 TABINDEX="18"></TD>
+<TD><A HREF="javascript:selector('fauthor')">selector</A></TD>
+<TD>(Kato,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Author</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="last_n" VALUE="" SIZE=20 TABINDEX="19"></TD>
+<TD><A HREF="javascript:selector('author')">selector</A></TD>
+<TD>(Schwerer,...)</TD>
+</TR>
+<!--=================================================================-->
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Options</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>EXFOR</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="search_exfor" VALUE="ON" TABINDEX="20" CHECKED>include
+<INPUT TYPE="radio" NAME="search_exfor" VALUE="OFF" TABINDEX="21">exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>ENDF</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="search_endf" VALUE="ON" TABINDEX="22" CHECKED>include
+<INPUT TYPE="radio" NAME="search_endf" VALUE="OFF" TABINDEX="23">exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Quantity ratio</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="exc_comb" VALUE="OFF" TABINDEX="24" CHECKED>include
+<INPUT TYPE="radio" NAME="exc_comb" VALUE="ON" TABINDEX="25">exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Superseded data</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="exc_spsd" VALUE="OFF" TABINDEX="26">include
+<INPUT TYPE="radio" NAME="exc_spsd" VALUE="ON" TABINDEX="27" CHECKED>exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Inverse kinematics</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="inv_kine" VALUE="OFF" TABINDEX="28" CHECKED>reaction
+<INPUT TYPE="radio" NAME="inv_kine" VALUE="ON" TABINDEX="29">reference
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Sort by</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="sort_by" VALUE="REACTION" TABINDEX="30" CHECKED>reaction
+<INPUT TYPE="radio" NAME="sort_by" VALUE="REFERENCE" TABINDEX="31">reference
+</TD>
+</TR>
+<!--=================================================================-->
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Quantity</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>CINDA quant.</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="cindaquant" VALUE="" SIZE=20 TABINDEX="32"></TD>
+<TD><A HREF="javascript:selector('cindaquant')">selector</A></TD>
+<TD>(CS,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Branch</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf5" VALUE="" SIZE=20 TABINDEX="33"></TD>
+<TD><A HREF="javascript:selector('sf5')">selector</A></TD>
+<TD>(PAR,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Parameter</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf6" VALUE="" SIZE=20 TABINDEX="34"></TD>
+<TD><A HREF="javascript:selector('sf6')">selector</A></TD>
+<TD>(DA,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Particle Consid.</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf7" VALUE="" SIZE=20 TABINDEX="35"></TD>
+<TD><A HREF="javascript:selector('sf7')">selector</A></TD>
+<TD>(P,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Modifier</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf8" VALUE="" SIZE=20 TABINDEX="36"></TD>
+<TD><A HREF="javascript:selector('sf8')">selector</A></TD>
+<TD>(ANA,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Data Type</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf9" VALUE="" SIZE=20 TABINDEX="37"></TD>
+<TD><A HREF="javascript:selector('sf9')">selector</A></TD>
+<TD>(EXP,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Result</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="result" VALUE="" SIZE=20 TABINDEX="38"></TD>
+<TD><A HREF="javascript:selector('result')">selector</A></TD>
+<TD>(FRCUM,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>NSUB</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="nsub" VALUE="" SIZE=20 TABINDEX="39"></TD>
+<TD><A HREF="javascript:selector('nsub')">selector</A></TD>
+<TD>(10,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>MF</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="mf" VALUE="" SIZE=20 TABINDEX="40"></TD>
+<TD><A HREF="javascript:selector('mf')">selector</A></TD>
+<TD>(3,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>MT</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="mt" VALUE="" SIZE=20 TABINDEX="41"></TD>
+<TD><A HREF="javascript:selector('mt')">selector</A></TD>
+<TD>(2,...)</TD>
+</TR>
+<!--=========================================================================-->
+</TBODY>
+</TABLE>
+</FORM>
+</DIV>
+<DIV ID="footer">
+<HR>
+<TABLE SUMMARY="footer">
+<TR>
+<TD>
+<FONT SIZE="2">
+Feel free to inquire anything (web service, contribution to databases etc.):
+<BR>
+<EM>Nuclear Reaction Data Centre, Faculty of Science, Hokkaido University</EM>
+<BR>
+060-0810 Sapporo, Japan
+<BR>
+TEL +81(JPN)-11-706-3723 / FAX +81(JPN)-11-706-3724
+<BR>
+Partly supported by
+<A HREF="http://www.mext.go.jp/english/">MEXT</A>,
+<A HREF="http://www.jsps.go.jp/english/">JSPS</A>
+(Grant-in-Aid for Publication of Scientific Research Results),
+<A HREF="http://www.rarf.riken.go.jp/">RIKEN</a>,
+and
+<A HREF="http://www.meme.hokudai.ac.jp/index-e.html">Meme Media Lab.</A> in Hokkaido Univ.
+</FONT>
+</TD><TD WIDTH="10%">
+<FONT SIZE="2">
+<SCRIPT TYPE='text/javascript' SRC='/include/mailaddress.js'></SCRIPT>
+</FONT>
+<NOSCRIPT>(Please enable JavaScript to see our e-mail address.)</NOSCRIPT>
+</TD>
+</TR>
+<TR>
+<TD COLSPAN="2">
+<FONT SIZE="2">
+<SCRIPT TYPE='text/javascript' SRC='/include/lastupdate-e.js'></SCRIPT>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+
+</BODY>
+</HTML>

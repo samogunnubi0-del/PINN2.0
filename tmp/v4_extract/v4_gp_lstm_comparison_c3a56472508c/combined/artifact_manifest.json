@@ -1,0 +1,9 @@
+{
+  "claim_eligible": false,
+  "files": {
+    "final_model_comparison.json": "5a12716fae698d85759c515fe34d1c8a7eebb52268d075e7819c191ed956ad5d",
+    "final_model_comparison.png": "57aee886d309d672b623cfc25619de57baab911e5635d3deeba1fe9525f7eda2",
+    "paired_case_comparison.csv": "d765b00cf2d19c3279a669002b3e5465e78347ad495e799120baf7acdd1bf77a"
+  },
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826"
+}

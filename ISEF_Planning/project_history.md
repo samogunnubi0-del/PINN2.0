@@ -312,17 +312,33 @@ New folder/
     scripts/plot_v2_vs_pilstm.py
 ```
 
----
+316: ---
+317: 
+318: ## 📅 August 27, 2026: Expert Guidance from Dr. Jonathan Engle (UW-Madison Cyclotron Lab) & IAEA Isotopia Benchmark
+319: 
+320: **Event:** Technical feedback received from **Dr. Jonathan W. Engle**, Associate Professor & Director of the Cyclotron Research Group at the University of Wisconsin–Madison.
+321: 
+322: > **Log Entry:** *Top-Tier National Domain Expert Validation.*
+323: > 
+324: > Dr. Engle provided crucial domain guidance regarding the physical boundary of validity for radioisotope production surrogates:
+325: > 
+326: > 1. **Boundary of Validity (Decoupling Chemistry & Heat Transfer):** Dr. Engle recommended confining our surrogate's modeling scope strictly to the **probability of initiating desired nuclear reactions ($\sigma \cdot \phi$) and the physical decay kinetics ($d\mathbf{N}/dt = \mathbf{A}\mathbf{N}$)** of produced radionuclides and progeny, given user-specified target compositions and incident beam fluxes. He noted that physical limitations related to target thermodynamics or wet radiochemistry cannot be universally established without proprietary facility target geometries and CAD designs.
+327: > 2. **Gold-Standard Reference (IAEA Isotopia):** Dr. Engle pointed to the official **IAEA Isotopia tool** (`https://www-nds.iaea.org/relnsd/isotopia/isotopia.html`) as the primary international benchmark to compare against and expand upon with our high-speed neural optimization capabilities.
+328: > 
+329: > **Project Action:** Formally integrate Dr. Engle's scope boundary into the research paper and ISEF defense script, and add IAEA Isotopia to our external benchmarking and comparison suite.
+330: 
+331: ---
+332: 
+333: ## 🔜 Next Steps
+334: 
+335: 1. **Colab Run C (v3 Run C recipe):**
+336:    - Upload fresh **`IsotopePINN_Project.zip`** to Colab (includes Run C code)
+337:    - Set Run C env vars from `PI_LSTM_Colab_Run.ipynb` Cell 5 (`PILSTM_TIME_FOURIER=16`, val seed 2025, test seed 2024, `n_train=1400`, `n_steps=64`, distill taper, etc.)
+338:    - **Quick test:** `PILSTM_EPOCHS=2500–3000` (~1 hr on T4) to verify pipeline before full 6k run
+339:    - **Success criterion:** held-out **endpoint Ac-225 median < 4.5%** on test split (Cell 6 `compare_models.py`)
+340:    - Run Cells 6–8; download config-aware `PI_LSTM_Results.zip`
+341: 2. **Update this log** with Run C final test Ac-225, `compare_v2_pilstm.json`, and Ra-227 overshoot.
+342: 3. **Poster:** Lead with v2 (6/6, 4.5%); PI-LSTM Run C as expert-feedback iteration (integrated loss + distillation + time Fourier); literature table as honest external context.
+343: 4. **Watch Joyo 2026** for first published fast-reactor Ra-226 → Ac-225 experimental data.
 
-## 🔜 Next Steps
-
-1. **Colab Run C (v3 Run C recipe):**
-   - Upload fresh **`IsotopePINN_Project.zip`** to Colab (includes Run C code)
-   - Set Run C env vars from `PI_LSTM_Colab_Run.ipynb` Cell 5 (`PILSTM_TIME_FOURIER=16`, val seed 2025, test seed 2024, `n_train=1400`, `n_steps=64`, distill taper, etc.)
-   - **Quick test:** `PILSTM_EPOCHS=2500–3000` (~1 hr on T4) to verify pipeline before full 6k run
-   - **Success criterion:** held-out **endpoint Ac-225 median < 4.5%** on test split (Cell 6 `compare_models.py`)
-   - Run Cells 6–8; download config-aware `PI_LSTM_Results.zip`
-2. **Update this log** with Run C final test Ac-225, `compare_v2_pilstm.json`, and Ra-227 overshoot.
-3. **Poster:** Lead with v2 (6/6, 4.5%); PI-LSTM Run C as expert-feedback iteration (integrated loss + distillation + time Fourier); literature table as honest external context.
-4. **Watch Joyo 2026** for first published fast-reactor Ra-226 → Ac-225 experimental data.
 

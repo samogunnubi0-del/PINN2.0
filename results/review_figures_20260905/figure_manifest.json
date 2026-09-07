@@ -1,0 +1,83 @@
+{
+  "created_utc": "2026-09-05T20:34:46.817985+00:00",
+  "reporting_only": true,
+  "training_performed": false,
+  "validation": "V4 ZIP hashes/bootstrap/metrics replayed; V3 screening errors recomputed from CSV",
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "matplotlib": "3.10.8"
+  },
+  "sources": {
+    "C:\\Users\\ogunn\\Downloads\\V4_GP_LSTM_FINAL_c3a56472508c.zip": "86fd62a67ab932c26eef755146c81310396e7924418b6b98daa2df734365ca24",
+    "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v3_pilstm\\results\\decision_support_20260823\\decision_study.json": "25342f873c333d1deb6bfd27dac007a7aeec13f71875707d79823f6dd1b1c216",
+    "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v3_pilstm\\results\\decision_support_20260823\\schedule_results.csv": "1fade2711fadb3da0f01fa4f345b9b60d631fed3fa5f9e08960dd45f6fcf169a",
+    "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v3_pilstm\\results\\final_v3_20260811_seed42\\postlock_reporting_v1.json": "cbb91b173d57fe759169e53662f788b72a18a39107be0204bb927d2cfdd2c010",
+    "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\v4_transport_surrogate\\audit_result_package.py": "aef78a1836f586dd8460d66d7276ff31a7cb3670533c2ab8d8edd9cc43c733e4",
+    "C:\\Users\\ogunn\\Downloads\\New folder\\New folder\\analysis\\build_review_figures.py": "7112071e50f52d0c3e9288c405639915bccaabf75a85dd616388d5c9941ee54b"
+  },
+  "outputs": {
+    "01_v3_runtime.png": "51e6257c6c9b483e096c321412ec704fcb458d825af20ca8bdb695744cb542ec",
+    "01_v3_runtime.pdf": "828e795092b96321cd45ef318ea3bcd9a36d0a52e5915bf56053b9a2ba6b0071",
+    "02_v3_matched_accuracy.png": "a84eefc0ee5951bf26ad5580ccd7330fe82912af95563060508157c69bcf4251",
+    "02_v3_matched_accuracy.pdf": "94b1f9632b0f7d57abd08dbeaca88ad9b9ae4cd0a4bc3dc9adf6f7f4051dc98d",
+    "03_v3_screening_errors.png": "89af0ac4aac70c0c26e1834441b5798357a0b179441cbf3b84cbda1e1f38768f",
+    "03_v3_screening_errors.pdf": "ee8c9b196f772b83e0bd7ad291c4b8dfe05c3daf3221af54af62870b61dd440e",
+    "04_v4_rate_errors.png": "7b29bb42c38f005d2b5f479e6afa74e660db8b7c57fe896df91cd838b5ddf5b4",
+    "04_v4_rate_errors.pdf": "17a55321556f3ad4139d8f2e62f02f4b8195d7b8d19fe93217c70a88dfe77aca",
+    "05_v4_interval_coverage.png": "29a4e9a5fdf822ccd09963b87effc4bb946fa3881e77e866c6890e04e916826f",
+    "05_v4_interval_coverage.pdf": "c6763f2834a52abe2b73b8dcc9a89197d1aa3cb3565fd5058e95a4b3935c715a",
+    "06_v4_domain_guard.png": "daba4acc49f9b19976c83165bd315594cef1824ee28670c673063a4ccdd4e86c",
+    "06_v4_domain_guard.pdf": "3e03a4313e303b8d05d0420a41e1dc268f9f2c990ae80c1717470c330f96720d",
+    "07_v4_ac225_error.png": "9c0f9729e3423adcabdb2eb6a29d03e2654c3c096a177e30abf0a9a471b33e37",
+    "07_v4_ac225_error.pdf": "00dca375429db8024564400e62bd98571888a863debb12b795a78d1c355ef449",
+    "index.html": "76a43c9f6b39d5a52e93abba725b70627b6ed9acc5738e6471119637aaf31ea6",
+    "FIGURE_NOTES.md": "bfdc17402b88ce8ae739fe4065c0b02558bf112affcf461b02e3ea70d246ca48",
+    "result_replay.json": "9f5d0f63a3e73e70461046b85460e8280bd717c6dded7dc720501c0f8f5a71a1"
+  },
+  "figures": [
+    {
+      "stem": "01_v3_runtime",
+      "title": "V3 runtime",
+      "explain": "The same 10,000 modeled schedules took 672.68 seconds with Radau and 7.93 seconds with my LSTM. Exact Bateman took 0.14 seconds.",
+      "caution": "These are local CPU measurements of simplified equations. They do not compare supercomputers or full neutron transport. The recorded training-only break-even estimate is about 62,633 predictions versus Radau; it excludes other development costs."
+    },
+    {
+      "stem": "02_v3_matched_accuracy",
+      "title": "V3 matched accuracy",
+      "explain": "On the specific matched test, my LSTM's reported median was lower than the MLP's. I evaluated four time grids and report the largest grid median.",
+      "caution": "The result uses a numerical denominator floor and excludes small/zero reference cases. One training seed does not establish a general architectural advantage."
+    },
+    {
+      "stem": "03_v3_screening_errors",
+      "title": "V3 screening errors",
+      "explain": "The median was 3.94%, but the 95th percentile was 183.84%. That means a low typical error did not prevent some very large mistakes.",
+      "caution": "This is a different task and metric from the matched endpoint test. The productive threshold is 1.8852 Bq. Excluded near-zero cases have separate diagnostics in the frozen JSON."
+    },
+    {
+      "stem": "04_v4_rate_errors",
+      "title": "V4 rate errors",
+      "explain": "LSTM has a slightly lower median; GP has a slightly lower 95th percentile. The paired uncertainty analysis cannot reliably separate their p95 performance.",
+      "caution": "These are two reaction-rate errors per family, pooled across 48 families. They are not 96 independent experiments or a measurement of real Ac-225 production accuracy."
+    },
+    {
+      "stem": "05_v4_interval_coverage",
+      "title": "V4 uncertainty coverage",
+      "explain": "The GP's original bands covered both reference rates in just one of 48 cases. After calibration, both methods covered both rates in 46 of 48 cases.",
+      "caution": "Raw LSTM uncertainty combines ensemble variation and an error floor. Neither the raw bands nor calibrated intervals include every experimental or nuclear-data uncertainty."
+    },
+    {
+      "stem": "06_v4_domain_guard",
+      "title": "V4 domain checks",
+      "explain": "A separate input checker stopped all 184 deliberately outside-range cases. That is why neither model should be trusted just because it returns a number.",
+      "caution": "Bounds and training-distance checks cannot detect every kind of distribution change. These results do not establish accurate extrapolation or a universal safety guarantee."
+    },
+    {
+      "stem": "07_v4_ac225_error",
+      "title": "V4 Ac-225 propagation",
+      "explain": "I passed each model's reaction rates into the exact decay equations. This shows how errors in those rates affect the resulting amount of Ac-225.",
+      "caution": "Three schedules of the same proxy families do not establish real production accuracy. This test is separate from the V3 trajectory and runtime experiments."
+    }
+  ]
+}

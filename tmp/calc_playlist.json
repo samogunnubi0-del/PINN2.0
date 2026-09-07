@@ -1,0 +1,358 @@
+{
+  "watch": [
+    {
+      "index": "\u25b6",
+      "id": "3dVaOT3pQqc",
+      "title": "The Best Way to Learn Calculus",
+      "length": "10:11"
+    },
+    {
+      "index": "2",
+      "id": "pTdEWDdzVi0",
+      "title": "Mastering Calculus with the 1968 Classic: Basic Calculus",
+      "length": "9:01"
+    },
+    {
+      "index": "3",
+      "id": "_GWaUhGKNxo",
+      "title": "This Calculus Book Was INSANELY Popular in the 1940's and 1950's",
+      "length": "8:19"
+    },
+    {
+      "index": "4",
+      "id": "MuZKQzAjz5A",
+      "title": "Super Thick Calculus Book \ud83d\udcd5",
+      "length": "11:33"
+    },
+    {
+      "index": "5",
+      "id": "LGBVa-fMfzc",
+      "title": "3 Ways to Learn Calculus on Your Own",
+      "length": "9:18"
+    },
+    {
+      "index": "6",
+      "id": "EYMzXfNa8Mg",
+      "title": "Math from an M.I.T. Calculus Book",
+      "length": "10:47"
+    },
+    {
+      "index": "7",
+      "id": "D0xgEKLfaMM",
+      "title": "Learn Calculus Fast",
+      "length": "9:49"
+    },
+    {
+      "index": "8",
+      "id": "QFPcDGq_AX4",
+      "title": "Calculus For Beginners: Get Started Here",
+      "length": "9:59"
+    },
+    {
+      "index": "9",
+      "id": "m7dAhwe0ZTY",
+      "title": "The Easiest Calculus Book In The World",
+      "length": "8:12"
+    },
+    {
+      "index": "10",
+      "id": "GffrHlVKsrM",
+      "title": "Self Study Calculus Like Richard Feynman",
+      "length": "9:55"
+    },
+    {
+      "index": "11",
+      "id": "0euyDNGEiZ4",
+      "title": "Calculus 1: Lecture 1.2 Finding Limits Graphically and Numerically",
+      "length": "35:42"
+    },
+    {
+      "index": "12",
+      "id": "yOKO63P5FwA",
+      "title": "Calculus 1: Lecture 1.4 Continuity and One-Sided Limits",
+      "length": "1:25:30"
+    },
+    {
+      "index": "13",
+      "id": "IszUqhcVq40",
+      "title": "Calculus 1: Lecture 1.5 Infinite Limits",
+      "length": "1:07:34"
+    },
+    {
+      "index": "14",
+      "id": "HhvN20798oE",
+      "title": "Calculus 1: Lecture 2.1 The Derivative and the Tangent Line Problem",
+      "length": "1:03:41"
+    },
+    {
+      "index": "15",
+      "id": "3xW349GhtKU",
+      "title": "Calculus 1: Lecture 2.2, 2.3, 2.4 Differentiation, Rates of Change, Product, Quotient, Chain Rules",
+      "length": "2:23:29"
+    },
+    {
+      "index": "16",
+      "id": "fDuIvT20Pe8",
+      "title": "Calculus 1: Lecture 2.5 Implicit Differentiation",
+      "length": "57:07"
+    },
+    {
+      "index": "17",
+      "id": "Yv_YRRP-yt4",
+      "title": "Calculus 1: Lecture 2.6 Related Rates",
+      "length": "53:21"
+    },
+    {
+      "index": "18",
+      "id": "EsjjQC1mqlg",
+      "title": "Calculus 1: Lecture 3.1 Extrema on an Interval",
+      "length": "51:36"
+    },
+    {
+      "index": "19",
+      "id": "goR8GB7lO9Q",
+      "title": "Calculus 1: Lecture 3.2 Rolle's Theorem and the Mean Value Theorem",
+      "length": "1:07:29"
+    },
+    {
+      "index": "20",
+      "id": "hyBHhd4-ST4",
+      "title": "Calculus 1: Lecture 3.3 Increasing and Decreasing Functions and the First Derivative Test",
+      "length": "39:17"
+    },
+    {
+      "index": "21",
+      "id": "50gv7lOP24o",
+      "title": "Calculus 1: Lecture 3.4 Concavity and The Second Derivative Test",
+      "length": "1:27:51"
+    },
+    {
+      "index": "22",
+      "id": "1NbUtjnuyKA",
+      "title": "Calculus 1: Exam 2 Review",
+      "length": "1:08:45"
+    },
+    {
+      "index": "23",
+      "id": "A3gBsJ_fW8U",
+      "title": "Calculus 1: Lecture 3.5 Limits at Infinity",
+      "length": "59:03"
+    },
+    {
+      "index": "24",
+      "id": "40XRHIgbwpQ",
+      "title": "Calculus 1: Lecture 3.6 A Summary of Curve Sketching",
+      "length": "31:31"
+    },
+    {
+      "index": "25",
+      "id": "ql81b8E7RiY",
+      "title": "Calculus 1: Lecture 3.7 Optimization Problems",
+      "length": "34:37"
+    },
+    {
+      "index": "26",
+      "id": "HOyDcHy7z04",
+      "title": "Calculus 1: Lecture 3.8 Newton's Method",
+      "length": "41:52"
+    },
+    {
+      "index": "27",
+      "id": "foYjL9g2j5w",
+      "title": "Calculus 1: Lecture 5.1 The Natural Logarithmic Function Differentiation",
+      "length": "40:05"
+    },
+    {
+      "index": "28",
+      "id": "AFA7viB84eU",
+      "title": "Calculus 1: Lecture 5.2 The Natural Logarithmic Function Integration",
+      "length": "37:54"
+    },
+    {
+      "index": "29",
+      "id": "tiLoK7xsoRw",
+      "title": "Calculus 1: Lecture 5.4 Exponential Functions Differentiation and Integration",
+      "length": "1:15:54"
+    },
+    {
+      "index": "30",
+      "id": "wiKkk7YJrC4",
+      "title": "Calculus 1: Lecture 6.2 Growth and Decay(Separable Differential Equations Only in This Video)",
+      "length": "42:52"
+    },
+    {
+      "index": "31",
+      "id": "WVGGGTkEtKg",
+      "title": "Calculus 1: Exam 4 Review",
+      "length": "1:16:13"
+    },
+    {
+      "index": "32",
+      "id": "K2WY7Hx0je0",
+      "title": "Calculus 1: Final Exam Review",
+      "length": "1:26:35"
+    }
+  ],
+  "playlist_page": [
+    {
+      "id": "3dVaOT3pQqc",
+      "title": "The Best Way to Learn Calculus",
+      "lockup": true
+    },
+    {
+      "id": "pTdEWDdzVi0",
+      "title": "Mastering Calculus with the 1968 Classic: Basic Calculus",
+      "lockup": true
+    },
+    {
+      "id": "_GWaUhGKNxo",
+      "title": "This Calculus Book Was INSANELY Popular in the 1940's and 1950's",
+      "lockup": true
+    },
+    {
+      "id": "MuZKQzAjz5A",
+      "title": "Super Thick Calculus Book \ud83d\udcd5",
+      "lockup": true
+    },
+    {
+      "id": "LGBVa-fMfzc",
+      "title": "3 Ways to Learn Calculus on Your Own",
+      "lockup": true
+    },
+    {
+      "id": "EYMzXfNa8Mg",
+      "title": "Math from an M.I.T. Calculus Book",
+      "lockup": true
+    },
+    {
+      "id": "D0xgEKLfaMM",
+      "title": "Learn Calculus Fast",
+      "lockup": true
+    },
+    {
+      "id": "QFPcDGq_AX4",
+      "title": "Calculus For Beginners: Get Started Here",
+      "lockup": true
+    },
+    {
+      "id": "m7dAhwe0ZTY",
+      "title": "The Easiest Calculus Book In The World",
+      "lockup": true
+    },
+    {
+      "id": "GffrHlVKsrM",
+      "title": "Self Study Calculus Like Richard Feynman",
+      "lockup": true
+    },
+    {
+      "id": "0euyDNGEiZ4",
+      "title": "Calculus 1: Lecture 1.2 Finding Limits Graphically and Numerically",
+      "lockup": true
+    },
+    {
+      "id": "yOKO63P5FwA",
+      "title": "Calculus 1: Lecture 1.4 Continuity and One-Sided Limits",
+      "lockup": true
+    },
+    {
+      "id": "IszUqhcVq40",
+      "title": "Calculus 1: Lecture 1.5 Infinite Limits",
+      "lockup": true
+    },
+    {
+      "id": "HhvN20798oE",
+      "title": "Calculus 1: Lecture 2.1 The Derivative and the Tangent Line Problem",
+      "lockup": true
+    },
+    {
+      "id": "3xW349GhtKU",
+      "title": "Calculus 1: Lecture 2.2, 2.3, 2.4 Differentiation, Rates of Change, Product, Quotient, Chain Rules",
+      "lockup": true
+    },
+    {
+      "id": "fDuIvT20Pe8",
+      "title": "Calculus 1: Lecture 2.5 Implicit Differentiation",
+      "lockup": true
+    },
+    {
+      "id": "Yv_YRRP-yt4",
+      "title": "Calculus 1: Lecture 2.6 Related Rates",
+      "lockup": true
+    },
+    {
+      "id": "EsjjQC1mqlg",
+      "title": "Calculus 1: Lecture 3.1 Extrema on an Interval",
+      "lockup": true
+    },
+    {
+      "id": "goR8GB7lO9Q",
+      "title": "Calculus 1: Lecture 3.2 Rolle's Theorem and the Mean Value Theorem",
+      "lockup": true
+    },
+    {
+      "id": "hyBHhd4-ST4",
+      "title": "Calculus 1: Lecture 3.3 Increasing and Decreasing Functions and the First Derivative Test",
+      "lockup": true
+    },
+    {
+      "id": "50gv7lOP24o",
+      "title": "Calculus 1: Lecture 3.4 Concavity and The Second Derivative Test",
+      "lockup": true
+    },
+    {
+      "id": "1NbUtjnuyKA",
+      "title": "Calculus 1: Exam 2 Review",
+      "lockup": true
+    },
+    {
+      "id": "A3gBsJ_fW8U",
+      "title": "Calculus 1: Lecture 3.5 Limits at Infinity",
+      "lockup": true
+    },
+    {
+      "id": "40XRHIgbwpQ",
+      "title": "Calculus 1: Lecture 3.6 A Summary of Curve Sketching",
+      "lockup": true
+    },
+    {
+      "id": "ql81b8E7RiY",
+      "title": "Calculus 1: Lecture 3.7 Optimization Problems",
+      "lockup": true
+    },
+    {
+      "id": "HOyDcHy7z04",
+      "title": "Calculus 1: Lecture 3.8 Newton's Method",
+      "lockup": true
+    },
+    {
+      "id": "foYjL9g2j5w",
+      "title": "Calculus 1: Lecture 5.1 The Natural Logarithmic Function Differentiation",
+      "lockup": true
+    },
+    {
+      "id": "AFA7viB84eU",
+      "title": "Calculus 1: Lecture 5.2 The Natural Logarithmic Function Integration",
+      "lockup": true
+    },
+    {
+      "id": "tiLoK7xsoRw",
+      "title": "Calculus 1: Lecture 5.4 Exponential Functions Differentiation and Integration",
+      "lockup": true
+    },
+    {
+      "id": "wiKkk7YJrC4",
+      "title": "Calculus 1: Lecture 6.2 Growth and Decay(Separable Differential Equations Only in This Video)",
+      "lockup": true
+    },
+    {
+      "id": "WVGGGTkEtKg",
+      "title": "Calculus 1: Exam 4 Review",
+      "lockup": true
+    },
+    {
+      "id": "K2WY7Hx0je0",
+      "title": "Calculus 1: Final Exam Review",
+      "lockup": true
+    }
+  ]
+}

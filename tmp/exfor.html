@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML LANG="en">
+<HEAD>
+<LINK REV="made" HREF="mailto:services@jcprg.org">
+<LINK REL="icon" HREF="/favicon.ico">
+<LINK REL="index" HREF="/index.html">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-8859-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META NAME="Keywords" CONTENT="nuclear data,nuclear reaction,cross section,核データ,核反応,断面積,EXFOR,CINDA,ENDF,JENDL,NRDF">
+<LINK REL="stylesheet" HREF="/css/jcprg.css"  TYPE="text/css" TITLE="large">
+
+<TITLE>EXFOR/ENDF: Nuclear Reaction Data</TITLE>
+<SCRIPT SRC="javascript/example.js" TYPE="text/javascript"></SCRIPT>
+<script src="./javascript/jquery-1.8.3.js" type="text/javascript"></script>
+<script src="./javascript/jquery-ui-1.9.2.js" type="text/javascript"></script>
+<link rel="stylesheet" href="./css/jquery-ui-1.9.2.css" type="text/css">
+<link rel="stylesheet" href="./css/newquant.css" type="text/css">
+<script src="./javascript/newquant.js" type="text/javascript"></script>
+<SCRIPT TYPE="text/javascript">
+<!--
+function selector(dict){
+  var selector=("./selector/"+dict+".html");
+  WinSelect=window.open(selector,'WinSelect','toolbar=0,location=0,directories=0,status=0,menubar=1,scrollbars=1, resizable=1, width=500');
+}
+-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<DIV ID="header">
+  <DIV ID="logo">
+    <A HREF="https://www.jcprg.org/">
+    <IMG SRC="/imgs/jcprg-logo-new.jpg" WIDTH="650" HEIGHT="60" ALT="jcprg.org" STYLE="border:0"></A>
+  </DIV>
+  &nbsp;
+  <DIV ID="metanav">
+    <UL>
+      <LI> | <A HREF="/nrdf/">NRDF</A> | </LI>
+      <LI><A HREF="/exfor/">EXFOR</A> | </LI>
+      <LI><A HREF="/cinda/">CINDA</A> | </LI>
+      <LI><A HREF="/endf/">ENDF</A> | </LI>
+      <LI><A HREF="/">English</A> | </LI>
+      <LI><A HREF="/index-j.html">Japanese</A> | </LI>
+      <LI><A HREF="/index-i.html">Internal</A> | </LI>
+    </UL>
+  </DIV>
+</DIV>
+<BR>
+
+<DIV ID="title">
+  <DIV ID="subtitle">
+  Hokkaido University Nuclear Reaction Data Centre (JCPRG)
+  </DIV>
+  <DIV ID="maintitle">
+  EXFOR / ENDF - Search
+  </DIV>
+  (
+   19 May 2026 Updated -
+   [<A HREF="./info/recentdata.pl">new data</A>
+]
+   [<A HREF="./info/feedbacks.html">feedback</A>]
+   [Q and A:
+     <A HREF="./info/questions-e.html">Eng.</A>/
+     <A HREF="./info/questions-j.html">Jpn.</A>
+]
+  )
+</DIV>
+<DIV ID="contents-small">
+EXFOR is compiled by the
+<A HREF="https://www.jcprg.org/nrdc/">
+Nuclear Reaction Data Centres Network (NRDC)
+</A>
+under the auspices of the International Atomic Energy Agency (IAEA).
+JENDL, ENDF, JEFF, BROND and CENDL are produced based on EXFOR by
+JAEA Nuclear Data Center and Japanese Nuclear Data Committee (JAEA-NDC+JNDC),
+Cross Section Evaluataion Working Group (CSWEG),
+NEA Joint Evaluation Project,
+Russian Nuclear Data Center (CJD)
+and
+Chinese Nuclear Data Center and Nuclear Data Committee of China,
+respectively.
+<CENTER>
+<STRONG>
+EXFOR Citation: N.Otuka, E.Dupont, V.Semkova et al., <a href="http://dx.doi.org/10.1016/j.nds.2014.07.065" target="_new">Nucl. Data Sheets 120(2014)272</a>
+</STRONG>
+</CENTER>
+</DIV>
+<DIV ID="home-e" ALIGN="center">
+<FORM NAME="search_form" ACTION="search.pl" METHOD="post">
+
+<!--=================================================================-->
+[<A HREF="./">basic</A>]
+[<A HREF="./index-ad.html">advance</A>]
+[beginner]
+<BR>
+( Use ";" (semicolon) for logical OR, "*" (asterisk) for wildcard )
+<BR>
+<!--=================================================================-->
+   <INPUT STYLE="background-color:#fa8072; width:75px" TYPE="submit"  VALUE="Search" TABINDEX="1">
+<!--
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(1)" TABINDEX="2" ONCLICK="set_example(1)">
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(2)" TABINDEX="3" ONCLICK="set_example(2)">
+   <INPUT STYLE="background-color:#f0e68c; width:75px" TYPE="button"  VALUE="Example(3)" TABINDEX="4" ONCLICK="set_example(3)">
+-->
+   <INPUT STYLE="background-color:#98fb98; width:75px" TYPE="reset"   VALUE="Reset" TABINDEX="5" >
+<!--=================================================================-->
+<BR>
+<font color="red">This is a new query form to improve the user accessibility to EXFOR. Your comments are welcome!</font>
+<BR>
+<TABLE SUMMARY="search">
+<TBODY>
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Basic</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>Target</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf1" VALUE="" SIZE=20 TABINDEX="6"></TD>
+<TD><A HREF="javascript:selector('sf1')">selector</A></TD>
+<TD>(fe-56, 56fe, he-4, a,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Projectile</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf2" VALUE="" SIZE=20 TABINDEX="7"></TD>
+<TD><A HREF="javascript:selector('sf2')">selector</A></TD>
+<TD>(n, p, a, g, c-12,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Quantity name</STRONG></TD>
+<TD><INPUT TYPE="text" name="newquant" id="newquant" value="" size=50 tabindex="8"></TD>
+<TD></TD>
+<TD>("emission", "cumulative",...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Residual</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="sf4" VALUE="" SIZE=20 TABINDEX="9"></TD>
+<TD><A HREF="javascript:selector('sf4')">selector</A></TD>
+<TD>(fe-56, 56fe,...)</TD>
+</TR>
+<TR>
+<TD><STRONG>Energy (eV)</STRONG></TD>
+<TD><INPUT TYPE="text" NAME="energy" VALUE="" SIZE=20 TABINDEX="10"></TD>
+<TD></TD>
+<TD>(1.0e-5:2.0e+7)<TD>
+</TR>
+<!--=================================================================-->
+<TR>
+<TD ALIGN="center" COLSPAN="4"><DIV CLASS="subnav"><H1>Options</H1></DIV></TD>
+</TR>
+<TR>
+<TD><STRONG>EXFOR</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="search_exfor" VALUE="ON" TABINDEX="11" CHECKED>include
+<INPUT TYPE="radio" NAME="search_exfor" VALUE="OFF" TABINDEX="12">exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>ENDF</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="search_endf" VALUE="ON" TABINDEX="13">include
+<INPUT TYPE="radio" NAME="search_endf" VALUE="OFF" TABINDEX="14" CHECKED>exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Quantity ratio</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="exc_comb" VALUE="OFF" TABINDEX="15" CHECKED>include
+<INPUT TYPE="radio" NAME="exc_comb" VALUE="ON" TABINDEX="16">exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Superseded data</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="exc_spsd" VALUE="OFF" TABINDEX="17">include
+<INPUT TYPE="radio" NAME="exc_spsd" VALUE="ON" TABINDEX="18" CHECKED>exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Inverse kinematics</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="exc_invk" VALUE="OFF" TABINDEX="19">include
+<INPUT TYPE="radio" NAME="exc_invk" VALUE="ON" TABINDEX="20" CHECKED>exclude
+</TD>
+</TR>
+<TR>
+<TD><STRONG>Sort by</STRONG></TD>
+<TD COLSPAN="2">
+<INPUT TYPE="radio" NAME="sort_by" VALUE="REACTION" TABINDEX="21" CHECKED>reaction
+<INPUT TYPE="radio" NAME="sort_by" VALUE="REFERENCE" TABINDEX="22">reference
+</TD>
+</TR>
+<!--=========================================================================-->
+</TBODY>
+</TABLE>
+</FORM>
+</DIV>
+<DIV ID="footer">
+<HR>
+<TABLE SUMMARY="footer">
+<TR>
+<TD>
+<FONT SIZE="2">
+Feel free to inquire anything (web service, contribution to databases etc.):
+<BR>
+<EM>Nuclear Reaction Data Centre, Faculty of Science, Hokkaido University</EM>
+<BR>
+060-0810 Sapporo, Japan
+<BR>
+TEL +81(JPN)-11-706-3723 / FAX +81(JPN)-11-706-3724
+<BR>
+Partly supported by
+<A HREF="http://www.mext.go.jp/english/">MEXT</A>,
+<A HREF="http://www.jsps.go.jp/english/">JSPS</A>
+(Grant-in-Aid for Publication of Scientific Research Results),
+<A HREF="http://www.rarf.riken.go.jp/">RIKEN</a>,
+and
+<A HREF="http://www.meme.hokudai.ac.jp/index-e.html">Meme Media Lab.</A> in Hokkaido Univ.
+</FONT>
+</TD><TD WIDTH="10%">
+<FONT SIZE="2">
+<SCRIPT TYPE='text/javascript' SRC='/include/mailaddress.js'></SCRIPT>
+</FONT>
+<NOSCRIPT>(Please enable JavaScript to see our e-mail address.)</NOSCRIPT>
+</TD>
+</TR>
+<TR>
+<TD COLSPAN="2">
+<FONT SIZE="2">
+<SCRIPT TYPE='text/javascript' SRC='/include/lastupdate-e.js'></SCRIPT>
+</FONT>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+
+</BODY>
+</HTML>

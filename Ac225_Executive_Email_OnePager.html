@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Executive Scientific Brief & Results on Physics-Informed Surrogates for Actinium-225 Production by Samuel Ogunnubi">
+  <title>Physics-Informed Surrogates for Ac-225 Production | Samuel Ogunnubi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #0a1128;
+      --navy-surface: #101d42;
+      --slate-dark: #0f172a;
+      --slate-text: #334155;
+      --slate-muted: #64748b;
+      --canvas: #f1f5f9;
+      --card-bg: #ffffff;
+      --border: #cbd5e1;
+      --border-subtle: #e2e8f0;
+
+      --cyan: #0284c7;
+      --cyan-soft: #f0f9ff;
+      --cyan-border: #bae6fd;
+      
+      --teal: #0d9488;
+      --teal-soft: #f0fdf4;
+      --teal-border: #a7f3d0;
+      
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      --rose: #e11d48;
+      --rose-soft: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --amber-border: #fde68a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--canvas);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(225, 29, 72, 0.05) 0px, transparent 50%);
+      color: var(--slate-text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13.5px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Control Bar */
+    .toolbar {
+      width: min(900px, calc(100% - 32px));
+      margin: 16px auto 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate-dark);
+    }
+
+    .badge-status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: var(--slate-dark);
+      background: #ffffff;
+    }
+
+    .btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12);
+    }
+
+    .btn-primary {
+      background: var(--navy-deep);
+      color: #ffffff;
+      border-color: var(--navy-deep);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-surface);
+      color: #ffffff;
+    }
+
+    /* Page Container (Letter Portrait Proportion) */
+    .sheet {
+      width: min(8.5in, calc(100% - 24px));
+      min-height: 11in;
+      margin: 0 auto 30px;
+      padding: 0.38in 0.42in 0.32in;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    /* Top Multicolor Accent Bar */
+    .sheet::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      background: linear-gradient(to right, 
+        var(--navy-deep) 0%, var(--navy-deep) 40%, 
+        var(--cyan) 40%, var(--cyan) 65%, 
+        var(--teal) 65%, var(--teal) 85%, 
+        var(--rose) 85%, var(--rose) 100%
+      );
+    }
+
+    /* Header Block */
+    .header-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 16px;
+      align-items: start;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 3px 8px;
+      background: var(--navy-surface);
+      color: #38bdf8;
+      font-size: 9.5px;
+      font-weight: 800;
+      border-radius: 4px;
+      letter-spacing: 0.4px;
+      margin-bottom: 6px;
+    }
+
+    .eyebrow span {
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 3px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy-deep);
+      line-height: 1.15;
+      letter-spacing: -0.2px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 11.5px;
+      color: var(--slate-muted);
+      font-weight: 500;
+    }
+
+    .author-card {
+      padding: 8px 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--cyan);
+      border-radius: 5px;
+      font-size: 10.5px;
+      line-height: 1.35;
+    }
+
+    .author-card b {
+      display: block;
+      font-size: 13px;
+      color: var(--navy-deep);
+    }
+
+    .author-card a {
+      color: var(--cyan);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* Research Goal Banner */
+    .goal-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      background: var(--navy-surface);
+      border: 1px solid var(--cyan);
+      border-radius: 6px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .goal-tag {
+      padding: 4px 8px;
+      background: var(--cyan);
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 800;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .goal-text {
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    /* 4-Card Metrics Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .metric-card {
+      padding: 8px 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-left: 3.5px solid var(--cyan);
+      border-radius: 6px;
+    }
+
+    .metric-card.teal { border-left-color: var(--teal); background: var(--teal-soft); border-color: var(--teal-border); }
+    .metric-card.purple { border-left-color: var(--purple); background: var(--purple-soft); border-color: var(--purple-border); }
+    .metric-card.rose { border-left-color: var(--rose); background: var(--rose-soft); border-color: var(--rose-border); }
+    .metric-card.cyan { border-left-color: var(--cyan); background: var(--cyan-soft); border-color: var(--cyan-border); }
+
+    .metric-val {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy-deep);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .metric-title {
+      font-size: 8.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+    }
+
+    .metric-card.cyan .metric-title { color: var(--cyan); }
+    .metric-card.teal .metric-title { color: var(--teal); }
+    .metric-card.purple .metric-title { color: var(--purple); }
+    .metric-card.rose .metric-title { color: var(--rose); }
+
+    .metric-note {
+      font-size: 8.5px;
+      color: var(--slate-text);
+      line-height: 1.25;
+    }
+
+    /* Two-Column Grid */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .box {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #ffffff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box-header {
+      padding: 6px 10px;
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .box-header.cyan { background: var(--cyan); }
+    .box-header.teal { background: var(--teal); }
+    .box-header.purple { background: var(--purple); }
+    .box-header.rose { background: var(--rose); }
+
+    .box-body {
+      padding: 10px;
+      font-size: 10px;
+      line-height: 1.4;
+      color: var(--slate-text);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .item b {
+      color: var(--navy-deep);
+    }
+
+    .item b.cyan { color: var(--cyan); }
+    .item b.teal { color: var(--teal); }
+    .item b.purple { color: var(--purple); }
+    .item b.rose { color: var(--rose); }
+
+    /* Request Callout Sub-Box */
+    .request-box {
+      padding: 8px 10px;
+      background: var(--rose-soft);
+      border: 1px solid var(--rose-border);
+      border-radius: 5px;
+      margin: 2px 0;
+    }
+
+    .request-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+
+    .request-list {
+      margin: 0;
+      padding-left: 14px;
+      font-size: 9px;
+      line-height: 1.35;
+      color: var(--slate-text);
+    }
+
+    .request-note {
+      font-size: 8.5px;
+      font-style: italic;
+      color: var(--slate-muted);
+      margin-top: 3px;
+    }
+
+    /* Footer & Validity Boundary */
+    .footer-boundary {
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      font-size: 8.8px;
+      line-height: 1.35;
+      color: var(--slate-muted);
+    }
+
+    .footer-boundary strong {
+      color: var(--navy-deep);
+      font-weight: 700;
+    }
+
+    .footer-repro {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      color: var(--slate-text);
+    }
+
+    .footer-repro a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    /* Print Styles */
+    @page {
+      size: letter portrait;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .toolbar { display: none; }
+
+      .sheet {
+        width: 8.5in;
+        height: 11in;
+        min-height: 11in;
+        margin: 0;
+        padding: 0.38in 0.42in 0.32in;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-grid { grid-template-columns: 1fr; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+      .grid-2col { grid-template-columns: 1fr; }
+      .sheet { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="badge-status">Ac-225 Executive Brief & Results | August 2026</div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <a class="btn" href="output/pdf/Samuel_Ogunnubi_Ac225_Berkeley_OnePager_20260827.pdf" target="_blank">📄 Open Vector PDF</a>
+      <a class="btn" href="Ac225_Expert_Email_Templates_2026.html">✉️ Email Templates</a>
+    </div>
+  </div>
+
+  <main class="sheet">
+    <!-- Header -->
+    <header class="header-grid">
+      <div>
+        <div class="eyebrow">EXECUTIVE SCIENTIFIC RESEARCH BRIEF <span>| AUGUST 2026</span></div>
+        <h1>Physics-Informed Surrogates for Ac-225 Production</h1>
+        <p class="subtitle">Accelerating Stiff Nuclear Depletion Kinetics & Multi-Objective Harvest Screening via PI-LSTM</p>
+      </div>
+      <aside class="author-card">
+        <b>Samuel Ogunnubi</b>
+        12th-Grade Student Researcher<br>
+        Glen Burnie High School BioMed Program<br>
+        <a href="mailto:sam.ogunnubi0@gmail.com">sam.ogunnubi0@gmail.com</a>
+      </aside>
+    </header>
+
+    <!-- Research Goal Banner -->
+    <section class="goal-banner">
+      <div class="goal-tag">RESEARCH GOAL</div>
+      <div class="goal-text">
+        Can a physics-constrained neural surrogate accurately evaluate stiff multi-isotope depletion kinetics 80x+ faster than numerical solvers to pinpoint optimal Ac-225 harvest windows while rejecting out-of-domain inputs?
+      </div>
+    </section>
+
+    <!-- Key Metrics Strip -->
+    <section class="metrics-strip">
+      <div class="metric-card cyan">
+        <div class="metric-val">0.97%</div>
+        <div class="metric-title">Median ODE Error</div>
+        <div class="metric-note">Stiff 5-species decay chain (p95: 3.93%)</div>
+      </div>
+      <div class="metric-card teal">
+        <div class="metric-val">84.9x</div>
+        <div class="metric-title">Screening Speedup</div>
+        <div class="metric-note">Faster than implicit Radau5 numerical ODE</div>
+      </div>
+      <div class="metric-card purple">
+        <div class="metric-val">Rank 2</div>
+        <div class="metric-title">10k-Schedule Audit</div>
+        <div class="metric-note">Selected plan within 0.047% of Radau best</div>
+      </div>
+      <div class="metric-card rose">
+        <div class="metric-val">100% / 95.8%</div>
+        <div class="metric-title">OOD Safety & UQ</div>
+        <div class="metric-note">184/184 warned; 95.8% conformal coverage</div>
+      </div>
+    </section>
+
+    <!-- Main Two-Column Grid -->
+    <div class="grid-2col">
+      
+      <!-- Top Left Box -->
+      <section class="box">
+        <div class="box-header cyan">1 | CLINICAL GOAL & NUCLEAR DEPLETION CHALLENGE</div>
+        <div class="box-body">
+          <div class="item">
+            <b class="cyan">The $0.9B+ TAT Crisis:</b> Actinium-225 (<sup>225</sup>Ac) is a breakthrough alpha-emitter for targeted cancer therapies (e.g., PSMA-617 prostate trials). Global supply meets &lt;3% of clinical demand (~2 Ci/yr produced vs 50+ Ci/yr projected), severely bottlenecking patient access.
+          </div>
+          <div class="item">
+            <b>The Fast-Neutron Route:</b> Irradiating <sup>226</sup>Ra with fast neutrons (33/40 MeV d+Be) via <sup>226</sup>Ra(n,2n)<sup>225</sup>Ra &rarr; <sup>225</sup>Ac (t<sub>1/2</sub>=9.92d) offers a scalable accelerator alternative without requiring scarce Th-229 parent generators.
+          </div>
+          <div class="item">
+            <b class="rose">The Mathematical Wall (Stiffness):</b> Competing thermal (n,&gamma;) captures produce toxic <sup>227</sup>Ac via <sup>227</sup>Ra (t<sub>1/2</sub>=42.2 min). Coupling 1,600-year <sup>226</sup>Ra decay with 42.2-minute <sup>227</sup>Ra creates a stiffness ratio exceeding <b>20,000,000 : 1</b>.
+          </div>
+          <div class="item">
+            <b>Why Traditional Solvers Fail:</b> Implicit Runge-Kutta (Radau5) solvers must take microscopic time-steps to resolve fast transients. Evaluating 10,000+ candidate multi-flux schedules for harvest optimization requires hours of compute, prohibiting digital twins.
+          </div>
+        </div>
+      </section>
+
+      <!-- Top Right Box -->
+      <section class="box">
+        <div class="box-header purple">3 | VERIFIED RESULTS & MULTI-OBJECTIVE SCREENING</div>
+        <div class="box-body">
+          <div class="item">
+            <b class="purple">High-Fidelity Accuracy:</b> V3 PI-LSTM achieved <b>0.97% median relative error</b> across matched multi-isotope test scenarios (vs 2.91% for parameter-matched MLP). V4 finite-geometry proxy benchmark scored 1.83% median error across 5 independent seeds.
+          </div>
+          <div class="item">
+            <b class="teal">84.9x Computational Speedup:</b> Inference takes ~2-4 ms per full multi-week irradiation and decay trajectory (compared to ~200-400 ms for adaptive Radau5). Allows instantaneous screening of vast combinatorial parameter spaces.
+          </div>
+          <div class="item">
+            <b>Combinatorial Schedule Optimization:</b> Screened 10,000 candidate beam-flux, duration, and cooling schedules. The surrogate's top-ranked schedule landed within <b>0.047% of Radau's best score (Rank 2 of 10,000)</b>, pinpointing the exact optimal harvest window.
+          </div>
+          <div class="item">
+            <b class="rose">100% OOD Safety Rejection:</b> When probed with unmodeled neutron flux magnitudes or energies, the conformal safety gate successfully warned on 184 of 184 out-of-domain cases, preventing silent surrogate failure.
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Left Box -->
+      <section class="box">
+        <div class="box-header teal">2 | PHYSICS-INFORMED SURROGATE ARCHITECTURE</div>
+        <div class="box-body">
+          <div class="item">
+            <b class="teal">1. Integrated Trapezoidal Loss:</b> Standard PINNs penalize derivative residuals (dN/dt), amplifying stiff numerical noise. I formulated an integrated mass-balance loss: N(t) = N(0) + &int;A&middot;N dt. This mathematical smoothing eliminated stiffness overshoots entirely.
+          </div>
+          <div class="item">
+            <b>2. Hard Initial Condition Ansatz:</b> Constructed the neural output layer to enforce N(t=0) = N<sub>0</sub> strictly by definition. Prevents unphysical mass creation, negative isotope densities, or spontaneous atom hallucination at early timesteps.
+          </div>
+          <div class="item">
+            <b>3. Multiscale Fourier Encodings:</b> Embedded time and incident neutron energy into sinusoidal basis functions [sin(2<sup>k</sup>&pi;x), cos(2<sup>k</sup>&pi;x)]. Overcomes neural spectral bias to capture the sharp 6.42 MeV (n,2n) reaction threshold and rapid decay transients.
+          </div>
+          <div class="item">
+            <b class="purple">4. Guaranteed Uncertainty & OOD Gate:</b> Replaced unphysical MC Dropout with Conformal Prediction for mathematically calibrated 95% error bands. Added Mahalanobis distance gating to detect and safely reject out-of-distribution inputs.
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Right Box -->
+      <section class="box">
+        <div class="box-header rose">4 | BERKELEY EXPERIMENTAL TEST & DATA REQUEST</div>
+        <div class="box-body">
+          <div class="item">
+            <b class="rose">Zero-Shot Benchmark Test:</b> Evaluated the frozen surrogate (seed 42) against published UC Berkeley / LBNL 33 & 40 MeV deuteron-on-beryllium <sup>226</sup>Ra experimental data without post-hoc fine-tuning to preserve scientific integrity.
+          </div>
+          <div class="item">
+            <b>Discrepancy Diagnosis (~600x):</b> Initial raw comparison overpredicted activity by ~600x. Forensic analysis revealed this stems from target-integrated neutron fluence normalization, beamspot geometry, and recovered vs produced activity definitions.
+          </div>
+          <div class="request-box">
+            <div class="request-title">COLLABORATION REQUEST | 3 HIGH-VALUE PARAMETERS:</div>
+            <ol class="request-list">
+              <li><b>Target-Integrated Fluence:</b> Normalization & energy spectrum at Ra target.</li>
+              <li><b>Geometry & Current:</b> Target thickness, beamspot size, beam-current history.</li>
+              <li><b>Separation & Detection:</b> Chemical recovery % and numerical <sup>227</sup>Ac limit.</li>
+            </ol>
+            <div class="request-note">* Goal: Bridge synthetic ODE kinetics with physical target yields without tuning.</div>
+          </div>
+          <div class="item">
+            <b class="teal">IAEA Isotopia Benchmark:</b> Per Dr. Jonathan Engle (UW-Madison Cyclotron Lab), expanding validation against the IAEA Isotopia tool to establish international reference standards for neural isotope optimization.
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-boundary">
+      <div>
+        <strong>VALIDITY BOUNDARY:</strong> Surrogate modeling scope is strictly bounded to nuclear reaction probabilities (&sigma; &middot; &phi;) and Bateman decay kinetics (dN/dt = A&middot;N). Target thermodynamics, beam heating, and wet radiochemistry are explicitly decoupled (per Dr. Jonathan Engle domain guidance).
+      </div>
+      <div class="footer-repro">
+        <span>OPEN SCIENCE & INTEGRITY: Frozen checkpoints (seed 42), source SHA-256 hashes, test tables, and code available.</span>
+        <span>Contact: <a href="mailto:sam.ogunnubi0@gmail.com">sam.ogunnubi0@gmail.com</a></span>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

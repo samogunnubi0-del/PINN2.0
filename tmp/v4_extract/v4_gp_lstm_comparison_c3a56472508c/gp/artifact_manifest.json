@@ -1,0 +1,14 @@
+{
+  "claim_eligible": false,
+  "files": {
+    "ac225_schedule_predictions.csv": "1ec523d56e1501c6d7f8cb644ae8975a30459c59d292338d0fa9a91af0de7cb2",
+    "domain_challenges.csv": "c30b66991190782dfc1055dc3a8a6da79ddd4f213274aea320518c32e7b6fdd9",
+    "domain_uncertainty.png": "3062c9ee98dd04d66f2dabbfb5ec4f0df46ca25a14b0e73557ee75a091a335de",
+    "gaussian_process.joblib": "4c7d15061797f50c41b31fa5c0be0c65ef17cf03be62fe464e296c6929771127",
+    "model_report.png": "9f04fa2aa21250987d2b937889b0ea655e5c96ee34d617dd270de27be4970dfc",
+    "model_result.json": "f70d9f2e82e3e71b822ba643a4d4eb7c2fa55e900659f3ee0ba8dd196b6c7bd3",
+    "test_predictions.csv": "0993bc5562dc14daa3633c1a7b36813a04d1819ed7477b558e66597608130733"
+  },
+  "model_kind": "gp",
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826"
+}

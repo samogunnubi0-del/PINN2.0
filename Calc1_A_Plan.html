@@ -1,0 +1,3600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>The A Plan | Calculus &amp; Analytic Geometry 1</title>
+<meta name="description" content="A semester hub for Calculus and Analytic Geometry 1. Stay a week ahead of class with Math Sorcerer, Khan Academy, formula memory, and exam practice."/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="The A Plan">
+<meta name="theme-color" content="#9E2F3F">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%239E2F3F%22/><text y=%2268%22 x=%2230%22 font-family=%22Georgia, serif%22 font-weight=%22bold%22 font-size=%2255%22 fill=%22%23FFF8F0%22>A</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Nunito:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #F8EEE7;
+  --panel: #FFF9F2;
+  --border: #E8CEC3;
+  --t1: #3E292A;
+  --t2: #785958;
+  --t3: #A5817E;
+  --accent: #9E2F3F;
+  --amber: #C46E67;
+  --gold: #F0D8CE;
+  --cream: #F8E8DE;
+  --olive: #9E2F3F;
+  --rose: #B84A57;
+  --sky: #D79A92;
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'Nunito', sans-serif;
+  --shadow-soft: 0 8px 30px -4px rgba(112, 48, 49, 0.12);
+  --shadow-float: 0 16px 40px -10px rgba(158, 47, 63, 0.2);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--t1);
+  min-height: 100vh;
+  padding: 20px 16px 80px;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  position: relative;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Global Paper Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* HEADER - Wabi-Sabi Asymmetric Radii */
+header {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 3rem 2rem 4rem 2.5rem;
+  padding: 38px 30px 26px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.for-yashi-tag {
+  position: absolute;
+  top: 12px;
+  right: 22px;
+  color: var(--accent);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.header-title p {
+  color: var(--t2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.live-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: rgba(158, 47, 63, 0.08);
+  border: 1px solid rgba(158, 47, 63, 0.2);
+  padding: 8px 16px;
+  border-radius: 99px;
+}
+
+.profile-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ppill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+}
+
+.ppill.blue {
+  background: rgba(140, 160, 186, 0.12);
+  border-color: rgba(140, 160, 186, 0.3);
+  color: #7D3D44;
+}
+
+.ppill.olive {
+  background: rgba(158, 47, 63, 0.08);
+  border-color: rgba(158, 47, 63, 0.2);
+  color: var(--accent);
+}
+
+/* COUNTDOWN - Soft ambient bar */
+.countdown-bar {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.cd-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cd-icon {
+  font-size: 2rem;
+}
+
+.cd-label {
+  font-size: 0.78rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.cd-val {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+
+.cd-track {
+  flex: 1;
+  min-width: 220px;
+}
+
+.cd-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--t2);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.cd-bar {
+  height: 10px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.cd-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.8s ease;
+}
+
+/* TABS - Pill styled navbar */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--t2);
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 99px;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans);
+}
+
+.tab-btn:hover {
+  color: var(--t1);
+  background: var(--cream);
+}
+
+.tab-btn.active {
+  color: var(--primary-foreground, #F3F4F1);
+  background: var(--accent);
+  box-shadow: 0 4px 12px rgba(158, 47, 63, 0.2);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* CARDS - Organic Rounded */
+.card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px -8px rgba(158, 47, 63, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--cream);
+  padding-bottom: 14px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+}
+
+/* INPUTS - Pill shapes */
+input, select, textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 99px;
+  padding: 12px 20px;
+  color: var(--t1);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(158, 47, 63, 0.15);
+}
+
+select option {
+  background: #ffffff;
+  color: var(--t1);
+}
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.search-row input {
+  flex: 2;
+  min-width: 180px;
+}
+
+.search-row select {
+  flex: 1;
+  min-width: 140px;
+}
+
+/* CAT PILLS - Rounded Pill shapes */
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.cpill {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cpill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.cpill:hover:not(.active) {
+  color: var(--t1);
+  border-color: var(--t2);
+  background: #ffffff;
+}
+
+/* TABLES - Organic paper structure */
+.table-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 18px;
+}
+
+.sch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.sch-table th, .sch-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--cream);
+}
+
+.sch-table th {
+  background: rgba(158, 47, 63, 0.04);
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.sch-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sch-table tbody tr:hover {
+  background: rgba(158, 47, 63, 0.02);
+}
+
+.sch-link {
+  color: var(--amber);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.sch-link:hover {
+  color: var(--t1);
+  text-decoration: underline;
+}
+
+/* BADGES - Soft colored tones */
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.mh {
+  background: rgba(158, 47, 63, 0.1);
+  border: 1px solid rgba(158, 47, 63, 0.3);
+  color: var(--accent);
+}
+
+.mm {
+  background: rgba(196, 110, 103, 0.1);
+  border: 1px solid rgba(196, 110, 103, 0.3);
+  color: var(--amber);
+}
+
+.ml {
+  background: rgba(168, 84, 72, 0.08);
+  border: 1px solid rgba(168, 84, 72, 0.25);
+  color: var(--rose);
+}
+
+.gpa-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.gn {
+  background: rgba(158, 47, 63, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(158, 47, 63, 0.2);
+}
+
+.gl {
+  background: rgba(140, 160, 186, 0.08);
+  color: #7D3D44;
+  border: 1px solid rgba(140, 160, 186, 0.2);
+}
+
+.gm {
+  background: rgba(196, 110, 103, 0.08);
+  color: var(--amber);
+  border: 1px solid rgba(196, 110, 103, 0.2);
+}
+
+.cat-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-left: 6px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t2);
+}
+
+/* BUTTONS - tactile pill design */
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(158, 47, 63, 0.2);
+  width: 100%;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(158, 47, 63, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-sec {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 10px 20px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+}
+
+.btn-sec:hover {
+  background: var(--cream);
+  border-color: var(--t2);
+}
+
+.btn-track {
+  background: rgba(158, 47, 63, 0.08);
+  border: 2px solid rgba(158, 47, 63, 0.2);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-track:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.btn-del {
+  background: transparent;
+  border: none;
+  color: var(--rose);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px 8px;
+  border-radius: 99px;
+  transition: background 0.2s;
+}
+
+.btn-del:hover {
+  background: rgba(168, 84, 72, 0.08);
+}
+
+.page-btn {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 8px 18px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--cream);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+#page-indicator {
+  font-size: 0.85rem;
+  color: var(--t2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tracker-item {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ti-info h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: var(--accent);
+}
+
+.ti-info p {
+  font-size: 0.78rem;
+  color: var(--t2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ti-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-sel {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+  width: auto;
+  cursor: pointer;
+}
+
+.status-sel.submitted {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(158, 47, 63, 0.05);
+}
+
+.status-sel.inprogress {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: rgba(196, 110, 103, 0.05);
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 16px;
+  color: var(--t2);
+  font-size: 0.9rem;
+}
+
+.empty-state span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.stat-lbl {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--t2);
+  letter-spacing: 0.5px;
+}
+
+/* STREAK - Asymmetric visual clay blob color tint */
+.streak-hero {
+  background: linear-gradient(135deg, rgba(158, 47, 63, 0.08), rgba(196, 110, 103, 0.08));
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.streak-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.streak-flame {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.streak-count {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 0.85rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-top: 4px;
+}
+
+.streak-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ss-item {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 12px 18px;
+  text-align: center;
+}
+
+.ss-val {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.ss-lbl {
+  font-size: 0.7rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.checkin-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 15px 30px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 16px rgba(158, 47, 63, 0.25);
+  white-space: nowrap;
+}
+
+.checkin-btn:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(158, 47, 63, 0.35);
+}
+
+.checkin-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.checkin-btn.done {
+  background: rgba(158, 47, 63, 0.15);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
+
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.sub-tab {
+  background: transparent;
+  border: 2px solid var(--border);
+  color: var(--t2);
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 99px;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.sub-tab.active {
+  background: var(--cream);
+  border-color: var(--t2);
+  color: var(--t1);
+}
+
+.sub-tab:hover:not(.active) {
+  color: var(--t1);
+  background: #ffffff;
+}
+
+.sub-content {
+  display: none;
+}
+
+.sub-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.score-banner {
+  background: rgba(196, 110, 103, 0.06);
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.score-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-icon {
+  font-size: 1.6rem;
+}
+
+.score-label {
+  font-size: 0.78rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+}
+
+.score-val {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+
+.score-bar-wrap {
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+}
+
+.score-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--t2);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.score-bar-track {
+  height: 9px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.8s ease;
+}
+
+.score-edit {
+  background: rgba(196, 110, 103, 0.1);
+  border: 2px solid rgba(196, 110, 103, 0.25);
+  color: var(--amber);
+  border-radius: 99px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.score-edit:hover {
+  background: var(--amber);
+  color: #ffffff;
+  border-color: var(--amber);
+}
+
+.tip-list {
+  list-style: none;
+}
+
+.tip-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.92rem;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--cream);
+  line-height: 1.6;
+  color: var(--t1);
+}
+
+.tip-list li:last-child {
+  border-bottom: none;
+}
+
+.ti-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* MODALS - Tactile glassmorphism details */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 44, 36, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 32px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+
+.modal-lbl {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--t2);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  color: var(--t2);
+  border-radius: 99px;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  flex: 1;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: var(--cream);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-float);
+  z-index: 9999;
+  transform: translateY(24px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── VIDEO SECTION ── */
+.video-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.vid-card {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+  min-height: 44px;
+}
+
+.vid-card:focus-visible,
+.letter-close:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(158, 47, 63, 0.38);
+  outline-offset: 3px;
+}
+
+.vid-card:hover {
+  border-color: var(--accent);
+  background: rgba(158, 47, 63, 0.03);
+  transform: translateY(-2px);
+}
+
+.vid-card.active-vid {
+  border-color: var(--accent);
+  background: rgba(158, 47, 63, 0.08);
+  box-shadow: 0 4px 16px rgba(158, 47, 63, 0.12);
+}
+
+.vid-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--amber);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.vid-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.vid-creator {
+  font-size: 0.78rem;
+  color: var(--t2);
+}
+
+.vid-checkpoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.cp-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border: 1.5px solid var(--border);
+  color: var(--t2);
+  background: var(--cream);
+  transition: all 0.2s;
+}
+
+.cp-dot.done {
+  background: rgba(158, 47, 63, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cp-dot.current {
+  background: rgba(196, 110, 103, 0.15);
+  border-color: var(--amber);
+  color: var(--amber);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 110, 103, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(196, 110, 103, 0); }
+}
+
+.video-player-wrap {
+  background: #2E3340;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+  isolation: isolate;
+  z-index: 2;
+  box-shadow: var(--shadow-soft);
+}
+
+.video-player-wrap iframe,
+.video-player-wrap .yt-frame,
+.video-player-wrap .video-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #c9cdd6;
+  font-size: 0.95rem;
+  background: #3a4050;
+  padding: 16px;
+  text-align: center;
+}
+
+.yt-fallback {
+  display: none;
+  margin: 0 0 16px;
+}
+.yt-fallback a {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.88rem;
+  text-decoration: none;
+  padding: 8px 0;
+}
+.yt-fallback a:hover { text-decoration: underline; }
+
+.video-placeholder .big-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.video-local-help {
+  gap: 12px;
+}
+
+.video-local-help strong {
+  color: #FFF8F0;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+}
+
+.open-local-btn {
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 900;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.checkpoint-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cp-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cp-legend-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--t2);
+}
+
+.cp-bar-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cp-bar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--cream);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(222, 216, 207, 0.4);
+}
+
+.cp-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.cp-markers {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+}
+
+.cp-marker {
+  position: absolute;
+  top: -3px;
+  width: 3px;
+  height: 14px;
+  background: var(--amber);
+  border-radius: 99px;
+}
+
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.topic-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 99px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+}
+
+.manual-quiz-btn {
+  background: rgba(158, 47, 63, 0.08);
+  border: 2px solid rgba(158, 47, 63, 0.25);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.manual-quiz-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+/* Question coach */
+.model-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  color: var(--t2);
+  box-shadow: var(--shadow-soft);
+}
+
+.model-status strong {
+  display: block;
+  color: var(--t1);
+  margin-bottom: 2px;
+}
+
+.status-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 5px rgba(196,110,103,.13);
+  flex: 0 0 auto;
+}
+
+.model-status.ready .status-dot {
+  background: #8B4B42;
+  box-shadow: 0 0 0 5px rgba(139,75,66,.13);
+}
+
+.model-status.missing .status-dot {
+  background: #B07A72;
+}
+
+.model-error {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--cream);
+  color: var(--t1);
+  line-height: 1.6;
+}
+
+/* Practice section */
+.ai-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ai-card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2rem;
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.ai-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+}
+
+.ai-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ai-gen-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(158, 47, 63, 0.2);
+}
+
+.ai-gen-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(158, 47, 63, 0.3);
+}
+
+.ai-gen-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ai-result-area {
+  min-height: 80px;
+}
+
+.ai-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 14px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(158, 47, 63, 0.1);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.ai-loading-text {
+  font-size: 0.9rem;
+  color: var(--t2);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.ai-passage {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 16px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--t1);
+  border-left: 5px solid var(--amber);
+}
+
+.ai-passage-label {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+/* ── QUIZ ── */
+.quiz-q-card {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.quiz-q-num {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.quiz-q-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.quiz-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 12px 20px;
+  color: var(--t1);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.quiz-opt:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: var(--accent);
+  transform: scale(1.01);
+}
+
+.quiz-opt.correct {
+  background: rgba(158, 47, 63, 0.15) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  font-weight: 800;
+}
+
+.quiz-opt.wrong {
+  background: rgba(168, 84, 72, 0.08) !important;
+  border-color: var(--rose) !important;
+  color: var(--rose) !important;
+}
+
+.quiz-exp {
+  display: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 4px solid var(--amber);
+  margin-top: 10px;
+  color: var(--t2);
+}
+
+.quiz-exp.show {
+  display: block;
+}
+
+.quiz-summary {
+  background: linear-gradient(135deg, rgba(158, 47, 63, 0.08), rgba(196, 110, 103, 0.06));
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 20px;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.quiz-summary .big-score {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.quiz-summary .summary-label {
+  font-size: 0.88rem;
+  color: var(--t2);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ── CHECKPOINT MODAL ── */
+.cp-modal-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.5rem;
+  padding: 32px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  animation: slideUp 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.cp-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.cp-modal-icon {
+  font-size: 2.8rem;
+}
+
+.cp-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.cp-modal-sub {
+  font-size: 0.88rem;
+  color: var(--t2);
+  margin-bottom: 20px;
+}
+
+.cp-score-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.resume-btn {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 99px;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.resume-btn:hover {
+  transform: scale(1.02);
+}
+
+.cp-attention-note {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.5px dashed var(--border);
+  background: var(--cream);
+  color: var(--t2);
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.cp-attention-note.pass {
+  border-style: solid;
+  border-color: var(--green, #2f9e6b);
+  color: var(--t1);
+}
+
+.cp-attention-note.fail {
+  border-style: solid;
+  border-color: var(--rose);
+  color: var(--t1);
+}
+
+/* ── MOBILE NAVBAR ── */
+.bottom-nav {
+  display: none;
+}
+
+@media(max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+  .ai-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 600px) {
+  body {
+    padding: 12px 12px 100px;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  header {
+    padding: 38px 16px 18px;
+    border-radius: 1.6rem;
+  }
+  .header-title h1 {
+    font-size: 1.55rem;
+    line-height: 1.15;
+  }
+  .header-top {
+    align-items: flex-start;
+  }
+  .header-top > div:last-child {
+    align-items: stretch !important;
+    width: 100%;
+  }
+  .live-date {
+    text-align: center;
+  }
+  .countdown-bar {
+    padding: 14px 16px;
+    border-radius: 1.4rem;
+  }
+  .cd-val { font-size: 1.45rem; }
+  .stat-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+  .tabs {
+    display: none !important;
+  }
+  .card {
+    padding: 18px 16px;
+    border-radius: 1.4rem;
+  }
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: 12px;
+    right: 12px;
+    background: rgba(250, 248, 245, 0.94);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--border);
+    border-radius: 99px;
+    z-index: 900;
+    justify-content: space-around;
+    padding: 8px 8px;
+    box-shadow: var(--shadow-float);
+  }
+  .bn-btn {
+    background: transparent;
+    border: none;
+    color: var(--t2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    gap: 4px;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.2s ease;
+    font-family: var(--font-sans);
+    padding: 8px 0;
+    min-height: 44px;
+  }
+  .bn-btn.active {
+    color: var(--accent);
+  }
+  .bn-btn .icon {
+    font-size: 1.25rem;
+  }
+  .ai-section {
+    grid-template-columns: 1fr;
+  }
+  .video-selector {
+    grid-template-columns: 1fr;
+  }
+  .video-player-wrap {
+    border-radius: 1rem;
+  }
+  .streak-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.6rem;
+  }
+  .streak-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .sch-table, .sch-table thead, .sch-table tbody, .sch-table tr, .sch-table td, .sch-table th {
+    display: block;
+    width: 100%;
+  }
+  .sch-table thead {
+    display: none;
+  }
+  .sch-table tr {
+    background: #ffffff;
+    border: 2px solid var(--border);
+    border-radius: 1.5rem;
+    margin-bottom: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow-soft);
+  }
+  .sch-table td {
+    border: none;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+  }
+  .sch-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--t2);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .sch-table td:first-child {
+    display: block;
+    text-align: left;
+    border-bottom: 2px solid var(--cream);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+  }
+  .sch-table td:first-child::before {
+    display: none;
+  }
+  .table-wrap {
+    border: none;
+    background: transparent;
+  }
+  .search-row {
+    flex-direction: column;
+  }
+  .checkin-btn {
+    width: 100%;
+  }
+  .score-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.6rem;
+  }
+  .score-bar-wrap {
+    max-width: 100%;
+  }
+  .checkpoint-info {
+    flex-direction: column;
+  }
+  .manual-quiz-btn {
+    width: 100%;
+  }
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: calc(92px + env(safe-area-inset-bottom));
+    text-align: center;
+  }
+  .letter-card {
+    padding: 22px 18px 18px;
+    max-height: min(68vh, 430px);
+  }
+  .letter-stage {
+    width: min(420px, 92vw);
+    min-height: 300px;
+  }
+  .envelope {
+    margin-top: 52px;
+  }
+}
+
+/* Envelope welcome */
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  background: rgba(62, 41, 42, 0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  cursor: pointer;
+  animation: letterFadeIn 0.3s ease;
+}
+.letter-overlay[hidden] { display: none !important; }
+.letter-overlay.hiding { animation: letterFadeOut 0.25s ease forwards; }
+@keyframes letterFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes letterFadeOut { to { opacity: 0; } }
+
+.letter-stage {
+  width: min(450px, 94vw);
+  height: min(560px, 82vh);
+  position: relative;
+  cursor: default;
+}
+
+.envelope {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  width: 100%;
+  height: 245px;
+  filter: drop-shadow(0 24px 24px rgba(62, 41, 42, 0.2));
+  animation: envelopeArrive .55s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes envelopeArrive {
+  from { opacity: 0; transform: translateY(34px) rotate(1deg) scale(.95); }
+  to { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+}
+
+.env-back {
+  position: absolute;
+  inset: 58px 0 0;
+  border-radius: 18px;
+  background: #E8CFC4;
+  border: 2px solid #D9AEA6;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 18px 45px rgba(62, 41, 42, 0.18);
+  z-index: 1;
+}
+
+.env-liner {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 60px;
+  height: 142px;
+  z-index: 2;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  background:
+    repeating-linear-gradient(135deg, rgba(158,47,63,.16) 0 8px, transparent 8px 18px),
+    #F7E6DD;
+  border-radius: 14px 14px 0 0;
+}
+
+.env-pocket {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 165px;
+  background:
+    linear-gradient(150deg, rgba(255,255,255,.42), transparent 45%),
+    linear-gradient(150deg, #F3DDD2, #DFAFA8);
+  border: 2px solid #D49D98;
+  border-radius: 0 0 18px 18px;
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  z-index: 4;
+}
+
+.env-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58px;
+  height: 150px;
+  background:
+    repeating-linear-gradient(135deg, rgba(158,47,63,.10) 0 7px, transparent 7px 17px),
+    #F0D8CE;
+  border: 2px solid #D9AEA6;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  z-index: 5;
+  backface-visibility: visible;
+  animation: flapOpen 0.82s 0.9s cubic-bezier(.45,.05,.2,1) forwards;
+}
+
+.env-face-details {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 24px;
+  height: 86px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.env-address {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%) rotate(-1deg);
+  min-width: 175px;
+  padding: 10px 20px;
+  text-align: center;
+  color: #744A49;
+  background: rgba(255,249,242,.82);
+  border: 1px solid rgba(158,47,63,.22);
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: .88rem;
+  letter-spacing: .06em;
+  box-shadow: 0 3px 10px rgba(62,41,42,.08);
+}
+
+.env-postmark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58px;
+  height: 44px;
+  border: 2px solid rgba(158,47,63,.5);
+  color: rgba(158,47,63,.72);
+  display: grid;
+  place-items: center;
+  font: 800 .62rem 'JetBrains Mono', monospace;
+  letter-spacing: .08em;
+  transform: rotate(6deg);
+}
+
+.env-postmark::after {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 8px;
+  width: 36px;
+  height: 22px;
+  background: repeating-linear-gradient(to bottom, rgba(158,47,63,.45) 0 1px, transparent 1px 5px);
+}
+
+.env-seal {
+  position: absolute;
+  left: 50%;
+  top: 122px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #FFF9F2;
+  border: 4px double #F3C6BE;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  z-index: 8;
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.14), 0 5px 12px rgba(62,41,42,.24);
+  animation: sealAway 0.25s 0.76s ease forwards;
+}
+
+@keyframes flapOpen {
+  0% { transform: rotateX(0deg); z-index: 5; }
+  99% { transform: rotateX(180deg); z-index: 5; }
+  100% { transform: rotateX(180deg); z-index: 1; }
+}
+
+@keyframes sealAway {
+  to { opacity: 0; transform: translateX(-50%) scale(.7) rotate(-8deg); }
+}
+
+.letter-card {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 28px;
+  background-color: #FFF9F2;
+  background-image:
+    linear-gradient(90deg, transparent 0 30px, rgba(158,47,63,.08) 30px 31px, transparent 31px),
+    repeating-linear-gradient(to bottom, transparent 0 31px, rgba(158,47,63,.055) 31px 32px);
+  border: 2px solid #D9AEA6;
+  border-radius: 20px 16px 22px 17px;
+  padding: 28px 26px 22px;
+  box-shadow: 0 18px 45px rgba(62, 41, 42, 0.22);
+  max-height: min(62vh, 390px);
+  overflow: auto;
+  z-index: 2;
+  transform: translateY(52px) scale(.96);
+  opacity: 0;
+  animation: cardRise 1s 1.62s cubic-bezier(.16,.8,.2,1) forwards;
+}
+.letter-card::before {
+  content: "A note";
+  display: inline-block;
+  color: var(--accent);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(52px) scale(.96); }
+  to { opacity: 1; transform: translateY(-185px) scale(1); }
+}
+
+.letter-card p {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: 1.06rem;
+  line-height: 1.72;
+  color: var(--t1);
+  margin-bottom: 16px;
+}
+.letter-sign {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px !important;
+}
+.letter-close {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.letter-hint {
+  text-align: center;
+  margin-top: 12px;
+  color: #FFF4EC;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .letter-stage { width: min(390px, 92vw); height: min(590px, 84vh); min-height: 0; }
+  .envelope { margin: 0; bottom: 26px; height: 220px; }
+  .env-back { inset: 52px 0 0; }
+  .env-flap { top: 52px; height: 135px; }
+  .env-seal { top: 108px; }
+  .env-pocket { height: 150px; }
+  .letter-card { padding: 24px 20px 20px; max-height: min(60vh, 410px); }
+  .letter-card p { font-size: .98rem; line-height: 1.62; }
+  @keyframes cardRise {
+    from { opacity: 0; transform: translateY(48px) scale(.96); }
+    to { opacity: 1; transform: translateY(-190px) scale(1); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .letter-overlay { animation: none; }
+  .env-flap { animation: none; transform: rotateX(180deg); z-index: 1; }
+  .env-seal { display: none; }
+  .letter-card { animation: none; opacity: 1; transform: translateY(-185px); }
+}
+
+.katex, .katex-display { font-size: 1.05em; }
+.math-inline { display: inline-block; }
+.math-block { overflow-x: auto; padding: 4px 0; }
+
+.formula-stage {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 1.6rem;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.formula-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.formula-use {
+  font-size: 0.92rem;
+  color: var(--t1);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.formula-box {
+  background: var(--cream);
+  border: 2px dashed var(--border);
+  border-radius: 1.2rem;
+  padding: 18px 14px;
+  text-align: center;
+  min-height: 72px;
+  margin: 12px 0;
+}
+.remember-box {
+  background: rgba(158,47,63,.06);
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+.remember-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.rate-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+.rate-btn {
+  border: 2px solid var(--border);
+  background: #fff;
+  border-radius: 99px;
+  padding: 12px 8px;
+  font-weight: 800;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--t1);
+}
+.rate-btn:hover { border-color: var(--accent); background: var(--cream); }
+.week-card {
+  background: rgba(158,47,63,.07);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.week-card.current {
+  border-color: var(--accent);
+  background: rgba(158,47,63,.12);
+}
+.week-card.ahead { opacity: .85; }
+.gap-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.step-block {
+  display: none;
+  margin-top: 10px;
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 4px solid var(--amber);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--t1);
+}
+.step-block.show { display: block; }
+.problem-prompt { font-weight: 700; font-size: 1.02rem; line-height: 1.6; margin-bottom: 12px; }
+.hidden-ans { display: none; }
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 16px; }
+.notes-link {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+.notes-link:hover { text-decoration: underline; }
+.stat-row-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media(max-width: 600px){
+  .stat-row-3 { grid-template-columns: 1fr 1fr; }
+  .rate-row { grid-template-columns: 1fr; }
+  .tabs { display:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <span class="for-yashi-tag">The A Plan</span>
+  <div class="header-top">
+    <div class="header-title">
+      <h1>The A Plan</h1>
+      <p id="hello-line">Calculus &amp; Analytic Geometry 1. Community college does not change the math. Stay one week ahead of lecture, and learn formulas as English sentences, not magic strings.</p>
+      <div class="profile-pills">
+        <span class="ppill olive">Goal: A</span>
+        <span class="ppill">Fall 2026 semester</span>
+        <span class="ppill blue">Math Sorcerer playlist</span>
+        <span class="ppill">Khan Academy fills the gaps</span>
+        <span class="ppill olive">Formula gym every day</span>
+      </div>
+    </div>
+    <div class="live-date" id="live-date">Loading…</div>
+  </div>
+</header>
+
+<div class="score-banner">
+  <div class="score-left">
+    <div>
+      <div class="score-label">Stay-ahead status</div>
+      <div class="score-val" id="display-ahead">Week 1</div>
+    </div>
+  </div>
+  <div class="score-bar-wrap">
+    <div class="score-bar-labels"><span>Class</span><span id="ahead-mid">Your target</span><span>Final</span></div>
+    <div class="score-bar-track"><div class="score-bar-fill" id="score-bar" style="width:8%"></div></div>
+  </div>
+  <button class="score-edit" onclick="openWeekModal()">Set class week</button>
+</div>
+
+<div class="stat-row stat-row-3">
+  <div class="stat-box"><div class="stat-num" id="stat-sessions">0</div><div class="stat-lbl">Study days</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-formulas">0</div><div class="stat-lbl">Formulas locked</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-lectures">0</div><div class="stat-lbl">Lectures finished</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('t-today')">Today</button>
+  <button class="tab-btn" onclick="switchTab('t-sat')">Videos</button>
+  <button class="tab-btn" onclick="switchTab('t-formulas')">Formulas</button>
+  <button class="tab-btn" onclick="switchTab('t-practice')">Practice</button>
+  <button class="tab-btn" onclick="switchTab('t-tips')">Plan</button>
+</div>
+
+<div id="t-today" class="tab-content active">
+  <div class="card" style="background:linear-gradient(135deg, rgba(158,47,63,.09), rgba(196,110,103,.08));">
+    <div class="card-header"><div class="card-title" id="pep-title">Formulas are sentences</div></div>
+    <p id="pep-body" style="font-size:1.02rem;line-height:1.7;color:var(--t1);">Nobody is born knowing the product rule. You were never taught a memory method. This page teaches the story first, then the symbols.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Today’s mission</div></div>
+        <ul class="tip-list" id="today-mission"></ul>
+        <button class="checkin-btn" id="checkin-btn" onclick="doCheckin()" style="width:100%;margin-top:8px;">Mark today as studied</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Formula of the day</div><button class="btn-sec" onclick="switchTab('t-formulas')">Open gym</button></div>
+        <div id="today-formula"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">How you get the A</div></div>
+        <ul class="tip-list">
+          <li><span class="ti-icon">1</span><span>90% of missed Calc 1 points are algebra: exponents, factoring, fractions. That is not a community-college problem. It is the whole course.</span></li>
+          <li><span class="ti-icon">2</span><span>Do not reread formulas. Hide them and write them from memory. That is how they stick.</span></li>
+          <li><span class="ti-icon">3</span><span>Watch Math Sorcerer for the lecture. Then do Khan Academy for the same section until you can do 5 problems with the video off.</span></li>
+          <li><span class="ti-icon">4</span><span>Stay one week ahead of class. Lecture becomes review. Tests stop feeling like first contact.</span></li>
+        </ul>
+        <p style="margin-top:12px;"><a class="notes-link" href="MAT191_Calculus1_Masterclass_Deck.html">Open the walkthrough notes deck</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="t-sat" class="tab-content">
+  <div class="streak-hero">
+    <div class="streak-left">
+      <div><div class="streak-count" id="streak-count">0</div><div class="streak-label">Day streak</div></div>
+    </div>
+    <div class="streak-stats">
+      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl">Days</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-cp-total">0</div><div class="ss-lbl">Checkpoints</div></div>
+    </div>
+    <a class="checkin-btn" href="https://www.youtube.com/playlist?list=PLO1y6V1SXjjNSSOZvV3PcFu4B1S8nfXBM" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;">Open full playlist</a>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Math Sorcerer + Khan</div>
+      <span style="font-size:.78rem;color:var(--t2);">Playlist starts with how-to-study videos. Lectures start at 1.2.</span>
+    </div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:16px;line-height:1.6;">The first 10 videos are study advice (watch 1 and 8). Then the real Calc 1 lectures. This playlist skips limit laws and most of Chapter 4 integrals. Those cards are Khan, so you are not missing the final.</p>
+    <div class="filter-row" id="unit-filters"></div>
+    <div class="video-selector" id="video-selector"></div>
+    <div class="video-player-wrap" id="video-player-wrap"></div>
+    <div class="yt-fallback" id="yt-fallback">
+      <a id="yt-open-link" href="#" target="_blank" rel="noopener">Open the video on YouTube if the player is blocked</a>
+    </div>
+    <div class="checkpoint-info" id="cp-info" style="display:none;">
+      <div class="cp-bar-wrap">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;color:var(--t2);margin-bottom:6px;">
+          <span>Video progress</span><span id="cp-bar-pct">0%</span>
+        </div>
+        <div class="cp-bar">
+          <div class="cp-bar-fill" id="cp-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <button class="manual-quiz-btn" type="button" onclick="manualCheckpoint()">Checkpoint quiz</button>
+    </div>
+    <div id="vid-topic-info" style="display:none;margin-top:12px;">
+      <div class="topics-list" id="topics-list"></div>
+      <p style="margin-top:12px;"><a class="notes-link" id="khan-link" href="#" target="_blank" rel="noopener">Same topic on Khan Academy</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="t-formulas" class="tab-content">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Formula gym</div>
+      <span style="font-size:.78rem;color:var(--t2);" id="formula-due-label">0 due today</span>
+    </div>
+    <p style="font-size:.95rem;line-height:1.65;color:var(--t1);margin-bottom:14px;">You do not memorize ink. You remember what the formula is saying, then the symbols fall out. Hide it, say it in English, write it, then rate yourself.</p>
+    <div class="filter-row" id="formula-filters"></div>
+    <div id="formula-gym"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">All formulas</div></div>
+    <div id="formula-list"></div>
+  </div>
+</div>
+
+<div id="t-practice" class="tab-content">
+  <div class="model-status" id="model-status">
+    <div class="status-dot"></div>
+    <div><strong>Extra problem trainer</strong><span id="model-status-text">Built-in exam drills always work. The optional trainer is extra.</span></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Exam drills</div></div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;line-height:1.6;">These are the shapes that show up on community-college Calc 1 tests. Show the steps only after you try it on paper.</p>
+    <div class="filter-row" id="practice-filters"></div>
+    <div id="practice-area"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Optional extra set</div></div>
+    <div class="ai-controls">
+      <select id="math-topic">
+        <option value="limits">Limits and continuity</option>
+        <option value="derivatives">Derivative rules</option>
+        <option value="related rates">Related rates</option>
+        <option value="optimization">Optimization</option>
+        <option value="integrals">Integrals and FTC</option>
+        <option value="analytic geometry">Analytic geometry</option>
+      </select>
+      <select id="math-diff">
+        <option value="warm-up">Warm-up</option>
+        <option value="exam" selected>Exam</option>
+        <option value="A-level">A-level stretch</option>
+      </select>
+      <button class="ai-gen-btn" id="math-gen-btn" onclick="generateMathAI()">Give me 3 extra questions</button>
+    </div>
+    <div class="ai-result-area" id="math-ai-result"></div>
+  </div>
+</div>
+
+<div id="t-tips" class="tab-content">
+  <div class="card">
+    <div class="card-header"><div class="card-title">16-week stay-ahead map</div></div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;line-height:1.6;">Set which week your class is on. Your job is the next week, not last week’s panic. Math Sorcerer’s playlist uses Larson-style numbering, which is what most Calculus &amp; Analytic Geometry 1 courses use.</p>
+    <div id="week-plan" style="display:flex;flex-direction:column;gap:10px;"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Playlist honesty</div></div>
+    <ul class="tip-list">
+      <li><span class="ti-icon">1</span><span>Videos 1–10 are book and study advice. Required: “The Best Way to Learn Calculus” and “Calculus For Beginners.”</span></li>
+      <li><span class="ti-icon">2</span><span>Lectures start at 1.2. There is no 1.3 (limit laws) in this playlist. Use the Khan gap card or you will freeze on 0/0 limits.</span></li>
+      <li><span class="ti-icon">3</span><span>After Newton’s method the playlist jumps to ln/exp. Chapter 4 (Riemann sums, FTC, u-sub) is on Khan. That is usually a midterm or the final.</span></li>
+      <li><span class="ti-icon">4</span><span>Analytic geometry (distance, midpoint, circles, lines) is assumed, not taught. Formula gym covers it so class does not “end you.”</span></li>
+    </ul>
+    <p style="margin-top:14px;"><a class="notes-link" href="MAT191_Calculus1_Masterclass_Deck.html">Walkthrough notes deck</a> · <a class="notes-link" href="https://www.khanacademy.org/math/calculus-1" target="_blank" rel="noopener">Khan Calculus 1 course</a> · <a class="notes-link" href="https://www.youtube.com/watch?v=3dVaOT3pQqc&amp;list=PLO1y6V1SXjjNSSOZvV3PcFu4B1S8nfXBM" target="_blank" rel="noopener">Math Sorcerer playlist</a></p>
+  </div>
+</div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="bn-btn active" id="bn-today" onclick="switchTab('t-today')"><span class="icon">•</span>Today</button>
+  <button class="bn-btn" id="bn-sat" onclick="switchTab('t-sat')"><span class="icon">•</span>Videos</button>
+  <button class="bn-btn" id="bn-formulas" onclick="switchTab('t-formulas')"><span class="icon">•</span>Formulas</button>
+  <button class="bn-btn" id="bn-practice" onclick="switchTab('t-practice')"><span class="icon">•</span>Practice</button>
+  <button class="bn-btn" id="bn-tips" onclick="switchTab('t-tips')"><span class="icon">•</span>Plan</button>
+</nav>
+
+<div class="modal-overlay" id="score-modal">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-title">Which week is class on?</div>
+    <label class="modal-lbl">Class is currently on week</label>
+    <input type="number" id="modal-score" min="1" max="16" step="1" value="1">
+    <p style="font-size:.85rem;color:var(--t2);margin-top:10px;line-height:1.5;">Your study target is this number plus one, so you walk into lecture already having seen the ideas.</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('score-modal')">Cancel</button>
+      <button class="btn-primary" onclick="saveScore()" style="flex:1;">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="cp-modal">
+  <div class="cp-modal-box">
+    <div class="cp-modal-header">
+      <div>
+        <div class="cp-modal-title" id="cp-modal-title">Checkpoint</div>
+      </div>
+    </div>
+    <div class="cp-modal-sub" id="cp-modal-sub">Three questions. Then you keep watching.</div>
+    <div id="cp-quiz-area"></div>
+    <p class="cp-attention-note" id="cp-attention-note">Pick an answer on every question. You need at least 2 right to prove you were paying attention.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+const PLAYLIST = 'PLO1y6V1SXjjNSSOZvV3PcFu4B1S8nfXBM';
+const LS = {
+  week: 'calc1a_class_week',
+  streak: 'calc1a_streak',
+  sessions: 'calc1a_sessions',
+  last: 'calc1a_last_checkin',
+  cp: 'calc1a_cp_done',
+  formulas: 'calc1a_formula_srs',
+  lectures: 'calc1a_lectures_done'
+};
+
+const KHAN = {
+  calc1: 'https://www.khanacademy.org/math/calculus-1',
+  limits: 'https://www.khanacademy.org/math/calculus-1/cs1-limits-and-continuity',
+  limitLaws: 'https://www.khanacademy.org/math/calculus-1/cs1-limits-and-continuity/cs1-strategy-in-finding-limits/v/limit-example-1',
+  derivatives: 'https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules',
+  chain: 'https://www.khanacademy.org/math/calculus-1/cs1-differentiation-composite-implicit-inverse',
+  apps: 'https://www.khanacademy.org/math/calculus-1/cs1-applying-derivatives-to-analyze-functions',
+  related: 'https://www.khanacademy.org/math/calculus-1/cs1-contextual-applications-of-differentiation',
+  integrals: 'https://www.khanacademy.org/math/calculus-1/cs1-integration-and-accumulation-of-change',
+  usub: 'https://www.khanacademy.org/math/calculus-1/cs1-integration-and-accumulation-of-change/cs1-integration-with-u-substitution/v/u-substitution',
+  diffeq: 'https://www.khanacademy.org/math/calculus-1/cs1-differential-equations',
+  area: 'https://www.khanacademy.org/math/calculus-1/cs1-applications-of-integration',
+  geometry: 'https://www.khanacademy.org/math/geometry/hs-geo-analytic-geometry',
+  algebra: 'https://www.khanacademy.org/math/algebra2',
+  trig: 'https://www.khanacademy.org/math/trigonometry'
+};
+
+const UNITS = [
+  {id:'all', label:'All'},
+  {id:'study', label:'How to study'},
+  {id:'algebra', label:'Algebra + geometry'},
+  {id:'limits', label:'Limits'},
+  {id:'derivatives', label:'Derivatives'},
+  {id:'applications', label:'Applications'},
+  {id:'integrals', label:'Integrals'},
+  {id:'exams', label:'Exam review'}
+];
+
+function Q(q, options, correct, exp){
+  return {question:q, options:options, correct:correct, explanation:exp};
+}
+
+const UNIT_QUIZ = {
+  study: [
+    Q('What daily loop actually builds a Calc 1 A?', ['Read the chapter twice and highlight formulas','Watch a chunk, hide it, then do problems from memory','Copy the solution manual line by line','Only watch lectures the night before the test'], 1, 'Memory is built by retrieval. Watching without doing problems is entertainment.'),
+    Q('Why do people fail Calc 1 even when they understood the lecture?', ['The ideas are too abstract for community college','They cannot remember algebra moves under time','The professor uses a secret textbook','Calculators are banned'], 1, 'The concepts are two ideas: slope and area. The points die on algebra.'),
+    Q('How far ahead of class should you be?', ['Same day is enough','One week ahead so lecture is review','Finish the whole book in four days','Skip class once you watch YouTube'], 1, 'One week ahead is the A move. Lecture becomes a second pass, not first contact.'),
+    Q('Best use of formula gym?', ['Reread the formula sheet until it looks familiar','Hide the formula, say it in English, write it, then rate yourself','Screenshot every formula into Notes','Only review formulas the morning of the exam'], 1, 'Retrieval beats rereading. Rate Blank / Almost / Locked so hard ones come back tomorrow.'),
+    Q('When a problem “feels like you cannot do calculus,” check this first:', ['Your calculator mode','A fraction, radical, or factor you left messy','Whether the professor likes you','If you watched enough hours'], 1, 'Algebra is the course in disguise. Clean the expression, then the calculus is short.'),
+    Q('After a Math Sorcerer lecture, your next move is:', ['Move to the next video immediately','Do Khan / drills on the same topic with the video off','Highlight the transcript','Rewrite your notes in prettier handwriting'], 1, 'Lecture is input. Output is problems you can do alone.'),
+    Q('What should you do with a miss on a checkpoint or drill?', ['Ignore it if you got 2/3','Put that idea in formula gym or redo a similar problem today','Watch a different YouTuber on a new unit','Assume the question was unfair'], 1, 'Misses are the study list. Same-day repair beats “I will review later.”'),
+    Q('Which study habit wastes the most time?', ['Doing five problems from memory','Watching lectures as background noise with no paper out','Using Khan after the lecture','Staying one week ahead'], 1, 'Passive watching feels productive and builds almost nothing.'),
+    Q('Closed-book practice means:', ['Phone open to Chegg “just in case”','You try it first, then check steps','You only do odds because answers are in the back','You memorize the solution key'], 1, 'Struggle first. Checking is allowed after you attempt.'),
+    Q('The A Plan’s real job is:', ['Collecting more PDFs','Making lecture feel like review and formulas feel like English','Skipping community-college homework','Finishing every optional textbook video'], 1, 'Ahead + retrieval + algebra cleanup. That is the grade.'),
+    Q('If class is on limits this week, you should already be:', ['Still buying textbooks','Comfortable enough that lecture is a second pass, ideally into derivatives soon','Only watching study-tip videos','Skipping Khan because “I get the idea”'], 1, 'Stay one week ahead of the syllabus, not one week behind panic.'),
+    Q('Best signal you actually learned a formula:', ['You can recognize it on a sheet','You can hide it and write it from the English story','You liked the TikTok about it','You highlighted it in three colors'], 1, 'Recognition is fake fluency. Production is real.')
+  ],
+  algebra: [
+    Q('Rewrite 1/√x so a derivative rule can eat it.', ['x^{1/2}','x^{-1/2}','-x^{1/2}','1/x^{2}'], 1, 'Root in the denominator is a negative fractional power: 1/√x = x^{-1/2}.'),
+    Q('x² − 9 factors as', ['(x-9)(x+1)','(x-3)(x+3)','(x-9)²','irreducible'], 1, 'Difference of squares. This is the #1 save on a 0/0 limit.'),
+    Q('Distance between (x1,y1) and (x2,y2) is', ['|x2-x1|+|y2-y1|','√((x2-x1)²+(y2-y1)²)','((x2-x1)+(y2-y1))/2','(y2-y1)/(x2-x1)'], 1, 'Pythagorean theorem on the coordinate plane. That is analytic geometry.'),
+    Q('√(x³) as a power is', ['x^{3/2}','x^{2/3}','x^{-3/2}','3x^{1/2}'], 0, 'Root is denominator: (x³)^{1/2}=x^{3/2}.'),
+    Q('Point-slope form of a line uses', ['y=mx+b only','a known point and the slope','two intercepts only','the distance formula'], 1, 'y−y1=m(x−x1). That is the tangent-line template.'),
+    Q('Circle centered at (h,k) with radius r:', ['x²+y²=r','(x-h)²+(y-k)²=r²','(x+h)²+(y+k)²=r','(x-h)+(y-k)=r²'], 1, 'Every point is distance r from the center. Square both sides of distance.'),
+    Q('ln(ab) equals', ['ln a · ln b','ln a + ln b','ln a − ln b','a ln b'], 1, 'Logs turn multiply into add.'),
+    Q('A negative exponent like x^{-3} means', ['−x³','1/x³','3/x','√(x³)'], 1, 'Negative exponent flips into the denominator. It is not a negative number.'),
+    Q('Slope m between two points is', ['run/rise','(y2−y1)/(x2−x1)','(x2−x1)/(y2−y1)','y2x1−y1x2'], 1, 'Rise over run. That sentence is already the derivative idea.'),
+    Q('1/x^{1/2} is the same as', ['x^{1/2}','x^{-1/2}','−x^{1/2}','x²'], 1, '1 over a power flips the sign of the exponent.'),
+    Q('Midpoint of (x1,y1) and (x2,y2) is', ['((x1+x2)/2,(y1+y2)/2)','(x2−x1,y2−y1)','(x1x2,y1y2)','average of the slopes'], 0, 'Average the coordinates. Not the differences.'),
+    Q('sin²θ + cos²θ equals', ['0','1','tan θ','2'], 1, 'Unit circle: x²+y²=1 with x=cos, y=sin.')
+  ],
+  limits: [
+    Q('lim x→a f(x) exists only if', ['f(a) is defined','left-hand limit equals right-hand limit','the graph has no hole','the function is a polynomial'], 1, 'The value at a does not have to exist. Left must match right.'),
+    Q('A limit that becomes 0/0 after plugging in means', ['the answer is 0','the limit does not exist','algebra: factor, conjugate, or cancel','write DNE and stop'], 2, '0/0 is a signal, not an answer. Fix the expression, then plug in again.'),
+    Q('lim x→∞ of (3x²+1)/(5x²−7) is', ['0','∞','3/5','3x/5'], 2, 'Same degree: ratio of leading coefficients. Horizontal asymptote y=3/5.'),
+    Q('A hole in the graph at x=a means', ['the two-sided limit cannot exist','f(a) may be missing even if the limit exists','the function is discontinuous forever','you must write DNE'], 1, 'Limits care about nearby values. Continuity also needs f(a) to match.'),
+    Q('If left-hand limit ≠ right-hand limit, then', ['the limit is the average','the two-sided limit DNE','f(a) is the answer','multiply by a conjugate'], 1, 'Two hikers must meet at the same height.'),
+    Q('Bigger degree on bottom as x→∞ usually gives', ['∞','0','1','DNE always'], 1, 'Bottom grows faster → fraction dies → 0.'),
+    Q('Vertical asymptote behavior is about', ['limits at infinity','infinite limits as x approaches a finite number','average rate of change','u-substitution'], 1, 'x→a and y blows up. That is a vertical asymptote story.'),
+    Q('First move on most algebraic Calc 1 limits:', ['Graph on a calculator and guess','Plug in. If 0/0, algebra.','Write DNE','Use the product rule'], 1, 'Direct substitution first. 0/0 means keep working.'),
+    Q('Continuity at a requires', ['only that the limit exists','limit exists, f(a) exists, and they are equal','f′(a) exists','the graph has no corners'], 1, 'Three conditions. A hole can have a limit but still be discontinuous.'),
+    Q('lim x→0 of sin(x)/x is the famous', ['0','1','∞','DNE'], 1, 'Standard squeeze-theorem limit. Know the value cold.'),
+    Q('Removable discontinuity means', ['jump between left and right','a hole you can fill to make it continuous','a vertical asymptote','the function is not defined anywhere'], 1, 'Cancel common factors and the hole can be filled.'),
+    Q('If degrees tie at infinity, the limit is', ['always 0','always ∞','ratio of leading coefficients','the constant terms only'], 2, 'Leaders decide. Ignore lower powers for the dominant fight.')
+  ],
+  derivatives: [
+    Q('f′(a) is', ['the average slope from 0 to a','the slope of the tangent at x=a','the area under f','f(a+1)−f(a)'], 1, 'Instantaneous slope. Speedometer, not odometer.'),
+    Q('Product rule for (uv)′ is', ['u′v′','u′v+uv′','(u′v−uv′)/v²','u′(v)'], 1, 'Keep one, differentiate the other, add. Both pieces stay in the picture.'),
+    Q('Chain rule for f(g(x)) is', ['f′(x)g′(x)','f′(g(x))·g′(x)','f(g′(x))','g′(f(x))'], 1, 'Outside derivative, leave the inside, times inside derivative.'),
+    Q('Power rule: d/dx[x^n] =', ['n x^{n+1}','n x^{n-1}','x^{n-1}','n x'], 1, 'Power comes down front, exponent loses 1.'),
+    Q('Quotient rule low-d-high minus high-d-low is over', ['u²','v²','uv','u′v′'], 1, 'Denominator is low². The minus is why order matters.'),
+    Q('d/dx[sin x] =', ['−cos x','cos x','sec x','1/sin x'], 1, 'Sine → cosine with no minus. Co-functions get the minus.'),
+    Q('d/dx[ln x] =', ['1/ln x','1/x','e^x','x'], 1, 'ln is the inverse of e^x, so its slope is 1/x.'),
+    Q('d/dx[e^x] =', ['x e^{x−1}','e^x','1/e^x','ln x'], 1, 'e^x is its own derivative.'),
+    Q('Implicit differentiation treats y as', ['a constant','a function of x, so chain rule makes y′','always equal to x','undefined'], 1, 'y² becomes 2y y′. Then solve for y′.'),
+    Q('Definition of f′(x) uses the limit of', ['f(x+h)+f(x)','[f(x+h)−f(x)]/h as h→0','f(b)−f(a)','∫ f'], 1, 'Average slope, then smash h to 0.'),
+    Q('d/dx[cos x] =', ['sin x','−sin x','−cos x','tan x'], 1, 'Co-function picks up a minus.'),
+    Q('Most common chain-rule miss is', ['forgetting to multiply by the inside derivative','using the product rule instead every time','adding +C','writing DNE'], 1, 'Outside′(inside) × inside′. Do not drop the inside′.')
+  ],
+  applications: [
+    Q('A critical number of f is where', ['f(x)=0','f′(x)=0 or f′ DNE, in the domain','f″(x)=0','the graph crosses the x-axis'], 1, 'Candidates for max/min. Then test them.'),
+    Q('If f′>0 on an interval, f is', ['concave up','increasing','at a maximum','undefined'], 1, 'First derivative is the slope. Positive slope means the graph is climbing.'),
+    Q('Related rates first step is', ['differentiate immediately','draw, name variables, write the geometry equation','plug in the numbers you know','guess the triangle'], 1, 'Picture, equation, differentiate with respect to t, then plug numbers.'),
+    Q('Closed interval method needs', ['only critical numbers','critical numbers and endpoints','only f″ tests','only intercepts'], 1, 'Absolute extrema on [a,b]: candidates are critical numbers in (a,b) plus a and b.'),
+    Q('f′ changes + to − at c means', ['local min','local max','inflection','no conclusion'], 1, 'Climb then drop: peak.'),
+    Q('f″(c)>0 and f′(c)=0 suggests', ['local max','local min','vertical asymptote','discontinuity'], 1, 'Smile (concave up) at a flat point: valley.'),
+    Q('Mean Value Theorem says some c exists with', ['f(c)=0','f′(c) equal to the average slope from a to b','f″(c)=0','f(c)=f′(c)'], 1, 'Some tangent matches the secant.'),
+    Q('Newton’s method update is', ['x − f(x)','x − f(x)/f′(x)','f(x)/f′(x)','x + f′(x)'], 1, 'Follow the tangent to the axis for the next guess.'),
+    Q('Optimization recipe starts with', ['taking f′ of a random expression','a constraint so you get one variable, then differentiate','guessing the answer from a picture only','using MVT'], 1, 'Constraint → one-variable function → derivative → test.'),
+    Q('Inflection is where', ['f=0','concavity changes (often f″ changes sign)','f′>0','the limit DNE'], 1, 'Bending switches. Not every f″=0 is inflection — check the sign change.'),
+    Q('In related rates, plug given numbers', ['into the geometry equation before differentiating','after you differentiate with respect to t','instead of differentiating','only into the final answer blank'], 1, 'Differentiate the relationship first. Numbers last.'),
+    Q('If f″(c)=0 at a critical point, the second-derivative test', ['always says max','always says min','is inconclusive — use the first-derivative test','proves DNE'], 2, 'Zero second derivative is silence. Switch tests.')
+  ],
+  integrals: [
+    Q('∫ x^n dx for n≠−1 is', ['n x^{n-1}+C','x^{n+1}/(n+1)+C','n x^{n+1}+C','x^n/n+C'], 1, 'Power rule backwards: add 1 to the power, divide by the new power, plus C.'),
+    Q('The Fundamental Theorem says', ['derivatives and integrals are unrelated','∫_a^b f′(x) dx = f(b)−f(a)','every limit is a derivative','area is always positive'], 1, 'Net change: add up the rate from a to b and you get total change of f.'),
+    Q('u-sub is for integrals that look like', ['a product of two unrelated functions','an inside function whose derivative is sitting next to it','any definite integral','only trig integrals'], 1, 'If you see g(x) and g′(x) hanging around, set u = inside.'),
+    Q('∫ 1/x dx equals', ['x^{-2}+C','ln|x|+C','1/x²+C','e^x+C'], 1, 'n=−1 is the exception. Log absolute value.'),
+    Q('On a definite integral after finding F, compute', ['F(a)−F(b)','F(b)−F(a)','F(a)+F(b)','F′(b)'], 1, 'Upper minus lower.'),
+    Q('Area between curves is', ['∫ (left−right)','∫ (top−bottom) dx','∫ f·g','always |f|+|g|'], 1, 'Height of each skinny rectangle is top minus bottom.'),
+    Q('Antiderivative check is', ['multiply by x','differentiate your answer and see if you recover the integrand','use the quadratic formula','take a limit at infinity'], 1, 'Integration and differentiation undo each other.'),
+    Q('+C matters because', ['professors like decoration','many antiderivatives differ by a constant','the FTC forbids constants','limits cannot be constant'], 1, 'Family of antiderivatives.'),
+    Q('Growth/decay y′=ky solves to', ['y=y0+kt','y=y0 e^{kt}','y=k/y0','y=ln(kt)'], 1, 'Rate proportional to amount → exponential.'),
+    Q('Riemann sums become integrals when', ['n=1','you take more rectangles and the mesh goes to 0','you use the product rule','f is linear only'], 1, 'Limit of sums is the definite integral.'),
+    Q('For ∫ f′(g(x)) g′(x) dx, set', ['u=f(x)','u=g(x)','u=f′(x)','u=dx'], 1, 'Inside is u; du brings the g′(x) dx.'),
+    Q('Net signed area can be negative when', ['the calculator is in radians','the graph is below the x-axis on part of [a,b]','FTC fails','u-sub is illegal'], 1, 'Definite integrals track signed area. Absolute area may need splits.')
+  ]
+};
+
+const VIDEO_DATA = [
+  {id:'v01', youtubeId:'3dVaOT3pQqc', title:'The Best Way to Learn Calculus', mins:'10:11', unit:'study', kind:'study', req:true, why:'Start here. How to actually study this subject, not a content lecture.', topics:['Daily loop','Problems over rereading','Stay ahead'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v02', youtubeId:'pTdEWDdzVi0', title:'Mastering Calculus with the 1968 Classic', mins:'9:01', unit:'study', kind:'study', req:false, why:'Optional book talk. Skip if you already have a course textbook.', topics:['Textbooks'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v03', youtubeId:'_GWaUhGKNxo', title:'A wildly popular mid-century calculus book', mins:'8:19', unit:'study', kind:'study', req:false, why:'Optional. Do not let book shopping replace problems.', topics:['Textbooks'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v04', youtubeId:'MuZKQzAjz5A', title:'Super Thick Calculus Book', mins:'11:33', unit:'study', kind:'study', req:false, why:'Optional. Thick books are not the A. Worked problems are.', topics:['Textbooks'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v05', youtubeId:'LGBVa-fMfzc', title:'3 Ways to Learn Calculus on Your Own', mins:'9:18', unit:'study', kind:'study', req:false, why:'Optional methods video. Useful if you feel lost on how to self-study.', topics:['Self study'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v06', youtubeId:'EYMzXfNa8Mg', title:'Math from an M.I.T. Calculus Book', mins:'10:47', unit:'study', kind:'study', req:false, why:'Optional. Your community-college syllabus is enough for an A.', topics:['Textbooks'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v07', youtubeId:'D0xgEKLfaMM', title:'Learn Calculus Fast', mins:'9:49', unit:'study', kind:'study', req:false, why:'Optional pep. Speed comes from algebra fluency, not a hack.', topics:['Pacing'], khan:KHAN.algebra, quiz:'study'},
+  {id:'v08', youtubeId:'QFPcDGq_AX4', title:'Calculus For Beginners: Get Started Here', mins:'9:59', unit:'study', kind:'study', req:true, why:'Second required study video. Then start Lecture 1.2.', topics:['Getting started'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v09', youtubeId:'m7dAhwe0ZTY', title:'The Easiest Calculus Book In The World', mins:'8:12', unit:'study', kind:'study', req:false, why:'Optional. If your class book is Larson or Stewart, stay with that.', topics:['Textbooks'], khan:KHAN.calc1, quiz:'study'},
+  {id:'v10', youtubeId:'GffrHlVKsrM', title:'Self Study Calculus Like Richard Feynman', mins:'9:55', unit:'study', kind:'study', req:false, why:'Optional. Re-derive. Do not copy.', topics:['Notebook method'], khan:KHAN.calc1, quiz:'study'},
+  {id:'k01', youtubeId:'', title:'Khan gap: analytic geometry (lines, distance, circles)', mins:'Khan', unit:'algebra', kind:'khan', req:true, why:'Class will use this without teaching it. Distance, midpoint, slope, circle equation.', topics:['Distance','Midpoint','Circle','Slope'], khan:KHAN.geometry, quiz:'algebra'},
+  {id:'k02', youtubeId:'', title:'Khan gap: algebra that kills Calc 1 grades', mins:'Khan', unit:'algebra', kind:'khan', req:true, why:'Negative and fractional exponents, factoring. Do this before limits.', topics:['Exponents','Factoring'], khan:KHAN.algebra, quiz:'algebra'},
+  {id:'v11', youtubeId:'0euyDNGEiZ4', title:'Lecture 1.2 Finding Limits Graphically and Numerically', mins:'35:42', unit:'limits', kind:'lecture', req:true, why:'What a limit even is, from a graph and a table. The first real lecture.', topics:['One-sided limits','Tables','DNE'], khan:KHAN.limits, quiz:'limits'},
+  {id:'k03', youtubeId:'', title:'Khan gap: Lecture 1.3 limit laws (missing from playlist)', mins:'Khan', unit:'limits', kind:'khan', req:true, why:'The playlist jumps 1.2 to 1.4. Tests live in 1.3: plug in, factor, conjugate.', topics:['Limit laws','0/0','Conjugate'], khan:KHAN.limitLaws, quiz:'limits'},
+  {id:'v12', youtubeId:'yOKO63P5FwA', title:'Lecture 1.4 Continuity and One-Sided Limits', mins:'1:25:30', unit:'limits', kind:'lecture', req:true, why:'Continuity, removable holes, IVT. Classic exam definitions.', topics:['Continuity','IVT','One-sided'], khan:KHAN.limits, quiz:'limits'},
+  {id:'v13', youtubeId:'IszUqhcVq40', title:'Lecture 1.5 Infinite Limits', mins:'1:07:34', unit:'limits', kind:'lecture', req:true, why:'Vertical asymptotes. When the function blows up.', topics:['Vertical asymptotes','Infinite limits'], khan:KHAN.limits, quiz:'limits'},
+  {id:'v14', youtubeId:'HhvN20798oE', title:'Lecture 2.1 The Derivative and the Tangent Line Problem', mins:'1:03:41', unit:'derivatives', kind:'lecture', req:true, why:'Definition of derivative. You must compute f′(a) from the limit at least once.', topics:['Definition','Tangent line'], khan:KHAN.derivatives, quiz:'derivatives'},
+  {id:'v15', youtubeId:'3xW349GhtKU', title:'Lecture 2.2–2.4 Power, product, quotient, chain', mins:'2:23:29', unit:'derivatives', kind:'lecture', req:true, why:'The big rules video. Split it over two days. This is the heart of Calc 1.', topics:['Power','Product','Quotient','Chain'], khan:KHAN.chain, quiz:'derivatives'},
+  {id:'v16', youtubeId:'fDuIvT20Pe8', title:'Lecture 2.5 Implicit Differentiation', mins:'57:07', unit:'derivatives', kind:'lecture', req:true, why:'When y is mixed with x. Circles, dy/dx, tangent lines.', topics:['Implicit','dy/dx'], khan:KHAN.chain, quiz:'derivatives'},
+  {id:'v17', youtubeId:'Yv_YRRP-yt4', title:'Lecture 2.6 Related Rates', mins:'53:21', unit:'applications', kind:'lecture', req:true, why:'The word-problem unit people fear. It is a recipe, not talent.', topics:['Related rates','Ladder','Cone'], khan:KHAN.related, quiz:'applications'},
+  {id:'v18', youtubeId:'EsjjQC1mqlg', title:'Lecture 3.1 Extrema on an Interval', mins:'51:36', unit:'applications', kind:'lecture', req:true, why:'Closed interval method: critical numbers plus endpoints.', topics:['Absolute extrema','Critical numbers'], khan:KHAN.apps, quiz:'applications'},
+  {id:'v19', youtubeId:'goR8GB7lO9Q', title:'Lecture 3.2 Rolle and the Mean Value Theorem', mins:'1:07:29', unit:'applications', kind:'lecture', req:true, why:'Know the hypotheses. The picture: some tangent matches the secant.', topics:['MVT','Rolle'], khan:KHAN.apps, quiz:'applications'},
+  {id:'v20', youtubeId:'hyBHhd4-ST4', title:'Lecture 3.3 First Derivative Test', mins:'39:17', unit:'applications', kind:'lecture', req:true, why:'Increasing/decreasing and local max/min from the sign of f′.', topics:['First derivative test'], khan:KHAN.apps, quiz:'applications'},
+  {id:'v21', youtubeId:'50gv7lOP24o', title:'Lecture 3.4 Concavity and Second Derivative Test', mins:'1:27:51', unit:'applications', kind:'lecture', req:true, why:'f″ tells bending. Inflection points.', topics:['Concavity','Inflection'], khan:KHAN.apps, quiz:'applications'},
+  {id:'v22', youtubeId:'1NbUtjnuyKA', title:'Exam 2 Review', mins:'1:08:45', unit:'exams', kind:'review', req:true, why:'Pause and do each problem before he finishes it.', topics:['Derivatives exam'], khan:KHAN.apps, quiz:'derivatives'},
+  {id:'v23', youtubeId:'A3gBsJ_fW8U', title:'Lecture 3.5 Limits at Infinity', mins:'59:03', unit:'limits', kind:'lecture', req:true, why:'Horizontal asymptotes. Degree battle.', topics:['Limits at infinity'], khan:KHAN.limits, quiz:'limits'},
+  {id:'v24', youtubeId:'40XRHIgbwpQ', title:'Lecture 3.6 A Summary of Curve Sketching', mins:'31:31', unit:'applications', kind:'lecture', req:true, why:'Domain, intercepts, asymptotes, f′, f″ on one graph.', topics:['Curve sketching'], khan:KHAN.apps, quiz:'applications'},
+  {id:'v25', youtubeId:'ql81b8E7RiY', title:'Lecture 3.7 Optimization Problems', mins:'34:37', unit:'applications', kind:'lecture', req:true, why:'Write the constraint, reduce to one variable, then derivative.', topics:['Optimization'], khan:KHAN.related, quiz:'applications'},
+  {id:'v26', youtubeId:'HOyDcHy7z04', title:'Lecture 3.8 Newton’s Method', mins:'41:52', unit:'applications', kind:'lecture', req:true, why:'Know the iteration formula cold.', topics:['Newton'], khan:KHAN.apps, quiz:'applications'},
+  {id:'k04', youtubeId:'', title:'Khan gap: Chapter 4 integrals, Riemann sums, FTC', mins:'Khan', unit:'integrals', kind:'khan', req:true, why:'The playlist skips this. If your class is Larson or Stewart, this is a full exam unit.', topics:['Antiderivatives','FTC','Area'], khan:KHAN.integrals, quiz:'integrals'},
+  {id:'k05', youtubeId:'', title:'Khan gap: u-substitution', mins:'Khan', unit:'integrals', kind:'khan', req:true, why:'Reverse chain rule. If you skip this, ln/exp integration later will feel random.', topics:['u-sub'], khan:KHAN.usub, quiz:'integrals'},
+  {id:'v27', youtubeId:'foYjL9g2j5w', title:'Lecture 5.1 Derivative of ln x', mins:'40:05', unit:'derivatives', kind:'lecture', req:true, why:'d/dx[ln x]=1/x. Also logarithmic differentiation for ugly products.', topics:['ln','Log diff'], khan:KHAN.derivatives, quiz:'derivatives'},
+  {id:'v28', youtubeId:'AFA7viB84eU', title:'Lecture 5.2 Integral of 1/x', mins:'37:54', unit:'integrals', kind:'lecture', req:true, why:'The missing n=−1 case: ∫ dx/x = ln|x|+C.', topics:['ln integral'], khan:KHAN.integrals, quiz:'integrals'},
+  {id:'v29', youtubeId:'tiLoK7xsoRw', title:'Lecture 5.4 Exp functions, differentiate and integrate', mins:'1:15:54', unit:'derivatives', kind:'lecture', req:true, why:'e^x is its own derivative.', topics:['e^x'], khan:KHAN.derivatives, quiz:'derivatives'},
+  {id:'v30', youtubeId:'wiKkk7YJrC4', title:'Lecture 6.2 Growth and decay (separable DE only)', mins:'42:52', unit:'integrals', kind:'lecture', req:true, why:'y′=ky. Separate, integrate, apply the initial condition.', topics:['Growth','Decay'], khan:KHAN.diffeq, quiz:'integrals'},
+  {id:'k06', youtubeId:'', title:'Khan gap: area between curves', mins:'Khan', unit:'integrals', kind:'khan', req:true, why:'Often the last Calc 1 application. ∫ (top−bottom) dx.', topics:['Area between curves'], khan:KHAN.area, quiz:'integrals'},
+  {id:'v31', youtubeId:'WVGGGTkEtKg', title:'Exam 4 Review', mins:'1:16:13', unit:'exams', kind:'review', req:true, why:'Pause after each prompt. Write your answer, then play.', topics:['Later-term exam'], khan:KHAN.calc1, quiz:'integrals'},
+  {id:'v32', youtubeId:'K2WY7Hx0je0', title:'Final Exam Review', mins:'1:26:35', unit:'exams', kind:'review', req:true, why:'Treat this as a dress rehearsal. Misses go into formula gym the same day.', topics:['Final'], khan:KHAN.calc1, quiz:'integrals'}
+];
+
+const FORMULAS = [
+  {id:'f01', unit:'algebra', name:'Negative exponent', tex:'x^{-n}=\\dfrac{1}{x^{n}}', use:'Whenever a derivative or limit has a fraction of a power, convert first.', remember:'A negative exponent is not a negative number. It is “flip me into the denominator.” 10^{-1} is a tenth, not −10.', trap:'Writing −x^n. That is a different (and usually wrong) thing.'},
+  {id:'f02', unit:'algebra', name:'Fractional exponent', tex:'x^{m/n}=\\sqrt[n]{x^{m}}', use:'Power rule cannot see a radical until you rewrite it.', remember:'Bottom number is the root. Top number is the power. √x = x^{1/2}.', trap:'Leaving √x in the problem and then guessing the derivative.'},
+  {id:'f03', unit:'algebra', name:'Difference of squares', tex:'a^{2}-b^{2}=(a-b)(a+b)', use:'The first tool when a limit is 0/0 and you see squares.', remember:'Two squares with a minus always split into plus and minus. x²−9=(x−3)(x+3).', trap:'Writing only (x−3) and dropping the plus partner.'},
+  {id:'f04', unit:'algebra', name:'Quadratic formula', tex:'x=\\dfrac{-b\\pm\\sqrt{b^{2}-4ac}}{2a}', use:'Critical numbers when f′ is a quadratic you cannot factor fast.', remember:'Minus b, plus or minus the square root of b²−4ac, all over 2a.', trap:'Putting 2a only under the square root.'},
+  {id:'f05', unit:'algebra', name:'Log rules', tex:'\\ln(ab)=\\ln a+\\ln b,\\quad \\ln\\!\\left(\\dfrac{a}{b}\\right)=\\ln a-\\ln b,\\quad \\ln(a^{k})=k\\ln a', use:'Expand before differentiating a log of a mess.', remember:'Logs turn multiply into add, divide into subtract, powers into a coefficient in front.', trap:'Writing ln(a+b)=ln a + ln b. Never. Logs do not split plus.'},
+  {id:'f06', unit:'algebra', name:'Slope of a line', tex:'m=\\dfrac{y_{2}-y_{1}}{x_{2}-x_{1}}', use:'Analytic geometry and average rate of change.', remember:'Rise over run. How much y changes per one x. That sentence is already the derivative idea.', trap:'Putting x on top.'},
+  {id:'f07', unit:'algebra', name:'Point-slope line', tex:'y-y_{1}=m(x-x_{1})', use:'Tangent line questions. Every Calc 1 test has one.', remember:'Start at the known point, then walk with slope m. Point-slope is the tangent-line formula.', trap:'Forcing y=mx+b and botching b when they already gave you a point.'},
+  {id:'f08', unit:'algebra', name:'Distance formula', tex:'d=\\sqrt{(x_{2}-x_{1})^{2}+(y_{2}-y_{1})^{2}}', use:'Analytic geometry, related rates with a stretching segment.', remember:'It is Pythagoras. The legs are the horizontal and vertical gaps.', trap:'Forgetting the square root at the end.'},
+  {id:'f09', unit:'algebra', name:'Circle', tex:'(x-h)^{2}+(y-k)^{2}=r^{2}', use:'Implicit differentiation and geometry constraints.', remember:'Every point is r away from the center (h,k). Square both sides of the distance formula and you get this.', trap:'Using x²+y²=r² when the center is not the origin.'},
+  {id:'f10', unit:'algebra', name:'Pythagorean identity', tex:'\\sin^{2}\\theta+\\cos^{2}\\theta=1', use:'Trig limits, simplifying derivatives, related rates in a right triangle.', remember:'On the unit circle, x=cos, y=sin, and x²+y²=1. Same as the circle equation.', trap:'Mixing this up with 1+tan²=sec².'},
+  {id:'f11', unit:'limits', name:'Two-sided limit exists', tex:'\\lim_{x\\to a}f(x)=L \\iff \\lim_{x\\to a^{-}}f(x)=\\lim_{x\\to a^{+}}f(x)=L', use:'Graph questions and piecewise functions.', remember:'Two hikers on a bridge. If they do not meet at the same height, the two-sided limit does not exist. A hole in the floor does not matter.', trap:'Saying DNE because there is a hole even though both sides meet.'},
+  {id:'f12', unit:'limits', name:'0/0 is a signal', tex:'\\text{plug in }\\to 0/0 \\Rightarrow \\text{ algebra, then retry}', use:'Almost every algebraic limit on a test.', remember:'0/0 means the original form is lying. Factor, cancel, conjugate, then plug in again.', trap:'Writing 0 as the answer because the top is 0.'},
+  {id:'f13', unit:'limits', name:'Limits at infinity', tex:'\\text{same degree }\\Rightarrow\\text{ ratio of leading coefficients}', use:'Horizontal asymptotes.', remember:'For big x, only the highest powers matter. Bigger bottom → 0. Bigger top → ±∞. Tie → ratio of leaders.', trap:'Trying to plug in ∞ like a number without comparing degrees.'},
+  {id:'f14', unit:'derivatives', name:'Definition of derivative', tex:'f\'(x)=\\lim_{h\\to 0}\\dfrac{f(x+h)-f(x)}{h}', use:'When they say “use the definition.” Also the meaning of every later shortcut.', remember:'Average slope between x and x+h, then smash h to 0. That average becomes the tangent slope.', trap:'Forgetting to expand f(x+h) fully before the limit.'},
+  {id:'f15', unit:'derivatives', name:'Power rule', tex:'\\dfrac{d}{dx}[x^{n}]=n x^{n-1}', use:'Almost every derivative in the course.', remember:'The power comes down in front and then gets tired, so it loses 1. x^4 → 4x^3. Rewrite radicals first.', trap:'Leaving the exponent the same.'},
+  {id:'f16', unit:'derivatives', name:'Product rule', tex:'(uv)\'=u\'v+uv\'', use:'A product of two x-things, not a constant times a function.', remember:'Keep the first, differentiate the second, plus keep the second, differentiate the first.', trap:'Writing u′v′ only.'},
+  {id:'f17', unit:'derivatives', name:'Quotient rule', tex:'\\left(\\dfrac{u}{v}\\right)\'=\\dfrac{u\'v-uv\'}{v^{2}}', use:'Fractions of functions.', remember:'Low d-high minus high d-low, over low low. Say it out loud every time. The minus is why order matters.', trap:'Flipping the minus. That one sign error is an entire test point.'},
+  {id:'f18', unit:'derivatives', name:'Chain rule', tex:'\\dfrac{d}{dx}f(g(x))=f\'(g(x))\\,g\'(x)', use:'A function inside another function.', remember:'Peel the onion: derivative of the outside, leave the inside alone, then multiply by the inside’s derivative.', trap:'Forgetting to multiply by the inside derivative. The most common Calc 1 error after algebra.'},
+  {id:'f19', unit:'derivatives', name:'Trig derivatives', tex:'(\\sin x)\'=\\cos x,\\quad (\\cos x)\'=-\\sin x', use:'Any sine/cosine problem. The co- functions pick up a minus.', remember:'Sine goes to cosine with no minus. Every co- function (cos, cot, csc) gets a minus.', trap:'Dropping the minus on cosine.'},
+  {id:'f20', unit:'derivatives', name:'e^x and ln x', tex:'(e^{x})\'=e^{x},\\quad (\\ln x)\'=\\dfrac{1}{x}', use:'Exponential growth and any log derivative.', remember:'e^x is the function that is its own slope. ln is the inverse, so its slope is 1/x. Chain rule still applies.', trap:'Writing (ln x)′ = 1/ln x.'},
+  {id:'f21', unit:'derivatives', name:'Implicit differentiation', tex:'\\text{diff both sides; } y^2 \\to 2y\\,y\'', use:'x²+y²=r² and any unsolved y.', remember:'y is a function of x, so differentiating y² uses the chain rule and produces y′. Then solve for y′.', trap:'Treating y as a constant so y² becomes 0.'},
+  {id:'f22', unit:'applications', name:'Critical number', tex:'f\'(c)=0\\text{ or }f\'\\text{ DNE, }c\\text{ in domain}', use:'Every max/min problem.', remember:'Places the graph could turn: flat tangent or a corner. Candidates are not automatically extrema. Test them.', trap:'Reporting every critical number as a max without a test.'},
+  {id:'f23', unit:'applications', name:'First derivative test', tex:'f\'\\text{ changes }+\\to - \\Rightarrow \\text{local max}', use:'Classifying local max/min.', remember:'Slope goes from climb to drop: peak. Drop to climb: valley. Read f′ like a hill profile.', trap:'Using only f′(c)=0 and calling it a max.'},
+  {id:'f24', unit:'applications', name:'Second derivative test', tex:'f\'(c)=0,\\ f\'\'(c)>0 \\Rightarrow \\text{local min}', use:'Fast classification when f″ is easy.', remember:'f″>0 is a smile (concave up), so a flat point is a valley. f″<0 is a frown: peak.', trap:'If f″(c)=0 the test is silent. Switch to the first derivative test.'},
+  {id:'f25', unit:'applications', name:'Mean Value Theorem', tex:'f\'(c)=\\dfrac{f(b)-f(a)}{b-a}', use:'Existence questions.', remember:'On a closed interval, some tangent matches the secant from a to b. Instantaneous speed equals average speed at least once.', trap:'Forgetting the hypotheses: continuous on [a,b], differentiable on (a,b).'},
+  {id:'f26', unit:'applications', name:'Newton’s method', tex:'x_{n+1}=x_{n}-\\dfrac{f(x_{n})}{f\'(x_{n})}', use:'Approximate a root of f(x)=0.', remember:'Follow the tangent down to the x-axis. That intercept is the next guess. Repeat.', trap:'A bad first guess or a tiny f′ can throw you far away. Restart closer.'},
+  {id:'f27', unit:'applications', name:'Related rates skeleton', tex:'\\text{geometry first, then } d/dt', use:'Ladder, balloon, shadow, leaking cone.', remember:'Draw. Label. Geometry equation with no rates yet. Then differentiate both sides with respect to t. Plug numbers last.', trap:'Plugging the given numbers into the geometry equation before differentiating.'},
+  {id:'f28', unit:'integrals', name:'Antiderivative power rule', tex:'\\int x^{n}\\,dx=\\dfrac{x^{n+1}}{n+1}+C\\ (n\\neq -1)', use:'Indefinite integrals of polynomials.', remember:'Power rule in reverse: add 1 to the exponent, divide by that new number, plus C. Check by differentiating.', trap:'Forgetting +C, or using this formula on 1/x.'},
+  {id:'f29', unit:'integrals', name:'FTC (net change)', tex:'\\int_{a}^{b}f\'(x)\\,dx=f(b)-f(a)', use:'Definite integrals and total-change word problems.', remember:'Adding up a rate from a to b recovers the net change of the original function. Odometer from speedometer.', trap:'Evaluating F(a)−F(b) instead of F(b)−F(a).'},
+  {id:'f30', unit:'integrals', name:'u-substitution', tex:'u=g(x),\\quad du=g\'(x)\\,dx', use:'Integrals that are chain rule backwards.', remember:'If you see an inside function and its derivative sitting next to it, name the inside u.', trap:'Forgetting to convert dx to du, or forgetting to switch bounds on a definite integral.'},
+  {id:'f31', unit:'integrals', name:'Area between curves', tex:'A=\\int_{a}^{b}(f_{\\mathrm{top}}-f_{\\mathrm{bottom}})\\,dx', use:'Last-unit application problems.', remember:'Height of each skinny rectangle is top minus bottom.', trap:'Integrating f−g when g is actually on top on part of the interval. Split the integral.'},
+  {id:'f32', unit:'integrals', name:'Exponential growth', tex:'y=y_{0}e^{kt}', use:'Population, decay (k<0), some cooling models.', remember:'The DE y′=ky says the rate is proportional to the amount. Solution is exponential. Find k from the data.', trap:'Using the formula without finding k from the given information.'}
+];
+
+const PROBLEMS = [
+  {id:'p1', unit:'algebra', prompt:'Write 1/√(x³) as a power of x.', options:['x^{3/2}','x^{-3/2}','x^{-1/3}','-x^{3/2}'], correct:1, steps:'√(x³)=(x³)^{1/2}=x^{3/2}. Reciprocal flips the sign: x^{-3/2}.'},
+  {id:'p2', unit:'algebra', prompt:'Distance from (1,2) to (4,6).', options:['5','7','√13','25'], correct:0, steps:'Δx=3, Δy=4. √(9+16)=5. 3-4-5 triangle.'},
+  {id:'p3', unit:'algebra', prompt:'Circle, center (2,−1), radius 3.', options:['(x-2)²+(y+1)²=9','(x+2)²+(y-1)²=9','(x-2)²+(y+1)²=3','x²+y²=9'], correct:0, steps:'(x−h)²+(y−k)²=r² with h=2, k=−1, r²=9. y−(−1)=y+1.'},
+  {id:'p4', unit:'limits', prompt:'lim x→3 of (x²−9)/(x−3)', options:['0','DNE','6','3'], correct:2, steps:'0/0. Factor (x−3)(x+3)/(x−3)=x+3 for x≠3. Plug in 3: 6. Hole, but the limit is 6.'},
+  {id:'p5', unit:'limits', prompt:'lim x→0 of (√(x+4)−2)/x', options:['0','1/4','1/2','DNE'], correct:1, steps:'0/0. Multiply by conjugate √(x+4)+2. Top becomes x. Cancel: 1/(√(x+4)+2) → 1/4.'},
+  {id:'p6', unit:'limits', prompt:'lim x→∞ of (4x³−1)/(2x³+5x)', options:['0','∞','2','4'], correct:2, steps:'Same degree 3. Ratio of leading coefficients 4/2=2.'},
+  {id:'p7', unit:'derivatives', prompt:'d/dx[√x]', options:['1/(2√x)','2√x','√x/2','1/√x'], correct:0, steps:'√x=x^{1/2}. Power rule: (1/2)x^{-1/2}=1/(2√x).'},
+  {id:'p8', unit:'derivatives', prompt:'d/dx[(x²+1)(x³)] by product rule', options:['5x⁴+3x²','6x⁵','x⁵+x³','2x+3x²'], correct:0, steps:'u=x²+1, v=x³. 2x·x³+(x²+1)·3x²=2x⁴+3x⁴+3x²=5x⁴+3x².'},
+  {id:'p9', unit:'derivatives', prompt:'d/dx[x/(x+1)]', options:['1/(x+1)','1/(x+1)²','x/(x+1)²','−1/(x+1)²'], correct:1, steps:'Quotient: (1·(x+1)−x·1)/(x+1)²=1/(x+1)².'},
+  {id:'p10', unit:'derivatives', prompt:'d/dx[sin(3x)]', options:['cos(3x)','3 cos(3x)','−3 cos(3x)','3 sin(3x)'], correct:1, steps:'Chain rule. Sine → cosine of the inside, times 3.'},
+  {id:'p11', unit:'derivatives', prompt:'If x²+y²=25, dy/dx at (3,4) is', options:['3/4','−3/4','4/3','−4/3'], correct:1, steps:'2x+2y y′=0 → y′=−x/y. At (3,4): −3/4.'},
+  {id:'p12', unit:'applications', prompt:'13-ft ladder, bottom 5 ft from wall, dx/dt=2 ft/s. dy/dt of the top?', options:['−5/6 ft/s','−5/2 ft/s','−2 ft/s','−12/5 ft/s'], correct:0, steps:'x²+y²=169. When x=5, y=12. 2x x′+2y y′=0 → y′=−(x/y)x′=−(5/12)·2=−5/6 ft/s (top dropping).'},
+  {id:'p13', unit:'applications', prompt:'f(x)=x³−3x on [−2,2]. Absolute maximum value?', options:['2','6','4','0'], correct:1, steps:'f′=3x²−3=0 at x=±1. f(−2)=−2, f(−1)=2, f(1)=−2, f(2)=6. Absolute max is 6 at the endpoint x=2.'},
+  {id:'p14', unit:'applications', prompt:'f(x)=x³−3x. Local maximum occurs at', options:['x=1','x=−1','x=0','x=2'], correct:1, steps:'f′=3(x−1)(x+1). Sign of f′: + on (−∞,−1), − on (−1,1). Change + to − at x=−1: local max.'},
+  {id:'p15', unit:'integrals', prompt:'∫ 3x² dx', options:['x³+C','3x³+C','6x+C','x²+C'], correct:0, steps:'Power rule backwards: 3·x³/3 + C = x³+C. Differentiate to check: 3x².'},
+  {id:'p16', unit:'integrals', prompt:'∫_0^2 (2x) dx', options:['2','4','8','0'], correct:1, steps:'Antiderivative x². F(2)−F(0)=4−0=4. Area of a triangle with base 2 and height 4 is also 4.'},
+  {id:'p17', unit:'integrals', prompt:'∫ 2x(x²+1)^3 dx. Best first move?', options:['Product rule','u=x²+1, du=2x dx','Expand everything','Quotient rule'], correct:1, steps:'Inside x²+1, and 2x dx is sitting there. That is u-sub.'},
+  {id:'p18', unit:'integrals', prompt:'∫ dx/x equals', options:['x^{-2}+C','ln|x|+C','1/x²+C','e^x+C'], correct:1, steps:'n=−1 is the exception to the power rule. The antiderivative of 1/x is ln|x|+C.'}
+];
+
+const WEEKS = [
+  {n:1, t:'Algebra + how to study', b:'Watch videos 1 and 8. Do Khan analytic geometry and algebra. Formula gym: exponents, distance, circle, slope.'},
+  {n:2, t:'Limits from graphs', b:'Lecture 1.2. Khan limits intro. Formula: two-sided limit exists. Practice p4 style tables later this week.'},
+  {n:3, t:'Limit laws (the missing 1.3)', b:'Khan gap k03 until 0/0 feels boring. Then Lecture 1.4 continuity and IVT.'},
+  {n:4, t:'Infinite limits + derivative definition', b:'Lecture 1.5 then 2.1. Do at least one definition-of-derivative problem by hand.'},
+  {n:5, t:'The big rules', b:'Lecture 2.2–2.4 over two days. Formula gym: power, product, quotient, chain. This week is the A.'},
+  {n:6, t:'Implicit + related rates', b:'Lectures 2.5 and 2.6. Recipe card: draw, equation, d/dt, then numbers.'},
+  {n:7, t:'Extrema, Rolle, MVT', b:'Lectures 3.1–3.2. Closed interval method until it is automatic: critical numbers plus endpoints.'},
+  {n:8, t:'Shape of a graph', b:'Lectures 3.3–3.4. First and second derivative tests. Catch up any skipped algebra cards.'},
+  {n:9, t:'Exam 2 week (stay ahead)', b:'Exam 2 review video. Then start 3.5 limits at infinity even if class is still on 3.3.'},
+  {n:10, t:'Curve sketching + optimization', b:'Lectures 3.6–3.7. One full sketch and one fence/box problem every day.'},
+  {n:11, t:'Newton, then integrals', b:'Lecture 3.8. Then start Khan Chapter 4 (k04). Do not wait for the playlist.'},
+  {n:12, t:'FTC and u-sub', b:'Khan k04 and k05 until you can undo a chain-rule derivative in your sleep.'},
+  {n:13, t:'ln and e^x', b:'Lectures 5.1, 5.2, 5.4. Connect them to the integral of 1/x.'},
+  {n:14, t:'Growth/decay + area', b:'Lecture 6.2 and Khan area between curves. Formula: y=y0 e^{kt} and top minus bottom.'},
+  {n:15, t:'Exam 4 + weak-point gym', b:'Exam 4 review. Any formula still in box 0 or 1 gets daily reps.'},
+  {n:16, t:'Final', b:'Final review video. Light formula gym. Sleep. No new systems the last 48 hours.'}
+];
+
+const PEPS = [
+  ['Formulas are sentences','Nobody is born knowing the product rule. Hide the symbols, say what they mean in English, then write them.'],
+  ['Community college is not a lesser Calc 1','The tests still ask for the same tangent line and the same 0/0 limit. The A is practice, not the school’s zip code.'],
+  ['Stay one week ahead','If class is on limits, you should already be differentiating. Lecture becomes review. Tests stop feeling like first contact.'],
+  ['Algebra is the course in disguise','When a problem feels like “I cannot do calculus,” it is usually a fraction, a radical, or a factor. Fix that and the calculus is short.']
+];
+
+let classWeek = parseInt(localStorage.getItem(LS.week) || '1', 10);
+let satStreak = parseInt(localStorage.getItem(LS.streak) || '0', 10);
+let satSessions = parseInt(localStorage.getItem(LS.sessions) || '0', 10);
+let lastCheckin = localStorage.getItem(LS.last) || '';
+let cpDone = JSON.parse(localStorage.getItem(LS.cp) || '{}');
+let formulaSRS = JSON.parse(localStorage.getItem(LS.formulas) || '{}');
+let lecturesDone = JSON.parse(localStorage.getItem(LS.lectures) || '{}');
+let ytPlayer = null, activeVideoIdx = -1, ytInterval = null, cpFired = {};
+let cpCurrentAnswers = {}, cpTotalQ = 0, cpCorrect = 0;
+let cpQuizBank = [];
+let cpPendingPct = null;
+let cpPassed = false;
+let cpUsedIds = new Set();
+let cpPoolVideoId = null;
+const CP_PASS_MIN = 2;
+let practiceQuizBank = { math: [] };
+let videoFilter = 'all';
+let formulaFilter = 'all';
+let practiceFilter = 'algebra';
+let formulaReveal = false;
+let gymQueue = [];
+let gymIndex = 0;
+
+function tex(s, display){
+  if(typeof katex === 'undefined') return s;
+  try { return katex.renderToString(s, {throwOnError:false, displayMode:!!display}); }
+  catch(e){ return s; }
+}
+
+function escHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function todayKey(){
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function defaultClassWeek(){
+  const start = new Date('2026-08-25T00:00:00');
+  const w = Math.ceil((Date.now() - start.getTime()) / 86400000 / 7);
+  return Math.min(16, Math.max(1, w));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if(!localStorage.getItem(LS.week)) classWeek = defaultClassWeek();
+  document.getElementById('live-date').textContent =
+    new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  VIDEO_DATA.forEach(v => { if(!cpDone[v.id]) cpDone[v.id] = {25:false,50:false,75:false,100:false}; });
+  FORMULAS.forEach(f => {
+    if(!formulaSRS[f.id]) formulaSRS[f.id] = {box:0, due:todayKey(), seen:0, ok:0};
+  });
+  updateScoreBanner();
+  updateStreakUI();
+  buildFilters();
+  buildVideoSelector();
+  const first = VIDEO_DATA.findIndex(v => v.req && !isLectureDone(v.id));
+  loadVideo(first >= 0 ? first : 0, true);
+  checkCheckinState();
+  renderPep();
+  renderToday();
+  renderWeek();
+  renderFormulaGym();
+  renderFormulaList();
+  renderPractice();
+  checkModelStatus();
+});
+
+function isLectureDone(id){
+  const cps = cpDone[id] || {};
+  return !!(cps[100] || lecturesDone[id]);
+}
+
+function targetWeek(){ return Math.min(16, classWeek + 1); }
+
+function updateScoreBanner(){
+  const t = targetWeek();
+  document.getElementById('display-ahead').textContent = 'Class W'+classWeek+' · you W'+t;
+  document.getElementById('ahead-mid').textContent = 'Your week '+t;
+  document.getElementById('score-bar').style.width = Math.round((t/16)*100) + '%';
+  const locked = FORMULAS.filter(f => (formulaSRS[f.id]||{}).box >= 3).length;
+  document.getElementById('stat-formulas').textContent = locked;
+  document.getElementById('stat-lectures').textContent = VIDEO_DATA.filter(v => v.req && isLectureDone(v.id)).length;
+}
+
+function openWeekModal(){
+  document.getElementById('modal-score').value = classWeek;
+  document.getElementById('score-modal').classList.add('open');
+}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function saveScore(){
+  const v = parseInt(document.getElementById('modal-score').value,10);
+  if(v>=1 && v<=16){
+    classWeek = v;
+    localStorage.setItem(LS.week, classWeek);
+    updateScoreBanner();
+    renderToday();
+    renderWeek();
+    closeModal('score-modal');
+    showToast('Class week set to '+classWeek);
+  }
+}
+
+function renderPep(){
+  const i = new Date().getDate() % PEPS.length;
+  document.getElementById('pep-title').textContent = PEPS[i][0];
+  document.getElementById('pep-body').textContent = PEPS[i][1];
+}
+
+function nextRequiredVideo(){
+  return VIDEO_DATA.find(v => v.req && !isLectureDone(v.id));
+}
+
+function dueFormulas(){
+  const today = todayKey();
+  return FORMULAS.filter(f => (formulaSRS[f.id].due || today) <= today);
+}
+
+function renderToday(){
+  const due = dueFormulas();
+  const next = nextRequiredVideo();
+  const w = WEEKS[targetWeek()-1];
+  const items = [
+    'Formula gym: '+due.length+' card'+(due.length===1?'':'s')+' due. Hide the formula, say it in English, then rate it.',
+    next ? ('Next required lesson: '+next.title+(next.kind==='khan'?' (Khan Academy gap)':'')+'.') : 'Required lectures are done. Use exam review and leftover formula cards.',
+    'Stay-ahead target is week '+targetWeek()+': '+w.t+'. '+w.b,
+    'Do 3 practice problems from today’s unit with the video off.'
+  ];
+  document.getElementById('today-mission').innerHTML = items.map((t,i)=>'<li><span class="ti-icon">'+(i+1)+'</span><span>'+escHtml(t)+'</span></li>').join('');
+  const f = due[0] || FORMULAS[new Date().getDate() % FORMULAS.length];
+  document.getElementById('today-formula').innerHTML = `
+    <div class="formula-name">${escHtml(f.name)}</div>
+    <div class="formula-use">${escHtml(f.use)}</div>
+    <div class="formula-box">${tex(f.tex, true)}</div>
+    <div class="remember-box"><div class="remember-label">How to remember</div>${escHtml(f.remember)}</div>`;
+}
+
+function renderWeek(){
+  const t = targetWeek();
+  document.getElementById('week-plan').innerHTML = WEEKS.map(w => `
+    <div class="week-card ${w.n===classWeek?'current':''} ${w.n===t?'ahead':''}">
+      <div style="font-size:.75rem;font-weight:800;color:var(--amber);margin-bottom:4px;">Week ${w.n}${w.n===classWeek?' · class is here':''}${w.n===t?' · you are here':''} · ${escHtml(w.t)}</div>
+      <div style="font-size:.85rem;line-height:1.5;">${escHtml(w.b)}</div>
+    </div>`).join('');
+}
+
+function updateCpStat(){
+  let total = 0;
+  VIDEO_DATA.forEach(v => { [25,50,75,100].forEach(cp => { if(cpDone[v.id] && cpDone[v.id][cp]) total++; }); });
+  document.getElementById('stat-cp-done') && (document.getElementById('stat-cp-done').textContent = total);
+  const ss = document.getElementById('ss-cp-total');
+  if(ss) ss.textContent = total;
+}
+
+function switchTab(id){
+  document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.bn-btn').forEach(e=>e.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={'t-today':'bn-today','t-sat':'bn-sat','t-formulas':'bn-formulas','t-practice':'bn-practice','t-tips':'bn-tips'};
+  const bn = map[id]; if(bn) document.getElementById(bn).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b=>{ if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes(id)) b.classList.add('active'); });
+  if(id==='t-formulas') renderFormulaGym();
+  if(id==='t-practice') renderPractice();
+}
+
+function checkCheckinState(){
+  const today = new Date().toDateString();
+  const btn = document.getElementById('checkin-btn');
+  if(lastCheckin===today){ btn.textContent='Studied today. That counts.'; btn.disabled=true; btn.classList.add('done'); }
+  else { btn.textContent='Mark today as studied'; btn.disabled=false; btn.classList.remove('done'); }
+}
+function doCheckin(){
+  const today=new Date().toDateString();
+  const yesterday=new Date(); yesterday.setDate(yesterday.getDate()-1);
+  if(lastCheckin===today){ showToast('Already counted today',true); return; }
+  if(lastCheckin!==yesterday.toDateString()&&satStreak>0) satStreak=0;
+  satStreak++; satSessions++;
+  lastCheckin=today;
+  localStorage.setItem(LS.streak,satStreak);
+  localStorage.setItem(LS.sessions,satSessions);
+  localStorage.setItem(LS.last,lastCheckin);
+  updateStreakUI(); checkCheckinState();
+  showToast('Day '+satStreak+'. Keep the streak boring and consistent.');
+}
+function updateStreakUI(){
+  document.getElementById('streak-count').textContent=satStreak;
+  document.getElementById('ss-sessions').textContent=satSessions;
+  document.getElementById('stat-sessions').textContent=satSessions;
+  updateCpStat();
+  updateScoreBanner();
+}
+
+function buildFilters(){
+  const mk = (target, current, onclickName) => UNITS.map(u =>
+    `<button type="button" class="cpill ${current===u.id?'active':''}" onclick="${onclickName}('${u.id}')">${escHtml(u.label)}</button>`
+  ).join('');
+  document.getElementById('unit-filters').innerHTML = mk('unit', videoFilter, 'setVideoFilter');
+  document.getElementById('formula-filters').innerHTML = mk('formula', formulaFilter, 'setFormulaFilter');
+  document.getElementById('practice-filters').innerHTML = UNITS.filter(u=>u.id!=='all'&&u.id!=='study'&&u.id!=='exams').concat([{id:'applications',label:'Applications'}]).filter((u,i,a)=>a.findIndex(x=>x.id===x.id)===i).map(u=>
+    `<button type="button" class="cpill ${practiceFilter===u.id?'active':''}" onclick="setPracticeFilter('${u.id}')">${escHtml(u.label)}</button>`
+  ).join('');
+  const pf = ['algebra','limits','derivatives','applications','integrals'];
+  document.getElementById('practice-filters').innerHTML = pf.map(id => {
+    const label = UNITS.find(u=>u.id===id).label;
+    return `<button type="button" class="cpill ${practiceFilter===id?'active':''}" onclick="setPracticeFilter('${id}')">${label}</button>`;
+  }).join('');
+}
+
+function setVideoFilter(id){ videoFilter=id; buildFilters(); buildVideoSelector(); }
+function setFormulaFilter(id){ formulaFilter=id; buildFilters(); renderFormulaList(); renderFormulaGym(); }
+function setPracticeFilter(id){ practiceFilter=id; buildFilters(); renderPractice(); }
+
+function filteredVideos(){
+  return VIDEO_DATA.filter(v => videoFilter==='all' || v.unit===videoFilter);
+}
+
+function buildVideoSelector(){
+  const el = document.getElementById('video-selector');
+  el.innerHTML = filteredVideos().map((v) => {
+    const i = VIDEO_DATA.indexOf(v);
+    const cps = cpDone[v.id] || {};
+    const dots = v.kind==='khan' ? '' : [25,50,75,100].map(cp =>
+      `<div class="cp-dot ${cps[cp]?'done':''}" title="${cp}%">${cp}</div>`
+    ).join('');
+    const tag = v.kind==='khan' ? 'Khan gap' : (v.req ? 'Required' : 'Optional');
+    return `<button type="button" class="vid-card" id="vc-${v.id}" onclick="loadVideo(${i})" aria-label="Open ${escHtml(v.title)}">
+      <div class="vid-num">${tag} · ${escHtml(v.mins)}</div>
+      <div class="vid-title">${escHtml(v.title)}</div>
+      <div class="vid-creator">${v.kind==='khan'?'Khan Academy':'The Math Sorcerer'}</div>
+      <div style="font-size:.78rem;color:var(--t2);margin-top:6px;line-height:1.4;">${escHtml(v.why)}</div>
+      <div class="vid-checkpoints">${dots}</div>
+    </button>`;
+  }).join('');
+}
+
+function canUseYouTubeApi(){
+  return location.protocol === 'http:' || location.protocol === 'https:';
+}
+
+window.onYouTubeIframeAPIReady = function(){
+  if(activeVideoIdx >= 0 && canUseYouTubeApi()){
+    const v = VIDEO_DATA[activeVideoIdx];
+    if(v && v.youtubeId) connectYouTubePlayer(v);
+  }
+};
+
+function connectYouTubePlayer(video){
+  if(!video || !video.youtubeId || typeof YT === 'undefined' || !YT.Player || !document.getElementById('yt-player')) return;
+  if(ytPlayer && typeof ytPlayer.getIframe === 'function'){
+    try{ if(document.body.contains(ytPlayer.getIframe())) return; }catch(e){}
+  }
+  ytPlayer = null;
+  try{
+    ytPlayer = new YT.Player('yt-player', {
+      events:{
+        onReady: () => startTracking(video.id),
+        onStateChange: (e) => onPlayerState(e, video.id),
+        onError: () => {
+          document.getElementById('yt-fallback').style.display = 'block';
+          showToast('The player was blocked. The YouTube link is ready below.', true);
+        }
+      }
+    });
+  }catch(e){
+    document.getElementById('yt-fallback').style.display = 'block';
+  }
+}
+
+function loadVideo(idx, silent){
+  const v = VIDEO_DATA[idx];
+  if(!v) return;
+  document.querySelectorAll('.vid-card').forEach(c=>c.classList.remove('active-vid'));
+  const selectedCard = document.getElementById('vc-'+v.id);
+  if(selectedCard){ selectedCard.classList.add('active-vid'); }
+  activeVideoIdx = idx;
+  cpFired = { ...(cpDone[v.id]||{}) };
+  cpUsedIds = new Set();
+  cpPoolVideoId = v.id;
+  const wrap = document.getElementById('video-player-wrap');
+  const fallback = document.getElementById('yt-fallback');
+  const openLink = document.getElementById('yt-open-link');
+  const watchUrl = v.youtubeId
+    ? `https://www.youtube.com/watch?v=${v.youtubeId}&list=${PLAYLIST}`
+    : v.khan;
+  openLink.href = watchUrl;
+  openLink.textContent = v.kind==='khan' ? 'Open this Khan Academy lesson' : `If needed, watch “${v.title}” on YouTube`;
+  fallback.style.display = 'none';
+  if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer=null; }
+  document.getElementById('khan-link').href = v.khan;
+  document.getElementById('khan-link').textContent = v.kind==='khan' ? 'Work this unit on Khan Academy' : 'Same topic on Khan Academy';
+  document.getElementById('vid-topic-info').style.display='block';
+  document.getElementById('topics-list').innerHTML = v.topics.map(t=>`<span class="topic-tag">${escHtml(t)}</span>`).join('');
+
+  if(v.kind==='khan' || !v.youtubeId){
+    wrap.innerHTML = `<div class="video-placeholder video-local-help"><strong>This is a Khan Academy gap lesson</strong><span>The Math Sorcerer playlist does not teach this, and Calc 1 tests still do. Open Khan, then come back for the checkpoint quiz.</span><a class="open-local-btn" href="${v.khan}" target="_blank" rel="noopener" style="text-decoration:none;">Open Khan Academy</a></div>`;
+    document.getElementById('cp-info').style.display='flex';
+    document.getElementById('cp-bar-pct').textContent = 'Khan then quiz';
+    document.getElementById('cp-bar-fill').style.width = '0%';
+    fallback.style.display = 'block';
+    if(!silent) showToast('Khan gap: '+v.title);
+    return;
+  }
+
+  const apiBits = canUseYouTubeApi()
+    ? `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}&widget_referrer=${encodeURIComponent(location.href)}`
+    : '';
+  const embedUrl = `https://www.youtube.com/embed/${v.youtubeId}?rel=0&playsinline=1&list=${PLAYLIST}${apiBits}`;
+  wrap.innerHTML = `<iframe id="yt-player" class="yt-frame" title="${escHtml(v.title)}" src="${embedUrl}" loading="eager" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  if(canUseYouTubeApi()) connectYouTubePlayer(v);
+  document.getElementById('cp-info').style.display='flex';
+  document.getElementById('cp-bar-pct').textContent = canUseYouTubeApi() ? '0%' : 'use checkpoint quiz';
+  document.getElementById('cp-bar-fill').style.width = '0%';
+  updateCpUI(v.id);
+  if(!silent) showToast('Playing: '+v.title);
+}
+
+function startTracking(videoId){
+  clearInterval(ytInterval);
+  ytInterval = setInterval(()=>{
+    if(!ytPlayer || typeof ytPlayer.getCurrentTime !== 'function') return;
+    try{
+      if(ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) return;
+      const cur = ytPlayer.getCurrentTime();
+      const dur = ytPlayer.getDuration();
+      if(!dur || dur <= 0) return;
+      const pct = (cur/dur)*100;
+      document.getElementById('cp-bar-fill').style.width = Math.min(100,pct)+'%';
+      document.getElementById('cp-bar-pct').textContent = Math.round(pct)+'%';
+      for(const cp of [25,50,75,100]){
+        if(pct >= cp && !cpFired[cp]){
+          cpFired[cp] = true;
+          ytPlayer.pauseVideo();
+          triggerCheckpoint(videoId, cp);
+          break;
+        }
+      }
+    }catch(e){}
+  }, 1500);
+}
+function onPlayerState(e, videoId){
+  if(e.data === YT.PlayerState.ENDED && !cpFired[100]){ cpFired[100]=true; triggerCheckpoint(videoId,100); }
+}
+function updateCpUI(videoId){
+  buildVideoSelector();
+  if(activeVideoIdx>=0){
+    const activeCard = document.getElementById('vc-'+VIDEO_DATA[activeVideoIdx].id);
+    if(activeCard) activeCard.classList.add('active-vid');
+  }
+  updateCpStat();
+}
+function shuffleInPlace(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    const t = arr[i]; arr[i]=arr[j]; arr[j]=t;
+  }
+  return arr;
+}
+
+function resetCheckpointPoolIfNeeded(videoId){
+  if(cpPoolVideoId !== videoId){
+    cpPoolVideoId = videoId;
+    cpUsedIds = new Set();
+  }
+}
+
+function buildCheckpointPool(v){
+  const key = (v && v.quiz) || 'study';
+  const conceptual = (UNIT_QUIZ[key] || UNIT_QUIZ.study).map((q,i)=>({
+    id: key+'-u'+i,
+    question:q.question,
+    options:(q.options||[]).slice(),
+    correct:q.correct,
+    explanation:q.explanation||''
+  }));
+  const drillUnit = key === 'study' ? null : key;
+  const drills = drillUnit
+    ? PROBLEMS.filter(p => p.unit === drillUnit).map(p=>({
+        id: p.id,
+        question:p.prompt,
+        options:(p.options||[]).slice(),
+        correct:p.correct,
+        explanation:p.steps||''
+      }))
+    : [];
+  return conceptual.concat(drills);
+}
+
+function pickCheckpointQuestions(pool, n, opts){
+  const count = n || 3;
+  const exclude = (opts && opts.exclude) || new Set();
+  const avoid = (opts && opts.avoid) || new Set();
+  const markUsed = !(opts && opts.skipMark);
+  let source = pool.filter(q => q && q.id && !exclude.has(q.id));
+  if(source.length < count) source = pool.slice();
+  const preferred = source.filter(q => !avoid.has(q.id));
+  if(preferred.length >= count) source = preferred;
+  source = source.map(q=>({
+    id:q.id,
+    question:q.question,
+    options:(q.options||[]).slice(),
+    correct:q.correct,
+    explanation:q.explanation||''
+  }));
+  shuffleInPlace(source);
+  const picked = source.slice(0, Math.min(count, source.length));
+  if(markUsed){
+    picked.forEach(q=>{ if(q.id) exclude.add(q.id); });
+  }
+  return picked.map(q=>{
+    const tagged = (q.options||[]).map((o,i)=>({o,i}));
+    shuffleInPlace(tagged);
+    return {
+      id:q.id,
+      question:q.question,
+      options:tagged.map(x=>x.o),
+      correct:tagged.findIndex(x=>x.i===q.correct),
+      explanation:q.explanation||''
+    };
+  });
+}
+
+function setCpAttentionNote(kind, text){
+  const note = document.getElementById('cp-attention-note');
+  if(!note) return;
+  note.classList.remove('pass','fail');
+  if(kind) note.classList.add(kind);
+  note.textContent = text;
+}
+
+function manualCheckpoint(){
+  if(activeVideoIdx<0){ showToast('Pick a lesson first',true); return; }
+  const v = VIDEO_DATA[activeVideoIdx];
+  const incomplete = [25,50,75,100].find(cp => !(cpDone[v.id]||{})[cp]);
+  const cp = incomplete || 100;
+  if(ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+  cpFired[cp] = true;
+  triggerCheckpoint(v.id, cp);
+}
+
+function triggerCheckpoint(videoId, cpPct){
+  const v = VIDEO_DATA.find(x=>x.id===videoId);
+  resetCheckpointPoolIfNeeded(videoId);
+  cpPendingPct = cpPct;
+  cpPassed = false;
+  cpFired[cpPct] = true;
+  document.getElementById('cp-modal-title').textContent = `${cpPct}% check · ${v.title}`;
+  document.getElementById('cp-modal-sub').textContent = 'Fresh questions each checkpoint. Answer all — need at least 2 right.';
+  setCpAttentionNote('', 'Pick an answer on every question. You need at least 2 right to prove you were paying attention.');
+  document.getElementById('cp-modal').classList.add('open');
+  renderCheckpointQuiz(v, cpPct, false);
+}
+
+function renderCheckpointQuiz(videoData, cpPct, isRetry, avoidIds){
+  const pool = buildCheckpointPool(videoData);
+  const qs = pickCheckpointQuestions(pool, 3, {
+    exclude: cpUsedIds,
+    avoid: avoidIds || new Set(),
+    skipMark: false
+  });
+  cpTotalQ = qs.length; cpCorrect = 0; cpCurrentAnswers = {};
+  cpPassed = false;
+  cpQuizBank = qs;
+  const left = Math.max(0, pool.length - cpUsedIds.size);
+  setCpAttentionNote('', `${isRetry?'Retry':'New'} set for the ${cpPct}% check · ${left} unused left in this lesson pool.`);
+  document.getElementById('cp-quiz-area').innerHTML = qs.map((q,qi) => `
+    <div class="quiz-q-card">
+      <div class="quiz-q-num">Question ${qi+1} of ${cpTotalQ}</div>
+      <div class="quiz-q-text">${escHtml(q.question)}</div>
+      ${(q.options||[]).map((o,oi) => `<button type="button" class="quiz-opt" data-qi="${qi}" data-oi="${oi}" onclick="onCpOptClick(this)">${escHtml(o)}</button>`).join('')}
+      <div class="quiz-exp" id="cpq-exp-${qi}"></div>
+    </div>`).join('') + `<div id="cp-summary" style="display:none;"></div>`;
+}
+
+function onCpOptClick(btn){
+  if(!btn || btn.disabled) return;
+  const qi = +btn.dataset.qi, oi = +btn.dataset.oi;
+  const q = cpQuizBank[qi];
+  if(!q){ showToast('Quiz did not load — tap Checkpoint quiz again', true); return; }
+  answerCpQ(qi, oi, q.correct, q.explanation||'');
+}
+
+function answerCpQ(qi, chosen, correct, explanation){
+  [0,1,2,3].forEach(oi=>{
+    const btn = document.querySelector(`#cp-quiz-area .quiz-opt[data-qi="${qi}"][data-oi="${oi}"]`);
+    if(!btn) return;
+    btn.disabled=true;
+    if(oi===correct) btn.classList.add('correct');
+    if(oi===chosen&&chosen!==correct) btn.classList.add('wrong');
+  });
+  const exp = document.getElementById(`cpq-exp-${qi}`);
+  if(exp){ exp.textContent = (chosen===correct?'Nice. ':'Look at the story, not just the symbols. ') + explanation; exp.classList.add('show'); }
+  if(cpCurrentAnswers[qi] === undefined){
+    cpCurrentAnswers[qi] = chosen===correct;
+    if(chosen===correct) cpCorrect++;
+  }
+  const answered = Object.keys(cpCurrentAnswers).length;
+  if(answered < cpTotalQ){
+    setCpAttentionNote('', `${answered}/${cpTotalQ} answered. Keep going — pick every option yourself.`);
+  }
+  if(answered >= cpTotalQ) setTimeout(showCpSummary, 400);
+}
+
+function showCpSummary(){
+  const el = document.getElementById('cp-summary');
+  if(!el) return;
+  cpPassed = cpCorrect >= Math.min(CP_PASS_MIN, cpTotalQ);
+  el.style.display='block';
+  if(cpPassed){
+    const msg = cpCorrect===cpTotalQ ? 'Locked in. You were paying attention.' : 'Good enough. Misses go to formula gym later.';
+    setCpAttentionNote('pass', 'Passed. Resume unlocks only after you press Resume.');
+    el.innerHTML=`<div class="quiz-summary"><div class="big-score">${cpCorrect}/${cpTotalQ}</div><div class="summary-label">${msg}</div><button class="resume-btn" type="button" onclick="completeCheckpoint()">Resume video</button></div>`;
+  } else {
+    setCpAttentionNote('fail', 'Not yet. You need at least 2 correct — try a fresh set.');
+    el.innerHTML=`<div class="quiz-summary"><div class="big-score">${cpCorrect}/${cpTotalQ}</div><div class="summary-label">That does not prove attention yet. Rewind if needed, then try again.</div><button class="resume-btn" type="button" onclick="retryCheckpoint()">Try again</button></div>`;
+  }
+}
+
+function retryCheckpoint(){
+  if(activeVideoIdx<0 || cpPendingPct==null) return;
+  const v = VIDEO_DATA[activeVideoIdx];
+  const lastIds = new Set((cpQuizBank||[]).map(q=>q && q.id).filter(Boolean));
+  lastIds.forEach(id => cpUsedIds.delete(id));
+  renderCheckpointQuiz(v, cpPendingPct, true, lastIds);
+  showToast('New questions — answer all of them');
+}
+
+function completeCheckpoint(){
+  if(Object.keys(cpCurrentAnswers).length < cpTotalQ){
+    showToast('Select an answer for every question first', true);
+    return;
+  }
+  if(!cpPassed){
+    showToast('Need at least 2 correct to continue', true);
+    return;
+  }
+  if(activeVideoIdx>=0){
+    const vid = VIDEO_DATA[activeVideoIdx];
+    if(!cpDone[vid.id]) cpDone[vid.id] = {25:false,50:false,75:false,100:false};
+    if(cpPendingPct!=null) cpDone[vid.id][cpPendingPct] = true;
+    if(vid.kind==='khan') cpDone[vid.id][100] = true;
+    localStorage.setItem(LS.cp, JSON.stringify(cpDone));
+    updateCpUI(vid.id);
+  }
+  closeCheckpointModal(true);
+  showToast('Checkpoint passed');
+}
+
+function closeCheckpointModal(force){
+  if(!force && document.getElementById('cp-modal').classList.contains('open') && !cpPassed){
+    showToast('Finish the checkpoint first — pick answers', true);
+    return;
+  }
+  document.getElementById('cp-modal').classList.remove('open');
+  cpPendingPct = null;
+  setTimeout(()=>{ if(ytPlayer&&ytPlayer.playVideo) ytPlayer.playVideo(); }, 400);
+}
+
+function dueDatePlus(days){
+  const d = new Date();
+  d.setDate(d.getDate()+days);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function renderFormulaGym(){
+  const today = todayKey();
+  const pool = FORMULAS.filter(f => formulaFilter==='all' || f.unit===formulaFilter);
+  gymQueue = pool.filter(f => (formulaSRS[f.id].due||today) <= today);
+  if(gymQueue.length===0) gymQueue = pool.slice(0,1);
+  gymIndex = Math.min(gymIndex, gymQueue.length-1);
+  const dueN = FORMULAS.filter(f => (formulaSRS[f.id].due||today)<=today).length;
+  document.getElementById('formula-due-label').textContent = dueN+' due today';
+  const f = gymQueue[gymIndex];
+  if(!f){ document.getElementById('formula-gym').innerHTML = '<p>All caught up.</p>'; return; }
+  document.getElementById('formula-gym').innerHTML = `
+    <div class="formula-stage">
+      <div class="formula-name">${escHtml(f.name)}</div>
+      <div class="formula-use">${escHtml(f.use)}</div>
+      <div class="formula-box" id="formula-hidden">${formulaReveal ? tex(f.tex,true) : '<span style="color:var(--t2);font-weight:800;">Say it in English first. Then reveal.</span>'}</div>
+      <button class="btn-sec" type="button" onclick="toggleFormulaReveal()">${formulaReveal?'Hide formula':'Reveal formula'}</button>
+      <div class="remember-box"><div class="remember-label">How to remember</div>${escHtml(f.remember)}<div style="margin-top:8px;color:var(--t2);font-size:.86rem;"><strong>Trap:</strong> ${escHtml(f.trap)}</div></div>
+      <div class="rate-row">
+        <button class="rate-btn" onclick="rateFormula(0)">Blank</button>
+        <button class="rate-btn" onclick="rateFormula(1)">Almost</button>
+        <button class="rate-btn" onclick="rateFormula(2)">Locked</button>
+      </div>
+      <p style="margin-top:10px;font-size:.8rem;color:var(--t2);">${gymIndex+1} of ${gymQueue.length} in this set · box ${(formulaSRS[f.id].box||0)}</p>
+    </div>`;
+}
+
+function toggleFormulaReveal(){
+  formulaReveal = !formulaReveal;
+  renderFormulaGym();
+}
+
+function rateFormula(kind){
+  const f = gymQueue[gymIndex];
+  if(!f) return;
+  const s = formulaSRS[f.id];
+  s.seen = (s.seen||0)+1;
+  if(kind===0){ s.box = 0; s.due = dueDatePlus(1); }
+  else if(kind===1){ s.box = Math.min(2, (s.box||0)); s.due = dueDatePlus(2); }
+  else { s.ok = (s.ok||0)+1; s.box = Math.min(5, (s.box||0)+1); s.due = dueDatePlus([1,3,7,14,30,45][s.box] || 30); }
+  localStorage.setItem(LS.formulas, JSON.stringify(formulaSRS));
+  formulaReveal = false;
+  gymIndex = (gymIndex+1) % Math.max(1, gymQueue.length);
+  renderFormulaGym();
+  renderFormulaList();
+  updateScoreBanner();
+  renderToday();
+  showToast(kind===2 ? 'Locked. See you in a few days.' : kind===1 ? 'Again in 2 days.' : 'Back tomorrow. That is how memory is built.');
+}
+
+function renderFormulaList(){
+  const pool = FORMULAS.filter(f => formulaFilter==='all' || f.unit===formulaFilter);
+  document.getElementById('formula-list').innerHTML = pool.map(f => {
+    const s = formulaSRS[f.id] || {box:0};
+    return `<div class="gap-card">
+      <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+        <strong>${escHtml(f.name)}</strong>
+        <span class="match-badge mh">box ${s.box||0}</span>
+      </div>
+      <div class="formula-box" style="margin:10px 0;">${tex(f.tex,true)}</div>
+      <div style="font-size:.86rem;color:var(--t2);line-height:1.5;">${escHtml(f.remember)}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderPractice(){
+  const pool = PROBLEMS.filter(p => p.unit===practiceFilter);
+  document.getElementById('practice-area').innerHTML = pool.map((p,i) => `
+    <div class="quiz-q-card" data-pid="${p.id}">
+      <div class="quiz-q-num">${p.unit} · ${i+1}/${pool.length}</div>
+      <div class="problem-prompt">${escHtml(p.prompt)}</div>
+      ${(p.options||[]).map((o,oi)=>`<button type="button" class="quiz-opt" data-practice="1" data-qi="${i}" data-oi="${oi}">${escHtml(o)}</button>`).join('')}
+      <div class="quiz-exp">${escHtml(p.steps)}</div>
+    </div>`).join('') || '<p>No drills in this unit yet.</p>';
+}
+
+async function checkModelStatus(){
+  const box = document.getElementById('model-status');
+  const text = document.getElementById('model-status-text');
+  if(!box || !text) return;
+  if(window.location.protocol === 'file:'){
+    box.classList.add('ready');
+    text.textContent = 'Exam drills on this page always work. No server needed.';
+    return;
+  }
+  try{
+    const response = await fetch('/api/status', {cache:'no-store'});
+    const data = await response.json();
+    if(data.configured){
+      box.classList.add('ready');
+      text.textContent = 'Extra trainer ready. Built-in drills still come first.';
+    }else{
+      box.classList.add('missing');
+      text.textContent = 'Built-in drills always work. Extra trainer is optional.';
+    }
+  }catch(e){
+    box.classList.add('missing');
+    text.textContent = 'Built-in drills always work. Extra trainer is optional.';
+  }
+}
+
+async function callCoach(userPrompt){
+  if(window.location.protocol === 'file:') throw new Error('open-with-launcher');
+  const response = await fetch('/api/chat', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({prompt:userPrompt})
+  });
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok) throw new Error(data.error || 'model-request-failed');
+  if(!data.content) throw new Error('empty-model-response');
+  return data.content;
+}
+
+function parseJSON(text){
+  text = String(text||'').replace(/```json\\s*/gi,'').replace(/```\\s*/g,'').trim();
+  const start = text.indexOf('{');
+  const end = text.lastIndexOf('}');
+  if(start!==-1 && end!==-1) text = text.substring(start, end+1);
+  return JSON.parse(text);
+}
+
+function modelConnectionError(){
+  return `<div class="model-error"><strong>The extra trainer is optional.</strong><br>Use the exam drills above. They do not need an internet model.</div>`;
+}
+
+async function generateMathAI(){
+  const topic = document.getElementById('math-topic').value;
+  const diff = document.getElementById('math-diff').value;
+  const box = document.getElementById('math-ai-result');
+  const btn = document.getElementById('math-gen-btn');
+  btn.disabled = true;
+  box.innerHTML = `<div class="ai-loading"><div class="spinner"></div><div class="ai-loading-text">Writing 3 ${diff} questions…</div></div>`;
+  const prompt = `Write exactly 3 Calculus 1 exam questions on: ${topic}. Difficulty: ${diff}.
+Community-college Calculus & Analytic Geometry 1. Show algebra. No trick 1550 puzzles.
+JSON: {"questions":[{"question":"...","options":["A.","B.","C.","D."],"correct":0,"explanation":"plain steps"}]}`;
+  try{
+    const data = parseJSON(await callCoach(prompt));
+    renderQuiz(box, data.questions, 'math');
+  }catch(e){
+    box.innerHTML = modelConnectionError();
+  }
+  btn.disabled = false;
+}
+
+function renderQuiz(box, questions, prefix){
+  const qs = (questions||[]).slice(0,3);
+  practiceQuizBank[prefix] = qs;
+  box.innerHTML = qs.map((q,qi)=>`
+    <div class="quiz-q-card" data-prefix="${prefix}" data-qi="${qi}">
+      <div class="quiz-q-num">Extra ${qi+1}/3</div>
+      <div class="quiz-q-text">${escHtml(q.question).replace(/\\n/g,'<br>')}</div>
+      ${(q.options||[]).map((o,oi)=>`<button type="button" class="quiz-opt" data-practice="1" data-qi="${qi}" data-oi="${oi}">${escHtml(o)}</button>`).join('')}
+      <div class="quiz-exp"></div>
+    </div>`).join('');
+}
+
+function showToast(msg, warn){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.borderColor = warn? 'var(--rose)':'var(--border)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+document.addEventListener('click', e=>{
+  if(e.target.id==='score-modal') closeModal('score-modal');
+  if(e.target.id==='cp-modal'){
+    if(!cpPassed){ showToast('Answer the checkpoint questions first', true); return; }
+    closeCheckpointModal(true);
+  }
+  const cpBtn = e.target.closest('.quiz-opt');
+  if(cpBtn && cpBtn.closest('#cp-quiz-area') && !cpBtn.disabled){
+    onCpOptClick(cpBtn);
+    return;
+  }
+  const pBtn = e.target.closest('.quiz-opt[data-practice="1"]');
+  if(pBtn && !pBtn.disabled){
+    const card = pBtn.closest('.quiz-q-card');
+    const qi = +pBtn.dataset.qi, oi = +pBtn.dataset.oi;
+    if(card && card.dataset.pid){
+      const pool = PROBLEMS.filter(p => p.unit===practiceFilter);
+      const q = pool[qi];
+      if(!q) return;
+      card.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+        b.disabled = true;
+        if(i===q.correct) b.classList.add('correct');
+        if(i===oi && oi!==q.correct) b.classList.add('wrong');
+      });
+      const exp = card.querySelector('.quiz-exp');
+      exp.textContent = (oi===q.correct?'Nice. ':'That is okay. ') + q.steps;
+      exp.classList.add('show');
+      return;
+    }
+    const prefix = card && card.dataset.prefix;
+    const q = prefix && practiceQuizBank[prefix] && practiceQuizBank[prefix][qi];
+    if(!q || !card) return;
+    card.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+      b.disabled = true;
+      if(i===q.correct) b.classList.add('correct');
+      if(i===oi && oi!==q.correct) b.classList.add('wrong');
+    });
+    const exp = card.querySelector('.quiz-exp');
+    exp.textContent = (oi===q.correct?'Nice. ':'That is okay. ') + (q.explanation||'');
+    exp.classList.add('show');
+  }
+});
+
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    closeModal('score-modal');
+    if(document.getElementById('cp-modal').classList.contains('open')){
+      if(!cpPassed){ showToast('Finish the checkpoint first — pick answers', true); return; }
+      closeCheckpointModal(true);
+    }
+  }
+});
+
+</script>
+</body>
+</html>

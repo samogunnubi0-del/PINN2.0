@@ -1,0 +1,230 @@
+<body>
+<div class="container">
+<header>
+  <span class="for-yashi-tag">The A Plan</span>
+  <div class="header-top">
+    <div class="header-title">
+      <h1>The A Plan</h1>
+      <p id="hello-line">Calculus &amp; Analytic Geometry 1. Community college does not change the math. Stay one week ahead of lecture, and learn formulas as English sentences, not magic strings.</p>
+      <div class="profile-pills">
+        <span class="ppill olive">Goal: A</span>
+        <span class="ppill">Fall 2026 semester</span>
+        <span class="ppill blue">Math Sorcerer playlist</span>
+        <span class="ppill">Khan Academy fills the gaps</span>
+        <span class="ppill olive">Formula gym every day</span>
+      </div>
+    </div>
+    <div class="live-date" id="live-date">Loading…</div>
+  </div>
+</header>
+
+<div class="score-banner">
+  <div class="score-left">
+    <div>
+      <div class="score-label">Stay-ahead status</div>
+      <div class="score-val" id="display-ahead">Week 1</div>
+    </div>
+  </div>
+  <div class="score-bar-wrap">
+    <div class="score-bar-labels"><span>Class</span><span id="ahead-mid">Your target</span><span>Final</span></div>
+    <div class="score-bar-track"><div class="score-bar-fill" id="score-bar" style="width:8%"></div></div>
+  </div>
+  <button class="score-edit" onclick="openWeekModal()">Set class week</button>
+</div>
+
+<div class="stat-row stat-row-3">
+  <div class="stat-box"><div class="stat-num" id="stat-sessions">0</div><div class="stat-lbl">Study days</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-formulas">0</div><div class="stat-lbl">Formulas locked</div></div>
+  <div class="stat-box"><div class="stat-num" id="stat-lectures">0</div><div class="stat-lbl">Lectures finished</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('t-today')">Today</button>
+  <button class="tab-btn" onclick="switchTab('t-sat')">Videos</button>
+  <button class="tab-btn" onclick="switchTab('t-formulas')">Formulas</button>
+  <button class="tab-btn" onclick="switchTab('t-practice')">Practice</button>
+  <button class="tab-btn" onclick="switchTab('t-tips')">Plan</button>
+</div>
+
+<div id="t-today" class="tab-content active">
+  <div class="card" style="background:linear-gradient(135deg, rgba(158,47,63,.09), rgba(196,110,103,.08));">
+    <div class="card-header"><div class="card-title" id="pep-title">Formulas are sentences</div></div>
+    <p id="pep-body" style="font-size:1.02rem;line-height:1.7;color:var(--t1);">Nobody is born knowing the product rule. You were never taught a memory method. This page teaches the story first, then the symbols.</p>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Today’s mission</div></div>
+        <ul class="tip-list" id="today-mission"></ul>
+        <button class="checkin-btn" id="checkin-btn" onclick="doCheckin()" style="width:100%;margin-top:8px;">Mark today as studied</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Formula of the day</div><button class="btn-sec" onclick="switchTab('t-formulas')">Open gym</button></div>
+        <div id="today-formula"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">How you get the A</div></div>
+        <ul class="tip-list">
+          <li><span class="ti-icon">1</span><span>90% of missed Calc 1 points are algebra: exponents, factoring, fractions. That is not a community-college problem. It is the whole course.</span></li>
+          <li><span class="ti-icon">2</span><span>Do not reread formulas. Hide them and write them from memory. That is how they stick.</span></li>
+          <li><span class="ti-icon">3</span><span>Watch Math Sorcerer for the lecture. Then do Khan Academy for the same section until you can do 5 problems with the video off.</span></li>
+          <li><span class="ti-icon">4</span><span>Stay one week ahead of class. Lecture becomes review. Tests stop feeling like first contact.</span></li>
+        </ul>
+        <p style="margin-top:12px;"><a class="notes-link" href="MAT191_Calculus1_Masterclass_Deck.html">Open the walkthrough notes deck</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="t-sat" class="tab-content">
+  <div class="streak-hero">
+    <div class="streak-left">
+      <div><div class="streak-count" id="streak-count">0</div><div class="streak-label">Day streak</div></div>
+    </div>
+    <div class="streak-stats">
+      <div class="ss-item"><div class="ss-val" id="ss-sessions">0</div><div class="ss-lbl">Days</div></div>
+      <div class="ss-item"><div class="ss-val" id="ss-cp-total">0</div><div class="ss-lbl">Checkpoints</div></div>
+    </div>
+    <a class="checkin-btn" href="https://www.youtube.com/playlist?list=PLO1y6V1SXjjNSSOZvV3PcFu4B1S8nfXBM" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;">Open full playlist</a>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Math Sorcerer + Khan</div>
+      <span style="font-size:.78rem;color:var(--t2);">Playlist starts with how-to-study videos. Lectures start at 1.2.</span>
+    </div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:16px;line-height:1.6;">The first 10 videos are study advice (watch 1 and 8). Then the real Calc 1 lectures. This playlist skips limit laws and most of Chapter 4 integrals. Those cards are Khan, so you are not missing the final.</p>
+    <div class="filter-row" id="unit-filters"></div>
+    <div class="video-selector" id="video-selector"></div>
+    <div class="video-player-wrap" id="video-player-wrap"></div>
+    <div class="yt-fallback" id="yt-fallback">
+      <a id="yt-open-link" href="#" target="_blank" rel="noopener">Open the video on YouTube if the player is blocked</a>
+    </div>
+    <div class="checkpoint-info" id="cp-info" style="display:none;">
+      <div class="cp-bar-wrap">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;color:var(--t2);margin-bottom:6px;">
+          <span>Video progress</span><span id="cp-bar-pct">0%</span>
+        </div>
+        <div class="cp-bar">
+          <div class="cp-bar-fill" id="cp-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <button class="manual-quiz-btn" type="button" onclick="manualCheckpoint()">Checkpoint quiz</button>
+    </div>
+    <div id="vid-topic-info" style="display:none;margin-top:12px;">
+      <div class="topics-list" id="topics-list"></div>
+      <p style="margin-top:12px;"><a class="notes-link" id="khan-link" href="#" target="_blank" rel="noopener">Same topic on Khan Academy</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="t-formulas" class="tab-content">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Formula gym</div>
+      <span style="font-size:.78rem;color:var(--t2);" id="formula-due-label">0 due today</span>
+    </div>
+    <p style="font-size:.95rem;line-height:1.65;color:var(--t1);margin-bottom:14px;">You do not memorize ink. You remember what the formula is saying, then the symbols fall out. Hide it, say it in English, write it, then rate yourself.</p>
+    <div class="filter-row" id="formula-filters"></div>
+    <div id="formula-gym"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">All formulas</div></div>
+    <div id="formula-list"></div>
+  </div>
+</div>
+
+<div id="t-practice" class="tab-content">
+  <div class="model-status" id="model-status">
+    <div class="status-dot"></div>
+    <div><strong>Extra problem trainer</strong><span id="model-status-text">Built-in exam drills always work. The optional trainer is extra.</span></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Exam drills</div></div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;line-height:1.6;">These are the shapes that show up on community-college Calc 1 tests. Show the steps only after you try it on paper.</p>
+    <div class="filter-row" id="practice-filters"></div>
+    <div id="practice-area"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Optional extra set</div></div>
+    <div class="ai-controls">
+      <select id="math-topic">
+        <option value="limits">Limits and continuity</option>
+        <option value="derivatives">Derivative rules</option>
+        <option value="related rates">Related rates</option>
+        <option value="optimization">Optimization</option>
+        <option value="integrals">Integrals and FTC</option>
+        <option value="analytic geometry">Analytic geometry</option>
+      </select>
+      <select id="math-diff">
+        <option value="warm-up">Warm-up</option>
+        <option value="exam" selected>Exam</option>
+        <option value="A-level">A-level stretch</option>
+      </select>
+      <button class="ai-gen-btn" id="math-gen-btn" onclick="generateMathAI()">Give me 3 extra questions</button>
+    </div>
+    <div class="ai-result-area" id="math-ai-result"></div>
+  </div>
+</div>
+
+<div id="t-tips" class="tab-content">
+  <div class="card">
+    <div class="card-header"><div class="card-title">16-week stay-ahead map</div></div>
+    <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;line-height:1.6;">Set which week your class is on. Your job is the next week, not last week’s panic. Math Sorcerer’s playlist uses Larson-style numbering, which is what most Calculus &amp; Analytic Geometry 1 courses use.</p>
+    <div id="week-plan" style="display:flex;flex-direction:column;gap:10px;"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">Playlist honesty</div></div>
+    <ul class="tip-list">
+      <li><span class="ti-icon">1</span><span>Videos 1–10 are book and study advice. Required: “The Best Way to Learn Calculus” and “Calculus For Beginners.”</span></li>
+      <li><span class="ti-icon">2</span><span>Lectures start at 1.2. There is no 1.3 (limit laws) in this playlist. Use the Khan gap card or you will freeze on 0/0 limits.</span></li>
+      <li><span class="ti-icon">3</span><span>After Newton’s method the playlist jumps to ln/exp. Chapter 4 (Riemann sums, FTC, u-sub) is on Khan. That is usually a midterm or the final.</span></li>
+      <li><span class="ti-icon">4</span><span>Analytic geometry (distance, midpoint, circles, lines) is assumed, not taught. Formula gym covers it so class does not “end you.”</span></li>
+    </ul>
+    <p style="margin-top:14px;"><a class="notes-link" href="MAT191_Calculus1_Masterclass_Deck.html">Walkthrough notes deck</a> · <a class="notes-link" href="https://www.khanacademy.org/math/calculus-1" target="_blank" rel="noopener">Khan Calculus 1 course</a> · <a class="notes-link" href="https://www.youtube.com/watch?v=3dVaOT3pQqc&amp;list=PLO1y6V1SXjjNSSOZvV3PcFu4B1S8nfXBM" target="_blank" rel="noopener">Math Sorcerer playlist</a></p>
+  </div>
+</div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="bn-btn active" id="bn-today" onclick="switchTab('t-today')"><span class="icon">•</span>Today</button>
+  <button class="bn-btn" id="bn-sat" onclick="switchTab('t-sat')"><span class="icon">•</span>Videos</button>
+  <button class="bn-btn" id="bn-formulas" onclick="switchTab('t-formulas')"><span class="icon">•</span>Formulas</button>
+  <button class="bn-btn" id="bn-practice" onclick="switchTab('t-practice')"><span class="icon">•</span>Practice</button>
+  <button class="bn-btn" id="bn-tips" onclick="switchTab('t-tips')"><span class="icon">•</span>Plan</button>
+</nav>
+
+<div class="modal-overlay" id="score-modal">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-title">Which week is class on?</div>
+    <label class="modal-lbl">Class is currently on week</label>
+    <input type="number" id="modal-score" min="1" max="16" step="1" value="1">
+    <p style="font-size:.85rem;color:var(--t2);margin-top:10px;line-height:1.5;">Your study target is this number plus one, so you walk into lecture already having seen the ideas.</p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal('score-modal')">Cancel</button>
+      <button class="btn-primary" onclick="saveScore()" style="flex:1;">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="cp-modal">
+  <div class="cp-modal-box" onclick="event.stopPropagation()">
+    <div class="cp-modal-header">
+      <div>
+        <div class="cp-modal-title" id="cp-modal-title">Checkpoint</div>
+      </div>
+    </div>
+    <div class="cp-modal-sub" id="cp-modal-sub">Three questions. Then you keep watching.</div>
+    <div id="cp-quiz-area"></div>
+    <button class="skip-cp-btn" type="button" onclick="completeCheckpoint()">Skip and keep going</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+/*APP_JS*/
+</script>
+</body>
+</html>

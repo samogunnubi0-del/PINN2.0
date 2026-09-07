@@ -1,0 +1,140 @@
+{
+  "audit_status": "PASS",
+  "zip_path": "C:\\Users\\ogunn\\Downloads\\V4_GP_LSTM_FINAL_c3a56472508c.zip",
+  "zip_bytes": 6190965,
+  "zip_sha256": "86fd62a67ab932c26eef755146c81310396e7924418b6b98daa2df734365ca24",
+  "member_count": 32,
+  "unsafe_path_count": 0,
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826",
+  "claim_eligible": false,
+  "dataset_sha256": "3fcdb80ba5d286fcd6ecac777c03f73086d882d42766e68331b45298ea5b0c56",
+  "split_hash": "693edff8a7b13b287af80f1cf593b597c285cf48017c3ed1ed0c64418350d57a",
+  "required_external_code_bundle_sha256": "c3a56472508cad460451c6bfd4de688f6bde26a1cc961abe33c6c5f1c0a661c4",
+  "hash_verification": {
+    "collector_source_files": 30,
+    "nested_artifacts": 27
+  },
+  "models": {
+    "gp": {
+      "test_metrics": {
+        "median_relative_error": 0.019707896324678894,
+        "p95_relative_error": 0.03790649956052522,
+        "worst_relative_error": 0.055869552306488025,
+        "median_n2n_relative_error": 0.005260321354552549,
+        "p95_n2n_relative_error": 0.01990505553007132,
+        "median_ngamma_relative_error": 0.03033535885404996,
+        "p95_ngamma_relative_error": 0.039841297927155045,
+        "median_case_mean_relative_error": 0.017591756042610575,
+        "p95_case_mean_relative_error": 0.026609880677013354,
+        "sample_count": 48
+      },
+      "intervals": {
+        "raw_two_standard_deviations": {
+          "joint_coverage": 0.020833333333333332,
+          "marginal_coverage": [
+            0.9583333333333334,
+            0.041666666666666664
+          ],
+          "median_upper_to_lower_ratio": [
+            1.0446577108537909,
+            1.0281833751853275
+          ]
+        },
+        "calibrated_95": {
+          "joint_coverage": 0.9583333333333334,
+          "marginal_coverage": [
+            1.0,
+            0.9583333333333334
+          ],
+          "median_upper_to_lower_ratio": [
+            1.1538809582578744,
+            1.0953288685932399
+          ]
+        }
+      },
+      "ac225": {
+        "median": 0.005260321332407784,
+        "p95": 0.02036509355752594,
+        "worst": 0.043298323999142234
+      },
+      "domains": {
+        "explicit_ood_rejection": 1.0,
+        "sparse_corner_warning": 0.0625,
+        "locked_test_false_rejection": 0.0,
+        "explicit_ood_to_locked_uncertainty_ratio": 2.4311792306252813
+      },
+      "training_seconds_recorded": 1.5844943660000013,
+      "inference_10000_median_seconds_recorded": 0.4658263310000166
+    },
+    "lstm": {
+      "test_metrics": {
+        "median_relative_error": 0.01832313098084662,
+        "p95_relative_error": 0.039308603479739954,
+        "worst_relative_error": 0.05614514410907013,
+        "median_n2n_relative_error": 0.0058820641021452656,
+        "p95_n2n_relative_error": 0.027360901925310578,
+        "median_ngamma_relative_error": 0.029185061466221393,
+        "p95_ngamma_relative_error": 0.04128888952488397,
+        "median_case_mean_relative_error": 0.016468244871079056,
+        "p95_case_mean_relative_error": 0.02772764894511601,
+        "sample_count": 48
+      },
+      "intervals": {
+        "raw_two_standard_deviations": {
+          "joint_coverage": 0.9583333333333334,
+          "marginal_coverage": [
+            0.9583333333333334,
+            0.9791666666666666
+          ],
+          "median_upper_to_lower_ratio": [
+            1.0546051603598938,
+            1.1196371291073315
+          ]
+        },
+        "calibrated_95": {
+          "joint_coverage": 0.9583333333333334,
+          "marginal_coverage": [
+            0.9583333333333334,
+            1.0
+          ],
+          "median_upper_to_lower_ratio": [
+            1.057423732015375,
+            1.126006961227656
+          ]
+        }
+      },
+      "ac225": {
+        "median": 0.005882064077518709,
+        "p95": 0.03033773619550018,
+        "worst": 0.04024738314702368
+      },
+      "domains": {
+        "explicit_ood_rejection": 1.0,
+        "sparse_corner_warning": 0.0625,
+        "locked_test_false_rejection": 0.0,
+        "explicit_ood_to_locked_uncertainty_ratio": 1.139093817272146
+      },
+      "training_seconds_recorded": 29.790693991000126,
+      "inference_10000_median_seconds_recorded": 0.02043394000020271
+    }
+  },
+  "paired_bootstrap": {
+    "observed_difference": 0.0014021039192147339,
+    "confidence_interval_95": [
+      -0.004344060168081115,
+      0.0037027781513936306
+    ],
+    "supported_order": "ordering_not_resolved"
+  },
+  "outcome": {
+    "provisional_leader": "gp",
+    "reason": "Both models passed the gates, but the paired bootstrap did not resolve the ordering; gp has the lower observed p95.",
+    "status": "provisional leader",
+    "winner": null
+  },
+  "limitations": [
+    "Development architecture comparison on modeled finite-geometry/TENDL proxy data; not experimental, reactor, clinical, or production validation.",
+    "Static geometry comparison. This cannot establish that LSTM memory helps.",
+    "Locked for this protocol but previously evaluated in the V2 geometry diagnostic"
+  ]
+}

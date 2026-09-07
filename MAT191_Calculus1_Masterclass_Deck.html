@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAT 191 (Calculus I) | Academic Masterclass & Interactive Side-Study Deck</title>
+    
+    <!-- Academic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for crisp mathematical formulas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        :root {
+            /* NC State University Academic Palette */
+            --bg-primary: #DBCDBA;     /* Muted Oatmeal */
+            --bg-slide: #D3C4AE;       /* Deeper beige */
+            --surface: #E8DDCE;        /* Warm parchment card background */
+            --surface-hover: #EFE6DA;
+            --surface-analogy: #F4EBE1;/* Soft cream for mental model callouts */
+            --surface-secret: #E4D5C1; /* Warm parchment for Side Tab Notes */
+            --surface-math: #DFD1BE;   /* Darker parchment for formulas */
+            --surface-decoder: #EFE4D6;/* Dedicated box for symbol actions */
+            
+            --text-primary: #2B1A12;   /* Dark Roast Text */
+            --text-secondary: #5C4033; /* Medium Espresso Brown */
+            --text-dim: #8B7355;       /* Warm Muted Brown */
+            
+            --accent-blue: #B08968;    /* Classic Latte */
+            --accent-purple: #9C6644;  /* Rich Mocha */
+            --accent-green: #7D8C65;   /* Matcha Green */
+            --accent-orange: #C47641;  /* Cinnamon */
+            --accent-red: #A8493D;     /* Cranberry Brick */
+            --accent-cyan: #5E7A75;    /* Muted Sage */
+            
+            --border: #D1C0AC;
+            --border-bright: #BFA892;
+            --border-dark: #A89078;
+            
+            --gradient-hero: linear-gradient(135deg, #6A3818 0%, #9C6644 45%, #C47641 100%);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --shadow-card: 0 4px 15px rgba(43, 26, 18, 0.08);
+            --shadow-hover: 0 8px 25px rgba(43, 26, 18, 0.14);
+            --shadow-sidebar: -6px 0 25px rgba(43, 26, 18, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            user-select: none;
+        }
+
+        /* Top Academic Header */
+        .top-navbar {
+            height: 54px;
+            background: #D3C4AE;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 100;
+            position: relative;
+        }
+
+        .brand-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .pill-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(156, 102, 68, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid rgba(156, 102, 68, 0.3);
+            text-transform: uppercase;
+        }
+
+        .nav-modules {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .module-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-secondary);
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 0.35rem 0.55rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .module-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .module-btn.active {
+            background: var(--surface);
+            color: var(--accent-purple);
+            border-color: var(--border-dark);
+            font-weight: 700;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .icon-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--accent-purple);
+        }
+
+        .icon-btn.active-tab {
+            background: var(--accent-purple);
+            color: #fff;
+            border-color: var(--accent-purple);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            height: 3px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
+
+        /* Presentation Slider Track */
+        #deck-viewport {
+            height: calc(100vh - 54px - 48px - 3px);
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        #deck {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100%;
+            padding: 1.6rem 6vw 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-bright) transparent;
+        }
+
+        /* Typography */
+        .hero-title {
+            font-size: clamp(1.8rem, 3.4vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-label {
+            font-size: 0.74rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent-purple);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .slide-title {
+            font-size: clamp(1.4rem, 2.2vw, 2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 0.94rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.45rem;
+            max-width: 950px;
+            line-height: 1.45;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 0.5rem;
+        }
+
+        strong { color: var(--text-primary); font-weight: 700; }
+        em { color: var(--accent-purple); font-style: normal; font-weight: 600; }
+
+        code {
+            font-family: var(--font-mono);
+            background: rgba(176, 137, 104, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.86em;
+            color: var(--text-primary);
+        }
+
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.9rem;
+            align-items: stretch;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .card:hover {
+            border-color: var(--border-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-accent-purple { border-left: 5px solid var(--accent-purple); }
+        .card-accent-blue { border-left: 5px solid var(--accent-blue); }
+        .card-accent-green { border-left: 5px solid var(--accent-green); }
+        .card-accent-orange { border-left: 5px solid var(--accent-orange); }
+        .card-accent-red { border-left: 5px solid var(--accent-red); }
+
+        /* Symbol Decoder */
+        .decoder-box {
+            background: var(--surface-decoder);
+            border: 1px solid var(--border-bright);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 8px;
+            padding: 0.65rem 0.95rem;
+            margin-top: 0.35rem;
+        }
+
+        .decoder-title {
+            font-size: 0.74rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .decoder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.82rem;
+        }
+
+        .decoder-item {
+            background: rgba(255,255,255,0.4);
+            padding: 0.35rem 0.55rem;
+            border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .decoder-sym {
+            font-weight: 800;
+            color: var(--accent-purple);
+            font-family: var(--font-mono);
+        }
+
+        /* Math Containers */
+        .math-box {
+            background: var(--surface-math);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 0.6rem 0.9rem;
+            margin: 0.25rem 0;
+            overflow-x: auto;
+            color: #2B1A12;
+            font-size: 0.92rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            background: rgba(176, 137, 104, 0.22);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        .badge-green { background: rgba(125, 140, 101, 0.25); color: #35461e; }
+        .badge-orange { background: rgba(196, 118, 65, 0.25); color: #72340b; }
+        .badge-red { background: rgba(168, 73, 61, 0.25); color: #6e1c12; }
+        .badge-purple { background: rgba(156, 102, 68, 0.25); color: #4e2912; }
+
+        /* Tables */
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 0.3rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .academic-table th {
+            background: #DFD1BE;
+            color: var(--text-primary);
+            font-weight: 700;
+            text-align: left;
+            padding: 0.45rem 0.7rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .academic-table td {
+            padding: 0.45rem 0.7rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            background: var(--surface);
+        }
+        .academic-table tr:hover td {
+            background: var(--surface-hover);
+        }
+
+        /* SIDE-TAB STUDY NOTES PANEL */
+        #side-panel {
+            position: fixed;
+            top: 54px;
+            right: 0;
+            bottom: 48px;
+            width: clamp(360px, 35vw, 520px);
+            background: var(--surface-secret);
+            border-left: 2.5px solid var(--accent-purple);
+            box-shadow: var(--shadow-sidebar);
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #side-panel.open {
+            transform: translateX(0%);
+        }
+
+        .side-panel-header {
+            padding: 0.9rem 1.25rem;
+            background: #D8C7B0;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .side-panel-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .side-panel-close {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        .side-panel-close:hover {
+            background: rgba(0,0,0,0.08);
+            color: var(--text-primary);
+        }
+
+        .side-panel-body {
+            padding: 1.25rem;
+            overflow-y: auto;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .side-panel-body h3 {
+            font-size: 1rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border-bright);
+            padding-bottom: 0.3rem;
+        }
+
+        .side-panel-body p { margin-bottom: 0.85rem; }
+        .side-panel-body ul, .side-panel-body ol { padding-left: 1.25rem; margin-bottom: 0.85rem; }
+        .side-panel-body li { margin-bottom: 0.4rem; }
+
+        .real-life-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(196, 118, 65, 0.15);
+            color: var(--accent-orange);
+            font-weight: 800;
+            font-size: 0.72rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Floating Side Tab Handle */
+        .side-tab-handle {
+            position: fixed;
+            right: 0;
+            top: 45%;
+            transform: translateY(-50%);
+            background: var(--accent-purple);
+            color: #fff;
+            padding: 0.75rem 0.45rem;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.75rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.08em;
+            box-shadow: -3px 0 10px rgba(43,26,18,0.15);
+            z-index: 85;
+            transition: all 0.2s ease;
+        }
+        .side-tab-handle:hover {
+            background: #7A4222;
+            padding-right: 0.65rem;
+        }
+
+        /* Bottom Dock */
+        .bottom-dock {
+            height: 48px;
+            background: #D3C4AE;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 100;
+            position: relative;
+        }
+        .slide-counter {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+        .btn-nav {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-nav.primary {
+            background: var(--accent-purple);
+            color: #fff;
+            border-color: var(--accent-purple);
+        }
+
+        /* Modal */
+        #overview-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(43, 26, 18, 0.88);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            padding: 2.5rem 5vw;
+            overflow-y: auto;
+        }
+        #overview-modal.active { display: flex; }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+        .overview-thumb {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem;
+            cursor: pointer;
+        }
+        .overview-thumb.current {
+            border: 2px solid var(--accent-purple);
+            background: #F4ECE1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="top-navbar">
+        <div class="brand-badge">
+            <span style="font-size: 1.2rem;">📐</span>
+            <span>MAT 191 (Calculus I) Mastery</span>
+            <span class="pill-badge">Interactive Side Study Deck</span>
+        </div>
+
+        <nav class="nav-modules">
+            <button class="module-btn active" onclick="jumpToModule(1)">1. Foundations & Strategy</button>
+            <button class="module-btn" onclick="jumpToModule(2)">2. Limits & Continuity</button>
+            <button class="module-btn" onclick="jumpToModule(3)">3. Derivative Rules</button>
+            <button class="module-btn" onclick="jumpToModule(4)">4. Applications & Optimization</button>
+            <button class="module-btn" onclick="jumpToModule(5)">5. Integrals & FTC</button>
+            <button class="module-btn" onclick="jumpToModule(6)">6. Link to IsotopePINN</button>
+        </nav>
+
+        <div class="nav-controls">
+            <a class="icon-btn" href="index.html" style="text-decoration:none; background:#2B1A12; color:#F5EFE6; font-weight:700;">⚡ Study Desk</a>
+            <a class="icon-btn" href="Calc1_The_A_Plan.html" style="text-decoration:none;">🎯 The A Plan</a>
+            <a class="icon-btn" href="IsotopePINN_30Day_Professional_Mastery.html" style="text-decoration:none;">⚛️ IsotopePINN</a>
+            <button id="side-toggle-btn" class="icon-btn" onclick="toggleSidePanel()">
+                <span>📖</span> <span>Deep Notes [S]</span>
+            </button>
+            <button class="icon-btn" onclick="toggleOverview()">Grid [O]</button>
+            <button class="icon-btn" onclick="toggleFullscreen()">Fullscreen [F]</button>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-fill"></div>
+    </div>
+
+    <!-- Floating Side Tab Handle -->
+    <div class="side-tab-handle" onclick="toggleSidePanel()">
+        <span>🤫 DEEP NOTES TAB [S]</span>
+    </div>
+
+    <!-- Slide-Out Study Notes Side Panel -->
+    <aside id="side-panel">
+        <div class="side-panel-header">
+            <div class="side-panel-title">
+                <span>🤫</span>
+                <span id="side-panel-heading">Deep High School Walkthrough</span>
+            </div>
+            <button class="side-panel-close" onclick="toggleSidePanel()">✕</button>
+        </div>
+        <div id="side-panel-body" class="side-panel-body">
+            <!-- Dynamically populated from active slide's secret content -->
+        </div>
+    </aside>
+
+    <!-- Main Deck -->
+    <main id="deck-viewport">
+        <div id="deck">
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 1: TIMELINE & THE SECRET BLUEPRINT -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="1" data-title="Calculus I Blueprint & Secret">
+                <div class="section-label">MAT 191 • COURSE BLUEPRINT & ROADMAP</div>
+                <h1 class="hero-title">How to Master MAT 191 (Calculus I) with an 'A'</h1>
+                <p class="slide-subtitle">How long does it take, what is the secret pattern of Calculus, and how do you study to conquer every midterm and final exam?</p>
+
+                <div class="grid-3" style="margin-top: 0.3rem;">
+                    <div class="card card-accent-purple">
+                        <div class="badge badge-purple">THE REALISTIC TIMELINE</div>
+                        <div style="font-weight: 800; font-size: 1.05rem;">4 to 6 Weeks (Intensive)</div>
+                        <p style="font-size: 0.85rem;"><strong>Prep Track:</strong> 1.5–2 hours/day (10 hrs/week) to master all 5 units before class starts.<br><strong>Semester Track:</strong> 5–6 hours/week for 14 weeks alongside lectures.</p>
+                    </div>
+
+                    <div class="card card-accent-orange">
+                        <div class="badge badge-orange">THE CORE SECRET</div>
+                        <div style="font-weight: 800; font-size: 1.05rem;">Calculus is Only TWO Ideas</div>
+                        <p style="font-size: 0.85rem;">1. <strong>Derivatives:</strong> Zooming in on a curved line until it looks straight (Slope = Rise / Run).<br>2. <strong>Integrals:</strong> Slicing shapes into millions of thin rectangles (Area = Width × Height).</p>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <div class="badge badge-green">THE EXAM TRICK</div>
+                        <div style="font-weight: 800; font-size: 1.05rem;">90% of Errors are Algebra!</div>
+                        <p style="font-size: 0.85rem;">Students rarely fail calculus concepts; they fail on fractions, negative exponents, and factoring. Master precalc algebra and Calc 1 is an easy A!</p>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Calculus Action Decoder:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">d/dx</span>: Derivative operator (Rate of change right now).</div>
+                        <div class="decoder-item"><span class="decoder-sym">∫</span>: Integral sign (Elongated 'S' for summing up total area).</div>
+                        <div class="decoder-item"><span class="decoder-sym">lim (x→a)</span>: Limit (Where you are walking towards).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🚗 Real-Life Example: The Tesla Autopilot Speedometer</div>
+                    <h3>Why Does Calculus Even Exist?</h3>
+                    <p><strong>Imagine driving a Tesla down the highway:</strong></p>
+                    <p>You have two instruments on your dashboard:</p>
+                    <ul>
+                        <li><strong>1. The Speedometer (The Derivative, $v = ds/dt$):</strong> Tells you your exact speed <em>right this millisecond</em> (e.g., $65.4\text{ mph}$). If a deer jumps in front of your car, only your instantaneous speed matters. That is a <strong>Derivative</strong>.</li>
+                        <li><strong>2. The Odometer / Battery Range (The Integral, $\int v(t) dt$):</strong> Adds up every single foot you drove over the past 3 hours to tell you your total distance ($180\text{ miles}$). That is an <strong>Integral</strong>.</li>
+                    </ul>
+                    <p><strong>Concrete Sample with Numbers:</strong></p>
+                    <p>Suppose you drove at $60\text{ mph}$ for $1\text{ hour}$, then hit traffic and crawled at $20\text{ mph}$ for $30\text{ minutes}$ ($0.5\text{ hr}$):</p>
+                    <p>$$\text{Total Distance} = (60 \times 1) + (20 \times 0.5) = 60 + 10 = \mathbf{70\text{ miles}}$$</p>
+                    <p>Calculus does this exact multiplication when your speed is constantly curving and changing every second!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 2: PRECALCULUS ALGEBRA DIAGNOSTICS (THE REAL EXAM KILLERS) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="1" data-title="Precalc Algebra Diagnostics">
+                <div class="section-label">UNIT 1 • PRECALC ALGEBRA BOOTCAMP</div>
+                <h2 class="slide-title">The 3 Precalc Traps That Destroy Calculus Grades</h2>
+                <p class="slide-subtitle">Before touching limits or derivatives, master these 3 algebra conversions that appear on every single test.</p>
+
+                <div class="grid-3">
+                    <div class="card card-accent-red">
+                        <div class="badge badge-red">TRAP 1: FRACTIONAL POWERS</div>
+                        <h3>Square Roots are Exponents!</h3>
+                        <p>Calculus rules do NOT work on radical signs ($\sqrt{}$). Always convert them to powers first:</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\sqrt{x} = x^{1/2} \quad | \quad \sqrt[3]{x^2} = x^{2/3}$$
+                            $$\frac{1}{\sqrt{x}} = x^{-1/2} \quad | \quad \frac{1}{x^4} = x^{-4}$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-orange">
+                        <div class="badge badge-orange">TRAP 2: COMMON FACTORING</div>
+                        <h3>Difference of Squares & Cubes</h3>
+                        <p>Whenever you see 0/0 in a limit, factoring will save your life:</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$a^2 - b^2 = (a - b)(a + b)$$
+                            $$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$
+                            $$x^2 - 9 = (x - 3)(x + 3)$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <div class="badge badge-green">TRAP 3: LOGARITHM RULES</div>
+                        <h3>Expanding Logs Before Differentiating</h3>
+                        <p>Expanding logs turns a brutal 10-minute problem into a 5-second problem:</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\ln(a \cdot b) = \ln(a) + \ln(b)$$
+                            $$\ln(a / b) = \ln(a) - \ln(b)$$
+                            $$\ln(a^k) = k \cdot \ln(a)$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Conversion Action Decoder:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">x^(-n) = 1/x^n</span>: Negative power means it belongs in the denominator.</div>
+                        <div class="decoder-item"><span class="decoder-sym">x^(a/b) = (ᵇ√x)ᵃ</span>: Bottom number is the root, top number is the power.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🔬 Real-Life Example: Microscope Zoom & Earthquake Richter Scales</div>
+                    <h3>Why Do Negative Powers Mean Fractions?</h3>
+                    <p><strong>Look at a microscope zoom dial or powers of 10 in science:</strong></p>
+                    <ul>
+                        <li>$$10^3 = 1,000$$ (Telescope zoom)</li>
+                        <li>$$10^2 = 100$$ (Divide by 10)</li>
+                        <li>$$10^1 = 10$$ (Divide by 10)</li>
+                        <li>$$10^0 = 1$$ (Divide by 10 - Standard human eyesight!)</li>
+                        <li>$$10^{-1} = 0.1 = \frac{1}{10}$$ (Microscope level: Bacteria)</li>
+                        <li>$$10^{-2} = 0.01 = \frac{1}{100}$$ (Microscope level: Viruses)</li>
+                        <li>$$10^{-6} = 0.000001 = \frac{1}{1,000,000}$$ (Nanometer level: DNA atoms)</li>
+                    </ul>
+                    <p><strong>The Real-Life Lesson:</strong> A negative power is NOT a negative number! It is just a very tiny microscopic fraction ($$10^{-6}$$ is a millionth of a meter). Whenever you see $$\frac{1}{x^3}$$, your brain must instantly say: <em>"Aha! That is just $$x^{-3}$$!"</em></p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 3: LIMITS FROM GRAPHS & ONE-SIDED LIMITS -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="2" data-title="Limits: The Bridge & Pothole">
+                <div class="section-label">UNIT 2 • LIMITS & CONTINUITY</div>
+                <h2 class="slide-title">Limits: Approaching a Destination (The Bridge Analogy)</h2>
+                <p class="slide-subtitle">A limit doesn't care what happens AT the point; it only cares about where you are WALKING towards!</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The One-Sided Limit Rule</h3>
+                        <p>For a two-sided limit $\lim_{x \to a} f(x)$ to exist, the left-hand limit must equal the right-hand limit:</p>
+                        <div class="math-box">
+                            $$\lim_{x \to a^-} f(x) = L \quad \text{and} \quad \lim_{x \to a^+} f(x) = L \iff \lim_{x \to a} f(x) = L$$
+                        </div>
+                        <div class="analogy-box">
+                            <div class="analogy-tag">💡 The Two Hikers on a Bridge</div>
+                            <div class="analogy-text">
+                                Imagine two hikers walking towards each other on a bridge at $x = 2$.
+                                <br>• If both meet at height $y = 5$, the <strong>Limit is 5</strong> (even if there is a hole in the floor!).
+                                <br>• If the bridge broke and one is at height 3 while the other is at height 8, the <strong>Limit DOES NOT EXIST (DNE)</strong>!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>The 3 Types of Discontinuities</h3>
+                        <ul style="padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6;">
+                            <li><strong>1. Removable Discontinuity (Hole):</strong> Limit exists, but point $f(c)$ is missing or plotted elsewhere.</li>
+                            <li><strong>2. Jump Discontinuity:</strong> Left limit does not equal right limit (piecewise functions).</li>
+                            <li><strong>3. Infinite Discontinuity (Vertical Asymptote):</strong> Function shoots to $+\infty$ or $-\infty$.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Direction Decoder:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">x → a⁻</span>: Walking from the left (smaller numbers like 1.99).</div>
+                        <div class="decoder-item"><span class="decoder-sym">x → a⁺</span>: Walking from the right (larger numbers like 2.01).</div>
+                        <div class="decoder-item"><span class="decoder-sym">DNE</span>: Does Not Exist (Left and right paths don't meet).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🌉 Real-Life Example: Golden Gate Drawbridge & Potholes</div>
+                    <h3>Walking Over a Pothole on the Road</h3>
+                    <p><strong>Imagine driving a car down Main Street:</strong></p>
+                    <p>At mile marker $$x = 2$$, construction workers dug a deep pothole ($$y$$ is undefined there). If you drive your car into the hole, you crash ($$0/0$$ divide by zero).</p>
+                    <p><strong>How GPS Navigation calculates the Limit:</strong></p>
+                    <p>Your GPS doesn't look at the hole itself. It looks at where the road is heading from both sides:</p>
+                    <ul>
+                        <li>At mile marker $$x = 1.999\text{ miles}$$, your car elevation is $$3.999\text{ feet}$$.</li>
+                        <li>At mile marker $$x = 2.001\text{ miles}$$, your car elevation is $$4.001\text{ feet}$$.</li>
+                    </ul>
+                    <p>The GPS says: <em>"Even though there is a pothole at marker 2, the road was clearly built to connect at height **4.0 feet**!"</em> That is the <strong>Limit</strong>! The limit describes the intention of the road, ignoring the missing point!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 4: THE 4 LIMIT EVALUATION TECHNIQUES -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="2" data-title="The 4 Limit Techniques">
+                <div class="section-label">UNIT 2 • COMPUTATIONAL TECHNIQUES</div>
+                <h2 class="slide-title">How to Evaluate Any Limit on an Exam</h2>
+                <p class="slide-subtitle">The battle-tested 4-step decision tree for solving algebraic limits.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-blue">
+                        <div class="badge badge-purple">TECHNIQUE 1 & 2: PLUG IN OR FACTOR</div>
+                        <p><strong>1. Direct Substitution (Always try first!):</strong></p>
+                        <div class="math-box">$$\lim_{x \to 3} (x^2 - 4x + 1) = (3)^2 - 4(3) + 1 = \mathbf{-2}$$</div>
+
+                        <p><strong>2. Factoring (When you get 0/0 indeterminate):</strong></p>
+                        <div class="math-box">
+                            $$\lim_{x \to 2} \frac{x^2 - 4}{x - 2} = \lim_{x \to 2} \frac{(x-2)(x+2)}{x-2} = \lim_{x \to 2} (x+2) = \mathbf{4}$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-orange">
+                        <div class="badge badge-orange">TECHNIQUE 3 & 4: CONJUGATES & COMMON DENOMINATORS</div>
+                        <p><strong>3. Conjugate Method (Square roots with 0/0):</strong></p>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$\lim_{x \to 0} \frac{\sqrt{x+9} - 3}{x} \cdot \frac{\sqrt{x+9} + 3}{\sqrt{x+9} + 3} = \lim_{x \to 0} \frac{(x+9) - 9}{x(\sqrt{x+9}+3)} = \frac{1}{6}$$
+                        </div>
+
+                        <p><strong>4. Common Denominators (Fractions inside fractions):</strong></p>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$\lim_{x \to 2} \frac{\frac{1}{x} - \frac{1}{2}}{x - 2} = \lim_{x \to 2} \frac{\frac{2 - x}{2x}}{x - 2} = \lim_{x \to 2} \frac{-(x - 2)}{2x(x - 2)} = -\frac{1}{4}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Decision Tree:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">0/0</span>: Indeterminate Form (Don't panic! It means factor or conjugate!).</div>
+                        <div class="decoder-item"><span class="decoder-sym">Conjugate</span>: Flip the middle sign ($\sqrt{a}-b \to \sqrt{a}+b$).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">💊 Real-Life Example: Medicine Dosage in the Bloodstream</div>
+                    <h3>Why Do Formulas Give $0/0$ in Real Medicine?</h3>
+                    <p><strong>Pharmacologists tracking IV drug injections:</strong></p>
+                    <p>When an IV bag is hooked up to a patient at time $$t = 0$$, the formula for the absorption rate is often written as:</p>
+                    <p>$$\text{Absorption Rate} = \frac{\text{Drug Delivered}}{\text{Time Elapsed}} = \frac{C(t) - C(0)}{t}$$</p>
+                    <p>If you plug in $$t = 0$$ directly, you get $$\frac{0\text{ mg}}{0\text{ seconds}} = \frac{0}{0}$$ (Undefined!).</p>
+                    <p>Does that mean the medicine isn't flowing? No! It just means you asked for the rate over zero seconds. By using factoring or the conjugate method to cancel out the $$t$$ on bottom, you find the <strong>initial absorption rate is $$50\text{ mg/min}$$</strong>! That is how nurses set automated IV pump flows!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 5: LIMITS AT INFINITY & HORIZONTAL ASYMPTOTES -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="2" data-title="Limits at Infinity">
+                <div class="section-label">UNIT 2 • INFINITE LIMITS & ASYMPTOTES</div>
+                <h2 class="slide-title">Limits at Infinity ($\lim_{x \to \infty}$): The Degree Battle</h2>
+                <p class="slide-subtitle">Finding Horizontal Asymptotes by comparing the highest power of $x$ in the numerator vs. denominator.</p>
+
+                <div class="grid-3">
+                    <div class="card card-accent-blue">
+                        <div class="badge badge-purple">CASE 1: DEGREES ARE EQUAL</div>
+                        <h3>Top Power = Bottom Power</h3>
+                        <p>The answer is simply the ratio of leading coefficients!</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\lim_{x \to \infty} \frac{5x^3 + 2x - 1}{2x^3 - 7} = \mathbf{\frac{5}{2}}$$
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">Horizontal Asymptote at $y = 5/2$.</p>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <div class="badge badge-green">CASE 2: BOTTOM WINS</div>
+                        <h3>Bottom Power > Top Power</h3>
+                        <p>The denominator grows so fast it pulls the fraction down to zero!</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\lim_{x \to \infty} \frac{4x^2 + 10}{x^5 - 3x} = \mathbf{0}$$
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">Horizontal Asymptote at $y = 0$.</p>
+                    </div>
+
+                    <div class="card card-accent-red">
+                        <div class="badge badge-red">CASE 3: TOP WINS</div>
+                        <h3>Top Power > Bottom Power</h3>
+                        <p>The numerator explodes out of control!</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\lim_{x \to \infty} \frac{x^4 - 2}{3x^2 + 1} = +\infty$$
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">No Horizontal Asymptote (DNE).</p>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Asymptote Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">x → ∞</span>: Looking far into the future (Long-term terminal behavior).</div>
+                        <div class="decoder-item"><span class="decoder-sym">y = L</span>: Horizontal Asymptote (The terminal ceiling line).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🚀 Real-Life Example: Space Rocket Escape Velocity & Parachutes</div>
+                    <h3>Terminal Velocity of a Skydiver</h3>
+                    <p><strong>When a skydiver jumps out of a plane:</strong></p>
+                    <p>Gravity pulls them downward with speed formula $$v(t) = \frac{180 t}{t + 5}\text{ mph}$$.</p>
+                    <ul>
+                        <li>At $$t = 0\text{ sec}$$, speed is $$0\text{ mph}$$.</li>
+                        <li>At $$t = 5\text{ sec}$$, speed is $$\frac{180(5)}{10} = 90\text{ mph}$$.</li>
+                        <li>At $$t = 60\text{ sec}$$, speed is $$\frac{180(60)}{65} = 166\text{ mph}$$.</li>
+                        <li>As $$t \to \infty$$ (Limit at infinity): $$\lim_{t \to \infty} \frac{180 t}{t + 5} = \frac{180}{1} = \mathbf{180\text{ mph}}$$.</li>
+                    </ul>
+                    <p>No matter how long the skydiver falls, wind resistance creates a horizontal asymptote at **180 mph** (Terminal Velocity). Calculus finds the terminal speed instantly by comparing the lead powers of $$t$$!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 6: CONTINUITY & INTERMEDIATE VALUE THEOREM (IVT) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="2" data-title="Continuity & IVT">
+                <div class="section-label">UNIT 2 • CONTINUITY & EXISTENCE THEOREMS</div>
+                <h2 class="slide-title">Continuity & The Intermediate Value Theorem (IVT)</h2>
+                <p class="slide-subtitle">How to prove a root exists without solving the equation: The guaranteed exam existence theorem.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The 3-Step Continuity Checklist</h3>
+                        <p>A function $f(x)$ is continuous at $x = c$ if and only if:</p>
+                        <ol style="padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6;">
+                            <li><strong>1. $f(c)$ is defined</strong> (The point actually exists on the graph).</li>
+                            <li><strong>2. $\lim_{x \to c} f(x)$ exists</strong> (Left road connects to right road).</li>
+                            <li><strong>3. $\lim_{x \to c} f(x) = f(c)$</strong> (The road meets the point with no gap!).</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Intermediate Value Theorem (IVT)</h3>
+                        <p>If $f(x)$ is continuous on $[a, b]$, it must hit every $y$-value between $f(a)$ and $f(b)$!</p>
+                        <div class="exam-box">
+                            <div class="exam-label">📝 Exam Problem: Prove $x^3 - x - 1 = 0$ has a solution on $[1, 2]$.</div>
+                            <div class="exam-text">
+                                • $f(1) = (1)^3 - 1 - 1 = \mathbf{-1}\ (< 0)$<br>
+                                • $f(2) = (2)^3 - 2 - 1 = \mathbf{+5}\ (> 0)$<br>
+                                Since $f(x)$ is continuous and goes from negative to positive, by IVT there MUST exist at least one number $c \in (1, 2)$ where $f(c) = 0$!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Theorem Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">[a, b]</span>: Closed interval (Including the end boundary points).</div>
+                        <div class="decoder-item"><span class="decoder-sym">∃ c ∈ (a, b)</span>: "There exists at least one input c inside the interval".</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🌡️ Real-Life Example: Airplane Altimeter & Freezing Clouds</div>
+                    <h3>Crossing the Freezing Temperature Line</h3>
+                    <p><strong>A commercial airplane takes off from Florida:</strong></p>
+                    <p>On the runway ($$0\text{ feet}$$ altitude), the outside air thermometer reads $$+30^\circ\text{C}$$ ($$86^\circ\text{F}$$).</p>
+                    <p>At cruising altitude ($$35,000\text{ feet}$$), the thermometer reads $$-50^\circ\text{C}$$ ($$-58^\circ\text{F}$$).</p>
+                    <p><strong>How pilots use IVT:</strong></p>
+                    <p>Because temperature changes continuously as you fly higher through the atmosphere (it cannot vanish from $$+1^\circ\text{C}$$ and teleport to $$-1^\circ\text{C}$$), by IVT the pilots know with **100% mathematical certainty** that at some altitude between $$0$$ and $$35,000\text{ feet}$$, the temperature was <strong>EXACTLY $0^\circ\text{C}$ ($32^\circ\text{F}$)</strong>—where ice forms on airplane wings!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 7: THE LIMIT DEFINITION OF THE DERIVATIVE -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="3" data-title="Derivative Limit Definition">
+                <div class="section-label">UNIT 3 • THE DERIVATIVE FROM FIRST PRINCIPLES</div>
+                <h2 class="slide-title">The Limit Definition of the Derivative</h2>
+                <p class="slide-subtitle">The formula that founded modern science: Finding the exact slope of a tangent line at a single point.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The Difference Quotient Formula</h3>
+                        <div class="math-box">
+                            $$f'(x) = \frac{df}{dx} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+                        </div>
+                        <div class="analogy-box">
+                            <div class="analogy-tag">💡 What h Means</div>
+                            <div class="analogy-text">
+                                $h$ is the distance between your two points. When $h \to 0$, the secant line between two points morphs into the exact **tangent line** kissing the curve at one single point!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Step-by-Step Proof: $f(x) = x^2 \implies f'(x) = 2x$</h3>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h}$$
+                            $$= \lim_{h \to 0} \frac{2xh + h^2}{h} = \lim_{h \to 0} \frac{h(2x + h)}{h} = \lim_{h \to 0} (2x + h) = \mathbf{2x}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Difference Quotient Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">f'(x)</span>: The slope formula (Tells you steepness at any coordinate x).</div>
+                        <div class="decoder-item"><span class="decoder-sym">h</span>: Step size (The distance you step forward before shrinking to 0).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🚔 Real-Life Example: Police Speed Radar Guns</div>
+                    <h3>How Police Laser Radar Measures Instant Speed</h3>
+                    <p><strong>A police officer shoots a laser at your car:</strong></p>
+                    <p>The laser fires two light pulses separated by a tiny fraction of a second ($$h = 0.001\text{ seconds}$$):</p>
+                    <ul>
+                        <li>Pulse 1 measures your distance: $$x = 500.00\text{ feet}$$.</li>
+                        <li>Pulse 2 ($$0.001\text{ sec}$$ later) measures your distance: $$x + h = 500.10\text{ feet}$$.</li>
+                    </ul>
+                    <p>The radar computer calculates the difference quotient:</p>
+                    <p>$$\text{Speed} = \frac{500.10 - 500.00}{0.001} = \frac{0.10\text{ ft}}{0.001\text{ s}} = \mathbf{100\text{ ft/sec}} = \mathbf{68.2\text{ mph}}$$</p>
+                    <p>Because $$h$$ is practically zero, the radar gun knows your instantaneous velocity at that exact second!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 8: THE POWER, PRODUCT & QUOTIENT RULES -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="3" data-title="Product & Quotient Rules">
+                <div class="section-label">UNIT 3 • SHORTCUT DIFFERENTIATION RULES</div>
+                <h2 class="slide-title">The Fundamental Derivative Shortcut Rules</h2>
+                <p class="slide-subtitle">Master these rules and you never have to use the long $h \to 0$ limit formula again!</p>
+
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Rule Name</th>
+                            <th>Mathematical Formula</th>
+                            <th>High School Rhyme / Memory Trick</th>
+                            <th>Worked Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Power Rule</strong></td>
+                            <td>$\frac{d}{dx}[x^n] = n x^{n-1}$</td>
+                            <td><em>"Bring power to front, subtract 1 from power!"</em></td>
+                            <td>$\frac{d}{dx}[x^7] = 7x^6$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product Rule</strong></td>
+                            <td>$\frac{d}{dx}[f \cdot g] = f'g + fg'$</td>
+                            <td><em>"First d-second plus second d-first"</em></td>
+                            <td>$\frac{d}{dx}[x^3 \sin x] = 3x^2 \sin x + x^3 \cos x$</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quotient Rule</strong></td>
+                            <td>$\frac{d}{dx}\left[\frac{f}{g}\right] = \frac{g f' - f g'}{g^2}$</td>
+                            <td><em>"Low d-high minus high d-low over square of below!"</em></td>
+                            <td>$\frac{d}{dx}\left[\frac{x^2}{\cos x}\right] = \frac{(\cos x)(2x) - (x^2)(-\sin x)}{\cos^2 x}$</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Rule Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">f·g</span>: Two changing quantities multiplied (e.g., Ticket Price × Customers).</div>
+                        <div class="decoder-item"><span class="decoder-sym">f/g</span>: Changing ratio (e.g., Distance / Time or Mass / Volume).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🎟️ Real-Life Example: Concert Ticket Revenue ($P \times Q$)</div>
+                    <h3>Why the Product Rule Needs TWO Terms ($f'g + fg'$)</h3>
+                    <p><strong>A music stadium sells concert tickets:</strong></p>
+                    <p>$$\text{Total Revenue} = \text{Price per Ticket } (P) \times \text{Quantity of Fans } (Q)$$</p>
+                    <p>If the stadium increases ticket price ($P$ rises), two things happen at the same time:</p>
+                    <ul>
+                        <li><strong>Term 1 ($P' \cdot Q$):</strong> You make more money per fan who buys a ticket.</li>
+                        <li><strong>Term 2 ($P \cdot Q'$):</strong> But higher prices scare some fans away ($Q$ drops!).</li>
+                    </ul>
+                    <p>You cannot just multiply their individual changes; you must add both effects together: $$\frac{d(\text{Revenue})}{dt} = P'Q + PQ'$$. That is why the Product Rule has two parts!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 9: TRIGONOMETRIC DERIVATIVES & SPECIAL LIMITS -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="3" data-title="Trigonometric Derivatives">
+                <div class="section-label">UNIT 3 • TRIGONOMETRIC DIFFERENTIATION</div>
+                <h2 class="slide-title">Trigonometric Derivatives & The "Co-" Negative Rule</h2>
+                <p class="slide-subtitle">How to memorize all 6 trig derivatives instantly using the "Co-" negative sign pattern.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-green">
+                        <h3>The Primary 3 Trig Derivatives</h3>
+                        <div class="math-box">
+                            $$\frac{d}{dx}[\sin x] = +\cos x$$
+                            $$\frac{d}{dx}[\tan x] = +\sec^2 x$$
+                            $$\frac{d}{dx}[\sec x] = +\sec x \tan x$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-red">
+                        <h3>The "Co-" Derivatives (Always Negative!)</h3>
+                        <div class="math-box">
+                            $$\frac{d}{dx}[\mathbf{co}s x] = \mathbf{-\sin x}$$
+                            $$\frac{d}{dx}[\mathbf{co}t x] = \mathbf{-\csc^2 x}$$
+                            $$\frac{d}{dx}[\mathbf{co}sec x] = \mathbf{-\csc x \cot x}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Pattern Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">"Co-"</span>: If the function starts with "Co", its derivative MUST be negative!</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">💓 Real-Life Example: Hospital EKG Heart Monitor</div>
+                    <h3>Tracking Heart Rhythms with Sine & Cosine</h3>
+                    <p><strong>A doctor watches a patient's heartbeat on a monitor:</strong></p>
+                    <p>The electrical voltage in the heart muscle pulses as a wave: $$V(t) = \sin(t)$$.</p>
+                    <p>The doctor needs to know the <strong>current flow (rate of voltage change)</strong>:</p>
+                    <p>$$\text{Current} = \frac{dV}{dt} = \cos(t)$$</p>
+                    <ul>
+                        <li>When voltage is at its baseline ($$\sin(0) = 0$$), the electrical spark is firing at maximum speed ($$\cos(0) = 1$$)!</li>
+                        <li>When voltage reaches its highest peak ($$\sin(\pi/2) = 1$$), the spark pauses for a millisecond before reversing ($$\cos(\pi/2) = 0$$)!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 10: THE CHAIN RULE (THE ONION METHOD) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="3" data-title="The Chain Rule">
+                <div class="section-label">UNIT 3 • THE MOST IMPORTANT RULE IN CALCULUS</div>
+                <h2 class="slide-title">The Chain Rule: Peeling the Russian Doll</h2>
+                <p class="slide-subtitle">How to differentiate composite functions $f(g(x))$: Derivative of outside × derivative of inside!</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The Formula: $\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$</h3>
+                        <div class="math-box">
+                            $$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$$
+                        </div>
+                        <div class="analogy-box">
+                            <div class="analogy-tag">💡 The Russian Doll / Onion Analogy</div>
+                            <div class="analogy-text">
+                                When you peel an onion, you peel the <strong>outer shell first</strong> while leaving the core untouched, then you multiply by the derivative of what was inside!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Step-by-Step Worked Examples</h3>
+                        <p><strong>Example 1:</strong> $y = (3x^2 + 5)^4$</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\frac{dy}{dx} = 4(3x^2 + 5)^3 \cdot \frac{d}{dx}[3x^2 + 5] = 4(3x^2 + 5)^3 \cdot (6x) = \mathbf{24x(3x^2+5)^3}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Chain Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">dy/du · du/dx</span>: Multiplying gear speed multipliers together.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">⚙️ Real-Life Example: Sports Car 6-Speed Transmission</div>
+                    <h3>Bicycle & Car Transmission Gears</h3>
+                    <p><strong>Pressing the gas pedal in a car:</strong></p>
+                    <ul>
+                        <li>Gas pedal position ($x$) increases Engine RPM ($u$) by $$4\times$$: $$\frac{du}{dx} = 4$$.</li>
+                        <li>Engine RPM ($u$) turns the wheels ($y$) through the transmission gearbox by $$3\times$$: $$\frac{dy}{du} = 3$$.</li>
+                    </ul>
+                    <p>How much do your car wheels accelerate when you step on the gas?</p>
+                    <p>$$\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} = 3 \times 4 = \mathbf{12\times\text{ faster}}$$!</p>
+                    <p>The Chain Rule simply multiplies mechanical gear ratios together across the entire drivetrain!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 11: IMPLICIT DIFFERENTIATION & TANGENT LINES -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="4" data-title="Implicit Differentiation">
+                <div class="section-label">UNIT 4 • ADVANCED DIFFERENTIATION</div>
+                <h2 class="slide-title">Implicit Differentiation & Tangent Line Equations</h2>
+                <p class="slide-subtitle">Finding slopes on curves where $y$ cannot be isolated (like circles, ellipses, and foliums).</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-blue">
+                        <h3>The Golden Rule of $y$: Attach $\frac{dy}{dx}$</h3>
+                        <p>Whenever you take the derivative of any term with $y$, multiply by $\frac{dy}{dx}$ because $y$ is secretly a function of $x$ ($y = y(x)$):</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\frac{d}{dx}[x^3] = 3x^2 \quad \text{vs} \quad \frac{d}{dx}[y^3] = \mathbf{3y^2 \frac{dy}{dx}}$$
+                            $$\frac{d}{dx}[xy] = (1)(y) + (x)\left(\frac{dy}{dx}\right) = \mathbf{y + x\frac{dy}{dx}}$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Finding the Equation of a Tangent Line</h3>
+                        <p>Find the tangent line to $x^2 + y^2 = 25$ at point $(3, 4)$:</p>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$2x + 2y\frac{dy}{dx} = 0 \implies \frac{dy}{dx} = -\frac{x}{y}$$
+                            $$\text{Plug in } (3, 4) \implies m = -\frac{3}{4}$$
+                            $$y - y_1 = m(x - x_1) \implies \mathbf{y - 4 = -\frac{3}{4}(x - 3)}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Tangent Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">dy/dx</span>: The hidden slope attached to every y-term.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🎡 Real-Life Example: Ferris Wheel Cabin & Satellite Orbit</div>
+                    <h3>Satellite Orbit Tangent Release</h3>
+                    <p><strong>A satellite orbits Earth in a circle ($x^2 + y^2 = 25$):</strong></p>
+                    <p>If the satellite turns off its thrusters at coordinate $$(3, 4)$$, Newton's First Law says it will fly off in a straight line along the <strong>Tangent Line</strong>!</p>
+                    <p>Implicit differentiation gives the exact exit slope: $$m = -3/4 = -0.75$$. NASA engineers use this exact tangent line equation to calculate where a space probe will fly into deep space!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 12: RELATED RATES (THE 5-STEP BLUEPRINT) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="4" data-title="Related Rates 5-Step Blueprint">
+                <div class="section-label">UNIT 4 • APPLIED RATES OF CHANGE</div>
+                <h2 class="slide-title">Related Rates: The 5-Step Master Blueprint</h2>
+                <p class="slide-subtitle">Conquering the most feared word problems in Calculus I: Sliding ladders, filling cones, and walking shadows.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The 5-Step Problem Solving Recipe</h3>
+                        <ol style="padding-left: 1.25rem; font-size: 0.82rem; line-height: 1.55;">
+                            <li><strong>Step 1:</strong> Draw a diagram and assign variable letters ($x, y, h, r$).</li>
+                            <li><strong>Step 2:</strong> Write down what rates you are GIVEN ($dx/dt$) and NEED ($dy/dt$).</li>
+                            <li><strong>Step 3:</strong> Connect variables using geometry ($x^2+y^2=13^2$).</li>
+                            <li><strong>Step 4:</strong> Differentiate w.r.t Time $t$ using Chain Rule!</li>
+                            <li><strong>Step 5:</strong> Plug in numbers AFTER taking derivatives!</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-accent-orange">
+                        <h3>Worked Problem: Sliding Ladder</h3>
+                        <p style="font-size: 0.84rem;">A 13-ft ladder slides down a wall. If bottom moves away at $2\text{ ft/s}$ ($dx/dt=2$), how fast is the top sliding down ($dy/dt$) when $x=5$?</p>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$x^2 + y^2 = 13^2 = 169 \implies 2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0$$
+                            $$\text{When } x=5, y=12 \implies (5)(2) + (12)\frac{dy}{dt} = 0 \implies \mathbf{\frac{dy}{dt} = -0.833\text{ ft/s}}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Rate Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">d/dt</span>: Rate with respect to TIME in seconds or hours.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🚒 Real-Life Example: Firetruck Rescue Ladder on a Building</div>
+                    <h3>Why Firefighters Must Know Related Rates</h3>
+                    <p><strong>A firetruck extends a 13-foot ladder against a burning apartment:</strong></p>
+                    <p>If the truck wheels roll backwards away from the building at a steady $$2\text{ ft/sec}$$, what happens to the top of the ladder?</p>
+                    <ul>
+                        <li>When the ladder is near the top ($$x=5, y=12$$), the top drops slowly at $$-0.833\text{ ft/s}$$.</li>
+                        <li>When the ladder slides near the ground ($$x=12, y=5$$), plug in the math: $$(12)(2) + (5)\frac{dy}{dt} = 0 \implies \frac{dy}{dt} = \mathbf{-4.8\text{ ft/s}}$$!</li>
+                    </ul>
+                    <p><strong>The Safety Warning:</strong> As the ladder flattens, the top crashes down <strong>6× faster</strong>! Firefighters use related rates to ensure ladders never collapse unexpectedly!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 13: CURVE SKETCHING, CONCAVITY & DERIVATIVE TESTS -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="4" data-title="Curve Sketching & Concavity">
+                <div class="section-label">UNIT 4 • GRAPH BEHAVIOR & ANALYSIS</div>
+                <h2 class="slide-title">Curve Sketching: 1st & 2nd Derivative Tests</h2>
+                <p class="slide-subtitle">How derivatives tell you the exact shape, peaks, valleys, and bends of any graph.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>1st Derivative ($f'(x)$): Slope & Peaks/Valleys</h3>
+                        <ul style="padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.55;">
+                            <li><strong>$f'(x) > 0$:</strong> Function is INCREASING ($\nearrow$).</li>
+                            <li><strong>$f'(x) < 0$:</strong> Function is DECREASING ($\searrow$).</li>
+                            <li><strong>$f'(x) = 0$:</strong> <em>Critical Point</em> (Candidate for max/min).</li>
+                            <li><strong>First Derivative Test:</strong> $+ \to -$ is <strong>Local Max</strong>; $- \to +$ is <strong>Local Min</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>2nd Derivative ($f''(x)$): Concavity (Curvature)</h3>
+                        <ul style="padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.55;">
+                            <li><strong>$f''(x) > 0$:</strong> Concave UP ($\smile$ "Holds water").</li>
+                            <li><strong>$f''(x) < 0$:</strong> Concave DOWN ($\frown$ "Spills water").</li>
+                            <li><strong>Inflection Point:</strong> Where curvature flips ($\smile \leftrightarrow \frown$).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Curve Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">f'(x) = 0</span>: Flat peak or valley.</div>
+                        <div class="decoder-item"><span class="decoder-sym">f''(x) = 0</span>: Inflection point where steering wheel straightens.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🎢 Real-Life Example: Cedar Point Roller Coaster Engineering</div>
+                    <h3>Designing Roller Coaster Loops & Drops</h3>
+                    <p><strong>Roller coaster engineers at theme parks use concavity:</strong></p>
+                    <ul>
+                        <li><strong>Top of the Lift Hill:</strong> $$f'(x) = 0$$ and $$f''(x) < 0$$ (Concave Down). Riders experience weightlessness (0 G's).</li>
+                        <li><strong>The Inflection Point:</strong> Halfway down the drop ($$f''(x) = 0$$), the track transitions from bending down to curving up. This is where acceleration shifts smoothest so riders don't get whiplash.</li>
+                        <li><strong>Bottom of the Valley:</strong> $$f'(x) = 0$$ and $$f''(x) > 0$$ (Concave Up). Maximum positive G-force pushing riders into their seats!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 14: APPLIED OPTIMIZATION (MAX/MIN PROBLEMS) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="4" data-title="Applied Optimization Blueprint">
+                <div class="section-label">UNIT 4 • REAL-WORLD OPTIMIZATION</div>
+                <h2 class="slide-title">Applied Optimization: Finding the Perfect Solution</h2>
+                <p class="slide-subtitle">Finding maximum profit, minimum building cost, and optimal nuclear harvest times.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-blue">
+                        <h3>The 4-Step Optimization Blueprint</h3>
+                        <ol style="padding-left: 1.25rem; font-size: 0.84rem; line-height: 1.6;">
+                            <li><strong>1. Objective Function:</strong> Write what to maximize/minimize ($A = x \cdot y$).</li>
+                            <li><strong>2. Constraint Equation:</strong> Use given limits ($2x + y = 100 \implies y = 100 - 2x$).</li>
+                            <li><strong>3. Combine into Single Variable:</strong> $A(x) = x(100 - 2x) = 100x - 2x^2$.</li>
+                            <li><strong>4. Set Derivative to ZERO:</strong> $A'(x) = 100 - 4x = 0 \implies \mathbf{x = 25\text{ m},\ y = 50\text{ m}}$.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Worked Problem: Maximum Area Pasture</h3>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\text{Max Area} = 25 \times 50 = \mathbf{1,250\text{ m}^2}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Optimization Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">Objective Function</span>: The goal you want to maximize or minimize.</div>
+                        <div class="decoder-item"><span class="decoder-sym">Constraint</span>: The budget or physical resource limit.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">📦 Real-Life Example: Amazon Cardboard Box Packaging</div>
+                    <h3>Minimizing Cardboard to Save Millions of Dollars</h3>
+                    <p><strong>Amazon ships 5 billion packages every year:</strong></p>
+                    <p>If a box must hold $$1,000\text{ cm}^3$$ of volume ($$x^2 y = 1000$$), what box dimensions use the absolute least cardboard (Surface Area)?</p>
+                    <p>$$\text{Surface Area} = x^2 + 4xy = x^2 + \frac{4000}{x}$$</p>
+                    <p>Take derivative and set to zero: $$2x - \frac{4000}{x^2} = 0 \implies 2x^3 = 4000 \implies x = \mathbf{12.6\text{ cm}}$$ (a perfect cube!).</p>
+                    <p>By optimizing box dimensions with calculus, Amazon saved over **$50,000,000 in paper costs** last year alone!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 15: INTEGRALS & THE FUNDAMENTAL THEOREM OF CALCULUS (FTC) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="5" data-title="Integrals & The FTC">
+                <div class="section-label">UNIT 5 • INTEGRATION & THE FTC</div>
+                <h2 class="slide-title">Integrals & The Fundamental Theorem of Calculus</h2>
+                <p class="slide-subtitle">The grand climax of Calculus: Integration is the exact inverse of Differentiation!</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-blue">
+                        <h3>Riemann Sums: Adding Infinite Rectangles</h3>
+                        <div class="math-box">
+                            $$\int_a^b f(x)dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^*) \Delta x = \text{Exact Area Under Curve}$$
+                        </div>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>The Fundamental Theorem of Calculus (FTC)</h3>
+                        <div class="math-box">
+                            $$\text{Part 1: } \frac{d}{dx}\left[ \int_a^x f(t)dt \right] = f(x)$$
+                            $$\text{Part 2: } \int_a^b f(x)dx = F(b) - F(a) \quad (\text{where } F'(x) = f(x))$$
+                        </div>
+                        <p style="font-size: 0.84rem;">
+                            <strong>Example:</strong> $\int_1^4 (3x^2 + 2) dx = \left[ x^3 + 2x \right]_1^4 = 72 - 3 = \mathbf{69}$
+                        </p>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Integral Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">F(b) - F(a)</span>: Antiderivative at top boundary minus bottom boundary.</div>
+                        <div class="decoder-item"><span class="decoder-sym">dx</span>: Width of each infinitesimal slice.</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">⚡ Real-Life Example: Electric Car Battery Solar Charging</div>
+                    <h3>Calculating Total Kilowatt-Hours from Changing Solar Panels</h3>
+                    <p><strong>A solar roof charges an Electric Car:</strong></p>
+                    <p>Because clouds pass by and the sun moves across the sky, solar power output ($P(t)$ in kW) fluctuates constantly: $$P(t) = 3 \sin(\pi t / 12)\text{ kW}$$.</p>
+                    <p>How much total energy (kWh) is in the battery after 12 hours?</p>
+                    <p>$$\text{Total Energy} = \int_0^{12} 3 \sin\left(\frac{\pi t}{12}\right) dt = \left[ -3 \cdot \frac{12}{\pi} \cos\left(\frac{\pi t}{12}\right) \right]_0^{12}$$</p>
+                    <p>$$= \left( \frac{36}{\pi} - \left( -\frac{36}{\pi} \right) \right) = \frac{72}{\pi} \approx \mathbf{22.9\text{ kWh}} = \mathbf{90\text{ miles of driving}}$$!</p>
+                    <p>The FTC allows solar engineers to compute total battery charge without measuring every single electron!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 16: INTEGRATION BY SUBSTITUTION (U-SUB) -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="5" data-title="U-Substitution Technique">
+                <div class="section-label">UNIT 5 • INTEGRATION TECHNIQUES</div>
+                <h2 class="slide-title">Integration by Substitution ($u$-Substitution)</h2>
+                <p class="slide-subtitle">The reverse of the Chain Rule: Changing variables to make ugly integrals trivial.</p>
+
+                <div class="grid-2">
+                    <div class="card card-accent-purple">
+                        <h3>The 4-Step $u$-Sub Recipe</h3>
+                        <ol style="padding-left: 1.25rem; font-size: 0.84rem; line-height: 1.6;">
+                            <li><strong>Step 1:</strong> Pick $u = g(x)$ (the inside piece).</li>
+                            <li><strong>Step 2:</strong> $du = g'(x)dx \implies dx = \frac{du}{g'(x)}$.</li>
+                            <li><strong>Step 3:</strong> Substitute into integral and cancel out all $x$'s!</li>
+                            <li><strong>Step 4:</strong> Integrate w.r.t $u$, then substitute back $x$ (+C)!</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <h3>Worked Exam Example: $\int 2x e^{x^2} dx$</h3>
+                        <div class="math-box" style="font-size: 0.85rem;">
+                            $$\text{Set } u = x^2 \implies du = 2x dx \implies dx = \frac{du}{2x}$$
+                            $$\int 2x e^u \frac{du}{2x} = \int e^u du = e^u + C = \mathbf{e^{x^2} + C}$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & Substitution Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">u</span>: The replacement variable that simplifies the messy core.</div>
+                        <div class="decoder-item"><span class="decoder-sym">+ C</span>: Constant of Integration (Don't forget +C on indefinite integrals!).</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">✈️ Real-Life Example: Currency Exchange in an Airport</div>
+                    <h3>Why $u$-Substitution is Just Converting Currency</h3>
+                    <p><strong>Imagine buying souvenirs in Tokyo:</strong></p>
+                    <p>You have prices in US Dollars ($$x$$), but all store registers only accept Japanese Yen ($$u$$).</p>
+                    <p>You exchange currency ($$u = 150x$$), make your purchase easily in Yen ($$\int e^u du$$), and then check your bank statement converted back to US Dollars ($$e^{x^2} + C$$).</p>
+                    <p>That is all $$u$$-substitution is: changing coordinate systems to make the math trivial, then converting back!</p>
+                </div>
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- SLIDE 17: HOW CALC 1 POWERS YOUR ISOTOPEPINN RESEARCH -->
+            <!-- ========================================================================= -->
+            <div class="slide" data-module="6" data-title="Calc 1 & IsotopePINN Link">
+                <div class="section-label">UNIT 6 • REAL-WORLD RESEARCH APPLICATION</div>
+                <h2 class="slide-title">How MAT 191 Directly Powers Your IsotopePINN Project</h2>
+                <p class="slide-subtitle">Proof that you are already applying college calculus in your nuclear cancer therapy research!</p>
+
+                <div class="grid-3">
+                    <div class="card card-accent-purple">
+                        <div class="badge badge-purple">CALC 1 SEPARABLE ODEs</div>
+                        <div style="font-weight: 800; font-size: 0.95rem;">Radioactive Decay Law</div>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$\frac{dN}{dt} = -\lambda N \implies \int \frac{1}{N}dN = \int -\lambda dt$$
+                            $$\ln|N| = -\lambda t + C \implies \mathbf{N(t) = N_0 e^{-\lambda t}}$$
+                        </div>
+                        <p style="font-size: 0.82rem;">Single-species radioactive decay is solved using basic Calc 1 separation of variables!</p>
+                    </div>
+
+                    <div class="card card-accent-orange">
+                        <div class="badge badge-orange">CALC 1 TRAPEZOIDAL SUMS</div>
+                        <div style="font-weight: 800; font-size: 0.95rem;">Weak-Form Physics Loss</div>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$\int_{t_k}^{t_{k+1}} f(t)dt \approx \frac{\Delta t}{2}[f(t_k) + f(t_{k+1})]$$
+                        </div>
+                        <p style="font-size: 0.82rem;">The Trapezoidal loss that fixed your 583× overshoot is literally Unit 5 numerical integration!</p>
+                    </div>
+
+                    <div class="card card-accent-green">
+                        <div class="badge badge-green">CALC 1 CHAIN RULE</div>
+                        <div style="font-weight: 800; font-size: 0.95rem;">Neural Network Backprop</div>
+                        <div class="math-box" style="font-size: 0.82rem;">
+                            $$\frac{\partial \mathcal{L}}{\partial W_1} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h} \cdot \frac{\partial h}{\partial W_1}$$
+                        </div>
+                        <p style="font-size: 0.82rem;">Training deep neural networks is just applying the Calc 1 Chain Rule across network layers!</p>
+                    </div>
+                </div>
+
+                <div class="decoder-box">
+                    <div class="decoder-title">🔤 Symbol & AI/Nuclear Bridge Action:</div>
+                    <div class="decoder-grid">
+                        <div class="decoder-item"><span class="decoder-sym">N₀ e^(-λt)</span>: The exponential radioactive countdown.</div>
+                        <div class="decoder-item"><span class="decoder-sym">∂L/∂W</span>: Gradient backpropagation adjusting neural weights.</div>
+                    </div>
+                </div>
+
+                <!-- Action links directly to IsotopePINN -->
+                <div style="margin-top: 1.25rem; display: flex; gap: 0.85rem; justify-content: flex-end; flex-wrap: wrap;">
+                    <a href="IsotopePINN_30Day_Professional_Mastery.html" class="btn-nav primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding: 0.5rem 1rem;">
+                        <span>⚛️</span> Launch 30-Day IsotopePINN Mastery &rarr;
+                    </a>
+                    <a href="IsotopePINN_AP_Research_Paper.html" class="btn-nav" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding: 0.5rem 1rem;">
+                        <span>📄</span> Read AP Research Paper &rarr;
+                    </a>
+                </div>
+
+                <!-- Hidden Deep Note Data -->
+                <div class="secret-data" style="display:none;">
+                    <div class="real-life-tag">🏥 Real-Life Example: Actinium-225 Hospital Patient Dosing</div>
+                    <h3>How Doctors Dose Cancer Patients Using Calculus</h3>
+                    <p><strong>A cancer clinic in Houston, Texas receives Actinium-225 ($T_{1/2} = 9.92\text{ days}$):</strong></p>
+                    <p>The pharmacy creates a vial with $$100\text{ MBq}$$ of radiation on Monday morning ($$N_0 = 100$$).</p>
+                    <p>The patient's appointment is delayed by $$5\text{ days}$$ ($$t = 5$$):</p>
+                    <p>$$\lambda = \frac{\ln(2)}{9.92} = 0.06987\text{ day}^{-1}$$</p>
+                    <p>$$N(5) = 100 \cdot e^{-0.06987 \times 5} = 100 \cdot e^{-0.349} = 100 \times 0.705 = \mathbf{70.5\text{ MBq}}$$</p>
+                    <p>Because of basic Calc 1 separation of variables, the oncologist knows exactly to adjust the injection volume by $$1.42\times$$ so the patient receives the perfect therapeutic tumor-killing dose!</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Dock -->
+    <footer class="bottom-dock">
+        <div class="slide-counter">
+            SLIDE <span id="current-slide-num" style="color: var(--accent-purple);">1</span> OF <span id="total-slides-num">17</span>
+            <span id="slide-title-tag" style="margin-left: 1.2rem; color: var(--text-dim); font-size: 0.8rem;">[Unit 1] Roadmap & Blueprint</span>
+        </div>
+
+        <div class="dock-controls">
+            <button class="btn-nav" onclick="prevSlide()">← Prev</button>
+            <button class="btn-nav primary" onclick="nextSlide()">Next →</button>
+        </div>
+    </footer>
+
+    <!-- Overview Modal -->
+    <div id="overview-modal" onclick="if(event.target===this) toggleOverview()">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff;">MAT 191 Masterclass Navigator</h2>
+            <button class="icon-btn" onclick="toggleOverview()">✕</button>
+        </div>
+        <div class="overview-grid" id="overview-grid-container"></div>
+    </div>
+
+    <!-- Presentation Script -->
+    <script>
+        let currentSlide = 0;
+        let isSidePanelOpen = false;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const deck = document.getElementById('deck');
+        const progressBar = document.getElementById('progress-bar');
+        const currentSlideNum = document.getElementById('current-slide-num');
+        const totalSlidesNum = document.getElementById('total-slides-num');
+        const slideTitleTag = document.getElementById('slide-title-tag');
+        const moduleButtons = document.querySelectorAll('.module-btn');
+        const sidePanel = document.getElementById('side-panel');
+        const sidePanelBody = document.getElementById('side-panel-body');
+        const sidePanelHeading = document.getElementById('side-panel-heading');
+        const sideToggleBtn = document.getElementById('side-toggle-btn');
+
+        totalSlidesNum.textContent = totalSlides;
+
+        function renderAllMath() {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+
+        function updateSidePanelContent() {
+            const activeSlideElem = slides[currentSlide];
+            const title = activeSlideElem.getAttribute('data-title') || 'Slide Notes';
+            const secretData = activeSlideElem.querySelector('.secret-data');
+            
+            sidePanelHeading.textContent = `${title} • Deep Notes`;
+            if (secretData) {
+                sidePanelBody.innerHTML = secretData.innerHTML;
+            } else {
+                sidePanelBody.innerHTML = '<p>No additional study notes for this slide.</p>';
+            }
+            renderAllMath();
+        }
+
+        function toggleSidePanel() {
+            isSidePanelOpen = !isSidePanelOpen;
+            if (isSidePanelOpen) {
+                sidePanel.classList.add('open');
+                sideToggleBtn.classList.add('active-tab');
+                updateSidePanelContent();
+            } else {
+                sidePanel.classList.remove('open');
+                sideToggleBtn.classList.remove('active-tab');
+            }
+        }
+
+        function updateSlideUI() {
+            deck.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            const pct = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${pct}%`;
+            currentSlideNum.textContent = currentSlide + 1;
+            
+            const activeSlideElem = slides[currentSlide];
+            const title = activeSlideElem.getAttribute('data-title') || 'Slide';
+            const mod = activeSlideElem.getAttribute('data-module') || '1';
+            
+            slideTitleTag.textContent = `[Unit ${mod}] ${title}`;
+
+            moduleButtons.forEach(btn => {
+                const btnMod = btn.getAttribute('onclick').match(/\d+/)[0];
+                if (btnMod === mod) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            if (isSidePanelOpen) {
+                updateSidePanelContent();
+            }
+
+            renderAllMath();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlideUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlideUI();
+            }
+        }
+
+        function jumpToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlideUI();
+                document.getElementById('overview-modal').classList.remove('active');
+            }
+        }
+
+        function jumpToModule(modNum) {
+            for (let i = 0; i < totalSlides; i++) {
+                if (slides[i].getAttribute('data-module') == modNum) {
+                    jumpToSlide(i);
+                    break;
+                }
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+
+        function toggleOverview() {
+            const modal = document.getElementById('overview-modal');
+            const grid = document.getElementById('overview-grid-container');
+            
+            if (!modal.classList.contains('active')) {
+                grid.innerHTML = '';
+                slides.forEach((s, idx) => {
+                    const title = s.getAttribute('data-title') || `Slide ${idx + 1}`;
+                    const mod = s.getAttribute('data-module') || '1';
+                    const thumb = document.createElement('div');
+                    thumb.className = `overview-thumb ${idx === currentSlide ? 'current' : ''}`;
+                    thumb.onclick = () => jumpToSlide(idx);
+                    thumb.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                            <span class="badge badge-purple" style="font-size:0.65rem;">Unit ${mod}</span>
+                            <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim);">#${idx + 1}</span>
+                        </div>
+                        <div style="font-weight:700; font-size:0.88rem; color:var(--text-primary);">${title}</div>
+                    `;
+                    grid.appendChild(thumb);
+                });
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'd' || e.key === 'D') nextSlide();
+            else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') prevSlide();
+            else if (e.key === 's' || e.key === 'S') toggleSidePanel();
+            else if (e.key === 'Escape' && isSidePanelOpen) toggleSidePanel();
+            else if (e.key === 'o' || e.key === 'O') toggleOverview();
+            else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+            else if (e.key >= '1' && e.key <= '6') jumpToModule(parseInt(e.key));
+        });
+
+        window.addEventListener('load', () => {
+            renderAllMath();
+            updateSlideUI();
+        });
+    </script>
+</body>
+</html>

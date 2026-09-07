@@ -1,0 +1,66 @@
+▶	3dVaOT3pQqc	10:11	The Best Way to Learn Calculus
+2	pTdEWDdzVi0	9:01	Mastering Calculus with the 1968 Classic: Basic Calculus
+3	_GWaUhGKNxo	8:19	This Calculus Book Was INSANELY Popular in the 1940's and 1950's
+4	MuZKQzAjz5A	11:33	Super Thick Calculus Book 📕
+5	LGBVa-fMfzc	9:18	3 Ways to Learn Calculus on Your Own
+6	EYMzXfNa8Mg	10:47	Math from an M.I.T. Calculus Book
+7	D0xgEKLfaMM	9:49	Learn Calculus Fast
+8	QFPcDGq_AX4	9:59	Calculus For Beginners: Get Started Here
+9	m7dAhwe0ZTY	8:12	The Easiest Calculus Book In The World
+10	GffrHlVKsrM	9:55	Self Study Calculus Like Richard Feynman
+11	0euyDNGEiZ4	35:42	Calculus 1: Lecture 1.2 Finding Limits Graphically and Numerically
+12	yOKO63P5FwA	1:25:30	Calculus 1: Lecture 1.4 Continuity and One-Sided Limits
+13	IszUqhcVq40	1:07:34	Calculus 1: Lecture 1.5 Infinite Limits
+14	HhvN20798oE	1:03:41	Calculus 1: Lecture 2.1 The Derivative and the Tangent Line Problem
+15	3xW349GhtKU	2:23:29	Calculus 1: Lecture 2.2, 2.3, 2.4 Differentiation, Rates of Change, Product, Quotient, Chain Rules
+16	fDuIvT20Pe8	57:07	Calculus 1: Lecture 2.5 Implicit Differentiation
+17	Yv_YRRP-yt4	53:21	Calculus 1: Lecture 2.6 Related Rates
+18	EsjjQC1mqlg	51:36	Calculus 1: Lecture 3.1 Extrema on an Interval
+19	goR8GB7lO9Q	1:07:29	Calculus 1: Lecture 3.2 Rolle's Theorem and the Mean Value Theorem
+20	hyBHhd4-ST4	39:17	Calculus 1: Lecture 3.3 Increasing and Decreasing Functions and the First Derivative Test
+21	50gv7lOP24o	1:27:51	Calculus 1: Lecture 3.4 Concavity and The Second Derivative Test
+22	1NbUtjnuyKA	1:08:45	Calculus 1: Exam 2 Review
+23	A3gBsJ_fW8U	59:03	Calculus 1: Lecture 3.5 Limits at Infinity
+24	40XRHIgbwpQ	31:31	Calculus 1: Lecture 3.6 A Summary of Curve Sketching
+25	ql81b8E7RiY	34:37	Calculus 1: Lecture 3.7 Optimization Problems
+26	HOyDcHy7z04	41:52	Calculus 1: Lecture 3.8 Newton's Method
+27	foYjL9g2j5w	40:05	Calculus 1: Lecture 5.1 The Natural Logarithmic Function Differentiation
+28	AFA7viB84eU	37:54	Calculus 1: Lecture 5.2 The Natural Logarithmic Function Integration
+29	tiLoK7xsoRw	1:15:54	Calculus 1: Lecture 5.4 Exponential Functions Differentiation and Integration
+30	wiKkk7YJrC4	42:52	Calculus 1: Lecture 6.2 Growth and Decay(Separable Differential Equations Only in This Video)
+31	WVGGGTkEtKg	1:16:13	Calculus 1: Exam 4 Review
+32	K2WY7Hx0je0	1:26:35	Calculus 1: Final Exam Review
+
+--- playlist page ---
+{"id": "3dVaOT3pQqc", "title": "The Best Way to Learn Calculus", "lockup": true}
+{"id": "pTdEWDdzVi0", "title": "Mastering Calculus with the 1968 Classic: Basic Calculus", "lockup": true}
+{"id": "_GWaUhGKNxo", "title": "This Calculus Book Was INSANELY Popular in the 1940's and 1950's", "lockup": true}
+{"id": "MuZKQzAjz5A", "title": "Super Thick Calculus Book 📕", "lockup": true}
+{"id": "LGBVa-fMfzc", "title": "3 Ways to Learn Calculus on Your Own", "lockup": true}
+{"id": "EYMzXfNa8Mg", "title": "Math from an M.I.T. Calculus Book", "lockup": true}
+{"id": "D0xgEKLfaMM", "title": "Learn Calculus Fast", "lockup": true}
+{"id": "QFPcDGq_AX4", "title": "Calculus For Beginners: Get Started Here", "lockup": true}
+{"id": "m7dAhwe0ZTY", "title": "The Easiest Calculus Book In The World", "lockup": true}
+{"id": "GffrHlVKsrM", "title": "Self Study Calculus Like Richard Feynman", "lockup": true}
+{"id": "0euyDNGEiZ4", "title": "Calculus 1: Lecture 1.2 Finding Limits Graphically and Numerically", "lockup": true}
+{"id": "yOKO63P5FwA", "title": "Calculus 1: Lecture 1.4 Continuity and One-Sided Limits", "lockup": true}
+{"id": "IszUqhcVq40", "title": "Calculus 1: Lecture 1.5 Infinite Limits", "lockup": true}
+{"id": "HhvN20798oE", "title": "Calculus 1: Lecture 2.1 The Derivative and the Tangent Line Problem", "lockup": true}
+{"id": "3xW349GhtKU", "title": "Calculus 1: Lecture 2.2, 2.3, 2.4 Differentiation, Rates of Change, Product, Quotient, Chain Rules", "lockup": true}
+{"id": "fDuIvT20Pe8", "title": "Calculus 1: Lecture 2.5 Implicit Differentiation", "lockup": true}
+{"id": "Yv_YRRP-yt4", "title": "Calculus 1: Lecture 2.6 Related Rates", "lockup": true}
+{"id": "EsjjQC1mqlg", "title": "Calculus 1: Lecture 3.1 Extrema on an Interval", "lockup": true}
+{"id": "goR8GB7lO9Q", "title": "Calculus 1: Lecture 3.2 Rolle's Theorem and the Mean Value Theorem", "lockup": true}
+{"id": "hyBHhd4-ST4", "title": "Calculus 1: Lecture 3.3 Increasing and Decreasing Functions and the First Derivative Test", "lockup": true}
+{"id": "50gv7lOP24o", "title": "Calculus 1: Lecture 3.4 Concavity and The Second Derivative Test", "lockup": true}
+{"id": "1NbUtjnuyKA", "title": "Calculus 1: Exam 2 Review", "lockup": true}
+{"id": "A3gBsJ_fW8U", "title": "Calculus 1: Lecture 3.5 Limits at Infinity", "lockup": true}
+{"id": "40XRHIgbwpQ", "title": "Calculus 1: Lecture 3.6 A Summary of Curve Sketching", "lockup": true}
+{"id": "ql81b8E7RiY", "title": "Calculus 1: Lecture 3.7 Optimization Problems", "lockup": true}
+{"id": "HOyDcHy7z04", "title": "Calculus 1: Lecture 3.8 Newton's Method", "lockup": true}
+{"id": "foYjL9g2j5w", "title": "Calculus 1: Lecture 5.1 The Natural Logarithmic Function Differentiation", "lockup": true}
+{"id": "AFA7viB84eU", "title": "Calculus 1: Lecture 5.2 The Natural Logarithmic Function Integration", "lockup": true}
+{"id": "tiLoK7xsoRw", "title": "Calculus 1: Lecture 5.4 Exponential Functions Differentiation and Integration", "lockup": true}
+{"id": "wiKkk7YJrC4", "title": "Calculus 1: Lecture 6.2 Growth and Decay(Separable Differential Equations Only in This Video)", "lockup": true}
+{"id": "WVGGGTkEtKg", "title": "Calculus 1: Exam 4 Review", "lockup": true}
+{"id": "K2WY7Hx0je0", "title": "Calculus 1: Final Exam Review", "lockup": true}

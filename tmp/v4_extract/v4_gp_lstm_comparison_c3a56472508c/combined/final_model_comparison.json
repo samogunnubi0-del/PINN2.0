@@ -1,0 +1,68 @@
+{
+  "claim_eligible": false,
+  "dataset_sha256": "3fcdb80ba5d286fcd6ecac777c03f73086d882d42766e68331b45298ea5b0c56",
+  "files": {
+    "paired_case_comparison": "paired_case_comparison.csv",
+    "plot": "final_model_comparison.png"
+  },
+  "gp": {
+    "ac225_p95_relative_error": 0.02036509355752594,
+    "calibrated_joint_coverage": 0.9583333333333334,
+    "eligible": true,
+    "gates": {
+      "calibrated_joint_coverage": true,
+      "eligible_to_lead": true,
+      "explicit_ood_rejection": true,
+      "median_error": true,
+      "p95_error": true,
+      "test_false_rejection": true
+    },
+    "median_relative_error": 0.019707896324678925,
+    "p95_relative_error": 0.037906499560525185
+  },
+  "lstm": {
+    "ac225_p95_relative_error": 0.03033773619550016,
+    "calibrated_joint_coverage": 0.9583333333333334,
+    "eligible": true,
+    "gates": {
+      "calibrated_joint_coverage": true,
+      "eligible_to_lead": true,
+      "explicit_ood_rejection": true,
+      "median_error": true,
+      "p95_error": true,
+      "test_false_rejection": true
+    },
+    "median_relative_error": 0.01832313098084662,
+    "p95_relative_error": 0.03930860347973987
+  },
+  "outcome": {
+    "provisional_leader": "gp",
+    "reason": "Both models passed the gates, but the paired bootstrap did not resolve the ordering; gp has the lower observed p95.",
+    "status": "provisional leader",
+    "winner": null
+  },
+  "paired_bootstrap": {
+    "bootstrap_repeats": 10000,
+    "bootstrap_seed": 20260826,
+    "confidence_interval_95": [
+      -0.004344060168081178,
+      0.0037027781513937763
+    ],
+    "note": "Families, not individual rate channels, are resampled as paired units.",
+    "observed_difference": 0.001402103919214727,
+    "statistic": "LSTM p95 relative error minus GP p95 relative error",
+    "supported_order": "ordering_not_resolved",
+    "unit": "fractional relative error"
+  },
+  "predeclared_thresholds": {
+    "calibrated_joint_coverage_min": 0.85,
+    "explicit_ood_rejection_min": 0.95,
+    "median_relative_error_max": 0.03,
+    "p95_relative_error_max": 0.1,
+    "test_false_rejection_max": 0.1
+  },
+  "protocol": "v4_gp_lstm_domain_uncertainty_20260826",
+  "run_complete": true,
+  "scientific_interpretation": "The outcome selects an architecture for this frozen modeled proxy task. It does not establish experimental accuracy or real-world production performance.",
+  "split_hash": "693edff8a7b13b287af80f1cf593b597c285cf48017c3ed1ed0c64418350d57a"
+}

@@ -1,0 +1,3006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>Sam's Reading 700+ Mastery | Digital SAT</title>
+<meta name="description" content="Digital SAT Reading & Writing 700+ Mastery Hub tailored for Sam. Boolean Grammar Engine, Evidence Anchoring, Adaptive Routing, and Root-Cause Error Logging."/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Reading 700+">
+<meta name="theme-color" content="#1A2A3A">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%231A2A3A%22/><text y=%2268%22 x=%2224%22 font-family=%22Georgia, serif%22 font-weight=%22bold%22 font-size=%2255%22 fill=%22%23F5EFE6%22>700</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Nunito:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #F4EFEB;
+  --panel: #FCFAF6;
+  --card-bg: #FFFFFF;
+  --border: #DFD5C6;
+  --border-subtle: #EBE4D8;
+  --t1: #1E2732;
+  --t2: #5D6877;
+  --t3: #8C96A3;
+  --navy-dark: #121E2C;
+  --navy: #1C2D42;
+  --accent: #1C2D42;
+  --amber: #C57B36;
+  --amber-light: #F7EFE6;
+  --cream: #EDE4D8;
+  --forest: #256B4E;
+  --forest-light: #EBF4F0;
+  --ruby: #A23644;
+  --ruby-light: #F9EBEB;
+  --sky: #416B95;
+  --sky-light: #EEF4FA;
+  --gold: #D69736;
+  --font-serif: 'Fraunces', serif;
+  --font-sans: 'Nunito', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --shadow-soft: 0 6px 24px -4px rgba(28, 45, 66, 0.08);
+  --shadow-float: 0 16px 36px -8px rgba(28, 45, 66, 0.16);
+  --shadow-card: 0 2px 12px rgba(28, 45, 66, 0.04);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--t1);
+  min-height: 100vh;
+  padding: 16px 16px 90px;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Paper grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
+header {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.2rem 1.6rem 2.4rem 1.8rem;
+  padding: 28px 28px 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+.for-tag {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  color: var(--amber);
+  background: var(--amber-light);
+  border: 1px solid rgba(197, 123, 54, 0.3);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title h1 {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.header-title p {
+  color: var(--t2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.profile-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ppill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  color: var(--t1);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ppill.gold {
+  background: var(--amber-light);
+  border-color: rgba(197, 123, 54, 0.35);
+  color: #9C5B20;
+}
+
+.ppill.navy {
+  background: rgba(28, 45, 66, 0.08);
+  border-color: rgba(28, 45, 66, 0.25);
+  color: var(--navy);
+}
+
+.ppill.forest {
+  background: var(--forest-light);
+  border-color: rgba(37, 107, 78, 0.3);
+  color: var(--forest);
+}
+
+.ppill.ruby {
+  background: var(--ruby-light);
+  border-color: rgba(162, 54, 68, 0.3);
+  color: var(--ruby);
+}
+
+/* COUNTDOWN & STATS HERO BAR */
+.stats-banner {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 1.8rem;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.sb-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.countdown-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.cd-digits {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.cd-unit {
+  font-size: 0.75rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sb-metric {
+  padding: 0 16px;
+  border-left: 1px solid var(--border);
+}
+
+.sb-metric:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.sb-val {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.sb-lbl {
+  font-size: 0.72rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.progress-track-wrap {
+  flex: 1;
+  min-width: 240px;
+}
+
+.pt-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: var(--t2);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.pt-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--cream);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.pt-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--amber), var(--forest));
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* DOMAIN MATRIX STRIP */
+.domain-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dm-card {
+  background: var(--panel);
+  border: 1.5px solid var(--border);
+  border-radius: 1.3rem;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.dm-card.priority-1 {
+  border-color: rgba(162, 54, 68, 0.4);
+  background: linear-gradient(to bottom right, #FFFFFF, var(--ruby-light));
+}
+
+.dm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.dm-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.dm-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.dm-badge.p1 { background: var(--ruby); color: #fff; }
+.dm-badge.p2 { background: var(--amber); color: #fff; }
+.dm-badge.p3 { background: var(--sky); color: #fff; }
+.dm-badge.p4 { background: var(--forest); color: #fff; }
+
+.dm-band {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--t2);
+  margin-bottom: 6px;
+}
+
+.dm-band strong {
+  color: var(--t1);
+}
+
+.dm-stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--t3);
+  font-weight: 700;
+}
+
+/* NAVIGATION TABS */
+.tabs-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.tabs-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--t2);
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.22s ease;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tab-btn:hover {
+  color: var(--t1);
+  background: var(--cream);
+}
+
+.tab-btn.active {
+  color: #FFFFFF;
+  background: var(--navy);
+  box-shadow: 0 4px 14px rgba(28, 45, 66, 0.25);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* GRID LAYOUTS */
+.two-col {
+  display: grid;
+  grid-template-columns: 2fr 1.15fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* CARDS */
+.card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 1.8rem;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 22px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-subtitle {
+  font-size: 0.86rem;
+  color: var(--t2);
+  line-height: 1.5;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--navy);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(28, 45, 66, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(28, 45, 66, 0.28);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-sec {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-sec:hover {
+  background: var(--cream);
+  border-color: var(--t2);
+}
+
+.btn-amber {
+  background: var(--amber);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  box-shadow: 0 4px 12px rgba(197, 123, 54, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-amber:hover {
+  background: #B06929;
+}
+
+/* BOOLEAN GRAMMAR ENGINE STYLES */
+.grammar-flow {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+
+.clause-tagger-box {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.sentence-preview {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--t1);
+  margin-bottom: 14px;
+}
+
+.clause-segment {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 2px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 2px dashed var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.clause-segment.selected-indep {
+  background: rgba(37, 107, 78, 0.12);
+  border: 2px solid var(--forest);
+  color: var(--forest);
+}
+
+.clause-segment.selected-dep {
+  background: rgba(197, 123, 54, 0.12);
+  border: 2px solid var(--amber);
+  color: var(--amber);
+}
+
+.clause-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tag-btn {
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+
+.tag-btn.indep {
+  background: var(--forest-light);
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+.tag-btn.dep {
+  background: var(--amber-light);
+  border-color: var(--amber);
+  color: #9C5B20;
+}
+
+.rule-card {
+  background: var(--panel);
+  border-left: 5px solid var(--navy);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.rule-math {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--cream);
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* STRIKE-OUT TOOL FOR SUBJECT-VERB */
+.strike-word {
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.strike-word:hover {
+  background: rgba(162, 54, 68, 0.1);
+}
+
+.strike-word.struck {
+  text-decoration: line-through;
+  opacity: 0.35;
+  color: var(--ruby);
+  background: rgba(162, 54, 68, 0.08);
+}
+
+.strike-word.subject-locked {
+  background: rgba(37, 107, 78, 0.18);
+  border-bottom: 3px solid var(--forest);
+  font-weight: 800;
+}
+
+/* EVIDENCE ANCHOR ENGINE STYLES */
+.passage-box {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 20px;
+  line-height: 1.85;
+  font-size: 0.96rem;
+  margin-bottom: 16px;
+}
+
+.anchor-sentence {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 6px;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline;
+}
+
+.anchor-sentence:hover {
+  background: rgba(197, 123, 54, 0.15);
+}
+
+.anchor-sentence.tagged {
+  background: rgba(37, 107, 78, 0.16);
+  border-bottom: 2px solid var(--forest);
+  font-weight: 600;
+}
+
+.anchor-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--t2);
+  margin-right: 4px;
+  user-select: none;
+}
+
+.anchor-lock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.anchor-lock-badge.locked {
+  background: var(--ruby-light);
+  color: var(--ruby);
+  border: 1px solid rgba(162, 54, 68, 0.3);
+}
+
+.anchor-lock-badge.unlocked {
+  background: var(--forest-light);
+  color: var(--forest);
+  border: 1px solid rgba(37, 107, 78, 0.3);
+}
+
+/* CHART TRANSLATION TOOL */
+.chart-box {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.chart-svg-wrap {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto 16px;
+}
+
+.assertion-builder {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+/* QUIZ / SIMULATOR QUESTION CARDS */
+.q-card {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.q-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 0.78rem;
+  color: var(--t2);
+  font-weight: 700;
+}
+
+.q-domain-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.q-timer-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--t2);
+}
+
+.q-prompt {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--t1);
+  margin-bottom: 18px;
+}
+
+.q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opt-btn {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.1rem;
+  padding: 14px 18px;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--t1);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.opt-btn:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: var(--panel);
+}
+
+.opt-btn:disabled {
+  cursor: not-allowed;
+}
+
+.opt-btn.correct {
+  background: var(--forest-light) !important;
+  border-color: var(--forest) !important;
+  color: var(--forest) !important;
+  font-weight: 800;
+}
+
+.opt-btn.wrong {
+  background: var(--ruby-light) !important;
+  border-color: var(--ruby) !important;
+  color: var(--ruby) !important;
+}
+
+.opt-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--cream);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: var(--t1);
+  flex-shrink: 0;
+}
+
+.q-explanation {
+  display: none;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 1.1rem;
+  background: var(--cream);
+  border-left: 5px solid var(--navy);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.q-explanation.show {
+  display: block;
+}
+
+/* ERROR LOG TAXONOMY & TABLE */
+.error-tax-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tax-box {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.2rem;
+  padding: 14px;
+  text-align: center;
+}
+
+.tax-num {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.tax-lbl {
+  font-size: 0.72rem;
+  color: var(--t2);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.error-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  margin-top: 14px;
+}
+
+.error-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--cream);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--t2);
+  border-bottom: 2px solid var(--border);
+}
+
+.error-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.tax-tag {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.tax-tag.GRAMMAR_RULE_BLINDSPOT { background: rgba(162, 54, 68, 0.12); color: var(--ruby); }
+.tax-tag.OUTSIDE_ASSUMPTION { background: rgba(197, 123, 54, 0.12); color: #9C5B20; }
+.tax-tag.GRAPH_MISREAD { background: rgba(65, 107, 149, 0.12); color: var(--sky); }
+.tax-tag.PACING_RUSH { background: rgba(100, 100, 100, 0.12); color: #4A5568; }
+
+/* SIMULATOR TWO-PASS TOGGLE */
+.sim-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.mode-toggle {
+  display: flex;
+  background: var(--cream);
+  padding: 4px;
+  border-radius: 999px;
+  gap: 4px;
+}
+
+.mode-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--t2);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.mode-btn.active {
+  background: var(--navy);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(28, 45, 66, 0.2);
+}
+
+.q-nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.q-nav-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1.5px solid var(--border);
+  background: #FFFFFF;
+  color: var(--t2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.q-nav-dot.current {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #FFFFFF;
+}
+
+.q-nav-dot.answered {
+  border-color: var(--forest);
+  background: var(--forest-light);
+  color: var(--forest);
+}
+
+.q-nav-dot.flagged {
+  border-color: var(--amber);
+  position: relative;
+}
+
+.q-nav-dot.flagged::after {
+  content: "•";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  color: var(--amber);
+  font-size: 14px;
+}
+
+/* ROADMAP STYLES */
+.week-card {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  transition: all 0.2s;
+}
+
+.week-card.current-week {
+  border-color: var(--amber);
+  box-shadow: 0 4px 16px rgba(197, 123, 54, 0.15);
+  background: linear-gradient(to right, #FFFFFF, var(--amber-light));
+}
+
+.week-badge {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.week-dates {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--t2);
+  font-family: var(--font-mono);
+}
+
+.week-target-score {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--amber);
+}
+
+.week-raw-target {
+  font-size: 0.78rem;
+  color: var(--t2);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* VIDEO HUB */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.vid-card {
+  background: #FFFFFF;
+  border: 2px solid var(--border);
+  border-radius: 1.3rem;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.vid-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--navy);
+  box-shadow: var(--shadow-soft);
+}
+
+.vid-card.active-vid {
+  border-color: var(--navy);
+  background: var(--sky-light);
+}
+
+.vid-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.vid-title {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.vid-creator {
+  font-size: 0.78rem;
+  color: var(--t2);
+}
+
+.video-frame-container {
+  border-radius: 1.4rem;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.video-frame-container iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: none;
+}
+
+/* MODALS */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 30, 44, 0.5);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 2.2rem;
+  padding: 28px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: var(--shadow-float);
+  animation: slideUp 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOTTOM MOBILE NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--panel);
+  border-top: 2px solid var(--border);
+  display: none;
+  justify-content: space-around;
+  padding: 8px 12px;
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .bottom-nav { display: flex; }
+}
+
+.bn-btn {
+  background: transparent;
+  border: none;
+  color: var(--t2);
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.bn-btn.active {
+  color: var(--navy);
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  color: var(--t1);
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-float);
+  z-index: 9999;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 600px) {
+  header { padding: 20px 18px; }
+  .header-title h1 { font-size: 1.6rem; }
+  .card { padding: 18px; }
+  .stats-banner { flex-direction: column; align-items: flex-start; }
+  .sb-metric { padding: 0; border-left: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <header>
+    <span class="for-tag">Sam's 700+ Plan</span>
+    <div class="header-top">
+      <div class="header-title">
+        <h1>Digital SAT Reading &amp; Writing 700+ Mastery</h1>
+        <p>Deterministic, rule-based training to bridge from 540 to 700+. Math is locked at 800.</p>
+        <div class="profile-pills">
+          <span class="ppill forest">Math Baseline: 800 (Perfect)</span>
+          <span class="ppill ruby">R&amp;W Baseline: 540</span>
+          <span class="ppill gold">Target R&amp;W: 700+</span>
+          <span class="ppill navy">Target Total: 1500–1540</span>
+          <span class="ppill">Target Raw: 48–50 / 54 (88.8%)</span>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:.74rem;color:var(--t2);text-transform:uppercase;font-weight:800;letter-spacing:.5px;margin-bottom:4px;">Test Date</div>
+        <div style="font-family:var(--font-mono);font-size:.92rem;font-weight:800;color:var(--navy);background:var(--cream);padding:6px 14px;border-radius:999px;border:1px solid var(--border);">
+          Sat Oct 3, 2026
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS & COUNTDOWN BANNER -->
+  <div class="stats-banner">
+    <div class="sb-left">
+      <div class="countdown-box">
+        <span class="cd-digits" id="cd-days">--</span>
+        <span class="cd-unit">Days</span>
+        <span class="cd-digits" id="cd-hours" style="font-size:1.2rem;margin-left:4px;">--</span>
+        <span class="cd-unit">h</span>
+      </div>
+      <div class="sb-metric">
+        <div class="sb-val" id="streak-count">0</div>
+        <div class="sb-lbl">Day Streak</div>
+      </div>
+      <div class="sb-metric">
+        <div class="sb-val" id="accuracy-display">0%</div>
+        <div class="sb-lbl">Drill Accuracy</div>
+      </div>
+    </div>
+    <div class="progress-track-wrap">
+      <div class="pt-labels">
+        <span>Current: 540</span>
+        <span style="color:var(--amber);font-weight:800;">Target: 700 (48/54 Raw)</span>
+        <span>Max: 800</span>
+      </div>
+      <div class="pt-bar">
+        <div class="pt-bar-fill" id="score-progress-bar" style="width: 61.5%;"></div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="markCheckin()" id="checkin-btn">Mark Today's Study</button>
+  </div>
+
+  <!-- DOMAIN MATRIX STRIP -->
+  <div class="domain-matrix">
+    <div class="dm-card priority-1">
+      <div class="dm-header">
+        <span class="dm-title">Standard English Conv.</span>
+        <span class="dm-badge p1">Priority 1 🔥</span>
+      </div>
+      <div class="dm-band">Current: <strong>370–410</strong> &bull; Weight: 26%</div>
+      <div class="dm-stat-row">
+        <span>Target: 95%+ Accuracy</span>
+        <span>Boolean Grammar Rules</span>
+      </div>
+    </div>
+    <div class="dm-card">
+      <div class="dm-header">
+        <span class="dm-title">Craft and Structure</span>
+        <span class="dm-badge p2">Priority 2</span>
+      </div>
+      <div class="dm-band">Current: <strong>490–540</strong> &bull; Weight: 28%</div>
+      <div class="dm-stat-row">
+        <span>Vocab in Context + Cross-Text</span>
+        <span>Connotation Filter</span>
+      </div>
+    </div>
+    <div class="dm-card">
+      <div class="dm-header">
+        <span class="dm-title">Expression of Ideas</span>
+        <span class="dm-badge p3">Priority 3</span>
+      </div>
+      <div class="dm-band">Current: <strong>550–600</strong> &bull; Weight: 20%</div>
+      <div class="dm-stat-row">
+        <span>Transitions &amp; Bullet Notes</span>
+        <span>Fast Point Harvester</span>
+      </div>
+    </div>
+    <div class="dm-card">
+      <div class="dm-header">
+        <span class="dm-title">Information &amp; Ideas</span>
+        <span class="dm-badge p4">Priority 4</span>
+      </div>
+      <div class="dm-band">Current: <strong>610–670</strong> &bull; Weight: 26%</div>
+      <div class="dm-stat-row">
+        <span>Target: 670+ Lock</span>
+        <span>Sentence Evidence Anchor</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS NAVIGATION -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('t-roadmap')">📅 Roadmap &amp; Execution</button>
+    <button class="tab-btn" onclick="switchTab('t-boolean')">⚡ Boolean Grammar Engine</button>
+    <button class="tab-btn" onclick="switchTab('t-evidence')">🔍 Evidence Anchor Engine</button>
+    <button class="tab-btn" onclick="switchTab('t-simulator')">⏱️ Adaptive SAT Simulator</button>
+    <button class="tab-btn" onclick="switchTab('t-errors')">📊 Diagnostic Error Logger</button>
+    <button class="tab-btn" onclick="switchTab('t-videos')">🎬 Video Lessons</button>
+    <button class="tab-btn" onclick="switchTab('t-practice')">🎯 Custom Drills</button>
+  </div>
+
+  <!-- TAB 1: ROADMAP & DAILY EXECUTION -->
+  <div id="t-roadmap" class="tab-content active">
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">4-Week Target Roadmap (Sep 4 – Oct 3)</div>
+            <span style="font-size:.78rem;color:var(--t2);font-weight:700;">Aiming for 48–50 / 54 Raw</span>
+          </div>
+          
+          <div class="week-card current-week">
+            <div>
+              <div class="week-badge">Week 1: Standard English Conventions Mastery</div>
+              <div class="week-dates">Sep 4 – Sep 10 &bull; Focus: Deterministic Punctuation &amp; Clauses</div>
+              <p style="font-size:.85rem;color:var(--t2);margin-top:4px;">
+                Master independent vs. dependent clause boundaries, colons, semicolons, and comma splices. Treat grammar like math. 90%+ target on grammar drills.
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <div class="week-target-score">580 – 600</div>
+              <div class="week-raw-target">~38–41 / 54 correct</div>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div>
+              <div class="week-badge">Week 2: Command of Evidence &amp; Data Translation</div>
+              <div class="week-dates">Sep 11 – Sep 17 &bull; Focus: Anchor Tagging &amp; Axis Verification</div>
+              <p style="font-size:.85rem;color:var(--t2);margin-top:4px;">
+                Eliminate outside assumption traps. Anchor textual answers to explicit sentences. Translate graph axes to text before looking at options.
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <div class="week-target-score">620 – 650</div>
+              <div class="week-raw-target">~42–44 / 54 correct</div>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div>
+              <div class="week-badge">Week 3: Strategic Pacing &amp; Two-Pass Execution</div>
+              <div class="week-dates">Sep 18 – Sep 24 &bull; Focus: Two-Pass Strategy &amp; Vocab/Craft</div>
+              <p style="font-size:.85rem;color:var(--t2);margin-top:4px;">
+                Adopt Two-Pass execution: Pass 1 on Questions 16–27 (Grammar, Transitions, Notes) in 12 mins; Pass 2 on Questions 1–15. Bluebook Test #5 checkpoint.
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <div class="week-target-score">660 – 680</div>
+              <div class="week-raw-target">~45–47 / 54 correct</div>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div>
+              <div class="week-badge">Week 4: Official Bluebook Simulation &amp; Error Audit</div>
+              <div class="week-dates">Sep 25 – Oct 2 &bull; Focus: Real Exam Conditions &amp; Rest</div>
+              <p style="font-size:.85rem;color:var(--t2);margin-top:4px;">
+                Bluebook Test #6 under strict timing. 3-hour deep audit of any misses. Oct 2 zero-heavy study rest day. Oct 3 Test Day execution!
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <div class="week-target-score" style="color:var(--forest);">700+</div>
+              <div class="week-raw-target" style="color:var(--forest);font-weight:800;">48–50 / 54 correct</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Score Target Projection Formula</div>
+          </div>
+          <p style="font-size:.9rem;color:var(--t1);line-height:1.7;margin-bottom:12px;">
+            The Digital SAT R&amp;W section uses an adaptive model. Your app calculates your projected score dynamically:
+          </p>
+          <div class="rule-card">
+            <div class="rule-math">Projected Score = 200 + (600 &times; Correct Answers / 54) &times; Module Hardness Factor</div>
+            <p style="font-size:.82rem;color:var(--t2);margin-top:6px;">
+              <strong>Hard Module 2:</strong> Requires $\ge 18/27$ in Module 1. Module Hardness Factor = 1.0 (unlocks up to 800).<br>
+              <strong>Easy Module 2:</strong> Occurs if $\le 17/27$ in Module 1. Score is strictly capped at 650.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Today's Daily Mission</div>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.92rem;">
+            <li style="display:flex;gap:10px;">
+              <span style="font-weight:800;color:var(--amber);">1.</span>
+              <span>Complete <strong>5 Clause Evaluator drills</strong> in the Boolean Grammar Engine.</span>
+            </li>
+            <li style="display:flex;gap:10px;">
+              <span style="font-weight:800;color:var(--amber);">2.</span>
+              <span>Run the <strong>Subject-Verb Strikeout</strong> drill to isolate core singular/plural subjects.</span>
+            </li>
+            <li style="display:flex;gap:10px;">
+              <span style="font-weight:800;color:var(--amber);">3.</span>
+              <span>Review any miss in the <strong>Diagnostic Error Logger</strong> to tag the root cause.</span>
+            </li>
+          </ul>
+          <div style="margin-top:18px;">
+            <button class="btn-primary" style="width:100%;" onclick="switchTab('t-boolean')">Launch Boolean Grammar Engine</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Pacing Iron Laws for 700+</div>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.88rem;color:var(--t1);">
+            <li style="border-bottom:1px solid var(--border-subtle);padding-bottom:10px;">
+              <strong style="color:var(--navy);">The 90-Second Cap:</strong> If a reading passage takes $>90$ seconds, pick an educated guess, flag it, and move forward immediately. Protect easy points.
+            </li>
+            <li style="border-bottom:1px solid var(--border-subtle);padding-bottom:10px;">
+              <strong style="color:var(--navy);">Grammar First:</strong> Grammar and Transitions (Q16–27) have zero ambiguity. Clear them first when energy is at 100%.
+            </li>
+            <li style="border-bottom:1px solid var(--border-subtle);padding-bottom:10px;">
+              <strong style="color:var(--navy);">Never Trust Your Ear:</strong> "Reading by sound" causes 80% of grammar errors on the SAT. Apply the Boolean rules mechanically.
+            </li>
+            <li>
+              <strong style="color:var(--navy);">No Blanks Ever:</strong> There is no guessing penalty on the Digital SAT.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: BOOLEAN GRAMMAR ENGINE -->
+  <div id="t-boolean" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Module A: Boolean Grammar Engine (Deterministic $T/F$)</div>
+          <div class="card-subtitle">Because your Standard English Conventions is currently in the 370–410 band, we replace subjective "ear listening" with mathematical clause logic.</div>
+        </div>
+        <button class="btn-sec" onclick="loadNextGrammarDrill()">Next Drill &rarr;</button>
+      </div>
+
+      <!-- RULE CHEATSHEET -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:20px;">
+        <div class="rule-card">
+          <strong>Rule 1: Indep + Indep</strong>
+          <div class="rule-math">Indep + Indep &rArr; Semicolon (;) | Period (.) | Comma + FANBOYS</div>
+          <p style="font-size:.78rem;color:var(--t2);margin-top:4px;">Two complete sentences can NEVER be joined by a lone comma (comma splice) or nothing (run-on).</p>
+        </div>
+        <div class="rule-card">
+          <strong>Rule 2: Indep + Dep</strong>
+          <div class="rule-math">Indep + Dep &rArr; Comma (,) | No Punctuation</div>
+          <p style="font-size:.78rem;color:var(--t2);margin-top:4px;">A dependent clause (starts with although, because, since, which) cannot take a semicolon or period.</p>
+        </div>
+        <div class="rule-card">
+          <strong>Rule 3: List / Explanation</strong>
+          <div class="rule-math">Indep + List/Spec &rArr; Colon (:) | Single Dash (&mdash;)</div>
+          <p style="font-size:.78rem;color:var(--t2);margin-top:4px;">A colon or single dash MUST have a complete Independent Clause before it.</p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE CLAUSE EVALUATOR -->
+      <div class="grammar-flow" id="clause-eval-container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h3 style="font-family:var(--font-serif);font-size:1.15rem;color:var(--navy);">Interactive Drill: Clause Evaluator</h3>
+          <span style="font-size:.76rem;background:var(--cream);padding:4px 10px;border-radius:999px;font-weight:700;" id="bg-drill-num">Drill 1 of 5</span>
+        </div>
+        
+        <p style="font-size:.9rem;color:var(--t2);margin-bottom:14px;">
+          <strong>Step 1:</strong> Label Clause 1 and Clause 2 as <em>Independent</em> or <em>Dependent</em>. Punctuation choices will unlock once evaluated correctly.
+        </p>
+
+        <div class="clause-tagger-box">
+          <div class="sentence-preview" id="clause-sentence-display">
+            <!-- Dynamically populated -->
+          </div>
+          <div class="clause-actions">
+            <span>Clause 1:</span>
+            <button class="tag-btn indep" id="btn-c1-indep" onclick="tagClause(1, 'INDEPENDENT')">Independent</button>
+            <button class="tag-btn dep" id="btn-c1-dep" onclick="tagClause(1, 'DEPENDENT')">Dependent</button>
+            <span style="margin-left:14px;">Clause 2:</span>
+            <button class="tag-btn indep" id="btn-c2-indep" onclick="tagClause(2, 'INDEPENDENT')">Independent</button>
+            <button class="tag-btn dep" id="btn-c2-dep" onclick="tagClause(2, 'DEPENDENT')">Dependent</button>
+          </div>
+        </div>
+
+        <div id="clause-feedback" style="display:none;margin-bottom:14px;" class="rule-card"></div>
+
+        <!-- UNLOCKED PUNCTUATION CHOICES -->
+        <div id="clause-options-area" style="opacity:0.35;pointer-events:none;transition:all 0.3s;">
+          <div style="font-size:.85rem;font-weight:800;color:var(--navy);margin-bottom:10px;">
+            Step 2: Choose the deterministic punctuation mark:
+          </div>
+          <div class="q-options" id="clause-options-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBJECT-VERB AGREEMENT STRIKEOUT TOOL -->
+      <div class="grammar-flow" style="margin-top:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <div>
+            <h3 style="font-family:var(--font-serif);font-size:1.15rem;color:var(--navy);">Subject-Verb Agreement Strikeout Engine</h3>
+            <p style="font-size:.85rem;color:var(--t2);margin-top:2px;">
+              Click words in the intervening prepositional phrase to cross them out. Then match singular/plural.
+            </p>
+          </div>
+          <button class="btn-sec" onclick="loadNextSVDDrill()">Next Sentence &rarr;</button>
+        </div>
+
+        <div class="clause-tagger-box" style="background:#FFFFFF;">
+          <div id="sv-interactive-text" style="font-size:1.05rem;line-height:2.2;">
+            <!-- Interactive words dynamically inserted -->
+          </div>
+        </div>
+
+        <div id="sv-feedback" style="display:none;margin-bottom:14px;" class="rule-card"></div>
+
+        <div class="q-options" id="sv-options-list" style="opacity:0.4;pointer-events:none;transition:all 0.3s;">
+          <!-- Options -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: EVIDENCE ANCHOR ENGINE -->
+  <div id="t-evidence" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Module B: Evidence Anchor Engine (Information &amp; Ideas)</div>
+          <div class="card-subtitle">Lift your 610–670 band into 700+ by eliminating outside assumptions. You cannot select an answer until you highlight the textual proof sentence or translate the chart axes.</div>
+        </div>
+        <button class="btn-sec" onclick="loadNextEvidenceDrill()">Next Evidence Drill &rarr;</button>
+      </div>
+
+      <div class="two-col">
+        <!-- PASSAGE / CHART VIEW -->
+        <div>
+          <div id="evidence-lock-status" class="anchor-lock-badge locked">
+            🔒 Answers Locked: Click the sentence in the passage that logically proves the claim.
+          </div>
+
+          <div class="passage-box" id="evidence-passage-display">
+            <!-- Passage sentences with anchor tags -->
+          </div>
+
+          <!-- CHART DISPLAY (IF QUANTITATIVE) -->
+          <div class="chart-box" id="evidence-chart-display" style="display:none;">
+            <h4 style="font-size:.9rem;font-weight:800;color:var(--navy);margin-bottom:10px;" id="chart-title">Data Chart</h4>
+            <div class="chart-svg-wrap" id="chart-svg-container"></div>
+            
+            <!-- Axis translation requirement -->
+            <div class="assertion-builder">
+              <div style="font-size:.82rem;font-weight:800;color:var(--navy);margin-bottom:6px;">
+                Translate the Trend Before Answering:
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.88rem;">
+                <span>As depth increases from 100m to 500m, water temperature</span>
+                <select id="chart-trend-select" onchange="verifyChartAssertion()" style="padding:4px 10px;border-radius:6px;border:1px solid var(--border);font-family:var(--font-sans);font-weight:700;">
+                  <option value="">-- select trend --</option>
+                  <option value="DECREASES">decreases sharply</option>
+                  <option value="INCREASES">increases steadily</option>
+                  <option value="CONSTANT">remains constant</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUESTION & OPTIONS VIEW -->
+        <div>
+          <div class="q-card" style="margin-bottom:0;">
+            <div class="q-header-meta">
+              <span class="q-domain-pill" id="ev-domain-tag">Textual Evidence</span>
+              <span id="ev-type-tag">Inference &bull; Priority 4</span>
+            </div>
+            <div class="q-prompt" id="ev-prompt-text">
+              Which choice best illustrates the claim that deep-sea hydrothermal vents foster chemosynthetic life independent of sunlight?
+            </div>
+
+            <div class="q-options" id="ev-options-list" style="opacity:0.35;pointer-events:none;transition:all 0.3s;">
+              <!-- Dynamically populated options -->
+            </div>
+
+            <div class="q-explanation" id="ev-explanation-display"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: ADAPTIVE DIGITAL SAT SIMULATOR -->
+  <div id="t-simulator" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Digital SAT Adaptive Exam Simulator</div>
+          <div class="card-subtitle">Official sequential item grouping, adaptive Module 2 routing (18/27 threshold), and Two-Pass execution mode.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div class="mode-toggle">
+            <button class="mode-btn active" id="btn-mode-twopass" onclick="setExecMode('TWOPASS')">Two-Pass (16-27 First)</button>
+            <button class="mode-btn" id="btn-mode-standard" onclick="setExecMode('STANDARD')">Standard (1-27)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMULATOR CONTROL BAR -->
+      <div class="sim-controls-bar">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div>
+            <span style="font-size:.72rem;text-transform:uppercase;font-weight:800;color:var(--t2);letter-spacing:.5px;">Active Section</span>
+            <div style="font-family:var(--font-serif);font-size:1.15rem;font-weight:800;color:var(--navy);" id="sim-module-label">Module 1 (Mixed 27 Qs)</div>
+          </div>
+          <div style="border-left:1px solid var(--border);padding-left:14px;">
+            <span style="font-size:.72rem;text-transform:uppercase;font-weight:800;color:var(--t2);letter-spacing:.5px;">Execution Pass</span>
+            <div style="font-size:.9rem;font-weight:800;color:var(--amber);" id="sim-pass-label">Pass 1: Grammar &amp; Transitions (Q16–27)</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div>
+            <span style="font-size:.72rem;text-transform:uppercase;font-weight:800;color:var(--t2);letter-spacing:.5px;">Section Timer</span>
+            <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:800;color:var(--navy);" id="sim-timer-display">32:00</div>
+          </div>
+          <button class="btn-primary" id="sim-finish-btn" onclick="finishModule()">Finish Section &rarr;</button>
+        </div>
+      </div>
+
+      <!-- QUESTION NAVIGATOR DOTS -->
+      <div class="q-nav-grid" id="sim-nav-dots">
+        <!-- 27 question dots generated by JS -->
+      </div>
+
+      <!-- SIMULATOR QUESTION DISPLAY -->
+      <div class="two-col" style="margin-top:14px;">
+        <div>
+          <div class="q-card">
+            <div class="q-header-meta">
+              <span class="q-domain-pill" id="sim-q-domain">Standard English Conventions</span>
+              <div>
+                <button class="btn-sec" style="padding:4px 12px;font-size:.74rem;" id="sim-flag-btn" onclick="toggleFlagCurrentQuestion()">🚩 Flag for Review</button>
+                <span class="q-timer-badge" id="sim-q-spent" style="margin-left:10px;">Spent: 00s</span>
+              </div>
+            </div>
+
+            <div id="sim-passage-wrap" class="passage-box" style="display:none;background:var(--panel);"></div>
+
+            <div class="q-prompt" id="sim-q-prompt">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div class="q-options" id="sim-q-options">
+              <!-- Options -->
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;margin-top:14px;">
+            <button class="btn-sec" onclick="prevSimQuestion()">&larr; Previous Question</button>
+            <button class="btn-primary" onclick="nextSimQuestion()">Next Question &rarr;</button>
+          </div>
+        </div>
+
+        <div>
+          <!-- REAL-TIME SCORE PROJECTION CARD -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Live Score Vector</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:.85rem;color:var(--t2);">Module 1 Progress:</span>
+                <strong id="sim-answered-count">0 / 27 Answered</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:.85rem;color:var(--t2);">Routing Threshold:</span>
+                <strong style="color:var(--forest);">&ge; 18 / 27 for Hard M2</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:.85rem;color:var(--t2);">Math Baseline (Locked):</span>
+                <strong style="color:var(--forest);">800</strong>
+              </div>
+              <hr style="border:none;border-top:1px solid var(--border-subtle);">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                <span style="font-size:.9rem;font-weight:700;color:var(--navy);">Projected R&amp;W Score:</span>
+                <span style="font-family:var(--font-serif);font-size:1.6rem;font-weight:800;color:var(--amber);" id="sim-proj-rw">540</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                <span style="font-size:.9rem;font-weight:700;color:var(--navy);">Projected Total:</span>
+                <span style="font-family:var(--font-serif);font-size:1.6rem;font-weight:800;color:var(--navy);" id="sim-proj-total">1340</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: DIAGNOSTIC ERROR LOGGER -->
+  <div id="t-errors" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Root-Cause Diagnostic Error Tracker</div>
+          <div class="card-subtitle">We never classify errors by "subject" alone. Errors are diagnosed strictly by cognitive failure mode.</div>
+        </div>
+        <button class="btn-primary" onclick="openManualErrorModal()">+ Log New Missed Question</button>
+      </div>
+
+      <div class="error-tax-row">
+        <div class="tax-box">
+          <div class="tax-num" id="count-grammar">0</div>
+          <div class="tax-lbl" style="color:var(--ruby);">Grammar Rule Blindspot</div>
+          <p style="font-size:.72rem;color:var(--t3);margin-top:2px;">Missed colon rule / comma splice / modifier</p>
+        </div>
+        <div class="tax-box">
+          <div class="tax-num" id="count-outside">0</div>
+          <div class="tax-lbl" style="color:var(--amber);">Outside Assumption</div>
+          <p style="font-size:.72rem;color:var(--t3);margin-top:2px;">Selected answer not strictly proven by text</p>
+        </div>
+        <div class="tax-box">
+          <div class="tax-num" id="count-graph">0</div>
+          <div class="tax-lbl" style="color:var(--sky);">Graph / Chart Misread</div>
+          <p style="font-size:.72rem;color:var(--t3);margin-top:2px;">Misread axis, scale, or variable relationship</p>
+        </div>
+        <div class="tax-box">
+          <div class="tax-num" id="count-rush">0</div>
+          <div class="tax-lbl" style="color:#4A5568;">Pacing Rush (&lt;30s)</div>
+          <p style="font-size:.72rem;color:var(--t3);margin-top:2px;">Rushed without verifying all four options</p>
+        </div>
+      </div>
+
+      <!-- ERROR AUDIT LOG TABLE -->
+      <div style="overflow-x:auto;">
+        <table class="error-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Question Type</th>
+              <th>Root Cause Taxonomy</th>
+              <th>Your Choice</th>
+              <th>Correct Answer &amp; Proof Rule</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="error-log-tbody">
+            <!-- Dynamically populated from localStorage -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: VIDEO LESSONS -->
+  <div id="t-videos" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">High-Yield Reading &amp; Writing Video Library</div>
+          <div class="card-subtitle">Erica Meltzer-level breakdowns on Grammar, Transitions, Command of Evidence, and Digital SAT timing.</div>
+        </div>
+      </div>
+
+      <div class="video-grid" id="video-cards-container">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <div class="video-frame-container" id="video-frame-wrap" style="display:none;">
+        <iframe id="video-iframe" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 7: CUSTOM DRILLS -->
+  <div id="t-practice" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Targeted Domain Drill Generator</div>
+          <div class="card-subtitle">Isolate specific weak spots with focused 3-question drills. Works offline or connects to local AI coach.</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div>
+              <label style="font-size:.78rem;font-weight:800;color:var(--navy);display:block;margin-bottom:6px;">Target Domain</label>
+              <select id="drill-domain-select" style="width:100%;padding:10px;border-radius:12px;border:2px solid var(--border);font-family:var(--font-sans);font-weight:700;">
+                <option value="grammar">Standard English Conventions (P1)</option>
+                <option value="transitions">Transitions &amp; Ideas (P3)</option>
+                <option value="evidence">Command of Evidence (P4)</option>
+                <option value="vocab">Words in Context (P2)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:.78rem;font-weight:800;color:var(--navy);display:block;margin-bottom:6px;">Difficulty Tier</label>
+              <select id="drill-diff-select" style="width:100%;padding:10px;border-radius:12px;border:2px solid var(--border);font-family:var(--font-sans);font-weight:700;">
+                <option value="target">700 Target Band (Module 2 Hard)</option>
+                <option value="foundation">Baseline 580–620</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="generateCustomDrill()">Generate 3-Question Set</button>
+
+          <div id="custom-drill-area" style="margin-top:20px;"></div>
+        </div>
+
+        <div>
+          <div class="card" style="background:var(--cream);border-color:var(--border);">
+            <div class="card-title" style="font-size:1.05rem;margin-bottom:8px;">AI Coach Connection Status</div>
+            <p style="font-size:.82rem;color:var(--t2);line-height:1.5;margin-bottom:12px;" id="ai-status-text">
+              Checking local AI trainer bridge on <code>http://127.0.0.1:4174</code>...
+            </p>
+            <div style="font-size:.78rem;color:var(--t2);">
+              Offline Mode active: rich built-in question database is pre-loaded and 100% operational without internet or API key.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV FOR MOBILE -->
+<nav class="bottom-nav">
+  <button class="bn-btn active" onclick="switchTab('t-roadmap')"><span>📅</span>Roadmap</button>
+  <button class="bn-btn" onclick="switchTab('t-boolean')"><span>⚡</span>Grammar</button>
+  <button class="bn-btn" onclick="switchTab('t-evidence')"><span>🔍</span>Evidence</button>
+  <button class="bn-btn" onclick="switchTab('t-simulator')"><span>⏱️</span>Simulate</button>
+  <button class="bn-btn" onclick="switchTab('t-errors')"><span>📊</span>Errors</button>
+</nav>
+
+<!-- MANUAL ERROR LOG MODAL -->
+<div class="modal-overlay" id="manual-error-modal">
+  <div class="modal-box">
+    <h3 style="font-family:var(--font-serif);font-size:1.3rem;color:var(--navy);margin-bottom:16px;">Log Missed Question</h3>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div>
+        <label style="font-size:.78rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Question Domain</label>
+        <select id="modal-err-domain" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);margin-top:4px;">
+          <option value="Standard English Conventions">Standard English Conventions</option>
+          <option value="Craft and Structure">Craft and Structure</option>
+          <option value="Expression of Ideas">Expression of Ideas</option>
+          <option value="Information and Ideas">Information and Ideas</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Root Cause Taxonomy</label>
+        <select id="modal-err-tax" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);margin-top:4px;">
+          <option value="GRAMMAR_RULE_BLINDSPOT">GRAMMAR_RULE_BLINDSPOT (misread clause / punctuation rule)</option>
+          <option value="OUTSIDE_ASSUMPTION">OUTSIDE_ASSUMPTION (picked answer not backed by text)</option>
+          <option value="GRAPH_MISREAD">GRAPH_MISREAD (misread chart axes / variable trend)</option>
+          <option value="PACING_RUSH">PACING_RUSH (spent &lt;30s and fell for trap)</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:800;color:var(--t2);text-transform:uppercase;">Personal Takeaway / Proof Rule</label>
+        <textarea id="modal-err-notes" rows="3" placeholder="e.g. Semicolon requires independent on both sides. Did not notice 'although' at start." style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);margin-top:4px;font-family:var(--font-sans);"></textarea>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:8px;">
+        <button class="btn-sec" style="flex:1;" onclick="closeModal('manual-error-modal')">Cancel</button>
+        <button class="btn-primary" style="flex:1;" onclick="saveManualError()">Save to Error Log</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+// ==========================================
+// 1. DATA CONSTANTS & STORAGE KEYS
+// ==========================================
+const EXAM_DATE = new Date('2026-10-03T08:00:00');
+const LS = {
+  streak: 'sat700_streak',
+  sessions: 'sat700_sessions',
+  lastCheckin: 'sat700_last_checkin',
+  errors: 'sat700_error_log_v1',
+  drillAccuracy: 'sat700_drill_accuracy',
+  simHistory: 'sat700_sim_history'
+};
+
+// ==========================================
+// 2. QUESTION BANKS (RICH OFFLINE DATABASE)
+// ==========================================
+const GRAMMAR_DRILLS = [
+  {
+    id: 'g1',
+    sentencePart1: 'Marine biologist Sylvia Earle has logged thousands of hours underwater',
+    sentencePart2: 'she has witnessed firsthand the degradation of coral reef ecosystems across the globe.',
+    c1True: 'INDEPENDENT',
+    c2True: 'INDEPENDENT',
+    rule: 'Rule 1: Indep + Indep &rArr; Semicolon (;), Period (.), or Comma + FANBOYS.',
+    explanation: 'Both clauses have a subject and a conjugated verb and can stand alone as complete sentences. A lone comma would create a comma splice. A semicolon is correct.',
+    options: [
+      { text: '; she has witnessed', correct: true },
+      { text: ', she has witnessed', correct: false },
+      { text: ' she has witnessed', correct: false },
+      { text: ': although she has witnessed', correct: false }
+    ]
+  },
+  {
+    id: 'g2',
+    sentencePart1: 'Although the new telescope array was engineered to operate in freezing conditions',
+    sentencePart2: 'the sensor calibration required several hours of fine adjustments at room temperature.',
+    c1True: 'DEPENDENT',
+    c2True: 'INDEPENDENT',
+    rule: 'Rule 2: Dep + Indep &rArr; Comma (,). Never use a semicolon after a dependent clause.',
+    explanation: 'Clause 1 begins with the subordinating conjunction "Although", rendering it dependent. When a dependent clause leads, it must be followed by a comma, not a semicolon or period.',
+    options: [
+      { text: 'conditions, the sensor', correct: true },
+      { text: 'conditions; the sensor', correct: false },
+      { text: 'conditions. The sensor', correct: false },
+      { text: 'conditions: and the sensor', correct: false }
+    ]
+  },
+  {
+    id: 'g3',
+    sentencePart1: 'Architect Zaha Hadid incorporated a singular design philosophy into the museum expansion',
+    sentencePart2: 'sweeping fluid geometries that eliminate traditional right angles.',
+    c1True: 'INDEPENDENT',
+    c2True: 'DEPENDENT',
+    rule: 'Rule 3: Indep + Explanation &rArr; Colon (:) or Single Dash (&mdash;).',
+    explanation: 'Clause 1 is a complete independent clause. Clause 2 is a noun phrase elaborating on and defining the singular design philosophy. A colon or dash is required.',
+    options: [
+      { text: 'expansion: sweeping fluid', correct: true },
+      { text: 'expansion, sweeping fluid', correct: false },
+      { text: 'expansion; sweeping fluid', correct: false },
+      { text: 'expansion. Sweeping fluid', correct: false }
+    ]
+  },
+  {
+    id: 'g4',
+    sentencePart1: 'The newly discovered hydrothermal vent species thrive at extreme ocean depths',
+    sentencePart2: 'their metabolic pathways utilize hydrogen sulfide instead of sunlight for energy.',
+    c1True: 'INDEPENDENT',
+    c2True: 'INDEPENDENT',
+    rule: 'Rule 1: Indep + Indep &rArr; Semicolon or Comma + FANBOYS.',
+    explanation: '"Their metabolic pathways utilize..." is a full independent clause. It cannot be joined with a comma. Semicolon or period is required.',
+    options: [
+      { text: 'depths; their metabolic', correct: true },
+      { text: 'depths, their metabolic', correct: false },
+      { text: 'depths their metabolic', correct: false },
+      { text: 'depths, and their metabolic pathways which', correct: false }
+    ]
+  },
+  {
+    id: 'g5',
+    sentencePart1: 'While analyzing centuries of demographic records in northern Scandinavia',
+    sentencePart2: 'historians uncovered clear evidence of seasonal migration cycles.',
+    c1True: 'DEPENDENT',
+    c2True: 'INDEPENDENT',
+    rule: 'Rule 2: Dep + Indep &rArr; Comma (,).',
+    explanation: 'Clause 1 is an introductory dependent modifier beginning with "While". It requires a comma before the main clause.',
+    options: [
+      { text: 'Scandinavia, historians', correct: true },
+      { text: 'Scandinavia; historians', correct: false },
+      { text: 'Scandinavia: historians', correct: false },
+      { text: 'Scandinavia. Historians', correct: false }
+    ]
+  }
+];
+
+const SV_DRILLS = [
+  {
+    words: [
+      { text: 'The', type: 'other' },
+      { text: 'constellation', type: 'subject', isSubject: true },
+      { text: 'of', type: 'prep' },
+      { text: 'automated', type: 'prep' },
+      { text: 'weather', type: 'prep' },
+      { text: 'stations', type: 'prep' },
+      { text: 'scattered', type: 'prep' },
+      { text: 'across', type: 'prep' },
+      { text: 'the', type: 'prep' },
+      { text: 'Mojave', type: 'prep' },
+      { text: 'Desert', type: 'prep' }
+    ],
+    verbPrompt: '[transmit / transmits] atmospheric telemetry directly to NOAA headquarters.',
+    subject: 'constellation (Singular)',
+    correctVerb: 'transmits',
+    options: [
+      { text: 'transmits (Singular verb matching singular subject "constellation")', correct: true },
+      { text: 'transmit (Plural verb erroneously matching "stations" or "Desert")', correct: false },
+      { text: 'have transmitted (Plural verb)', correct: false },
+      { text: 'are transmitting (Plural verb)', correct: false }
+    ],
+    explanation: 'The true grammatical subject is the singular noun "constellation." The intervening prepositional phrases "of automated weather stations" and "scattered across the Mojave Desert" are distractors. Singular subject requires "transmits."'
+  },
+  {
+    words: [
+      { text: 'Fluctuations', type: 'subject', isSubject: true },
+      { text: 'in', type: 'prep' },
+      { text: 'the', type: 'prep' },
+      { text: 'abundance', type: 'prep' },
+      { text: 'of', type: 'prep' },
+      { text: 'phytoplankton', type: 'prep' },
+      { text: 'near', type: 'prep' },
+      { text: 'the', type: 'prep' },
+      { text: 'ocean', type: 'prep' },
+      { text: 'surface', type: 'prep' }
+    ],
+    verbPrompt: '[influences / influence] the migratory patterns of baleen whales.',
+    subject: 'Fluctuations (Plural)',
+    correctVerb: 'influence',
+    options: [
+      { text: 'influence (Plural verb matching plural subject "Fluctuations")', correct: true },
+      { text: 'influences (Singular verb erroneously matching "surface")', correct: false },
+      { text: 'has influenced (Singular verb)', correct: false },
+      { text: 'is influencing (Singular verb)', correct: false }
+    ],
+    explanation: 'The subject is the plural noun "Fluctuations." All intervening words between the subject and verb are prepositional modifiers and must be ignored. Plural subject requires "influence."'
+  }
+];
+
+const EVIDENCE_DRILLS = [
+  {
+    id: 'ev1',
+    domain: 'Textual Evidence',
+    sentences: [
+      { id: 's1', text: 'In deep hydrothermal vent communities, ecosystems exist in complete isolation from solar radiation.' },
+      { id: 's2', text: 'Rather than relying on photosynthetic organisms as the primary trophic base, these ecosystems depend on chemolithoautotrophic bacteria.' },
+      { id: 's3', text: 'These specialized bacteria metabolize dissolved hydrogen sulfide and methane emerging from geothermal fissures, synthesizing organic compounds.' },
+      { id: 's4', text: 'Giant tube worms (Riftia pachyptila) harbor millions of these bacteria within a specialized organ called a trophosome, obtaining nourishment directly from bacterial endosymbionts without possessing a digestive tract.' }
+    ],
+    proofSentenceId: 's4',
+    prompt: 'Which sentence from the passage provides the most direct textual evidence that certain vent organisms depend entirely on internal symbiotic bacteria for metabolic nutrition rather than ingestion?',
+    options: [
+      { text: 'Sentence 4 (explaining that tube worms lack a digestive tract and obtain food directly from bacterial endosymbionts)', correct: true },
+      { text: 'Sentence 1 (stating ecosystems exist in isolation from sunlight)', correct: false },
+      { text: 'Sentence 2 (noting ecosystems depend on chemotrophic bacteria)', correct: false },
+      { text: 'Sentence 3 (describing bacterial metabolism of hydrogen sulfide)', correct: false }
+    ],
+    explanation: 'Sentence 4 explicitly specifies that the tube worms possess no digestive tract and derive nourishment directly from the internal bacteria inside the trophosome. Selecting any other sentence is an OUTSIDE_ASSUMPTION error.'
+  },
+  {
+    id: 'ev2',
+    domain: 'Quantitative Evidence',
+    hasChart: true,
+    sentences: [
+      { id: 's1', text: 'Ecologists tracked annual nitrogen runoff and seasonal macroalgal biomass in estuaries along the Chesapeake Bay from 2018 to 2024.' },
+      { id: 's2', text: 'Researchers hypothesized that wet spring seasons with heavy agricultural runoff directly correlate with elevated peak summer algal blooms.' },
+      { id: 's3', text: 'The collected field data, recorded across twelve monitoring stations, demonstrates this dynamic with high fidelity.' }
+    ],
+    proofSentenceId: 's2',
+    chartData: {
+      title: 'Spring Runoff vs Summer Algal Biomass (2018-2024)',
+      points: [
+        { year: '2018', runoff: 42, algal: 18 },
+        { year: '2019', runoff: 78, algal: 64 },
+        { year: '2020', runoff: 55, algal: 36 },
+        { year: '2021', runoff: 88, algal: 82 },
+        { year: '2022', runoff: 32, algal: 14 }
+      ]
+    },
+    prompt: 'Which assertion best reflects the quantitative evidence shown in the data while supporting the researchers\' hypothesis?',
+    options: [
+      { text: 'In 2021, when spring nitrogen runoff reached a recorded peak of 88 kilotons, summer algal biomass also achieved its highest level at 82 g/m².', correct: true },
+      { text: 'Algal biomass remained consistent regardless of spring runoff fluctuations.', correct: false },
+      { text: 'In 2019, runoff decreased while algal biomass increased to 64 g/m².', correct: false },
+      { text: 'Macroalgal blooms were highest in years with the lowest agricultural runoff.', correct: false }
+    ],
+    explanation: 'The chart demonstrates a positive linear correlation: years with higher runoff (2019, 2021) showed corresponding peaks in algal biomass. Choice A cites exact chart coordinates.'
+  }
+];
+
+// ADAPTIVE SIMULATOR QUESTIONS (Sequential Official Pattern Q1-27)
+const SIM_QUESTIONS = [
+  // Q1-7: Words in Context
+  {
+    num: 1, type: 'Words in Context', domain: 'Craft and Structure',
+    prompt: 'While the archaeological team anticipated that the tomb artifacts would be severely degraded by humidity, they found the preserved murals in ______ condition, retaining their vivid lapis lazuli pigments.',
+    options: ['pristine', 'precarious', 'superficial', 'tentative'],
+    correct: 0,
+    exp: '"Pristine" contrasts with "severely degraded," directly supported by "retaining their vivid lapis lazuli pigments."'
+  },
+  {
+    num: 2, type: 'Words in Context', domain: 'Craft and Structure',
+    prompt: 'The philosopher argued that true scientific progress is rarely linear; rather, breakthrough discoveries often ______ existing conceptual models before new paradigms can take root.',
+    options: ['disrupt', 'replicate', 'substantiate', 'codify'],
+    correct: 0,
+    exp: '"Disrupt" fits the contrast with "linear" and matches the dismantling of existing models before new paradigms arise.'
+  },
+  // Q8-11: Central Idea & Cross-Text
+  {
+    num: 8, type: 'Central Idea & Structure', domain: 'Craft and Structure',
+    passage: 'For decades, historians attributed the abrupt decline of the ancient city of Teotihuacan exclusively to foreign invasion. However, recent isotopic analyses of skeletal remains and architectural carbon deposits indicate that protracted internal resource depletion and prolonged droughts had already destabilized the urban core decades before any signs of conflagration.',
+    prompt: 'Which statement best summarizes the main idea of the passage?',
+    options: [
+      'Recent archaeological evidence suggests internal environmental and resource stresses contributed significantly to the city\'s decline before external conflict occurred.',
+      'Foreign invaders deliberately caused agricultural failure in Teotihuacan by destroying water management systems.',
+      'Skeletal analyses have disproven the hypothesis that warfare played any role in the abandonment of the city.',
+      'Isotopic research confirms that urban centers in Mesoamerica were immune to climatic fluctuations.'
+    ],
+    correct: 0,
+    exp: 'The passage contrasts the old invasion theory with new evidence proving internal drought and resource depletion destabilized the city first.'
+  },
+  // Q12-15: Textual / Quantitative Evidence
+  {
+    num: 12, type: 'Command of Evidence', domain: 'Information and Ideas',
+    passage: 'Cognitive psychologists investigated the "spacing effect" in vocabulary retention across two cohort groups. Group A engaged in massed practice (studying for 4 consecutive hours in one day), while Group B engaged in spaced practice (studying for 1 hour across 4 spaced days). After 30 days, Group B exhibited a 42% higher retention rate on delayed recall tests.',
+    prompt: 'Which finding from the study most directly supports the researchers\' conclusion that spaced retrieval enhances long-term memory consolidation?',
+    options: [
+      'Cohort Group B retained 42% more vocabulary items on delayed recall evaluations 30 days after the study sessions concluded.',
+      'Cohort Group A completed the cumulative vocabulary study hours in a single afternoon without interruptions.',
+      'Both cohorts reported similar levels of mental fatigue during initial test orientations.',
+      'Cohort Group A performed better on immediate quizzes administered within 10 minutes of study.'
+    ],
+    correct: 0,
+    exp: 'Direct evidence question: Choice A cites the exact metric proving long-term retention enhancement.'
+  },
+  // Q16-22: Standard English Conventions (Grammar & Punctuation)
+  {
+    num: 16, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'A team of civil engineers led by Dr. Maya Lin designed the suspension bridge to withstand hurricane-force ______ computer simulations modeled wind shears exceeding 160 miles per hour.',
+    options: ['winds; rigorous', 'winds, rigorous', 'winds rigorous', 'winds: and rigorous'],
+    correct: 0,
+    exp: 'Rule 1: Indep + Indep. "A team... designed..." is independent; "rigorous computer simulations modeled..." is independent. Semicolon is required.'
+  },
+  {
+    num: 17, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'The vibrant biodiversity of tropical rainforest canopies, which harbor thousands of yet-undocumented insect ______ drawn the attention of international conservation biologists.',
+    options: ['species, has', 'species, have', 'species have', 'species; has'],
+    correct: 0,
+    exp: 'The subject is the singular noun "biodiversity." The clause "which harbor thousands of yet-undocumented insect species" is a non-essential relative clause requiring a closing comma. Singular subject requires singular verb "has."'
+  },
+  {
+    num: 18, type: 'Standard English Conventions', domain: 'Standard English Conventions',
+    prompt: 'Because the primary electrical substation was damaged during the winter ______ hospital generators activated automatically within twelve seconds.',
+    options: ['storm, backup', 'storm; backup', 'storm: backup', 'storm. Backup'],
+    correct: 0,
+    exp: 'Rule 2: Dependent clause starting with "Because" requires a comma before the independent clause. Semicolon or period would create a fragment.'
+  },
+  // Q23-25: Transitions
+  {
+    num: 23, type: 'Transitions', domain: 'Expression of Ideas',
+    prompt: 'Many commercial airlines adopted lightweight composite carbon fiber materials to reduce overall fuselage weight and decrease jet fuel consumption. ______, aerospace engineers developed more aerodynamic wingtip winglets to minimize vortex drag.',
+    options: ['Similarly,', 'Consequently,', 'In contrast,', 'Nevertheless,'],
+    correct: 0,
+    exp: 'Both sentences describe parallel technological engineering measures taken to improve fuel efficiency. "Similarly" correctly connects additive parallel ideas.'
+  },
+  {
+    num: 24, type: 'Transitions', domain: 'Expression of Ideas',
+    prompt: 'Early climate models assumed that polar ice sheets would melt at uniform, predictable rates. Modern satellite telemetry, ______, has revealed rapid, episodic subglacial water surges that accelerate glacier movement.',
+    options: ['however,', 'therefore,', 'furthermore,', 'for instance,'],
+    correct: 0,
+    exp: 'The relationship is contrast: early assumption of uniform melt vs. modern revelation of rapid episodic surges. "however" is correct.'
+  },
+  // Q26-27: Rhetorical Synthesis (Bullet Notes)
+  {
+    num: 26, type: 'Rhetorical Synthesis', domain: 'Expression of Ideas',
+    prompt: 'While reviewing notes for a presentation on solar energy technologies, a student recorded the following:\n• Perovskite solar cells are composed of synthetic organic-inorganic halide compounds.\n• Traditional silicon solar cells achieve approximately 20–22% energy conversion efficiency.\n• Experimental tandem perovskite-silicon cells have achieved record lab efficiencies exceeding 33%.\n• Silicon panels require high-heat manufacturing, whereas perovskites can be produced at lower temperatures.\n\nThe student wants to emphasize the efficiency advantage of tandem perovskite-silicon cells over conventional silicon panels. Which choice best achieves this goal?',
+    options: [
+      'By combining materials in a tandem configuration, perovskite-silicon cells achieve lab conversion efficiencies above 33%, surpassing traditional silicon cells\' 20–22% benchmark.',
+      'Traditional silicon cells require high-temperature manufacturing processes to reach conversion efficiencies of 20–22%.',
+      'Perovskite solar cells, which utilize synthetic halide compounds, can be produced at lower manufacturing temperatures than silicon panels.',
+      'Solar cell technologies vary widely in both compound chemical makeup and required production temperature levels.'
+    ],
+    correct: 0,
+    exp: 'Matches the student\'s stated goal: directly emphasizes the efficiency advantage (33% vs. 20-22%) of tandem cells over conventional silicon.'
+  }
+];
+
+const VIDEOS = [
+  {
+    id: 'vid1',
+    title: 'Digital SAT Grammar Rules Masterclass (Erica Meltzer Approach)',
+    creator: 'Strategic Test Prep &bull; Laura Whitmore',
+    tag: 'Priority 1 &bull; Grammar',
+    youtubeId: 'of9TBZqvcdo',
+    desc: 'The complete deterministic walkthrough of punctuation rules, semicolons vs. colons, comma splices, and non-essential clauses.'
+  },
+  {
+    id: 'vid2',
+    title: 'How to Get a 700+ in Reading & Writing (Passage Anchoring)',
+    creator: 'PrepPros &bull; Digital SAT',
+    tag: 'Priority 4 &bull; Evidence',
+    youtubeId: 'fPWCn5OCe0s',
+    desc: 'How to anchor every textual evidence question to explicit lines. Eliminating outside assumptions and trap answers.'
+  },
+  {
+    id: 'vid3',
+    title: 'Digital SAT Two-Pass Pacing Strategy & Time Management',
+    creator: 'James Lu SAT',
+    tag: 'Strategy &bull; Pacing',
+    youtubeId: 'JsALkg3ENrc',
+    desc: 'Why starting on Question 16 in Module 2 saves 8 minutes and protects your mental stamina for hard passages.'
+  }
+];
+
+// ==========================================
+// 3. APPLICATION STATE
+// ==========================================
+let currentGrammarIndex = 0;
+let currentClauseTags = { 1: null, 2: null };
+let currentSVIndex = 0;
+let currentEvidenceIndex = 0;
+let taggedAnchorId = null;
+
+// Simulator State
+let simMode = 'TWOPASS'; // 'TWOPASS' or 'STANDARD'
+let currentSimQIdx = 0;
+let simAnswers = {};
+let simFlags = {};
+let simTimeSpent = {};
+let simTimerSeconds = 32 * 60;
+let simTimerInterval = null;
+let activeSimQuestions = [...SIM_QUESTIONS];
+
+// ==========================================
+// 4. INITIALIZATION & COUNTDOWN
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  initCountdown();
+  initStreak();
+  loadGrammarDrill(0);
+  loadSVDrill(0);
+  loadEvidenceDrill(0);
+  initSimulator();
+  renderErrorLog();
+  renderVideos();
+  checkAIHealth();
+  updateAccuracyStats();
+});
+
+function initCountdown() {
+  function updateTimer() {
+    const now = new Date();
+    const diff = EXAM_DATE - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  }
+  updateTimer();
+  setInterval(updateTimer, 60000);
+}
+
+function initStreak() {
+  const streak = parseInt(localStorage.getItem(LS.streak) || '0', 10);
+  document.getElementById('streak-count').textContent = streak;
+  const last = localStorage.getItem(LS.lastCheckin);
+  const today = new Date().toDateString();
+  const btn = document.getElementById('checkin-btn');
+  if (last === today) {
+    btn.textContent = 'Studied Today (Done)';
+    btn.disabled = true;
+  }
+}
+
+function markCheckin() {
+  const today = new Date().toDateString();
+  const last = localStorage.getItem(LS.lastCheckin);
+  if (last === today) return;
+  let streak = parseInt(localStorage.getItem(LS.streak) || '0', 10);
+  streak++;
+  localStorage.setItem(LS.streak, streak);
+  localStorage.setItem(LS.lastCheckin, today);
+  document.getElementById('streak-count').textContent = streak;
+  const btn = document.getElementById('checkin-btn');
+  btn.textContent = 'Studied Today (Done)';
+  btn.disabled = true;
+  showToast('Day ' + streak + ' logged. Keep compounding.');
+}
+
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.bn-btn').forEach(el => el.classList.remove('active'));
+
+  const target = document.getElementById(tabId);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll(`.tab-btn[onclick*="${tabId}"]`).forEach(el => el.classList.add('active'));
+  document.querySelectorAll(`.bn-btn[onclick*="${tabId}"]`).forEach(el => el.classList.add('active'));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ==========================================
+// 5. BOOLEAN GRAMMAR ENGINE LOGIC
+// ==========================================
+function loadGrammarDrill(idx) {
+  currentGrammarIndex = idx % GRAMMAR_DRILLS.length;
+  const drill = GRAMMAR_DRILLS[currentGrammarIndex];
+  currentClauseTags = { 1: null, 2: null };
+
+  document.getElementById('bg-drill-num').textContent = `Drill ${currentGrammarIndex + 1} of ${GRAMMAR_DRILLS.length}`;
+  
+  const display = document.getElementById('clause-sentence-display');
+  display.innerHTML = `
+    <span class="clause-segment" id="seg-1"><strong>[Clause 1]</strong> ${drill.sentencePart1}</span>
+    <span style="color:var(--amber);font-weight:800;margin:0 4px;">[ &bull; PUNCTUATION &bull; ]</span>
+    <span class="clause-segment" id="seg-2"><strong>[Clause 2]</strong> ${drill.sentencePart2}</span>
+  `;
+
+  // Reset tag buttons
+  ['btn-c1-indep', 'btn-c1-dep', 'btn-c2-indep', 'btn-c2-dep'].forEach(id => {
+    document.getElementById(id).style.borderColor = 'transparent';
+  });
+
+  const fb = document.getElementById('clause-feedback');
+  fb.style.display = 'none';
+
+  const optArea = document.getElementById('clause-options-area');
+  optArea.style.opacity = '0.35';
+  optArea.style.pointerEvents = 'none';
+
+  renderClauseOptions(drill);
+}
+
+function tagClause(clauseNum, tag) {
+  currentClauseTags[clauseNum] = tag;
+  const drill = GRAMMAR_DRILLS[currentGrammarIndex];
+
+  // UI button update
+  if (clauseNum === 1) {
+    document.getElementById('btn-c1-indep').style.borderColor = (tag === 'INDEPENDENT') ? 'var(--forest)' : 'transparent';
+    document.getElementById('btn-c1-dep').style.borderColor = (tag === 'DEPENDENT') ? 'var(--amber)' : 'transparent';
+    const seg1 = document.getElementById('seg-1');
+    seg1.className = 'clause-segment ' + (tag === 'INDEPENDENT' ? 'selected-indep' : 'selected-dep');
+  } else {
+    document.getElementById('btn-c2-indep').style.borderColor = (tag === 'INDEPENDENT') ? 'var(--forest)' : 'transparent';
+    document.getElementById('btn-c2-dep').style.borderColor = (tag === 'DEPENDENT') ? 'var(--amber)' : 'transparent';
+    const seg2 = document.getElementById('seg-2');
+    seg2.className = 'clause-segment ' + (tag === 'INDEPENDENT' ? 'selected-indep' : 'selected-dep');
+  }
+
+  // Check if both tagged
+  if (currentClauseTags[1] && currentClauseTags[2]) {
+    const c1Correct = currentClauseTags[1] === drill.c1True;
+    const c2Correct = currentClauseTags[2] === drill.c2True;
+    const fb = document.getElementById('clause-feedback');
+    fb.style.display = 'block';
+
+    if (c1Correct && c2Correct) {
+      fb.innerHTML = `<strong style="color:var(--forest);">✓ Correct Clause Evaluation!</strong><br>${drill.rule}`;
+      const optArea = document.getElementById('clause-options-area');
+      optArea.style.opacity = '1';
+      optArea.style.pointerEvents = 'auto';
+    } else {
+      fb.innerHTML = `<strong style="color:var(--ruby);">✗ Misidentified Clause Boundary</strong><br>Remember: An Independent clause must have both a subject and conjugated verb and express a complete thought. Subordinating words (Although, Because, Since, While) create Dependent clauses.`;
+      logAutoError('Standard English Conventions', 'GRAMMAR_RULE_BLINDSPOT', 'Misidentified clause boundary in ' + drill.sentencePart1);
+    }
+  }
+}
+
+function renderClauseOptions(drill) {
+  const list = document.getElementById('clause-options-list');
+  list.innerHTML = drill.options.map((opt, oi) => `
+    <button class="opt-btn" onclick="selectClauseOption(${oi})">
+      <span class="opt-letter">${String.fromCharCode(65 + oi)}</span>
+      <span>${opt.text}</span>
+    </button>
+  `).join('');
+}
+
+function selectClauseOption(oi) {
+  const drill = GRAMMAR_DRILLS[currentGrammarIndex];
+  const list = document.getElementById('clause-options-list');
+  const buttons = list.querySelectorAll('.opt-btn');
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (drill.options[i].correct) btn.classList.add('correct');
+    if (i === oi && !drill.options[i].correct) btn.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('clause-feedback');
+  if (drill.options[oi].correct) {
+    fb.innerHTML += `<div style="margin-top:8px;color:var(--forest);font-weight:700;">✓ Correct! ${drill.explanation}</div>`;
+    recordDrillResult(true);
+  } else {
+    fb.innerHTML += `<div style="margin-top:8px;color:var(--ruby);font-weight:700;">✗ Wrong choice. ${drill.explanation}</div>`;
+    logAutoError('Standard English Conventions', 'GRAMMAR_RULE_BLINDSPOT', 'Picked wrong punctuation on: ' + drill.sentencePart1);
+    recordDrillResult(false);
+  }
+}
+
+function loadNextGrammarDrill() {
+  loadGrammarDrill(currentGrammarIndex + 1);
+}
+
+// ==========================================
+// 6. SUBJECT-VERB AGREEMENT STRIKEOUT LOGIC
+// ==========================================
+function loadSVDrill(idx) {
+  currentSVIndex = idx % SV_DRILLS.length;
+  const drill = SV_DRILLS[currentSVIndex];
+  const container = document.getElementById('sv-interactive-text');
+  
+  container.innerHTML = drill.words.map((w, i) => `
+    <span class="strike-word ${w.isSubject ? 'subject-locked' : ''}" onclick="toggleStrikeWord(${i})" id="sv-word-${i}">${w.text}</span>
+  `).join(' ') + ` <strong>${drill.verbPrompt}</strong>`;
+
+  const fb = document.getElementById('sv-feedback');
+  fb.style.display = 'none';
+
+  const optArea = document.getElementById('sv-options-list');
+  optArea.style.opacity = '1';
+  optArea.style.pointerEvents = 'auto';
+  optArea.innerHTML = drill.options.map((opt, i) => `
+    <button class="opt-btn" onclick="selectSVOption(${i})">
+      <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+      <span>${opt.text}</span>
+    </button>
+  `).join('');
+}
+
+function toggleStrikeWord(i) {
+  const el = document.getElementById('sv-word-' + i);
+  if (!el.classList.contains('subject-locked')) {
+    el.classList.toggle('struck');
+  }
+}
+
+function selectSVOption(oi) {
+  const drill = SV_DRILLS[currentSVIndex];
+  const list = document.getElementById('sv-options-list');
+  const buttons = list.querySelectorAll('.opt-btn');
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (drill.options[i].correct) btn.classList.add('correct');
+    if (i === oi && !drill.options[i].correct) btn.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('sv-feedback');
+  fb.style.display = 'block';
+  if (drill.options[oi].correct) {
+    fb.innerHTML = `<strong style="color:var(--forest);">✓ Subject Verified:</strong> ${drill.explanation}`;
+    recordDrillResult(true);
+  } else {
+    fb.innerHTML = `<strong style="color:var(--ruby);">✗ Agreement Error:</strong> ${drill.explanation}`;
+    logAutoError('Standard English Conventions', 'GRAMMAR_RULE_BLINDSPOT', 'Failed Subject-Verb Agreement: ' + drill.subject);
+    recordDrillResult(false);
+  }
+}
+
+function loadNextSVDDrill() {
+  loadSVDrill(currentSVIndex + 1);
+}
+
+// ==========================================
+// 7. EVIDENCE ANCHOR ENGINE LOGIC
+// ==========================================
+function loadEvidenceDrill(idx) {
+  currentEvidenceIndex = idx % EVIDENCE_DRILLS.length;
+  const drill = EVIDENCE_DRILLS[currentEvidenceIndex];
+  taggedAnchorId = null;
+
+  document.getElementById('ev-domain-tag').textContent = drill.domain;
+  document.getElementById('ev-prompt-text').textContent = drill.prompt;
+
+  // Render passage with clickable sentences
+  const passageBox = document.getElementById('evidence-passage-display');
+  passageBox.innerHTML = drill.sentences.map(s => `
+    <span class="anchor-sentence" id="anch-${s.id}" onclick="tagAnchorSentence('${s.id}')">
+      <span class="anchor-indicator">[${s.id.toUpperCase()}]</span>${s.text}
+    </span>
+  `).join(' ');
+
+  // Chart setup
+  const chartBox = document.getElementById('evidence-chart-display');
+  if (drill.hasChart) {
+    chartBox.style.display = 'block';
+    renderChartSVG(drill.chartData);
+  } else {
+    chartBox.style.display = 'none';
+  }
+
+  // Lock status
+  const lock = document.getElementById('evidence-lock-status');
+  lock.className = 'anchor-lock-badge locked';
+  lock.innerHTML = '🔒 Answers Locked: Click the sentence in the passage that logically proves the claim.';
+
+  const optArea = document.getElementById('ev-options-list');
+  optArea.style.opacity = '0.35';
+  optArea.style.pointerEvents = 'none';
+  optArea.innerHTML = drill.options.map((opt, i) => `
+    <button class="opt-btn" onclick="selectEvidenceOption(${i})">
+      <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+      <span>${opt.text}</span>
+    </button>
+  `).join('');
+
+  document.getElementById('ev-explanation-display').className = 'q-explanation';
+}
+
+function tagAnchorSentence(sentenceId) {
+  const drill = EVIDENCE_DRILLS[currentEvidenceIndex];
+  taggedAnchorId = sentenceId;
+
+  document.querySelectorAll('.anchor-sentence').forEach(el => el.classList.remove('tagged'));
+  const target = document.getElementById('anch-' + sentenceId);
+  if (target) target.classList.add('tagged');
+
+  const lock = document.getElementById('evidence-lock-status');
+  const optArea = document.getElementById('ev-options-list');
+
+  if (sentenceId === drill.proofSentenceId) {
+    lock.className = 'anchor-lock-badge unlocked';
+    lock.innerHTML = '🔓 Evidence Anchored! Sentence [' + sentenceId.toUpperCase() + '] verified. Answer choices unlocked.';
+    optArea.style.opacity = '1';
+    optArea.style.pointerEvents = 'auto';
+  } else {
+    lock.className = 'anchor-lock-badge locked';
+    lock.innerHTML = '⚠️ Sentence [' + sentenceId.toUpperCase() + '] does not provide sufficient logical proof. Check the exact text.';
+    optArea.style.opacity = '0.35';
+    optArea.style.pointerEvents = 'none';
+    logAutoError('Information and Ideas', 'OUTSIDE_ASSUMPTION', 'Tagged invalid proof anchor [' + sentenceId + '] in Evidence Drill.');
+  }
+}
+
+function renderChartSVG(data) {
+  const container = document.getElementById('chart-svg-container');
+  const pts = data.points;
+  const width = 460, height = 180, pad = 35;
+  const maxVal = 100;
+
+  const svg = `
+    <svg viewBox="0 0 ${width} ${height}" style="width:100%;height:auto;font-family:var(--font-sans);">
+      <!-- Grid lines -->
+      <line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="#DFD5C6" stroke-width="1.5"/>
+      <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${height - pad}" stroke="#DFD5C6" stroke-width="1.5"/>
+      
+      <!-- Bars / Lines -->
+      ${pts.map((p, i) => {
+        const x = pad + 30 + i * 80;
+        const hRunoff = (p.runoff / maxVal) * (height - pad * 2);
+        const yRunoff = height - pad - hRunoff;
+        const hAlgal = (p.algal / maxVal) * (height - pad * 2);
+        const yAlgal = height - pad - hAlgal;
+        return `
+          <rect x="${x - 14}" y="${yRunoff}" width="12" height="${hRunoff}" fill="#C57B36" rx="2"/>
+          <rect x="${x}" y="${yAlgal}" width="12" height="${hAlgal}" fill="#256B4E" rx="2"/>
+          <text x="${x}" y="${height - 12}" font-size="11" font-weight="700" fill="#5D6877" text-anchor="middle">${p.year}</text>
+        `;
+      }).join('')}
+      
+      <!-- Legend -->
+      <rect x="${width - 160}" y="10" width="10" height="10" fill="#C57B36" rx="2"/>
+      <text x="${width - 145}" y="19" font-size="10" font-weight="700" fill="#5D6877">Runoff (kt)</text>
+      <rect x="${width - 80}" y="10" width="10" height="10" fill="#256B4E" rx="2"/>
+      <text x="${width - 65}" y="19" font-size="10" font-weight="700" fill="#5D6877">Algal (g/m²)</text>
+    </svg>
+  `;
+  container.innerHTML = svg;
+}
+
+function verifyChartAssertion() {
+  const val = document.getElementById('chart-trend-select').value;
+  if (val === 'DECREASES') {
+    showToast('Correct chart axis trend identified.');
+  } else if (val) {
+    showToast('Chart axis trend misread. Check the variable direction.', true);
+    logAutoError('Information and Ideas', 'GRAPH_MISREAD', 'Misinterpreted graph axis direction in Chart Drill');
+  }
+}
+
+function selectEvidenceOption(oi) {
+  const drill = EVIDENCE_DRILLS[currentEvidenceIndex];
+  const list = document.getElementById('ev-options-list');
+  const buttons = list.querySelectorAll('.opt-btn');
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (drill.options[i].correct) btn.classList.add('correct');
+    if (i === oi && !drill.options[i].correct) btn.classList.add('wrong');
+  });
+
+  const exp = document.getElementById('ev-explanation-display');
+  exp.className = 'q-explanation show';
+  if (drill.options[oi].correct) {
+    exp.innerHTML = `<strong style="color:var(--forest);">✓ Correct Answer:</strong> ${drill.explanation}`;
+    recordDrillResult(true);
+  } else {
+    exp.innerHTML = `<strong style="color:var(--ruby);">✗ Incorrect Choice:</strong> ${drill.explanation}`;
+    logAutoError('Information and Ideas', 'OUTSIDE_ASSUMPTION', 'Picked unverified distractor on: ' + drill.prompt.slice(0, 50));
+    recordDrillResult(false);
+  }
+}
+
+function loadNextEvidenceDrill() {
+  loadEvidenceDrill(currentEvidenceIndex + 1);
+}
+
+// ==========================================
+// 8. ADAPTIVE DIGITAL SAT SIMULATOR LOGIC
+// ==========================================
+function initSimulator() {
+  buildNavDots();
+  loadSimQuestion(0);
+  startSimTimer();
+}
+
+function setExecMode(mode) {
+  simMode = mode;
+  document.getElementById('btn-mode-twopass').className = 'mode-btn ' + (mode === 'TWOPASS' ? 'active' : '');
+  document.getElementById('btn-mode-standard').className = 'mode-btn ' + (mode === 'STANDARD' ? 'active' : '');
+  
+  if (mode === 'TWOPASS') {
+    // Reorder: Grammar & Transitions (Q16-27) first, then Q1-15
+    const p1 = SIM_QUESTIONS.filter(q => q.num >= 16);
+    const p2 = SIM_QUESTIONS.filter(q => q.num < 16);
+    activeSimQuestions = [...p1, ...p2];
+    document.getElementById('sim-pass-label').textContent = 'Pass 1: Grammar & Transitions (Q16–27)';
+  } else {
+    activeSimQuestions = [...SIM_QUESTIONS].sort((a, b) => a.num - b.num);
+    document.getElementById('sim-pass-label').textContent = 'Standard Sequential (Q1–27)';
+  }
+
+  buildNavDots();
+  loadSimQuestion(0);
+  showToast('Switched to ' + (mode === 'TWOPASS' ? 'Two-Pass Strategy' : 'Standard Order'));
+}
+
+function buildNavDots() {
+  const container = document.getElementById('sim-nav-dots');
+  container.innerHTML = activeSimQuestions.map((q, i) => {
+    const isAnswered = simAnswers[q.num] !== undefined;
+    const isFlagged = simFlags[q.num];
+    const isCurrent = i === currentSimQIdx;
+    return `
+      <div class="q-nav-dot ${isCurrent ? 'current' : ''} ${isAnswered ? 'answered' : ''} ${isFlagged ? 'flagged' : ''}" onclick="jumpSimQuestion(${i})">
+        ${q.num}
+      </div>
+    `;
+  }).join('');
+}
+
+function loadSimQuestion(idx) {
+  currentSimQIdx = idx;
+  const q = activeSimQuestions[idx];
+  if (!q) return;
+
+  document.getElementById('sim-q-domain').textContent = q.domain + ' • Q' + q.num;
+  document.getElementById('sim-q-prompt').textContent = q.prompt;
+
+  const passageBox = document.getElementById('sim-passage-wrap');
+  if (q.passage) {
+    passageBox.style.display = 'block';
+    passageBox.textContent = q.passage;
+  } else {
+    passageBox.style.display = 'none';
+  }
+
+  const optContainer = document.getElementById('sim-q-options');
+  const chosen = simAnswers[q.num];
+  optContainer.innerHTML = q.options.map((opt, oi) => `
+    <button class="opt-btn ${chosen === oi ? 'correct' : ''}" onclick="selectSimAnswer(${q.num}, ${oi})">
+      <span class="opt-letter">${String.fromCharCode(65 + oi)}</span>
+      <span>${opt}</span>
+    </button>
+  `).join('');
+
+  buildNavDots();
+  updateProjectionCard();
+}
+
+function selectSimAnswer(qNum, optIdx) {
+  simAnswers[qNum] = optIdx;
+  loadSimQuestion(currentSimQIdx);
+}
+
+function nextSimQuestion() {
+  if (currentSimQIdx < activeSimQuestions.length - 1) {
+    loadSimQuestion(currentSimQIdx + 1);
+  } else {
+    showToast('You reached the final question. Review flags or finish section.');
+  }
+}
+
+function prevSimQuestion() {
+  if (currentSimQIdx > 0) {
+    loadSimQuestion(currentSimQIdx - 1);
+  }
+}
+
+function jumpSimQuestion(idx) {
+  loadSimQuestion(idx);
+}
+
+function toggleFlagCurrentQuestion() {
+  const q = activeSimQuestions[currentSimQIdx];
+  simFlags[q.num] = !simFlags[q.num];
+  buildNavDots();
+  showToast(simFlags[q.num] ? 'Flagged Q' + q.num : 'Unflagged Q' + q.num);
+}
+
+function startSimTimer() {
+  clearInterval(simTimerInterval);
+  simTimerInterval = setInterval(() => {
+    if (simTimerSeconds > 0) {
+      simTimerSeconds--;
+      const m = Math.floor(simTimerSeconds / 60);
+      const s = simTimerSeconds % 60;
+      document.getElementById('sim-timer-display').textContent = 
+        String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+  }, 1000);
+}
+
+function updateProjectionCard() {
+  const answeredKeys = Object.keys(simAnswers);
+  document.getElementById('sim-answered-count').textContent = answeredKeys.length + ' / 27 Answered';
+
+  // Calculate correct answers
+  let correctCount = 0;
+  answeredKeys.forEach(k => {
+    const q = SIM_QUESTIONS.find(x => x.num === parseInt(k, 10));
+    if (q && simAnswers[k] === q.correct) correctCount++;
+  });
+
+  // Projection Formula
+  // M1 out of 27 scaled to 54
+  const scaledCorrect = Math.round((correctCount / (answeredKeys.length || 1)) * 54);
+  const isHardM2 = correctCount >= 18;
+  const hardnessFactor = isHardM2 ? 1.0 : 0.82;
+  const projRW = Math.min(800, Math.max(200, Math.round(200 + (600 * (scaledCorrect / 54) * hardnessFactor))));
+  
+  document.getElementById('sim-proj-rw').textContent = projRW;
+  document.getElementById('sim-proj-total').textContent = projRW + 800; // Math 800 locked!
+}
+
+function finishModule() {
+  let correct = 0;
+  let total = activeSimQuestions.length;
+  let missedQs = [];
+
+  activeSimQuestions.forEach(q => {
+    if (simAnswers[q.num] === q.correct) {
+      correct++;
+    } else {
+      missedQs.push(q);
+    }
+  });
+
+  const routesHard = correct >= 18;
+  const projScore = Math.min(800, Math.round(200 + (600 * (correct / 27) * (routesHard ? 1.0 : 0.8))));
+
+  alert(`Module 1 Complete!\n\nScore: ${correct} / ${total} Correct\nAdaptive Routing: ${routesHard ? 'Unlocked HARD Module 2 (700+ Range)' : 'Routed to EASY Module 2 (Max 650)'}\nProjected R&W: ${projScore}\nCombined with 800 Math: ${projScore + 800}`);
+
+  // Automatically log missed questions to error log
+  missedQs.forEach(q => {
+    const tax = q.domain.includes('English') ? 'GRAMMAR_RULE_BLINDSPOT' : 'OUTSIDE_ASSUMPTION';
+    logAutoError(q.domain, tax, `Missed Q${q.num}: ${q.prompt.slice(0, 60)}...`);
+  });
+}
+
+// ==========================================
+// 9. ERROR LOGGER TAXONOMY LOGIC
+// ==========================================
+function getErrorLog() {
+  return JSON.parse(localStorage.getItem(LS.errors) || '[]');
+}
+
+function saveErrorLog(logs) {
+  localStorage.setItem(LS.errors, JSON.stringify(logs));
+  renderErrorLog();
+}
+
+function logAutoError(domain, tax, notes) {
+  const logs = getErrorLog();
+  logs.unshift({
+    id: 'err_' + Date.now(),
+    date: new Date().toLocaleDateString(),
+    domain: domain,
+    taxonomy: tax,
+    choice: 'Incorrect Choice',
+    proofRule: notes
+  });
+  saveErrorLog(logs.slice(0, 50));
+}
+
+function renderErrorLog() {
+  const logs = getErrorLog();
+  const tbody = document.getElementById('error-log-tbody');
+
+  let counts = {
+    GRAMMAR_RULE_BLINDSPOT: 0,
+    OUTSIDE_ASSUMPTION: 0,
+    GRAPH_MISREAD: 0,
+    PACING_RUSH: 0
+  };
+
+  logs.forEach(l => {
+    if (counts[l.taxonomy] !== undefined) counts[l.taxonomy]++;
+  });
+
+  document.getElementById('count-grammar').textContent = counts.GRAMMAR_RULE_BLINDSPOT;
+  document.getElementById('count-outside').textContent = counts.OUTSIDE_ASSUMPTION;
+  document.getElementById('count-graph').textContent = counts.GRAPH_MISREAD;
+  document.getElementById('count-rush').textContent = counts.PACING_RUSH;
+
+  if (logs.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--t2);">No logged errors yet. Great work! Any drill mistakes will automatically log here.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = logs.map((l, i) => `
+    <tr>
+      <td style="font-family:var(--font-mono);font-size:.78rem;">${l.date}</td>
+      <td style="font-weight:700;">${l.domain}</td>
+      <td><span class="tax-tag ${l.taxonomy}">${l.taxonomy}</span></td>
+      <td style="color:var(--ruby);font-weight:600;">${l.choice || 'Distractor'}</td>
+      <td style="color:var(--t1);font-size:.84rem;">${l.proofRule}</td>
+      <td><button class="btn-sec" style="padding:3px 8px;font-size:.72rem;" onclick="deleteError('${l.id}')">Dismiss</button></td>
+    </tr>
+  `).join('');
+}
+
+function deleteError(id) {
+  const logs = getErrorLog().filter(x => x.id !== id);
+  saveErrorLog(logs);
+}
+
+function openManualErrorModal() {
+  document.getElementById('manual-error-modal').classList.add('open');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+function saveManualError() {
+  const domain = document.getElementById('modal-err-domain').value;
+  const tax = document.getElementById('modal-err-tax').value;
+  const notes = document.getElementById('modal-err-notes').value || 'Reviewed question mechanics.';
+  logAutoError(domain, tax, notes);
+  closeModal('manual-error-modal');
+  showToast('Error logged to audit tracker.');
+}
+
+// ==========================================
+// 10. VIDEO HUB LOGIC
+// ==========================================
+function renderVideos() {
+  const container = document.getElementById('video-cards-container');
+  container.innerHTML = VIDEOS.map((v, i) => `
+    <div class="vid-card ${i === 0 ? 'active-vid' : ''}" onclick="playVideo('${v.youtubeId}', this)">
+      <div class="vid-tag">${v.tag}</div>
+      <div class="vid-title">${v.title}</div>
+      <div class="vid-creator">${v.creator}</div>
+      <p style="font-size:.78rem;color:var(--t2);margin-top:6px;line-height:1.4;">${v.desc}</p>
+    </div>
+  `).join('');
+
+  // Default to first video
+  playVideo(VIDEOS[0].youtubeId, container.querySelector('.vid-card'));
+}
+
+function playVideo(youtubeId, cardEl) {
+  document.querySelectorAll('.vid-card').forEach(c => c.classList.remove('active-vid'));
+  if (cardEl) cardEl.classList.add('active-vid');
+
+  const wrap = document.getElementById('video-frame-wrap');
+  const iframe = document.getElementById('video-iframe');
+  wrap.style.display = 'block';
+  iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`;
+}
+
+// ==========================================
+// 11. CUSTOM DRILLS & AI COACH BRIDGE
+// ==========================================
+function recordDrillResult(isCorrect) {
+  let stats = JSON.parse(localStorage.getItem(LS.drillAccuracy) || '{"correct":0,"total":0}');
+  stats.total++;
+  if (isCorrect) stats.correct++;
+  localStorage.setItem(LS.drillAccuracy, JSON.stringify(stats));
+  updateAccuracyStats();
+}
+
+function updateAccuracyStats() {
+  let stats = JSON.parse(localStorage.getItem(LS.drillAccuracy) || '{"correct":0,"total":0}');
+  const pct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+  document.getElementById('accuracy-display').textContent = pct + '%';
+}
+
+function generateCustomDrill() {
+  const domain = document.getElementById('drill-domain-select').value;
+  const area = document.getElementById('custom-drill-area');
+
+  area.innerHTML = `
+    <div class="q-card" style="animation:fadeIn 0.3s;">
+      <div class="q-header-meta">
+        <span class="q-domain-pill">Custom Drill</span>
+        <span>Target Band 700+</span>
+      </div>
+      <div class="q-prompt">
+        The research symposium featured presentations from both junior researchers and seasoned principal ______ however, the keynote lecture by Dr. Aris Thorne generated the highest volume of academic citations.
+      </div>
+      <div class="q-options">
+        <button class="opt-btn" onclick="checkCustomDrill(this, true, 'Rule 1: Indep + Indep requires semicolon before however.')">
+          <span class="opt-letter">A</span>
+          <span>investigators; however,</span>
+        </button>
+        <button class="opt-btn" onclick="checkCustomDrill(this, false, 'Comma creates a comma splice between two independent clauses.')">
+          <span class="opt-letter">B</span>
+          <span>investigators, however,</span>
+        </button>
+        <button class="opt-btn" onclick="checkCustomDrill(this, false, 'Missing punctuation creates a run-on sentence.')">
+          <span class="opt-letter">C</span>
+          <span>investigators however</span>
+        </button>
+      </div>
+      <div class="q-explanation" id="custom-exp"></div>
+    </div>
+  `;
+}
+
+function checkCustomDrill(btn, isCorrect, explanation) {
+  const parent = btn.closest('.q-options');
+  parent.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+  if (isCorrect) btn.classList.add('correct');
+  else btn.classList.add('wrong');
+
+  const exp = document.getElementById('custom-exp');
+  exp.className = 'q-explanation show';
+  exp.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect:'}</strong> ${explanation}`;
+  recordDrillResult(isCorrect);
+}
+
+async function checkAIHealth() {
+  try {
+    const res = await fetch('/api/health', { method: 'GET' });
+    if (res.ok) {
+      document.getElementById('ai-status-text').innerHTML = 
+        `<span style="color:var(--forest);font-weight:700;">● Local AI Coach Connected</span> (DeepSeek / OpenRouter active).`;
+    }
+  } catch (e) {
+    // Normal in standalone browser mode
+  }
+}
+</script>
+</body>
+</html>
