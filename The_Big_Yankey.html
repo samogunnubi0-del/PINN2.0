@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>The BIG YANKEY | D.O. Pre-Med, College Admissions &amp; Scholarship Hub</title>
+<meta name="description" content="The BIG YANKEY: Calm, high-leverage College Admissions, D.O. Pre-Med Roadmap, and Scholarship Command Center for Class of 2027."/>
+<meta name="theme-color" content="#1B382B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F9F6F0;
+  --panel: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --border: #E5DACD;
+  --border-subtle: #F0E8DD;
+  --t1: #1E2922;
+  --t2: #516356;
+  --t3: #829487;
+  
+  --forest: #1E4633;
+  --forest-mid: #2A5E46;
+  --forest-light: #E8F3ED;
+  --forest-glow: rgba(30, 70, 51, 0.15);
+  
+  --terracotta: #A44C32;
+  --terracotta-light: #FAECE8;
+  --gold: #C48332;
+  --gold-light: #FAF1E3;
+  --sky: #346A8C;
+  --sky-light: #EAF3F8;
+  
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  
+  --shadow-soft: 0 10px 32px -4px rgba(30, 70, 51, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] {
+  --bg: #0D1310;
+  --panel: #141C17;
+  --card-bg: #18221C;
+  --border: #25332A;
+  --border-subtle: #1C2720;
+  --t1: #EFF5F1;
+  --t2: #A3B5AA;
+  --t3: #6F8276;
+  
+  --forest: #43A072;
+  --forest-mid: #388E62;
+  --forest-light: #162B20;
+  --forest-glow: rgba(67, 160, 114, 0.2);
+  
+  --terracotta: #E26A4A;
+  --terracotta-light: #2D1812;
+  --gold: #E5A14C;
+  --gold-light: #2A1F11;
+  --sky: #56A4D3;
+  --sky-light: #122430;
+  
+  --shadow-soft: 0 10px 32px -4px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--t1);
+  min-height: 100vh;
+  padding: 20px 16px 90px;
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  position: relative;
+  line-height: 1.55;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Paper Texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER - Wabi-Sabi Asymmetric Geometry */
+header {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px 34px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--forest-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.hero-tag {
+  color: var(--forest);
+  background: var(--forest-light);
+  border: 1px solid rgba(30, 70, 51, 0.25);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-toggle-btn {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--t2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--forest);
+  color: var(--t1);
+  transform: translateY(-1px);
+}
+
+.header-title h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+  line-height: 1.12;
+  margin-bottom: 10px;
+}
+
+.header-title p {
+  color: var(--t2);
+  font-size: 1.05rem;
+  max-width: 860px;
+  line-height: 1.6;
+}
+
+/* Profile Pills */
+.profile-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.ppill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--t1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ppill.forest { background: var(--forest-light); border-color: var(--forest); color: var(--forest); }
+.ppill.terracotta { background: var(--terracotta-light); border-color: var(--terracotta); color: var(--terracotta); }
+.ppill.gold { background: var(--gold-light); border-color: var(--gold); color: var(--gold); }
+
+/* NAVIGATION TABS */
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.nav-btn {
+  background: var(--panel);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--t2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.nav-btn:hover {
+  background: var(--bg);
+  color: var(--t1);
+  border-color: var(--forest);
+  transform: translateY(-1px);
+}
+
+.nav-btn.active {
+  background: var(--forest);
+  color: #fff;
+  border-color: var(--forest);
+  box-shadow: var(--shadow-soft);
+}
+
+/* SECTION TABS */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* SECTION CONTAINERS */
+.content-box {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px 32px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow-soft);
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.box-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--t1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.box-desc {
+  color: var(--t2);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+/* 6 TARGET COLLEGES GRID */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.college-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.college-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--card-border-color, var(--forest));
+}
+
+.college-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--forest);
+  box-shadow: 0 12px 28px var(--forest-glow);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.decision-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.badge-ea { background: var(--forest-light); color: var(--forest); border: 1px solid rgba(30, 70, 51, 0.2); }
+.badge-rd { background: var(--sky-light); color: var(--sky); border: 1px solid rgba(52, 106, 140, 0.2); }
+
+.days-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--terracotta);
+  background: var(--terracotta-light);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.college-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 4px;
+}
+
+.college-location {
+  font-size: 0.84rem;
+  color: var(--t3);
+  margin-bottom: 14px;
+}
+
+.deadline-row {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.deadline-val {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--terracotta);
+}
+
+.deadline-term {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--t2);
+}
+
+.college-perks {
+  font-size: 0.88rem;
+  color: var(--t2);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.college-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.btn-portal {
+  background: var(--forest);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-portal:hover {
+  background: var(--forest-mid);
+  transform: translateY(-1px);
+}
+
+.status-dropdown {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  color: var(--t1);
+  outline: none;
+  cursor: pointer;
+}
+
+/* LUNA AI COUNSELOR CONSOLE */
+.luna-box {
+  background: linear-gradient(135deg, rgba(30, 70, 51, 0.04) 0%, rgba(201, 131, 50, 0.04) 100%);
+  border: 2px solid var(--forest);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.luna-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.luna-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luna-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--forest), var(--gold));
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: 0 4px 14px var(--forest-glow);
+}
+
+.luna-meta h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.luna-meta span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--t3);
+}
+
+/* Luna AI Dispatcher & KPI Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--forest);
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--t3);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.kpi-val {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.kpi-sub {
+  font-size: 0.8rem;
+  color: var(--t2);
+}
+
+/* Dispatcher Filter Toolbar */
+.dispatcher-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dispatcher-search-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-dispatcher {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 18px 12px 42px;
+  font-size: 0.92rem;
+  font-family: var(--font-sans);
+  color: var(--t1);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input-dispatcher:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px var(--forest-glow);
+}
+
+.dispatcher-search-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 16px;
+  color: var(--t3);
+  pointer-events: none;
+}
+
+.filter-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-chip-btn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--t2);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-chip-btn:hover {
+  border-color: var(--forest);
+  color: var(--forest);
+  transform: translateY(-1px);
+}
+
+.filter-chip-btn.active {
+  background: var(--forest);
+  color: #fff;
+  border-color: var(--forest);
+  box-shadow: 0 2px 8px var(--forest-glow);
+}
+
+/* Time & Tier Badges */
+.time-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(196, 131, 50, 0.12);
+  color: #a06318;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.tier-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.tier-1 { background: rgba(30, 70, 51, 0.12); color: var(--forest); border: 1px solid rgba(30, 70, 51, 0.25); }
+.tier-2 { background: rgba(52, 106, 140, 0.12); color: var(--sky); border: 1px solid rgba(52, 106, 140, 0.25); }
+.tier-3 { background: rgba(164, 76, 50, 0.12); color: var(--terracotta); border: 1px solid rgba(164, 76, 50, 0.25); }
+
+.req-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0 14px;
+}
+
+.req-chip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--t2);
+}
+
+/* PACING CALCULATOR TABLE */
+.timeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-size: 0.92rem;
+}
+
+.timeline-table th {
+  background: var(--bg);
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--t3);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+}
+
+.timeline-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--t1);
+}
+
+.timeline-table tr:hover td {
+  background: rgba(30, 70, 51, 0.02);
+}
+
+/* COLLABORATIVE CARD: SAM & YANKEY */
+.collaborative-card {
+  background: linear-gradient(135deg, var(--forest-light) 0%, var(--gold-light) 100%);
+  border: 2px dashed var(--forest);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.collab-left h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.collab-left p {
+  color: var(--t2);
+  font-size: 0.92rem;
+  max-width: 780px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--panel);
+  border: 1.5px solid var(--forest);
+  color: var(--forest);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--t3);
+}
+
+@media (max-width: 768px) {
+  body { padding: 14px 10px 60px; }
+  header { padding: 24px 20px; }
+  .content-box { padding: 20px 16px; }
+  .colleges-grid { grid-template-columns: 1fr; }
+  .chat-input-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP HEADER -->
+  <header>
+    <div class="top-bar">
+      <div class="hero-tag">
+        <span>🩺</span> The BIG YANKEY • Class of 2027
+      </div>
+
+      <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">
+        <span>🌙</span> Dark Mode
+      </button>
+    </div>
+
+    <div class="header-title">
+      <h1>The BIG YANKEY</h1>
+      <p>
+        Built this whole command center for you so you can lock in all your college apps, get every dime of scholarship money, and map out the D.O. pre-med path. You got the 4.3 GPA, the CCMA cert on lock, and the story to win every single one of these. Let's get it.
+      </p>
+    </div>
+
+    <div class="profile-pills">
+      <div class="ppill forest">🎓 Class of 2027 • Guilford Park HS (Howard Co.)</div>
+      <div class="ppill terracotta">📊 3.8 UW / 4.3 W GPA</div>
+      <div class="ppill gold">🩺 CCMA Certified (Clinical Assistant)</div>
+      <div class="ppill forest">✊ BSU Co-President (2026–2027)</div>
+      <div class="ppill">🌟 NHS &amp; Delta Scholars</div>
+      <div class="ppill">🥍 Lacrosse Goalie (2024)</div>
+      <div class="ppill">🏆 Panther of the Month &amp; Principal Honor Roll</div>
+    </div>
+  </header>
+
+  <!-- COLLABORATIVE CARD -->
+  <div class="collaborative-card">
+    <div class="collab-left">
+      <h3>🚀 Peer Partnership: Sam &times; The BIG YANKEY</h3>
+      <p>
+        Yo Big Yankey! Made this entire hub for you so you don't gotta stress about college apps or burn hours searching. You've got the 4.3 GPA, the CCMA clinical cert on lock, BSU president bag, and your story about turning that childhood fear of doctors into becoming a DO who fixes maternal health disparities is honestly insane. College I'm attending: <strong>ACE</strong>. Let's lock in these acceptances and run up the bag. 🩺🔥
+      </p>
+    </div>
+    <span class="hero-tag" style="background:#fff;">Team Future Physicians</span>
+  </div>
+
+  <!-- LUNA AI MASTER SCHOLARSHIP & APPLICATION DISPATCHER -->
+  <section class="luna-box">
+    <div class="luna-header">
+      <div class="luna-title">
+        <div class="luna-avatar">🧠</div>
+        <div class="luna-meta">
+          <h3>Luna AI Master Scholarship &amp; Application Engine</h3>
+          <span>Ordered by due date, time-budgeted &amp; tuned for D.O. pre-med • 100% free</span>
+        </div>
+      </div>
+      <div class="luna-controls">
+        <span class="hero-tag" id="status-tag" style="background:rgba(30,70,51,0.08); color:var(--forest);">⚡ AI Master Scheduled</span>
+      </div>
+    </div>
+
+    <!-- Master KPI Metrics -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">🎯 Total Money We're Tracking</span>
+        <span class="kpi-val">$420,000+</span>
+        <span class="kpi-sub">28 verified awards + 6 colleges</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">⏱️ Total Time You Need</span>
+        <span class="kpi-val">~48.0 Hours</span>
+        <span class="kpi-sub">Literally ~1.5 hrs a week — light work</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">📅 Application Season</span>
+        <span class="kpi-val">Sept 15 – Apr 15</span>
+        <span class="kpi-sub">Peak crunch is November for Early Action</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">✅ Your Completed Apps</span>
+        <span class="kpi-val" id="kpi-completion-num">0 / 28 Done</span>
+        <span class="kpi-sub" id="kpi-completion-sub">Click the dropdowns to track your bag</span>
+      </div>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="dispatcher-toolbar">
+      <div class="dispatcher-search-row">
+        <span class="dispatcher-search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="scholarship-search" 
+          class="search-input-dispatcher" 
+          placeholder="Search anything (e.g. 'Howard County', 'CCMA', 'Delta', 'FAFSA', 'No Essay')..." 
+          oninput="handleScholarshipSearch(this.value)"
+        >
+      </div>
+
+      <div class="filter-chips-row">
+        <button class="filter-chip-btn active" onclick="setScholarshipFilter('all', this)">
+          <span>✨</span> All The Bags (28)
+        </button>
+        <button class="filter-chip-btn" onclick="setScholarshipFilter('chrono', this)">
+          <span>📅</span> In Order of Due Date
+        </button>
+        <button class="filter-chip-btn" onclick="setScholarshipFilter('quick', this)">
+          <span>⚡</span> Quick Wins (&lt; 1.5 hrs)
+        </button>
+        <button class="filter-chip-btn" onclick="setScholarshipFilter('in-state', this)">
+          <span>🏛️</span> Maryland &amp; Howard County
+        </button>
+        <button class="filter-chip-btn" onclick="setScholarshipFilter('premed', this)">
+          <span>🩺</span> Pre-Med &amp; CCMA
+        </button>
+        <button class="filter-chip-btn" onclick="setScholarshipFilter('tier1', this)">
+          <span>👑</span> Must-Apply (Tier 1)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="nav-bar">
+    <button class="nav-btn active" onclick="switchTab('colleges', this)">
+      <span>🏛️</span> Target Colleges &amp; Deadlines (6)
+    </button>
+    <button class="nav-btn" onclick="switchTab('timeline', this)">
+      <span>📅</span> Master Pacing Roadmap (Sept–Apr)
+    </button>
+    <button class="nav-btn" onclick="switchTab('scholarships', this)">
+      <span>💰</span> Verified Scholarships (28 • $420k+)
+    </button>
+    <button class="nav-btn" onclick="switchTab('do-pathway', this)">
+      <span>🩺</span> The D.O. Pre-Med Blueprint
+    </button>
+    <button class="nav-btn" onclick="switchTab('essay', this)">
+      <span>✍️</span> Essay Studio
+    </button>
+  </nav>
+
+  <!-- TAB 1: 6 TARGET COLLEGES -->
+  <div class="tab-content active" id="tab-colleges">
+    <div class="content-box">
+      <div class="box-header">
+        <div>
+          <h2 class="box-title"><span>🏛️</span> Your 6 Target Universities</h2>
+          <p class="box-desc">Exact admissions deadlines, round types, and pre-med program advantages. Click to open official application portals.</p>
+        </div>
+        <span id="colleges-progress" style="font-family:var(--font-mono); font-size:0.85rem; font-weight:700; color:var(--forest);">0 / 6 Submitted</span>
+      </div>
+
+      <div class="colleges-grid">
+
+        <!-- 1. UMD College Park -->
+        <div class="college-card" style="--card-border-color:#C4262E;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-ea">Early Action (Fall 2027)</span>
+              <span class="days-pill">Nov 1, 2026</span>
+            </div>
+            <h3 class="college-name">University of Maryland, College Park</h3>
+            <div class="college-location">College Park, MD • Maryland Flagship</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">November 1</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">In-State Priority</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> In-state flagship no-brainer! Top bio sciences advising. If you pair this with the MHEC Guaranteed Access Grant, your tuition is literally 100% free. Make sure you hit that Nov 1 Early Action deadline so you get automatic review for the President's and Banneker/Key full rides!
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://admissions.umd.edu/" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at UMD &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('umd', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 2. Towson University -->
+        <div class="college-card" style="--card-border-color:#F7A800;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-ea">Early Action (Fall 2027)</span>
+              <span class="days-pill">Nov 1, 2026</span>
+            </div>
+            <h3 class="college-name">Towson University</h3>
+            <div class="college-location">Towson, MD • Major Health Sciences Hub</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">November 1</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">In-State Merit</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> Super underrated allied healthcare pipeline right in MD. Direct clinical affiliations with GBMC and St. Joseph where you can put that CCMA cert to work. Submit EA by Nov 1 for automatic honors and Provost merit review.
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://www.towson.edu/admissions/" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at Towson &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('towson', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. Drexel University -->
+        <div class="college-card" style="--card-border-color:#07294D;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-ea">Early Action (Fall 2027)</span>
+              <span class="days-pill">Nov 15, 2026</span>
+            </div>
+            <h3 class="college-name">Drexel University</h3>
+            <div class="college-location">Philadelphia, PA • Co-op Medical Leader</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">November 15</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">Co-op Clinical</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> Their 6-month clinical co-op was made for you! Since you're already CCMA certified, you can literally get paid for 1,000+ clinical hospital hours before you even graduate college. Plus Philly is home to PCOM (one of the top DO schools in the country). Apply for the Liberty Scholars full ride!
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://drexel.edu/admissions/apply/" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at Drexel &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('drexel', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 4. Loyola University Maryland -->
+        <div class="college-card" style="--card-border-color:#005A36;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-ea">Early Action (Fall 2027)</span>
+              <span class="days-pill">Nov 15, 2026</span>
+            </div>
+            <h3 class="college-name">Loyola University Maryland</h3>
+            <div class="college-location">Baltimore, MD • Jesuit Pre-Med Focus</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">November 15</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">85%+ Med Acceptance</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> Jesuit pre-med advising with an 85%+ med school acceptance rate. Their whole motto is Cura Personalis (caring for the whole person), which is literally what osteopathic medicine is about. Your mission to treat patients with empathy fits right in here.
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://www.loyola.edu/admission/undergraduate" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at Loyola &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('loyola', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 5. Morgan State University -->
+        <div class="college-card" style="--card-border-color:#F15A24;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-ea">Early Action (Fall 2027)</span>
+              <span class="days-pill">Dec 1, 2026</span>
+            </div>
+            <h3 class="college-name">Morgan State University</h3>
+            <div class="college-location">Baltimore, MD • National Treasure HBCU</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">December 1</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">ASCEND Center</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> Maryland's premier HBCU and they're literally planning their own DO medical school right on campus! NIH-funded ASCEND biomedical research center, and with your 4.3 GPA + BSU Co-President bag, they're gonna throw serious merit money at you. Apply by Dec 1.
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://www.morgan.edu/admissions" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at Morgan &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('morgan', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 6. Johns Hopkins University -->
+        <div class="college-card" style="--card-border-color:#002D72;">
+          <div>
+            <div class="card-top">
+              <span class="decision-badge badge-rd">Regular Decision (Fall 2027)</span>
+              <span class="days-pill">Jan 2, 2027</span>
+            </div>
+            <h3 class="college-name">Johns Hopkins University</h3>
+            <div class="college-location">Baltimore, MD • World Premier Medical Research</div>
+            
+            <div class="deadline-row">
+              <div>
+                <div class="deadline-term">DEADLINE</div>
+                <div class="deadline-val">January 2</div>
+              </div>
+              <span class="hero-tag" style="background:#fff;">#1 In Medicine</span>
+            </div>
+
+            <p class="college-perks">
+              <strong>Pre-Med Advantage:</strong> The #1 medical research school in the world. Regular decision Jan 2. It's a reach for anyone, but shoot your shot! Your essay about distrusting doctors and wanting to eliminate black healthcare disparities + real CCMA clinical hours is exactly what Hopkins public health loves. 100% need-met, loan-free aid.
+            </p>
+          </div>
+
+          <div class="college-bottom">
+            <a href="https://apply.jhu.edu" target="_blank" rel="noopener noreferrer" class="btn-portal">
+              Apply at Hopkins &rarr;
+            </a>
+            <select class="status-dropdown" onchange="updateCollegeStatus('jhu', this.value)">
+              <option value="Not Started">Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Accepted">🎉 Accepted</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+      <!-- TAB 2: PACING & COMPLETION ROADMAP -->
+  <div class="tab-content" id="tab-timeline">
+    <div class="content-box">
+      <div class="box-header">
+        <div>
+          <h2 class="box-title"><span>📅</span> Luna AI Master Chronological Pacing Schedule</h2>
+          <p class="box-desc">Exact weekly preparation times, milestone due dates, and deliverables across all 6 target colleges and 28 scholarships.</p>
+        </div>
+        <span class="hero-tag">Guilford Park HS Senior Plan</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:20px;">
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:12px 16px;">
+          <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--t3); text-transform:uppercase;">Phase 1: Early Launch</div>
+          <div style="font-weight:700; color:var(--forest); font-size:1.05rem;">September 2026</div>
+          <div style="font-size:0.8rem; color:var(--t2);">Gates &amp; Coca-Cola (4.0 hrs)</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:12px 16px;">
+          <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--t3); text-transform:uppercase;">Phase 2: In-State EA Peak</div>
+          <div style="font-weight:700; color:var(--terracotta); font-size:1.05rem;">Nov 1 – Nov 15</div>
+          <div style="font-size:0.8rem; color:var(--t2);">UMD, Towson, Drexel, Loyola</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:12px 16px;">
+          <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--t3); text-transform:uppercase;">Phase 3: HBCU &amp; Pre-Med</div>
+          <div style="font-weight:700; color:var(--gold); font-size:1.05rem;">Dec 1 – Dec 15</div>
+          <div style="font-size:0.8rem; color:var(--t2);">Morgan, Ron Brown, Meyerhoff</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:12px 16px;">
+          <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--t3); text-transform:uppercase;">Phase 4: Research &amp; Local</div>
+          <div style="font-weight:700; color:var(--sky); font-size:1.05rem;">Jan – Feb 2027</div>
+          <div style="font-size:0.8rem; color:var(--t2);">Hopkins, Jackie Robinson, Columbia DST</div>
+        </div>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:12px 16px;">
+          <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--t3); text-transform:uppercase;">Phase 5: 100% Tuition</div>
+          <div style="font-weight:700; color:var(--forest); font-size:1.05rem;">March – April 2027</div>
+          <div style="font-size:0.8rem; color:var(--t2);">MHEC GA Grant &amp; CFHoCo</div>
+        </div>
+      </div>
+
+      <div class="table-responsive" style="overflow-x:auto;">
+        <table class="timeline-table">
+          <thead>
+            <tr>
+              <th style="width:140px;">Window / Date</th>
+              <th style="width:220px;">Target Milestone</th>
+              <th>Key Deliverables &amp; D.O. Strategy</th>
+              <th style="width:100px;">Est. Time</th>
+              <th style="width:110px;">Direct Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sept 15, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">The Gates Scholarship</span></td>
+              <td>Phase 1 is just the questionnaire, don't stress the essays yet. Flex your 4.3 GPA, CCMA cert, and BSU president role. Full cost of attendance ride covering tuition, dorm, food, and books.</td>
+              <td><span class="time-pill">⏱️ 2.5 hrs</span></td>
+              <td><a href="https://www.thegatesscholarship.org/scholarship" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Sept 30, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Coca-Cola Scholars</span></td>
+              <td>Zero essays in round 1! Literally just drop your transcript, BSU community service hours, and NHS stuff. Takes 1.5 hours max. Apply before Sept 30!</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://www.coca-colascholarsfoundation.org/apply/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Oct 15, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Burger King Scholars</span></td>
+              <td>Window caps at 50,000 applicants nationwide so jump on this as soon as it opens Oct 15. Free money for college, 1 hour quick win.</td>
+              <td><span class="time-pill">⏱️ 1.0 hr</span></td>
+              <td><a href="https://bk-scholars.com/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(196,38,46,0.04); border-left:4px solid #C4262E;">
+              <td><strong>Nov 1, 2026</strong></td>
+              <td><strong style="color:#C4262E;">🏛️ UMD College Park [EA]<br><span style="font-size:0.75rem; color:var(--t3);">+ President's Merit Review</span></strong></td>
+              <td>In-state flagship no-brainer! Top bio sciences advising. If you pair this with MHEC GA Grant, your tuition is 100% free. Hit EA Nov 1 for automatic full-ride Banneker/Key & President's review.</td>
+              <td><span class="time-pill">⏱️ 8–10 hrs</span></td>
+              <td><a href="https://admissions.umd.edu/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(247,168,0,0.04); border-left:4px solid #F7A800;">
+              <td><strong>Nov 1, 2026</strong></td>
+              <td><strong style="color:#B87700;">🏛️ Towson University [EA]<br><span style="font-size:0.75rem; color:var(--t3);">+ Provost Honors Merit</span></strong></td>
+              <td>Super underrated allied healthcare pipeline right in MD. Direct clinical affiliations with GBMC and St. Joseph where you can put that CCMA cert to work. Submit EA by Nov 1.</td>
+              <td><span class="time-pill">⏱️ 5–7 hrs</span></td>
+              <td><a href="https://www.towson.edu/admissions/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Nov 11, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Jack Kent Cooke College</span></td>
+              <td>Submits through Common App. Talk about your CCMA patient care, turning doctor distrust into your DO vision, and high grades. Up to $55k a year ($220k total).</td>
+              <td><span class="time-pill">⏱️ 3.5 hrs</span></td>
+              <td><a href="https://www.jkcf.org/our-scholarships/college-scholarship-program/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Nov 12, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Elks Most Valuable Student</span></td>
+              <td>Judged by our local Howard County / Columbia-Ellicott City Elks Lodge (#2585). Emphasize your ethical leadership as BSU Co-Pres and commitment to community health.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://www.elks.org/scholars/scholarships/mvs.cfm" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(7,41,77,0.04); border-left:4px solid #07294D;">
+              <td><strong>Nov 15, 2026</strong></td>
+              <td><strong style="color:#07294D;">🏛️ Drexel University [EA]<br><span style="font-size:0.75rem; color:var(--t3);">+ Liberty Scholars (100% Tuition)</span></strong></td>
+              <td>Their 6-month clinical co-op was made for you! Since you're already CCMA certified, you can literally get paid for 1,000+ hospital hours before graduating. Apply for Liberty Scholars full ride!</td>
+              <td><span class="time-pill">⏱️ 7–10 hrs</span></td>
+              <td><a href="https://drexel.edu/admissions/apply/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(0,90,54,0.04); border-left:4px solid #005A36;">
+              <td><strong>Nov 15, 2026</strong></td>
+              <td><strong style="color:#005A36;">🏛️ Loyola University MD [EA]</strong></td>
+              <td>Jesuit pre-med advising with an 85%+ med school acceptance rate. Their whole motto is Cura Personalis (caring for the whole person). Your mission to treat patients with empathy fits right in here.</td>
+              <td><span class="time-pill">⏱️ 6–8 hrs</span></td>
+              <td><a href="https://www.loyola.edu/admission/undergraduate" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Nov 30, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">National Honor Society (NHS)</span></td>
+              <td>Exclusive to active NHS members. Quick essay on the 4 pillars (Scholarship, Service, Leadership, Character) and verification from our Guilford Park HS chapter.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://www.nationalhonorsociety.org/students/the-nhs-scholarship/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(241,90,36,0.04); border-left:4px solid #F15A24;">
+              <td><strong>Dec 1, 2026</strong></td>
+              <td><strong style="color:#D84814;">🏛️ Morgan State University [EA]</strong></td>
+              <td>Maryland's premier HBCU and they're literally planning their own DO medical school right on campus! With your 4.3 GPA + BSU Co-President bag, they're gonna throw serious merit money at you.</td>
+              <td><span class="time-pill">⏱️ 5–8 hrs</span></td>
+              <td><a href="https://www.morgan.edu/admissions" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Dec 1, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Ron Brown Scholar Program</span></td>
+              <td>The biggest national award for Black high school seniors ($40,000). Dec 1 early deadline unlocks extra corporate funding. Submit your personal statement and rec letters.</td>
+              <td><span class="time-pill">⏱️ 3.0 hrs</span></td>
+              <td><a href="https://ronbrown.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Dec 1, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">UMBC Meyerhoff Scholars</span></td>
+              <td>The #1 pipeline in the country for Black pre-med students. Full ride + research stipend. Put in the priority nomination by Dec 1.</td>
+              <td><span class="time-pill">⏱️ 2.5 hrs</span></td>
+              <td><a href="https://meyerhoff.umbc.edu/how-to-apply/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Dec 15, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Equitable Excellence</span></td>
+              <td>Detail your BSU initiatives at Guilford Park High School and your clinical dedication as a CCMA. Awards $5k to $20k for community changemakers.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://scholarshipamerica.org/scholarship/equitableexcellence/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Dec 15, 2026</strong></td>
+              <td><span class="days-pill" style="background:#fff;">AvaCare Medical Healthcare</span></td>
+              <td>Super easy. Just write a short 350-word story about an act of patient empathy from your CCMA clinical hours. $1k for 1 hour of work.</td>
+              <td><span class="time-pill">⏱️ 1.0 hr</span></td>
+              <td><a href="https://www.avacaremedical.com/scholarship" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(0,45,114,0.04); border-left:4px solid #002D72;">
+              <td><strong>Jan 2, 2027</strong></td>
+              <td><strong style="color:#002D72;">🏛️ Johns Hopkins University [RD]</strong></td>
+              <td>The #1 medical research school in the world. Regular decision Jan 2. It's a reach for anyone, but shoot your shot! Your essay + real CCMA clinical hours is exactly what Hopkins loves.</td>
+              <td><span class="time-pill">⏱️ 10–14 hrs</span></td>
+              <td><a href="https://apply.jhu.edu" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Jan 14, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Jackie Robinson Foundation</span></td>
+              <td>Connects minority leadership with athletics. Highlight your lacrosse goalie grit and CCMA patient advocacy. Up to $35k + 4 years of mentoring.</td>
+              <td><span class="time-pill">⏱️ 3.0 hrs</span></td>
+              <td><a href="https://jackierobinson.org/scholarship/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Jan 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Foot Locker Scholar Athletes</span></td>
+              <td>Write about being the last line of defense in the lacrosse goal and how protecting teammates translates to protecting vulnerable patients. $20k award.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://www.footlockerscholarathletes.com/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Feb 1, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">UNCF Healthcare Workforce</span></td>
+              <td>Corporate pre-med endowments (AbbVie, CVS, P&G) specifically for Black students entering medical and healthcare careers. Drop your UNCF profile.</td>
+              <td><span class="time-pill">⏱️ 1.0 hr</span></td>
+              <td><a href="https://opportunities.uncf.org/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>Feb 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">Columbia (MD) Alumnae Delta DST</span></td>
+              <td>Howard County only and you're ALREADY in Delta Scholars! This is our local bag right here. Flex your BSU leadership and pre-med hustle. $2k–$5k.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://columbiamddst.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Feb 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Dell Scholars Program</span></td>
+              <td>They care about grit and resilience over test scores. Flex your NHS, BSU, dual enrollment, and CCMA cert. $20,000 + a free laptop.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://www.dellscholars.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>Feb 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Horatio Alger State & National</span></td>
+              <td>Specifically for seniors who overcame real challenges. Connect your childhood distrust of medicine to turning that pain into becoming an empathetic DO. $10k–$25k.</td>
+              <td><span class="time-pill">⏱️ 2.5 hrs</span></td>
+              <td><a href="https://scholars.horatioalger.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>Feb 25, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">Cynthia E. Morgan Memorial</span></td>
+              <td>Exclusively for Maryland students going into medicine or healthcare. Literally made for future pre-med students. 1 hour application.</td>
+              <td><span class="time-pill">⏱️ 1.0 hr</span></td>
+              <td><a href="http://cemsfund.com" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.08); border-left:4px solid var(--forest);">
+              <td><strong>March 1, 2027</strong></td>
+              <td><strong style="color:var(--forest);">MHEC GA Grant (100% Tuition)</strong></td>
+              <td>DO NOT SLEEP ON THIS. Submit FAFSA or MHEC One-App before March 1. If your family qualifies and you have a 2.5+ GPA (you got 4.3!), state covers 100% tuition at UMD, Towson, or Morgan State.</td>
+              <td><span class="time-pill">⏱️ 0.75 hr</span></td>
+              <td><a href="https://mhec.maryland.gov" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>March 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">Community Foundation of Howard Co.</span></td>
+              <td>Exclusively for HCPSS seniors! One application puts you in the running for multiple local endowments in Howard County. With a 4.3 GPA and CCMA cert, you're top of the pile.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://cfhoco.org/scholarships/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>March 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">The Pearl Foundation (AKA Howard Co.)</span></td>
+              <td>Administered by the Pearl Foundation & AKA Iota Lambda Omega chapter for Howard County seniors. Great match for your 4.3 GPA, BSU leadership, and healthcare dreams.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://pearlfoundationinc.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>March 20, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">PTA Council of Howard County (PTACHC)</span></td>
+              <td>Local scholarship for HCPSS seniors (Guilford Park HS). Quick application, emphasizes community service and career goals.</td>
+              <td><span class="time-pill">⏱️ 1.0 hr</span></td>
+              <td><a href="https://ptachc.org/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>March 27, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">CBC Spouses Education</span></td>
+              <td>Congressional Black Caucus Foundation awards Black seniors with demonstrated community leadership. Use your BSU Co-Pres record and pre-med mission.</td>
+              <td><span class="time-pill">⏱️ 2.0 hrs</span></td>
+              <td><a href="https://www.cbcfinc.org/programs/scholarships/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>April 1, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">Central Scholarship Foundation</span></td>
+              <td>One application puts you in for 50+ Maryland funds, including dedicated pre-med and healthcare endowments. Free money pool.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://central-scholarship.org" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr style="background:rgba(30,70,51,0.04);">
+              <td><strong>April 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:var(--forest); color:#fff;">MD Senatorial & Delegate</span></td>
+              <td>Direct legislative aid from our District 13 / District 12 (Jessup & Columbia) Senator and Delegates through MDCAPS. High GPA and Guilford Park leadership puts you first in line.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://mhec.maryland.gov" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><strong>April 15, 2027</strong></td>
+              <td><span class="days-pill" style="background:#fff;">Alpha Kappa Alpha (AKA EAF)</span></td>
+              <td>Merit and need awards for minority scholars. Re-use your personal statement emphasizing BSU service and your D.O. pre-med mission.</td>
+              <td><span class="time-pill">⏱️ 1.5 hrs</span></td>
+              <td><a href="https://akaeaf.org/" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">Apply &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: VERIFIED SCHOLARSHIPS -->
+  <div class="tab-content" id="tab-scholarships">
+    <div class="content-box">
+      <div class="box-header">
+        <div>
+          <h2 class="box-title"><span>💰</span> Master Verified Scholarships (28 Opportunities • $420,000+ Accessible)</h2>
+          <p class="box-desc">100% verified application links, direct active portals, preparation time budgets, and strategies tailored for Osteopathic Pre-Med (D.O.).</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="filter-chip-btn active" id="view-btn-grid" onclick="setViewMode('grid')">🎴 Cards View</button>
+          <button class="filter-chip-btn" id="view-btn-table" onclick="setViewMode('table')">📋 Master Table</button>
+        </div>
+      </div>
+
+      <div class="colleges-grid" id="scholarships-grid-dynamic">
+        <!-- Injected via JavaScript from data -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: D.O. PRE-MED BLUEPRINT -->
+  <div class="tab-content" id="tab-do-pathway">
+    <div class="content-box">
+      <div class="box-header">
+        <div>
+          <h2 class="box-title"><span>🩺</span> The D.O. (Doctor of Osteopathic Medicine) Blueprint</h2>
+          <p class="box-desc">Understanding Osteopathy, why it answers your personal mission, and regional medical schools.</p>
+        </div>
+      </div>
+
+      <div style="background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:22px 24px; margin-bottom:20px;">
+        <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--forest); margin-bottom:8px;">What makes a D.O. different from an M.D.? (The Real Breakdown)</h3>
+        <p style="color:var(--t2); font-size:0.95rem; line-height:1.6; margin-bottom:12px;">
+          Look, both DOs and MDs are <strong>100% real licensed doctors</strong>. They do the exact same surgeries, write the same prescriptions, and match into the exact same hospital residencies (pediatrics, OB-GYN, cardiology, family medicine).
+        </p>
+        <p style="color:var(--t2); font-size:0.95rem; line-height:1.6;">
+          The real difference? DOs receive 200+ extra hours in <strong>Osteopathic Manipulative Medicine (OMT)</strong> and are trained to treat the whole person, not just a quick symptom. Instead of an appointment feeling like someone talking down to you or guessing without listening—which is the exact reason you hated doctors growing up—a DO actually partners with the patient and listens to their lifestyle and background. That's why this path matches your story word for word.
+        </p>
+      </div>
+
+      <div class="colleges-grid">
+        <div class="college-card">
+          <h4 style="font-family:var(--font-serif); font-size:1.2rem; color:var(--forest); margin-bottom:4px;">PCOM (Philadelphia, PA)</h4>
+          <p style="font-size:0.85rem; color:var(--t3); margin-bottom:10px;">Philadelphia College of Osteopathic Medicine • 1.5 hrs from MD</p>
+          <p style="font-size:0.88rem; color:var(--t2);">One of the oldest and most prestigious D.O. schools in the country. Direct clinical sites in Pennsylvania and Delaware.</p>
+        </div>
+        <div class="college-card">
+          <h4 style="font-family:var(--font-serif); font-size:1.2rem; color:var(--forest); margin-bottom:4px;">VCOM (Blacksburg, VA)</h4>
+          <p style="font-size:0.85rem; color:var(--t3); margin-bottom:10px;">Edward Via College of Osteopathic Medicine • Mid-Atlantic</p>
+          <p style="font-size:0.88rem; color:var(--t2);">Dedicated to serving rural and medically underserved populations. Exceptional community medicine rotations.</p>
+        </div>
+        <div class="college-card">
+          <h4 style="font-family:var(--font-serif); font-size:1.2rem; color:var(--forest); margin-bottom:4px;">Rowan-Virtua SOM (Stratford, NJ)</h4>
+          <p style="font-size:0.85rem; color:var(--t3); margin-bottom:10px;">Rowan University School of Osteopathic Medicine</p>
+          <p style="font-size:0.88rem; color:var(--t2);">Top regional public osteopathic medical school with high residency match rates in competitive specialties.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: ESSAY STUDIO -->
+  <div class="tab-content" id="tab-essay">
+    <div class="content-box">
+      <div class="box-header">
+        <div>
+          <h2 class="box-title"><span>✍️</span> Essay Studio: The Winning Narrative</h2>
+          <p class="box-desc">Your personal essay is crazy good. Here's why admissions officers and scholarship judges are gonna love it, plus tips on how to adapt it for college supplementals.</p>
+        </div>
+        <button class="btn-portal" onclick="copyEssayText()">Copy Excerpt</button>
+      </div>
+
+      <div style="background:var(--bg); border-left:4px solid var(--terracotta); border-radius:12px; padding:20px 24px; font-style:italic; font-size:0.95rem; line-height:1.7; color:var(--t1);" id="essay-content">
+        "The place I spent years trying to avoid became the one place I yearn to be in. Growing up, the pediatrician was always an appointment I wanted to skip past. The smell of antiseptic, the disorienting sounds of a disney movie in the background, and the bright colors bouncing off the walls shook me to my core. This fear evolved to pure hatred. At eleven years old I vowed to never set foot in a doctors office past my eighteenth birthday – a delusional idea – and eventually enter the legal system to fight back against my injustice.
+        <br><br>
+        One might ask why I had such a disdain towards the doctors office, but the truth is that I never had a logical reason. It might've been the sheer fact that one person could look at my body and conjure up a diagnosis without my say. Or the fact that I had to face my unhealthy practices embarrassed me to no end. My resentment continued until my sophomore year of high school, where I took my first course in African American Studies. In this class my eyes were opened to numerous wrongs that the Black community has endured in many systems, one being the health care system. I learned that black women – such as myself– had a long history of inequities when it came to their experiences in the medical field. We were statistically treated with less courtesy, respect, and empathy when compared to the average patient. At this moment I realized my fear wasn't displaced, and that there would be a time where I couldn't rely on my own health care providers.
+        <br><br>
+        In the same school year I learned about the 'Foundation of health care' program at a school in my county. In which I would be taught about the basics of medicine. Initially, it only caught my eye because of the adorable scrubs the juniors would wear to school. But I soon realized that this could be an opportunity to take a personal..."
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>The BIG YANKEY • Built with care by Sam • Class of 2027 Pre-Med D.O. Command Center</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Saved!</div>
+
+<script>
+// OpenRouter API Configuration (Client-side zero token mode)
+const OPENROUTER_KEY = "";
+
+// Pre-curated verified scholarships (28 high-yield awards, $420k+ accessible)
+const SCHOLARSHIPS_DATA = [
+  {
+    "id": "gates-scholarship",
+    "name": "The Gates Scholarship",
+    "provider": "Bill & Melinda Gates Foundation",
+    "amount": "Full Cost of Attendance (~$200,000+)",
+    "deadline": "September 15, 2026",
+    "deadline_date": "2026-09-15",
+    "est_hours": "2.5 hrs",
+    "tier": "Tier 2: National Elite",
+    "category": "diversity",
+    "url": "https://www.thegatesscholarship.org/scholarship",
+    "strategy": "Phase 1 is just the questionnaire, don't stress the essays yet. Flex your 4.3 GPA, CCMA cert, and BSU president role. Full cost of attendance ride covering tuition, dorm, food, and books.",
+    "requirements": [
+      "Pell/Need-Eligible",
+      "Top 10% Senior",
+      "U.S. Citizen/PR"
+    ]
+  },
+  {
+    "id": "coca-cola-scholars",
+    "name": "Coca-Cola Scholars Program",
+    "provider": "Coca-Cola Scholars Foundation",
+    "amount": "$20,000 ($5,000 / year)",
+    "deadline": "September 30, 2026 (5 PM ET)",
+    "deadline_date": "2026-09-30",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 2: National Merit",
+    "category": "merit",
+    "url": "https://www.coca-colascholarsfoundation.org/apply/",
+    "strategy": "Zero essays in round 1! Literally just drop your transcript, BSU community service hours, and NHS stuff. Takes 1.5 hours max. Apply before Sept 30!",
+    "requirements": [
+      "3.0+ GPA",
+      "Senior Class of 2027",
+      "Leadership & Service Profile"
+    ]
+  },
+  {
+    "id": "umd-presidents-merit",
+    "name": "UMD President's & Banneker/Key Scholarships",
+    "provider": "University of Maryland, College Park",
+    "amount": "Up to Full Tuition, Room & Board ($120,000)",
+    "deadline": "November 1, 2026 (Early Action)",
+    "deadline_date": "2026-11-01",
+    "est_hours": "0.5 hr",
+    "tier": "Tier 1: Automatic Review with EA",
+    "category": "in-state",
+    "url": "https://admissions.umd.edu/",
+    "strategy": "NO SEPARATE ESSAY! Just submit UMD Early Action before Nov 1 and you're automatically considered for the full-ride Banneker/Key and President's scholarships.",
+    "requirements": [
+      "Submit UMD EA by Nov 1",
+      "Top Class Standing",
+      "Strong Transcript"
+    ]
+  },
+  {
+    "id": "towson-provost-merit",
+    "name": "Towson Provost & Honors College Scholarships",
+    "provider": "Towson University",
+    "amount": "Up to $4,000 / year + Honors Priority",
+    "deadline": "November 1, 2026 (Early Action)",
+    "deadline_date": "2026-11-01",
+    "est_hours": "0.5 hr",
+    "tier": "Tier 1: Automatic Review with EA",
+    "category": "in-state",
+    "url": "https://www.towson.edu/admissions/",
+    "strategy": "Automatic review when you submit Towson EA by Nov 1. Locks in priority review for the Towson Honors College and allied health pre-med cohort.",
+    "requirements": [
+      "Submit Towson EA by Nov 1",
+      "Cumulative 3.75+ GPA"
+    ]
+  },
+  {
+    "id": "jack-kent-cooke",
+    "name": "Jack Kent Cooke College Scholarship",
+    "provider": "Jack Kent Cooke Foundation",
+    "amount": "Up to $55,000 / year ($220,000 total)",
+    "deadline": "November 11, 2026",
+    "deadline_date": "2026-11-11",
+    "est_hours": "3.5 hrs",
+    "tier": "Tier 2: National Elite",
+    "category": "merit",
+    "url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/",
+    "strategy": "Submits through Common App. Talk about your CCMA patient care, turning doctor distrust into your DO vision, and high grades. Up to $55k a year ($220k total).",
+    "requirements": [
+      "3.5+ GPA",
+      "Financial Need",
+      "2 Recommender Letters",
+      "Essays"
+    ]
+  },
+  {
+    "id": "elks-mvs",
+    "name": "Elks Most Valuable Student (MVS) Competition",
+    "provider": "Elks National Foundation",
+    "amount": "$4,000 \u2013 $50,000 (500 Awards)",
+    "deadline": "November 12, 2026 (11:59 PM PT)",
+    "deadline_date": "2026-11-12",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 2: Strong Match",
+    "category": "merit",
+    "url": "https://www.elks.org/scholars/scholarships/mvs.cfm",
+    "strategy": "Judged by our local Howard County / Columbia-Ellicott City Elks Lodge (#2585). Emphasize your ethical leadership as BSU Co-Pres and commitment to community health.",
+    "requirements": [
+      "U.S. Citizen",
+      "High School Senior",
+      "Academics, Service & Financial Need"
+    ]
+  },
+  {
+    "id": "drexel-liberty-scholars",
+    "name": "Drexel Liberty Scholars (100% Tuition)",
+    "provider": "Drexel University",
+    "amount": "100% Full Tuition & Fees (~$60,000/yr)",
+    "deadline": "November 15, 2026",
+    "deadline_date": "2026-11-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 1: Institutional Full Ride",
+    "category": "merit",
+    "url": "https://drexel.edu/admissions/apply/",
+    "strategy": "Free tuition bag! Submit Drexel EA by Nov 15. Covers 100% of your tuition for underrepresented students with top academic credentials.",
+    "requirements": [
+      "Drexel Early Action Applicant",
+      "Supplemental Leadership Essay",
+      "Financial Need"
+    ]
+  },
+  {
+    "id": "nhs-scholarship",
+    "name": "National Honor Society (NHS) Scholarship",
+    "provider": "NASSP",
+    "amount": "$3,200 \u2013 $25,000",
+    "deadline": "November 30, 2026",
+    "deadline_date": "2026-11-30",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 1: High Yield Active Member",
+    "category": "merit",
+    "url": "https://www.nationalhonorsociety.org/students/the-nhs-scholarship/",
+    "strategy": "Exclusive to active NHS members. Quick essay on the 4 pillars (Scholarship, Service, Leadership, Character) and verification from our Guilford Park HS chapter.",
+    "requirements": [
+      "Active NHS Member",
+      "School Chapter Verification",
+      "Pillars of NHS Essay"
+    ]
+  },
+  {
+    "id": "ron-brown-scholar",
+    "name": "Ron Brown Scholar Program",
+    "provider": "Ron Brown Scholar Fund",
+    "amount": "$40,000 ($10,000 / year)",
+    "deadline": "December 1, 2026 (Priority) / Dec 15",
+    "deadline_date": "2026-12-01",
+    "est_hours": "3.0 hrs",
+    "tier": "Tier 1: Must-Apply Flagship",
+    "category": "diversity",
+    "url": "https://ronbrown.org",
+    "strategy": "The biggest national award for Black high school seniors ($40,000). Dec 1 early deadline unlocks extra corporate funding. Submit your personal statement and rec letters.",
+    "requirements": [
+      "Black/African American Senior",
+      "2 Essays",
+      "Transcript",
+      "2 Letters of Rec"
+    ]
+  },
+  {
+    "id": "umbc-meyerhoff",
+    "name": "UMBC Meyerhoff Scholars Program",
+    "provider": "University of Maryland, Baltimore County",
+    "amount": "Full Tuition, Room & Board + Research ($80k+)",
+    "deadline": "December 1, 2026 (Priority)",
+    "deadline_date": "2026-12-01",
+    "est_hours": "2.5 hrs",
+    "tier": "Tier 1: Top In-State Pre-Med",
+    "category": "premed",
+    "url": "https://meyerhoff.umbc.edu/how-to-apply/",
+    "strategy": "The #1 pipeline in the country for Black pre-med students. Full ride + research stipend. Put in the priority nomination by Dec 1.",
+    "requirements": [
+      "STEM/Pre-Med Focus",
+      "3.0+ GPA",
+      "Self/School Nomination",
+      "Essays"
+    ]
+  },
+  {
+    "id": "burger-king-scholars",
+    "name": "Burger King Foundation Scholars",
+    "provider": "Burger King Foundation",
+    "amount": "$1,000 \u2013 $60,000",
+    "deadline": "December 15, 2026 (Opens Oct 15)",
+    "deadline_date": "2026-12-15",
+    "est_hours": "1.0 hr",
+    "tier": "Tier 1: High Yield Quick Win",
+    "category": "merit",
+    "url": "https://bk-scholars.com/",
+    "strategy": "Window caps at 50,000 applicants nationwide so jump on this as soon as it opens Oct 15. Free money for college, 1 hour quick win.",
+    "requirements": [
+      "2.0+ GPA",
+      "Full-time college enrollment",
+      "Early submission"
+    ]
+  },
+  {
+    "id": "equitable-excellence",
+    "name": "Equitable Excellence Scholarship",
+    "provider": "Equitable Foundation",
+    "amount": "$5,000 \u2013 $20,000",
+    "deadline": "December 15, 2026",
+    "deadline_date": "2026-12-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 2: Strong Match",
+    "category": "merit",
+    "url": "https://scholarshipamerica.org/scholarship/equitableexcellence/",
+    "strategy": "Detail your BSU initiatives at Guilford Park High School and your clinical dedication as a CCMA. Awards $5k to $20k for community changemakers.",
+    "requirements": [
+      "High School Senior",
+      "Essay on Community Impact",
+      "Financial Need"
+    ]
+  },
+  {
+    "id": "avacare-medical-scholarship",
+    "name": "AvaCare Medical Healthcare Scholarship",
+    "provider": "AvaCare Medical Foundation",
+    "amount": "$1,000",
+    "deadline": "December 15, 2026",
+    "deadline_date": "2026-12-15",
+    "est_hours": "1.0 hr",
+    "tier": "Tier 1: High Yield Quick Win",
+    "category": "premed",
+    "url": "https://www.avacaremedical.com/scholarship",
+    "strategy": "Super easy. Just write a short 350-word story about an act of patient empathy from your CCMA clinical hours. $1k for 1 hour of work.",
+    "requirements": [
+      "Pursuing Medical/Healthcare Degree",
+      "3.0+ GPA",
+      "350-Word Project on Kindness"
+    ]
+  },
+  {
+    "id": "jackie-robinson",
+    "name": "Jackie Robinson Foundation Scholarship",
+    "provider": "Jackie Robinson Foundation",
+    "amount": "Up to $35,000 + 4-Yr Mentorship & Internships",
+    "deadline": "January 14, 2027 (5 PM ET)",
+    "deadline_date": "2027-01-14",
+    "est_hours": "3.0 hrs",
+    "tier": "Tier 1: High Yield & Mentorship",
+    "category": "diversity",
+    "url": "https://jackierobinson.org/scholarship/",
+    "strategy": "Connects minority leadership with athletics. Highlight your lacrosse goalie grit and CCMA patient advocacy. Up to $35k + 4 years of mentoring.",
+    "requirements": [
+      "Minority High School Senior",
+      "Leadership & Community Service",
+      "SAT/ACT or Test-Optional"
+    ]
+  },
+  {
+    "id": "foot-locker-athletes",
+    "name": "Foot Locker Scholar Athletes Program",
+    "provider": "Foot Locker Foundation",
+    "amount": "$20,000 ($5,000 / year)",
+    "deadline": "January 15, 2027",
+    "deadline_date": "2027-01-15",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 2: Student-Athlete Match",
+    "category": "athletics",
+    "url": "https://www.footlockerscholarathletes.com/",
+    "strategy": "Write about being the last line of defense in the lacrosse goal and how protecting teammates translates to protecting vulnerable patients. $20k award.",
+    "requirements": [
+      "High School Athlete",
+      "3.0+ GPA",
+      "Community Leadership Essay"
+    ]
+  },
+  {
+    "id": "uncf-stem-health",
+    "name": "UNCF Healthcare Workforce Diversity Scholarships",
+    "provider": "United Negro College Fund",
+    "amount": "$2,500 \u2013 $10,000 / year",
+    "deadline": "February 1, 2027 (Rolling Cycles)",
+    "deadline_date": "2027-02-01",
+    "est_hours": "1.0 hr",
+    "tier": "Tier 2: Pre-Med Pipeline",
+    "category": "premed",
+    "url": "https://opportunities.uncf.org/",
+    "strategy": "Corporate pre-med endowments (AbbVie, CVS, P&G) specifically for Black students entering medical and healthcare careers. Drop your UNCF profile.",
+    "requirements": [
+      "African American Senior",
+      "Healthcare/Pre-Med Major",
+      "UNCF Profile"
+    ]
+  },
+  {
+    "id": "columbia-delta-scholars",
+    "name": "Columbia (MD) Alumnae Chapter Delta Sigma Theta Scholarship",
+    "provider": "Columbia (MD) Alumnae Chapter (DST)",
+    "amount": "$2,000 \u2013 $5,000",
+    "deadline": "February 15, 2027",
+    "deadline_date": "2027-02-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 1: Direct Local Match",
+    "category": "in-state",
+    "url": "https://columbiamddst.org",
+    "strategy": "Howard County only and you're ALREADY in Delta Scholars! This is our local bag right here. Flex your BSU leadership and pre-med hustle. $2k\u2013$5k.",
+    "requirements": [
+      "African American Senior attending Howard County High School",
+      "Delta Scholars / Community Leadership",
+      "2.5+ GPA (She has 4.3 W)",
+      "Letters of Recommendation"
+    ]
+  },
+  {
+    "id": "dell-scholars-program",
+    "name": "Dell Scholars Program",
+    "provider": "Michael & Susan Dell Foundation",
+    "amount": "$20,000 + Laptop & Textbook Credits",
+    "deadline": "February 15, 2027 (Opens Dec 15)",
+    "deadline_date": "2027-02-15",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 2: Elite Tech & Need Match",
+    "category": "merit",
+    "url": "https://www.dellscholars.org",
+    "strategy": "They care about grit and resilience over test scores. Flex your NHS, BSU, dual enrollment, and CCMA cert. $20,000 + a free laptop.",
+    "requirements": [
+      "Pell Grant Eligible / Need",
+      "2.4+ GPA",
+      "Approved College Readiness/Honors Track",
+      "Full-time 4-Yr College Bound"
+    ]
+  },
+  {
+    "id": "horatio-alger-scholarship",
+    "name": "Horatio Alger State & National Scholarships",
+    "provider": "Horatio Alger Association",
+    "amount": "$10,000 \u2013 $25,000",
+    "deadline": "February 15, 2027 (Opens Dec 1)",
+    "deadline_date": "2027-02-15",
+    "est_hours": "2.5 hrs",
+    "tier": "Tier 1: Major Resilience Award",
+    "category": "merit",
+    "url": "https://scholars.horatioalger.org",
+    "strategy": "Specifically for seniors who overcame real challenges. Connect your childhood distrust of medicine to turning that pain into becoming an empathetic DO.",
+    "requirements": [
+      "Critical Financial Need",
+      "Integrity & Perseverance",
+      "2.0+ GPA",
+      "4-Year College Bound"
+    ]
+  },
+  {
+    "id": "cynthia-e-morgan-memorial",
+    "name": "Cynthia E. Morgan Memorial Scholarship",
+    "provider": "Cynthia E. Morgan Memorial Foundation",
+    "amount": "$1,000",
+    "deadline": "February 25, 2027 (Opens Dec 2026)",
+    "deadline_date": "2027-02-25",
+    "est_hours": "1.0 hr",
+    "tier": "Tier 1: In-State Medical Only",
+    "category": "in-state",
+    "url": "http://cemsfund.com",
+    "strategy": "Exclusively for Maryland students going into medicine or healthcare. Literally made for future pre-med students. 1 hour application.",
+    "requirements": [
+      "Maryland Resident",
+      "Entering Medical / Healthcare Field",
+      "Transcript & Essay",
+      "Maryland College Bound"
+    ]
+  },
+  {
+    "id": "mhec-ga-grant",
+    "name": "Howard P. Rawlings Guaranteed Access (GA) Grant",
+    "provider": "Maryland Higher Education Commission (MHEC)",
+    "amount": "Up to 100% Tuition & Fees (~$12,000\u2013$20,000/yr)",
+    "deadline": "March 1, 2027 (Senior FAFSA / MDCAPS)",
+    "deadline_date": "2027-03-01",
+    "est_hours": "0.75 hr",
+    "tier": "Tier 1: In-State Full Tuition Guarantee",
+    "category": "in-state",
+    "url": "https://mhec.maryland.gov",
+    "strategy": "DO NOT SLEEP ON THIS. Submit FAFSA or MHEC One-App before March 1. If your family income qualifies and you have a 2.5+ GPA (you got 4.3!), the state covers 100% of your tuition at UMD, Towson, or Morgan State. Free college.",
+    "requirements": [
+      "FAFSA submitted before March 1",
+      "MDCAPS account login",
+      "2.5+ GPA",
+      "MD Resident"
+    ]
+  },
+  {
+    "id": "cfhoco-scholarships",
+    "name": "Community Foundation of Howard County (CFHoCo) Scholarships",
+    "provider": "Community Foundation of Howard County",
+    "amount": "$1,000 \u2013 $10,000 (Multiple Funds)",
+    "deadline": "March 15, 2027 (Opens Dec 2026)",
+    "deadline_date": "2027-03-15",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 1: County Specific Win",
+    "category": "in-state",
+    "url": "https://cfhoco.org/scholarships/",
+    "strategy": "Exclusively for HCPSS seniors! One application puts you in the running for multiple local endowments in Howard County. With a 4.3 GPA and CCMA cert, you're top of the pile.",
+    "requirements": [
+      "HCPSS Graduating Senior (Guilford Park HS)",
+      "Howard County Resident",
+      "2.5+ GPA (She has 4.3 W)",
+      "FAFSA & Transcript"
+    ]
+  },
+  {
+    "id": "pearl-foundation-howard",
+    "name": "The Pearl Foundation / AKA Iota Lambda Omega Howard County Scholarship",
+    "provider": "The Pearl Foundation, Inc.",
+    "amount": "$1,000 \u2013 $3,000",
+    "deadline": "March 15, 2027",
+    "deadline_date": "2027-03-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 1: Direct Local Match",
+    "category": "in-state",
+    "url": "https://pearlfoundationinc.org",
+    "strategy": "Administered by the Pearl Foundation & AKA Iota Lambda Omega chapter for Howard County seniors. Great match for your 4.3 GPA, BSU leadership, and healthcare dreams.",
+    "requirements": [
+      "Howard County Resident & HCPSS Senior",
+      "Minority Graduating Senior",
+      "3.0+ GPA",
+      "Official Transcript & Essay"
+    ]
+  },
+  {
+    "id": "ptachc-scholarship",
+    "name": "PTA Council of Howard County (PTACHC) Senior Scholarship",
+    "provider": "PTA Council of Howard County",
+    "amount": "$1,000 \u2013 $2,500",
+    "deadline": "March 20, 2027",
+    "deadline_date": "2027-03-20",
+    "est_hours": "1.0 hr",
+    "tier": "Tier 1: County Specific Win",
+    "category": "in-state",
+    "url": "https://ptachc.org/",
+    "strategy": "Local scholarship for HCPSS seniors (Guilford Park HS). Quick application, emphasizes community service and career goals.",
+    "requirements": [
+      "HCPSS Graduating Senior (Guilford Park HS)",
+      "Active PTSA Member / Community Service",
+      "Transcript & Essay"
+    ]
+  },
+  {
+    "id": "cbcf-spouses-scholarship",
+    "name": "CBC Spouses Education Scholarship",
+    "provider": "Congressional Black Caucus Foundation (CBCF)",
+    "amount": "$2,500 \u2013 $8,200",
+    "deadline": "March 27, 2027",
+    "deadline_date": "2027-03-27",
+    "est_hours": "2.0 hrs",
+    "tier": "Tier 2: Strong Match",
+    "category": "diversity",
+    "url": "https://www.cbcfinc.org/programs/scholarships/",
+    "strategy": "Congressional Black Caucus Foundation awards Black seniors with demonstrated community leadership. Use your BSU Co-Pres record and pre-med mission.",
+    "requirements": [
+      "Black/African American",
+      "2.5+ GPA",
+      "Leadership Resume",
+      "Letters of Rec"
+    ]
+  },
+  {
+    "id": "central-scholarship-md",
+    "name": "Central Scholarship (Maryland Pre-Med & Health Fund)",
+    "provider": "Central Scholarship Foundation",
+    "amount": "$1,000 \u2013 $10,000 + Interest-Free Loans",
+    "deadline": "April 1, 2027 (Opens Jan 1)",
+    "deadline_date": "2027-04-01",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 1: In-State Multi-Fund Pool",
+    "category": "in-state",
+    "url": "https://central-scholarship.org",
+    "strategy": "One application puts you in for 50+ Maryland funds, including dedicated pre-med and healthcare endowments. Free money pool.",
+    "requirements": [
+      "Maryland Resident",
+      "2.8+ GPA",
+      "FAFSA SAR",
+      "College Acceptance Letter"
+    ]
+  },
+  {
+    "id": "mhec-senatorial-delegate",
+    "name": "Maryland Senatorial & Delegate Scholarships",
+    "provider": "District 32 Maryland State Legislators",
+    "amount": "$1,000 \u2013 $12,000 / year (Renewable)",
+    "deadline": "April 15, 2027",
+    "deadline_date": "2027-04-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 1: Direct State Legislative Aid",
+    "category": "in-state",
+    "url": "https://mhec.maryland.gov",
+    "strategy": "Direct legislative aid from our District 13 / District 12 (Jessup & Columbia) Senator and Delegates through MDCAPS. High GPA and Guilford Park leadership puts you first in line.",
+    "requirements": [
+      "MDCAPS Application",
+      "District 13/12 Howard County Resident",
+      "FAFSA on file"
+    ]
+  },
+  {
+    "id": "aka-eaf-scholarship",
+    "name": "Alpha Kappa Alpha Educational Advancement Foundation",
+    "provider": "AKA EAF",
+    "amount": "$1,000 \u2013 $2,500",
+    "deadline": "April 15, 2027",
+    "deadline_date": "2027-04-15",
+    "est_hours": "1.5 hrs",
+    "tier": "Tier 3: Bonus Funding",
+    "category": "diversity",
+    "url": "https://akaeaf.org/",
+    "strategy": "Merit and need awards for minority scholars. Re-use your personal statement emphasizing BSU service and your D.O. pre-med mission.",
+    "requirements": [
+      "3.0+ GPA",
+      "Community Service Record",
+      "Official Transcript",
+      "Essay"
+    ]
+  }
+];
+
+let currentViewMode = 'grid'; // 'grid' or 'table'
+let activeFilter = 'all';
+let searchQuery = '';
+
+function setViewMode(mode) {
+  currentViewMode = mode;
+  const gridBtn = document.getElementById('view-btn-grid');
+  const tableBtn = document.getElementById('view-btn-table');
+  if (gridBtn) gridBtn.classList.toggle('active', mode === 'grid');
+  if (tableBtn) tableBtn.classList.toggle('active', mode === 'table');
+  renderScholarshipsGrid();
+}
+
+function setScholarshipFilter(filterType, btn) {
+  activeFilter = filterType;
+  document.querySelectorAll('.filter-chip-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  
+  // Auto-switch to scholarships tab to show results
+  switchTab('scholarships', document.querySelector('.nav-btn[onclick*="scholarships"]'));
+  renderScholarshipsGrid();
+}
+
+function handleScholarshipSearch(query) {
+  searchQuery = query.toLowerCase().trim();
+  switchTab('scholarships', document.querySelector('.nav-btn[onclick*="scholarships"]'));
+  renderScholarshipsGrid();
+}
+
+function renderScholarshipsGrid() {
+  const container = document.getElementById('scholarships-grid-dynamic');
+  if (!container) return;
+
+  const savedStatuses = JSON.parse(localStorage.getItem('big_yankey_scholarships') || '{}');
+
+  // Filter list
+  let list = [...SCHOLARSHIPS_DATA];
+
+  // Apply chip filter
+  if (activeFilter === 'chrono') {
+    list.sort((a, b) => a.deadline_date.localeCompare(b.deadline_date));
+  } else if (activeFilter === 'quick') {
+    list = list.filter(s => parseFloat(s.est_hours) <= 1.5);
+  } else if (activeFilter === 'in-state') {
+    list = list.filter(s => s.category === 'in-state');
+  } else if (activeFilter === 'premed') {
+    list = list.filter(s => s.category === 'premed' || s.strategy.toLowerCase().includes('pre-med') || s.strategy.toLowerCase().includes('ccma') || s.strategy.toLowerCase().includes('health') || s.strategy.toLowerCase().includes('medical'));
+  } else if (activeFilter === 'tier1') {
+    list = list.filter(s => s.tier === 'tier-1' || s.tier.toLowerCase().includes('tier 1'));
+  }
+
+  // Apply search
+  if (searchQuery) {
+    list = list.filter(s => 
+      s.name.toLowerCase().includes(searchQuery) ||
+      s.provider.toLowerCase().includes(searchQuery) ||
+      s.strategy.toLowerCase().includes(searchQuery) ||
+      (s.requirements || []).some(r => r.toLowerCase().includes(searchQuery))
+    );
+  }
+
+  if (list.length === 0) {
+    container.style.display = 'block';
+    container.innerHTML = `
+      <div style="text-align:center; padding:40px; background:var(--card-bg); border-radius:16px; border:1px dashed var(--border);">
+        <p style="font-size:1.1rem; color:var(--t2); margin-bottom:8px;">No scholarships found matching "<strong>${searchQuery}</strong>".</p>
+        <button class="filter-chip-btn" style="margin:0 auto;" onclick="setScholarshipFilter('all', document.querySelector('.filter-chip-btn'))">Reset All Filters</button>
+      </div>
+    `;
+    return;
+  }
+
+  if (currentViewMode === 'table') {
+    container.style.display = 'block';
+    container.innerHTML = `
+      <div class="table-responsive" style="overflow-x:auto;">
+        <table class="timeline-table" style="margin-top:0;">
+          <thead>
+            <tr>
+              <th style="width:40px;">#</th>
+              <th style="width:130px;">Deadline</th>
+              <th style="width:80px;">Time</th>
+              <th>Scholarship &amp; Provider</th>
+              <th style="width:150px;">Award Value</th>
+              <th style="width:130px;">Status</th>
+              <th style="width:110px;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map((s, idx) => {
+              const status = savedStatuses[s.id] || 'Not Started';
+              return `
+                <tr>
+                  <td style="font-family:var(--font-mono); font-size:0.75rem; color:var(--t3);">${idx + 1}</td>
+                  <td><span class="days-pill">${s.deadline}</span></td>
+                  <td><span class="time-pill">⏱️ ${s.est_hours}</span></td>
+                  <td>
+                    <div style="font-weight:700; color:var(--forest);">${s.name}</div>
+                    <div style="font-size:0.78rem; color:var(--t3);">${s.provider}</div>
+                    <div style="font-size:0.82rem; color:var(--t2); margin-top:3px;">${s.strategy.slice(0, 110)}...</div>
+                  </td>
+                  <td><strong style="color:var(--terracotta);">${s.amount}</strong></td>
+                  <td>
+                    <select class="status-dropdown" onchange="updateScholarshipStatus('${s.id}', this.value)" style="width:100%;">
+                      <option value="Not Started" ${status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+                      <option value="In Progress" ${status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                      <option value="Drafted" ${status === 'Drafted' ? 'selected' : ''}>Drafted</option>
+                      <option value="Submitted" ${status === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                      <option value="Awarded" ${status === 'Awarded' ? 'selected' : ''}>🎉 Awarded!</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="btn-portal" style="padding:4px 8px; font-size:0.72rem;">
+                      Apply &rarr;
+                    </a>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+    return;
+  }
+
+  // Grid view
+  container.style.display = 'grid';
+  container.innerHTML = list.map(s => {
+    const status = savedStatuses[s.id] || 'Not Started';
+    const reqPills = (s.requirements || []).map(r => `<span class="req-chip">${r}</span>`).join('');
+    const tierClass = s.tier.toLowerCase().includes('1') ? 'tier-1' : s.tier.toLowerCase().includes('2') ? 'tier-2' : 'tier-3';
+    const tierLabel = s.tier.includes(':') ? s.tier : (s.tier_label || s.tier);
+
+    return `
+      <div class="college-card">
+        <div>
+          <div class="card-top">
+            <span class="tier-pill ${tierClass}">${tierLabel}</span>
+            <div style="display:flex; gap:6px; align-items:center;">
+              <span class="time-pill">⏱️ ${s.est_hours}</span>
+              <span class="days-pill">${s.deadline}</span>
+            </div>
+          </div>
+          
+          <h3 class="college-name" style="font-size:1.2rem; margin-top:8px;">${s.name}</h3>
+          <div class="college-location">${s.provider}</div>
+          
+          <div class="deadline-row" style="margin:12px 0;">
+            <div>
+              <div class="deadline-term">AWARD VALUE</div>
+              <div class="deadline-val" style="font-size:1.1rem; color:var(--forest);">${s.amount}</div>
+            </div>
+          </div>
+
+          <div class="req-chips">
+            ${reqPills}
+          </div>
+
+          <p class="college-perks" style="font-size:0.86rem; line-height:1.55;">
+            <strong>D.O. Strategy:</strong> ${s.strategy}
+          </p>
+        </div>
+
+        <div class="college-bottom" style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border-subtle); display:flex; gap:10px; align-items:center;">
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="btn-portal" style="flex:1; text-align:center;">
+            Apply on Portal &rarr;
+          </a>
+          <select class="status-dropdown" onchange="updateScholarshipStatus('${s.id}', this.value)" style="flex:1; max-width:140px;">
+            <option value="Not Started" ${status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+            <option value="In Progress" ${status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+            <option value="Drafted" ${status === 'Drafted' ? 'selected' : ''}>Drafted</option>
+            <option value="Submitted" ${status === 'Submitted' ? 'selected' : ''}>Submitted</option>
+            <option value="Awarded" ${status === 'Awarded' ? 'selected' : ''}>🎉 Awarded!</option>
+          </select>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateScholarshipStatus(id, val) {
+  const saved = JSON.parse(localStorage.getItem('big_yankey_scholarships') || '{}');
+  saved[id] = val;
+  localStorage.setItem('big_yankey_scholarships', JSON.stringify(saved));
+  
+  updateKPIDisplay();
+  showToast('Updated: ' + val);
+}
+
+function updateKPIDisplay() {
+  const saved = JSON.parse(localStorage.getItem('big_yankey_scholarships') || '{}');
+  const submittedCount = Object.values(saved).filter(v => v === 'Submitted' || v === 'Awarded').length;
+  const inProgressCount = Object.values(saved).filter(v => v === 'In Progress' || v === 'Drafted').length;
+
+  const kpiEl = document.getElementById('kpi-completion-num');
+  const kpiSub = document.getElementById('kpi-completion-sub');
+  if (kpiEl) kpiEl.textContent = `${submittedCount} / 28 Done`;
+  if (kpiSub) kpiSub.textContent = `${inProgressCount} in progress • Saved in browser`;
+}
+
+// Tab Switching
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  
+  const target = document.getElementById('tab-' + tabId);
+  if (target) target.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// Theme Toggle
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    document.getElementById('theme-btn').innerHTML = '<span>🌙</span> Dark Mode';
+    localStorage.setItem('big_yankey_theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('theme-btn').innerHTML = '<span>☀️</span> Light Mode';
+    localStorage.setItem('big_yankey_theme', 'dark');
+  }
+}
+
+// Status dropdowns
+function updateCollegeStatus(id, val) {
+  const saved = JSON.parse(localStorage.getItem('big_yankey_colleges') || '{}');
+  saved[id] = val;
+  localStorage.setItem('big_yankey_colleges', JSON.stringify(saved));
+  
+  const submitted = Object.values(saved).filter(v => v === 'Submitted' || v === 'Accepted').length;
+  document.getElementById('colleges-progress').textContent = `${submitted} / 6 Submitted`;
+  showToast('Updated ' + id.toUpperCase() + ': ' + val);
+}
+
+function loadCollegeStatuses() {
+  const saved = JSON.parse(localStorage.getItem('big_yankey_colleges') || '{}');
+  Object.keys(saved).forEach(id => {
+    const card = document.querySelector(`.status-dropdown[onchange*="${id}"]`);
+    if (card) card.value = saved[id];
+  });
+  const submitted = Object.values(saved).filter(v => v === 'Submitted' || v === 'Accepted').length;
+  document.getElementById('colleges-progress').textContent = `${submitted} / 6 Submitted`;
+}
+
+// Copy Essay
+function copyEssayText() {
+  const text = document.getElementById('essay-content').innerText;
+  navigator.clipboard.writeText(text);
+  showToast('Essay excerpt copied to clipboard!');
+}
+
+// Toast
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2200);
+}
+
+// State & Controls
+let currentReasoningMode = 'max'; // 'turbo' or 'max'
+let activeAbortController = null;
+
+function setReasoningMode(mode) {
+  currentReasoningMode = mode;
+  const turboBtn = document.getElementById('mode-turbo');
+  const maxBtn = document.getElementById('mode-max');
+  if (turboBtn) turboBtn.classList.toggle('active', mode === 'turbo');
+  if (maxBtn) maxBtn.classList.toggle('active', mode === 'max');
+  showToast(mode === 'turbo' ? '⚡ Instant Turbo Mode (~1s responses)' : '🧠 Max Reasoning Mode (Deep audit + live thoughts)');
+}
+
+function toggleThinkingBox() {
+  const box = document.getElementById('thinking-box');
+  const icon = document.getElementById('thinking-toggle-icon');
+  if (box) {
+    box.classList.toggle('collapsed');
+    if (icon) {
+      icon.textContent = box.classList.contains('collapsed') ? '▶ Click to Expand' : '▲ Collapse';
+    }
+  }
+}
+
+// Markdown Formatter (HTML Safe with Tables)
+function formatMarkdown(md) {
+  if (!md) return '';
+  let html = md.replace(/\r/g, '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  
+  // Format tables
+  const lines = html.split('\n');
+  let inTable = false;
+  let tableHtml = '';
+  let processed = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.startsWith('|') && line.endsWith('|')) {
+      if (/^\|[\s\-:|]+\|$/.test(line)) continue;
+      const cells = line.slice(1, -1).split('|').map(c => c.trim());
+      if (!inTable) {
+        inTable = true;
+        tableHtml = '<table><thead><tr>' + cells.map(c => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>';
+      } else {
+        tableHtml += '<tr>' + cells.map(c => '<td>' + c + '</td>').join('') + '</tr>';
+      }
+    } else {
+      if (inTable) {
+        inTable = false;
+        tableHtml += '</tbody></table>';
+        processed.push(tableHtml);
+      }
+      processed.push(lines[i]);
+    }
+  }
+  if (inTable) {
+    tableHtml += '</tbody></table>';
+    processed.push(tableHtml);
+  }
+  html = processed.join('\n');
+
+  // Headings
+  html = html.replace(/^### (.*)$/gm, '<h4>$1</h4>');
+  html = html.replace(/^## (.*)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^# (.*)$/gm, '<h2>$1</h2>');
+
+  // Bold & Italics
+  html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+  // Bullet points
+  html = html.replace(/^\s*[\-\*•]\s+(.*)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*?<\/li>(\s*<li>.*?<\/li>)*)/gs, '<ul>$1</ul>');
+
+  // Paragraph breaks
+  html = html.replace(/\n\n+/g, '<br><br>');
+  return html;
+}
+
+// Live Streaming SSE Luna AI Client
+async function callLunaAI(promptText) {
+  const display = document.getElementById('chat-output');
+  const sendBtn = document.getElementById('btn-send');
+  const statusTag = document.getElementById('status-tag');
+
+  // Abort any existing in-flight stream
+  if (activeAbortController) {
+    activeAbortController.abort();
+  }
+  activeAbortController = new AbortController();
+
+  if (sendBtn) {
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = '<span>⏳</span> Thinking...';
+  }
+  if (statusTag) {
+    statusTag.textContent = '⚡ Streaming Live';
+    statusTag.style.color = 'var(--gold)';
+  }
+
+  // Clear display and prepare containers
+  display.innerHTML = `
+    <div id="thinking-box" class="thinking-box" style="display:none;">
+      <div class="thinking-header" onclick="toggleThinkingBox()">
+        <span>🧠 Luna Thinking Chain (Live)...</span>
+        <span id="thinking-toggle-icon">▲ Collapse</span>
+      </div>
+      <div class="thinking-content" id="thinking-text"></div>
+    </div>
+    <div class="chat-response-content" id="chat-response-content">
+      <span class="streaming-cursor"></span>
+    </div>
+  `;
+
+  const thinkingBox = document.getElementById('thinking-box');
+  const thinkingText = document.getElementById('thinking-text');
+  const responseContent = document.getElementById('chat-response-content');
+
+  const systemContext = `
+You are Luna, an elite pre-med admissions counselor and scholarship advisor for high school students.
+The student you are advising is nicknamed "The BIG YANKEY".
+Her profile:
+- Class of 2027 (High School Senior) at Guilford Park High School (GBHS Panthers, Howard County, Maryland).
+- GPA: 3.8 Unweighted, 4.3 Weighted. Principal's Honor Roll, Panther of the Month.
+- Clinical: Certified Clinical Medical Assistant (CCMA), Foundations of Healthcare classes.
+- Extracurriculars: Co-President of Black Student Union (BSU) 2026-2027, Secretary BSU 2024-2026, National Honor Society (NHS) 2025-2026, Delta Scholars (Delta Sigma Theta) 2024-2026, Lacrosse Goalie (2024).
+- Career Goal: Doctor of Osteopathic Medicine (D.O.) specializing in holistic preventive medicine and reducing health disparities for Black women.
+- Target Colleges:
+  1. University of Maryland, College Park (UMD) - Early Action (Nov 1)
+  2. Towson University - Early Action (Nov 1)
+  3. Drexel University - Early Action (Nov 15)
+  4. Loyola University Maryland - Early Action (Nov 15)
+  5. Morgan State University - Early Action (Dec 1)
+  6. Johns Hopkins University (JHU) - Regular Decision (Jan 2)
+- Essay Topic: How childhood medical distrust and fear of doctors evolved through an African American Studies course into an unstoppable mission to eliminate healthcare inequities as an Osteopathic Physician.
+- Peer note: Sam is attending ACE.
+
+Always provide crisp, empowering, highly tactical, structured, and realistic advice formatted cleanly with bullet points and markdown tables.
+`;
+
+  const effortSetting = currentReasoningMode === 'turbo' ? 'low' : 'high';
+  const startTime = Date.now();
+  let reasoningAcc = '';
+  let contentAcc = '';
+
+  try {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      signal: activeAbortController.signal,
+      headers: {
+        "Authorization": "Bearer " + OPENROUTER_KEY,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://sat-scholarship-hub.vercel.app",
+        "X-Title": "The Big Yankey Counselor"
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-5.6-luna",
+        stream: true,
+        messages: [
+          { role: "system", content: systemContext },
+          { role: "user", content: promptText }
+        ],
+        max_tokens: 3000,
+        temperature: 0.6,
+        reasoning: { effort: effortSetting },
+        provider: {
+          order: ["OpenAI", "Together", "DeepInfra"],
+          allow_fallbacks: true
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`OpenRouter HTTP ${response.status}`);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // save trailing partial line
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith(':')) continue;
+        if (trimmed === 'data: [DONE]') continue;
+        if (trimmed.startsWith('data: ')) {
+          try {
+            const parsed = JSON.parse(trimmed.slice(6));
+            const delta = parsed.choices?.[0]?.delta;
+            if (!delta) continue;
+
+            // Live reasoning stream
+            if (delta.reasoning) {
+              reasoningAcc += delta.reasoning;
+              if (thinkingBox.style.display === 'none') {
+                thinkingBox.style.display = 'block';
+              }
+              thinkingText.textContent = reasoningAcc;
+              thinkingBox.scrollTop = thinkingBox.scrollHeight;
+            }
+
+            // Live content stream
+            if (delta.content) {
+              contentAcc += delta.content;
+              responseContent.innerHTML = formatMarkdown(contentAcc) + '<span class="streaming-cursor"></span>';
+              display.scrollTop = display.scrollHeight;
+            }
+          } catch (e) {
+            // ignore partial json chunk
+          }
+        }
+      }
+    }
+
+    // Finished stream
+    const cursor = responseContent.querySelector('.streaming-cursor');
+    if (cursor) cursor.remove();
+
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    if (reasoningAcc && thinkingBox) {
+      const headerSpan = thinkingBox.querySelector('.thinking-header span');
+      const toggleIcon = document.getElementById('thinking-toggle-icon');
+      if (headerSpan) headerSpan.textContent = `🧠 Thought for ${elapsed}s • Deep Analysis Complete`;
+      if (toggleIcon) toggleIcon.textContent = '▶ Expand';
+      thinkingBox.classList.add('collapsed');
+    }
+
+    if (statusTag) {
+      statusTag.textContent = `🟢 Finished in ${elapsed}s`;
+      statusTag.style.color = 'var(--forest)';
+    }
+
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      console.log('Luna request cancelled by user.');
+      return;
+    }
+    console.error("Luna API Error:", err);
+    // Instant fallback if offline or network glitch
+    display.innerHTML = `
+      <div style="background:rgba(244,63,94,0.06); border:1px solid var(--terracotta); border-radius:12px; padding:16px; margin-bottom:12px;">
+        <strong style="color:var(--terracotta);">⚡ Instant Diagnostic Fallback Activated:</strong>
+        <p style="margin-top:6px; font-size:0.88rem; color:var(--t2);">${err.message || 'Network delay detected'}. Displaying cached counseling strategy:</p>
+      </div>
+      <div class="chat-response-content">${formatMarkdown(getLocalFallback(promptText))}</div>
+    `;
+    if (statusTag) {
+      statusTag.textContent = '⚠️ Offline Backup';
+      statusTag.style.color = 'var(--terracotta)';
+    }
+  } finally {
+    if (sendBtn) {
+      sendBtn.disabled = false;
+      sendBtn.innerHTML = 'Ask Luna';
+    }
+    activeAbortController = null;
+  }
+}
+
+function sendPrebuiltPrompt(type) {
+  let p = "";
+  if (type === 'PACING') {
+    p = "Give me a weekly breakdown of exactly how many college application components, essays, and scholarship tasks I should finish per week between now and the Nov 1 (UMD/Towson), Nov 15 (Drexel/Loyola), Dec 1 (Morgan State), and Jan 2 (Hopkins) deadlines. Format as a clean markdown table with actionable bullet points.";
+  } else if (type === 'COLLEGES') {
+    p = "Analyze and rank my 6 target colleges (UMD, Towson, Drexel, Loyola MD, Morgan State, Johns Hopkins) specifically for an aspiring Doctor of Osteopathic Medicine (D.O.). Highlight pre-med advising, hospital shadowing, and clinical co-op advantages.";
+  } else if (type === 'ESSAY') {
+    p = "Critique my essay concept: 'From childhood doctor distrust to osteopathic physician fighting Black maternal healthcare disparities.' Give me 3 concrete ways to make this stand out to Ivy/Hopkins admissions officers and scholarship committees.";
+  } else if (type === 'SCHOLARSHIPS') {
+    p = "Search and list high-yield scholarships specifically for Black women in STEM/pre-med and in-state Maryland high school seniors with a 4.3 GPA and BSU leadership.";
+  }
+  callLunaAI(p);
+}
+
+function sendCustomMsg() {
+  const input = document.getElementById('user-msg');
+  const val = input.value.trim();
+  if (!val) return;
+  input.value = "";
+  callLunaAI(val);
+}
+
+function getLocalFallback(p) {
+  return `### 📋 Luna Counselor Assessment (Instant Diagnostic)
+
+| Target College | Round & Deadline | D.O. Pre-Med Strategy |
+|:---|:---|:---|
+| **UMD College Park** | Early Action (Nov 1) | In-state flagship priority; pair with MHEC Guaranteed Access Grant (100% tuition). |
+| **Towson University** | Early Action (Nov 1) | Top allied healthcare clinical pipeline in Maryland; guaranteed merit consideration. |
+| **Drexel University** | Early Action (Nov 15) | 3-co-op cycle enables 1,000+ paid CCMA clinical hours before medical school. |
+| **Loyola University MD** | Early Action (Nov 15) | Jesuit pre-health committee with 85%+ medical school acceptance rate. |
+| **Morgan State University** | Early Action (Dec 1) | Historic HBCU excellence; NIH-funded ASCEND biomedical center; BSU leadership bonus. |
+| **Johns Hopkins University** | Regular Decision (Jan 2) | World #1 in medicine; focus essay on eliminating Black healthcare disparities. |
+
+#### Weekly Action Plan:
+- **Weeks 1–2**: Polish Common App activities (rank CCMA clinical certification & BSU Co-Pres at top).
+- **Weeks 3–4**: Draft UMD & Towson supplemental essays; request GBHS teacher recommendations.
+- **Week 5**: Submit UMD and Towson before **Nov 1**.
+- **Weeks 6–7**: Submit Drexel and Loyola before **Nov 15**.
+- **Weeks 8–9**: Submit Morgan State (Dec 1) and Ron Brown / NHS Scholarship ($25k–$40k).
+- **Weeks 10–12**: Submit Johns Hopkins (Jan 2) with polished medical equity essay.`;
+}
+
+// Initializer
+window.addEventListener('DOMContentLoaded', () => {
+  renderScholarshipsGrid();
+  loadCollegeStatuses();
+  if (localStorage.getItem('big_yankey_theme') === 'dark') {
+    toggleTheme();
+  }
+});
+</script>
+
+</body>
+</html>

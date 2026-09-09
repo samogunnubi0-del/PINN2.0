@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace Navigator | Sam's Project Hub &amp; Asset Catalog</title>
+  <meta name="description" content="Central master directory, fast search launcher, and interactive catalog for PINN 2.0, SAT Suite, Peer Apps, Calculus, and BSU.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0b0f14;
+      --bg-surface: #121820;
+      --bg-card: #17202a;
+      --bg-card-hover: #1e2a37;
+      --bg-glass: rgba(18, 24, 32, 0.85);
+      
+      --border: #223040;
+      --border-bright: #35475e;
+      --border-accent: #38bdf8;
+      
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.22);
+      --amber: #f59e0b;
+      --amber-glow: rgba(245, 158, 11, 0.2);
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --ruby: #f43f5e;
+      --ruby-glow: rgba(244, 63, 94, 0.2);
+      --indigo: #6366f1;
+      --indigo-glow: rgba(99, 102, 241, 0.2);
+      --purple: #a855f7;
+      --purple-glow: rgba(168, 85, 247, 0.2);
+      
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 10% 15%, rgba(56, 189, 248, 0.08) 0px, transparent 40%),
+        radial-gradient(at 90% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 45%),
+        radial-gradient(at 50% 95%, rgba(16, 185, 129, 0.07) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding: 28px 24px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    /* Top Masthead */
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 22px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--cyan), var(--indigo));
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-family: var(--font-mono);
+      margin-left: 6px;
+    }
+
+    .masthead-pills {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .pill-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 999px;
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(23, 32, 42, 0.95) 0%, rgba(18, 24, 32, 0.9) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, var(--indigo-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.6vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Filter & Search Toolbar */
+    .toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .search-wrapper {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-md);
+      padding: 16px 20px 16px 48px;
+      color: var(--text-main);
+      font-size: 15px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px var(--cyan-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-chip:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-bright);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .filter-chip.active {
+      background: var(--cyan-glow);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Domain Section Containers */
+    .domain-section {
+      margin-bottom: 36px;
+    }
+
+    .domain-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .domain-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .domain-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 18px;
+    }
+
+    .app-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--card-color, var(--cyan));
+      opacity: 0.8;
+      transition: height 0.2s ease;
+    }
+
+    .app-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .app-card:hover::before {
+      height: 5px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      font-size: 24px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .tag-live {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--emerald);
+    }
+
+    .tag-new {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: var(--cyan);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+
+    .card-filename {
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+    }
+
+    .card-cta {
+      color: var(--card-color, var(--cyan));
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Color classes */
+    .color-sat { --card-color: var(--indigo); }
+    .color-peer { --card-color: var(--ruby); }
+    .color-calc { --card-color: var(--amber); }
+    .color-pinn { --card-color: var(--cyan); }
+    .color-bsu { --card-color: var(--emerald); }
+    .color-tool { --card-color: var(--purple); }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--cyan);
+      color: var(--text-main);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      font-size: 13px;
+      font-family: var(--font-mono);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 16px 12px 60px; }
+      .hero { padding: 24px 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header / Masthead -->
+    <header class="masthead">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <span class="brand-title">Workspace Navigator</span>
+          <span class="brand-sub">PINN2.0 &amp; Multi-App Suite</span>
+        </div>
+      </div>
+      <div class="masthead-pills">
+        <div class="pill-badge">
+          <div class="pulse-dot"></div>
+          <span>Zero-Breakage Active</span>
+        </div>
+        <span style="color:var(--text-dim);">Vercel Live: sat-scholarship-hub</span>
+      </div>
+    </header>
+
+    <!-- Hero Overview -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span>🧭</span> Central Control Center &amp; Directory
+      </div>
+      <h1>Organized Project Directory &amp; Fast Launcher</h1>
+      <p class="hero-desc">
+        Access all 98+ files, study suites, peer applications, research manuscripts, and machine learning models across your repository without altering a single line of working code.
+      </p>
+
+      <div class="hero-stats-row">
+        <div class="stat-chip">
+          <span>📦 Total Core Files:</span>
+          <span class="stat-num">98 Files</span>
+        </div>
+        <div class="stat-chip">
+          <span>📁 Project Categories:</span>
+          <span class="stat-num">6 Major Domains</span>
+        </div>
+        <div class="stat-chip">
+          <span>🌐 Live Vercel Apps:</span>
+          <span class="stat-num">Reading 700+, Scholarships, Peer</span>
+        </div>
+        <div class="stat-chip">
+          <span>🔒 Code Integrity:</span>
+          <span class="stat-num" style="color:var(--emerald);">100% Intact</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Toolbar -->
+    <div class="toolbar">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="catalog-search" 
+          class="search-input" 
+          placeholder="Search by topic, exam, model, or filename (e.g. 'Reading', 'Yashi', 'Bateman', 'Calculus', 'Desmos', 'BSU', 'Scholarships')..." 
+          oninput="handleSearch()"
+        >
+      </div>
+
+      <div class="filter-chips" id="filter-chips">
+        <button class="filter-chip active" onclick="setFilter('all', this)" id="filter-all">
+          <span>✨</span> All Projects
+        </button>
+        <button class="filter-chip" onclick="setFilter('peer', this)" id="filter-peer">
+          <span>👥</span> Peer Apps
+        </button>
+        <button class="filter-chip" onclick="setFilter('sat', this)" id="filter-sat">
+          <span>🎯</span> SAT &amp; Scholarships
+        </button>
+        <button class="filter-chip" onclick="setFilter('calc', this)" id="filter-calc">
+          <span>📐</span> Calculus 1 &amp; Academics
+        </button>
+        <button class="filter-chip" onclick="setFilter('pinn', this)" id="filter-pinn">
+          <span>⚛️</span> Ac-225 / PINN Research
+        </button>
+        <button class="filter-chip" onclick="setFilter('bsu', this)" id="filter-bsu">
+          <span>🤝</span> BSU &amp; Leadership
+        </button>
+        <button class="filter-chip" onclick="setFilter('tool', this)" id="filter-tool">
+          <span>⚙️</span> System Tools &amp; Scripts
+        </button>
+      </div>
+    </div>
+
+    <!-- DOMAIN 1: PEER APPLICATIONS -->
+    <section class="domain-section" data-domain="peer" id="section-peer">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>👥 Peer Applications</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--ruby-glow); color:var(--ruby);">Custom Friend Hubs</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- THE BIG YANKEY Pre-Med & College Admissions Suite -->
+        <a href="The_Big_Yankey.html" class="app-card color-peer" data-keywords="the big yankey drexel university johns hopkins loyola maryland morgan state towson umd college park early action regular decision 2027 luna ai openrouter scholarship osteopathy do doctor ccma bsu delta scholars lacrosse">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">👑</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-new">★ THE BIG YANKEY</span>
+                <span class="tag-pill tag-live">Luna AI Ready</span>
+              </div>
+            </div>
+            <h3 class="card-title">The BIG YANKEY: College &amp; Pre-Med Suite</h3>
+            <p class="card-desc">
+              Dedicated flagship portal for your peer! Live tracking for 6 target colleges (Drexel, Johns Hopkins, Loyola MD, Morgan State, Towson, UMD), personal essay studio, 28 verified scholarships ($420,000+ accessible), Master Chronological Timeline, D.O. blueprint, and Luna AI Master Engine.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">The_Big_Yankey.html</span>
+            <span class="card-cta">Launch Portal &rarr;</span>
+          </div>
+        </a>
+        
+        <!-- NEW D.O. Scholarship Hub for Peer -->
+        <a href="DO_Scholarship_Hub.html" class="app-card color-peer" data-keywords="peer scholarship doctor osteopathy osteopathic do premed pre-med maryland mhec ga grant delta scholars bsu gpa 3.8 4.3 ccma">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🩺</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-new">★ D.O. SCHOLARSHIP HUB</span>
+                <span class="tag-pill tag-live">Vercel Ready</span>
+              </div>
+            </div>
+            <h3 class="card-title">Future D.O. Scholarship &amp; Pre-Med Hub</h3>
+            <p class="card-desc">
+              Tailored specifically for your peer: In-State Maryland funding (100% tuition GA Grant, Senatorial/Delegate), Osteopathic pre-med roadmaps, verified scholarship links, and strategic essay positioning.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">DO_Scholarship_Hub.html</span>
+            <span class="card-cta">Launch Hub &rarr;</span>
+          </div>
+        </a>
+
+        <!-- NEW Peer App -->
+        <a href="For_Peer.html" class="app-card color-peer" data-keywords="peer friend student sat 1400 1500 desmos practice schedule pomodoro custom">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🚀</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-new">★ NEW PEER APP</span>
+                <span class="tag-pill tag-live">Vercel Ready</span>
+              </div>
+            </div>
+            <h3 class="card-title">Dynamic Peer Mastery Hub</h3>
+            <p class="card-desc">
+              Brand new customizable peer application! Sam can enter any peer's name and score target to instantly personalize study schedules, practice modules, Desmos hacks, and Pomodoro focus timers.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">For_Peer.html</span>
+            <span class="card-cta">Launch Hub &rarr;</span>
+          </div>
+        </a>
+
+        <!-- For Yashi -->
+        <a href="For_Yashi.html" class="app-card color-peer" data-keywords="yashi 1400 plan digital sat friend calm videos practice warm paper">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🌸</span>
+              <div class="card-tags">
+                <span class="tag-pill">Personalized</span>
+                <span class="tag-pill tag-live">Live</span>
+              </div>
+            </div>
+            <h3 class="card-title">The 1400 Plan (For Yashi)</h3>
+            <p class="card-desc">
+              Calm Digital SAT last-week hub customized for Yashi with warm editorial styling, embedded YouTube breakdowns, and instant problem walkthroughs.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">For_Yashi.html</span>
+            <span class="card-cta">Launch Hub &rarr;</span>
+          </div>
+        </a>
+
+        <!-- BIG Y Plan -->
+        <a href="BIG_Y_Plan.html" class="app-card color-peer" data-keywords="big y plan yashi sat 1400 plan companion">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🎯</span>
+              <div class="card-tags">
+                <span class="tag-pill">Edition 2</span>
+              </div>
+            </div>
+            <h3 class="card-title">The BIG Y Plan</h3>
+            <p class="card-desc">
+              Extended Digital SAT prep edition with alternative drills, focused Math/Writing routines, and local server integration.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">BIG_Y_Plan.html</span>
+            <span class="card-cta">Launch Hub &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- DOMAIN 2: SAT & SCHOLARSHIPS -->
+    <section class="domain-section" data-domain="sat" id="section-sat">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>🎯 Digital SAT &amp; Scholarships</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--indigo-glow); color:var(--indigo);">Live Cloud Hub</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- Reading 700+ -->
+        <a href="Reading_700_Mastery.html" class="app-card color-sat" data-keywords="reading writing 700 sat luna executive briefing diagnostic win probability simulator grammar boolean evidence">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🧠</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-live">Vercel Live</span>
+                <span class="tag-pill">Luna AI</span>
+              </div>
+            </div>
+            <h3 class="card-title">Sam's Reading 700+ Mastery</h3>
+            <p class="card-desc">
+              Executive command center with Luna AI daily probability briefings, full adaptive 27-question simulator, Boolean grammar engine, and evidence strikeout mechanics.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">Reading_700_Mastery.html</span>
+            <span class="card-cta">Open 700+ Hub &rarr;</span>
+          </div>
+        </a>
+
+        <!-- SAT 1400 Coach -->
+        <a href="sat_1400_coach.html" class="app-card color-sat" data-keywords="sat 1400 coach digital math reading desmos speed grammar video">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📈</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-live">Vercel Live</span>
+              </div>
+            </div>
+            <h3 class="card-title">Digital SAT 1400 Coach</h3>
+            <p class="card-desc">
+              Structured study plan with strategy cards, video breakdowns, Desmos calculator speed moves, and grammar checkpoints.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">sat_1400_coach.html</span>
+            <span class="card-cta">Open Coach &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Scholarships Hub -->
+        <a href="scholarships.html" class="app-card color-sat" data-keywords="scholarships aid college money deadlines applications grant awards">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🎓</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-live">Vercel Live</span>
+              </div>
+            </div>
+            <h3 class="card-title">Scholarships &amp; Grants Hub</h3>
+            <p class="card-desc">
+              Curated high-yield scholarship database with deadline trackers, eligibility requirements, and award sorting.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">scholarships.html</span>
+            <span class="card-cta">Open Database &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- DOMAIN 3: CALCULUS 1 & ACADEMICS -->
+    <section class="domain-section" data-domain="calc" id="section-calc">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>📐 Calculus 1 &amp; Course Mastery</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--amber-glow); color:var(--amber);">MAT 191 &amp; The A Plan</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- MAT 191 Deck -->
+        <a href="MAT191_Calculus1_Masterclass_Deck.html" class="app-card color-calc" data-keywords="calculus mat191 masterclass deck derivatives integrals limits bateman decay chain rule">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📐</span>
+              <div class="card-tags">
+                <span class="tag-pill">17 Slides</span>
+                <span class="tag-pill">Side Notes [S]</span>
+              </div>
+            </div>
+            <h3 class="card-title">MAT 191 Masterclass Deck</h3>
+            <p class="card-desc">
+              17 walkthrough slides covering Foundations, Limits, Derivatives, and Slide 17's bridge to the IsotopePINN Bateman ODE system.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">MAT191_Calculus1_Masterclass_Deck.html</span>
+            <span class="card-cta">Open Deck &rarr;</span>
+          </div>
+        </a>
+
+        <!-- The A Plan -->
+        <a href="Calc1_The_A_Plan.html" class="app-card color-calc" data-keywords="calculus the a plan daily schedule videos math sorcerer khan academy flashcards tutor">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📅</span>
+              <div class="card-tags">
+                <span class="tag-pill">Semester Hub</span>
+              </div>
+            </div>
+            <h3 class="card-title">Calc 1: The A Plan Hub</h3>
+            <p class="card-desc">
+              Daily video lectures with Math Sorcerer &amp; Khan Academy, KaTeX formula drills, active recall cards, and problem coach.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">Calc1_The_A_Plan.html</span>
+            <span class="card-cta">Open The A Plan &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Study Desk (Root) -->
+        <a href="index.html" class="app-card color-calc" data-keywords="study desk command center calculus isotope master index">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">⚡</span>
+              <div class="card-tags">
+                <span class="tag-pill">Root Dashboard</span>
+              </div>
+            </div>
+            <h3 class="card-title">Calculus &amp; Isotope Study Desk</h3>
+            <p class="card-desc">
+              Original dual-track study desk linking MAT 191 and IsotopePINN with integrated focus timer and daily study scratchpad.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">index.html</span>
+            <span class="card-cta">Open Desk &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- DOMAIN 4: AC-225 & NUCLEAR PINN RESEARCH -->
+    <section class="domain-section" data-domain="pinn" id="section-pinn">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>⚛️ Ac-225 / PINN 2.0 Nuclear Research &amp; ISEF</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--cyan-glow); color:var(--cyan);">AP Research &amp; ISEF</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- 30-Day Mastery -->
+        <a href="IsotopePINN_30Day_Professional_Mastery.html" class="app-card color-pinn" data-keywords="isotopepinn 30-day mastery nuclear physics actinium radium bateman ode pinn ml surrogate">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🔬</span>
+              <div class="card-tags">
+                <span class="tag-pill">Course</span>
+                <span class="tag-pill">35+ Modules</span>
+              </div>
+            </div>
+            <h3 class="card-title">30-Day Professional Mastery</h3>
+            <p class="card-desc">
+              Daily interactive slideshow from basic nuclear structure to coupled Bateman ODEs, PI-LSTM surrogates, and failure rejection metrics.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">IsotopePINN_30Day_Professional_Mastery.html</span>
+            <span class="card-cta">Launch Course &rarr;</span>
+          </div>
+        </a>
+
+        <!-- AP Research Paper -->
+        <a href="IsotopePINN_AP_Research_Paper.html" class="app-card color-pinn" data-keywords="ap research paper manuscript isotopepinn surrogate failure-aware ra-226 ac-225 berkeley graphs">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📄</span>
+              <div class="card-tags">
+                <span class="tag-pill">Manuscript</span>
+                <span class="tag-pill">Print Ready</span>
+              </div>
+            </div>
+            <h3 class="card-title">AP Research Academic Manuscript</h3>
+            <p class="card-desc">
+              Complete research paper: "Failure-Aware Surrogates for Actinium-225 Production Kinetics" with literature benchmarks and KaTeX formulas.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">IsotopePINN_AP_Research_Paper.html</span>
+            <span class="card-cta">Read Manuscript &rarr;</span>
+          </div>
+        </a>
+
+        <!-- ISEF Defense Deck -->
+        <a href="IsotopePINN_ISEF_Masterclass_Deck.html" class="app-card color-pinn" data-keywords="isef defense masterclass judge questions claims boundary surrogate physics ml">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🏆</span>
+              <div class="card-tags">
+                <span class="tag-pill">24 Slides</span>
+                <span class="tag-pill">Q&amp;A Drills</span>
+              </div>
+            </div>
+            <h3 class="card-title">ISEF Defense Masterclass Deck</h3>
+            <p class="card-desc">
+              Judge presentation slides: 5-step narrative, claim boundary enforcement, adversarial question simulation, and verbal defense rules.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">IsotopePINN_ISEF_Masterclass_Deck.html</span>
+            <span class="card-cta">Open Deck &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 137 Sources Audit -->
+        <a href="Ac225_Research_Audit_137_Sources_2026.html" class="app-card color-pinn" data-keywords="research audit 137 sources literature scoping matrix nuclear openalex crossref">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📚</span>
+              <div class="card-tags">
+                <span class="tag-pill">137 Sources</span>
+                <span class="tag-pill">Scoping Audit</span>
+              </div>
+            </div>
+            <h3 class="card-title">Ac-225 Research Audit (137 Sources)</h3>
+            <p class="card-desc">
+              Searchable scoping matrix of 137 evaluated papers, competitor surrogates, and nuclear data sources with full methodological boundaries.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">Ac225_Research_Audit_137_Sources_2026.html</span>
+            <span class="card-cta">Open Audit &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Poster 36x48 -->
+        <a href="ISEF_Official_Poster_36x48.html" class="app-card color-pinn" data-keywords="isef poster 36x48 competition display layout science fair">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🖼️</span>
+              <div class="card-tags">
+                <span class="tag-pill">Poster</span>
+                <span class="tag-pill">36&times;48 in</span>
+              </div>
+            </div>
+            <h3 class="card-title">ISEF Official Poster (36x48)</h3>
+            <p class="card-desc">
+              Full competition poster layout formatted with high-contrast diagrams, methodology columns, and conclusion callouts.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">ISEF_Official_Poster_36x48.html</span>
+            <span class="card-cta">View Poster &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Executive One-Pager -->
+        <a href="Ac225_PINN_Executive_OnePager.html" class="app-card color-pinn" data-keywords="executive onepager ac225 summary stakeholder email">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📋</span>
+              <div class="card-tags">
+                <span class="tag-pill">1-Page</span>
+              </div>
+            </div>
+            <h3 class="card-title">Ac-225 Executive One-Pager</h3>
+            <p class="card-desc">
+              Concise summary formatted for mentors, lab directors, and academic stakeholders highlighting core findings and benchmarks.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">Ac225_PINN_Executive_OnePager.html</span>
+            <span class="card-cta">Open Brief &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- DOMAIN 5: BSU & LEADERSHIP -->
+    <section class="domain-section" data-domain="bsu" id="section-bsu">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>🤝 BSU &amp; Leadership Initiatives</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--emerald-glow); color:var(--emerald);">Extracurricular</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- BSU Master Planner -->
+        <a href="BSU_Master_Planner.html" class="app-card color-bsu" data-keywords="bsu master planner events schedule budget meetings gbhs black student union">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📅</span>
+              <div class="card-tags">
+                <span class="tag-pill">Operations</span>
+                <span class="tag-pill">Full Year</span>
+              </div>
+            </div>
+            <h3 class="card-title">BSU Master Planner</h3>
+            <p class="card-desc">
+              Year-round Black Student Union operations schedule, monthly event roadmaps, budgeting tables, and member development tracks.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">BSU_Master_Planner.html</span>
+            <span class="card-cta">Open Planner &rarr;</span>
+          </div>
+        </a>
+
+        <!-- BSU Kickoff Slides -->
+        <a href="BSU_Kickoff_Slides.html" class="app-card color-bsu" data-keywords="bsu kickoff slides meeting presentation gbhs 2026">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🎙️</span>
+              <div class="card-tags">
+                <span class="tag-pill">Slideshow</span>
+              </div>
+            </div>
+            <h3 class="card-title">BSU Kickoff Slides (2026)</h3>
+            <p class="card-desc">
+              Interactive slides for the general body kickoff meeting introducing executive board members, vision, and upcoming events.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">BSU_Kickoff_Slides.html</span>
+            <span class="card-cta">Open Slides &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Mentorship Guide -->
+        <a href="Coffee_Chat_Mentorship_Guide.html" class="app-card color-bsu" data-keywords="coffee chat mentorship guide networking outreach professional cold email">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">☕</span>
+              <div class="card-tags">
+                <span class="tag-pill">Guidebook</span>
+              </div>
+            </div>
+            <h3 class="card-title">Coffee Chat &amp; Mentorship Guide</h3>
+            <p class="card-desc">
+              Step-by-step cold email templates, question strategies, and post-chat follow-up frameworks for securing high-impact mentors.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">Coffee_Chat_Mentorship_Guide.html</span>
+            <span class="card-cta">Open Guide &rarr;</span>
+          </div>
+        </a>
+
+        <!-- ReviveIT MOU Draft -->
+        <a href="ReviveIT_PCs_for_People_MOU_Draft.html" class="app-card color-bsu" data-keywords="reviveit pcs for people mou agreement computer donation refurbish tech equity">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🤝</span>
+              <div class="card-tags">
+                <span class="tag-pill">MOU Draft</span>
+              </div>
+            </div>
+            <h3 class="card-title">ReviveIT &times; PCs for People MOU</h3>
+            <p class="card-desc">
+              Memorandum of Understanding draft for community computer refurbishment and digital equity distribution initiatives.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">ReviveIT_PCs_for_People_MOU_Draft.html</span>
+            <span class="card-cta">View MOU &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- DOMAIN 6: SYSTEM TOOLS & SCRIPTS -->
+    <section class="domain-section" data-domain="tool" id="section-tool">
+      <div class="domain-header">
+        <h2 class="domain-title">
+          <span>⚙️ System Tools, Mini-Games &amp; Docs</span>
+        </h2>
+        <span class="domain-badge" style="background:var(--purple-glow); color:var(--purple);">Repository Infrastructure</span>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- Scholarship Scraper & AI Audit CLI -->
+        <a href="scholarship_scraper.py" class="app-card color-tool" data-keywords="scholarship scraper python cli luna openrouter ai audit json peer verified links deadlines drexel jhu loyola morgan towson umd">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🐍</span>
+              <div class="card-tags">
+                <span class="tag-pill tag-new">Python Tool</span>
+                <span class="tag-pill">AI Scraper</span>
+              </div>
+            </div>
+            <h3 class="card-title">Scholarship Scraper &amp; AI Auditor</h3>
+            <p class="card-desc">
+              Python automation tool verifying 11 pre-med/MD scholarships, exporting structured JSON (`peer_scholarships_data.json`), and executing live OpenRouter Luna AI deadline audits with reasoning.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">scholarship_scraper.py</span>
+            <span class="card-cta">View Script &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Catalog Markdown -->
+        <a href="WORKSPACE_CATALOG.md" class="app-card color-tool" data-keywords="workspace catalog markdown docs inventory breakdown guide">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📖</span>
+              <div class="card-tags">
+                <span class="tag-pill">Markdown</span>
+                <span class="tag-pill">Catalog</span>
+              </div>
+            </div>
+            <h3 class="card-title">Workspace Catalog (Markdown)</h3>
+            <p class="card-desc">
+              Full text inventory of all 98+ files and 39 directories categorized with usage instructions, launcher pairings, and cloud URLs.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">WORKSPACE_CATALOG.md</span>
+            <span class="card-cta">Open Doc &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Cursed Shinobi Mini Game -->
+        <a href="cursed_shinobi_rogue.html" class="app-card color-tool" data-keywords="cursed shinobi rogue html5 mini game canvas ninja roguelike">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">🥷</span>
+              <div class="card-tags">
+                <span class="tag-pill">HTML5 Game</span>
+              </div>
+            </div>
+            <h3 class="card-title">Cursed Shinobi: Rogue</h3>
+            <p class="card-desc">
+              Built-in HTML5 action roguelike canvas mini-game with ninja combat mechanics, upgrade systems, and animated sprite rendering.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">cursed_shinobi_rogue.html</span>
+            <span class="card-cta">Play Game &rarr;</span>
+          </div>
+        </a>
+
+        <!-- ISEF Readiness Report -->
+        <a href="ISEF_READINESS_REPORT.md" class="app-card color-tool" data-keywords="isef readiness report checklist defense validation stats">
+          <div>
+            <div class="card-top">
+              <span class="card-icon">📊</span>
+              <div class="card-tags">
+                <span class="tag-pill">Audit</span>
+              </div>
+            </div>
+            <h3 class="card-title">ISEF Readiness Report</h3>
+            <p class="card-desc">
+              Detailed technical readiness checklist evaluating experimental boundaries, baseline comparisons, and judge talking points.
+            </p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-filename">ISEF_READINESS_REPORT.md</span>
+            <span class="card-cta">Read Report &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>PINN 2.0 &amp; Study Hub • Zero Code Modifications • Safe &amp; Fast File Navigation</span>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast">Filtered items</div>
+
+  <script>
+    let activeFilter = 'all';
+
+    function setFilter(domain, btn) {
+      activeFilter = domain;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterCards();
+    }
+
+    function handleSearch() {
+      filterCards();
+    }
+
+    function filterCards() {
+      const query = document.getElementById('catalog-search').value.toLowerCase().trim();
+      const sections = document.querySelectorAll('.domain-section');
+      let visibleCount = 0;
+
+      sections.forEach(sec => {
+        const domain = sec.getAttribute('data-domain');
+        const cards = sec.querySelectorAll('.app-card');
+        let secVisible = 0;
+
+        cards.forEach(card => {
+          const matchDomain = activeFilter === 'all' || domain === activeFilter;
+          const text = card.textContent.toLowerCase() + ' ' + (card.getAttribute('data-keywords') || '');
+          const matchQuery = !query || text.includes(query);
+
+          if (matchDomain && matchQuery) {
+            card.style.display = 'flex';
+            secVisible++;
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        sec.style.display = secVisible > 0 ? 'block' : 'none';
+      });
+
+      if (query || activeFilter !== 'all') {
+        showToast(`${visibleCount} matching item${visibleCount === 1 ? '' : 's'} found`);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT') return;
+      if (e.key === '/') {
+        e.preventDefault();
+        document.getElementById('catalog-search').focus();
+      } else if (e.key === 'p' || e.key === 'P') {
+        const btn = document.getElementById('filter-peer');
+        if (btn) setFilter('peer', btn);
+      } else if (e.key === 's' || e.key === 'S') {
+        const btn = document.getElementById('filter-sat');
+        if (btn) setFilter('sat', btn);
+      } else if (e.key === 'a' || e.key === 'A') {
+        const btn = document.getElementById('filter-all');
+        if (btn) setFilter('all', btn);
+      }
+    });
+  </script>
+</body>
+</html>

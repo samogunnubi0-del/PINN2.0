@@ -1,0 +1,618 @@
+{
+  "profile": {
+    "name": "The BIG YANKEY",
+    "graduation_year": 2027,
+    "school": "Guilford Park High School (GPHS Panthers, Howard County, MD - HCPSS)",
+    "gpa_uw": 3.8,
+    "gpa_w": 4.3,
+    "certifications": [
+      "Certified Clinical Medical Assistant (CCMA)",
+      "Foundations of Healthcare"
+    ],
+    "leadership": [
+      "Co-President, Black Student Union (2026-2027)",
+      "Secretary, Black Student Union (2024-2026)",
+      "National Honor Society (NHS) (2025-2026)",
+      "Delta Scholars (Delta Sigma Theta) (2024-2026)"
+    ],
+    "athletics": "Lacrosse Goalie (2024)",
+    "honors": [
+      "Principal's Honor Roll",
+      "Panther of the Month"
+    ],
+    "career_goal": "Doctor of Osteopathic Medicine (D.O.) - Holistic Medicine & Reducing Maternal Healthcare Disparities",
+    "essay_theme": "From Childhood Medical Distrust to Osteopathic Physician Championing Health Equity"
+  },
+  "colleges": [
+    {
+      "id": "umd",
+      "name": "University of Maryland, College Park",
+      "round": "Early Action (Fall 2027)",
+      "deadline": "November 1, 2026",
+      "deadline_date": "2026-11-01",
+      "est_hours": "8–10 hrs",
+      "tier": "Tier 1: Must-Apply",
+      "url": "https://admissions.umd.edu/",
+      "aid_url": "https://admissions.umd.edu/costs-and-aid",
+      "advantage": "Flagship state university; top Biological Sciences pre-med advising. 100% full tuition covered when paired with MHEC Guaranteed Access Grant."
+    },
+    {
+      "id": "towson",
+      "name": "Towson University",
+      "round": "Early Action (Fall 2027)",
+      "deadline": "November 1, 2026",
+      "deadline_date": "2026-11-01",
+      "est_hours": "5–7 hrs",
+      "tier": "Tier 1: Must-Apply",
+      "url": "https://www.towson.edu/admissions/",
+      "aid_url": "https://www.towson.edu/admissions/financialaid/",
+      "advantage": "Premier Maryland healthcare pipeline with clinical rotations at Greater Baltimore Medical Center and St. Joseph Medical Center. Automatic Provost scholarship review."
+    },
+    {
+      "id": "drexel",
+      "name": "Drexel University",
+      "round": "Early Action (Fall 2027)",
+      "deadline": "November 15, 2026",
+      "deadline_date": "2026-11-15",
+      "est_hours": "7–10 hrs",
+      "tier": "Tier 2: Strong Match",
+      "url": "https://drexel.edu/admissions/apply/",
+      "aid_url": "https://drexel.edu/drexelcentral/financing/scholarships/",
+      "advantage": "World-class cooperative education (co-op) program. CCMA credential allows 1,000+ hours of paid clinical hospital employment before applying to D.O. medical schools."
+    },
+    {
+      "id": "loyola",
+      "name": "Loyola University Maryland",
+      "round": "Early Action (Fall 2027)",
+      "deadline": "November 15, 2026",
+      "deadline_date": "2026-11-15",
+      "est_hours": "6–8 hrs",
+      "tier": "Tier 2: Strong Match",
+      "url": "https://www.loyola.edu/admission/undergraduate",
+      "aid_url": "https://www.loyola.edu/admission/undergraduate/costs-aid",
+      "advantage": "85%+ acceptance rate into medical schools from pre-health committee. Jesuit focus on cura personalis (care for the whole person) aligns directly with Osteopathic philosophy."
+    },
+    {
+      "id": "morgan",
+      "name": "Morgan State University",
+      "round": "Early Action (Fall 2027)",
+      "deadline": "December 1, 2026",
+      "deadline_date": "2026-12-01",
+      "est_hours": "5–8 hrs",
+      "tier": "Tier 1: Must-Apply",
+      "url": "https://www.morgan.edu/admissions",
+      "aid_url": "https://www.morgan.edu/financialaid",
+      "advantage": "Historic Maryland HBCU; NIH ASCEND biomedical research center and planned new College of Osteopathic Medicine. Massive merit packages for 4.3 W GPA & BSU leadership."
+    },
+    {
+      "id": "hopkins",
+      "name": "Johns Hopkins University (JHU)",
+      "round": "Regular Decision (Fall 2027)",
+      "deadline": "January 2, 2027",
+      "deadline_date": "2027-01-02",
+      "est_hours": "10–14 hrs",
+      "tier": "Tier 2: High Reach / Elite",
+      "url": "https://apply.jhu.edu",
+      "aid_url": "https://finaid.jhu.edu/",
+      "advantage": "World #1 medical research university. 100% need-met, loan-free Bloomberg financial aid packages. Groundbreaking public health courses in Baltimore healthcare equity."
+    }
+  ],
+  "scholarships": [
+    {
+      "id": "gates-scholarship",
+      "name": "The Gates Scholarship",
+      "provider": "Bill & Melinda Gates Foundation",
+      "amount": "Full Cost of Attendance (~$200,000+)",
+      "deadline": "September 15, 2026",
+      "deadline_date": "2026-09-15",
+      "est_hours": "2.5 hrs",
+      "tier": "Tier 2: National Elite",
+      "category": "diversity",
+      "url": "https://www.thegatesscholarship.org/scholarship",
+      "strategy": "Phase 1 is just the questionnaire, don't stress the essays yet. Flex your 4.3 GPA, CCMA cert, and BSU president role. Full cost of attendance ride covering tuition, dorm, food, and books.",
+      "requirements": [
+        "Pell/Need-Eligible",
+        "Top 10% Senior",
+        "U.S. Citizen/PR"
+      ]
+    },
+    {
+      "id": "coca-cola-scholars",
+      "name": "Coca-Cola Scholars Program",
+      "provider": "Coca-Cola Scholars Foundation",
+      "amount": "$20,000 ($5,000 / year)",
+      "deadline": "September 30, 2026 (5 PM ET)",
+      "deadline_date": "2026-09-30",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 2: National Merit",
+      "category": "merit",
+      "url": "https://www.coca-colascholarsfoundation.org/apply/",
+      "strategy": "Zero essays in round 1! Literally just drop your transcript, BSU community service hours, and NHS stuff. Takes 1.5 hours max. Apply before Sept 30!",
+      "requirements": [
+        "3.0+ GPA",
+        "Senior Class of 2027",
+        "Leadership & Service Profile"
+      ]
+    },
+    {
+      "id": "umd-presidents-merit",
+      "name": "UMD President's & Banneker/Key Scholarships",
+      "provider": "University of Maryland, College Park",
+      "amount": "Up to Full Tuition, Room & Board ($120,000)",
+      "deadline": "November 1, 2026 (Early Action)",
+      "deadline_date": "2026-11-01",
+      "est_hours": "0.5 hr",
+      "tier": "Tier 1: Automatic Review with EA",
+      "category": "in-state",
+      "url": "https://admissions.umd.edu/",
+      "strategy": "NO SEPARATE ESSAY! Just submit UMD Early Action before Nov 1 and you're automatically considered for the full-ride Banneker/Key and President's scholarships.",
+      "requirements": [
+        "Submit UMD EA by Nov 1",
+        "Top Class Standing",
+        "Strong Transcript"
+      ]
+    },
+    {
+      "id": "towson-provost-merit",
+      "name": "Towson Provost & Honors College Scholarships",
+      "provider": "Towson University",
+      "amount": "Up to $4,000 / year + Honors Priority",
+      "deadline": "November 1, 2026 (Early Action)",
+      "deadline_date": "2026-11-01",
+      "est_hours": "0.5 hr",
+      "tier": "Tier 1: Automatic Review with EA",
+      "category": "in-state",
+      "url": "https://www.towson.edu/admissions/",
+      "strategy": "Automatic review when you submit Towson EA by Nov 1. Locks in priority review for the Towson Honors College and allied health pre-med cohort.",
+      "requirements": [
+        "Submit Towson EA by Nov 1",
+        "Cumulative 3.75+ GPA"
+      ]
+    },
+    {
+      "id": "jack-kent-cooke",
+      "name": "Jack Kent Cooke College Scholarship",
+      "provider": "Jack Kent Cooke Foundation",
+      "amount": "Up to $55,000 / year ($220,000 total)",
+      "deadline": "November 11, 2026",
+      "deadline_date": "2026-11-11",
+      "est_hours": "3.5 hrs",
+      "tier": "Tier 2: National Elite",
+      "category": "merit",
+      "url": "https://www.jkcf.org/our-scholarships/college-scholarship-program/",
+      "strategy": "Submits through Common App. Talk about your CCMA patient care, turning doctor distrust into your DO vision, and high grades. Up to $55k a year ($220k total).",
+      "requirements": [
+        "3.5+ GPA",
+        "Financial Need",
+        "2 Recommender Letters",
+        "Essays"
+      ]
+    },
+    {
+      "id": "elks-mvs",
+      "name": "Elks Most Valuable Student (MVS) Competition",
+      "provider": "Elks National Foundation",
+      "amount": "$4,000 – $50,000 (500 Awards)",
+      "deadline": "November 12, 2026 (11:59 PM PT)",
+      "deadline_date": "2026-11-12",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 2: Strong Match",
+      "category": "merit",
+      "url": "https://www.elks.org/scholars/scholarships/mvs.cfm",
+      "strategy": "Judged by our local Howard County / Columbia-Ellicott City Elks Lodge (#2585). Emphasize your ethical leadership as BSU Co-Pres and commitment to community health.",
+      "requirements": [
+        "U.S. Citizen",
+        "High School Senior",
+        "Academics, Service & Financial Need"
+      ]
+    },
+    {
+      "id": "drexel-liberty-scholars",
+      "name": "Drexel Liberty Scholars (100% Tuition)",
+      "provider": "Drexel University",
+      "amount": "100% Full Tuition & Fees (~$60,000/yr)",
+      "deadline": "November 15, 2026",
+      "deadline_date": "2026-11-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 1: Institutional Full Ride",
+      "category": "merit",
+      "url": "https://drexel.edu/admissions/apply/",
+      "strategy": "Free tuition bag! Submit Drexel EA by Nov 15. Covers 100% of your tuition for underrepresented students with top academic credentials.",
+      "requirements": [
+        "Drexel Early Action Applicant",
+        "Supplemental Leadership Essay",
+        "Financial Need"
+      ]
+    },
+    {
+      "id": "nhs-scholarship",
+      "name": "National Honor Society (NHS) Scholarship",
+      "provider": "NASSP",
+      "amount": "$3,200 – $25,000",
+      "deadline": "November 30, 2026",
+      "deadline_date": "2026-11-30",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 1: High Yield Active Member",
+      "category": "merit",
+      "url": "https://www.nationalhonorsociety.org/students/the-nhs-scholarship/",
+      "strategy": "Exclusive to active NHS members. Quick essay on the 4 pillars (Scholarship, Service, Leadership, Character) and verification from our Guilford Park HS chapter.",
+      "requirements": [
+        "Active NHS Member",
+        "School Chapter Verification",
+        "Pillars of NHS Essay"
+      ]
+    },
+    {
+      "id": "ron-brown-scholar",
+      "name": "Ron Brown Scholar Program",
+      "provider": "Ron Brown Scholar Fund",
+      "amount": "$40,000 ($10,000 / year)",
+      "deadline": "December 1, 2026 (Priority) / Dec 15",
+      "deadline_date": "2026-12-01",
+      "est_hours": "3.0 hrs",
+      "tier": "Tier 1: Must-Apply Flagship",
+      "category": "diversity",
+      "url": "https://ronbrown.org",
+      "strategy": "The biggest national award for Black high school seniors ($40,000). Dec 1 early deadline unlocks extra corporate funding. Submit your personal statement and rec letters.",
+      "requirements": [
+        "Black/African American Senior",
+        "2 Essays",
+        "Transcript",
+        "2 Letters of Rec"
+      ]
+    },
+    {
+      "id": "umbc-meyerhoff",
+      "name": "UMBC Meyerhoff Scholars Program",
+      "provider": "University of Maryland, Baltimore County",
+      "amount": "Full Tuition, Room & Board + Research ($80k+)",
+      "deadline": "December 1, 2026 (Priority)",
+      "deadline_date": "2026-12-01",
+      "est_hours": "2.5 hrs",
+      "tier": "Tier 1: Top In-State Pre-Med",
+      "category": "premed",
+      "url": "https://meyerhoff.umbc.edu/how-to-apply/",
+      "strategy": "The #1 pipeline in the country for Black pre-med students. Full ride + research stipend. Put in the priority nomination by Dec 1.",
+      "requirements": [
+        "STEM/Pre-Med Focus",
+        "3.0+ GPA",
+        "Self/School Nomination",
+        "Essays"
+      ]
+    },
+    {
+      "id": "burger-king-scholars",
+      "name": "Burger King Foundation Scholars",
+      "provider": "Burger King Foundation",
+      "amount": "$1,000 – $60,000",
+      "deadline": "December 15, 2026 (Opens Oct 15)",
+      "deadline_date": "2026-12-15",
+      "est_hours": "1.0 hr",
+      "tier": "Tier 1: High Yield Quick Win",
+      "category": "merit",
+      "url": "https://bk-scholars.com/",
+      "strategy": "Window caps at 50,000 applicants nationwide so jump on this as soon as it opens Oct 15. Free money for college, 1 hour quick win.",
+      "requirements": [
+        "2.0+ GPA",
+        "Full-time college enrollment",
+        "Early submission"
+      ]
+    },
+    {
+      "id": "equitable-excellence",
+      "name": "Equitable Excellence Scholarship",
+      "provider": "Equitable Foundation",
+      "amount": "$5,000 – $20,000",
+      "deadline": "December 15, 2026",
+      "deadline_date": "2026-12-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 2: Strong Match",
+      "category": "merit",
+      "url": "https://scholarshipamerica.org/scholarship/equitableexcellence/",
+      "strategy": "Detail your BSU initiatives at Guilford Park High School and your clinical dedication as a CCMA. Awards $5k to $20k for community changemakers.",
+      "requirements": [
+        "High School Senior",
+        "Essay on Community Impact",
+        "Financial Need"
+      ]
+    },
+    {
+      "id": "avacare-medical-scholarship",
+      "name": "AvaCare Medical Healthcare Scholarship",
+      "provider": "AvaCare Medical Foundation",
+      "amount": "$1,000",
+      "deadline": "December 15, 2026",
+      "deadline_date": "2026-12-15",
+      "est_hours": "1.0 hr",
+      "tier": "Tier 1: High Yield Quick Win",
+      "category": "premed",
+      "url": "https://www.avacaremedical.com/scholarship",
+      "strategy": "Super easy. Just write a short 350-word story about an act of patient empathy from your CCMA clinical hours. $1k for 1 hour of work.",
+      "requirements": [
+        "Pursuing Medical/Healthcare Degree",
+        "3.0+ GPA",
+        "350-Word Project on Kindness"
+      ]
+    },
+    {
+      "id": "jackie-robinson",
+      "name": "Jackie Robinson Foundation Scholarship",
+      "provider": "Jackie Robinson Foundation",
+      "amount": "Up to $35,000 + 4-Yr Mentorship & Internships",
+      "deadline": "January 14, 2027 (5 PM ET)",
+      "deadline_date": "2027-01-14",
+      "est_hours": "3.0 hrs",
+      "tier": "Tier 1: High Yield & Mentorship",
+      "category": "diversity",
+      "url": "https://jackierobinson.org/scholarship/",
+      "strategy": "Connects minority leadership with athletics. Highlight your lacrosse goalie grit and CCMA patient advocacy. Up to $35k + 4 years of mentoring.",
+      "requirements": [
+        "Minority High School Senior",
+        "Leadership & Community Service",
+        "SAT/ACT or Test-Optional"
+      ]
+    },
+    {
+      "id": "foot-locker-athletes",
+      "name": "Foot Locker Scholar Athletes Program",
+      "provider": "Foot Locker Foundation",
+      "amount": "$20,000 ($5,000 / year)",
+      "deadline": "January 15, 2027",
+      "deadline_date": "2027-01-15",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 2: Student-Athlete Match",
+      "category": "athletics",
+      "url": "https://www.footlockerscholarathletes.com/",
+      "strategy": "Write about being the last line of defense in the lacrosse goal and how protecting teammates translates to protecting vulnerable patients. $20k award.",
+      "requirements": [
+        "High School Athlete",
+        "3.0+ GPA",
+        "Community Leadership Essay"
+      ]
+    },
+    {
+      "id": "uncf-stem-health",
+      "name": "UNCF Healthcare Workforce Diversity Scholarships",
+      "provider": "United Negro College Fund",
+      "amount": "$2,500 – $10,000 / year",
+      "deadline": "February 1, 2027 (Rolling Cycles)",
+      "deadline_date": "2027-02-01",
+      "est_hours": "1.0 hr",
+      "tier": "Tier 2: Pre-Med Pipeline",
+      "category": "premed",
+      "url": "https://opportunities.uncf.org/",
+      "strategy": "Corporate pre-med endowments (AbbVie, CVS, P&G) specifically for Black students entering medical and healthcare careers. Drop your UNCF profile.",
+      "requirements": [
+        "African American Senior",
+        "Healthcare/Pre-Med Major",
+        "UNCF Profile"
+      ]
+    },
+    {
+      "id": "columbia-delta-scholars",
+      "name": "Columbia (MD) Alumnae Chapter Delta Sigma Theta Scholarship",
+      "provider": "Columbia (MD) Alumnae Chapter (DST)",
+      "amount": "$2,000 – $5,000",
+      "deadline": "February 15, 2027",
+      "deadline_date": "2027-02-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 1: Direct Local Match",
+      "category": "in-state",
+      "url": "https://columbiamddst.org",
+      "strategy": "Howard County only and you're ALREADY in Delta Scholars! This is our local bag right here. Flex your BSU leadership and pre-med hustle. $2k–$5k.",
+      "requirements": [
+        "African American Senior attending Howard County High School",
+        "Delta Scholars / Community Leadership",
+        "2.5+ GPA (She has 4.3 W)",
+        "Letters of Recommendation"
+      ]
+    },
+    {
+      "id": "dell-scholars-program",
+      "name": "Dell Scholars Program",
+      "provider": "Michael & Susan Dell Foundation",
+      "amount": "$20,000 + Laptop & Textbook Credits",
+      "deadline": "February 15, 2027 (Opens Dec 15)",
+      "deadline_date": "2027-02-15",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 2: Elite Tech & Need Match",
+      "category": "merit",
+      "url": "https://www.dellscholars.org",
+      "strategy": "They care about grit and resilience over test scores. Flex your NHS, BSU, dual enrollment, and CCMA cert. $20,000 + a free laptop.",
+      "requirements": [
+        "Pell Grant Eligible / Need",
+        "2.4+ GPA",
+        "Approved College Readiness/Honors Track",
+        "Full-time 4-Yr College Bound"
+      ]
+    },
+    {
+      "id": "horatio-alger-scholarship",
+      "name": "Horatio Alger State & National Scholarships",
+      "provider": "Horatio Alger Association",
+      "amount": "$10,000 – $25,000",
+      "deadline": "February 15, 2027 (Opens Dec 1)",
+      "deadline_date": "2027-02-15",
+      "est_hours": "2.5 hrs",
+      "tier": "Tier 1: Major Resilience Award",
+      "category": "merit",
+      "url": "https://scholars.horatioalger.org",
+      "strategy": "Specifically for seniors who overcame real challenges. Connect your childhood distrust of medicine to turning that pain into becoming an empathetic DO.",
+      "requirements": [
+        "Critical Financial Need",
+        "Integrity & Perseverance",
+        "2.0+ GPA",
+        "4-Year College Bound"
+      ]
+    },
+    {
+      "id": "cynthia-e-morgan-memorial",
+      "name": "Cynthia E. Morgan Memorial Scholarship",
+      "provider": "Cynthia E. Morgan Memorial Foundation",
+      "amount": "$1,000",
+      "deadline": "February 25, 2027 (Opens Dec 2026)",
+      "deadline_date": "2027-02-25",
+      "est_hours": "1.0 hr",
+      "tier": "Tier 1: In-State Medical Only",
+      "category": "in-state",
+      "url": "http://cemsfund.com",
+      "strategy": "Exclusively for Maryland students going into medicine or healthcare. Literally made for future pre-med students. 1 hour application.",
+      "requirements": [
+        "Maryland Resident",
+        "Entering Medical / Healthcare Field",
+        "Transcript & Essay",
+        "Maryland College Bound"
+      ]
+    },
+    {
+      "id": "mhec-ga-grant",
+      "name": "Howard P. Rawlings Guaranteed Access (GA) Grant",
+      "provider": "Maryland Higher Education Commission (MHEC)",
+      "amount": "Up to 100% Tuition & Fees (~$12,000–$20,000/yr)",
+      "deadline": "March 1, 2027 (Senior FAFSA / MDCAPS)",
+      "deadline_date": "2027-03-01",
+      "est_hours": "0.75 hr",
+      "tier": "Tier 1: In-State Full Tuition Guarantee",
+      "category": "in-state",
+      "url": "https://mhec.maryland.gov",
+      "strategy": "DO NOT SLEEP ON THIS. Submit FAFSA or MHEC One-App before March 1. If your family income qualifies and you have a 2.5+ GPA (you got 4.3!), the state covers 100% of your tuition at UMD, Towson, or Morgan State. Free college.",
+      "requirements": [
+        "FAFSA submitted before March 1",
+        "MDCAPS account login",
+        "2.5+ GPA",
+        "MD Resident"
+      ]
+    },
+    {
+      "id": "cfhoco-scholarships",
+      "name": "Community Foundation of Howard County (CFHoCo) Scholarships",
+      "provider": "Community Foundation of Howard County",
+      "amount": "$1,000 – $10,000 (Multiple Funds)",
+      "deadline": "March 15, 2027 (Opens Dec 2026)",
+      "deadline_date": "2027-03-15",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 1: County Specific Win",
+      "category": "in-state",
+      "url": "https://cfhoco.org/scholarships/",
+      "strategy": "Exclusively for HCPSS seniors! One application puts you in the running for multiple local endowments in Howard County. With a 4.3 GPA and CCMA cert, you're top of the pile.",
+      "requirements": [
+        "HCPSS Graduating Senior (Guilford Park HS)",
+        "Howard County Resident",
+        "2.5+ GPA (She has 4.3 W)",
+        "FAFSA & Transcript"
+      ]
+    },
+    {
+      "id": "pearl-foundation-howard",
+      "name": "The Pearl Foundation / AKA Iota Lambda Omega Howard County Scholarship",
+      "provider": "The Pearl Foundation, Inc.",
+      "amount": "$1,000 – $3,000",
+      "deadline": "March 15, 2027",
+      "deadline_date": "2027-03-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 1: Direct Local Match",
+      "category": "in-state",
+      "url": "https://pearlfoundationinc.org",
+      "strategy": "Administered by the Pearl Foundation & AKA Iota Lambda Omega chapter for Howard County seniors. Great match for your 4.3 GPA, BSU leadership, and healthcare dreams.",
+      "requirements": [
+        "Howard County Resident & HCPSS Senior",
+        "Minority Graduating Senior",
+        "3.0+ GPA",
+        "Official Transcript & Essay"
+      ]
+    },
+    {
+      "id": "ptachc-scholarship",
+      "name": "PTA Council of Howard County (PTACHC) Senior Scholarship",
+      "provider": "PTA Council of Howard County",
+      "amount": "$1,000 – $2,500",
+      "deadline": "March 20, 2027",
+      "deadline_date": "2027-03-20",
+      "est_hours": "1.0 hr",
+      "tier": "Tier 1: County Specific Win",
+      "category": "in-state",
+      "url": "https://ptachc.org/",
+      "strategy": "Local scholarship for HCPSS seniors (Guilford Park HS). Quick application, emphasizes community service and career goals.",
+      "requirements": [
+        "HCPSS Graduating Senior (Guilford Park HS)",
+        "Active PTSA Member / Community Service",
+        "Transcript & Essay"
+      ]
+    },
+    {
+      "id": "cbcf-spouses-scholarship",
+      "name": "CBC Spouses Education Scholarship",
+      "provider": "Congressional Black Caucus Foundation (CBCF)",
+      "amount": "$2,500 – $8,200",
+      "deadline": "March 27, 2027",
+      "deadline_date": "2027-03-27",
+      "est_hours": "2.0 hrs",
+      "tier": "Tier 2: Strong Match",
+      "category": "diversity",
+      "url": "https://www.cbcfinc.org/programs/scholarships/",
+      "strategy": "Congressional Black Caucus Foundation awards Black seniors with demonstrated community leadership. Use your BSU Co-Pres record and pre-med mission.",
+      "requirements": [
+        "Black/African American",
+        "2.5+ GPA",
+        "Leadership Resume",
+        "Letters of Rec"
+      ]
+    },
+    {
+      "id": "central-scholarship-md",
+      "name": "Central Scholarship (Maryland Pre-Med & Health Fund)",
+      "provider": "Central Scholarship Foundation",
+      "amount": "$1,000 – $10,000 + Interest-Free Loans",
+      "deadline": "April 1, 2027 (Opens Jan 1)",
+      "deadline_date": "2027-04-01",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 1: In-State Multi-Fund Pool",
+      "category": "in-state",
+      "url": "https://central-scholarship.org",
+      "strategy": "One application puts you in for 50+ Maryland funds, including dedicated pre-med and healthcare endowments. Free money pool.",
+      "requirements": [
+        "Maryland Resident",
+        "2.8+ GPA",
+        "FAFSA SAR",
+        "College Acceptance Letter"
+      ]
+    },
+    {
+      "id": "mhec-senatorial-delegate",
+      "name": "Maryland Senatorial & Delegate Scholarships",
+      "provider": "District 32 Maryland State Legislators",
+      "amount": "$1,000 – $12,000 / year (Renewable)",
+      "deadline": "April 15, 2027",
+      "deadline_date": "2027-04-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 1: Direct State Legislative Aid",
+      "category": "in-state",
+      "url": "https://mhec.maryland.gov",
+      "strategy": "Direct legislative aid from our District 13 / District 12 (Jessup & Columbia) Senator and Delegates through MDCAPS. High GPA and Guilford Park leadership puts you first in line.",
+      "requirements": [
+        "MDCAPS Application",
+        "District 13/12 Howard County Resident",
+        "FAFSA on file"
+      ]
+    },
+    {
+      "id": "aka-eaf-scholarship",
+      "name": "Alpha Kappa Alpha Educational Advancement Foundation",
+      "provider": "AKA EAF",
+      "amount": "$1,000 – $2,500",
+      "deadline": "April 15, 2027",
+      "deadline_date": "2027-04-15",
+      "est_hours": "1.5 hrs",
+      "tier": "Tier 3: Bonus Funding",
+      "category": "diversity",
+      "url": "https://akaeaf.org/",
+      "strategy": "Merit and need awards for minority scholars. Re-use your personal statement emphasizing BSU service and your D.O. pre-med mission.",
+      "requirements": [
+        "3.0+ GPA",
+        "Community Service Record",
+        "Official Transcript",
+        "Essay"
+      ]
+    }
+  ]
+}

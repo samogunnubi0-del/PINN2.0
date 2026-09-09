@@ -1,6 +1,11 @@
 {
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/yankey", "destination": "/The_Big_Yankey.html" },
+    { "source": "/the-big-yankey", "destination": "/The_Big_Yankey.html" },
+    { "source": "/big-yankey", "destination": "/The_Big_Yankey.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
