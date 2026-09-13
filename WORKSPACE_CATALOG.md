@@ -16,7 +16,7 @@
 | **Peer Scholarship Scraper & AI** | [`scholarship_scraper.py`](scholarship_scraper.py) | `python scholarship_scraper.py --ai-audit` | — |
 | **Peer SAT Prep App** | [`For_Peer.html`](For_Peer.html) | [`Open For Peer.cmd`](Open%20For%20Peer.cmd) | [sat-scholarship-hub.vercel.app/For_Peer.html](https://sat-scholarship-hub.vercel.app/For_Peer.html) |
 | **Peer App (Yashi)** | [`For_Yashi.html`](For_Yashi.html) | [`Open For Yashi.cmd`](Open%20For%20Yashi.cmd) | [sat-scholarship-hub.vercel.app/For_Yashi.html](https://sat-scholarship-hub.vercel.app/For_Yashi.html) |
-| **SAT Reading 700+** | [`Reading_700_Mastery.html`](Reading_700_Mastery.html) | [`Open Reading 700.cmd`](Open%20Reading%20700.cmd) | [sat-scholarship-hub.vercel.app/Reading_700_Mastery.html](https://sat-scholarship-hub.vercel.app/Reading_700_Mastery.html) |
+| **SAT Reading 700+** | [`Reading_700_Mastery.html`](Reading_700_Mastery.html) | [`Open Reading 700.cmd`](Open%20Reading%20700.cmd) | [sat-scholarship-hub.vercel.app/reading](https://sat-scholarship-hub.vercel.app/reading) |
 | **SAT 1400 Coach** | [`sat_1400_coach.html`](sat_1400_coach.html) | [`The 1400 Plan.cmd`](The%201400%20Plan.cmd) | [sat-scholarship-hub.vercel.app/sat_1400_coach.html](https://sat-scholarship-hub.vercel.app/sat_1400_coach.html) |
 | **Scholarships Hub (Original)** | [`scholarships.html`](scholarships.html) | Open in browser | [sat-scholarship-hub.vercel.app/scholarships.html](https://sat-scholarship-hub.vercel.app/scholarships.html) |
 | **Calculus 1 Deck** | [`MAT191_Calculus1_Masterclass_Deck.html`](MAT191_Calculus1_Masterclass_Deck.html) | [`Open_Calculus1_Masterclass_Deck.cmd`](Open_Calculus1_Masterclass_Deck.cmd) | — |
@@ -51,7 +51,7 @@
 ### 2. Digital SAT & Scholarships (Live Vercel Deployment)
 *Cloud Deployment: Connected to Vercel via GitHub `origin/main`.*
 
-- [`Reading_700_Mastery.html`](Reading_700_Mastery.html) — Sam's Digital SAT Reading & Writing 700+ command center. Includes Luna AI daily executive briefing, adaptive 27-question simulator, Boolean grammar engine, evidence anchoring, and error logging.
+- [`Reading_700_Mastery.html`](Reading_700_Mastery.html) — Sam's Digital SAT Reading & Writing 700+ command center (live clean route: `/reading`). Includes Luna AI daily executive briefing, adaptive 27-question simulator, Boolean grammar engine, evidence anchoring, and error logging.
 - [`sat_1400_coach.html`](sat_1400_coach.html) — 1400 Digital SAT coach dashboard with video strategy breakdown and formula traps.
 - [`scholarships.html`](scholarships.html) — High-yield scholarship directory with deadline tracking and GPA tier matching.
 - [`api/`](api/) — Vercel serverless functions:

@@ -32,6 +32,7 @@ node_modules/
 _pinn20_release/
 smoke_tmp/
 **/smoke_tmp/
+tmp/
 
 # Extra checkpoints (keep only canonical best weights)
 weights/pinn_best_weights_*.pth
@@ -56,7 +57,6 @@ kaggle_*/
 _runc_results_inspect/
 node_modules/
 .vercel/
-index.html
 scholarships.html
 summer_dashboard.html
 isotope_pinn_master_twin_planner.html

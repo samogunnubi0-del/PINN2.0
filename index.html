@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Desk | Calculus 1 &amp; IsotopePINN Command Center</title>
+  <meta name="description" content="Central study command center linking MAT191 Calculus 1, The A Plan, IsotopePINN 30-Day Mastery, AP Research Paper, and ISEF Defense.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f0d0b;
+      --bg-surface: #181512;
+      --bg-card: #201c18;
+      --bg-card-hover: #29241f;
+      --bg-glass: rgba(32, 28, 24, 0.75);
+      
+      --border: #352e27;
+      --border-bright: #4e443a;
+      
+      --text-main: #f5efe6;
+      --text-muted: #a69b8d;
+      --text-dim: #73695c;
+      
+      --copper: #c45c26;
+      --copper-glow: rgba(196, 92, 38, 0.25);
+      --amber: #d97706;
+      --ruby: #9e2f3f;
+      --ruby-glow: rgba(158, 47, 63, 0.25);
+      --indigo: #4f46e5;
+      --teal: #0d9488;
+      --emerald: #10b981;
+      --purple: #8b5cf6;
+      
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(196, 92, 38, 0.12) 0px, transparent 45%),
+        radial-gradient(at 85% 20%, rgba(158, 47, 63, 0.12) 0px, transparent 45%),
+        radial-gradient(at 50% 90%, rgba(79, 70, 229, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      padding: 32px 20px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Top Masthead */
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 28px;
+      font-size: 13px;
+    }
+
+    .masthead-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--copper), var(--ruby));
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      box-shadow: 0 4px 12px var(--copper-glow);
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .masthead-status {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, rgba(32, 28, 24, 0.9) 0%, rgba(24, 21, 18, 0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--copper-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-lead {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 780px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--copper), #a84c1e);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px var(--copper-glow);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--copper-glow);
+      background: linear-gradient(135deg, #d3652e, var(--copper));
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 11px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-bright);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--copper);
+      transform: translateY(-2px);
+    }
+
+    /* Main Dashboard Grid */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge-calc {
+      background: rgba(158, 47, 63, 0.15);
+      color: #e57380;
+      border: 1px solid rgba(158, 47, 63, 0.3);
+    }
+
+    .badge-isotope {
+      background: rgba(196, 92, 38, 0.15);
+      color: #f59e0b;
+      border: 1px solid rgba(196, 92, 38, 0.3);
+    }
+
+    .badge-sat {
+      background: rgba(79, 70, 229, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+    }
+
+    /* Study Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .study-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .study-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-accent, var(--copper));
+      opacity: 0.8;
+      transition: height 0.2s ease;
+    }
+
+    .study-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .study-card:hover::before {
+      height: 6px;
+    }
+
+    .card-calc { --card-accent: var(--ruby); }
+    .card-isotope { --card-accent: var(--copper); }
+    .card-sat { --card-accent: var(--indigo); }
+    .card-paper { --card-accent: var(--teal); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      font-size: 26px;
+    }
+
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-cta {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--copper);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .card-calc .card-cta { color: #e57380; }
+    .card-paper .card-cta { color: #2dd4bf; }
+    .card-sat .card-cta { color: #a5b4fc; }
+
+    /* Side Panel Tools */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tool-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .tool-box-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Study Timer */
+    .timer-display {
+      font-family: var(--font-mono);
+      font-size: 42px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text-main);
+      padding: 12px 0 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .timer-presets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .btn-preset {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-preset:hover, .btn-preset.active {
+      background: var(--copper-glow);
+      border-color: var(--copper);
+      color: var(--text-main);
+    }
+
+    .timer-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-timer {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      border: 1px solid var(--border-bright);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .btn-timer.primary {
+      background: var(--copper);
+      border-color: var(--copper);
+      color: #fff;
+    }
+
+    .btn-timer:hover {
+      transform: translateY(-1px);
+    }
+
+    /* Checklist */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.15s ease;
+    }
+
+    .check-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .check-item input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--copper);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .check-item.done {
+      text-decoration: line-through;
+      color: var(--text-dim);
+    }
+
+    /* Quick Search / Filter */
+    .search-box {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px 14px 44px;
+      color: var(--text-main);
+      font-size: 14px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--copper);
+      box-shadow: 0 0 0 3px var(--copper-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    /* Scratchpad */
+    .scratchpad-area {
+      width: 100%;
+      height: 110px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      resize: vertical;
+      outline: none;
+    }
+
+    .scratchpad-area:focus {
+      border-color: var(--copper);
+    }
+
+    /* Cross-Study Quick Jump Bar */
+    .jump-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+
+    .jump-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 8px;
+    }
+
+    .jump-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .jump-pill:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--copper);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    /* Keyboard shortcuts helper */
+    .shortcuts-footer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .kbd {
+      background: var(--bg-card);
+      border: 1px solid var(--border-bright);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .hero { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Masthead -->
+    <header class="masthead">
+      <div class="masthead-brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <span class="brand-title">Study Desk</span>
+          <span class="brand-subtitle">Calculus 1 &amp; IsotopePINN</span>
+        </div>
+      </div>
+      <div class="masthead-status">
+        <div class="status-badge">
+          <div class="pulse-dot"></div>
+          <span>Study Mode Active</span>
+        </div>
+        <span id="live-time">Today: Loading...</span>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero-eyebrow">Interactive Study Hub &amp; Daily Workspace</div>
+      <h1>Master Calculus 1 &amp; IsotopePINN</h1>
+      <p class="hero-lead">
+        All study decks, lecture schedules, formulas, research papers, and defense decks are linked up and ready for your study session today.
+      </p>
+      <div class="hero-actions">
+        <a href="Reading_700_Mastery.html" class="btn-primary" style="background: linear-gradient(135deg, #1C2D42, #2B4666); box-shadow: 0 4px 16px rgba(28,45,66,0.4);" id="btn-quick-sat700">
+          <span>📖</span> SAT Reading 700+ Mastery
+        </a>
+        <a href="MAT191_Calculus1_Masterclass_Deck.html" class="btn-primary" id="btn-quick-calc">
+          <span>📐</span> Open Calculus 1 Deck
+        </a>
+        <a href="Calc1_The_A_Plan.html" class="btn-secondary" id="btn-quick-aplan">
+          <span>📅</span> The A Plan Hub
+        </a>
+        <a href="IsotopePINN_30Day_Professional_Mastery.html" class="btn-primary" style="background: linear-gradient(135deg, #2f5d4a, #1b382c); box-shadow: 0 4px 16px rgba(47,93,74,0.3);" id="btn-quick-iso">
+          <span>⚛️</span> 30-Day Isotope Mastery
+        </a>
+        <a href="IsotopePINN_AP_Research_Paper.html" class="btn-secondary" id="btn-quick-paper">
+          <span>📄</span> AP Research Paper
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick Jump Bar -->
+    <div class="jump-bar">
+      <span class="jump-label">Direct Quick Links:</span>
+      <a href="Reading_700_Mastery.html" class="jump-pill" style="border-color: #416B95; color: #a5b4fc;">📖 SAT Reading 700+</a>
+      <a href="MAT191_Calculus1_Masterclass_Deck.html" class="jump-pill">📐 MAT 191 Deck</a>
+      <a href="Calc1_The_A_Plan.html" class="jump-pill">🎯 The A Plan</a>
+      <a href="IsotopePINN_30Day_Professional_Mastery.html" class="jump-pill">⚛️ 30-Day Isotope</a>
+      <a href="IsotopePINN_AP_Research_Paper.html" class="jump-pill">📄 AP Research Paper</a>
+      <a href="IsotopePINN_ISEF_Masterclass_Deck.html" class="jump-pill">🏆 ISEF Defense Deck</a>
+      <a href="sat_1400_coach.html" class="jump-pill">🎯 SAT 1400 Coach</a>
+    </div>
+
+    <!-- Search / Filter -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="topic-search" class="search-input" placeholder="Search topics (e.g. 'derivatives', 'decay law', 'Bateman', 'chain rule', 'stiff ODE', 'trapezoidal')..." oninput="filterCards()">
+    </div>
+
+    <!-- Dashboard Main Layout -->
+    <div class="dashboard-layout">
+      
+      <!-- Main Column: Tracks -->
+      <div class="main-column">
+
+        <!-- TRACK 1: CALCULUS 1 -->
+        <div class="section-title-wrap">
+          <h2 class="section-title">
+            <span>📐 Track 1: Calculus 1 Mastery</span>
+          </h2>
+          <span class="section-badge badge-calc">MAT 191 &amp; The A Plan</span>
+        </div>
+
+        <div class="cards-grid">
+          
+          <!-- Card: MAT 191 Masterclass Deck -->
+          <a href="MAT191_Calculus1_Masterclass_Deck.html" class="study-card card-calc" data-keywords="calculus mat191 masterclass deck derivatives integrals limits continuity optimization chain rule u-sub">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">📖</span>
+                <span class="card-tag">Interactive Deck</span>
+              </div>
+              <h3 class="card-title">MAT 191 Masterclass Deck</h3>
+              <p class="card-desc">
+                17 interactive walkthrough slides covering Foundations, Limits, Derivative Rules, Applications/Optimization, Integrals, and the direct link to IsotopePINN. Includes Deep High School Side Notes [S] and formula decoders.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 17 Interactive Slides</span>
+                <span class="meta-item">🔹 Side Study Tab [S]</span>
+                <span class="meta-item">🔹 Isotope Bridge (Slide 17)</span>
+              </div>
+              <div class="card-cta">Launch Masterclass Deck &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Card: The A Plan -->
+          <a href="Calc1_The_A_Plan.html" class="study-card card-calc" data-keywords="calculus a plan sorcerer khan academy formula flashcards week schedule deepseek tutor">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">🎯</span>
+                <span class="card-tag">Semester Hub</span>
+              </div>
+              <h3 class="card-title">The A Plan (Daily Schedule &amp; Videos)</h3>
+              <p class="card-desc">
+                Structured semester dashboard with Math Sorcerer &amp; Khan Academy video lectures, KaTeX formula memory drills, active recall flashcards, and integrated DeepSeek AI coach.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 Video Player</span>
+                <span class="meta-item">🔹 Formula Memory Drills</span>
+                <span class="meta-item">🔹 AI Problem Coach</span>
+              </div>
+              <div class="card-cta">Open The A Plan &rarr;</div>
+            </div>
+          </a>
+
+        </div>
+
+
+        <!-- TRACK 2: ISOTOPEPINN & NUCLEAR RESEARCH -->
+        <div class="section-title-wrap">
+          <h2 class="section-title">
+            <span>⚛️ Track 2: IsotopePINN &amp; Nuclear Kinetics</span>
+          </h2>
+          <span class="section-badge badge-isotope">AP Research &amp; ISEF</span>
+        </div>
+
+        <div class="cards-grid">
+          
+          <!-- Card: 30-Day Mastery -->
+          <a href="IsotopePINN_30Day_Professional_Mastery.html" class="study-card card-isotope" data-keywords="isotopepinn 30-day mastery nuclear physics actinium radium bateman ode pinn ml surrogate stiff equations">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">🔬</span>
+                <span class="card-tag">Self-Study Course</span>
+              </div>
+              <h3 class="card-title">30-Day Professional Mastery</h3>
+              <p class="card-desc">
+                Daily 40-minute interactive slideshow from absolute zero to professional command: atoms &amp; isotopes, Ac-225 cancer therapy, 5 coupled Bateman ODEs, PI-LSTM models, failure analysis, and retrieval drills.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 35+ Slide Modules</span>
+                <span class="meta-item">🔹 Active Recall Drills</span>
+                <span class="meta-item">🔹 Plain English &amp; Equations</span>
+              </div>
+              <div class="card-cta">Start 30-Day Mastery &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Card: AP Research Paper -->
+          <a href="IsotopePINN_AP_Research_Paper.html" class="study-card card-paper" data-keywords="ap research paper manuscript isotopepinn surrogate failure-aware ra-226 ac-225 berkeley graphs citations">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">📄</span>
+                <span class="card-tag">Full Manuscript</span>
+              </div>
+              <h3 class="card-title">AP Research Academic Paper</h3>
+              <p class="card-desc">
+                Teacher-facing manuscript: "Failure-Aware Surrogates for Actinium-225 Production Kinetics." Includes complete equations, honest error metrics, 137 literature audits, and Berkeley dataset benchmarks.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 Complete Manuscript</span>
+                <span class="meta-item">🔹 KaTeX Equations</span>
+                <span class="meta-item">🔹 Print / PDF Ready</span>
+              </div>
+              <div class="card-cta">Read Academic Paper &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Card: ISEF Defense Deck -->
+          <a href="IsotopePINN_ISEF_Masterclass_Deck.html" class="study-card card-isotope" data-keywords="isef defense masterclass judge questions presentation claims surrogate physics ml">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">🏆</span>
+                <span class="card-tag">Judge Defense</span>
+              </div>
+              <h3 class="card-title">ISEF Defense Masterclass Deck</h3>
+              <p class="card-desc">
+                Spoken judge defense slides: 5-step narrative (Motivate, Model, Learn, Screen, Verify), claim boundary enforcement, judge Q&amp;A drills, and high-stakes spoken explanations.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 24 Defense Slides</span>
+                <span class="meta-item">🔹 Judge Q&amp;A Simulation</span>
+                <span class="meta-item">🔹 Claim Rules</span>
+              </div>
+              <div class="card-cta">Launch ISEF Defense &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Card: SAT 1400 Coach -->
+          <a href="sat_1400_coach.html" class="study-card card-sat" data-keywords="sat 1400 coach digital sat math reading writing desmos grammar">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">🎯</span>
+                <span class="card-tag">Exam Coach</span>
+              </div>
+              <h3 class="card-title">Digital SAT 1400 Coach</h3>
+              <p class="card-desc">
+                Calm Digital SAT preparation plan with strategy cards, video breakdowns, Desmos calculator speed moves, and grammar checkpoints.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 Math &amp; Desmos Tactics</span>
+                <span class="meta-item">🔹 Reading/Writing Traps</span>
+                <span class="meta-item">🔹 Video Walkthroughs</span>
+              </div>
+              <div class="card-cta">Open SAT 1400 Coach &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Card: SAT Reading 700+ Mastery -->
+          <a href="Reading_700_Mastery.html" class="study-card card-sat" data-keywords="sat reading writing 700 mastery boolean grammar evidence anchor simulator luna ai error log" style="--card-accent: #3b82f6;">
+            <div>
+              <div class="card-header">
+                <span class="card-icon">📖</span>
+                <span class="card-tag" style="background:rgba(59,130,246,0.15);color:#93c5fd;border:1px solid rgba(59,130,246,0.3);">700+ Command Center</span>
+              </div>
+              <h3 class="card-title">Digital SAT Reading &amp; Writing 700+</h3>
+              <p class="card-desc">
+                Deterministic, rule-based training to bridge 540 to 700+. Features Luna AI daily briefing, Boolean grammar engine, evidence anchoring, adaptive 27-question simulator, and diagnostic error logger.
+              </p>
+            </div>
+            <div>
+              <div class="card-meta">
+                <span class="meta-item">🔹 Boolean Grammar Engine</span>
+                <span class="meta-item">🔹 Adaptive 27Q Simulator</span>
+                <span class="meta-item">🔹 Live on Vercel (/reading)</span>
+              </div>
+              <div class="card-cta">Launch Reading 700+ Hub &rarr;</div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Sidebar Column: Tools -->
+      <aside class="sidebar">
+
+        <!-- Focus Timer -->
+        <div class="tool-box">
+          <div class="tool-box-title">
+            <span>⏱️ Study Focus Timer</span>
+            <span id="timer-status-tag" style="font-size:11px; font-family:var(--font-mono); color:var(--text-dim);">READY</span>
+          </div>
+          
+          <div class="timer-display" id="timer-display">40:00</div>
+          
+          <div class="timer-presets">
+            <button class="btn-preset" onclick="setTimer(25)">25m Pomodoro</button>
+            <button class="btn-preset active" onclick="setTimer(40)">40m Isotope</button>
+            <button class="btn-preset" onclick="setTimer(60)">60m Calc 1</button>
+          </div>
+
+          <div class="timer-controls">
+            <button class="btn-timer primary" id="timer-toggle-btn" onclick="toggleTimer()">Start Focus</button>
+            <button class="btn-timer" onclick="resetTimer()">Reset</button>
+          </div>
+        </div>
+
+        <!-- Today's Study Checklist -->
+        <div class="tool-box">
+          <div class="tool-box-title">
+            <span>✅ Today's Study Plan</span>
+            <span id="checklist-progress" style="font-size:11px; font-family:var(--font-mono); color:var(--copper);">0/4 Done</span>
+          </div>
+
+          <div class="checklist" id="checklist-container">
+            <label class="check-item" data-id="c1">
+              <input type="checkbox" onchange="updateChecklist(this)">
+              <span>40m IsotopePINN Mastery (Slides + Retrieval Drill)</span>
+            </label>
+            <label class="check-item" data-id="c2">
+              <input type="checkbox" onchange="updateChecklist(this)">
+              <span>45m Calc 1 MAT 191 Deck / Sorcerer Problem Set</span>
+            </label>
+            <label class="check-item" data-id="c3">
+              <input type="checkbox" onchange="updateChecklist(this)">
+              <span>Review Calculus Slide 17 &harr; Bateman Decay Link</span>
+            </label>
+            <label class="check-item" data-id="c4">
+              <input type="checkbox" onchange="updateChecklist(this)">
+              <span>Say "North Star" &amp; 4 jobs aloud without notes</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Quick Study Scratchpad -->
+        <div class="tool-box">
+          <div class="tool-box-title">
+            <span>📝 Study Scratchpad</span>
+            <span style="font-size:10px; font-family:var(--font-mono); color:var(--text-dim);">Auto-saved</span>
+          </div>
+          <textarea id="study-scratchpad" class="scratchpad-area" placeholder="Jot quick notes, formula derivations, or questions while studying..." oninput="saveScratchpad()"></textarea>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- Keyboard Shortcuts Legend -->
+    <footer class="shortcuts-footer">
+      <span><span class="kbd">1</span> MAT 191 Deck</span>
+      <span><span class="kbd">2</span> The A Plan</span>
+      <span><span class="kbd">3</span> 30-Day Isotope</span>
+      <span><span class="kbd">4</span> AP Research Paper</span>
+      <span><span class="kbd">5</span> ISEF Deck</span>
+      <span><span class="kbd">6</span> SAT Coach</span>
+      <span><span class="kbd">Space</span> / <span class="kbd">T</span> Timer</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // Live Time Display
+    function updateLiveTime() {
+      const now = new Date();
+      const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      document.getElementById('live-time').textContent = now.toLocaleDateString('en-US', options);
+    }
+    updateLiveTime();
+    setInterval(updateLiveTime, 30000);
+
+    // Search / Filter
+    function filterCards() {
+      const query = document.getElementById('topic-search').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.study-card');
+      
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase() + ' ' + (card.getAttribute('data-keywords') || '');
+        if (!query || text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Focus Timer Implementation
+    let timerDuration = 40 * 60;
+    let timerRemaining = 40 * 60;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function updateTimerUI() {
+      document.getElementById('timer-display').textContent = formatTime(timerRemaining);
+      const statusTag = document.getElementById('timer-status-tag');
+      const toggleBtn = document.getElementById('timer-toggle-btn');
+      
+      if (isTimerRunning) {
+        statusTag.textContent = 'FOCUSING';
+        statusTag.style.color = 'var(--emerald)';
+        toggleBtn.textContent = 'Pause';
+        toggleBtn.classList.remove('primary');
+      } else {
+        statusTag.textContent = timerRemaining === timerDuration ? 'READY' : 'PAUSED';
+        statusTag.style.color = 'var(--text-dim)';
+        toggleBtn.textContent = 'Start Focus';
+        toggleBtn.classList.add('primary');
+      }
+    }
+
+    function setTimer(minutes) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerDuration = minutes * 60;
+      timerRemaining = timerDuration;
+      
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(minutes + 'm'));
+      });
+      
+      updateTimerUI();
+    }
+
+    function toggleTimer() {
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+      } else {
+        isTimerRunning = true;
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            updateTimerUI();
+          } else {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            updateTimerUI();
+            alert('🎉 Study session complete! Great focus session.');
+          }
+        }, 1000);
+      }
+      updateTimerUI();
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerRemaining = timerDuration;
+      updateTimerUI();
+    }
+
+    // Checklist persistence
+    function initChecklist() {
+      const saved = JSON.parse(localStorage.getItem('study_desk_checklist') || '{}');
+      const items = document.querySelectorAll('.check-item');
+      let completed = 0;
+      
+      items.forEach(item => {
+        const id = item.getAttribute('data-id');
+        const input = item.querySelector('input');
+        if (saved[id]) {
+          input.checked = true;
+          item.classList.add('done');
+          completed++;
+        }
+      });
+      
+      document.getElementById('checklist-progress').textContent = `${completed}/${items.length} Done`;
+    }
+
+    function updateChecklist(input) {
+      const item = input.closest('.check-item');
+      const id = item.getAttribute('data-id');
+      item.classList.toggle('done', input.checked);
+      
+      const saved = JSON.parse(localStorage.getItem('study_desk_checklist') || '{}');
+      saved[id] = input.checked;
+      localStorage.setItem('study_desk_checklist', JSON.stringify(saved));
+      
+      const items = document.querySelectorAll('.check-item');
+      const completed = Array.from(items).filter(i => i.querySelector('input').checked).length;
+      document.getElementById('checklist-progress').textContent = `${completed}/${items.length} Done`;
+    }
+
+    // Scratchpad persistence
+    function initScratchpad() {
+      const saved = localStorage.getItem('study_desk_scratchpad') || '';
+      document.getElementById('study-scratchpad').value = saved;
+    }
+
+    function saveScratchpad() {
+      const val = document.getElementById('study-scratchpad').value;
+      localStorage.setItem('study_desk_scratchpad', val);
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+      
+      if (e.key === '1') window.location.href = 'MAT191_Calculus1_Masterclass_Deck.html';
+      else if (e.key === '2') window.location.href = 'Calc1_The_A_Plan.html';
+      else if (e.key === '3') window.location.href = 'IsotopePINN_30Day_Professional_Mastery.html';
+      else if (e.key === '4') window.location.href = 'IsotopePINN_AP_Research_Paper.html';
+      else if (e.key === '5') window.location.href = 'IsotopePINN_ISEF_Masterclass_Deck.html';
+      else if (e.key === '6') window.location.href = 'sat_1400_coach.html';
+      else if (e.key === 't' || e.key === 'T' || e.key === ' ') {
+        e.preventDefault();
+        toggleTimer();
+      }
+    });
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      initChecklist();
+      initScratchpad();
+      updateTimerUI();
+    });
+  </script>
+</body>
+</html>

@@ -4,7 +4,13 @@
   "rewrites": [
     { "source": "/yankey", "destination": "/The_Big_Yankey" },
     { "source": "/the-big-yankey", "destination": "/The_Big_Yankey" },
-    { "source": "/big-yankey", "destination": "/The_Big_Yankey" }
+    { "source": "/big-yankey", "destination": "/The_Big_Yankey" },
+    { "source": "/reading", "destination": "/Reading_700_Mastery" },
+    { "source": "/reading-sat", "destination": "/Reading_700_Mastery" },
+    { "source": "/sat-reading", "destination": "/Reading_700_Mastery" },
+    { "source": "/reading700", "destination": "/Reading_700_Mastery" },
+    { "source": "/reading-700", "destination": "/Reading_700_Mastery" },
+    { "source": "/sat", "destination": "/Reading_700_Mastery" }
   ],
   "headers": [
     {
